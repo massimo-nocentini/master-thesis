@@ -1,4 +1,8 @@
 
+import sympy
+from sympy import *
+from sympy.abc import x, n, z, t
+
 def Riordan_matrix_latex_code(g, f, var=x, order=7):
 
     row_template = r' & '.join(['{{{0}}}'.format(i) for i in range(order)]) + r' & '
@@ -19,7 +23,7 @@ def Riordan_matrix_latex_code(g, f, var=x, order=7):
 
         def for_latex_code(col_index):
             coefficient = coefficients_per_column[col_index][var**j]
-            return '' if coefficient is 0 else coefficient
+            return '' if coefficient is 0 and col_index > j else coefficient
 
         coefficients = [for_latex_code(i) for i in range(order)]
         matrix_rows.append(row_template.format(* map(str, coefficients)))
