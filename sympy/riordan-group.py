@@ -4,6 +4,18 @@ from sympy import *
 from sympy.abc import x, n, z, t
 
 def Riordan_matrix_latex_code(g, f, var=x, order=7):
+    """
+    Produces a chunk of infinite lower matrix denoted by functions *d* and *h*
+
+    Enhancement:
+        1.  Add optional arguments that request to return a sympy matrix
+            (expansion of function *h* is interesting only if the returned object
+            is of class Eq, otherwise the client could expand *h* by itself)
+
+    Fixes:
+        1.  change name of functions *g* and *f* to *d* and *h*, also change 
+            default var name to *t*.
+    """
 
     row_template = r' & '.join(['{{{0}}}'.format(i) for i in range(order)]) + r' & '
 
@@ -29,5 +41,5 @@ def Riordan_matrix_latex_code(g, f, var=x, order=7):
         matrix_rows.append(row_template.format(* map(str, coefficients)))
 
     return r'\begin{{equation}} \left( {0}, {1} \right) = {2} \end{{equation}}'.format(
-        latex(g(var)), latex(f(var)), make_latex_code(' \\\\ '.join(matrix_rows)))
+        latex(g(var).factor()), latex(f(var).factor()), make_latex_code(' \\\\ '.join(matrix_rows)))
 
