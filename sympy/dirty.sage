@@ -34,10 +34,15 @@ def Riordan_matrix_latex_code(g, f, var=x, order=7):
     matrix_rows = []
     QQ_matrix = matrix(QQ, order, order)
     coloured_triangle_tikz_lines = []
+
+
+
     for row_index in range(order):
 
         def for_latex_code(col_index):
-            coefficient = columns_as_power_series[col_index].coefficient(var**row_index)
+            col_fps = columns_as_power_series[col_index]
+            coefficient = col_fps.coefficient(var**row_index) if row_index > 0 else col_fps.trailing_coefficient(var)
+            #coefficient = Integer(coefficient)
             QQ_matrix[row_index, col_index] = coefficient
             if col_index <= row_index:
                 coloured_triangle_tikz_lines.append(
