@@ -103,7 +103,7 @@ def enhanced_latex(order, row_template):
     return coefficient_handler, row_handler
 
 
-def coloured_triangle(d, h, classes=2, order=500):
+def coloured_triangle(d, h, classes=2, order=100):
 
     def colours_mapping(witness):
         if witness == 0: return 'zero'
@@ -147,4 +147,88 @@ def write_tikz_lines_to_file(lines, filename='new_results.tex'):
     fp = open(filename,'w')
     fp.write('\n'.join(lines))
     fp.close()
+
+def from_pattern_family_10j_1(j, variable=var('t')):
+    """
+    This function allow to build a pair of functions (d, h) to 
+    build a Riordan array for the pattern family (10)**j1, for a given j.
+    """
+    
+    def make_sum(from_index): return sum(variable**i, i, from_index, j)
+
+    i = var('i')
+
+    d = make_sum(from_index=0)/sqrt(
+        1-2*make_sum(from_index=1)-3*make_sum(from_index=1)**2)
+
+    h = (make_sum(from_index=0) - sqrt(
+        1-2*make_sum(from_index=1)-3*make_sum(from_index=1)**2))/(2*make_sum(from_index=0))
+
+    return d,h
+
+def from_pattern_family_01j_0(j, variable=var('t')):
+    """
+    This function allow to build a pair of functions (d, h) to 
+    build a Riordan array for the pattern family (10)**j1, for a given j.
+    """
+    
+    def make_sum(from_index, to=j): return sum(variable**i, i, from_index, j)
+
+    i = var('i')
+
+    d = make_sum(from_index=0)/sqrt(
+        1-2*make_sum(from_index=1)-3*make_sum(from_index=1)**2)
+
+    h = (make_sum(from_index=0) - sqrt(
+        1-2*make_sum(from_index=1)-3*make_sum(from_index=1)**2))/(2*make_sum(
+            from_index=0, to=j-1))
+
+    return d,h
+
+
+def from_pattern_family_j_j(j, variable=var('t')):
+    """
+    This function allow to build a pair of functions (d, h) to 
+    build a Riordan array for the pattern family (10)**j1, for a given j.
+    """
+    
+    d = 1/sqrt(1-4*t + 2*t**j + t**(2*j))
+
+    h = (1 + t**j - sqrt(1-4*t + 2*t**j + t**(2*j)))/2
+
+    return d,h
+
+
+def from_pattern_family_1_succj_0_j(j, variable=var('t')):
+    """
+    This function allow to build a pair of functions (d, h) to 
+    build a Riordan array for the pattern family (10)**j1, for a given j.
+    """
+    
+    d = 1/sqrt(1-4*t + 4*t**(j+1))
+
+    h = (1 - sqrt(1-4*t + 4*t**(j+1)))/2
+
+    return d,h
+
+
+def from_pattern_family_0_succj_1_j(j, variable=var('t')):
+    """
+    This function allow to build a pair of functions (d, h) to 
+    build a Riordan array for the pattern family (10)**j1, for a given j.
+    """
+    
+    d = 1/sqrt(1-4*t + 4*t**(j+1))
+
+    h = (1 - sqrt(1-4*t + 4*t**(j+1)))/(2*(1-t**j))
+
+    return d,h
+
+
+
+
+
+
+
+
 
