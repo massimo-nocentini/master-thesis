@@ -4,7 +4,7 @@ cmd=$"
 from sage.all import *
 load('../RiordanGroup.sage')
 
-d_t, h_t = from_pattern_family_j_j(3)
+d_t, h_t = from_pattern_family_j_j(5)
 d(t) = d_t
 h(t) = h_t
 
