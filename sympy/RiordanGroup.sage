@@ -103,7 +103,7 @@ def enhanced_latex(order, row_template):
     return coefficient_handler, row_handler
 
 
-def coloured_triangle(d, h):
+def coloured_triangle(d, h, classes=2, order=500):
 
     def colours_mapping(witness):
         if witness == 0: return 'zero'
@@ -112,12 +112,12 @@ def coloured_triangle(d, h):
         else: return 'three'
 
     colouring_handlers = colouring(  
-        partitioning=lambda coeff: coeff.mod(6)) 
+        partitioning=lambda coeff: coeff.mod(classes)) 
         #colours_mapping=lambda witness: 'zero' if witness == 0 else 'odd')
         #colours_mapping=colours_mapping)
 
     pascal_matrix, tikz_coloured_nodes, _ = Riordan_matrix_latex_code ( 
-        array=(d,h), order=100, handlers_tuple=colouring_handlers)
+        array=(d,h), order=order, handlers_tuple=colouring_handlers)
 
     return pascal_matrix, tikz_coloured_nodes
 
