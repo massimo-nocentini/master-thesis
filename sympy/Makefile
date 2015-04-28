@@ -47,3 +47,11 @@ pattern-family-01j-0-coloured:
 pattern-family-j-j-coloured:
 	cp coloured.tex predefined-colour-table.tex pattern-family-j-j/
 	cd pattern-family-j-j && bash pattern-family-j-j.sh && lualatex coloured.tex
+
+pattern-family-1succj-0j-coloured:
+	cp coloured.tex predefined-colour-table.tex pattern-family-1succj-0j/
+	cd pattern-family-1succj-0j && bash pattern-family-1succj-0j.sh && lualatex coloured.tex
+
+pattern-family-0succj-1j-coloured:
+	cp coloured.tex predefined-colour-table.tex pattern-family-0succj-1j/
+	cd pattern-family-0succj-1j && bash pattern-family-0succj-1j.sh && lualatex coloured.tex
