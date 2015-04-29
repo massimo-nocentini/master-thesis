@@ -3,9 +3,17 @@ pascal-coloured:
 	cp coloured.tex predefined-colour-table.tex pascal/
 	cd pascal && bash pascal.sh && lualatex coloured.tex
 
+pascal-inverted:
+	cp coloured.tex predefined-colour-table.tex pascal/
+	cd pascal && bash pascal-inverted.sh && lualatex coloured.tex
+
 fibonacci-coloured:
 	cp coloured.tex predefined-colour-table.tex fibonacci/
 	cd fibonacci && bash fibonacci.sh && lualatex coloured.tex
+
+fibonacci-inverted:
+	cp coloured.tex predefined-colour-table.tex fibonacci/
+	cd fibonacci && bash fibonacci-inverted.sh && lualatex coloured.tex
 
 catalan-coloured:
 	cp coloured.tex predefined-colour-table.tex catalan/

@@ -103,18 +103,19 @@ def enhanced_latex(order, row_template):
     return coefficient_handler, row_handler
 
 
-def coloured_triangle(d, h, classes=2, order=100):
+def coloured_triangle(d, h, classes=2, order=100, for_inverses=False):
 
-    def colours_mapping(witness):
-        if witness == 0: return 'zero'
-        elif witness == 1: return 'one'
-        elif witness == 2: return 'two'
-        else: return 'three'
+    def colours_mapping_for_inverses(witness):
+        sign, witness_class = witness
+        return str(witness_class) + ('-for-negatives' if sign < 0 else '')
 
-    colouring_handlers = colouring(  
-        partitioning=lambda coeff: coeff.mod(classes)) 
-        #colours_mapping=lambda witness: 'zero' if witness == 0 else 'odd')
-        #colours_mapping=colours_mapping)
+    if for_inverses:
+        colouring_handlers = colouring(  
+            partitioning=lambda coeff: (coeff.sign(), coeff.mod(classes)),
+            colours_mapping=colours_mapping_for_inverses) 
+    else:
+        colouring_handlers = colouring(  
+            partitioning=lambda coeff: coeff.mod(classes)) 
 
     pascal_matrix, tikz_coloured_nodes, _ = Riordan_matrix_latex_code ( 
         array=(d,h), order=order, handlers_tuple=colouring_handlers)
