@@ -23,6 +23,10 @@ motzkin-coloured:
 	cp coloured.tex predefined-colour-table.tex motzkin/
 	cd motzkin && bash motzkin.sh && lualatex coloured.tex
 
+motzkin-inverted:
+	cp coloured.tex predefined-colour-table.tex motzkin/
+	cd motzkin && bash motzkin-inverted.sh && lualatex coloured.tex
+
 pattern-11100-coloured:
 	cp coloured.tex predefined-colour-table.tex pattern-11100/
 	cd pattern-11100 && bash pattern-11100.sh && lualatex coloured.tex
