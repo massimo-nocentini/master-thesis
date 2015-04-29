@@ -23,11 +23,6 @@ pattern-101-coloured:
 	cp coloured.tex predefined-colour-table.tex pattern-101/
 	cd pattern-101 && bash pattern-101.sh && lualatex coloured.tex
 
-lattice-path-four-steps-dziemianczuk:
-	echo "hello"
-	cp coloured.tex predefined-colour-table.tex lattice-path-four-steps-dziemianczuk/
-	cd lattice-path-four-steps-dziemianczuk && bash script.sh && lualatex coloured.tex
-
 pattern-10101-coloured:
 	cp coloured.tex predefined-colour-table.tex pattern-10101/
 	cd pattern-10101 && bash pattern-10101.sh && lualatex coloured.tex
@@ -35,6 +30,10 @@ pattern-10101-coloured:
 pattern-01010-coloured:
 	cp coloured.tex predefined-colour-table.tex pattern-01010/
 	cd pattern-01010 && bash pattern-01010.sh && lualatex coloured.tex
+
+pattern-010101-coloured: 
+	cp coloured.tex predefined-colour-table.tex pattern-010101/ 
+	cd pattern-010101 && bash pattern-010101.sh && lualatex coloured.tex
 
 pattern-family-10j-1-coloured:
 	cp coloured.tex predefined-colour-table.tex pattern-family-10j-1/

@@ -172,7 +172,7 @@ def from_pattern_family_01j_0(j, variable=var('t')):
     build a Riordan array for the pattern family (10)**j1, for a given j.
     """
     
-    def make_sum(from_index, to=j): return sum(variable**i, i, from_index, j)
+    def make_sum(from_index, to=j): return sum(variable**i, i, from_index, to)
 
     i = var('i')
 
