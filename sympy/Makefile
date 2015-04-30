@@ -7,6 +7,10 @@ pascal-inverted:
 	cp coloured.tex predefined-colour-table.tex pascal/
 	cd pascal && bash pascal-inverted.sh && lualatex coloured.tex
 
+product-pascal-times-fibonacci:
+	cp coloured.tex predefined-colour-table.tex product-pascal-times-fibonacci/
+	cd product-pascal-times-fibonacci && bash pascal-times-fibonacci.sh && lualatex coloured.tex
+
 fibonacci-coloured:
 	cp coloured.tex predefined-colour-table.tex fibonacci/
 	cd fibonacci && bash fibonacci.sh && lualatex coloured.tex
@@ -14,6 +18,10 @@ fibonacci-coloured:
 fibonacci-inverted:
 	cp coloured.tex predefined-colour-table.tex fibonacci/
 	cd fibonacci && bash fibonacci-inverted.sh && lualatex coloured.tex
+
+product-fibonacci-times-pascal:
+	cp coloured.tex predefined-colour-table.tex product-fibonacci-times-pascal/
+	cd product-fibonacci-times-pascal&& bash fibonacci-times-pascal.sh && lualatex coloured.tex
 
 catalan-coloured:
 	cp coloured.tex predefined-colour-table.tex catalan/
