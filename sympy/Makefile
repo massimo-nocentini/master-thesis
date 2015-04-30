@@ -19,6 +19,10 @@ catalan-coloured:
 	cp coloured.tex predefined-colour-table.tex catalan/
 	cd catalan && bash catalan.sh && lualatex coloured.tex
 
+catalan-inverted:
+	cp coloured.tex predefined-colour-table.tex catalan/
+	cd catalan && bash catalan-inverted.sh && lualatex coloured.tex
+
 motzkin-coloured:
 	cp coloured.tex predefined-colour-table.tex motzkin/
 	cd motzkin && bash motzkin.sh && lualatex coloured.tex
