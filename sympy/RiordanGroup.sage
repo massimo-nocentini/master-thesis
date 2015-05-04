@@ -144,6 +144,17 @@ def latex_triangle(d, h):
     return pascal_matrix, r'\begin{{equation}} \left( {0}, {1} \right) = {2} \end{{equation}}'.format(
         latex(d(t)), latex(h(t)), make_latex_code(' \\\\ '.join(matrix_rows)))
 
+def repeated_applications(aMatrix, func=lambda row, previous_row: row - previous_row):
+    """ Apply repeated differences to the given matrix """
+    result_matrix = copy(aMatrix)
+    len_rows = aMatrix.dimensions()[0] # get number of rows
+    for j in range(1, len_rows):
+        sandbox_matrix = copy(result_matrix)
+        for i in range(j, len_rows):
+            result_matrix[i,:] = func(sandbox_matrix[i,:], sandbox_matrix[i-1,:])
+        #show(result_matrix)
+    return result_matrix
+
 def write_tikz_lines_to_file(lines, filename='new_results.tex'):
     fp = open(filename,'w')
     fp.write('\n'.join(lines))

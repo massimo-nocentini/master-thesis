@@ -6,7 +6,10 @@ load('../RiordanGroup.sage')
 
 d(t)=1/(1-t) 
 h(t)=t/(1-t)
-pascal_matrix, tikz_nodes = coloured_triangle(d,h)
+pascal_matrix, tikz_nodes = coloured_triangle(d,h, classes=2)
+repeated_differences_matrix = repeated_applications(pascal_matrix)
+show(pascal_matrix)
+show(repeated_differences_matrix)
 write_tikz_lines_to_file(tikz_nodes)"
 
 echo "$cmd"
