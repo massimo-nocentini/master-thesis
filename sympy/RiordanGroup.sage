@@ -186,7 +186,8 @@ def enhanced_latex(order, row_template):
     return coefficient_handler, row_handler
 
 
-def coloured_triangle(d, h, classes=2, order=100, for_inverses=False):
+def coloured_triangle(d, h, classes=2, order=100, for_inverses=False,
+                        explicit_matrix=None):
 
     if for_inverses:
         # the following function change "tonality" for negative entries
@@ -201,12 +202,15 @@ def coloured_triangle(d, h, classes=2, order=100, for_inverses=False):
         colouring_handlers = colouring(  
             partitioning=lambda coeff: coeff.mod(classes)) 
 
-    # the following assert ensures that both `d' both `h' use the same *indeterminate*
-    assert d.args() == h.args()
+    if explicit_matrix is None:
+        # the following assert ensures that both `d' both `h' use the same *indeterminate*
+        assert d.args() == h.args()
 
-    Riordan_array = RiordanArray(
-        SubgroupCharacterization(
-            VanillaDHfunctionsSubgroup(d, h, d.args()[0])))
+        Riordan_array = RiordanArray(
+            SubgroupCharacterization(
+                VanillaDHfunctionsSubgroup(d, h, d.args()[0]))) 
+    else: 
+        Riordan_array = explicit_matrix
 
     pascal_matrix, tikz_coloured_nodes, _ = Riordan_matrix_latex_code ( 
         array=Riordan_array, order=order, handlers_tuple=colouring_handlers)
