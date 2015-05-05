@@ -31,18 +31,19 @@ def Riordan_matrix_latex_code(  array,
     if on_computed_row_coefficients is None:
         on_computed_row_coefficients=lambda row_index, coefficients: coefficients
 
-    g, f = array
+    #g, f = array
 
-    columns_as_power_series = [(g(var) * f(var)**i).series(var,order) 
-                                for i in range(order)]
+    #columns_as_power_series = [(g(var) * f(var)**i).series(var,order) 
+                                #for i in range(order)]
 
     QQ_matrix = matrix(QQ, order, order)
 
     def handler(row_index, col_index):
 
-        col_fps = columns_as_power_series[col_index]
-        coefficient = col_fps.coefficient(var**row_index) \
-                        if row_index > 0 else col_fps.trailing_coefficient(var)
+        #col_fps = columns_as_power_series[col_index]
+        #coefficient = col_fps.coefficient(var**row_index) \
+                        #if row_index > 0 else col_fps.trailing_coefficient(var)
+        coefficient = array[row_index, col_index]
         QQ_matrix[row_index, col_index] = coefficient
 
         try:
@@ -74,6 +75,88 @@ def Riordan_matrix_latex_code(  array,
             result_list_from_supplied_block, 
             result_list_from_supplied_block_per_row)
 
+class RiordanArray:
+
+    def __init__(self, characterization):
+        self.characterization = characterization
+        self.expansion = None
+        self.order = None
+
+    def __getitem__(self, index):
+
+        row_index, col_index = index
+
+        if self.order is None or max(row_index, col_index) >= self.order: 
+            self.augment_expansion()
+
+#       Under the hood, the first `column' index works over a dictionary,
+#       hence it a *key*; on the other hand, the latter `row' index works over
+#       a list, hence it is a proper positional index.
+        return self.expansion[col_index][row_index]
+
+        #col_fps = self.columns_as_power_series[col_index]
+        #coefficient = col_fps.coefficient(var**row_index) \
+                        #if row_index > 0 else col_fps.trailing_coefficient(var)
+
+        #return coefficient
+
+    def augment_expansion(self):
+        if self.order is None: self.order = 1
+        self.order *= 2
+        self.characterization.expansion_for_Riordan_array(self)
+
+class VanillaDHfunctionsSubgroup:
+
+    def __init__(self, d, h, variable):
+        self.d, self.h, self.variable = d, h, variable
+
+    def dispatch_on(self, recipient):
+        recipient.dispatched_from_VanillaDHfunctionsSubgroup(self)
+        
+
+#________________________________________________________________________
+
+# The following classes fixes some ideas about characterizations.
+
+class AbstractCharacterization: pass
+
+class SequencesCharacterization(AbstractCharacterization):
+    
+    def __init__(self, d_zero, A_sequence, Z_sequence): pass
+
+
+class MatrixCharacterization(AbstractCharacterization):
+
+    def __init__(self, A_matrix): pass
+
+
+class SubgroupCharacterization(AbstractCharacterization):
+
+    def __init__(self, subgroup): 
+        self.subgroup = subgroup
+
+    def expansion_for_Riordan_array(self, Riordan_array):
+        # maybe the following message should say Subgroup characterization explicitly
+        self.subgroup.dispatch_on(
+            ExpansionActionUsingSubgroupCharacterization(self, Riordan_array))
+
+
+class ExpansionActionUsingSubgroupCharacterization: 
+
+    def __init__(self, *args): 
+        self.subgroup_characterization, self.Riordan_array = args
+
+    def dispatched_from_VanillaDHfunctionsSubgroup(self, subgroup): 
+
+        d, h, var = subgroup.d, subgroup.h, subgroup.variable
+        order = self.Riordan_array.order
+
+        # remember that in Python 2.7, `map' function returns a list, not a *map* object
+        self.Riordan_array.expansion = \
+            {i:map( lambda coeffs_pair: coeffs_pair[0],
+                    (d(var) * h(var)**i).series(var,order).coefficients()) 
+                for i in range(order)}
+#________________________________________________________________________
 
 def colouring(  
         partitioning, 
@@ -105,11 +188,12 @@ def enhanced_latex(order, row_template):
 
 def coloured_triangle(d, h, classes=2, order=100, for_inverses=False):
 
-    def colours_mapping_for_inverses(witness):
-        sign, witness_class = witness
-        return str(witness_class) + ('-for-negatives' if sign < 0 else '')
-
     if for_inverses:
+        # the following function change "tonality" for negative entries
+        def colours_mapping_for_inverses(witness):
+            sign, witness_class = witness
+            return str(witness_class) + ('-for-negatives' if sign < 0 else '')
+
         colouring_handlers = colouring(  
             partitioning=lambda coeff: (coeff.sign(), coeff.mod(classes)),
             colours_mapping=colours_mapping_for_inverses) 
@@ -117,8 +201,15 @@ def coloured_triangle(d, h, classes=2, order=100, for_inverses=False):
         colouring_handlers = colouring(  
             partitioning=lambda coeff: coeff.mod(classes)) 
 
+    # the following assert ensures that both `d' both `h' use the same *indeterminate*
+    assert d.args() == h.args()
+
+    Riordan_array = RiordanArray(
+        SubgroupCharacterization(
+            VanillaDHfunctionsSubgroup(d, h, d.args()[0])))
+
     pascal_matrix, tikz_coloured_nodes, _ = Riordan_matrix_latex_code ( 
-        array=(d,h), order=order, handlers_tuple=colouring_handlers)
+        array=Riordan_array, order=order, handlers_tuple=colouring_handlers)
 
     return pascal_matrix, tikz_coloured_nodes
 
