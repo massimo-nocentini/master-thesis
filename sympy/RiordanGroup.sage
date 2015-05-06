@@ -1,11 +1,8 @@
 
 from sage.all import *
 
-def Riordan_matrix_latex_code(  array, 
-                                var=var('t'), 
-                                order=10, 
-                                handlers_tuple=None,
-                                handle_triangular_region_only=True):
+def Riordan_matrix_latex_code(
+        array, order=10, handlers_tuple=None, handle_triangular_region_only=True):
     """
     Produces a chunk of infinite lower matrix denoted by functions *d* and *h*
 
@@ -19,6 +16,7 @@ def Riordan_matrix_latex_code(  array,
             default var name to *t*.
     """
 
+    # adjust handlers in order to talk witk "null objects" if no action are desired.
     if handlers_tuple is None:
         on_computed_coefficient=None
         on_computed_row_coefficients=None
@@ -31,20 +29,13 @@ def Riordan_matrix_latex_code(  array,
     if on_computed_row_coefficients is None:
         on_computed_row_coefficients=lambda row_index, coefficients: coefficients
 
-    #g, f = array
-
-    #columns_as_power_series = [(g(var) * f(var)**i).series(var,order) 
-                                #for i in range(order)]
-
+    # initialize coefficient matrix, aka the Riordan array expansion
     QQ_matrix = matrix(QQ, order, order)
 
     def handler(row_index, col_index):
 
-        #col_fps = columns_as_power_series[col_index]
-        #coefficient = col_fps.coefficient(var**row_index) \
-                        #if row_index > 0 else col_fps.trailing_coefficient(var)
-        coefficient = array[row_index, col_index]
-        QQ_matrix[row_index, col_index] = coefficient
+        # indexing `array' is the only requirement for it to be a Riordan array
+        QQ_matrix[row_index, col_index] = coefficient = array[row_index, col_index]
 
         try:
             result_from_supplied_block = on_computed_coefficient(
@@ -54,14 +45,18 @@ def Riordan_matrix_latex_code(  array,
 
         return result_from_supplied_block
 
+
     result_list_from_supplied_block = []
     result_list_from_supplied_block_per_row = {}
 
     for row_index in range(order):
+
         col_limit = row_index + 1 if handle_triangular_region_only else order
+
         result_list_from_supplied_block_per_row[row_index] = []
 
-        for col_index in range(col_limit):
+        for col_index in range(col_limit): 
+
             element = handler(row_index, col_index)
             result_list_from_supplied_block.append(element)  
             result_list_from_supplied_block_per_row[row_index].append(element)
@@ -186,7 +181,9 @@ def enhanced_latex(order, row_template):
     return coefficient_handler, row_handler
 
 
-def coloured_triangle(d, h, classes=2, order=100, for_inverses=False,
+def coloured_triangle(  d=None, h=None, array=None,
+                        classes=2, order=100, 
+                        for_inverses=False,
                         explicit_matrix=None):
 
     if for_inverses:
@@ -202,15 +199,18 @@ def coloured_triangle(d, h, classes=2, order=100, for_inverses=False,
         colouring_handlers = colouring(  
             partitioning=lambda coeff: coeff.mod(classes)) 
 
-    if explicit_matrix is None:
-        # the following assert ensures that both `d' both `h' use the same *indeterminate*
-        assert d.args() == h.args()
+    if d and h:
+        # First ensures that both `d' both `h' 
+        # use the same *indeterminate*
+        assert d.args() == h.args() and len(d.args()) == 1
 
         Riordan_array = RiordanArray(
             SubgroupCharacterization(
                 VanillaDHfunctionsSubgroup(d, h, d.args()[0]))) 
-    else: 
-        Riordan_array = explicit_matrix
+
+    elif explicit_matrix:   Riordan_array = explicit_matrix
+    elif array:             Riordan_array = array
+    else:                   raise Exception("No array to work with")
 
     pascal_matrix, tikz_coloured_nodes, _ = Riordan_matrix_latex_code ( 
         array=Riordan_array, order=order, handlers_tuple=colouring_handlers)
@@ -241,6 +241,7 @@ def latex_triangle(d, h):
 
 def repeated_applications(aMatrix, func=lambda row, previous_row: row - previous_row):
     """ Apply repeated differences to the given matrix """
+
     result_matrix = copy(aMatrix)
     len_rows = aMatrix.dimensions()[0] # get number of rows
     for j in range(1, len_rows):
@@ -250,10 +251,14 @@ def repeated_applications(aMatrix, func=lambda row, previous_row: row - previous
         #show(result_matrix)
     return result_matrix
 
-def write_tikz_lines_to_file(lines, filename='new_results.tex'):
-    fp = open(filename,'w')
-    fp.write('\n'.join(lines))
-    fp.close()
+def write_tikz_lines_to_file(lines, filename='new_results.tex', joiner='\n'):
+    with open(filename,'w') as fp:
+        fp.write(joiner.join(lines) if joiner else lines)
+
+#________________________________________________________________________
+#
+# PATTERN STUFF
+#________________________________________________________________________
 
 def from_pattern_family_10j_1(j, variable=var('t')):
     """
