@@ -23,9 +23,18 @@ product-fibonacci-times-pascal:
 	cp coloured.tex predefined-colour-table.tex product-fibonacci-times-pascal/
 	cd product-fibonacci-times-pascal&& bash fibonacci-times-pascal.sh && lualatex coloured.tex
 
+# the following is a backup to run repeatedly a macro for cleaning
+#catalan-coloured:
+	#cp coloured.tex predefined-colour-table.tex catalan/
+	#cd catalan && bash catalan.sh && lualatex coloured.tex
+
 catalan-coloured:
-	cp coloured.tex predefined-colour-table.tex catalan/
-	cd catalan && bash catalan.sh && lualatex coloured.tex
+	cp templates/predefined-colour-table.tex catalan/
+	cd catalan && bash catalan.sh \
+        && lualatex catalan-standard-colouring.tex > /dev/null \
+        && echo "****standard colouring triangle pdf generated****" \
+		&& lualatex catalan-repeated-differences-colouring.tex > /dev/null \
+        && echo "****repeated differences colouring triangle pdf generated****"
 
 catalan-inverted:
 	cp coloured.tex predefined-colour-table.tex catalan/

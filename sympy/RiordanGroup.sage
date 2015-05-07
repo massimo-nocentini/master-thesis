@@ -1,5 +1,7 @@
 
 from sage.all import *
+from string import Template
+from datetime import datetime
 
 def Riordan_matrix_latex_code(
         array, order=10, handlers_tuple=None, handle_triangular_region_only=True):
@@ -184,7 +186,8 @@ def enhanced_latex(order, row_template):
 def coloured_triangle(  d=None, h=None, array=None,
                         classes=2, order=100, 
                         for_inverses=False,
-                        explicit_matrix=None):
+                        explicit_matrix=None,
+                        partitioning=None):
 
     if for_inverses:
         # the following function change "tonality" for negative entries
@@ -192,12 +195,15 @@ def coloured_triangle(  d=None, h=None, array=None,
             sign, witness_class = witness
             return str(witness_class) + ('-for-negatives' if sign < 0 else '')
 
-        colouring_handlers = colouring(  
-            partitioning=lambda coeff: (coeff.sign(), coeff.mod(classes)),
-            colours_mapping=colours_mapping_for_inverses) 
+        if partitioning is None:
+            partitioning=lambda coeff: (coeff.sign(), coeff.mod(classes))
+
+        colouring_handlers = colouring(partitioning, colours_mapping_for_inverses) 
     else:
-        colouring_handlers = colouring(  
-            partitioning=lambda coeff: coeff.mod(classes)) 
+        if partitioning is None:
+            partitioning=lambda coeff: coeff.mod(classes) 
+
+        colouring_handlers = colouring(partitioning) 
 
     if d and h:
         # First ensures that both `d' both `h' 
@@ -254,6 +260,23 @@ def repeated_applications(aMatrix, func=lambda row, previous_row: row - previous
 def write_tikz_lines_to_file(lines, filename='new_results.tex', joiner='\n'):
     with open(filename,'w') as fp:
         fp.write(joiner.join(lines) if joiner else lines)
+
+def substitute_from_filename(
+    template_filename, 
+    substitutions=dict(tikz_lines_input_filename='new_results.tex')):
+
+    with open(template_filename) as tf:
+        content = Template(tf.read())
+        return content.safe_substitute(substitutions)
+
+def timed_execution(block):
+
+    start_timestamp=datetime.now()
+    try: results = block()
+    except Exception as e: results = e
+
+    return results, datetime.now() - start_timestamp
+
 
 #________________________________________________________________________
 #

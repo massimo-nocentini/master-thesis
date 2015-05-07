@@ -57,7 +57,9 @@
 %    link/.style={-latex,links,line width=.3mm},
 %    plus/.style={text=links,font=\footnotesize\bfseries\sffamily},
   }
-  \input{new_results.tex}
+  % the following key `$tikz_lines_input_filename' is used as a template key
+  % to allow Python to do string substitution
+  \input{$tikz_lines_input_filename}
 \end{tikzpicture}
 
 \end{document}
