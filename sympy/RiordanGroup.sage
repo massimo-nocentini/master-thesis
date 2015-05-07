@@ -74,10 +74,11 @@ def Riordan_matrix_latex_code(
 
 class RiordanArray:
 
-    def __init__(self, characterization):
+    def __init__(self, characterization, name=None):
         self.characterization = characterization
         self.expansion = None
         self.order = None
+        self.name = name
 
     def __getitem__(self, index):
 
@@ -102,13 +103,16 @@ class RiordanArray:
         self.order *= 2
         self.characterization.expansion_for_Riordan_array(self)
 
+    def formal_def(self):
+        return self.characterization.formal_def_for_Riordan_array(self)
+
 class VanillaDHfunctionsSubgroup:
 
     def __init__(self, d, h, variable):
         self.d, self.h, self.variable = d, h, variable
 
     def dispatch_on(self, recipient):
-        recipient.dispatched_from_VanillaDHfunctionsSubgroup(self)
+        return recipient.dispatched_from_VanillaDHfunctionsSubgroup(self)
         
 
 #________________________________________________________________________
@@ -137,6 +141,10 @@ class SubgroupCharacterization(AbstractCharacterization):
         self.subgroup.dispatch_on(
             ExpansionActionUsingSubgroupCharacterization(self, Riordan_array))
 
+    def formal_def_for_Riordan_array(self, Riordan_array):
+        return self.subgroup.dispatch_on(
+            FormalDefLatexCodeUsingSubgroupCharacterization(self, Riordan_array))
+
 
 class ExpansionActionUsingSubgroupCharacterization: 
 
@@ -153,6 +161,23 @@ class ExpansionActionUsingSubgroupCharacterization:
             {i:map( lambda coeffs_pair: coeffs_pair[0],
                     (d(var) * h(var)**i).series(var,order).coefficients()) 
                 for i in range(order)}
+
+class FormalDefLatexCodeUsingSubgroupCharacterization:
+
+    def __init__(self, *args): 
+        self.subgroup_characterization, self.Riordan_array = args
+
+    def dispatched_from_VanillaDHfunctionsSubgroup(self, subgroup): 
+
+        d, h, var = subgroup.d, subgroup.h, subgroup.variable
+
+        def prepare_function_code(func):
+            return latex(func(var).factor())
+
+        return r"\mathcal{{{name}}}\left({d}, {h}\right)".format(
+            name=self.Riordan_array.name if self.Riordan_array.name else 'R',
+            d=prepare_function_code(d), 
+            h=prepare_function_code(h))
 #________________________________________________________________________
 
 def colouring(  

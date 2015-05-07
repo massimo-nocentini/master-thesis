@@ -10,12 +10,21 @@ h(t)=(1-sqrt(1-4*t))/2
 # building Riordan group
 Riordan_array = RiordanArray(
     SubgroupCharacterization(
-        VanillaDHfunctionsSubgroup(d, h, t))) 
+        VanillaDHfunctionsSubgroup(d, h, t)), 
+    name='C') 
 
 order=127
 
 # set to `None' if classic *mod* partitioning is desired
-partitioning=lambda coeff: 1 if coeff.is_prime() else 0
+def partitioning(coeff):
+    color_code = None
+
+    if coeff.is_prime():            color_code = 1 
+    elif coeff.is_prime_power():    color_code = 2 
+    elif coeff.is_pseudoprime():    color_code = 3
+    else:                           color_code = 0
+
+    return color_code
 
 # first we build the colouring for the standard triangle, timing it
 results, elapsed_time = timed_execution(
@@ -27,26 +36,44 @@ results, elapsed_time = timed_execution(
 pascal_matrix, tikz_nodes = results
 # a formatting pattern for a *datetime* object could be `.strftime("%M:%S.%f")'
 # here `elapsed_time' is a timedelta object, hence it doesn't apply
-print "**** standard colouring computed in {0}****".format(elapsed_time)
+print "**** standard colouring computed in {0} ****".format(elapsed_time)
 
 # save tikz lines to a dedicated file
 filename="standard-colouring-tikz-nodes.tex"
 write_tikz_lines_to_file(tikz_nodes, filename)
 
 # instantiate the template file in order to build the coloured triangle
+standard_colouring_filename_prefix = "catalan-standard-colouring"
+
 write_tikz_lines_to_file(
     substitute_from_filename(
         "../templates/coloured.tex", 
         dict(tikz_lines_input_filename=filename)), 
-    "catalan-standard-colouring.tex", 
+    "{}.tex".format(standard_colouring_filename_prefix), 
     joiner=None) 
+
+# instantiate the template file for include figure tex generation
+write_tikz_lines_to_file(
+    substitute_from_filename(
+        "../templates/include-figure.tex", 
+        dict(   triangle_filename="{path_prefix}{triangle_filename}.pdf".format(
+                    path_prefix="../sympy/catalan/",
+                    triangle_filename=standard_colouring_filename_prefix),
+#               it should be nice to include in the description 
+#               the way the triangle is partitioned...
+                caption="Catalan triangle, formally ${formal_def}$".format(
+                    formal_def=Riordan_array.formal_def()),
+                label=standard_colouring_filename_prefix)), 
+    "include-figure-{}.tex".format(standard_colouring_filename_prefix), 
+    joiner=None)
+print "**** standard colouring include figure tex chunk generated ****"
 
 #________________________________________________________________________
 
 # now we apply repeated difference in order to get a new array
 repeated_differences_matrix, elapsed_time = timed_execution(
     lambda: repeated_applications(pascal_matrix))
-print "**** repeated differences colouring computed in {0}****".format(elapsed_time)
+print "**** repeated differences colouring computed in {0} ****".format(elapsed_time)
 
 # draw again a coloured triangles as a list of tikz nodes, 
 # discard the first result since it is `explicit_matrix' itself

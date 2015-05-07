@@ -32,9 +32,9 @@ catalan-coloured:
 	cp templates/predefined-colour-table.tex catalan/
 	cd catalan && bash catalan.sh \
         && lualatex catalan-standard-colouring.tex > /dev/null \
-        && echo "****standard colouring triangle pdf generated****" \
+        && echo "**** standard colouring triangle pdf generated ****" \
 		&& lualatex catalan-repeated-differences-colouring.tex > /dev/null \
-        && echo "****repeated differences colouring triangle pdf generated****"
+        && echo "**** repeated differences colouring triangle pdf generated ****"
 
 catalan-inverted:
 	cp coloured.tex predefined-colour-table.tex catalan/
