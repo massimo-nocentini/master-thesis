@@ -18,3 +18,5 @@ product-fibonacci-times-pascal/
 
 
 *.pdf
+
+*.pyc

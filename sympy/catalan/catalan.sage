@@ -1,7 +1,10 @@
 
-from sage.all import *
+load("../append_root_directory_to_sys_path.py")
 
-load('../RiordanGroup.sage')
+#________________________________________________________________________
+
+from sage.all import *
+from riordan_group import *
 
 t = var('t')
 d(t)=(1/2)*(1+1/sqrt(1-4*t))
