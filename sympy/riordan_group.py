@@ -112,8 +112,10 @@ class RiordanArray:
         self.order *= 2
         self.characterization.expansion_for_Riordan_array(self)
 
+
     def formal_def(self):
         return self.characterization.formal_def_for_Riordan_array(self)
+
 
     def inverse(self, rebuild=False, **kwds):
 
@@ -121,6 +123,7 @@ class RiordanArray:
             self.characterization.build_inverse_for_Riordan_array(self, **kwds)
 
         return self.inverse_of
+
 
     def __str__(self):
         return self.formal_def()
@@ -194,17 +197,17 @@ class FormalDefLatexCodeUsingSubgroupCharacterization(
 
     def dispatched_from_VanillaDHfunctionsSubgroup(self, subgroup): 
 
+        def prepare_function_code(func_body):
+            return latex(func_body.factor())
+
         d, h, var = subgroup.d, subgroup.h, subgroup.variable
 
         return r"\mathcal{{{name}}}{downscript}{upscript}=\left({d}, {h}\right)".format(
             name=self.Riordan_array.name if self.Riordan_array.name else 'R',
             upscript='^{-1}' if self.Riordan_array.is_build_from_invertion else '',
             downscript='',
-            d=self.prepare_function_code(d(var)), 
-            h=self.prepare_function_code(h(var)))
-
-    def prepare_function_code(self, func_body):
-        return latex(func_body.factor())
+            d=prepare_function_code(d(var)), 
+            h=prepare_function_code(h(var)))
 
 
 class BuildInverseActionUsingSubgroupCharacterization(
@@ -290,10 +293,20 @@ class BuildInverseActionUsingSubgroupCharacterization(
 
 #________________________________________________________________________
 
+class PlainTriangleShape: 
+
+    def format_tikz_node_template_string(self, **kwds):
+        return r'\node[box={colour}] (p-{row}-{col}) at ({col},-{row}) {{}};'.format(**kwds)
+
+class CenteredTriangleShape:
+
+    def format_tikz_node_template_string(self, **kwds):
+        return r'\node[box={colour}] (p-{row}-{col}) at (-{row}/2+{col},-{row}) {{}};'.format(**kwds)
 
 def colouring(  
         partitioning, 
-        colours_mapping=lambda witness:str(witness), 
+        colours_mapping=lambda witness: str(witness), 
+        triangle_shape=CenteredTriangleShape(),
         on_tikz_node_generated=lambda node: node,
         casting_coeff=lambda coeff: Integer(coeff)):
 
@@ -301,8 +314,9 @@ def colouring(
         eqclass_witness = partitioning(casting_coeff(coeff))
         colour_code = colours_mapping(eqclass_witness)
         tikz_node = on_tikz_node_generated(
-                        r'\node[box={2}] (p-{0}-{1}) at (-{0}/2+{1},-{0}) {{}};'.format(
-                            row_index, col_index, colour_code))
+            triangle_shape.format_tikz_node_template_string(
+                row=row_index, col=col_index, colour=colour_code))
+
         return tikz_node
 
     return handler, None 
@@ -342,8 +356,7 @@ def coloured_triangle(  d=None, h=None, array=None,
         colouring_handlers = colouring(partitioning) 
 
     if d and h:
-        # First ensures that both `d' both `h' 
-        # use the same *indeterminate*
+        # First ensures that both `d' both `h' use the same *indeterminate*
         assert d.args() == h.args() and len(d.args()) == 1
 
         Riordan_array = RiordanArray(
