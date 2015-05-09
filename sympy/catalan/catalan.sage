@@ -25,6 +25,8 @@ def partitioning(coeff):
     else:                           color_code = 0
 
     return color_code
+    
+partitioning=None
 
 # first we build the colouring for the standard triangle, timing it
 results, elapsed_time = timed_execution(
@@ -94,6 +96,56 @@ write_tikz_lines_to_file(
     joiner=None) 
 
 
+#________________________________________________________________________
+
+# for inverses
+
+catalan_inverse = Riordan_array.inverse(
+    variable=var('y'), 
+    h_comp_inverse_proof=lambda y, t, equation: (equation*2*(-1) + 1)**2)
+
+
+# first we build the colouring for the standard triangle, timing it
+results, elapsed_time = timed_execution(
+    lambda: coloured_triangle( 
+        array=catalan_inverse, 
+        order=order, 
+        partitioning=partitioning))
+
+pascal_matrix, tikz_nodes = results
+# a formatting pattern for a *datetime* object could be `.strftime("%M:%S.%f")'
+# here `elapsed_time' is a timedelta object, hence it doesn't apply
+print "**** inverse colouring computed in {0} ****".format(elapsed_time)
+
+# save tikz lines to a dedicated file
+filename="inverse-colouring-tikz-nodes.tex"
+write_tikz_lines_to_file(tikz_nodes, filename)
+
+# instantiate the template file in order to build the coloured triangle
+standard_colouring_filename_prefix = "catalan-inverse-colouring"
+
+write_tikz_lines_to_file(
+    substitute_from_filename(
+        "../templates/coloured.tex", 
+        dict(tikz_lines_input_filename=filename)), 
+    "{}.tex".format(standard_colouring_filename_prefix), 
+    joiner=None) 
+
+# instantiate the template file for include figure tex generation
+write_tikz_lines_to_file(
+    substitute_from_filename(
+        "../templates/include-figure.tex", 
+        dict(   triangle_filename="{path_prefix}{triangle_filename}.pdf".format(
+                    path_prefix="../sympy/catalan/",
+                    triangle_filename=standard_colouring_filename_prefix),
+#               it should be nice to include in the description 
+#               the way the triangle is partitioned...
+                caption="Catalan inverse triangle, formally ${formal_def}$".format(
+                    formal_def=catalan_inverse.formal_def()),
+                label=standard_colouring_filename_prefix)), 
+    "include-figure-{}.tex".format(standard_colouring_filename_prefix), 
+    joiner=None)
+print "**** inverse colouring include figure tex chunk generated ****"
 
 
 
