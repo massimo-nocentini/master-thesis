@@ -14,7 +14,12 @@ def write_tikz_lines_to_file(lines, filename='new_results.tex', joiner='\n'):
 def write_tex_files(build_bash_script=None, *dictionaries):
 
     bash_commands = []
-    command_template = "{comment_hash}{typeset_command} {filename}{redirection}"
+
+    def instantiate_command(appender=lambda cmd: None, **kwds):
+        command_template = "{comment_hash}{typeset_command} {filename}{redirection}"
+        cmd = command_template.format(**kwds)
+        appender(cmd)
+        return cmd
 
     for dictionary in dictionaries:
         for filename, content_dict in dictionary.items():
@@ -23,11 +28,12 @@ def write_tex_files(build_bash_script=None, *dictionaries):
             write_tikz_lines_to_file(content, filename)
 
             if build_bash_script: 
-                bash_commands.append(command_template.format(
-                        comment_hash='# ' if not content_dict['typesettable'] else '',
-                        typeset_command='lualatex',
-                        filename=filename,
-                        redirection=''))
+                instantiate_command(
+                    appender=bash_commands.append,
+                    comment_hash='# ' if not content_dict['typesettable'] else '',
+                    typeset_command='lualatex',
+                    filename=filename,
+                    redirection='')
 
     write_tikz_lines_to_file(bash_commands, build_bash_script)
 
