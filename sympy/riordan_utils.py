@@ -12,13 +12,23 @@ def write_tikz_lines_to_file(lines, filename='new_results.tex', joiner='\n'):
     return filename
 
 def write_tex_files(build_bash_script=None, *dictionaries):
-    filenames = []
-    for dictionary in dictionaries:
-        for filename, content in dictionary.items():
-            write_tikz_lines_to_file(content, filename)
-            if build_bash_script: filenames.append(filename)
 
-    bash_commands = ["lualatex {}".format(filename) for filename in filenames]
+    bash_commands = []
+    command_template = "{comment_hash}{typeset_command} {filename}{redirection}"
+
+    for dictionary in dictionaries:
+        for filename, content_dict in dictionary.items():
+
+            content = content_dict['content']
+            write_tikz_lines_to_file(content, filename)
+
+            if build_bash_script: 
+                bash_commands.append(command_template.format(
+                        comment_hash='# ' if not content_dict['typesettable'] else '',
+                        typeset_command='lualatex',
+                        filename=filename,
+                        redirection=''))
+
     write_tikz_lines_to_file(bash_commands, build_bash_script)
 
 def substitute_from_filename(template_filename, **substitutions):
@@ -62,5 +72,15 @@ class NumberedColoursTable:
         sign, witness_class = witness
         return str(witness_class) + ('-for-negatives' if sign < 0 else '')
 
+class ForFilename: 
+
+    def dispatch_on(self, recipient, *args):
+        return recipient.dispatched_from_ForFilename(self, *args)
+
+class ForSummary: 
+
+    def dispatch_on(self, recipient, *args):
+        return recipient.dispatched_from_ForSummary(self, *args)
+        
 
 

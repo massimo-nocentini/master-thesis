@@ -55,17 +55,26 @@ def build_tex_files_about_colouring(
     def ends_with_extension(filename, file_extension='tex'):
         return filename + (r'.' + file_extension if file_extension else '')
 
+    def make_dict_value(**kwds): 
+        # the following assert ensures that the keys
+        # we need for typesetting are in the *automatically* 
+        # build dictionary, collecting keywords arguments.
+        assert 'content' in kwds and 'typesettable' in kwds
+        return kwds
+
     # save tikz lines to a dedicated file
     tikz_lines_input_filename = ends_with_extension(
         characteristic_prefix_template("tikz-nodes"))
-    tex_files[tikz_lines_input_filename] = tikz_nodes
+    tex_files[tikz_lines_input_filename] = make_dict_value(
+        content=tikz_nodes, typesettable=False)
 
     # instantiate the template file in order to build the coloured triangle
     colouring_triangle_filename = characteristic_prefix_template("triangle")
-    tex_files[ends_with_extension(colouring_triangle_filename)] = \
-        substitute_from_filename(
-            template_filename="../templates/coloured.tex", 
-            tikz_lines_input_filename=tikz_lines_input_filename)
+    tex_files[ends_with_extension(colouring_triangle_filename)] = make_dict_value( 
+        content=substitute_from_filename(
+                    template_filename="../templates/coloured.tex", 
+                    tikz_lines_input_filename=tikz_lines_input_filename),
+        typesettable=True)
 
     # instantiate the template file for include figure tex generation
     include_figure_filename = characteristic_prefix_template("include-figure")
@@ -79,18 +88,20 @@ def build_tex_files_about_colouring(
         colouring=colouring.str_for(summary=True),
         partitioning=partitioning.str_for(summary=True))
 
-    tex_files[ends_with_extension(include_figure_filename)] = \
-        substitute_from_filename(
-            template_filename="../templates/include-figure.tex", 
-            triangle_filename=colouring_triangle_pdf_filename,
-            caption=caption,
-            label=colouring_triangle_filename) 
+    tex_files[ends_with_extension(include_figure_filename)] = make_dict_value(
+        content=substitute_from_filename(
+                    template_filename="../templates/include-figure.tex", 
+                    triangle_filename=colouring_triangle_pdf_filename,
+                    caption=caption,
+                    label=colouring_triangle_filename),
+        typesettable=False)
     
     tex_files[ends_with_extension(
-        characteristic_prefix_template("include-matrix"))] = (
-            r'\begin{displaymath}' 
-            + latex(matrix_cutter(array_as_expanded_matrix))
-            + r'\end{displaymath}')
+        characteristic_prefix_template("include-matrix"))] = make_dict_value(
+            content=r'\begin{displaymath}' 
+                        + latex(matrix_cutter(array_as_expanded_matrix))
+                        + r'\end{displaymath}',
+        typesettable=False)
 
     return tex_files
 

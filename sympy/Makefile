@@ -1,11 +1,10 @@
 
-pascal-coloured:
-	cp coloured.tex predefined-colour-table.tex pascal/
-	cd pascal && bash pascal.sh && lualatex coloured.tex
+pascal-make:
+	cd pascal && bash pascal.sh 
 
-pascal-inverted:
-	cp coloured.tex predefined-colour-table.tex pascal/
-	cd pascal && bash pascal-inverted.sh && lualatex coloured.tex
+pascal-typeset-triangles:
+	cp templates/predefined-colour-table.tex pascal/
+	cd pascal && bash pascal-typesetting-commands.sh 
 
 product-pascal-times-fibonacci:
 	cp coloured.tex predefined-colour-table.tex product-pascal-times-fibonacci/
@@ -28,17 +27,12 @@ product-fibonacci-times-pascal:
 	#cp coloured.tex predefined-colour-table.tex catalan/
 	#cd catalan && bash catalan.sh && lualatex coloured.tex
 
-catalan-coloured:
-	cp templates/predefined-colour-table.tex catalan/
-	cd catalan && bash catalan.sh \
-        && lualatex catalan-standard-colouring.tex > /dev/null \
-        && echo "**** standard colouring triangle pdf generated ****" \
-		&& lualatex catalan-repeated-differences-colouring.tex > /dev/null \
-        && echo "**** repeated differences colouring triangle pdf generated ****"
+catalan-make:
+	cd catalan && bash catalan.sh 
 
-catalan-inverted:
-	cp coloured.tex predefined-colour-table.tex catalan/
-	cd catalan && bash catalan-inverted.sh && lualatex coloured.tex
+catalan-typeset-triangles:
+	cp templates/predefined-colour-table.tex catalan/
+	cd catalan && bash catalan-typesetting-commands.sh 
 
 motzkin-coloured:
 	cp coloured.tex predefined-colour-table.tex motzkin/
