@@ -83,8 +83,13 @@ class BuildInverseActionUsingSubgroupCharacterization(
 
         solutions = solve(to_solve, subgroup_var)
 
-        trivial_sol = subgroup_var == 0
-        if trivial_sol in solutions: solutions.remove(trivial_sol)
+        # filter found solutions in order to consider only those
+        # that allow to build a function in `user_var' only
+        solutions = filter(lambda sol: sol.rhs().variables() == (user_var,), solutions)
+
+        # The following code is subsumed by the above one
+        #trivial_sol = subgroup_var == 0
+        #if trivial_sol in solutions: solutions.remove(trivial_sol)
 
         # check if the given proof yield an unique solution
         assert len(solutions) == 1
