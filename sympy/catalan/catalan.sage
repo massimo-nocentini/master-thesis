@@ -31,7 +31,7 @@ partitioning=RemainderClassesPartitioning(modulo=2)
 
 colouring = TriangleColouring(
     colouring_scheme="standard", 
-    order=15,
+    order=127,
     centered=True, 
     handle_negatives=False)
 
@@ -54,7 +54,7 @@ colouring.colouring_scheme = "repeated-differences"
 
 # now we apply repeated difference in order to get a new array
 repeated_differences_matrix, elapsed_time = timed_execution(
-    lambda: repeated_applications(pascal_matrix))
+    lambda: repeated_applications(standard_results[0]))
 print "**** repeated differences colouring computed in {0} ****".format(elapsed_time)
 
 # draw again a coloured triangles as a list of tikz nodes, 

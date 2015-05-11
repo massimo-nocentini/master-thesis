@@ -30,7 +30,7 @@ class RemainderClassesPartitioning(AbstractPartitioning):
         return element.mod(self.modulo)
 
     def dispatched_from_HandleNegativesChoice(self, choice, element):
-        return element.sign(), element.mod(classes)
+        return element.sign(), element.mod(self.modulo)
 
     def str_for(self, filename=False, summary=False):
 

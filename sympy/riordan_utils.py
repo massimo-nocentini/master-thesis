@@ -17,6 +17,9 @@ def write_tex_files(build_bash_script=None, *dictionaries):
 
     def instantiate_command(appender=lambda cmd: None, **kwds):
         command_template = "{comment_hash}{typeset_command} {filename}{redirection}"
+        # observe that `kwds' argument needs to be unpacked in the call to
+        # `format', otherwise `kwds', which is a dictionary, is interpreted as
+        # a positional argument, while we care about pairs in it.
         cmd = command_template.format(**kwds)
         appender(cmd)
         return cmd
