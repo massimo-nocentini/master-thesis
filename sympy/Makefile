@@ -21,25 +21,19 @@ product-pascal-times-fibonacci:
 	cp coloured.tex predefined-colour-table.tex product-pascal-times-fibonacci/
 	cd product-pascal-times-fibonacci && bash pascal-times-fibonacci.sh && lualatex coloured.tex
 
-# the following is a backup to run repeatedly a macro for cleaning
-#catalan-coloured:
-	#cp coloured.tex predefined-colour-table.tex catalan/
-	#cd catalan && bash catalan.sh && lualatex coloured.tex
-
-catalan-make:
+catalan-tex-files:
 	cd catalan && bash catalan.sh 
 
 catalan-typeset-triangles:
 	cp templates/predefined-colour-table.tex catalan/
 	cd catalan && bash catalan-typesetting-commands.sh 
 
-motzkin-coloured:
-	cp coloured.tex predefined-colour-table.tex motzkin/
-	cd motzkin && bash motzkin.sh && lualatex coloured.tex
+motzkin-tex-files:
+	cd motzkin && bash motzkin.sh 
 
-motzkin-inverted:
-	cp coloured.tex predefined-colour-table.tex motzkin/
-	cd motzkin && bash motzkin-inverted.sh && lualatex coloured.tex
+motzkin-typeset-triangles:
+	cp templates/predefined-colour-table.tex motzkin/
+	cd motzkin && bash motzkin-typesetting-commands.sh 
 
 pattern-11100-coloured:
 	cp coloured.tex predefined-colour-table.tex pattern-11100/
