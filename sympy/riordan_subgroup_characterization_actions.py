@@ -6,6 +6,7 @@ from sage.calculus.var import var
 from riordan_group import *
 from riordan_characterizations import *
 from riordan_subgroups import *
+#from sage.misc.functional import show
 
 class AbstractActionUsingSubgroupCharacterization: 
 
@@ -24,8 +25,10 @@ class ExpansionActionUsingSubgroupCharacterization(
         # remember that in Python 2.7, `map' function returns a list, not a *map* object
         self.Riordan_array.expansion = \
             {i:map( lambda coeffs_pair: coeffs_pair[0],
-                    (d(var) * h(var)**i).series(var,order).coefficients()) 
+                    (d(var) * h(var)**i).series(var,order+1).coefficients()) 
                 for i in range(order)}
+
+        #print self.Riordan_array.expansion
 
 class FormalDefLatexCodeUsingSubgroupCharacterization(
         AbstractActionUsingSubgroupCharacterization):

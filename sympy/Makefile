@@ -1,26 +1,25 @@
 
-pascal-make:
+pascal-tex-files:
 	cd pascal && bash pascal.sh 
 
 pascal-typeset-triangles:
 	cp templates/predefined-colour-table.tex pascal/
 	cd pascal && bash pascal-typesetting-commands.sh 
 
-product-pascal-times-fibonacci:
-	cp coloured.tex predefined-colour-table.tex product-pascal-times-fibonacci/
-	cd product-pascal-times-fibonacci && bash pascal-times-fibonacci.sh && lualatex coloured.tex
+fibonacci-tex-files:
+	cd fibonacci && bash fibonacci.sh 
 
-fibonacci-coloured:
-	cp coloured.tex predefined-colour-table.tex fibonacci/
-	cd fibonacci && bash fibonacci.sh && lualatex coloured.tex
-
-fibonacci-inverted:
-	cp coloured.tex predefined-colour-table.tex fibonacci/
-	cd fibonacci && bash fibonacci-inverted.sh && lualatex coloured.tex
+fibonacci-typeset-triangles:
+	cp templates/predefined-colour-table.tex fibonacci/
+	cd fibonacci && bash fibonacci-typesetting-commands.sh 
 
 product-fibonacci-times-pascal:
 	cp coloured.tex predefined-colour-table.tex product-fibonacci-times-pascal/
 	cd product-fibonacci-times-pascal&& bash fibonacci-times-pascal.sh && lualatex coloured.tex
+
+product-pascal-times-fibonacci:
+	cp coloured.tex predefined-colour-table.tex product-pascal-times-fibonacci/
+	cd product-pascal-times-fibonacci && bash pascal-times-fibonacci.sh && lualatex coloured.tex
 
 # the following is a backup to run repeatedly a macro for cleaning
 #catalan-coloured:
