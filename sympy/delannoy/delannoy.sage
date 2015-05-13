@@ -13,27 +13,27 @@ from riordan_partitionings import *
 from riordan_colouring import *
 from riordan_texing import *
 
-tex_parent_prefix = "../sympy/pascal/"
+tex_parent_prefix = "../sympy/delannoy/"
 
 t = var('t')
 d(t)=1/(1-t)
-h(t)=t/(1-t)
+h(t)=(t+t**2)/(1-t)
 
 # building Riordan group
 Riordan_array = RiordanArray(
     SubgroupCharacterization(
         VanillaDHfunctionsSubgroup(d, h, t)), 
-    name='Pascal', math_name=r'\mathcal{P}') 
+    name='Delannoy', math_name=r'\mathcal{D}') 
 
 # set to `None' if classic *mod* partitioning is desired
     
-partitioning=RemainderClassesPartitioning(modulo=5)
+partitioning=RemainderClassesPartitioning(modulo=3)
 
 colouring = TriangleColouring(
     colouring_scheme="standard", 
     order=127,
     centered=True, 
-    handle_negatives=False)
+    handle_negatives=True)
 
 # first we build the colouring for the standard triangle, timing it
 standard_results, elapsed_time = timed_execution(
@@ -92,7 +92,7 @@ inverses_tex_files = build_tex_files_about_colouring(
     inverse_array, inverses_results, 
     colouring, partitioning, tex_parent_prefix)
 
-write_tex_files("pascal-typesetting-commands.sh",
+write_tex_files("delannoy-typesetting-commands.sh",
     standard_tex_files, inverses_tex_files)
 print "**** wrote tex files ****"
 

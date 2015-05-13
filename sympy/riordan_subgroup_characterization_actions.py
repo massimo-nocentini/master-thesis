@@ -87,16 +87,42 @@ class BuildInverseActionUsingSubgroupCharacterization(
         # that allow to build a function in `user_var' only
         solutions = filter(lambda sol: sol.rhs().variables() == (user_var,), solutions)
 
+        # build candidate compositional inverses
+        possible_compositional_inverses = map(
+            lambda sol: sol.rhs().function(user_var), solutions)
+
+        possible_compositional_inverses = filter(
+            lambda candidate: candidate(h(subgroup_var)).canonicalize_radical().factor() == subgroup_var,
+            possible_compositional_inverses)
+
+        if len(possible_compositional_inverses) > 1:
+            # include only those inverses `h_bar' such that `h_bar(0) == 0'
+            possible_compositional_inverses = filter(
+                lambda candidate: candidate(0) == 0, 
+                possible_compositional_inverses)
+        
+        if not possible_compositional_inverses: 
+            raise Exception("No compositional inverse candidate found.")
+
+        print possible_compositional_inverses
+        # the following expression is very interesting to evaluate at the REPL:
+        #  map(show, map(lambda f: (delannoy_h(f(t)).canonicalize_radical(),f), map(lambda sol: sol.rhs().function(y), solve(delannoy_h(t)==y,t)))) 
+        #solutions = filter(lambda expr, h_compositional_inverse: , 
+                        #map(lambda h_compositional_inverse: (h_compositional_inverse(h(subgroup_var)), h_compositional_inverse), 
+                            #possible_compositional_inverses)) 
+
         # The following code is subsumed by the above one
         #trivial_sol = subgroup_var == 0
         #if trivial_sol in solutions: solutions.remove(trivial_sol)
 
         # check if the given proof yield an unique solution
-        assert len(solutions) == 1
+#        assert len(possible_compositional_inverses) == 1
         
-        sol = solutions[0]
+        # the following checks now could be removed.
+        sol = possible_compositional_inverses[0]
 
-        h_comp_inverse = sol.rhs().function(user_var)
+        #h_comp_inverse = sol.rhs().function(user_var)
+        h_comp_inverse = sol
         
         # check that the compositional inverse has no free variables
         assert len(h_comp_inverse.variables()) == 1
@@ -108,7 +134,7 @@ class BuildInverseActionUsingSubgroupCharacterization(
         assert variable_in_h == user_var
 
         # check the defining condition for compositional inverse functions
-        assert h_comp_inverse(h(subgroup_var)).factor() == subgroup_var
+        assert h_comp_inverse(h(subgroup_var)).canonicalize_radical().factor() == subgroup_var
 
         # this check maybe doesn't pass, maybe it needs a little more help
         #assert h(h_comp_inverse(subgroup_var)).factor() == subgroup_var
