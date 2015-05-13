@@ -47,10 +47,10 @@ def build_tex_files_about_colouring(
 
     def characteristic_prefix_template(suffix=''):
         return r"{array_name}-{colouring_scheme}-{partitioning}{suffix}".format(
-            array_name=Riordan_array.name,
+            array_name="-".join(Riordan_array.name.split(" ")),
             colouring_scheme=colouring.str_for(filename=True),
             partitioning=partitioning.str_for(filename=True),
-            suffix='-' + suffix if suffix else '')
+            suffix='-' + suffix if suffix else '').lower()
 
     def ends_with_extension(filename, file_extension='tex'):
         return filename + (r'.' + file_extension if file_extension else '')
@@ -82,7 +82,12 @@ def build_tex_files_about_colouring(
     colouring_triangle_pdf_filename = "{path_prefix}{triangle_filename}.pdf".format(
         path_prefix=path_prefix, triangle_filename=colouring_triangle_filename)
     
-    caption = r"{array_name} triangle, formally ${formal_def}$.\newline {colouring}, {partitioning}".format(
+    caption = r'''
+        {array_name} triangle, formally: 
+        \begin{{displaymath}}
+            {formal_def}
+        \end{{displaymath}} % \newline % new line no more necessary
+        {colouring}, {partitioning}'''.format(
         array_name=Riordan_array.name,
         formal_def=Riordan_array.formal_def(),
         colouring=colouring.str_for(summary=True),

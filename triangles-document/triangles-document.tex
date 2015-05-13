@@ -5,6 +5,8 @@
 \usepackage[nochapters]{classicthesis} % nochapters
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{amsmath}
+\usepackage{caption}
 
 \begin{document}
     \title{\rmfamily\normalfont\spacedallcaps{Colouring Riordan arrays}}
@@ -20,6 +22,35 @@
     \tableofcontents
     
     \section{Pascal}
+
+    \subsection{Some modular proofs}
+    
+    In this section we present some proofs about Pascal array and its inverse,
+    taken modulo some prime $p$. Colouring with different colours elements 
+    belonging to different remainder classes, we show formally that for $p$ 
+    even, ie. $p=2$, elements in the same position get the same colour (hence
+    both triangle are coloured the same way, ignoring signs for elements in the
+    inverse array), while for $p$ odd there is not such a simple correspondence 
+    and we attempt to observe some repeating pattern of mapping between elements.
+
+    Let $\mathcal{P}$ be the Riordan array for the Pascal triangle, defined as:
+    \begin{displaymath} 
+        \mathcal{P} = \left(\frac{1}{1-t}, \frac{t}{1-t}  \right)
+    \end{displaymath} 
+    and let $\mathcal{P}^{-1}$ be its inverse Riordan array:
+    \begin{displaymath} 
+        \mathcal{P}^{-1} = \left(\frac{1}{1+t}, \frac{t}{1+t}  \right)
+    \end{displaymath} 
+    
+    Let $d_{nk}$ and $\hat{d}_{nk}$ be the generic element of Pascal array and 
+    of its inverse, respectively. Since both arrays are Riordan, by definition:
+    \begin{displaymath}
+        \begin{split}
+            d_{nk} &= [t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k
+        \end{split}
+    \end{displaymath}
+
+
 
     \input{../sympy/pascal/Pascal-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
     \input{../sympy/pascal/Pascal-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
@@ -42,6 +73,16 @@
     \input{../sympy/fibonacci/Fibonacci-inverse-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-figure.tex}
 
     \section{Catalan}
+
+    \subsection{Traditional version}
+
+    \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+    \input{../sympy/catalan/Catalan-traditional-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+
+    \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+    \input{../sympy/catalan/Catalan-traditional-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+
+    \subsection{Sprugnoli and He version}
 
     \input{../sympy/catalan/Catalan-standard-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-figure.tex}
     \input{../sympy/catalan/Catalan-standard-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-matrix.tex}

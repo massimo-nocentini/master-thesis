@@ -16,14 +16,14 @@ from riordan_texing import *
 tex_parent_prefix = "../sympy/catalan/"
 
 t = var('t')
-d(t)=(1/2)*(1+1/sqrt(1-4*t))
+d(t)=(1-sqrt(1-4*t))/(2*t)
 h(t)=(1-sqrt(1-4*t))/2
 
 # building Riordan group
 Riordan_array = RiordanArray(
     SubgroupCharacterization(
         VanillaDHfunctionsSubgroup(d, h, t)), 
-    name='Catalan Sprugnoli He', math_name=r'\mathcal{C}') 
+    name='Catalan traditional', math_name=r'\mathcal{C}') 
 
 # set to `None' if classic *mod* partitioning is desired
     
@@ -33,7 +33,7 @@ colouring = TriangleColouring(
     colouring_scheme="standard", 
     order=127,
     centered=True, 
-    handle_negatives=False)
+    handle_negatives=True)
 
 # first we build the colouring for the standard triangle, timing it
 standard_results, elapsed_time = timed_execution(
@@ -93,7 +93,7 @@ inverses_tex_files = build_tex_files_about_colouring(
     inverse_array, inverses_results, 
     colouring, partitioning, tex_parent_prefix)
 
-write_tex_files("catalan-sprugnoli-he-typesetting-commands.sh",
+write_tex_files("catalan-traditional-typesetting-commands.sh",
     standard_tex_files, inverses_tex_files)
 print "**** wrote tex files ****"
 
