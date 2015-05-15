@@ -49,6 +49,7 @@ def substitute_from_filename(template_filename, **substitutions):
 def timed_execution(block):
 
     start_timestamp=datetime.now()
+
     try: results = block()
     except Exception as e: results = e
 

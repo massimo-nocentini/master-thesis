@@ -53,9 +53,9 @@ standard_tex_files = build_tex_files_about_colouring(
 colouring.colouring_scheme = "repeated-differences"
 
 # now we apply repeated difference in order to get a new array
-repeated_differences_matrix, elapsed_time = timed_execution(
-    lambda: repeated_applications(standard_results[0]))
-print "**** repeated differences colouring computed in {0} ****".format(elapsed_time)
+#repeated_differences_matrix, elapsed_time = timed_execution(
+#    lambda: repeated_applications(standard_results[0]))
+#print "**** repeated differences colouring computed in {0} ****".format(elapsed_time)
 
 # draw again a coloured triangles as a list of tikz nodes, 
 # discard the first result since it is `explicit_matrix' itself

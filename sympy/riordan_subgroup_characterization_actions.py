@@ -23,12 +23,22 @@ class ExpansionActionUsingSubgroupCharacterization(
         order = self.Riordan_array.order
 
         # remember that in Python 2.7, `map' function returns a list, not a *map* object
-        self.Riordan_array.expansion = \
-            {i:map( lambda coeffs_pair: coeffs_pair[0],
-                    (d(var) * h(var)**i).series(var,order+1).coefficients()) 
-                for i in range(order)}
+        expansion = {}
+        for i in range(order):
+            expanded_series = (d(var) * h(var)**i).series(var,order+1)
+            expansion[i] = [expanded_series.coefficient(var**n) 
+                if n > 0 else expanded_series.trailing_coeff(var)
+                    for n in range(order)]
 
+        #expansion = {i:map( lambda coeffs_pair: coeffs_pair[0],
+                    #(d(var) * h(var)**i).series(var,order+1).coefficients()) 
+                #for i in range(1, order)}
+
+        #expansion[0] = [d(0)] + [0 for i in range(order)]
+
+        self.Riordan_array.expansion = expansion
         #print self.Riordan_array.expansion
+
 
 class FormalDefLatexCodeUsingSubgroupCharacterization(
         AbstractActionUsingSubgroupCharacterization):
@@ -39,6 +49,13 @@ class FormalDefLatexCodeUsingSubgroupCharacterization(
             return latex(func_body.factor())
 
         d, h, var = subgroup.d, subgroup.h, subgroup.variable
+
+        math_name = None
+        if '^' in self.Riordan_array.math_name:
+            math_name = r"\left({name}\right)".format(
+                name=self.Riordan_array.math_name) 
+        else:
+            math_name = self.Riordan_array.math_name
 
         return r"{name}{downscript}{upscript}=\left({d}, {h}\right)".format(
             name=self.Riordan_array.math_name if self.Riordan_array.math_name else 'R',
@@ -91,8 +108,14 @@ class BuildInverseActionUsingSubgroupCharacterization(
         possible_compositional_inverses = map(
             lambda sol: sol.rhs().function(user_var), solutions)
 
+        # remove heading sqrt applications and factor
+        possible_compositional_inverses = map(
+            lambda candidate: candidate.canonicalize_radical().factor(), 
+            possible_compositional_inverses)
+
+        # apply *compositional inverse condition* effectively
         possible_compositional_inverses = filter(
-            lambda candidate: candidate(h(subgroup_var)).canonicalize_radical().factor() == subgroup_var,
+            lambda candidate: candidate(h(subgroup_var)) == subgroup_var,
             possible_compositional_inverses)
 
         if len(possible_compositional_inverses) > 1:
@@ -104,7 +127,8 @@ class BuildInverseActionUsingSubgroupCharacterization(
         if not possible_compositional_inverses: 
             raise Exception("No compositional inverse candidate found.")
 
-        print possible_compositional_inverses
+        #print possible_compositional_inverses
+
         # the following expression is very interesting to evaluate at the REPL:
         #  map(show, map(lambda f: (delannoy_h(f(t)).canonicalize_radical(),f), map(lambda sol: sol.rhs().function(y), solve(delannoy_h(t)==y,t)))) 
         #solutions = filter(lambda expr, h_compositional_inverse: , 
@@ -143,14 +167,22 @@ class BuildInverseActionUsingSubgroupCharacterization(
         # so we build a function `h_bar' in the subgroup variable.
         h_bar = h_comp_inverse(subgroup_var).function(subgroup_var)
         
+        # preparing inverse functions: it should be interesting to write
+        # a kind of fix point search for the expression, toward removing
+        # sqrt applications in first instance, which are not handled
+        # by Sage simplification because have lower priority than factorials...
+        def prepare_inverse(func): return func.canonicalize_radical().simplify_full()
+
+        d_inverse = prepare_inverse(
+            (1/d(h_bar(subgroup_var))).function(subgroup_var))
+        h_inverse = prepare_inverse(h_bar)
+
         # just one more step in order to tie the `inverse_of' knot
         inverse_array = RiordanArray(
             self.subgroup_characterization.new(
             #SubgroupCharacterization(
                 VanillaDHfunctionsSubgroup(
-                    d=(1/d(h_bar(subgroup_var))).function(subgroup_var),
-                    h=h_bar,
-                    variable=subgroup_var)),
+                    d=d_inverse, h=h_inverse, variable=subgroup_var)),
             name=self.Riordan_array.name,
             math_name=self.Riordan_array.math_name,
             inverse_of=self.Riordan_array)

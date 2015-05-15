@@ -6,12 +6,14 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{caption}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{proof}[theorem]{Proof}
 
 \begin{document}
     \title{\rmfamily\normalfont\spacedallcaps{Colouring Riordan arrays}}
@@ -229,6 +231,22 @@
         \end{split}
     \end{displaymath}
 
+    \subsection{Using binomial symmetries}
+
+    \begin{corollary}
+    Let $\mathcal{P}$ be the Pascal array and let $p$ be a prime, than $r$-th column 
+    is congruent to $r$-antidiagonal, modulo $p$.
+    \end{corollary}
+    \begin{proof}
+        \begin{displaymath}
+            \begin{split}
+                { {n} \choose {k} } &\equiv_{p} { {n} \choose {n-k} } \\
+                d_{nk} &\equiv_{p} d_{n,n-k}\\
+                \sum_{n\geq 0}{d_{nk} t^n} &\equiv_{p}\sum_{n\geq 0}{d_{n,n-k} t^n} \\
+            \end{split}
+        \end{displaymath}
+    \end{proof}
+
     \subsection{Expanded arrays and coloured triangles}
 
     % mod 2
@@ -293,11 +311,15 @@
 
     \section{Motzkin}
 
-    \input{../sympy/motzkin/Motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
-    \input{../sympy/motzkin/Motzkin-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+    \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    \input{../sympy/motzkin/motzkin-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    \input{../sympy/motzkin/motzkin-diamond-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    \input{../sympy/motzkin/motzkin-perp-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
 
-    \input{../sympy/motzkin/Motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
-    \input{../sympy/motzkin/Motzkin-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+    \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/motzkin/motzkin-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/motzkin/motzkin-diamond-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/motzkin/motzkin-perp-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
     
     \input{../sympy/motzkin/Motzkin-standard-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-figure.tex}
     \input{../sympy/motzkin/Motzkin-inverse-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-figure.tex}

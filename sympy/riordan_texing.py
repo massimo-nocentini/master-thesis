@@ -87,11 +87,15 @@ def build_tex_files_about_colouring(
         \begin{{displaymath}}
             {formal_def}
         \end{{displaymath}} % \newline % new line no more necessary
-        {colouring}, {partitioning}'''.format(
+        {colouring}, {partitioning}
+        {additional_caption_text}'''.format(
         array_name=Riordan_array.name,
         formal_def=Riordan_array.formal_def(),
         colouring=colouring.str_for(summary=True),
-        partitioning=partitioning.str_for(summary=True))
+        partitioning=partitioning.str_for(summary=True),
+        additional_caption_text=(r'\newline Additional notes: ' + 
+            Riordan_array.additional_caption_text
+                if Riordan_array.additional_caption_text else ''))
 
     tex_files[ends_with_extension(include_figure_filename)] = make_dict_value(
         content=substitute_from_filename(

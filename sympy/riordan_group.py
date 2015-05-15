@@ -3,13 +3,15 @@
 class RiordanArray:
 
     def __init__(
-        self, characterization, name=None, math_name=None, inverse_of=None):
+        self, characterization, name=None, math_name=None,
+        additional_caption_text=None, inverse_of=None):
 
         self.characterization = characterization
         self.expansion = None
         self.order = None
         self.name = name
         self.math_name = math_name
+        self.additional_caption_text = additional_caption_text
 
         if inverse_of:
 #           we add `inverse' since in a group every element in it has
