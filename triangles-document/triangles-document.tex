@@ -247,6 +247,69 @@
         \end{displaymath}
     \end{proof}
 
+    \begin{lemma}
+        Let $p$ be a prime and take any $m, \gamma \in \mathbb{N}$. Let $n$ index
+        over rows of a Pascal array $\mathcal{P}$, such that $p^{m} \leq n < p^{m+1}$, then the following holds:
+        \begin{displaymath}
+            d_{n,n-p^{m}} \equiv_{p} d_{n+\gamma p^{m+1}, n-p^{m}}
+        \end{displaymath}
+    \end{lemma}
+    \begin{proof} % $n+\gamma p^{m+1}$
+        By the basis representation theorem, write $n$  in base $p$ upto $k$ such that $k > m+1$ as necessary:
+        \begin{displaymath}
+            n = n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{m}p^m + n_{m+1}p^{m+1} + \ldots + n_{k}p^k
+        \end{displaymath}
+        Now consider the following quantities:
+        \begin{displaymath}
+            \begin{split}
+                n +\gamma p^{m+1} &= n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{m}p^m + (n_{m+1}+\gamma)p^{m+1} + \ldots + n_{k}p^k \\
+                n - p^{m} &= n_{0} + n_{1}p + n_{2}p^2 + \ldots + (n_{m}-1)p^m + n_{m+1}p^{m+1} + \ldots + n_{k}p^k \\
+            \end{split}
+        \end{displaymath}
+        By Lucas theorem both the congruence:
+        \begin{displaymath}
+            {{n+\gamma p^{m+1}} \choose { n - p^{m}}} \equiv_{p} 
+                {{n_{0}} \choose {n_{0}}}  
+                {{n_{1}} \choose {n_{1}}} 
+                {{n_{2}} \choose {n_{2}}}
+                \ldots
+                {{n_{m}} \choose {n_{m}-1}} 
+                {{n_{m+1}+\gamma} \choose {n_{m+1}}} 
+                {{n_{m+2}} \choose {n_{m+2}}} 
+                \ldots
+                {{n_{k}} \choose {n_{k}}} 
+        \end{displaymath}
+        both the following one:
+        \begin{displaymath}
+            {{n} \choose { n - p^{m}}} \equiv_{p} 
+                {{n_{0}} \choose {n_{0}}}  
+                {{n_{1}} \choose {n_{1}}} 
+                {{n_{2}} \choose {n_{2}}}
+                \ldots
+                {{n_{m}} \choose {n_{m}-1}} 
+                {{n_{m+1}} \choose {n_{m+1}}} 
+                {{n_{m+2}} \choose {n_{m+2}}} 
+                \ldots
+                {{n_{k}} \choose {n_{k}}} 
+        \end{displaymath}
+        hold. Therefore to show the thesis we reduce to prove the following,
+        obtained via transitivity property of $\equiv_p$ relation:
+        \begin{displaymath}
+            n_{m} \equiv_{p} n_m {{n_{m+1}+\gamma} \choose {n_{m+1}}} 
+        \end{displaymath}
+        Proceed by cases: 
+        \begin{itemize}
+            \item if $n_m =0$ the congruence holds; 
+            \item otherwise $n_m\in \lbrace 1,\ldots,p-1\rbrace$ 
+                by basis representation theorem, hence $(n_m,p)=1$
+                which implies there exists its inverse modulo $p$, which is $n_m^{-1}\mod p$, this
+                allow to simplify on both member, yielding:
+                \begin{displaymath}
+                    1 \equiv_{p} {{n_{m+1}+\gamma} \choose {n_{m+1}}} 
+                \end{displaymath}
+        \end{itemize}
+    \end{proof}
+
     \subsection{Expanded arrays and coloured triangles}
 
     % mod 2
