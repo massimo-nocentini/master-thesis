@@ -257,13 +257,13 @@
     \begin{proof} % $n+\gamma p^{m+1}$
         By the basis representation theorem, write $n$  in base $p$ upto $k$ such that $k > m+1$ as necessary:
         \begin{displaymath}
-            n = n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{m}p^m + n_{m+1}p^{m+1} + \ldots + n_{k}p^k
+            n = n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{m}p^m + 0p^{m+1} + \ldots + 0p^k
         \end{displaymath}
         Now consider the following quantities:
         \begin{displaymath}
             \begin{split}
-                n +\gamma p^{m+1} &= n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{m}p^m + (n_{m+1}+\gamma)p^{m+1} + \ldots + n_{k}p^k \\
-                n - p^{m} &= n_{0} + n_{1}p + n_{2}p^2 + \ldots + (n_{m}-1)p^m + n_{m+1}p^{m+1} + \ldots + n_{k}p^k \\
+                n +\gamma p^{m+1} &= n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{m}p^m + \gamma p^{m+1} + 0p^{m+2} \ldots + 0p^k \\
+                n - p^{m} &= n_{0} + n_{1}p + n_{2}p^2 + \ldots + (n_{m}-1)p^m + 0p^{m+1} + \ldots + 0p^k \\
             \end{split}
         \end{displaymath}
         By Lucas theorem both the congruence:
@@ -274,10 +274,7 @@
                 {{n_{2}} \choose {n_{2}}}
                 \ldots
                 {{n_{m}} \choose {n_{m}-1}} 
-                {{n_{m+1}+\gamma} \choose {n_{m+1}}} 
-                {{n_{m+2}} \choose {n_{m+2}}} 
-                \ldots
-                {{n_{k}} \choose {n_{k}}} 
+                {{\gamma} \choose {0}} 
         \end{displaymath}
         both the following one:
         \begin{displaymath}
@@ -287,29 +284,26 @@
                 {{n_{2}} \choose {n_{2}}}
                 \ldots
                 {{n_{m}} \choose {n_{m}-1}} 
-                {{n_{m+1}} \choose {n_{m+1}}} 
-                {{n_{m+2}} \choose {n_{m+2}}} 
-                \ldots
-                {{n_{k}} \choose {n_{k}}} 
         \end{displaymath}
-        hold. Therefore to show the thesis we reduce to prove the following,
-        obtained via transitivity property of $\equiv_p$ relation:
+        hold. Assuming ${{0}\choose{0}} = {{k}\choose{0}} = 1$ for any $k\in\mathbb{N}$, 
+        transitivity property of $\equiv_p$ relation over right sides of
+        the previous two congruences, it allows to derive congruence:
         \begin{displaymath}
-            n_{m} \equiv_{p} n_m {{n_{m+1}+\gamma} \choose {n_{m+1}}} 
+            {{n} \choose { n - p^{m}}} \equiv_{p} {{n+\gamma p^{m+1}} \choose { n - p^{m}}} 
         \end{displaymath}
-        Proceed by cases: 
-        \begin{itemize}
-            \item if $n_m =0$ the congruence holds; 
-            \item otherwise $n_m\in \lbrace 1,\ldots,p-1\rbrace$ 
-                by basis representation theorem, hence $(n_m,p)=1$
-                which implies there exists its inverse modulo $p$, which is $n_m^{-1}\mod p$, this
-                allow to simplify on both member, yielding:
-                \begin{displaymath}
-                    1 \equiv_{p} {{n_{m+1}+\gamma} \choose {n_{m+1}}} 
-                \end{displaymath}
-        \end{itemize}
+        which is the requested relation.
     \end{proof}
 
+    Previous lemma is important since does hold for the inverse array $\mathcal{P}^{-1}$ too, since:
+    \begin{displaymath}
+        \begin{split}
+            \hat{d}_{n,n-p^{m}} &\equiv_{p} \hat{d}_{n+\gamma p^{m+1}, n-p^{m}} \\
+            (-1)^{n-(n-p^{m})}d_{n,n-p^{m}} &\equiv_{p} (-1)^{n+\gamma p^{m+1}-(n-p^{m})}d_{n+\gamma p^{m+1}, n-p^{m}} \\
+            (-1)^{p^{m}}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p^{m}(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
+            (-1)^{p{m}}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p{m}(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
+            d_{n,n-p^{m}} &\equiv_{p} (-1)^{p{m}(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
+        \end{split}
+    \end{displaymath}
     \subsection{Expanded arrays and coloured triangles}
 
     % mod 2
