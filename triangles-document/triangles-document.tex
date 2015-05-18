@@ -231,6 +231,130 @@
         \end{split}
     \end{displaymath}
 
+    \subsection{Sierpinski structure}
+
+    In this section we show that in a Pascal array $\mathcal{P}$ it is possible
+    to recognize a structure as Sierpinski observed using fractals. More precisely,
+    we show that, choosen a prime $p$ and a height $n$, the upper triangle that starts
+    at root and extends downward for $p^n$ rows, denoted by $\mathcal{P}_n$, repeats itself three times in a bigger 
+    triangle that extends from the root downward for $2p^{n}$ rows, surrounding an upside-down 
+    triangle of coefficients, say $c_{nk}$ is one of them, such that are divisible by $p$ all, 
+    formally $c_{nk} \equiv_p 0$. Note that for even prime $p$, triangle $\mathcal{P}_n$ 
+    repeats itself $p+1$ times in $\mathcal{P}_{n+1}$, exactly as it is. 
+    
+    On the other hand, for an odd prime $p$ the structure loses
+    symmetry. In this case triangle $\mathcal{P}_n$ repeats itself in $\mathcal{P}_{n+1}$ somewhere, without a 
+    plain regularity due to modulo $p$, ie. other coloured triangles appears in $\mathcal{P}_{n+1}$.
+    However if we study the repetition up to row $2p^n$ the proof still hold, while
+    in general we can say that triangles of coefficients multiples of $p$ appear
+    with regularity in  $\mathcal{P}_{n+1}$ and the number of repetition is:
+    \begin{displaymath}
+        \sum_{i=1}^{p-1}{i} = \frac{(p-1)p}{2}
+    \end{displaymath}
+
+    \begin{proof}
+        Let $\mathcal{P}_n$ by the triangle that starts at the root and extends downward $p^n$
+        rows, hence a row index $r$ for $\mathcal{P}_n$ satisfies $r \in \lbrace 0, \ldots, p^n -1 \rbrace$.
+        
+        Now consider a bigger triangle $\mathcal{P}_n^\prime$ that starts at the root and extends downward $2p^n$ rows, it is requested to prove that coefficients
+        in \emph{equivalent positions} in the bottom left and bottom right triangles are congruent, modulo $p$,
+        to the coefficient in equivalent position in $\mathcal{P}_n$. In order to formalize the concept of \emph{equivalent positions}
+        think as follow: let $d_{rc}\in\mathcal{P}_n$, since $\mathcal{P}_{n}$ has $p^n$ rows and on the vary last row (ie, the one
+        with index $p^n-1$) lay $p^n$ coefficients (ie, there are $p^n$ columns), the coefficient at \emph{equivalent position} 
+        in the bottom left triangle of $\mathcal{P}_{n}^\prime$ is denoted by $d_{p^n+r, c}^{\swarrow}$; on the other hand,
+        the coefficient at \emph{equivalent position} in the bottom right triangle of $\mathcal{P}_{n}^\prime$ is denoted by $d_{p^n+r, p^n+c}^{\searrow}$.
+        Formal settings described, we've to prove:
+        \begin{displaymath}
+            d_{rc} \equiv_p d_{p^n+r,c}^{\swarrow} \equiv_p d_{p^n+r,p^n+c}^{\searrow} 
+        \end{displaymath}
+        or, in other words:
+        \begin{displaymath}
+            {{r} \choose {c}} \equiv_p {{p^n+r} \choose {c}} \equiv_p {{p^n+r} \choose {p^n+c}} 
+        \end{displaymath}
+
+        In order to prove such congruences we'll use Lucas theorem: first of all, observe
+        that $c \leq r$ since $\mathcal{P}$ is a triangle, therefore $c \in \lbrace 0, \ldots, p^n -1 \rbrace$, as $r$ satisfies.
+        By basis representation theorem, there exists sequences $\lbrace r_i\rbrace$ and $\lbrace c_i\rbrace$, 
+        for $i \in \lbrace 0, \ldots, p^n -1 \rbrace$, with $r_i,c_i < p$, such that:
+        \begin{displaymath}
+            \begin{split}
+                r &= r_0 + r_1 p + r_2 p^2 + \ldots + r_{n-1}p^{n-1} \\
+                c &= c_0 + c_1 p + c_2 p^2 + \ldots + c_{n-1}p^{n-1} \\
+            \end{split}
+        \end{displaymath}
+        Settings for Lucas theorem are ready, hence apply it:
+        \begin{displaymath}
+            \begin{split}
+                {{p^n+r} \choose {c}} &\equiv_{p} {{r_0} \choose {c_0}} {{r_1} \choose {c_1}}{{r_2} \choose {c_2}} \ldots 
+                    {{r_{n-1}} \choose {c_{n-1}}}{{1} \choose {0}} \equiv_{p} {{r} \choose {c}}\\
+                {{p^n+r} \choose {p^n+c}} &\equiv_{p} {{r_0} \choose {c_0}} {{r_1} \choose {c_1}}{{r_2} \choose {c_2}} \ldots 
+                    {{r_{n-1}} \choose {c_{n-1}}}{{1} \choose {1}} \equiv_{p} {{r} \choose {c}}\\
+            \end{split}
+        \end{displaymath}
+        congruences holds, therefore coefficients located at \emph{equivalent positions} belong 
+        to the same remainder class, modulo $p$, as required.
+        \\\\
+        For the second part of the statement, we've to show that in $\mathcal{P}_{n}^\prime$ an upside-down
+        triangle of coefficients, each one of them can by divided by $p$, is surrounded by the three 
+        ``congruent'' triangles discussed in the first part of this proof. 
+        Observe that the very first coefficient $d_{p^n, 0}$
+        and very last $d_{p^n, p^n}$ of row with index $p^n$ are congruent to the unit, modulo $p$:
+        \begin{displaymath}
+            {{p^n} \choose {0}} \equiv_{p}{{p^n} \choose {p^n}} \equiv_{p} 1
+        \end{displaymath}
+        while $p$ divides every coefficient between them, let $c\in\lbrace1,\ldots, n-1 \rbrace$:
+        \begin{displaymath}
+                {{p^n} \choose {c}} \equiv_{p} {{0} \choose {c_0}} {{0} \choose {c_1}}{{0} \choose {c_2}} \ldots 
+                    {{0} \choose {c_{n-1}}}{{1} \choose {0}} \equiv_{p} 0
+        \end{displaymath}
+        By the recurrence rule $d_{n+1, k+1} = d_{n, k} + d_{n, k+1}$ characterizing $\mathcal{P}$, observe that 
+        \begin{displaymath}
+            \begin{split}
+                d_{p^n+1, 1} &\equiv_{p} d_{p^n, 0} + d_{p^n, 1}\equiv_{p} 1 \\
+                d_{p^n+1, p^n} &\equiv_{p} d_{p^n, p^n-1} + d_{p^n, p^n}\equiv_{p} 1 \\
+                d_{p^n+1, i} &\equiv_{p} d_{p^n, i-1} + d_{p^n, i}\equiv_{p} 0 \quad \forall i \in \lbrace 2, \ldots, p^n -1\rbrace \\
+            \end{split}
+        \end{displaymath}
+        therefore row $p^n + 1$ has one coefficient multiple of $p$ less than row $p^n$, and since 
+        in $p^n$ there are $p^n-2$ such coefficients, after $p^n-2$ rows there are no such coefficients at all, such a row has index $2(p^n -1)+1$
+        ($1$ more because indexes are $0$-based). Formally, for any column index $c$:
+        \begin{displaymath}
+            \begin{split}
+                {{2p^n - 1} \choose {c}} &\equiv_{p} {{p^n +(p^n- 1)} \choose {c}} \\
+                    &\equiv_{p} {{p-1} \choose {c_0}} {{p-1} \choose {c_1}}{{p-1} \choose {c_2}} \ldots 
+                    {{p-1} \choose {c_{n-1}}}{{1} \choose {0}} \\
+                    &\not\equiv_{p} 0
+            \end{split}
+        \end{displaymath}
+        The last step holds by representation of $c$: $c_i \in \lbrace 0, \ldots, p-1 \rbrace$, 
+        for any $i$.
+
+        The latter argument can be applied to every row with index of the form $p^k -1$, for some $k\geq n$:
+        \begin{displaymath}
+            \begin{split}
+                {{p^k-1} \choose {c}} &\equiv_{p} {{p-1} \choose {c_0}} {{p-1} \choose {c_1}} \ldots 
+                    {{p-1} \choose {c_{n-1}}}{{p-1} \choose {0}}\ldots{{p-1} \choose {0}}{{1} \choose {0}} \not\equiv_{p} 0
+            \end{split}
+        \end{displaymath}
+
+        %Recall $\mathcal{P}$ is defined as the Riordan array :
+        %\begin{displaymath}
+            %\mathcal{P} = \left(\frac{1}{1-t}, \frac{t}{1-t}  \right)
+        %\end{displaymath}
+        %hence the following derivation holds:
+        %\begin{displaymath}
+            %\begin{split}
+                %{{p^n+r} \choose {c}} &\equiv_p [t^{p^n +r}]\frac{1}{1-t} \left(\frac{t}{1-t}\right)^c \\
+                    %&\equiv_p [t^{p^n +r-c}](1-t)^{-(c+1)} \\
+                    %&\equiv_p [t^{p^n +r-c}]\mathcal{G}\left\lbrace {{-(c+1)} \choose {k}}(-1)^k \right\rbrace_{k\in\mathbb{N}} \\
+                    %&\equiv_p  {{-(c+1)} \choose {p^n +r-c}}(-1)^{p^n +r-c}  \\
+                    %&\equiv_p  {{ p^n +r} \choose {p^n +r-c}} \left((-1)^{p^n +r-c}\right)^2  \\
+                    %&\equiv_p  {{ p^n +r} \choose {c}}  \\
+            %\end{split}
+        %\end{displaymath}
+
+    \end{proof}
+
     \subsection{Using binomial symmetries}
 
     \begin{corollary}
@@ -294,16 +418,56 @@
         which is the requested relation.
     \end{proof}
 
-    Previous lemma is important since does hold for the inverse array $\mathcal{P}^{-1}$ too, since:
+    Previous lemma is important because it does hold for the inverse array $\mathcal{P}^{-1}$ too:
     \begin{displaymath}
         \begin{split}
             \hat{d}_{n,n-p^{m}} &\equiv_{p} \hat{d}_{n+\gamma p^{m+1}, n-p^{m}} \\
             (-1)^{n-(n-p^{m})}d_{n,n-p^{m}} &\equiv_{p} (-1)^{n+\gamma p^{m+1}-(n-p^{m})}d_{n+\gamma p^{m+1}, n-p^{m}} \\
             (-1)^{p^{m}}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p^{m}(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
-            (-1)^{p{m}}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p{m}(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
-            d_{n,n-p^{m}} &\equiv_{p} (-1)^{p{m}(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
+            (-1)^{p m}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p{m}(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
+            (-1)^{p}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
+            (-1)^{p}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p^2\gamma}(-1)^p d_{n+\gamma p^{m+1}, n-p^{m}} \\
+            (-1)^{p}d_{n,n-p^{m}} &\equiv_{p} (-1)^{2p \gamma}(-1)^p d_{n+\gamma p^{m+1}, n-p^{m}} \\
+            (-1)^{p}d_{n,n-p^{m}} &\equiv_{p} (-1)^p d_{n+\gamma p^{m+1}, n-p^{m}} \\
         \end{split}
     \end{displaymath}
+    An even module $p$ produces exactly the same remainder classes both for $\mathcal{P}$ 
+    both for $\mathcal{P}^{-1}$. Suppose $p$ odd, in this case $(-1)^{p} = -1$ and since there
+    exists $(-1)^{-1}\mod p$:
+    \begin{displaymath}
+        \begin{split}
+            d_{n,n-p^{m}} &\equiv_{p} d_{n+\gamma p^{m+1}, n-p^{m}} \\
+        \end{split}
+    \end{displaymath}
+    which holds by the former lemma.
+    \\\\
+    The following theorem shows another caracterization, we call it ``duality'', 
+    over remainder classes for arrays $\mathcal{P}$ and its inverse.
+    \begin{theorem}
+        Let $d_{nk}, \hat{d}_{nk}$ be generic elements of arrays $\mathcal{P}$ and $\mathcal{P}^{-1}$,
+        respectively. Choose an odd prime $p$, let $c\in \lbrace 0, \ldots, p-1 \rbrace$ a remainder class
+        witness, then:
+        \begin{displaymath}
+            \begin{split}
+                d_{n,n-p^{m}} \equiv_{p} c &\leftrightarrow \hat{d}_{n,n-p^{m}} \equiv_{p} p-c
+            \end{split}
+        \end{displaymath}
+    \end{theorem}
+    \begin{proof}
+    We show both directions using a set of congruences: reading them from top to bottom provides a 
+    proof for $\rightarrow$ direction, while reading them from bottom to top provides a proof for 
+    $\leftarrow$ direction. Recall that $p^m$ is odd because $p$ is odd by hp, therefore $(-1)^{p^m} = -1$:
+    \begin{displaymath}
+        \begin{split}
+            d_{n,n-p^{m}} &\equiv_{p} c \\
+            (-1)^{p^m}\hat{d}_{n,n-p^{m}} &\equiv_{p} c \\
+            (-1)^{p^m }(-1)\hat{d}_{n,n-p^{m}} &\equiv_{p} -c \\
+            (-1)^{p^m }(-1)\hat{d}_{n,n-p^{m}} &\equiv_{p} p -c \\
+            \hat{d}_{n,n-p^{m}} &\equiv_{p} p -c \\
+        \end{split}
+    \end{displaymath}
+    \end{proof}
+
     \subsection{Expanded arrays and coloured triangles}
 
     % mod 2
