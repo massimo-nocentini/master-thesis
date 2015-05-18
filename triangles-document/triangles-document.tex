@@ -397,6 +397,37 @@
 
     \end{proof}
 
+    We present a modular characterization under the theory of Riordan arrays, using the
+    congruence modulo a prime $p$. Choose $n\in\mathbb{N}$ and let $\mathcal{P}_n$ denote the
+    same portion of $\mathcal{P}$ as in the preceding proof:
+      \begin{displaymath}
+          \begin{split}
+                {{r} \choose {c}} &\equiv_p {{p^n+r} \choose {c}} \\
+                {{r} \choose {c}}t^r &\equiv_p {{p^n+r} \choose {c}}t^r \\
+                \sum_{r\geq 0}{{{r} \choose {c}}t^r} &\equiv_p \sum_{r\geq 0}{{{p^n+r} \choose {c}}t^r} \\
+                d(t)h(t)^{c} &\equiv_p \sum_{k\geq p^n}{{{k} \choose {c}}t^{k-p^n}} \\
+                d(t)h(t)^{c} &\equiv_p t^{-p^n}\sum_{k\geq p^n}{{{k} \choose {c}}t^{k}} \\
+                d(t)h(t)^{c} &\equiv_p t^{-p^n}\left(
+                    \sum_{k\geq c}{{{k} \choose {c}}t^{k}}-\sum_{k=c}^{p^n -1}{{{k} \choose {c}}t^{k}}\right) \\
+                d(t)h(t)^{c} &\equiv_p t^{-p^n}\left(
+                    \sum_{k\geq 0}{{{k} \choose {c}}t^{k}}-\sum_{k=c}^{p^n -1}{{{k} \choose {c}}t^{k}}\right) \\
+                d(t)h(t)^{c} &\equiv_p t^{-p^n}\left(d(t)h(t)^{c} -\sum_{k=c}^{p^n -1}{{{k} \choose {c}}t^{k}}\right) \\
+          \end{split}
+      \end{displaymath}
+    Now assume $c \geq p^n$ in order to make the sum vanish:
+      \begin{displaymath}
+          \begin{split}
+                d(t)h(t)^{c} &\equiv_p t^{-p^n} d(t)h(t)^{c} \\
+                d(t)h(t)^{c} &\equiv_p d(t)h(t)^{c-p^n} (1-t)^{-p^n} \\
+                d(t)h(t)^{c} &\equiv_p d(t)h(t)^{c-p^n}\left( (1-t)^{p^n}\right)^{-1} \\
+                d(t)h(t)^{c} &\equiv_p d(t)h(t)^{c-p^n}\left(\sum_{k=0}^{p^n}{{{p^n} \choose {k}}(-t)^k } \right)^{-1}\\
+                d(t)h(t)^{c} &\equiv_p d(t)h(t)^{c-p^n}\left(
+                    1 + \sum_{k=1}^{p^n -1}{{{p^n} \choose {k}}(-t)^k +(-t)^{p^n} }\right)^{-1} \\
+                d(t)h(t)^{c} &\equiv_p d(t)h(t)^{c-p^n}\left(1 + (-t)^{p^n}\right)^{-1} \\
+                d(t)h(t)^{c} &\equiv_p \frac{d(t)h(t)^{c-p^n}}{1 + (-t)^{p^n}} \\
+          \end{split}
+      \end{displaymath}
+
     \subsection{Using binomial symmetries}
 
     \begin{corollary}
@@ -483,7 +514,8 @@
     \end{displaymath}
     which holds by the former lemma. Pay attention: this doesn't relate coefficients
     of $\mathcal{P}$ and $\mathcal{P}^{-1}$ (from the colouring point of view 
-    doesn't imply any relation about colours assignment), it merely says that 
+    doesn't imply any relation about colours assignment: generally it is not the case,
+    except for even $p$), it merely says that 
     congruent coefficients on the choosen antidiagonal, \emph{in the same triangle
     either $\mathcal{P}$ or $\mathcal{P}^{-1}$}, repeat with structure.
     \\\\

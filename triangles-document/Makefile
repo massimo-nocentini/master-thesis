@@ -9,5 +9,5 @@ diff:
 	# if a such *old* different file exists.
 	latexdiff-vc --git --force -r 3313f4084bac7471 triangles-document.tex
 	lualatex triangles-document-diff3313f4084bac7471.tex
-	lualatex triangles-document-diff3313f4084bac7471.tex
+	#lualatex triangles-document-diff3313f4084bac7471.tex
 	evince triangles-document-diff3313f4084bac7471.pdf &
