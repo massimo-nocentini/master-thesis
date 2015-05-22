@@ -419,11 +419,34 @@
           \begin{split}
                 d(t)h(t)^{c} &\equiv_p t^{-p^n} d(t)h(t)^{c} \\
                 d(t)h(t)^{c} &\equiv_p d(t)h(t)^{c-p^n} (1-t)^{-p^n} \\
+          \end{split}
+      \end{displaymath}
+    Since in general the inverse $\left((1-t)^{-p^n}\right)^{-1}\mod p$ is not $(1-t)^{p^n}$
+    (we should prove it), let us proceed with algebraic manipulation:
+      \begin{displaymath}
+          \begin{split}
                 d(t)h(t)^{c} &\equiv_p d(t)h(t)^{c-p^n}\left( (1-t)^{p^n}\right)^{-1} \\
                 d(t)h(t)^{c} &\equiv_p d(t)h(t)^{c-p^n}\left(\sum_{k=0}^{p^n}{{{p^n} \choose {k}}(-t)^k } \right)^{-1}\\
                 d(t)h(t)^{c} &\equiv_p d(t)h(t)^{c-p^n}\left(
                     1 + \sum_{k=1}^{p^n -1}{{{p^n} \choose {k}}(-t)^k +(-t)^{p^n} }\right)^{-1} \\
+          \end{split}
+      \end{displaymath}
+    By Lucas theorem the inner sum vanish, since $k\in\lbrace 1, \ldots, p^n -1 \rbrace$:
+      \begin{displaymath}
+        \begin{split}
+          {{p^n} \choose {k}} &\equiv_{p} {{0} \choose {k_0}} {{0} \choose {k_1}} \ldots 
+          {{0} \choose {k_{n-1}}}{{1} \choose {0}}\equiv_{p} 0 
+        \end{split}
+      \end{displaymath}
+    Therefore:
+      \begin{displaymath}
+          \begin{split}
                 d(t)h(t)^{c} &\equiv_p d(t)h(t)^{c-p^n}\left(1 + (-t)^{p^n}\right)^{-1} \\
+          \end{split}
+      \end{displaymath}
+    And assuming $p$ odd:
+      \begin{displaymath}
+          \begin{split}
                 d(t)h(t)^{c} &\equiv_p \frac{d(t)h(t)^{c-p^n}}{1 - t^{p^n}} \\
           \end{split}
       \end{displaymath}
@@ -551,7 +574,9 @@
     \subsection{Expanded arrays and coloured triangles}
 
     % mod 2
+    Expansion of Riordan array $\mathcal{P}$:
     \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+    Expansion of Riordan array $\mathcal{P}^{-1}$:
     \input{../sympy/pascal/pascal-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
 
     \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
@@ -579,7 +604,9 @@
 
     \section{Fibonacci}
 
+    Expansion of Riordan array $\mathcal{F}$:
     \input{../sympy/fibonacci/Fibonacci-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+    Expansion of Riordan array $\mathcal{F}^{-1}$:
     \input{../sympy/fibonacci/Fibonacci-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
 
     \input{../sympy/fibonacci/Fibonacci-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
@@ -592,35 +619,69 @@
 
     \subsection{Traditional version}
 
+    Expansion of Riordan array $\mathcal{C}$:
+    \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+    Expansion of Riordan array $\mathcal{C}^{-1}$:
+    \input{../sympy/catalan/Catalan-traditional-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+
     \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
     \input{../sympy/catalan/Catalan-traditional-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
 
-    \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
-    \input{../sympy/catalan/Catalan-traditional-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
-
     \subsection{Sprugnoli and He version}
 
-    \input{../sympy/catalan/Catalan-standard-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-figure.tex}
+    Expansion of Riordan array $\mathcal{C}$:
     \input{../sympy/catalan/catalan-sprugnoli-he-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
-
-    \input{../sympy/catalan/Catalan-inverse-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-figure.tex}
+    Expansion of Riordan array $\mathcal{C}^{-1}$:
     \input{../sympy/catalan/catalan-sprugnoli-he-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
 
     \input{../sympy/catalan/catalan-sprugnoli-he-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
     \input{../sympy/catalan/catalan-sprugnoli-he-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+    \input{../sympy/catalan/Catalan-standard-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-figure.tex}
+    \input{../sympy/catalan/Catalan-inverse-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-figure.tex}
 
+    \subsection{Minor variants: triangles $\mathcal{S}, \mathcal{C}$ and $\mathcal{B}$}
+
+    Expansion of Riordan array $\mathcal{S}$:
+    \input{../sympy/catalan-like/catalan-variant-s-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    Expansion of Riordan array $\mathcal{S}^{-1}$:
+    \input{../sympy/catalan-like/catalan-variant-s-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    Expansion of Riordan array $\mathcal{C}$:
+    \input{../sympy/catalan-like/catalan-variant-c-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    Expansion of Riordan array $\mathcal{C}^{-1}$:
+    \input{../sympy/catalan-like/catalan-variant-c-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    Expansion of Riordan array $\mathcal{B}$:
+    \input{../sympy/catalan-like/catalan-variant-b-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    Expansion of Riordan array $\mathcal{B}^{\diamond}$:
+    \input{../sympy/catalan-like/catalan-variant-b-diamond-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+
+    \input{../sympy/catalan-like/catalan-variant-s-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/catalan-like/catalan-variant-s-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/catalan-like/catalan-variant-c-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/catalan-like/catalan-variant-c-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/catalan-like/catalan-variant-b-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/catalan-like/catalan-variant-b-diamond-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
 
     \section{Motzkin}
 
+    Expansion of Riordan array $\mathcal{M}$:
     \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
-    \input{../sympy/motzkin/motzkin-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    Expansion of Riordan array $\mathcal{M}^{\diamond}$:
     \input{../sympy/motzkin/motzkin-diamond-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
-    \input{../sympy/motzkin/motzkin-perp-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    Expansion of Riordan array $\mathcal{T}$:
+    \input{../sympy/motzkin/motzkin-variant-t-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    Expansion of Riordan array $\mathcal{T}^{-1}$:
+    \input{../sympy/motzkin/motzkin-variant-t-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    Expansion of Riordan array $\mathcal{T}^{\perp}$:
+    \input{../sympy/motzkin/motzkin-variant-t-perp-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
+    Expansion of Riordan array $\mathcal{T}^{\diamond}$:
+    \input{../sympy/motzkin/motzkin-variant-t-diamond-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
 
     \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
-    \input{../sympy/motzkin/motzkin-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
     \input{../sympy/motzkin/motzkin-diamond-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
-    \input{../sympy/motzkin/motzkin-perp-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/motzkin/motzkin-variant-t-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/motzkin/motzkin-variant-t-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/motzkin/motzkin-variant-t-perp-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+    \input{../sympy/motzkin/motzkin-variant-t-diamond-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
     
     \input{../sympy/motzkin/Motzkin-standard-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-figure.tex}
     \input{../sympy/motzkin/Motzkin-inverse-handle-negatives-plain-colouring-127-rows-mod2-partitioning-include-figure.tex}
@@ -628,7 +689,9 @@
     \section{Delannoy}
 
     % mod 2
+    Expansion of Riordan array $\mathcal{D}$:
     \input{../sympy/delannoy/delannoy-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+    Expansion of Riordan array $\mathcal{D}^{-1}$:
     \input{../sympy/delannoy/delannoy-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
 
     \input{../sympy/delannoy/delannoy-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
