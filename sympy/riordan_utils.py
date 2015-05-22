@@ -50,8 +50,9 @@ def timed_execution(block):
 
     start_timestamp=datetime.now()
 
-    try: results = block()
-    except Exception as e: results = e
+    results = block()
+    #try: results = block()
+    #except Exception as e: results = e
 
     return results, datetime.now() - start_timestamp
 

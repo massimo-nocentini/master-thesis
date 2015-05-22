@@ -25,7 +25,16 @@ class ExpansionActionUsingSubgroupCharacterization(
         # remember that in Python 2.7, `map' function returns a list, not a *map* object
         expansion = {}
         for i in range(order):
-            expanded_series = (d(var) * h(var)**i).series(var,order+1)
+
+            try:
+                expanded_series = (d(var) * h(var)**i).series(var,order+1)
+            except ValueError as e:
+                var_setting_string = 'd(t)=', str(d), ';h(t)=',str(h), ';var=', var, ';i=', i, ';order=', order
+                statement_string = r'\nstatement: expanded_series = (d(var) * h(var)**i).series(var,order+1)'
+                print "{exception_message}\n{settings:}\n{statement}".format( 
+                    exception_message=str(e), settings=var_setting_string, statement=statement_string)
+                raise e
+
             expansion[i] = [expanded_series.coefficient(var**n) 
                 if n > 0 else expanded_series.trailing_coeff(var)
                     for n in range(order)]
@@ -125,7 +134,8 @@ class BuildInverseActionUsingSubgroupCharacterization(
                 possible_compositional_inverses)
         
         if not possible_compositional_inverses: 
-            raise Exception("No compositional inverse candidate found.")
+            raise Exception(r"No compositional inverse candidate found solving equation: {equation} (latex code: ${latex_code}$)".format(
+                equation=str(to_solve), latex_code=latex(to_solve))) #, equation=to_solve)
 
         #print possible_compositional_inverses
 
@@ -171,10 +181,10 @@ class BuildInverseActionUsingSubgroupCharacterization(
         # a kind of fix point search for the expression, toward removing
         # sqrt applications in first instance, which are not handled
         # by Sage simplification because have lower priority than factorials...
-        def prepare_inverse(func): return func.canonicalize_radical().simplify_full()
+        def prepare_inverse(func): 
+            return func.canonicalize_radical().simplify_full().function(subgroup_var)
 
-        d_inverse = prepare_inverse(
-            (1/d(h_bar(subgroup_var))).function(subgroup_var))
+        d_inverse = prepare_inverse((1/d(h_bar(subgroup_var))))
         h_inverse = prepare_inverse(h_bar)
 
         # just one more step in order to tie the `inverse_of' knot
