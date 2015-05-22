@@ -35,6 +35,13 @@ catalan-traditional-typeset-triangles:
 	cp templates/predefined-colour-table.tex catalan/
 	cd catalan && bash catalan-traditional-typesetting-commands.sh 
 
+catalan-like-tex-files:
+	cd catalan-like && bash catalan-like.sh 
+
+catalan-like-typeset-triangles:
+	cp templates/predefined-colour-table.tex catalan-like/
+	cd catalan-like && bash catalan-like-typesetting-commands.sh 
+
 motzkin-tex-files:
 	cd motzkin && bash motzkin.sh 
 
