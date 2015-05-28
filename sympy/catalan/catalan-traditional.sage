@@ -27,7 +27,8 @@ Riordan_array = RiordanArray(
 
 # set to `None' if classic *mod* partitioning is desired
     
-partitioning=RemainderClassesPartitioning(modulo=2)
+#partitioning=RemainderClassesPartitioning(modulo=2)
+partitioning=MultiplesOfPrimePartitioning(prime=4)
 
 colouring = TriangleColouring(
     colouring_scheme="standard", 
@@ -50,12 +51,12 @@ standard_tex_files = build_tex_files_about_colouring(
 
 #________________________________________________________________________
 
-colouring.colouring_scheme = "repeated-differences"
+#colouring.colouring_scheme = "repeated-differences"
 
 # now we apply repeated difference in order to get a new array
-repeated_differences_matrix, elapsed_time = timed_execution(
-    lambda: repeated_applications(standard_results[0]))
-print "**** repeated differences colouring computed in {0} ****".format(elapsed_time)
+#repeated_differences_matrix, elapsed_time = timed_execution(
+    #lambda: repeated_applications(standard_results[0]))
+#print "**** repeated differences colouring computed in {0} ****".format(elapsed_time)
 
 # draw again a coloured triangles as a list of tikz nodes, 
 # discard the first result since it is `explicit_matrix' itself

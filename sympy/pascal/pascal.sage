@@ -27,7 +27,9 @@ Riordan_array = RiordanArray(
 
 # set to `None' if classic *mod* partitioning is desired
     
-partitioning=RemainderClassesPartitioning(modulo=5)
+#partitioning=RemainderClassesPartitioning(modulo=5)
+#partitioning=IsPrimePartitioning()
+partitioning=MultiplesOfPrimePartitioning(prime=4)
 
 colouring = TriangleColouring(
     colouring_scheme="standard", 
@@ -50,7 +52,7 @@ standard_tex_files = build_tex_files_about_colouring(
 
 #________________________________________________________________________
 
-colouring.colouring_scheme = "repeated-differences"
+#colouring.colouring_scheme = "repeated-differences"
 
 # now we apply repeated difference in order to get a new array
 #repeated_differences_matrix, elapsed_time = timed_execution(
@@ -73,24 +75,26 @@ colouring.colouring_scheme = "repeated-differences"
 
 #________________________________________________________________________
 
-colouring.colouring_scheme = "inverse"
+inverses_tex_files = {}
+if True:
+    colouring.colouring_scheme = "inverse"
 
 # no proof is needed for computing the inverse, Sage is smart enough ;)
-inverse_array = Riordan_array.inverse(variable=var('y'))
+    inverse_array = Riordan_array.inverse(variable=var('y'))
 
 # first we build the colouring for the standard triangle, timing it
-inverses_results, elapsed_time = timed_execution(
-    lambda: colouring( 
-        array=inverse_array, 
-        partitioning=partitioning))
+    inverses_results, elapsed_time = timed_execution(
+        lambda: colouring( 
+            array=inverse_array, 
+            partitioning=partitioning))
 # a formatting pattern for a *datetime* object could be `.strftime("%M:%S.%f")'
 # here `elapsed_time' is a timedelta object, hence it doesn't apply
-print "**** inverse colouring computed in {0} ****".format(elapsed_time)
+    print "**** inverse colouring computed in {0} ****".format(elapsed_time)
 
 # building tex files
-inverses_tex_files = build_tex_files_about_colouring(
-    inverse_array, inverses_results, 
-    colouring, partitioning, tex_parent_prefix)
+    inverses_tex_files = build_tex_files_about_colouring(
+        inverse_array, inverses_results, 
+        colouring, partitioning, tex_parent_prefix)
 
 write_tex_files("pascal-typesetting-commands.sh",
     standard_tex_files, inverses_tex_files)

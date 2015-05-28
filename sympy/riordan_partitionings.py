@@ -1,5 +1,6 @@
 
 from riordan_utils import *
+from sage.rings.integer import Integer
 
 class AbstractPartitioning: 
 
@@ -12,10 +13,18 @@ class IsPrimePartitioning(AbstractPartitioning):
         return negatives_handling_choice.dispatch_on(self, element)
 
     def dispatched_from_IgnoreNegativesChoice(self, choice, element):
-        return element.is_prime()
+        return 1 if element.is_prime() else 0
 
     def dispatched_from_HandleNegativesChoice(self, choice, element):
         raise Exception("No prime can be negative")
+
+    def str_for(self, filename=False, summary=False):
+
+        if filename: template = r"is-prime-partitioning"
+        elif summary: template = r"is prime partitioning"
+        else: template = 'partitioning'
+
+        return template
 
 
 class RemainderClassesPartitioning(AbstractPartitioning): 
@@ -43,6 +52,9 @@ class RemainderClassesPartitioning(AbstractPartitioning):
 class MultiplesOfPrimePartitioning(AbstractPartitioning): 
 
     def __init__(self, prime):
+#        if not Integer(prime).is_prime():
+#            raise ValueError("It is mandatory that the required argument to be a prime.")
+              
         self.prime = prime
 
     def partition(self, negatives_handling_choice, element):
@@ -53,6 +65,14 @@ class MultiplesOfPrimePartitioning(AbstractPartitioning):
 
     def dispatched_from_HandleNegativesChoice(self, choice, element):
         return element.sign(), self.prime.divides(element)
+
+    def str_for(self, filename=False, summary=False):
+
+        if filename: template = r"multiples-of-{modulo}-partitioning"
+        elif summary: template = r"multiples of {modulo} partitioning"
+        else: template = 'partitioning'
+
+        return template.format(modulo=str(self.prime))
 
 class PowersOfPrimePartitioning(AbstractPartitioning): 
 
