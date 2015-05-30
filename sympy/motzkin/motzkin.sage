@@ -15,7 +15,8 @@ from riordan_texing import *
 
 tex_parent_prefix = "../sympy/motzkin/"
 
-partitioning=RemainderClassesPartitioning(modulo=2)
+#partitioning=RemainderClassesPartitioning(modulo=2)
+partitioning=MultiplesOfPrimePartitioning(prime=7)
 
 colouring = TriangleColouring(
     colouring_scheme="standard", 

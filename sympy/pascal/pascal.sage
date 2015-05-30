@@ -29,7 +29,7 @@ Riordan_array = RiordanArray(
     
 #partitioning=RemainderClassesPartitioning(modulo=5)
 #partitioning=IsPrimePartitioning()
-partitioning=MultiplesOfPrimePartitioning(prime=4)
+partitioning=MultiplesOfPrimePartitioning(prime=3)
 
 colouring = TriangleColouring(
     colouring_scheme="standard", 
