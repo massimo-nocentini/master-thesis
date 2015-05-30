@@ -113,21 +113,28 @@ class BuildInverseActionUsingSubgroupCharacterization(
         # that allow to build a function in `user_var' only
         solutions = filter(lambda sol: sol.rhs().variables() == (user_var,), solutions)
 
+        # remove heading sqrt applications and factor
+        possible_compositional_inverses_rhses = map(
+            lambda sol: sol.rhs().canonicalize_radical().factor(),
+            solutions)
+
+
         # build candidate compositional inverses
         possible_compositional_inverses = map(
-            lambda sol: sol.rhs().function(user_var), solutions)
+            lambda candidate: candidate.function(user_var), 
+            possible_compositional_inverses_rhses)
 
-        # remove heading sqrt applications and factor
-        possible_compositional_inverses = map(
-            lambda candidate: candidate.canonicalize_radical().factor(), 
-            possible_compositional_inverses)
 
         # apply *compositional inverse condition* effectively
         possible_compositional_inverses = filter(
-            lambda candidate: candidate(h(subgroup_var)) == subgroup_var,
+            lambda candidate: candidate(
+                h(subgroup_var)).canonicalize_radical().factor() == subgroup_var,
             possible_compositional_inverses)
 
         if len(possible_compositional_inverses) > 1:
+
+            print "Compositional inverse is not unique, valuating at zero attempt: {candidates}".format(candidates=possible_compositional_inverses)
+
             # include only those inverses `h_bar' such that `h_bar(0) == 0'
             possible_compositional_inverses = filter(
                 lambda candidate: candidate(0) == 0, 
