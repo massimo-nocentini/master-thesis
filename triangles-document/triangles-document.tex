@@ -8,12 +8,17 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{caption}
+\usepackage{changes}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{corollary}[theorem]{Corollary}
 %\newtheorem{proof}[theorem]{Proof}
+
+% for tracking changes
+\definechangesauthor[name={Massimo Nocentini}, color=blue]{mn}
+\definechangesauthor[name={Donatella Merlini}, color=orange]{dm}
 
 \begin{document}
     \title{\rmfamily\normalfont\spacedallcaps{Colouring Riordan arrays}}
@@ -23,11 +28,63 @@
     \maketitle
     
     \begin{abstract}
-        \noindent\lipsum[1] Just a test.\footnote{This is a footnote.}
+        This short document is a collection of some \emph{Riordan arrays}, coloured 
+        according different partition schemes.
     \end{abstract}
        
     \tableofcontents
-    
+
+    \newpage
+
+    \section{Implementation}
+    \added{
+    In the rest of this document we report and comment some figures
+    about colourings of \emph{Riordan arrays}: we consider standard triangles
+    and their inverses, in the majority of case the congruence partitioning
+    is used.
+    }
+
+    \added{
+    Mathematically, a function $colouring$ has been implemented: let $\mathcal{R}$ be
+    a Riordan array and $d_{nk} \in \mathcal{R}$ a generic element, moreover
+    define a set of $k$ colours $\lbrace c_0, \ldots, c_{k-1} \rbrace$, so
+    the function has the following type:
+    }
+    \begin{displaymath}
+    \added{
+        colouring : \mathbb{N} \times\mathbb{N} \rightarrow \lbrace c_0, \ldots, c_{k-1} \rbrace
+    }
+    \end{displaymath}
+
+    \added{
+    The following implementantion are available in the Python package:
+    }
+    \begin{itemize}
+        \item \added{
+            choose a module $p$ (in most cases a prime although) and
+            colour $\mathcal{R}$ associating to each remainded class $r \in \lbrace[0],\ldots,[p-1]\rbrace$
+            a different colour $c_r$:
+            }
+            \begin{displaymath}
+                colouring_{p}(n,k) = c_{r} \leftrightarrow d_{nk} \equiv_{p} r
+            \end{displaymath}
+        \item \added{
+            choose a module $p$ (in most cases a prime although) and
+            \emph{bi}-colour $\mathcal{R}$ with $c_0$ if $d_{nk}$ is a multiple of $p$, otherwise use 
+            a colour $c_1$:
+            }
+            \begin{displaymath}
+                colouring_{p}(n,k) = c_{0} \leftrightarrow p | d_{nk}
+            \end{displaymath}
+        \item \added{
+            a less used one, \emph{bi}-colour $\mathcal{R}$ with $c_0$ 
+            if $d_{nk}$ is a prime, otherwise use a colour $c_1$:
+            }
+            \begin{displaymath}
+                colouring(n,k) = c_{0} \leftrightarrow \not \exists p\in\lbrace 2,\ldots,d_{nk}-1\rbrace.p|d_{nk} 
+            \end{displaymath}
+    \end{itemize}
+
     \section{Pascal}
 
     \subsection{Some modular proofs}
