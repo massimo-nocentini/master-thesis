@@ -1,5 +1,5 @@
 % article example for classicthesis.sty
-\documentclass[10pt,a4paper]{article} % KOMA-Script article scrartcl
+\documentclass[11pt,a4paper]{article} % KOMA-Script article scrartcl
 \usepackage{lipsum}
 \usepackage{url}
 \usepackage[nochapters]{classicthesis} % nochapters
@@ -36,6 +36,79 @@
 
     \newpage
 
+    \section{Another characterization}
+    Consider a \emph{Riordan array} $\mathcal{R}$ defined over generating
+    functions $d(t)$ and $h(t)$. By definition, coefficients lying on 
+    column $k$ are the coefficients of the following generating function:
+    \begin{displaymath}
+        d(t)h(t)^k
+    \end{displaymath}
+    our idea is to characterize $\mathcal{R}$ doing a variable change, as the
+    following manipulation shows:
+    \begin{displaymath}
+        d(t)h(t)^k = d(t)(1 + (h(t)-1))^k = \left[ d(\hat{h}(1+y))(1+y)^k \left| y = h(t)-1 \right. \right]
+    \end{displaymath}
+    where $\hat{h}$ is the compositional inverse function of $h$, the one that
+    satisfies $\hat{h}(h(t)) = t$: in order to get $t$ back, apply $\hat{h}$ to
+    both members of $y+1 = h(t)$.
+    Inside the square brackets there's a shape of a Riordan array, therefore:
+    \begin{displaymath}
+        \mathcal{R}\left(d(t)h(t)\right) = \left[ \mathcal{R}\left(d(\hat{h}(1+y)), 1+y\right) \left| y = h(t)-1 \right. \right]
+        = \mathcal{R}_{y=h(t)-1}\left( f(y), 1+y \right)
+    \end{displaymath}
+    $\mathcal{R}_{y=h(t)-1}$ is interesting since its first component $f(y)$ is a function of $h(t)$ eventually, 
+    and using $d$ composed with $\hat{h}$ it is possible to have a characterization of $\mathcal{R}$
+    that uses only $h$.
+
+    In the following section we study some well known arrays under this point of view.
+
+    \subsection{Pascal}
+    Let $\mathcal{P}$ be the Riordan array for the Pascal triangle,
+    defined as:
+    \begin{displaymath} 
+        \mathcal{P} = \left(\frac{1}{1-t}, \frac{t}{1-t}  \right)
+    \end{displaymath} 
+    computing the compositional inverse of $h$ yields:
+    \begin{displaymath} 
+        \hat{h}(y) = \frac{y}{1+y}
+    \end{displaymath} 
+    so $f(y)=d(\hat{h}(1+y))=2+y$ therefore:
+    \begin{displaymath} 
+        \mathcal{P}_{y=h(t)-1}\left( 2+y, 1+y \right)= \mathcal{P}_{h(t)}\left( 1+h(t), h(t) \right)
+    \end{displaymath} 
+    Now study the generating function which carries coefficients lying on column $k$
+    of $\mathcal{P}_{h(t)}$:
+    \begin{displaymath} 
+        (1+h(t))h(t)^{k} = h(t)^k + h(t)^{k+1}
+    \end{displaymath} 
+    hence coefficients of column $k$ are computed by sum of $k$ and $k+1$ convolution 
+    of function $h$ with itself, which recall the work of Rogers on \emph{renewal arrays}.
+
+    \subsection{Fibonacci}
+    Let $\mathcal{F}$ be the Riordan array for the Fibonacci triangle,
+    defined as:
+    \begin{displaymath} 
+        \mathcal{P} = \left(\frac{1}{1-t-t^2}, \frac{1-\sqrt{1-4t}}{2}  \right)
+    \end{displaymath} 
+    computing the compositional inverse of $h$ yields:
+    \begin{displaymath} 
+        \hat{h}(y) = y - y^2
+    \end{displaymath} 
+    so $f(y)=d(\hat{h}(1+y))=\frac{1}{1+y-2y^3-y^4}$ therefore:
+    \begin{displaymath} 
+        \begin{split} 
+            & \mathcal{P}_{y=h(t)-1}\left( \frac{1}{1+y-2y^3-y^4}, 1+y \right) = \\
+             &= \mathcal{P}_{h(t)}\left( \frac{1}{h(t)-2(h(t)-1)^3-(h(t)-1)^4}, h(t) \right)\\
+             &= \mathcal{P}_{h(t)}\left( \frac{1}{1-h(t)+2h(t)^3-h(t)^4}, h(t) \right)\\
+        \end{split} 
+    \end{displaymath} 
+    Now study the generating function which carries coefficients lying on column $k$
+    of $\mathcal{P}_{h(t)}$:
+    \begin{displaymath} 
+        \frac{h(t)^k}{1-h(t)+2h(t)^3-h(t)^4}
+    \end{displaymath} 
+
+
     \section{Implementation}
     \added{
     In the rest of this document we report and comment some figures
@@ -57,7 +130,7 @@
     \end{displaymath}
 
     \added{
-    The following implementantion are available in the Python package:
+    The following implementantions are available in the Python package:
     }
     \begin{itemize}
         \item \added{
