@@ -121,6 +121,7 @@
     so $f(y)=d(\hat{h}(1+y))=\frac{1}{1+y}$ therefore:
     \begin{displaymath} 
         \mathcal{C}_{y=h(t)-1}\left( \frac{1}{1+y}, 1+y \right) = 
+            \mathcal{C}_{h(t)}\left( \frac{1}{h(t)}, h(t) \right)
     \end{displaymath} 
     Now study the generating function which carries coefficients lying on column $k$
     of $\mathcal{C}_{h(t)}$:
@@ -128,11 +129,63 @@
         h(t)^{k-1}
     \end{displaymath} 
 
-    \subsection{Motzkin}
-    Let $\mathcal{M}$ be the Riordan array for the Motzkin triangle, 
-    variant $\mathcal{T}$, defined as:
+    This characterize the generic column $k$: first column has index $j$ solution of
+    $j-1=0$, therefore coefficients lying on it can be read on the generating function:
     \begin{displaymath} 
-        \mathcal{M} = \left(\frac{1}{\sqrt{1-2t-3t^2}}, 
+        h(t)
+    \end{displaymath} 
+    just for completeness, second column has index $j$ solution of
+    $j-1=1$, therefore coefficients lying on it can be read on the generating function:
+    \begin{displaymath} 
+        h(t)^2
+    \end{displaymath} 
+    and so on...
+
+
+    \subsection{Motzkin}
+
+    \subsubsection{Classic definition}
+
+    Let $\mathcal{M}$ be the Riordan array for the 
+    Motzkin triangle, defined as:
+    \begin{displaymath} 
+        \mathcal{M} =\left( \frac{1-t-\sqrt{1-2t-3t^2}}{2t^2},
+           \frac{1-t-\sqrt{1-2t-3t^2}}{2t}  \right)
+    \end{displaymath} 
+    computing the compositional inverse of $h$ yields:
+    \begin{displaymath} 
+        \hat{h}(y) = \frac{y}{1+y+y^2}
+    \end{displaymath} 
+    so $f(y)=d(\hat{h}(1+y))=\frac{3+3y+y^2}{1+2y+y^2}$ therefore:
+    \begin{displaymath} 
+        \mathcal{M}_{y=h(t)-1}\left( \frac{3+3y+y^2}{1+2y+y^2}, 1+y \right) = 
+            \mathcal{M}_{h(t)}\left( \frac{1+h(t)+h(t)^2}{h(t)^2}, h(t) \right) 
+    \end{displaymath} 
+    Now study the generating function which carries coefficients lying on column $k$
+    of $\mathcal{M}_{h(t)}$:
+    \begin{displaymath} 
+        h(t)^{k-2}+h(t)^{k-1}+h(t)^{k}
+    \end{displaymath} 
+
+    This characterize the generic column $k$: first column has index $j$ solution of
+    $j-2=0$, therefore coefficients lying on it can be read on the generating function:
+    \begin{displaymath} 
+        1+h(t)+h(t)^{2}
+    \end{displaymath} 
+    just for completeness, second column has index $j$ solution of
+    $j-2=1$, therefore coefficients lying on it can be read on the generating function:
+    \begin{displaymath} 
+        h(t)+h(t)^2+h(t)^{3}
+    \end{displaymath} 
+    and so on...
+
+
+    \subsubsection{$\mathcal{T}$ variant}
+
+    Let $\mathcal{T}$ be the Riordan array for a variant of the 
+    Motzkin triangle defined as:
+    \begin{displaymath} 
+        \mathcal{T} = \left(\frac{1}{\sqrt{1-2t-3t^2}}, 
            \frac{1-t-\sqrt{1-2t-3t^2}}{2t}  \right)
     \end{displaymath} 
     computing the compositional inverse of $h$ yields:
@@ -141,16 +194,39 @@
     \end{displaymath} 
     so $f(y)=d(\hat{h}(1+y))=\frac{3+3y+y^2}{2y+y^2}$ therefore:
     \begin{displaymath} 
-        \mathcal{M}_{y=h(t)-1}\left( \frac{3+3y+y^2}{2y+y^2}, 1+y \right) = 
-            \mathcal{M}_{h(t)}\left( \frac{1+h(t)+h(t)^2}{h(t)^2 -1}, h(t) \right) 
+        \mathcal{T}_{y=h(t)-1}\left( \frac{3+3y+y^2}{2y+y^2}, 1+y \right) = 
+            \mathcal{T}_{h(t)}\left( \frac{1+h(t)+h(t)^2}{h(t)^2 -1}, h(t) \right) 
     \end{displaymath} 
     Now study the generating function which carries coefficients lying on column $k$
-    of $\mathcal{M}_{h(t)}$:
+    of $\mathcal{T}_{h(t)}$:
     \begin{displaymath} 
         \frac{h(t)^k+h(t)^{k+1}+h(t)^{k+2}}{h(t)^2 -1}
     \end{displaymath} 
     This is quite strange since the series expansion has all coefficient negated
     respect the classical version obtained by normal definition for $\mathcal{T}$.
+
+    \subsection{Delannoy}
+
+    Let $\mathcal{D}$ be the Riordan array for the Delannoy triangle, defined as:
+    \begin{displaymath} 
+        \mathcal{D} =\left( \frac{1}{1-t}, \frac{t(1+t)}{1-t}  \right)
+    \end{displaymath} 
+    computing the compositional inverse of $h$ yields:
+    \begin{displaymath} 
+        \hat{h}(y) = \frac{\sqrt{1+6y+y^2}-y-1}{2}
+    \end{displaymath} 
+    so $f(y)=d(\hat{h}(1+y))=\frac{2}{4 + y - \sqrt{y^2 + 8*y + 8} }$ therefore:
+    \begin{displaymath} 
+        \begin{split}
+            & \mathcal{D}_{y=h(t)-1}\left( \frac{2}{4+y-\sqrt{y^2+8y+8}}, 1+y \right)\\
+            &= \mathcal{D}_{h(t)}\left( \frac{2}{3+h(t)-\sqrt{h(t)^2+6h(t)+1}}, h(t) \right) \\
+        \end{split}
+    \end{displaymath} 
+    Now study the generating function which carries coefficients lying on column $k$
+    of $\mathcal{D}_{h(t)}$:
+    \begin{displaymath} 
+        \frac{2h(t)^k}{3+h(t)-\sqrt{h(t)^2+6h(t)+1}}
+    \end{displaymath} 
 
 
     \section{Implementation}
