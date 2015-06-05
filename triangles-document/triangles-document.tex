@@ -162,28 +162,35 @@
     \begin{displaymath} 
         \hat{h}(y) = \frac{y}{1+y+y^2}
     \end{displaymath} 
-    so $f(y)=d(\hat{h}(1+y))=\frac{3+3y+y^2}{1+2y+y^2}$ therefore:
+    so $f(y)=d(\hat{h}(1+y))$ equals:
     \begin{displaymath} 
-        \mathcal{M}_{y=h(t)-1}\left( \frac{3+3y+y^2}{1+2y+y^2}, 1+y \right) = 
-            \mathcal{M}_{h(t)}\left( \frac{1+h(t)+h(t)^2}{h(t)^2}, h(t) \right) 
+        \begin{split} 
+            & -\frac{{\left(y^{2} \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - y^{2} + 3 \, y \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - 2 \, y + 3 \, \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - 2\right)} {\left(y^{2} + 3 \, y + 3\right)}}{2 \, {\left(y + 1\right)}^{2}} \\
+            & = -\frac{{ \left(\sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} \left( y^{2}+3y+3 \right) -\left(y^{2}+2y+2\right)\right){\left(y^{2} + 3 \, y + 3\right)}}}{2 \, {\left(y + 1\right)}^{2}} \\
+            & = -\frac{ \left(\sqrt{\left(y^{2} + 4 y + 4\right) y^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} \\
+            & = -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} \\
+        \end{split} 
     \end{displaymath} 
+    By cases on $\sqrt{\left(\left(y + 2\right) y\right)^{2}}$:
+    \begin{itemize}
+        \item $\sqrt{\left(\left(y + 2\right) y\right)^{2}}=\left(y + 2\right) y$, hence:
+            \begin{displaymath} 
+                \mathcal{M}_{h(t)}\left(\frac{y^{2} + 3y + 3}{{\left(y + 1\right)}^{2}} , h(t) \right) = 
+                    \mathcal{M}_{h(t)}\left( \frac{1+h(t)+h(t)^2}{h(t)^2}, h(t) \right) 
+            \end{displaymath} 
+            since $h(0)=0$ the previous result has no meaning, therefore discard this case;
+        \item $\sqrt{\left(\left(y + 2\right) y\right)^{2}}=-\left(y + 2\right) y$, hence:
+            \begin{displaymath} 
+                \mathcal{M}_{h(t)}\left(y^{2} + 3y + 3 , h(t) \right) = 
+                    \mathcal{M}_{h(t)}\left( 1+h(t)+h(t)^2, h(t) \right) 
+            \end{displaymath} 
+            checking against $h(0)=0$ the previous result has meaning, therefore accept this case.
+    \end{itemize}
     Now study the generating function which carries coefficients lying on column $k$
     of $\mathcal{M}_{h(t)}$:
     \begin{displaymath} 
-        h(t)^{k-2}+h(t)^{k-1}+h(t)^{k}
+        h(t)^{k}+h(t)^{k+1}+h(t)^{k+2}
     \end{displaymath} 
-
-    This characterize the generic column $k$: first column has index $j$ solution of
-    $j-2=0$, therefore coefficients lying on it can be read on the generating function:
-    \begin{displaymath} 
-        1+h(t)+h(t)^{2}
-    \end{displaymath} 
-    just for completeness, second column has index $j$ solution of
-    $j-2=1$, therefore coefficients lying on it can be read on the generating function:
-    \begin{displaymath} 
-        h(t)+h(t)^2+h(t)^{3}
-    \end{displaymath} 
-    and so on...
 
 
     \subsubsection{$\mathcal{T}$ variant}
@@ -198,18 +205,41 @@
     \begin{displaymath} 
         \hat{h}(y) = \frac{y}{1+y+y^2}
     \end{displaymath} 
-    so $f(y)=d(\hat{h}(1+y))=\frac{3+3y+y^2}{2y+y^2}$ therefore:
+    so $f(y)=d(\hat{h}(1+y))=\sqrt{\left(\frac{y^2+3y+3}{(y+2)y}\right)^{2}}$ therefore:
     \begin{displaymath} 
-        \mathcal{T}_{y=h(t)-1}\left( \frac{3+3y+y^2}{2y+y^2}, 1+y \right) = 
-            \mathcal{T}_{h(t)}\left( \frac{1+h(t)+h(t)^2}{h(t)^2 -1}, h(t) \right) 
+        \mathcal{T}_{y=h(t)-1}\left( \sqrt{\left(\frac{y^2+3y+3}{(y+2)y}\right)^{2}}, 1+y \right) = 
+            \mathcal{T}_{h(t)}\left( \sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}, h(t) \right) 
     \end{displaymath} 
+    By cases on $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}$:
+    \begin{itemize}
+        \item $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}=\frac{h(t)^2+h(t)+1}{h(t)^2-1}$, hence:
+            \begin{displaymath} 
+                \mathcal{C}_{h(t)}\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}, h(t) \right)
+            \end{displaymath} 
+            requirement $h(0)=0$ doesn't raise a non-sense, so use another 
+            constraint over the first component in order to have a 
+            \emph{proper} array:
+            \begin{displaymath}
+                \left. \frac{h(t)^2+h(t)+1}{h(t)^2-1} \right|_{t=0} = -1 \not= 1 
+            \end{displaymath} 
+            so discard this case;
+        \item $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}=-\frac{h(t)^2+h(t)+1}{h(t)^2-1}$, hence:
+            \begin{displaymath}
+                \mathcal{C}_{h(t)}\left(\frac{h(t)^2+h(t)+1}{1-h(t)^2}, h(t) \right)
+            \end{displaymath} 
+            requirement $h(0)=0$ doesn't raise a non-sense, so use another 
+            constraint over the first component in order to have a 
+            \emph{proper} array:
+            \begin{displaymath}
+                \left. \frac{h(t)^2+h(t)+1}{1-h(t)^2} \right|_{t=0} = 1 
+            \end{displaymath} 
+            which fulfill the constraint, so accept this case.
+    \end{itemize}
     Now study the generating function which carries coefficients lying on column $k$
     of $\mathcal{T}_{h(t)}$:
     \begin{displaymath} 
-        \frac{h(t)^k+h(t)^{k+1}+h(t)^{k+2}}{h(t)^2 -1}
+        \frac{h(t)^{k}+h(t)^{k+1}+h(t)^{k+2}}{1-h(t)^2 }
     \end{displaymath} 
-    This is quite strange since the series expansion has all coefficient negated
-    respect the classical version obtained by normal definition for $\mathcal{T}$.
 
 
     \subsection{Delannoy}

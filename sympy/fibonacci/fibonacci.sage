@@ -28,11 +28,12 @@ Riordan_array = RiordanArray(
 # set to `None' if classic *mod* partitioning is desired
     
 partitioning=RemainderClassesPartitioning(modulo=2)
+#partitioning=IsPrimePartitioning()
 
 colouring = TriangleColouring(
     colouring_scheme="standard", 
     order=127,
-    centered=False, 
+    centered=True, 
     handle_negatives=True)
 
 # first we build the colouring for the standard triangle, timing it
