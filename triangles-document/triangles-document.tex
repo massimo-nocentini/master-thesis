@@ -53,7 +53,7 @@
     both members of $y+1 = h(t)$.
     Inside the square brackets there's a shape of a Riordan array, therefore:
     \begin{displaymath}
-        \mathcal{R}\left(d(t)h(t)\right) = \left[ \mathcal{R}\left(d(\hat{h}(1+y)), 1+y\right) \left| y = h(t)-1 \right. \right]
+        \mathcal{R}\left(d(t),h(t)\right) = \left[ \mathcal{R}\left(d(\hat{h}(1+y)), 1+y\right) \left| y = h(t)-1 \right. \right]
         = \mathcal{R}_{y=h(t)-1}\left( f(y), 1+y \right)
     \end{displaymath}
     $\mathcal{R}_{y=h(t)-1}$ is interesting since its first component $f(y)$ is a function of $h(t)$ eventually, 
@@ -205,6 +205,7 @@
     This is quite strange since the series expansion has all coefficient negated
     respect the classical version obtained by normal definition for $\mathcal{T}$.
 
+
     \subsection{Delannoy}
 
     Let $\mathcal{D}$ be the Riordan array for the Delannoy triangle, defined as:
@@ -227,6 +228,84 @@
     \begin{displaymath} 
         \frac{2h(t)^k}{3+h(t)-\sqrt{h(t)^2+6h(t)+1}}
     \end{displaymath} 
+
+
+    \subsection{A theorem when $\mathcal{R}(d(t), td(t))$}
+
+    By observing previous results, it seems there's a relation
+    about the shape of a Riordan array $\mathcal{R}(d(t), td(t))$ 
+    and the shape of column $k$ generating function. 
+    
+    The question is: does exist a sequence $\lbrace s_i \rbrace_{i \in \mathbb{N}}$ 
+    of coefficients such that column $k$ generating function is $S(h(t)^{j_k})$, where $S$
+    is a formal power series over the sequence? In expanded form: 
+    \begin{displaymath}
+        s_0h(t)^{j_k} + s_1 h(t)^{j_k+1} + s_2 h(t)^{j_k+2} + \ldots + s_i h(t)^{j_k+i} + \ldots
+    \end{displaymath}
+    for some $j_k \in \mathbb{Z}$, where $j_k$ is a notation to denote an index $j$ 
+    which depends on $k$.
+
+    \begin{proof}
+
+    Since $h(t)=td(t)$, let $\hat{h}(y)$ be its compositional inverse, therefore:
+    \begin{displaymath}
+        y = h(\hat{h}(y)) = \hat{h}(y)d(\hat{h}(y)) 
+    \end{displaymath}
+    so:
+    \begin{displaymath}
+        \hat{h}(y) = \frac{y}{d(\hat{h}(y)) }
+    \end{displaymath}
+    and evaluating at $1+y$:
+    \begin{displaymath}
+        d(\hat{h}(1+y)) = \frac{1+y}{ \hat{h}(1+y)}
+    \end{displaymath}
+    Recall the definition of the characterization $\mathcal{R}_{y=h(t)-1}\left( f(y), 1+y \right)$,
+    where $f(y)=d(\hat{h}(1+y))$, so the column $k$ generating function can be rewritten as:
+    \begin{displaymath}
+        \frac{(1+y)^{k+1}}{ \hat{h}(1+y)}
+    \end{displaymath}
+    Let $k(y)$ be the formal power series with coefficients in 
+    $\lbrace k_i \rbrace_{i\in\mathbb{N}}$ such that :
+    \begin{displaymath}
+        k(y) = \frac{1}{ \hat{h}(1+y)} = \sum_{i\geq 0}{k_i}y^{i}
+    \end{displaymath}
+    Since $(1+y)^{k+1}$ has a binomial shape:
+    \begin{displaymath}
+        (1+y)^{k+1} = \sum_{s= 0}^{k+1}{{k+1}\choose{s}}y^{s}= \sum_{s\geq 0}{{k+1}\choose{s}}y^{s}
+    \end{displaymath}
+    because ${{n}\choose{m}}$ vanishes if $n<m$. Therefore $k(y)(1+y)^{k+1}$ is a convolution:
+    \begin{displaymath}
+        k(y)(1+y)^{k+1} = \sum_{s\geq 0}{\sum_{j=0}^{s}{k_j {{k+1}\choose{s-j}}} y^{s}} = 
+            \sum_{s\geq 0}{\alpha_{s}^{(k+1)} y^{s}}
+    \end{displaymath}
+    where $\alpha_{s}^{(k+1)} \in \mathbb{Z}$ such that $\alpha_{s}^{(k+1)}=\sum_{j=0}^{s}{k_j {{k+1}\choose{s-j}}}$.
+    By variable sustitution $y = h(t)-1$ rewrite as:
+    \begin{displaymath}
+        \sum_{s\geq 0}{\alpha_{s}^{(k+1)} y^{s}}
+            = \sum_{s\geq 0}{\alpha_{s}^{(k+1)} (h(t)-1)^{s}}
+            = \sum_{s\geq 0}{(-1)^{s}\alpha_{s}^{(k+1)} (1-h(t))^{s}}
+    \end{displaymath}
+    calling $\beta_{s}^{(k+1)}=(-1)^{s}\alpha_{s}^{(k+1)}$ and expanding $(1-h(t))^{s}$
+    as a binomial in $h(t)$ yield:
+    \begin{displaymath}
+        \sum_{s\geq 0}{\beta_{s}^{(k+1)} {\sum_{r=0}^{s}{(-1)^{r}{{s}\choose{r}} h(t)^{r}}}} =
+        \sum_{s\geq 0}{ \sum_{r=0}^{s}{\beta_{s}^{(k+1)}(-1)^{r}{{s}\choose{r}} h(t)^{r}}} =
+    \end{displaymath}
+    calling $\gamma_{s,r}^{(k+1)}=\beta_{s}^{(k+1)}(-1)^{r}{{s}\choose{r}}$ and making 
+    unbounded the inner sum yield: 
+    \begin{displaymath}
+        \sum_{s\geq 0}{ \sum_{r=0}^{s}{\beta_{s}^{(k+1)}(-1)^{r}{{s}\choose{r}} h(t)^{r}}} =
+        \sum_{s\geq 0}{ \sum_{r\geq 0}{\gamma_{s,r}^{(k+1)} h(t)^{r}}} =
+        \sum_{r\geq 0}{ \left(\sum_{s\geq 0}{\gamma_{s,r}^{(k+1)} }\right) h(t)^{r}}
+    \end{displaymath}
+    calling $\nu_{r}^{(k+1)}=\sum_{s\geq 0}{\gamma_{s,r}^{(k+1)} }$ provide the requested equation:
+    \begin{displaymath}
+        \sum_{r\geq 0}{ \nu_{r}^{(k+1)} h(t)^{r}}
+    \end{displaymath}
+    
+    
+
+    \end{proof}
 
 
     \section{Implementation}
