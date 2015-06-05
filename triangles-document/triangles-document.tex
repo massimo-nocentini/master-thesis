@@ -118,28 +118,34 @@
     \begin{displaymath} 
         \hat{h}(y) = y - y^2
     \end{displaymath} 
-    so $f(y)=d(\hat{h}(1+y))=\frac{1}{1+y}$ therefore:
+    so $f(y)=d(\hat{h}(1+y))=\frac{\sqrt{4 \, y^{2} + 4 \, y + 1} - 1}{2 \, {\left(y + 1\right)} y}$ therefore:
     \begin{displaymath} 
-        \mathcal{C}_{y=h(t)-1}\left( \frac{1}{1+y}, 1+y \right) = 
-            \mathcal{C}_{h(t)}\left( \frac{1}{h(t)}, h(t) \right)
+        \begin{split} 
+            &\mathcal{C}_{y=h(t)-1}\left(\frac{\sqrt{4 \, y^{2} + 4 \, y + 1} - 1}{2 \, {\left(y + 1\right)} y}, 1+y \right) \\
+            &= \mathcal{C}_{h(t)}\left(\frac{\sqrt{4 \, h\left(t\right)^{2} - 4 \, h\left(t\right) + 1} - 1}{2 \, {\left(h\left(t\right) - 1\right)} h\left(t\right)}, h(t) \right)\\
+            &= \mathcal{C}_{h(t)}\left(\frac{\sqrt{(2 h\left(t\right) -  1)^2} - 1}{2 \, {\left(h\left(t\right) - 1\right)} h\left(t\right)}, h(t) \right)\\
+        \end{split} 
     \end{displaymath} 
+    By cases on $\sqrt{(2 h\left(t\right) -  1)^2}$:
+    \begin{itemize}
+        \item $\sqrt{(2 h\left(t\right) -  1)^2}=2 h\left(t\right) -  1$, hence:
+            \begin{displaymath} 
+                \mathcal{C}_{h(t)}\left(\frac{2(h\left(t\right) -  1)}{2 \, {\left(h\left(t\right) - 1\right)} h\left(t\right)}, h(t) \right)=
+                \mathcal{C}_{h(t)}\left(\frac{1}{h\left(t\right)}, h(t) \right)
+            \end{displaymath} 
+            since $h(0)=0$ the previous result has no meaning, therefore discard this case;
+        \item $\sqrt{(2 h\left(t\right) -  1)^2}=1 -2 h\left(t\right)$, hence:
+            \begin{displaymath} 
+                \mathcal{C}_{h(t)}\left(\frac{h\left(t\right)}{ {\left(1-h\left(t\right) \right)} h\left(t\right)}, h(t) \right)=
+                \mathcal{C}_{h(t)}\left(\frac{1}{1-h\left(t\right)}, h(t) \right)
+            \end{displaymath} 
+            checking against $h(0)=0$ the previous result has meaning, therefore accept this case.
+    \end{itemize}
     Now study the generating function which carries coefficients lying on column $k$
     of $\mathcal{C}_{h(t)}$:
     \begin{displaymath} 
-        h(t)^{k-1}
+        \frac{h(t)^{k}}{1-h\left(t\right)} 
     \end{displaymath} 
-
-    This characterize the generic column $k$: first column has index $j$ solution of
-    $j-1=0$, therefore coefficients lying on it can be read on the generating function:
-    \begin{displaymath} 
-        h(t)
-    \end{displaymath} 
-    just for completeness, second column has index $j$ solution of
-    $j-1=1$, therefore coefficients lying on it can be read on the generating function:
-    \begin{displaymath} 
-        h(t)^2
-    \end{displaymath} 
-    and so on...
 
 
     \subsection{Motzkin}
