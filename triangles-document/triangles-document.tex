@@ -171,23 +171,55 @@
             & = -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} \\
         \end{split} 
     \end{displaymath} 
-    By cases on $\sqrt{\left(\left(y + 2\right) y\right)^{2}}$:
+    therefore:
+    \begin{displaymath} 
+        \begin{split} 
+            &\mathcal{M}_{y=h(t)-1}\left(
+                -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} , 1+y \right) \\
+            &= \mathcal{M}_{h(t)}\left(
+            -\frac{{\left(\sqrt{\frac{{\left(h(t)^{2} + 2 \, h(t) + 1\right)} {\left(h(t) - 1\right)}^{2}}{{\left(h(t)^{2} + h(t) + 1\right)}^{2}}}\left( h(t)^{2} + h(t) + 1\right) 
+                - (h(t)^{2} + 1) \right)} {\left(h(t)^{2} + h(t) + 1\right)}}{2 \, h(t)^{2}} , h(t) \right)\\
+            &= \mathcal{M}_{h(t)}\left(
+            -\frac{{\left(\sqrt{\left(h(t)^2 - 1\right)^{2}} - (h(t)^{2} + 1) \right)} {\left(h(t)^{2} + h(t) + 1\right)}}{2 \, h(t)^{2}} , h(t) \right)\\
+        \end{split} 
+    \end{displaymath} 
+    By cases on $\sqrt{\left(h(t)^2 - 1\right)^{2}}$:
+    \begin{itemize}
+        \item $\sqrt{\left(h(t)^2 - 1\right)^{2}}= h(t)^2 - 1$, hence:
+            \begin{displaymath} 
+                \mathcal{M}_{h(t)}\left(\frac{ h(t)^{2} + h(t) + 1}{h(t)^{2}} , h(t) \right)\\
+            \end{displaymath} 
+            since $h(0)=0$ the previous result has no meaning, therefore discard this case;
+        \item $\sqrt{\left(h(t)^2 - 1\right)^{2}}= 1-h(t)^2$, hence:
+            \begin{displaymath} 
+                \mathcal{M}_{h(t)}\left( h(t)^{2} + h(t) + 1, h(t) \right)\\
+            \end{displaymath} 
+            checking against $h(0)=0$ the previous result has meaning, therefore accept this case.
+    \end{itemize}
+
+    It is interesting to note that the tedious derivation developed above can have
+    a simpler handling if we defer substituting $h(t)-1$ to $y$, consider the following \ldots
+    by cases on $\sqrt{\left(\left(y + 2\right) y\right)^{2}}$:
     \begin{itemize}
         \item $\sqrt{\left(\left(y + 2\right) y\right)^{2}}=\left(y + 2\right) y$, hence:
             \begin{displaymath} 
-                \mathcal{M}_{h(t)}\left(\frac{y^{2} + 3y + 3}{{\left(y + 1\right)}^{2}} , h(t) \right) = 
+                \mathcal{M}_{y=h(t)-1}\left(\frac{y^{2} + 3y + 3}{{\left(y + 1\right)}^{2}} , h(t) \right) = 
                     \mathcal{M}_{h(t)}\left( \frac{1+h(t)+h(t)^2}{h(t)^2}, h(t) \right) 
             \end{displaymath} 
             since $h(0)=0$ the previous result has no meaning, therefore discard this case;
         \item $\sqrt{\left(\left(y + 2\right) y\right)^{2}}=-\left(y + 2\right) y$, hence:
             \begin{displaymath} 
-                \mathcal{M}_{h(t)}\left(y^{2} + 3y + 3 , h(t) \right) = 
+                \mathcal{M}_{y=h(t)-1}\left(y^{2} + 3y + 3 , h(t) \right) = 
                     \mathcal{M}_{h(t)}\left( 1+h(t)+h(t)^2, h(t) \right) 
             \end{displaymath} 
             checking against $h(0)=0$ the previous result has meaning, therefore accept this case.
     \end{itemize}
-    Now study the generating function which carries coefficients lying on column $k$
-    of $\mathcal{M}_{h(t)}$:
+
+    In both branches same definitions for $\mathcal{M}_{h(t)}$ are reached applying
+    same checks, while at the same time substitution of $y$ is easier. 
+    
+    However, here it is the generating function which carries coefficients 
+    lying on column $k$ of $\mathcal{M}_{h(t)}$:
     \begin{displaymath} 
         h(t)^{k}+h(t)^{k+1}+h(t)^{k+2}
     \end{displaymath} 
