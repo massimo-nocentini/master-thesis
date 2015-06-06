@@ -37,6 +37,9 @@
     \newpage
 
     \section{Another characterization}
+
+    \subsection{Main idea}
+
     Consider a \emph{Riordan array} $\mathcal{R}$ defined over generating
     functions $d(t)$ and $h(t)$. By definition, coefficients lying on 
     column $k$ are the coefficients of the following generating function:
@@ -60,15 +63,17 @@
     \end{displaymath}
     $\mathcal{R}_{y=h(t)-1}$ is interesting since its first component $f(y)$ allow to 
     develop another array $\mathcal{R}_{h(t)}$ where it's first component
-    is a function $g$ in the ``variable'' $h(t)$ eventually, the moral is:
+    is a function $g$ in the ``variable'' $h(t)$, eventually the moral is:
     \begin{verse}
-        using $d$ composed with $\hat{h}$ make it possible to have $\mathcal{R}_{h}$,
+        using $d$ composed with $\hat{h}$ makes it possible to have $\mathcal{R}_{h}$,
         a characterization of $\mathcal{R}$ that depends only on $h$
     \end{verse}
 
-    In the following section we study some well known arrays under this point of view.
+    \subsection{Applying it to known triangles}
 
-    \subsection{Pascal}
+    In the following sections we study some well known arrays under this point of view.
+
+    \subsubsection{Pascal}
     Let $\mathcal{P}$ be the Riordan array for the Pascal triangle,
     defined as:
     \begin{displaymath} 
@@ -90,7 +95,7 @@
     hence coefficients of column $k$ are computed by sum of $k$ and $k+1$ convolution 
     of function $h$ with itself, which recall the work of Rogers on \emph{renewal arrays}.
 
-    \subsection{Fibonacci}
+    \subsubsection{Fibonacci}
     Let $\mathcal{F}$ be the Riordan array for the Fibonacci triangle,
     defined as:
     \begin{displaymath} 
@@ -112,7 +117,7 @@
         \frac{h(t)^k}{1-h(t)+2h(t)^3-h(t)^4}
     \end{displaymath} 
 
-    \subsection{Catalan}
+    \subsubsection{Catalan}
     Let $\mathcal{C}$ be the Riordan array for the Catalan triangle,
     defined as:
     \begin{displaymath} 
@@ -152,12 +157,9 @@
     \end{displaymath} 
 
 
-    \subsection{Motzkin}
+    \subsubsection{Motzkin classic version}
 
-    \subsubsection{Classic definition}
-
-    Let $\mathcal{M}$ be the Riordan array for the 
-    Motzkin triangle, defined as:
+    Let $\mathcal{M}$ be the Riordan array for the Motzkin triangle, defined as:
     \begin{displaymath} 
         \mathcal{M} =\left( \frac{1-t-\sqrt{1-2t-3t^2}}{2t^2},
            \frac{1-t-\sqrt{1-2t-3t^2}}{2t}  \right)
@@ -229,10 +231,9 @@
     \end{displaymath} 
 
 
-    \subsubsection{$\mathcal{T}$ variant}
+    \subsubsection{Motzkin $\mathcal{T}$ variant}
 
-    Let $\mathcal{T}$ be the Riordan array for a variant of the 
-    Motzkin triangle defined as:
+    Let $\mathcal{T}$ be the Riordan array for a variant of the Motzkin triangle defined as:
     \begin{displaymath} 
         \mathcal{T} = \left(\frac{1}{\sqrt{1-2t-3t^2}}, 
            \frac{1-t-\sqrt{1-2t-3t^2}}{2t}  \right)
@@ -278,7 +279,7 @@
     \end{displaymath} 
 
 
-    \subsection{Delannoy}
+    \subsubsection{Delannoy}
 
     Let $\mathcal{D}$ be the Riordan array for the Delannoy triangle, defined as:
     \begin{displaymath} 
@@ -302,6 +303,7 @@
         \frac{2h(t)^k}{3+h(t)-\sqrt{h(t)^2+6h(t)+1}}
     \end{displaymath} 
 
+    \subsection{Some conjectures}
 
     \subsection{A theorem when $\mathcal{R}(d(t), td(t))$}
 
@@ -371,9 +373,13 @@
         \sum_{s\geq 0}{ \sum_{r\geq 0}{\gamma_{s,r}^{(k+1)} h(t)^{r}}} =
         \sum_{r\geq 0}{ \left(\sum_{s\geq 0}{\gamma_{s,r}^{(k+1)} }\right) h(t)^{r}}
     \end{displaymath}
-    calling $\nu_{r}^{(k+1)}=\sum_{s\geq 0}{\gamma_{s,r}^{(k+1)} }$ provide the requested equation:
+    calling $\nu_{r}^{(k+1)}=\sum_{s\geq 0}{\gamma_{s,r}^{(k+1)} }$, the following equation
+    joins our starting point with the requested argument:
     \begin{displaymath}
-        \sum_{r\geq 0}{ \nu_{r}^{(k+1)} h(t)^{r}}
+        \frac{(1+y)^{k+1}}{ \hat{h}(1+y)} = 
+        \frac{(1+y)(1+y)^{k}}{ \hat{h}(1+y)} = 
+        \frac{h(t)h(t)^{k}}{ \hat{h}(h(t))} = 
+        d(t)h(t)^{k} = \sum_{r\geq 0}{ \nu_{r}^{(k+1)} h(t)^{r}}
     \end{displaymath}
     
     
