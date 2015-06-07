@@ -305,6 +305,58 @@
 
     \subsection{Some conjectures}
 
+    In this section we try to point out the meaning of this characterization
+    and some open questions about it.
+
+    \subsubsection{Points of view}
+
+    Let $\mathcal{R}\left(d(t),h(t)\right)$ be a Riordan array and $\mathcal{R}_{h(t)}$ be
+    its characterization built using the previous method.
+    
+    The first point of view is to see $\mathcal{R}_{h(t)}$ as a \emph{factorization}
+    of $\mathcal{R}$ in terms of $h(t)$. Namely, the structure of the characterization
+    depends both on functions $d$ and $\hat{h}$, but the building block is function $h$
+    alone. Moreover, second component of $\mathcal{R}_{h(t)}$ is function $h$ itself,
+    therefore it seems that the $k$-fold convolution of $h$ with itself in the generic
+    $k$ column expansion is common both to $\mathcal{R}$ both to $\mathcal{R}_{h(t)}$.
+
+    The second point of view is to see $\mathcal{R}_{h(t)}$ as a \emph{schema} array.
+    To understand this concept abstract over $h(t)$ and think about it as a ``plugin''
+    function, one that can be substituted with any function $g(t)$ we like, to get a new array
+    $\mathcal{R}^{\stackrel{g(t)}{\rightarrow}}$ (this notation is just a reminder that the array is obtained
+    by pluging in $g(t)$ into the schema). It's pretty easy, and sound, to check:
+    \begin{displaymath}
+        \mathcal{R}^{\stackrel{h(t)}{\rightarrow}} = \mathcal{R}_{y=h(t)-1}\left( d(\hat{h}(1+y)), 1+y \right) = \mathcal{R}
+    \end{displaymath}
+    while considering an arbitrary function $g(t)$:
+    \begin{displaymath}
+        \mathcal{R}^{\stackrel{g(t)}{\rightarrow}} = \mathcal{R}_{y=g(t)-1}\left( d(\hat{h}(1+y)), 1+y \right) = 
+        \left( d(\hat{h}(g(t))), g(t) \right) 
+    \end{displaymath}
+    observe how the first component of $\mathcal{R}^{\stackrel{g(t)}{\rightarrow}}$ depends on
+    $\mathcal{R}$ by composition of functions $d$ and $\hat{h}$. So, every array seems to have
+    a ``nested schema'' that allow to build new arrays.
+
+
+    \subsubsection{Open questions}
+
+    With the previous point of views we asks, respectively:
+    \begin{itemize}
+        \item let $\mathcal{R}_{h(t)}=\left(G(h(t)), h(t)\right)$ a factorization of $\mathcal{R}$,
+            and consider the series expansion of $[G(y)|y=h(t)]=g_0 + g_1 y + g_2 y^2 + \ldots$: 
+            what's the interpretation of coefficients $\lbrace g_i\rbrace_{i\in\mathbb{N}}$? It's pretty
+            curious that, studying well known arrays in previous sections, 
+            if $\mathcal{R}=\left(d(t), td(t)\right)$ then $G(y) = A(t)$, where $A(t)$
+            is the $\mathcal{R}$'s A-sequence: does exist a deep relation among those sequences for arbitrary
+            arrays?   
+        \item let $\mathcal{P}$ and $\mathcal{C}$ be Pascal and Catalan arrays, respectively: 
+            what does $\mathcal{C}^{\stackrel{\frac{t}{1-t}}{\rightarrow}}$ count? 
+            More generally, choosen two Riordan arrays $\mathcal{A}$ and $\mathcal{B}$, 
+            $\mathcal{A}^{\stackrel{h_{\mathcal{B}}(t)}{\rightarrow}}$ also has a combinatorial meaning? 
+            So does $\mathcal{B}^{\stackrel{h_{\mathcal{A}}(t)}{\rightarrow}}$? What about considering
+            combinations involving  $\mathcal{A}^{-1}$ and $\mathcal{B}^{-1}$ too?
+    \end{itemize}
+
     \subsection{A theorem when $\mathcal{R}(d(t), td(t))$}
 
     By observing previous results, it seems there's a relation
