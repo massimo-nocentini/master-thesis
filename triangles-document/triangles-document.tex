@@ -335,20 +335,105 @@
     \end{displaymath}
     observe how the first component of $\mathcal{R}^{\stackrel{g(t)}{\rightarrow}}$ depends on
     $\mathcal{R}$ by composition of functions $d$ and $\hat{h}$. So, every array seems to have
-    a ``nested schema'' that allow to build new arrays.
+    a ``nested schema'' that allows to build new arrays.
+    \\\\
+    We finish with a theorem about arrays in the \emph{renewal} subgroup.
 
+    \begin{theorem}
+        Let $\mathcal{R}\left(d(t), h(t)\right)$ a Riordan array belonging
+        to the \emph{renewal} subgroup, so $h(t)=td(t)$. Then:
+        \begin{displaymath}
+            \mathcal{R}_{h(t)}\left(A(h(t)), h(t))\right)=
+            \left[\left.\mathcal{R}\left(A(y), y)\right)\right|y=h(t)\right] =
+            \mathcal{R}_{y=h(t)}\left(A(y), y)\right)
+        \end{displaymath}
+        where $A(t)$ is the generating function over $\mathcal{R}$'s $A$-sequence 
+        $\lbrace a_i \rbrace_{i\in\mathbb{N}}$. 
+    \end{theorem}
+
+    \begin{proof}
+        Recall that $A$-sequence of a Riordan array $\mathcal{R}\left(d(t), h(t)\right)$
+        satisfies:
+        \begin{displaymath}
+            h(t)=tA(h(t))
+        \end{displaymath}
+        By hypothesis, assume $\mathcal{R}$ belongs to the \emph{renewal} subgroup, therefore
+        \begin{displaymath}
+            \mathcal{R}\left(A(h(t)), h(t)\right)
+        \end{displaymath}
+        Let $\mathcal{R}_{h(t)}\left(g(h(t)), h(t)\right)$ be the factorization of $\mathcal{R}$,
+        for some generating function $g$. Now plug $h(t)$ into $\mathcal{R}_{h(t)}$:
+        \begin{displaymath}
+            \mathcal{R}^{\stackrel{h(t)}{\rightarrow}} =
+                \mathcal{R}\left(g(h(t)), h(t)\right)
+        \end{displaymath}
+        But $\mathcal{R}^{\stackrel{h(t)}{\rightarrow}} = \mathcal{R}$, therefore 
+        $[g(y)=A(y)|y=h(t)]$ follows, as required.
+
+    \end{proof}
+
+    Looking at it deeply, it is possible to have a stronger formulation, namely the 
+    converse holds indeed: the reason for this is the unique existence of an $A$-sequence
+    for each Riordan array, the argument follows using $h(t)=tA(h(t))$ again .
+    \\\\
+    This little theorem shows a possible application of the factorization point of view.
+    Consider the Motzkin array defined as:
+    \begin{displaymath} 
+        \mathcal{M} =\left( \frac{1-t-\sqrt{1-2t-3t^2}}{2t^2},
+           \frac{1-t-\sqrt{1-2t-3t^2}}{2t}  \right)
+    \end{displaymath} 
+    Surely $\mathcal{M}$ is a renewal array and, being in the Riordan group, 
+    has an $A$-sequence, which satisfies $A(t)=1+t+t^2$: 
+    this information \emph{can't} be read from the above definition.
+
+    Consider instead: let $h(t)=\frac{1-t-\sqrt{1-2t-3t^2}}{2t}$ be the second
+    component of Motzkin array $\mathcal{M}$, which factor as follows:
+    \begin{displaymath} 
+        \mathcal{M}_{h(t)}\left( 1+h(t)+h(t)^2, h(t) \right) 
+    \end{displaymath} 
+    using this definition for $\mathcal{M}$, $A$-sequence $[A(y)=1+y+y^2|y=h(t)]$ can
+    be read from the first component directly.
+
+    \subsubsection{Inverting an array}
+    Let $\mathcal{R}\left(d(t),h(t)\right)$ be a Riordan array and let 
+    $\mathcal{R}_{h(t)}\left(g(h(t)),h(t)\right)$ its factorization, for some
+    function $g$ in $h(t)$ (very important to understand: here $h(t)$ shouldn't be
+    interpreted as a \emph{function} from the definition of $\mathcal{R}$, instead
+    abstract over it and consider it as a \emph{variable}). 
+    Using rules for inversion in the Riordan group, proceed as follow:
+    \begin{displaymath}
+        \mathcal{R}_{h(t)}^{-1}\left(\frac{1}{g(h(\hat{h}(t)))},\hat{h}(t)\right)=
+        \left[\mathcal{R}^{-1}\left(\frac{1}{g(h(y))},y\right) | y = \hat{h}(t) \right]=
+        \mathcal{R}_{\hat{h}(t)}\left(k(\hat{h}(t)),\hat{h}(t)\right)
+    \end{displaymath}
+    where $k(y)=\frac{1}{g(h(y))}$, therefore we got a new array factored respect $\hat{h}(t)$.
 
     \subsubsection{Open questions}
 
-    With the previous point of views we asks, respectively:
+    Under previous insights, we ask respectively:
     \begin{itemize}
-        \item let $\mathcal{R}_{h(t)}=\left(G(h(t)), h(t)\right)$ a factorization of $\mathcal{R}$,
-            and consider the series expansion of $[G(y)|y=h(t)]=g_0 + g_1 y + g_2 y^2 + \ldots$: 
-            what's the interpretation of coefficients $\lbrace g_i\rbrace_{i\in\mathbb{N}}$? It's pretty
-            curious that, studying well known arrays in previous sections, 
-            if $\mathcal{R}=\left(d(t), td(t)\right)$ then $G(y) = A(t)$, where $A(t)$
-            is the $\mathcal{R}$'s A-sequence: does exist a deep relation among those sequences for arbitrary
-            arrays?   
+        \item let $\mathcal{R}_{h(t)}=\left(g(h(t)), h(t)\right)$ a factorization of $\mathcal{R}$,
+            and consider the series expansion of $[g(y)=g_0 + g_1 y + g_2 y^2 + \ldots|y=h(t)]$: 
+            what's the interpretation of coefficients $\lbrace g_i\rbrace_{i\in\mathbb{N}}$? 
+            
+            Last theorem shows that, provided $\mathcal{R}=\left(d(t), td(t)\right)$, then 
+            $[g(y)=A(y)|y=h(t)]$ where $A(t)$ is $\mathcal{R}$'s A-sequence: 
+            does exist a deep relation among those sequences for arbitrary arrays?   
+            For instance, what about Fibonacci array $\mathcal{F}$: 
+            \begin{displaymath}
+                \begin{split}
+                    \big[ g_{\mathcal{F}}(y) &= 1 + y + y^{2} - y^{3} -2y^{4} 
+                    -3 y^{5}  +3 y^{7} \\
+                    &+7 y^{8} +4 y^{9} + \mathcal{O}\left(y^{10}\right) | y=h_{\mathcal{F}}(t) \big]
+                \end{split}
+            \end{displaymath}
+            and about Delannoy array $\mathcal{D}$: 
+            \begin{displaymath}
+                \begin{split}
+                    \big[ g_{\mathcal{D}}(y) &= 1 + 1 y + - y^{2} + 3 y^{3} + -11y^{4} + 45 y^{5} + -197y^{6}\\ 
+                    &+ 903 y^{7} + -4279y^{8} + \mathcal{O}\left(y^{9}\right)| y=h_{\mathcal{D}}(t) \big]
+                \end{split}
+            \end{displaymath}
         \item let $\mathcal{P}$ and $\mathcal{C}$ be Pascal and Catalan arrays, respectively: 
             what does $\mathcal{C}^{\stackrel{\frac{t}{1-t}}{\rightarrow}}$ count? 
             More generally, choosen two Riordan arrays $\mathcal{A}$ and $\mathcal{B}$, 
