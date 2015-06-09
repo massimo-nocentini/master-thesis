@@ -9,6 +9,7 @@
 \usepackage{amsthm}
 \usepackage{caption}
 \usepackage{changes}
+\usepackage{marginnote}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -487,6 +488,8 @@
             &=\left.\left[\left.\left(\gamma(\hat{h}_{\mathcal{B}}(k))\eta(k), k  \right) \right|
                  k=h_{\mathcal{B}}(y) \right]\right|_{y=h_{\mathcal{A}}(t)}\\
             &=\left.\left[\left.\left(\Theta(k), k  \right) \right| k=h_{\mathcal{B}}(y) \right]\right|_{y=h_{\mathcal{A}}(t)}\\
+            &=\left[\left.\left(\Theta(k), k  \right) \right| h_{\mathcal{B}}(\hat{h}_{\mathcal{A}}(\hat{h}_{\mathcal{B}}(k)))=h_{\mathcal{B}}(t) \right]
+                \marginnote{this writing really abstract over $h_{\mathcal{B}}(t)$ and dependency on $y$ really vanish}\\
             &=\left.\big(\mathcal{A}\mathcal{B}\big)_{h_{\mathcal{B}}(y)}\left(
                 \Theta(h_{\mathcal{B}}(y)), h_{\mathcal{B}}(y)  \right)\right|_{y=h_{\mathcal{A}}(t)}
         \end{split}
@@ -499,7 +502,7 @@
     For the sake of clarity we apply the previous derivation to the product $\mathcal{P}\mathcal{F}$, namely
     we are multiplying Pascal and Fibonacci arrays, \emph{in the given order}, providing 
     both $\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{P}}(t)}$ 
-    both $\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)}$.
+    both $\left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)}\right|_{y=h_{\mathcal{P}}(t)}$.
 
     Recall how $\mathcal{P}$ and $\mathcal{F}$ are factored:
     \begin{displaymath}
@@ -519,6 +522,7 @@
             &\left[\left.\eta(y) = \frac{1}{1-y+2y^3-y^4} \right| y=h_{\mathcal{F}}(t) \right]\\
         \end{split}
     \end{displaymath}
+
     Toward $\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{P}}(t)}$, compute $\Omega$ function:
     \begin{displaymath}
         \left[\Omega(y)= \gamma(y)\eta(h_{\mathcal{F}}(y))| y=h_{\mathcal{P}}(t) \right]
@@ -530,17 +534,19 @@
             h_{\mathcal{P}}(t)}{1-h_{\mathcal{P}}(t)-h_{\mathcal{P}}(t)^2}, \frac{1-\sqrt{1-4h_{\mathcal{P}}(t)}}{2} \right)
     \end{displaymath}
 
-    Toward $\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(t)}$, compute $\Theta$ function, 
-    with $\hat{h}_{\mathcal{F}}(y)=y-y^2$:
+    Toward $\left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(t)}\right|_{y=h_{\mathcal{P}}(t)}$, compute $\Theta$ function:
+
     \begin{displaymath}
-        \left[\left.\Theta(k)=\gamma(\hat{h}_{\mathcal{F}}(k))\eta(k) \right| k=h_{\mathcal{F}}(y) \right]
-            = \left[\left.\Theta(k)=\frac{1+k-k^2}{1-k+ 2k^3 - k^4} \right| k=h_{\mathcal{F}}(y) \right]
+        \begin{split}
+            &\left.\left[\left.\Theta(k)=\gamma(\hat{h}_{\mathcal{F}}(k))\eta(k) \right| k=h_{\mathcal{F}}(y) \right]\right|_{y=h_{\mathcal{P}}(t)}\\
+            &= \left.\left[\left.\Theta(k)=\frac{1+k-k^2}{1-k+ 2k^3 - k^4} \right| k=h_{\mathcal{F}}(y) \right]\right|_{y=h_{\mathcal{P}}(t)}\\
+        \end{split}
     \end{displaymath}
-    therefore tackle the second request:
+    where $\hat{h}_{\mathcal{F}}(y)=y-y^2$, therefore tackle the second request:
     \begin{displaymath}
-        \big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)} \left(
+        \left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)} \left(
             \frac{1+h_{\mathcal{F}}(y)-h_{\mathcal{F}}(y)^2}{1-h_{\mathcal{F}}(y)+ 2h_{\mathcal{F}}(y)^3 - h_{\mathcal{F}}(y)^4} ,
-            h_{\mathcal{F}}(y) \right)
+            h_{\mathcal{F}}(y) \right)\right|_{y=h_{\mathcal{P}}(t)}
     \end{displaymath}
     
     Little check pluging in function $h_{\mathcal{P}}(t)$:
@@ -548,10 +554,10 @@
         \left(\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{P}}(t)}\right)^{\stackrel{h_{\mathcal{P}}(t)}{\rightarrow}}
             = \big(\mathcal{P}\mathcal{F}\big)\left(\frac{1-t}{1-3t+t^2}, \frac{1}{2}-\frac{1}{2}\sqrt{\frac{1-5t}{1-t}} \right)
     \end{displaymath}
-    on the other hand, pluging in function $h_{\mathcal{F}}(t)$:
+    on the other hand, pluging in function $h_{\mathcal{F}}(y)$, where $y=h_{\mathcal{P}}(t)$:
     \begin{displaymath}
-        \left(\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(t)}\right)^{\stackrel{h_{\mathcal{F}}(t)}{\rightarrow}}
-            = \big(\mathcal{P}\mathcal{F}\big)\left(\frac{1+t}{1-t-t^2}, \frac{1-\sqrt{1-4t}}{2} \right)
+        \left.\left(\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)}\right)^{\stackrel{h_{\mathcal{F}}(y)}{\rightarrow}}\right|_{y=h_{\mathcal{P}}(t)}
+            = \left.\big(\mathcal{P}\mathcal{F}\big)\left(\frac{1+y}{1-y-y^2}, \frac{1-\sqrt{1-4y}}{2} \right)\right|_{y=h_{\mathcal{P}}(t)}
     \end{displaymath}
 
 
