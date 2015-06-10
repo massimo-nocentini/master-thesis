@@ -496,6 +496,7 @@
     \end{displaymath}
     where $\left.\left[\left.\Theta(k)=\gamma(\hat{h}_{\mathcal{B}}(k))\eta(k) \right| 
         k=h_{\mathcal{B}}(y) \right]\right|_{y=h_{\mathcal{A}}(t)}$.
+
     Observe that for the latter factorization, it is necessary to compute function $\hat{h}_{\mathcal{B}}$, 
     the compositional inverse of function $h_{\mathcal{B}}$.
     \\\\
@@ -673,10 +674,109 @@
         \frac{h(t)h(t)^{k}}{ \hat{h}(h(t))} = 
         d(t)h(t)^{k} = \sum_{r\geq 0}{ \nu_{r}^{(k+1)} h(t)^{r}}
     \end{displaymath}
-    
-    
 
     \end{proof}
+
+    \subsection{A generalization of the $A$-sequence concept}
+
+    Every Riordan array has a particular sequence, denote it with $A(t)$,
+    that uniquely characterize it (to be precise another sequence, denote it 
+    with $Z(t)$, is needed to fullfil the very first column), capturing the
+    way every element $d_{n+1,k+1}$ can be written as a linear combination
+    of element lying on the previous row, formally:
+    \begin{displaymath}
+        d_{n+1,k+1} = a_{0}d_{n,k} +a_{1}d_{n,k+1} +a_{2}d_{n,k+2} + \ldots + a_{j}d_{n,k+j}
+    \end{displaymath}
+    where $j = n-k$. In this section we would like to offer a generalization
+    of this ``combination device'', providing a machinery to build sequences 
+    that combines elements as desired using coefficients lying on arbitrary rows.
+
+    What follows doesn't use the alternative characterization developed in 
+    previous section, we put it here just because use a ``column-oriented''
+    approach, as used in the characterization. For the sake of simplicity,
+    however, we start from an array $\mathcal{R}(d(t),h(t))$ and its 
+    factorization $\mathcal{R}_{h(t)}(g(h(t)), h(t))$, for some function $g$.
+    
+    Consider the following question: there exists a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$,
+    of coefficients such that the generic element $d_{n+1,k+1}\in\mathcal{R}$ can be written
+    as a linear combination of all other elements $d_{n,j}$ lying on the previous rows, namely for all 
+    $j\in\lbrace0,1,2,\ldots,n\rbrace$? Later we ask a more general question, for now tackle the current one.
+
+    The previous statement can be written in a compact way, or \emph{column-wise}, as:
+    \begin{displaymath}
+        g(h(t))h(t)^k = \sum_{i\geq0}{\gamma_i\,t\,g(h(t)) h(t)^i}\\
+    \end{displaymath}
+    To see way, recall that generating function of a generic column $k$ is $g(h(t))h(t)^k$
+    and imagine that series written vertically, with increasing degree of $t$ from top to bottom.
+    The required constraint on coefficient of $t^n$, namely $d_{nk}$, to be the linear combination
+    of elements lying on the previous row can be satisfied if we \emph{shift downward} every column,
+    namely multiplying each one by $t$, and combining them using coefficients
+    from $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$. We learnt this trick from Shapiro 
+    introductory article \emph{The Riordan group}.
+
+    Simplifying $g(h(t))$ shows that using the factored representation or
+    the natural one doesn't make any difference, therefore:
+    \begin{displaymath}
+        h(t)^k = t \sum_{i\geq 0}{\gamma_i\,h(t)^i} = t \Gamma(h(t))
+    \end{displaymath}
+    Doing a change of variable to abstract over $h(t)$, its possible to
+    structure the basic for a generic schema:
+    \begin{displaymath}
+        \left[y^{k} = \hat{h}(y) \Gamma(y) \big| y = h(t) \right]
+    \end{displaymath}
+    
+    Before going on, just use the previous device against known arrays. Take 
+    array $\mathcal{C}$, so $\hat{h}_{\mathcal{C}}(y) = y-y^2$, hence:
+    \begin{displaymath}
+        \begin{split}
+            &\left[\frac{y^{k-1}}{1-y} =  \Gamma(y) \big| y = h(t) \right]\\
+            &\left.\left[\Gamma(y)=\left(\underbrace{\gamma_{0}=0,\ldots,\gamma_{k-2}=0}_{k-1 \text{ zeros}},
+                \underbrace{\gamma_{k-1}=1, \ldots}_{\text{infinitely many ones}} \right) \right| y = h(t) \right]\\
+        \end{split}
+    \end{displaymath}
+    what it says is: ``in order to get $d_{nk}\in\mathcal{C}$ take the sum $\sum_{i=k-1}^{n-1}{d_{n-1,i}}$'', 
+    as required. Motzkin's turn, $\hat{h}_{\mathcal{M}}(y) = \frac{y}{1+y+y^2}$, hence:
+    \begin{displaymath}
+            \left[\Gamma(y)=y^{k-1}+y^{k}+y^{k+1}\big| y = h(t) \right]
+    \end{displaymath}
+    what it says is: ``in order to get $d_{nk}\in\mathcal{M}$ take the sum $d_{n-1,k-1}+d_{n-1,k}+d_{n-1,k+1}$'', 
+    as required.
+    
+    What we've done is nothing more nothing less than writing $A$-sequences in a more generic format,
+    putting evidence on the \emph{local} meaning of the combination: it is explicitly written
+    the dependency of elements belonging to a column $k$. Natural $A$-sequences are stated toward 
+    a fixed start index application, namely $k-1$ if combining for elements in a column $k$.
+
+    It is possible to get the natural $A$-sequence back by requiring that combination of elements
+    lying on the previous row starts at index $k-1$, formally:
+    \begin{displaymath}
+        \left[y^{k} = y^{k-1}\,\hat{h}(y)\,\Gamma(y) \big| y = h(t) \right] = 
+        \left[y = \hat{h}(y)\,\Gamma(y) \big| y = h(t) \right]
+    \end{displaymath}
+    since $h(t) = t\,A(h(t))$, then formal power series $\Gamma(y)$ and $A(t)$ are defined over
+    the same sequence, as desired.
+
+    What if we ask: find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ such that 
+    allow to build an element $d_{nk}\in\mathcal{R}$ combining elements lying on a previous row $n-3$,
+    therefore above three lines, starting from the same column index $2$. Set the stage:
+    \begin{displaymath}
+        \left[y^{k} = y^{2}\,\hat{h}(y)^3\,\Gamma(y) \big| y = h(t) \right]
+    \end{displaymath}
+
+    Two quick checks, $\mathcal{C}$ the first:
+    \begin{displaymath}
+        \left[-\frac{y^{k-5}}{(y-1)^3} = \Gamma(y) \big| y = h(t) \right]
+    \end{displaymath}
+    in order to find $d_{7,5}$, choosen at random, expand function $\Gamma$ with $k=5$:
+    \begin{displaymath}
+        \left.\left[\Gamma(y)=1 + 3y + 6y^2 + 10y^3 + 15y^4 + \mathcal{O}(y^5) \big| y = h(t) \right]\right|_{k=5}
+    \end{displaymath}
+    therefore $d_{7,5}=d_{4,2} + 3\,d_{4,3} + 6\,d_{4,4}$, instantiating $27 = 9 + 3\cdot4 + 6\cdot1$, which holds.
+    Just another element, say $d_{9,7}$, so expand function $\Gamma$ with $k=7$:
+    \begin{displaymath}
+        \left.\left[\Gamma(y)=y^2 + 3y^3 + 6y^4 + 10y^5 +  \mathcal{O}(y^6) \big| y = h(t) \right]\right|_{k=7}
+    \end{displaymath}
+    therefore $d_{9,7}=d_{6,4} + 3\,d_{6,5} + 6\,d_{6,6}$, instantiating $44 = 20 + 3\cdot6 + 6\cdot1$, which holds.
 
 
     \section{Implementation}
