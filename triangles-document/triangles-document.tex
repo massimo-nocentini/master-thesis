@@ -679,48 +679,63 @@
 
     \subsection{A generalization of the $A$-sequence concept}
 
-    Every Riordan array has a particular sequence, denote it with $A(t)$,
-    that uniquely characterize it (to be precise another sequence, denote it 
-    with $Z(t)$, is needed to fullfil the very first column), capturing the
-    way every element $d_{n+1,k+1}$ can be written as a linear combination
-    of element lying on the previous row, formally:
+    Every Riordan array $\mathcal{R}$ has a particular sequence 
+    $\lbrace a_i\rbrace_{i\in\mathbb{N}}$,
+    called $A$-sequence (and denote with $A(t)$ the fps over it),
+    such that uniquely characterize it (to be precise another sequence
+    $\lbrace z_i\rbrace_{i\in\mathbb{N}}$, called $Z$-sequence, is needed 
+    to fullfil the very first column, together with $d_{00}$, the root element), 
+    capturing the way every element $d_{n+1,k+1}$ can be written as a linear combination
+    of elements lying on the previous row, formally:
     \begin{displaymath}
-        d_{n+1,k+1} = a_{0}d_{n,k} +a_{1}d_{n,k+1} +a_{2}d_{n,k+2} + \ldots + a_{j}d_{n,k+j}
+        d_{n+1,k+1} = a_{0}d_{n,k} +a_{1}d_{n,k+1} +a_{2}d_{n,k+2} + 
+            \ldots + a_{j}d_{n,k+j}
     \end{displaymath}
     where $j = n-k$. In this section we would like to offer a generalization
-    of this ``combination device'', providing a machinery to build sequences 
-    that combines elements as desired using coefficients lying on arbitrary rows.
+    of this ``combinatorial device'', providing a machinery to build sequences 
+    that combine coefficients, possibly lying on arbitrary rows, as desired.
+    Finally, a connection with $A$-matrix concept is explored, leaving an open 
+    question.
+
 
     What follows doesn't use the alternative characterization developed in 
-    previous section, we put it here just because use a ``column-oriented''
+    previous section, we put it here because use a \emph{column oriented}
     approach, as used in the characterization. For the sake of simplicity,
     however, we start from an array $\mathcal{R}(d(t),h(t))$ and its 
     factorization $\mathcal{R}_{h(t)}(g(h(t)), h(t))$, for some function $g$.
     
-    Consider the following question: there exists a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$,
-    of coefficients such that the generic element $d_{n+1,k+1}\in\mathcal{R}$ can be written
-    as a linear combination of all other elements $d_{n,j}$ lying on the previous rows, namely for all 
-    $j\in\lbrace0,1,2,\ldots,n\rbrace$? Later we ask a more general question, for now tackle the current one.
+    \subsubsection{Localizing $A$-sequences}
+
+    Consider the following question: there exists a sequence 
+    $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ of coefficients 
+    such that the generic element $d_{n+1,k+1}\in\mathcal{R}$ can be written
+    as a linear combination of \emph{all} other elements $d_{n,j}$ 
+    lying on the previous row, namely for all $j\in\lbrace0,1,2,\ldots,n\rbrace$? 
+    Later we ask a more general question, for now tackle the current one.
 
     The previous statement can be written in a compact way, or \emph{column-wise}, as:
     \begin{displaymath}
         g(h(t))h(t)^k = \sum_{i\geq0}{\gamma_i\,t\,g(h(t)) h(t)^i}\\
     \end{displaymath}
-    To see way, recall that generating function of a generic column $k$ is $g(h(t))h(t)^k$
-    and imagine that series written vertically, with increasing degree of $t$ from top to bottom.
-    The required constraint on coefficient of $t^n$, namely $d_{nk}$, to be the linear combination
-    of elements lying on the previous row can be satisfied if we \emph{shift downward} every column,
+    To see why, recall that generating function of a generic column 
+    $k$ is $g(h(t))h(t)^k$ and imagine that series written vertically, 
+    with increasing degree of $t$ from top to bottom.
+    The required constraint on coefficient of $t^n$, namely $d_{nk}$, 
+    to be a linear combination of elements lying on the previous row 
+    can be satisfied if we \emph{shift downward} every column,
     namely multiplying each one by $t$, and combining them using coefficients
-    from $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$. We learnt this trick from Shapiro 
-    introductory article \emph{The Riordan group}.
+    from $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$. 
+    We learnt this trick from Shapiro introductory article \emph{The Riordan group}.
 
     Simplifying $g(h(t))$ shows that using the factored representation or
     the natural one doesn't make any difference, therefore:
     \begin{displaymath}
         h(t)^k = t \sum_{i\geq 0}{\gamma_i\,h(t)^i} = t \Gamma(h(t))
     \end{displaymath}
+    where function $\Gamma$ is a fps over sequence 
+    $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$.
     Doing a change of variable to abstract over $h(t)$, its possible to
-    structure the basic for a generic schema:
+    structure the basic for a generic schema (or \emph{device} if you please):
     \begin{displaymath}
         \left[y^{k} = \hat{h}(y) \Gamma(y) \big| y = h(t) \right]
     \end{displaymath}
@@ -728,55 +743,172 @@
     Before going on, just use the previous device against known arrays. Take 
     array $\mathcal{C}$, so $\hat{h}_{\mathcal{C}}(y) = y-y^2$, hence:
     \begin{displaymath}
-        \begin{split}
-            &\left[\frac{y^{k-1}}{1-y} =  \Gamma(y) \big| y = h(t) \right]\\
-            &\left.\left[\Gamma(y)=\left(\underbrace{\gamma_{0}=0,\ldots,\gamma_{k-2}=0}_{k-1 \text{ zeros}},
-                \underbrace{\gamma_{k-1}=1, \ldots}_{\text{infinitely many ones}} \right) \right| y = h(t) \right]\\
-        \end{split}
+        \left[\frac{y^{k-1}}{1-y} =  \Gamma(y) \big| y = h(t) \right]\\
     \end{displaymath}
-    what it says is: ``in order to get $d_{nk}\in\mathcal{C}$ take the sum $\sum_{i=k-1}^{n-1}{d_{n-1,i}}$'', 
-    as required. Motzkin's turn, $\hat{h}_{\mathcal{M}}(y) = \frac{y}{1+y+y^2}$, hence:
+    so sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ satisfies:
+    \begin{displaymath}
+        \lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}} = 
+            \left(\underbrace{\gamma_{0}=0,\ldots,\gamma_{k-2}=0}_{k-1 \text{ zeros}},
+                \underbrace{\gamma_{k-1}=1, \ldots}_{\text{infinitely many ones}} \right)
+    \end{displaymath}
+    what it says is: ``in order to get $d_{nk}\in\mathcal{C}$ take the sum 
+    $\sum_{i=k-1}^{n-1}{d_{n-1,i}}$'', as known. Motzkin's turn, 
+    $\hat{h}_{\mathcal{M}}(y) = \frac{y}{1+y+y^2}$, hence:
     \begin{displaymath}
             \left[\Gamma(y)=y^{k-1}+y^{k}+y^{k+1}\big| y = h(t) \right]
     \end{displaymath}
-    what it says is: ``in order to get $d_{nk}\in\mathcal{M}$ take the sum $d_{n-1,k-1}+d_{n-1,k}+d_{n-1,k+1}$'', 
-    as required.
+    what it says is: ``in order to get $d_{nk}\in\mathcal{M}$ take the sum 
+    $d_{n-1,k-1}+d_{n-1,k}+d_{n-1,k+1}$'', as known.
     
-    What we've done is nothing more nothing less than writing $A$-sequences in a more generic format,
-    putting evidence on the \emph{local} meaning of the combination: it is explicitly written
-    the dependency of elements belonging to a column $k$. Natural $A$-sequences are stated toward 
-    a fixed start index application, namely $k-1$ if combining for elements in a column $k$.
+    What we've done is nothing more nothing less than writing $A$-sequences 
+    in a more generic format, putting evidence on the \emph{local} meaning 
+    of the combination: it is explicitly written the dependency of 
+    elements belonging to a column $k$. On the other hand, natural $A$-sequences 
+    are stated with a fixed start index in mind, namely $k-1$ if combining 
+    for elements in a column $k$.
 
-    It is possible to get the natural $A$-sequence back by requiring that combination of elements
-    lying on the previous row starts at index $k-1$, formally:
+    It is possible to get the natural $A$-sequence back by requiring that 
+    combination of elements lying on the previous row starts at index $k-1$, formally:
     \begin{displaymath}
         \left[y^{k} = y^{k-1}\,\hat{h}(y)\,\Gamma(y) \big| y = h(t) \right] = 
         \left[y = \hat{h}(y)\,\Gamma(y) \big| y = h(t) \right]
     \end{displaymath}
-    since $h(t) = t\,A(h(t))$, then formal power series $\Gamma(y)$ and $A(t)$ are defined over
-    the same sequence, as desired.
+    since $h(t) = t\,A(h(t))$, then formal power series 
+    $\Gamma(y)$ and $A(t)$ are defined over the same sequence, as desired.
+    \\\\
+    Here there are a couple of applications. 
 
-    What if we ask: find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ such that 
-    allow to build an element $d_{nk}\in\mathcal{R}$ combining elements lying on a previous row $n-3$,
-    therefore above three lines, starting from the same column index $2$. Set the stage:
+    What if we ask: find sequences $_{k}\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ 
+    such that an element $d_{nk}\in\mathcal{C}$ combines elements lying on 
+    row three lines above, starting from column index $2$, 
+    namely $d_{n-3,k}$ for all $k\in\lbrace 2,\ldots,n-3\rbrace$. 
+    Set the device:
     \begin{displaymath}
-        \left[y^{k} = y^{2}\,\hat{h}(y)^3\,\Gamma(y) \big| y = h(t) \right]
+        \left[y^{k} = y^{2}\,\hat{h}(y)^3\,\Gamma(y) \big| y = h(t) \right] =
+            \left[\frac{y^{k-5}}{(1-y)^3} = \Gamma(y) \big| y = h(t) \right]
     \end{displaymath}
 
-    Two quick checks, $\mathcal{C}$ the first:
+    Two quick checks: in order to find $d_{7,5}$, choosen at random, 
+    expand function $\Gamma$ with $k=5$:
     \begin{displaymath}
-        \left[-\frac{y^{k-5}}{(y-1)^3} = \Gamma(y) \big| y = h(t) \right]
+        \left.\left[\Gamma(y)=1 + 3y + 6y^2 + 10y^3 + 15y^4 + \mathcal{O}(y^5) 
+            \big| y = h(t) \right]\right|_{k=5}
     \end{displaymath}
-    in order to find $d_{7,5}$, choosen at random, expand function $\Gamma$ with $k=5$:
-    \begin{displaymath}
-        \left.\left[\Gamma(y)=1 + 3y + 6y^2 + 10y^3 + 15y^4 + \mathcal{O}(y^5) \big| y = h(t) \right]\right|_{k=5}
-    \end{displaymath}
-    therefore $d_{7,5}=d_{4,2} + 3\,d_{4,3} + 6\,d_{4,4}$, instantiating $27 = 9 + 3\cdot4 + 6\cdot1$, which holds.
+    therefore $d_{7,5}=d_{4,2} + 3\,d_{4,3} + 6\,d_{4,4}$, 
+    instantiating $27 = 9 + 3\cdot4 + 6\cdot1$, which holds.
     Just another element, say $d_{9,7}$, so expand function $\Gamma$ with $k=7$:
     \begin{displaymath}
-        \left.\left[\Gamma(y)=y^2 + 3y^3 + 6y^4 + 10y^5 +  \mathcal{O}(y^6) \big| y = h(t) \right]\right|_{k=7}
+        \left.\left[\Gamma(y)=y^2 + 3y^3 + 6y^4 + 10y^5 +  \mathcal{O}(y^6) 
+            \big| y = h(t) \right]\right|_{k=7}
     \end{displaymath}
-    therefore $d_{9,7}=d_{6,4} + 3\,d_{6,5} + 6\,d_{6,6}$, instantiating $44 = 20 + 3\cdot6 + 6\cdot1$, which holds.
+    therefore $d_{9,7}=d_{6,4} + 3\,d_{6,5} + 6\,d_{6,6}$, 
+    instantiating $44 = 20 + 3\cdot6 + 6\cdot1$, which holds.
+    It's interesting to observe the following fact: while a natural $A$-sequence
+    says how to combine starting always from the previous column index, with
+    this generalization we got the same coefficients for combining, while
+    an additional information from what column index the combination should start.
+
+    The previous two checks shows exactly this aspect: for column index $k=5$
+    combination starts at column index $2$, while for column index $k=7$ combination
+    starts at column index $4$.
+    \\\\
+    One last application, before the interlude: 
+    find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ such that 
+    an element $d_{nk}\in\mathcal{M}$ combines \emph{all} elements lying on 
+    the next row, namely $d_{n+1,k}$ for all $k\in\lbrace0,\ldots,n+1\rbrace$.
+    The first step is always setting the device:
+    \begin{displaymath}
+        \left[y^{k} = \hat{h}(y)^{-1}\,\Gamma(y) \big| y = h(t) \right]=
+            \left[ \frac{y^{k + 1}}{y^2 + y + 1} = \Gamma(y) \big| y = h(t) \right]
+    \end{displaymath}
+    in order to find $d_{6,3}$, choosen at random, expand function $\Gamma$ with $k=3$:
+    \begin{displaymath}
+        \left.\left[\Gamma(y)=y^4 -y^5 + y^7 -y^8 +y^{10} + \mathcal{O}(y^{11}) 
+            \big| y = h(t) \right]\right|_{k=3}
+    \end{displaymath}
+    therefore $d_{6,3}=d_{7,4} - d_{7,5} + d_{7,7}$, instantiating $44 = 70 -27 +1$, 
+    which holds. Just another element, say $d_{8,1}$, so expand function 
+    $\Gamma$ with $k=1$:
+    \begin{displaymath}
+        \left.\left[\Gamma(y)=y^2 -y^3 + y^5 -y^6 + y^8 -y^9 + y^{11} + 
+            \mathcal{O}(y^{12}) \big| y = h(t) \right]\right|_{k=1}
+    \end{displaymath}
+    therefore $d_{8,1}=d_{9,2} - d_{9,3} + d_{9,5}- d_{9,6}+ d_{9,8}- d_{9,9}$, 
+    instantiating $512 = 1422 -1140 +369 -147 +9 -1$, which holds.
+    \\\\
+    As a final remark, under the insights of two solved exercises, is that a
+    sequence found using this approach, knows which elements to combine and which
+    ones to discard, we're required to supply the set of available elements only.
+
+
+    \subsubsection{Interlude: let's generalize}
+    
+    Previous applications shows a pattern that can be pointed out looking at the generic device
+    for a Riordan array $\mathcal{R}$ where function $h$ is its second component:
+    \begin{displaymath}
+        \left[y^{k} = \hat{h}(y) \Gamma(y) \big| y = h(t) \right]
+    \end{displaymath}
+    On the left hand side of the variable substitution writing there's an
+    equation, where function $\Gamma$ is the unknown. In this format, respect
+    an element $d_{nk}\in\mathcal{R}$, a constraint is stated, which read as follows: 
+    to localize a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$
+    respect column $k$, combining all elements lying on the previous row $n-1$.
+
+    Since we're dealing with an equation, we can augment it as desired in order to
+    constraint over additional facts. For instance, consider the following question:
+    find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ such that 
+    an element $d_{nk}\in\mathcal{R}$ combines \emph{all} elements lying on 
+    \emph{some} row $r_\alpha$, with the additional property to add the combination of 
+    elements, define by a sequence $\lbrace \theta_{i} \rbrace_{i\in\mathbb{N}}$, 
+    lying on \emph{some different} row $r_\beta$. Formally, $\alpha,\beta\in\mathbb{Z}$ 
+    and $\alpha \not=\beta$, so set the device as usual:
+    \begin{displaymath}
+        \left[y^{k} = \hat{h}(y)^{\alpha} \Gamma(y) + \hat{h}(y)^{\beta} \Theta(y) \big| y = h(t) \right]
+    \end{displaymath}
+    Nonetheless its generality, its not the best one: to be truly general,
+    we should introduce two new parameters $c_\mu$ and $c_\nu$, which allow
+    to fix the column index from where the combinations denoted by functions
+    $\Gamma$ and $\Theta$ start, respectively. Here is the most general device:
+    \begin{displaymath}
+        \left[y^{k} = y^{c_\mu}\hat{h}(y)^{\alpha} \Gamma(y) + y^{c_\nu}\hat{h}(y)^{\beta} \Theta(y) \big| y = h(t) \right]
+    \end{displaymath}
+
+    Try to make the generalization at work:
+    find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ such that 
+    an element $d_{nk}\in\mathcal{D}$, in the Delannoy array, 
+    combines \emph{all} elements lying on 
+    the next row, namely $n+1$, in addition to the
+    combination of elements lying two row above, namely $n-2$, 
+    defined as their sum, simply. 
+
+    In order to set the device, we need $\hat{h}_{\mathcal{D}}$:
+    \begin{displaymath} 
+        \hat{h}_{\mathcal{D}}(y) = \frac{\sqrt{1+6y+y^2}-y-1}{2}
+    \end{displaymath} 
+    and build function $\Theta$ from the additional requirement:
+    \begin{displaymath} 
+        \Theta(y) = \frac{1}{1-y}
+    \end{displaymath} 
+    now we're ready:
+    \begin{displaymath}
+    \begin{split}
+        &\left[y^{k} = \hat{h}_{\mathcal{D}}(y)^{-1} \Gamma(y) + 
+            \hat{h}_{\mathcal{D}}(y)^{2}\frac{1}{1-y} \big| y = h(t) \right]\\
+        &= -\frac{y^{3} + {\left(y^{2} - 1\right)} y^{k} + 6 \, y^{2} - {\left({\left(y - 1\right)} y^{k} + y^{2} + 3 \, y + 1\right)} \sqrt{y^{2} + 6 \, y + 1} + 6 \, y + 1}{2 \, {\left(y - 1\right)}}\\
+    \end{split}
+    \end{displaymath}
+    in order to find $d_{8,1}$, choosen at random, expand function $\Gamma$ with $k=1$:
+    \begin{displaymath}
+        \left.\left[\Gamma(y)=y^2 -3y^3 + 11y^4  -47y^5 + 211y^6 -987y^7 + 4747y^8 
+            -23335y^9 + \mathcal{O}(y^{10}) \big| y = h(t) \right]\right|_{k=1}
+    \end{displaymath}
+    therefore $d_{8,1}=d_{9,2} -3\,d_{9,3} +11\,d_{9,4}-47\,d_{9,5} 
+        +211\,d_{9,6} -987\,d_{9,7} +4747\,d_{9,8}-23335\,d_{9,9}$, 
+        instantiating $15 = 113 -3\cdot377 +11\cdot681 -47\cdot681 +211\cdot377
+            -987\cdot113 +4747\cdot17 -23335 + \epsilon = -154 + \epsilon$, 
+            which holds, where
+            $\epsilon = d_{6,0}+d_{6,1}+d_{6,2}+d_{6,3}+d_{6,4}+d_{6,5}+d_{6,6} = 
+                2(d_{6,0}+d_{6,1}+d_{6,2})+d_{6,3} = 2(1 + 11 + 41) + 63 = 169$.
 
 
     \section{Implementation}
