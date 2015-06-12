@@ -333,7 +333,7 @@
     To understand this concept abstract over $h(t)$ and think about it as a ``plugin''
     function, one that can be substituted with any function $g(t)$ we like, to get a new array
     $\mathcal{R}^{\stackrel{g(t)}{\rightarrow}}$ (this notation is just a reminder that the array is obtained
-    by pluging in $g(t)$ into the schema). It's pretty easy, and sound, to check:
+    by plugging in $g(t)$ into the schema). It's pretty easy, and sound, to check:
     \begin{displaymath}
         \mathcal{R}^{\stackrel{h(t)}{\rightarrow}} = \mathcal{R}_{y=h(t)-1}\left( d(\hat{h}(1+y)), 1+y \right) = \mathcal{R}
     \end{displaymath}
@@ -441,7 +441,7 @@
     $1-y-y^2$ in the left array under variable constraint $y=\hat{h}(t)$, is obtained by
     evaluating $\frac{1}{g(h(y))}$, considering $y$ as a variable (abstracting this way $\hat{h}(t)$
     prevent to use it \emph{functionally}, otherwise $g(h(\hat{h}(k)))=g(k)$, where $k=h(t)$
-    according constraint under $g$ is defined, yieding a factorization in $h(t)$, not in $\hat{h}(t)$
+    according constraint under $g$ is defined, yielding a factorization in $h(t)$, not in $\hat{h}(t)$
     as we would like to have).
     
     If the explicit definition for $\mathcal{F}^{-1}$ is desired, just plug $\hat{h}(t)=t-t^2$:
@@ -558,12 +558,12 @@
             h_{\mathcal{F}}(y) \right)\right|_{y=h_{\mathcal{P}}(t)}
     \end{displaymath}
     
-    Little check pluging in function $h_{\mathcal{P}}(t)$:
+    Little check plugging in function $h_{\mathcal{P}}(t)$:
     \begin{displaymath}
         \left(\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{P}}(t)}\right)^{\stackrel{h_{\mathcal{P}}(t)}{\rightarrow}}
             = \big(\mathcal{P}\mathcal{F}\big)\left(\frac{1-t}{1-3t+t^2}, \frac{1}{2}-\frac{1}{2}\sqrt{\frac{1-5t}{1-t}} \right)
     \end{displaymath}
-    on the other hand, pluging in function $h_{\mathcal{F}}(y)$, where $y=h_{\mathcal{P}}(t)$:
+    on the other hand, plugging in function $h_{\mathcal{F}}(y)$, where $y=h_{\mathcal{P}}(t)$:
     \begin{displaymath}
         \left.\left(\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)}\right)^{\stackrel{h_{\mathcal{F}}(y)}{\rightarrow}}\right|_{y=h_{\mathcal{P}}(t)}
             = \left.\big(\mathcal{P}\mathcal{F}\big)\left(\frac{1+y}{1-y-y^2}, \frac{1-\sqrt{1-4y}}{2} \right)\right|_{y=h_{\mathcal{P}}(t)}
@@ -600,7 +600,7 @@
             \end{displaymath}
         \item let $\mathcal{P}$ and $\mathcal{C}$ be Pascal and Catalan arrays, respectively: 
             what does $\mathcal{C}^{\stackrel{\frac{t}{1-t}}{\rightarrow}}$ count? 
-            More generally, choosen two Riordan arrays $\mathcal{A}$ and $\mathcal{B}$, 
+            More generally, chosen two Riordan arrays $\mathcal{A}$ and $\mathcal{B}$, 
             $\mathcal{A}^{\stackrel{h_{\mathcal{B}}(t)}{\rightarrow}}$ also has a combinatorial meaning? 
             So does $\mathcal{B}^{\stackrel{h_{\mathcal{A}}(t)}{\rightarrow}}$? What about considering
             combinations involving  $\mathcal{A}^{-1}$ and $\mathcal{B}^{-1}$ too?
@@ -655,7 +655,7 @@
             \sum_{s\geq 0}{\alpha_{s}^{(k+1)} y^{s}}
     \end{displaymath}
     where $\alpha_{s}^{(k+1)} \in \mathbb{Z}$ such that $\alpha_{s}^{(k+1)}=\sum_{j=0}^{s}{k_j {{k+1}\choose{s-j}}}$.
-    By variable sustitution $y = h(t)-1$ rewrite as:
+    By variable substitution $y = h(t)-1$ rewrite as:
     \begin{displaymath}
         \sum_{s\geq 0}{\alpha_{s}^{(k+1)} y^{s}}
             = \sum_{s\geq 0}{\alpha_{s}^{(k+1)} (h(t)-1)^{s}}
@@ -692,7 +692,7 @@
     called $A$-sequence (and denote with $A(t)$ the fps over it),
     such that uniquely characterize it (to be precise another sequence
     $\lbrace z_i\rbrace_{i\in\mathbb{N}}$, called $Z$-sequence, is needed 
-    to fullfil the very first column, together with $d_{00}$, the root element), 
+    to fulfill the very first column, together with $d_{00}$, the root element), 
     capturing the way every element $d_{n+1,k+1}$ can be written as a linear combination
     of elements lying on the previous row, formally:
     \begin{displaymath}
@@ -733,7 +733,7 @@
     can be satisfied if we \emph{shift downward} every column,
     namely multiplying each one by $t$, and combining them using coefficients
     from $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$. 
-    We learnt this trick from Shapiro introductory article \emph{The Riordan group}.
+    We learned this trick from Shapiro introductory article \emph{The Riordan group}.
 
     Simplifying $g(h(t))$ shows that using the factored representation or
     the natural one doesn't make any difference, therefore:
@@ -796,7 +796,7 @@
             \left[\frac{y^{k-5}}{(1-y)^3} = \Gamma(y) \big| y = h(t) \right]
     \end{displaymath}
 
-    Two quick checks: in order to find $d_{7,5}$, choosen at random, 
+    Two quick checks: in order to find $d_{7,5}$, chosen at random, 
     expand function $\Gamma$ with $k=5$:
     \begin{displaymath}
         \left.\left[\Gamma(y)=1 + 3y + 6y^2 + 10y^3 + 15y^4 + \mathcal{O}(y^5) 
@@ -829,7 +829,7 @@
         \left[y^{k} = \hat{h}(y)^{-1}\,\Gamma(y) \big| y = h(t) \right]=
             \left[ \frac{y^{k + 1}}{y^2 + y + 1} = \Gamma(y) \big| y = h(t) \right]
     \end{displaymath}
-    in order to find $d_{6,3}$, choosen at random, expand function $\Gamma$ with $k=3$:
+    in order to find $d_{6,3}$, chosen at random, expand function $\Gamma$ with $k=3$:
     \begin{displaymath}
         \left.\left[\Gamma(y)=y^4 -y^5 + y^7 -y^8 +y^{10} + \mathcal{O}(y^{11}) 
             \big| y = h(t) \right]\right|_{k=3}
@@ -909,7 +909,7 @@
         &= \frac{y^{3} + {\left(y^{2} - 1\right)} y^{k} + 6 \, y^{2} - {\left({\left(y - 1\right)} y^{k} + y^{2} + 3 \, y + 1\right)} \sqrt{y^{2} + 6 \, y + 1} + 6 \, y + 1}{2 \, {\left(1-y\right)}}\\
     \end{split}
     \end{displaymath}
-    in order to find $d_{8,1}$, choosen at random, expand function $\Gamma$ with $k=1$:
+    in order to find $d_{8,1}$, chosen at random, expand function $\Gamma$ with $k=1$:
     \begin{displaymath}
         \left.\left[\Gamma(y)=y^2 -3y^3 + 11y^4  -47y^5 + 211y^6 -987y^7 + 4747y^8 
             -23335y^9 + \mathcal{O}(y^{10}) \big| y = h(t) \right]\right|_{k=1}
@@ -921,7 +921,7 @@
         instantiating $15 = 113 -3\cdot377 +11\cdot681 -47\cdot681 +211\cdot377
             -987\cdot113 +4747\cdot17 -23335 + \epsilon = -154 + 169$, which holds.
 
-    It's interesting to observe that function $\Gamma$ above, an algebric one,
+    It's interesting to observe that function $\Gamma$ above, an algebraic one,
     produces sequences that use different coefficients for different values of $k$,
     and we observe a curious pattern for increasing values of 
     $k\in\lbrace 0,\ldots,10 \rbrace$:
@@ -1070,11 +1070,11 @@
             which says to double the ``first'' element and sum to the ``second'' element
             on row $n-1$, all respect column index $k$. 
             
-            Element $d_{7,4}$, choosen at random, is the combination 
+            Element $d_{7,4}$, chosen at random, is the combination 
             $d_{6,3}-d_{6,4}+d_{6,5}-d_{6,6}+2d_{5,3}+d_{5,4}$, instantiating
             $35 = 20-15+6-1+2\cdot10+5$ which holds.
 
-            Element $d_{8,1}$, choosen at random, is the combination
+            Element $d_{8,1}$, chosen at random, is the combination
             $d_{7,0}-d_{7,1}+d_{7,2}-d_{7,3}+d_{7,4}-d_{7,5}+d_{7,6}-d_{7,7}
                 +2d_{7,0}+d_{7,1}$, instantiating 
                 $8 = 1-7+21-35+35-21+7-1+2\cdot1+6$ which holds.
@@ -1106,12 +1106,12 @@
     \end{displaymath}
 
     \added{
-    The following implementantions are available in the Python package:
+    The following implementations are available in the Python package:
     }
     \begin{itemize}
         \item \added{
             choose a module $p$ (in most cases a prime although) and
-            colour $\mathcal{R}$ associating to each remainded class $r \in \lbrace[0],\ldots,[p-1]\rbrace$
+            colour $\mathcal{R}$ associating to each remainder class $r \in \lbrace[0],\ldots,[p-1]\rbrace$
             a different colour $c_r$:
             }
             \begin{displaymath}
@@ -1350,7 +1350,7 @@
 
     In this section we show that in a Pascal array $\mathcal{P}$ it is
     possible to recognize a structure as Sierpinski observed using
-    fractals. More precisely, we show that, choosen a prime $p$ and a
+    fractals. More precisely, we show that, chosen a prime $p$ and a
     height $n$, the upper triangle that starts at root and extends
     downward for $p^n$ rows, denoted by $\mathcal{P}_n$, repeats
     itself three times in a bigger triangle that extends from the root
@@ -1605,7 +1605,7 @@
 
                     \item[$j=2k$ for some $k$] Without loss of generality, suppose  $\mathcal{T}$ is the one on the very left. 
                     Choose $r \in\lbrace 0,\ldots,p^n-2\rbrace$ and $c \in\lbrace r+1,\ldots,p^n-1\rbrace$,
-                    suppose that $\tilde{d}_{(j+1) p^n +r, c}\not\equiv_{p}0$. By symmetry of $\mathcal{P}$, we get another contraddiction: 
+                    suppose that $\tilde{d}_{(j+1) p^n +r, c}\not\equiv_{p}0$. By symmetry of $\mathcal{P}$, we get another contradiction: 
                     \begin{displaymath}
                         0\not\equiv_{p}\tilde{d}_{(j+1) p^n +r, c} \equiv_{p} \tilde{d}_{(j+1) p^n +r, (j+1) p^n +r-c}\equiv_{p}0
                     \end{displaymath}
@@ -1663,7 +1663,7 @@
         \end{displaymath}
     \end{lemma}
     \begin{proof} % $n+\gamma p^{m+1}$
-        By the basis representation theorem, write $n$  in base $p$ upto $k$ such that $k > m+1$ as necessary:
+        By the basis representation theorem, write $n$  in base $p$ up to $k$ such that $k > m+1$ as necessary:
         \begin{displaymath}
             n = n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{m}p^m + 0p^{m+1} + \ldots + 0p^k
         \end{displaymath}
@@ -1727,11 +1727,11 @@
     of $\mathcal{P}$ and $\mathcal{P}^{-1}$ (from the colouring point of view 
     doesn't imply any relation about colours assignment: generally it is not the case,
     except for even $p$), it merely says that 
-    congruent coefficients on the choosen antidiagonal, \emph{in the same triangle
+    congruent coefficients on the chosen antidiagonal, \emph{in the same triangle
     either $\mathcal{P}$ or $\mathcal{P}^{-1}$}, repeat with structure.
     \\\\
     The following theorem tackle what the above argument leaves out: it 
-    shows another caracterization, we call it ``duality'', 
+    shows another characterization, we call it ``duality'', 
     over remainder classes for arrays $\mathcal{P}$ and its inverse, relating coefficients
     belonging to the two triangles.
     \begin{theorem}
