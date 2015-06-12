@@ -21,6 +21,14 @@
 \definechangesauthor[name={Massimo Nocentini}, color=blue]{mn}
 \definechangesauthor[name={Donatella Merlini}, color=orange]{dm}
 
+% an environment for lenghty equations breaking right margin
+% taken from here:
+% http://tex.stackexchange.com/questions/156877/center-over-long-equations-between-both-margins
+\newsavebox{\overlongequation}
+\newenvironment{lenghtydisplaymath}
+ {\begin{displaymath}\begin{lrbox}{\overlongequation}$\displaystyle}
+  {$\end{lrbox}\makebox[0pt]{\usebox{\overlongequation}}\end{displaymath}}
+
 \begin{document}
     \title{\rmfamily\normalfont\spacedallcaps{Colouring Riordan arrays}}
     \author{\spacedlowsmallcaps{Donatella Merlini} \\ \spacedlowsmallcaps{Massimo Nocentini}}
@@ -843,23 +851,26 @@
 
     \subsubsection{Interlude: let's generalize}
     
-    Previous applications shows a pattern that can be pointed out looking at the generic device
-    for a Riordan array $\mathcal{R}$ where function $h$ is its second component:
+    Previous applications shows a pattern that can be pointed out looking at 
+    the generic device for a Riordan array $\mathcal{R}$ where 
+    function $h$ is its second component and function $\hat{h}$ its compositional
+    inverse:
     \begin{displaymath}
         \left[y^{k} = \hat{h}(y) \Gamma(y) \big| y = h(t) \right]
     \end{displaymath}
-    On the left hand side of the variable substitution writing there's an
-    equation, where function $\Gamma$ is the unknown. In this format, respect
-    an element $d_{nk}\in\mathcal{R}$, a constraint is stated, which read as follows: 
-    to localize a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$
-    respect column $k$, combining all elements lying on the previous row $n-1$.
+    on the left hand side of the variable substitution block there's \emph{an
+    equation}, where function $\Gamma$ is the unknown. In this format, 
+    a constraint is stated: let $d_{nk}\in\mathcal{R}$ be a generic element, 
+    then a \emph{localized} sequence 
+    $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ respect column $k$ exists, which
+    combines all elements lying on the previous row $n-1$.
 
     Since we're dealing with an equation, we can augment it as desired in order to
-    constraint over additional facts. For instance, consider the following question:
+    constrain over additional facts. For instance, consider the following question:
     find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ such that 
     an element $d_{nk}\in\mathcal{R}$ combines \emph{all} elements lying on 
     \emph{some} row $r_\alpha$, with the additional property to add the combination of 
-    elements, define by a sequence $\lbrace \theta_{i} \rbrace_{i\in\mathbb{N}}$, 
+    elements, defined by a sequence $\lbrace \theta_{i} \rbrace_{i\in\mathbb{N}}$, 
     lying on \emph{some different} row $r_\beta$. Formally, $\alpha,\beta\in\mathbb{Z}$ 
     and $\alpha \not=\beta$, so set the device as usual:
     \begin{displaymath}
@@ -870,7 +881,8 @@
     to fix the column index from where the combinations denoted by functions
     $\Gamma$ and $\Theta$ start, respectively. Here is the most general device:
     \begin{displaymath}
-        \left[y^{k} = y^{c_\mu}\hat{h}(y)^{\alpha} \Gamma(y) + y^{c_\nu}\hat{h}(y)^{\beta} \Theta(y) \big| y = h(t) \right]
+        \left[y^{k} = y^{c_\mu}\hat{h}(y)^{\alpha} \Gamma(y) + 
+            y^{c_\nu}\hat{h}(y)^{\beta} \Theta(y) \big| y = h(t) \right]
     \end{displaymath}
 
     Try to make the generalization at work:
@@ -894,7 +906,7 @@
     \begin{split}
         &\left[y^{k} = \hat{h}_{\mathcal{D}}(y)^{-1} \Gamma(y) + 
             \hat{h}_{\mathcal{D}}(y)^{2}\frac{1}{1-y} \big| y = h(t) \right]\\
-        &= -\frac{y^{3} + {\left(y^{2} - 1\right)} y^{k} + 6 \, y^{2} - {\left({\left(y - 1\right)} y^{k} + y^{2} + 3 \, y + 1\right)} \sqrt{y^{2} + 6 \, y + 1} + 6 \, y + 1}{2 \, {\left(y - 1\right)}}\\
+        &= \frac{y^{3} + {\left(y^{2} - 1\right)} y^{k} + 6 \, y^{2} - {\left({\left(y - 1\right)} y^{k} + y^{2} + 3 \, y + 1\right)} \sqrt{y^{2} + 6 \, y + 1} + 6 \, y + 1}{2 \, {\left(1-y\right)}}\\
     \end{split}
     \end{displaymath}
     in order to find $d_{8,1}$, choosen at random, expand function $\Gamma$ with $k=1$:
@@ -903,12 +915,174 @@
             -23335y^9 + \mathcal{O}(y^{10}) \big| y = h(t) \right]\right|_{k=1}
     \end{displaymath}
     therefore $d_{8,1}=d_{9,2} -3\,d_{9,3} +11\,d_{9,4}-47\,d_{9,5} 
-        +211\,d_{9,6} -987\,d_{9,7} +4747\,d_{9,8}-23335\,d_{9,9}$, 
+        +211\,d_{9,6} -987\,d_{9,7} +4747\,d_{9,8}-23335\,d_{9,9}+\epsilon$,
+        where $\epsilon = d_{6,0}+d_{6,1}+d_{6,2}+d_{6,3}+d_{6,4}+d_{6,5}+d_{6,6} = 
+                2(d_{6,0}+d_{6,1}+d_{6,2})+d_{6,3} = 2(1 + 11 + 41) + 63 = 169$: 
         instantiating $15 = 113 -3\cdot377 +11\cdot681 -47\cdot681 +211\cdot377
-            -987\cdot113 +4747\cdot17 -23335 + \epsilon = -154 + \epsilon$, 
-            which holds, where
-            $\epsilon = d_{6,0}+d_{6,1}+d_{6,2}+d_{6,3}+d_{6,4}+d_{6,5}+d_{6,6} = 
-                2(d_{6,0}+d_{6,1}+d_{6,2})+d_{6,3} = 2(1 + 11 + 41) + 63 = 169$.
+            -987\cdot113 +4747\cdot17 -23335 + \epsilon = -154 + 169$, which holds.
+
+    It's interesting to observe that function $\Gamma$ above, an algebric one,
+    produces sequences that use different coefficients for different values of $k$,
+    and we observe a curious pattern for increasing values of 
+    $k\in\lbrace 0,\ldots,10 \rbrace$:
+    \begin{lenghtydisplaymath}
+        \begin{split}
+            &\left.\left[\Gamma(y)=
+            1 y + {(-2)} y^{2} + 5 y^{3} + {(-17)} y^{4} + 65 y^{5} + {(-273)} y^{6} + 1213 y^{7} + {(-5617)} y^{8} + 26809 y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=0}\\
+            &\left.\left[\Gamma(y)=
+            1 y^{2} + {(-3)} y^{3} + 11 y^{4} + {(-47)} y^{5} + 211 y^{6} + {(-987)} y^{7} + 4747 y^{8} + {(-23335)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=1}\\
+            &\left.\left[\Gamma(y)=
+            3 y^{4} + {(-19)} y^{5} + 99 y^{6} + {(-503)} y^{7} + 2547 y^{8} + {(-12971)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=2}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 6 y^{4} + {(-27)} y^{5} + 127 y^{6} + {(-615)} y^{7} + 3031 y^{8} + {(-15171)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=3}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-24)} y^{5} + 119 y^{6} + {(-587)} y^{7} + 2919 y^{8} + {(-14687)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=4}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 122 y^{6} + {(-595)} y^{7} + 2947 y^{8} + {(-14799)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=5}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-592)} y^{7} + 2939 y^{8} + {(-14771)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=6}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2942 y^{8} + {(-14779)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=7}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14776)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=8}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14777)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=9}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14777)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=10}\\
+        \end{split}
+    \end{lenghtydisplaymath}
+
+    From $k=3$, it seems that a coefficient stabilizes in the expansion, pretty nice.
+    To finish this section involving Delannoy triangle, we report its natural
+    $A$-sequence:
+    \begin{lenghtydisplaymath}
+        \left.\left[\Gamma(y)=
+        1 + 2 y + {(-2)} y^{2} + 6 y^{3} + {(-22)} y^{4} + 90 y^{5} + {(-394)} y^{6} + 1806 y^{7}  + \mathcal{O}\left(y^{8}\right)
+            \big| y = h(t) \right]\right|_{k=1}\\
+    \end{lenghtydisplaymath}
+
+    \subsubsection{$A$-matrix connection}
+
+    Is the previous device the most general one? Really is it? 
+    We lie. In this section we enhance the last version to 
+    find an interesting connection with 
+    the $A$-matrix concept of a Riordan array $\mathcal{R}$, 
+    introduced and developed by Merlini, Rogers, Sprugnoli and Verri.
+    \\\\
+    Let $\lbrace\Omega_{i}\rbrace_{i\in\mathbb{N}}$ be a collection of formal
+    power series and assume we would like to \emph{not} localize them (a-l\`a natural 
+    $A$-sequence) in order to combine elements lying on the previous row, the previous
+    but one and so on \ldots hence, respect an element $d_{nk}\in\mathcal{R}$,
+    set the following device:
+    \begin{displaymath}
+        \left.\left[
+                \begin{split}
+                    y^{k} &= y^{k-1}\hat{h}(y) \Omega_{0}(y) + 
+                    y^{k-1}\hat{h}(y)^{2} \Omega_{1}(y) \\
+                    &+ y^{k-1}\hat{h}(y)^{3} \Omega_{2}(y) +
+                    \ldots +
+                    y^{k-1}\hat{h}(y)^{i+1} \Omega_{i}(y) + \ldots
+                \end{split}
+            \right| y = h(t) \right]
+    \end{displaymath}
+    a simple simplification rewrites:
+    \begin{displaymath}
+        \left.\left[
+            y = \hat{h}(y) \Omega_{0}(y) + 
+            \hat{h}(y)^{2} \Omega_{1}(y) + \hat{h}(y)^{3} \Omega_{2}(y) +
+            \ldots +
+            \hat{h}(y)^{i+1} \Omega_{i}(y) + \ldots
+            \right| y = h(t) \right]
+    \end{displaymath}
+    Here are our thoughts:
+    \begin{itemize}
+        \item it can be seen as an additional generalization of the last device,
+            where some new functions are thrown in, in order to augment the
+            combination including sets of coefficients lying on more rows, 
+            each of them combined according a new introduced function $\Omega_{j}$,
+            which are \emph{explicitly given}.  As before,
+            you are interested to find one such function, say $\Omega_{0}$,
+            and you can really do it since it is the same to solve a system
+            with one equation in one unknown;
+        \item it provides a ``factorization'' of function $A(t)$ with coefficients
+            over $\mathcal{R}$'s $A$-sequence, respect function $\hat{h}$, 
+            the compositional inverse of function $h$.  
+            Recognizing $h(t)=tA(h(t))$ yield:
+            \begin{displaymath}
+                \left.\left[
+                    A(y) =  \Omega_{0}(y) + 
+                    \hat{h}(y)\,\Omega_{1}(y) + \hat{h}(y)^{2}\,\Omega_{2}(y) + \ldots +
+                    \hat{h}(y)^{i}\,\Omega_{i}(y) + \ldots
+                    \right| y = h(t) \right]
+            \end{displaymath}
+            This is quite interesting from the theoretical point of 
+            view but can have a practical application
+            when every term is in the polynomial ring: if this is the case,
+            can apply the \emph{division theorem} among polynomial and 
+            proceed to factor polynomial $A$ dividing it by polynomial $\hat{h}$,
+            repeatedly.
+
+            For the sake of clarity, consider Pascal array $\mathcal{P}$: recall that
+            $\hat{h}(y)=\frac{y}{1+y}$ and $A(y)=1+y$ therefore, by \emph{division
+            theorem}, there exist polynomials $\Omega_{0}$ and $\Omega_{1}$ such that:
+            \begin{displaymath}
+                \left.\left[
+                    (1+y)^2 =  (1+y)\Omega_{0}(y) + y\,\Omega_{1}(y) 
+                        \right| y = h(t) \right]
+            \end{displaymath}
+            dividing $(1+y)^2$ by $y$ yield $\Omega_{1}(y)=2+y$ and 
+            $(1+y)\Omega_{0}(y)=1$. Putting it all together,
+            the factorization of polynomial $A$ respect polynomial $\hat{h}$ is:
+            \begin{displaymath}
+                \left.\left[
+                    A(y) =  \frac{1}{1+y} + \hat{h}(y)(2+y) \right| y = h(t) \right]
+            \end{displaymath}
+
+            If terms are not in a polynomial ring, we've difficulty to show a
+            factorization: both Catalan array $\mathcal{C}$ both Delannoy array
+            $\mathcal{D}$ are affected by this difficulty.
+            
+        \item looking at the formulation under study, we observe that functions
+            $\Omega_{0}, \Omega_{1}, \Omega_{2}, \ldots$ are exactly the same
+            as those introduced by Merlini et al., therefore we've expressed
+            the concept of $A$-matrix from a different point of view. A problem
+            is still open: what if we would like to find all such functions? A reply
+            to this question seems interesting but we've no idea how to satisfy it.
+            The major difficulty can be spotted looking at the device as a system:
+            there's \emph{one} equation in possibly $k$ unknowns, no
+            idea about the shape of the remaining $k-1$ equations.
+
+            Have a little check about Pascal array $\mathcal{P}$ again:
+            let $d_{nk}\in\mathcal{P}$, from the point above we've, firstly,
+            $\Omega_{0}(y)=\frac{1}{1+y}$, which says to sum elements on row $n-1$
+            using alternating sings and, secondly, $\Omega_{1}(y)=2+y$, 
+            which says to double the ``first'' element and sum to the ``second'' element
+            on row $n-1$, all respect column index $k$. 
+            
+            Element $d_{7,4}$, choosen at random, is the combination 
+            $d_{6,3}-d_{6,4}+d_{6,5}-d_{6,6}+2d_{5,3}+d_{5,4}$, instantiating
+            $35 = 20-15+6-1+2\cdot10+5$ which holds.
+
+            Element $d_{8,1}$, choosen at random, is the combination
+            $d_{7,0}-d_{7,1}+d_{7,2}-d_{7,3}+d_{7,4}-d_{7,5}+d_{7,6}-d_{7,7}
+                +2d_{7,0}+d_{7,1}$, instantiating 
+                $8 = 1-7+21-35+35-21+7-1+2\cdot1+6$ which holds.
+            
+
+
+    \end{itemize}
+    
 
 
     \section{Implementation}
