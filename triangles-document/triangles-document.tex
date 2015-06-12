@@ -2,11 +2,12 @@
 \documentclass[11pt,a4paper]{article} % KOMA-Script article scrartcl
 \usepackage{lipsum}
 \usepackage{url}
-\usepackage[nochapters]{classicthesis} % nochapters
+\usepackage[nochapters,eulermath]{classicthesis} % nochapters
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{caption}
 \usepackage{changes}
 \usepackage{marginnote}
@@ -996,7 +997,7 @@
                 \end{split}
             \right| y = h(t) \right]
     \end{displaymath}
-    a simple simplification rewrites:
+    a simplification rewrites:
     \begin{displaymath}
         \left.\left[
             y = \hat{h}(y) \Omega_{0}(y) + 
@@ -1068,7 +1069,7 @@
             $\Omega_{0}(y)=\frac{1}{1+y}$, which says to sum elements on row $n-1$
             using alternating sings and, secondly, $\Omega_{1}(y)=2+y$, 
             which says to double the ``first'' element and sum to the ``second'' element
-            on row $n-1$, all respect column index $k$. 
+            on row $n-2$, all respect column index $k$. 
             
             Element $d_{7,4}$, chosen at random, is the combination 
             $d_{6,3}-d_{6,4}+d_{6,5}-d_{6,6}+2d_{5,3}+d_{5,4}$, instantiating
