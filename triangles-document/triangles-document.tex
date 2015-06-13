@@ -1034,8 +1034,10 @@
             proceed to factor polynomial $A$ dividing it by polynomial $\hat{h}$,
             repeatedly.
 
-            For the sake of clarity, consider Pascal array $\mathcal{P}$
-            \replaced{and recall the following facts:}{
+            For the sake of clarity, \added{consider the following cases:}
+            \begin{itemize}
+            \item \replaced{let $\mathcal{P}$ be the}{consider} 
+                Pascal array $\mathcal{P}$ \replaced{and recall the following facts:}{
                 : recall that $\hat{h}(y)=\frac{y}{1+y}$ and $A(y)=1+y$}
             \begin{displaymath} 
                 \added{
@@ -1048,7 +1050,7 @@
             \begin{displaymath}
                 \left.\left[
                     (1+y)^2 =  (1+y)\Omega_{0}(y) + y\,\replaced{\Delta_{0}}{
-                \Omega_{1}}(y) \right| y = h(t) \right]
+                \Omega_{1}}(y) \right| y = \replaced{h_{\mathcal{P}}}{h}(t) \right]
             \end{displaymath}
             dividing $(1+y)^2$ by $y$ yield \replaced{$\Delta_{0}$}{
                 $\Omega_{1}$}$(y)=2+y$ and $(1+y)\Omega_{0}(y)=1$ \added{, 
@@ -1060,7 +1062,7 @@
                 \added{
                 \left.\left[
                     (2+y)(1+y) =  (1+y)\Omega_{1}(y) + y\,\Delta_{1}(y)
-                     \right| y = h(t) \right]
+                     \right| y = \replaced{h_{\mathcal{P}}}{h}(t) \right]
                  }
             \end{displaymath}
             \added{dividing $(2+y)(1+y)$ by $y$ yield $\Delta_{1}(y)=3+y$ and 
@@ -1078,14 +1080,15 @@
                 \replaced{
                     \left.\left[
                         A_{\mathcal{P}}(y) = \sum_{i \geq0}{\left(\frac{1+i}{1+y}\right)
-                            \hat{h}_{\mathcal{P}}(y)^{i}} \right| y = h(t) \right]
+                            \hat{h}_{\mathcal{P}}(y)^{i}} \right| y = h_{\mathcal{P}}(t) \right]
                 }{
                     \left.\left[
                         A(y) =  \frac{1}{1+y} + \hat{h}(y)(2+y) \right| y = h(t) \right]
                 }
             \end{displaymath}
 
-            \added{For Catalan array $\mathcal{C}$ things are quite interesting,
+            \item
+            \added{for Catalan array $\mathcal{C}$ things are quite interesting,
             first of all recall the following facts:}
             \begin{displaymath} 
                 \added{
@@ -1099,18 +1102,21 @@
                 \added{
                 \left.\left[
                     1 = (1-y)\Omega_{0}(y) + y(1-y)^{2}\,\Delta_{0}(y) 
-                        \right| y = h(t) \right]
+                        \right| y = h_{\mathcal{C}}(t) \right]
                 }
             \end{displaymath}
             \added{dividing $1$ by $y(1-y)^2$ yield $\Delta_{0}(y)=0$ 
             and $(1-y)\Omega_{0}(y)=1$, this define polynomial $\Omega_{0}$. 
             This means that ``polynomial'' $A_{\mathcal{C}}$ is already
-            the factorization of itself, pretty curious.}
+            the factorization of itself, which is the same to say that
+            there exists a \emph{unique} $A$-matrix for $\mathcal{C}$, pretty curious;}
 
-            If terms are not in a polynomial ring, we've difficulty to show a
+            \item if terms are not in a polynomial ring, we've difficulty to show a
             factorization: \replaced{for example Delannoy array $\mathcal{D}$ is}
             {both Catalan array $\mathcal{C}$ both Delannoy array
             $\mathcal{D}$ are} affected by this difficulty.
+
+            \end{itemize}
             
         \item looking at the formulation under study, we observe that functions
             $\Omega_{0}, \Omega_{1}, \Omega_{2}, \ldots$ are exactly the same
@@ -1124,19 +1130,30 @@
 
             Have a little check about Pascal array $\mathcal{P}$ again:
             let $d_{nk}\in\mathcal{P}$, from the point above we've, firstly,
-            $\Omega_{0}(y)=\frac{1}{1+y}$, which says to sum elements on row $n-1$
-            using alternating sings and, secondly, $\Omega_{1}(y)=2+y$, 
+            $\Omega_{0}(y)=\frac{1}{1+y}$, which says to sum elements
+            \added{lying} on row $n-1$ using alternating sings
+            \replaced{; then add the doubled sum of
+            elements lying on row $n-2$ using alternating signs; 
+            then add the tripled sum of elements lying on row $n-3$ 
+            using alternating signs; and so on \ldots}
+            { and, secondly, $\Omega_{1}(y)=2+y$, 
             which says to double the ``first'' element and sum to the ``second'' element
-            on row $n-2$, all respect column index $k$. 
+            on row $n-2$}, all respect column index $k$. 
             
             Element $d_{7,4}$, chosen at random, is the combination 
+            \replaced{$(d_{6,3}-d_{6,4}+d_{6,5}-d_{6,6})+
+                2(d_{5,3}-d_{5,4}+d_{5,5}) + 3(d_{4,3}-d_{4,4}) + 4d_{4,4}$, 
+                instantiating $35 = (20-15+6-1)+2(10-5+1)+3(4-1)+4\cdot1$
+                }{
             $d_{6,3}-d_{6,4}+d_{6,5}-d_{6,6}+2d_{5,3}+d_{5,4}$, instantiating
-            $35 = 20-15+6-1+2\cdot10+5$ which holds.
+            $35 = 20-15+6-1+2\cdot10+5$
+            } which holds.
 
-            Element $d_{8,1}$, chosen at random, is the combination
-            $d_{7,0}-d_{7,1}+d_{7,2}-d_{7,3}+d_{7,4}-d_{7,5}+d_{7,6}-d_{7,7}
-                +2d_{7,0}+d_{7,1}$, instantiating 
-                $8 = 1-7+21-35+35-21+7-1+2\cdot1+6$ which holds.
+            \deleted[remark=boring and tedious the combination for $d_{8,1}$]{
+                Element $d_{8,1}$, chosen at random, is the combination
+                $d_{7,0}-d_{7,1}+d_{7,2}-d_{7,3}+d_{7,4}-d_{7,5}+d_{7,6}-d_{7,7}
+                    +2d_{7,0}+d_{7,1}$, instantiating 
+                    $8 = 1-7+21-35+35-21+7-1+2\cdot1+6$ which holds.}
             
 
 
