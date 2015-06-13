@@ -2,7 +2,7 @@
 \documentclass[11pt,a4paper]{article} % KOMA-Script article scrartcl
 \usepackage{lipsum}
 \usepackage{url}
-\usepackage[nochapters,eulermath]{classicthesis} % nochapters
+\usepackage[nochapters,eulermath,beramono]{classicthesis} % nochapters
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{amsmath}
@@ -179,16 +179,16 @@
         \hat{h}(y) = \frac{y}{1+y+y^2}
     \end{displaymath} 
     so $f(y)=d(\hat{h}(1+y))$ equals:
-    \begin{displaymath} 
+    \begin{lenghtydisplaymath} 
         \begin{split} 
             & -\frac{{\left(y^{2} \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - y^{2} + 3 \, y \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - 2 \, y + 3 \, \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - 2\right)} {\left(y^{2} + 3 \, y + 3\right)}}{2 \, {\left(y + 1\right)}^{2}} \\
             & = -\frac{{ \left(\sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} \left( y^{2}+3y+3 \right) -\left(y^{2}+2y+2\right)\right){\left(y^{2} + 3 \, y + 3\right)}}}{2 \, {\left(y + 1\right)}^{2}} \\
             & = -\frac{ \left(\sqrt{\left(y^{2} + 4 y + 4\right) y^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} \\
             & = -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} \\
         \end{split} 
-    \end{displaymath} 
+    \end{lenghtydisplaymath} 
     therefore:
-    \begin{displaymath} 
+    \begin{lenghtydisplaymath} 
         \begin{split} 
             &\mathcal{M}_{y=h(t)-1}\left(
                 -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} , 1+y \right) \\
@@ -198,7 +198,7 @@
             &= \mathcal{M}_{h(t)}\left(
             -\frac{{\left(\sqrt{\left(h(t)^2 - 1\right)^{2}} - (h(t)^{2} + 1) \right)} {\left(h(t)^{2} + h(t) + 1\right)}}{2 \, h(t)^{2}} , h(t) \right)\\
         \end{split} 
-    \end{displaymath} 
+    \end{lenghtydisplaymath} 
     By cases on $\sqrt{\left(h(t)^2 - 1\right)^{2}}$:
     \begin{itemize}
         \item $\sqrt{\left(h(t)^2 - 1\right)^{2}}= h(t)^2 - 1$, hence:
@@ -1087,51 +1087,40 @@
 
 
     \section{Implementation}
-    \added{
     In the rest of this document we report and comment some figures
     about colourings of \emph{Riordan arrays}: we consider standard triangles
     and their inverses, in the majority of case the congruence partitioning
     is used.
-    }
 
-    \added{
     Mathematically, a function $colouring$ has been implemented: let $\mathcal{R}$ be
     a Riordan array and $d_{nk} \in \mathcal{R}$ a generic element, moreover
     define a set of $k$ colours $\lbrace c_0, \ldots, c_{k-1} \rbrace$, so
     the function has the following type:
-    }
     \begin{displaymath}
-    \added{
-        colouring : \mathbb{N} \times\mathbb{N} \rightarrow \lbrace c_0, \ldots, c_{k-1} \rbrace
-    }
+        colouring : \mathbb{N} \times\mathbb{N} \rightarrow 
+            \lbrace c_0, \ldots, c_{k-1} \rbrace
     \end{displaymath}
 
-    \added{
     The following implementations are available in the Python package:
-    }
     \begin{itemize}
-        \item \added{
-            choose a module $p$ (in most cases a prime although) and
-            colour $\mathcal{R}$ associating to each remainder class $r \in \lbrace[0],\ldots,[p-1]\rbrace$
+        \item choose a module $p$ (in most cases a prime although) and
+            colour $\mathcal{R}$ associating to each remainder class 
+            $r \in \lbrace[0],\ldots,[p-1]\rbrace$
             a different colour $c_r$:
-            }
             \begin{displaymath}
                 colouring_{p}(n,k) = c_{r} \leftrightarrow d_{nk} \equiv_{p} r
             \end{displaymath}
-        \item \added{
-            choose a module $p$ (in most cases a prime although) and
-            \emph{bi}-colour $\mathcal{R}$ with $c_0$ if $d_{nk}$ is a multiple of $p$, otherwise use 
-            a colour $c_1$:
-            }
+        \item choose a module $p$ (in most cases a prime although) and
+            \emph{bi}-colour $\mathcal{R}$ with $c_0$ if $d_{nk}$ 
+            is a multiple of $p$, otherwise use a colour $c_1$:
             \begin{displaymath}
                 colouring_{p}(n,k) = c_{0} \leftrightarrow p | d_{nk}
             \end{displaymath}
-        \item \added{
-            a less used one, \emph{bi}-colour $\mathcal{R}$ with $c_0$ 
+        \item a less used one, \emph{bi}-colour $\mathcal{R}$ with $c_0$ 
             if $d_{nk}$ is a prime, otherwise use a colour $c_1$:
-            }
             \begin{displaymath}
-                colouring(n,k) = c_{0} \leftrightarrow \not \exists p\in\lbrace 2,\ldots,d_{nk}-1\rbrace.p|d_{nk} 
+                colouring(n,k) = c_{0} \leftrightarrow \not 
+                    \exists p\in\lbrace 2,\ldots,d_{nk}-1\rbrace.p|d_{nk} 
             \end{displaymath}
     \end{itemize}
 
