@@ -1034,25 +1034,83 @@
             proceed to factor polynomial $A$ dividing it by polynomial $\hat{h}$,
             repeatedly.
 
-            For the sake of clarity, consider Pascal array $\mathcal{P}$: recall that
-            $\hat{h}(y)=\frac{y}{1+y}$ and $A(y)=1+y$ therefore, by \emph{division
-            theorem}, there exist polynomials $\Omega_{0}$ and $\Omega_{1}$ such that:
+            For the sake of clarity, consider Pascal array $\mathcal{P}$
+            \replaced{and recall the following facts:}{
+                : recall that $\hat{h}(y)=\frac{y}{1+y}$ and $A(y)=1+y$}
+            \begin{displaymath} 
+                \added{
+                \hat{h}_{\mathcal{P}}(y)=\frac{y}{1+y} \quad\quad A_{\mathcal{P}}(y)=1+y
+                }
+            \end{displaymath} 
+            therefore, by \emph{division theorem}, 
+            there exist polynomials $\Omega_{0}$ and \replaced{$\Delta_{0}$}{
+                $\Omega_{1}$} such that:
             \begin{displaymath}
                 \left.\left[
-                    (1+y)^2 =  (1+y)\Omega_{0}(y) + y\,\Omega_{1}(y) 
-                        \right| y = h(t) \right]
+                    (1+y)^2 =  (1+y)\Omega_{0}(y) + y\,\replaced{\Delta_{0}}{
+                \Omega_{1}}(y) \right| y = h(t) \right]
             \end{displaymath}
-            dividing $(1+y)^2$ by $y$ yield $\Omega_{1}(y)=2+y$ and 
-            $(1+y)\Omega_{0}(y)=1$. Putting it all together,
-            the factorization of polynomial $A$ respect polynomial $\hat{h}$ is:
+            dividing $(1+y)^2$ by $y$ yield \replaced{$\Delta_{0}$}{
+                $\Omega_{1}$}$(y)=2+y$ and $(1+y)\Omega_{0}(y)=1$ \added{, 
+                this define polynomial $\Omega_{0}$}. 
+                \added{We need to 
+                keep applying \emph{division theorem}, so there exist polynomials 
+                $\Omega_{1}$ and $\Delta_{1}$ such that:}
             \begin{displaymath}
+                \added{
                 \left.\left[
-                    A(y) =  \frac{1}{1+y} + \hat{h}(y)(2+y) \right| y = h(t) \right]
+                    (2+y)(1+y) =  (1+y)\Omega_{1}(y) + y\,\Delta_{1}(y)
+                     \right| y = h(t) \right]
+                 }
+            \end{displaymath}
+            \added{dividing $(2+y)(1+y)$ by $y$ yield $\Delta_{1}(y)=3+y$ and 
+                $(1+y)\Omega_{1}(y)=2$, this define polynomial $\Omega_{1}$.} 
+            \added{By induction, repeated application of \emph{division theorem}
+            yield the definition for the generic polynomial $\Omega_{i}$:}
+            \begin{displaymath} 
+                \added{\Omega_{i}(y)=\frac{1+i}{1+y}}
+            \end{displaymath} 
+
+            Putting it all together, the factorization of polynomial 
+            \replaced{$A_{\mathcal{P}}$}{$A$} respect polynomial 
+            $\replaced{\hat{h}_{\mathcal{P}}}{\hat{h}}$ is:
+            \begin{displaymath}
+                \replaced{
+                    \left.\left[
+                        A_{\mathcal{P}}(y) = \sum_{i \geq0}{\left(\frac{1+i}{1+y}\right)
+                            \hat{h}_{\mathcal{P}}(y)^{i}} \right| y = h(t) \right]
+                }{
+                    \left.\left[
+                        A(y) =  \frac{1}{1+y} + \hat{h}(y)(2+y) \right| y = h(t) \right]
+                }
             \end{displaymath}
 
+            \added{For Catalan array $\mathcal{C}$ things are quite interesting,
+            first of all recall the following facts:}
+            \begin{displaymath} 
+                \added{
+                \hat{h}_{\mathcal{C}}(y)=y-y^2 \quad\quad 
+                    A_{\mathcal{C}}(y)=\frac{1}{1-y}
+                }
+            \end{displaymath} 
+            \added{therefore, by \emph{division theorem}, 
+            there exist polynomials $\Omega_{0}$ and $\Delta_{0}$ such that:}
+            \begin{displaymath}
+                \added{
+                \left.\left[
+                    1 = (1-y)\Omega_{0}(y) + y(1-y)^{2}\,\Delta_{0}(y) 
+                        \right| y = h(t) \right]
+                }
+            \end{displaymath}
+            \added{dividing $1$ by $y(1-y)^2$ yield $\Delta_{0}(y)=0$ 
+            and $(1-y)\Omega_{0}(y)=1$, this define polynomial $\Omega_{0}$. 
+            This means that ``polynomial'' $A_{\mathcal{C}}$ is already
+            the factorization of itself, pretty curious.}
+
             If terms are not in a polynomial ring, we've difficulty to show a
-            factorization: both Catalan array $\mathcal{C}$ both Delannoy array
-            $\mathcal{D}$ are affected by this difficulty.
+            factorization: \replaced{for example Delannoy array $\mathcal{D}$ is}
+            {both Catalan array $\mathcal{C}$ both Delannoy array
+            $\mathcal{D}$ are} affected by this difficulty.
             
         \item looking at the formulation under study, we observe that functions
             $\Omega_{0}, \Omega_{1}, \Omega_{2}, \ldots$ are exactly the same
