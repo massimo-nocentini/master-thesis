@@ -605,6 +605,35 @@
             $\mathcal{A}^{\stackrel{h_{\mathcal{B}}(t)}{\rightarrow}}$ also has a combinatorial meaning? 
             So does $\mathcal{B}^{\stackrel{h_{\mathcal{A}}(t)}{\rightarrow}}$? What about considering
             combinations involving  $\mathcal{A}^{-1}$ and $\mathcal{B}^{-1}$ too?
+
+
+        \item \added{let $\mathcal{R}(d(t),h(t)$ be a Riordan array in 
+            natural notation, if function $\hat{h}$, the compositional inverse
+            of function $h$, has the following structure:}
+            \begin{displaymath}
+                \added{\hat{h}(y) = \frac{y}{\Pi(y)}}
+            \end{displaymath}
+            \added{
+            where $\Pi$ is a polynomial such that $\Pi(0)\not=0$, the question is:
+            is it always the case that there exists a sequence of polynomials
+            $\lbrace \Omega_{i} \rbrace_{i\in\mathbb{N}}$ such
+            that $\mathcal{R}$'s $A$-sequence can be be factored respect
+            function $\hat{h}$ as:}
+            \begin{displaymath}
+                \added{
+                    \left.\left[
+                        A_{\mathcal{R}}(y) = \sum_{i \geq0}{
+                            \left(\frac{[t^{1+i}]d(t)h(t)}
+                                {\Pi(y)}\right)
+                            \hat{h}(y)^{i}} 
+                            \right| y = h(t) \right]
+                }
+            \end{displaymath}
+            \added{in other words, the sequence of coefficients of the function defining
+            the second column of array $\mathcal{R}$, namely function 
+            $d$ times function $h$, shifted by \emph{one} position, does occur in
+            the given factorization?}
+
     \end{itemize}
 
     \subsection{A theorem when $\mathcal{R}(d(t), td(t))$}
@@ -617,7 +646,8 @@
     of coefficients such that column $k$ generating function is $S(h(t)^{j_k})$, where $S$
     is a formal power series over the sequence? In expanded form: 
     \begin{displaymath}
-        s_0h(t)^{j_k} + s_1 h(t)^{j_k+1} + s_2 h(t)^{j_k+2} + \ldots + s_i h(t)^{j_k+i} + \ldots
+        \added{d(t)h(t)^k = }s_0h(t)^{j_k} + s_1 h(t)^{j_k+1} + s_2 h(t)^{j_k+2} + 
+            \ldots + s_i h(t)^{j_k+i} + \ldots
     \end{displaymath}
     for some $j_k \in \mathbb{Z}$, where $j_k$ is a notation to denote an index $j$ 
     which depends on $k$.
@@ -1054,21 +1084,61 @@
             \end{displaymath}
             dividing $(1+y)^2$ by $y$ yield \replaced{$\Delta_{0}$}{
                 $\Omega_{1}$}$(y)=2+y$ and $(1+y)\Omega_{0}(y)=1$ \added{, 
-                this define polynomial $\Omega_{0}$}. 
-                \added{We need to 
-                keep applying \emph{division theorem}, so there exist polynomials 
-                $\Omega_{1}$ and $\Delta_{1}$ such that:}
-            \begin{displaymath}
+                this define polynomial $\Omega_{0}$}.  
+            \added{We need to 
+            keep applying \emph{division theorem}, so there exist the following
+            sequences of polynomials such that:}
+            \begin{lenghtydisplaymath}
+                \begin{split} 
+                    &
+                    \added{
+                    \left.\left[
+                        \frac{\Delta_{0}(y)}{\hat{h}_{\mathcal{P}}(y)} = 
+                            \left(y+3, 2\right)\triangleq
+                            \left(\Delta_{1}(y), (1+y)\Omega_{1}(y) \right)
+                         \right| y = h_{\mathcal{P}}(t) \right]
+                    }\\
+                    &
+                    \added{
+                    \left.\left[
+                        \frac{\Delta_{1}(y)}{\hat{h}_{\mathcal{P}}(y)} = 
+                            \left(y+4, 3\right)\triangleq
+                            \left(\Delta_{2}(y), (1+y)\Omega_{2}(y) \right)
+                         \right| y = h_{\mathcal{P}}(t) \right]
+                    }\\
+                    &
+                    \added{
+                    \left.\left[
+                        \frac{\Delta_{2}(y)}{\hat{h}_{\mathcal{P}}(y)} = 
+                            \left(y+5, 4\right)\triangleq
+                            \left(\Delta_{3}(y), (1+y)\Omega_{3}(y) \right)
+                         \right| y = h_{\mathcal{P}}(t) \right]
+                    }\\
+                    &
+                    \added{
+                    \left.\left[
+                        \frac{\Delta_{3}(y)}{\hat{h}_{\mathcal{P}}(y)} = 
+                            \left(y+6, 5 \right)\triangleq
+                            \left(\Delta_{4}(y), (1+y)\Omega_{4}(y) \right)
+                         \right| y = h_{\mathcal{P}}(t) \right]
+                    }\\
+                    &\vdots
+                \end{split} 
+            \end{lenghtydisplaymath}
+            \added{A pattern seems to emerge and can be captured with the 
+            following rule in order to define polynomial $\Omega_{i}$:}
+            \begin{displaymath} 
                 \added{
-                \left.\left[
-                    (2+y)(1+y) =  (1+y)\Omega_{1}(y) + y\,\Delta_{1}(y)
-                     \right| y = \replaced{h_{\mathcal{P}}}{h}(t) \right]
-                 }
-            \end{displaymath}
-            \added{dividing $(2+y)(1+y)$ by $y$ yield $\Delta_{1}(y)=3+y$ and 
-                $(1+y)\Omega_{1}(y)=2$, this define polynomial $\Omega_{1}$.} 
-            \added{By induction, repeated application of \emph{division theorem}
-            yield the definition for the generic polynomial $\Omega_{i}$:}
+                    \left.\left[
+                        \Delta_{i-1}(y) \triangleq q_{i-1}(y) + r_{i-1}
+                        \rightarrow (1+y)\,\Omega_{i}(y)=r_{i-1}
+                         \right| y = h_{\mathcal{P}}(t) \right]
+                }
+            \end{displaymath} 
+            \added{where each polynomial $q_{j}$ satisfies $q_{j}(0)=0$ and
+            each $r_{j}\in\mathbb{N}$ is a remainder, with boundary initial 
+            condition $\Delta_{-1}(y)=1$. Therefore it is possible to state
+            a closed formula for polynomial $\Omega_{i}$:} 
             \begin{displaymath} 
                 \added{\Omega_{i}(y)=\frac{1+i}{1+y}}
             \end{displaymath} 
@@ -1149,7 +1219,7 @@
                     &
                     \added{
                     \left.\left[
-                        \frac{\Delta_{0}(y)(1+y+y^2)}{y} = 
+                        \frac{\Delta_{0}(y)}{\hat{h}_{\mathcal{M}}(y)} = 
                             \left(y^4 + 3y^3 + 6y^2 + 7y + 5, 2\right)\triangleq
                             \left(\Delta_{1}(y), (1+y+y^2)\Omega_{1}(y) \right)
                          \right| y = h_{\mathcal{M}}(t) \right]
@@ -1157,7 +1227,7 @@
                     &
                     \added{
                     \left.\left[
-                        \frac{\Delta_{1}(y)(1+y+y^2)}{y} = 
+                        \frac{\Delta_{1}(y)}{\hat{h}_{\mathcal{M}}(y)} = 
                             \left(y^5 + 4y^4+10y^3+16y^2 + 18y + 12, 5\right)\triangleq
                             \left(\Delta_{2}(y), (1+y+y^2)\Omega_{2}(y) \right)
                          \right| y = h_{\mathcal{M}}(t) \right]
@@ -1165,22 +1235,55 @@
                     &
                     \added{
                     \left.\left[
-                        \frac{\Delta_{2}(y)(1+y+y^2)}{y} = 
+                        \frac{\Delta_{2}(y)}{\hat{h}_{\mathcal{M}}(y)} = 
                             \left(y^6 + 5y^5 + 15y^4 + 30y^3 + 44y^2+46y+30, 
                                 12\right)\triangleq
                             \left(\Delta_{3}(y), (1+y+y^2)\Omega_{3}(y) \right)
                          \right| y = h_{\mathcal{M}}(t) \right]
                     }\\
+                    &
+                    \added{
+                    \left.\left[
+                        \frac{\Delta_{3}(y)}{\hat{h}_{\mathcal{M}}(y)} = 
+                            \left(y^7+6y^6+21y^5+50y^4+89y^3+120y^2+120y+76, 30
+                                \right)\triangleq
+                            \left(\Delta_{4}(y), (1+y+y^2)\Omega_{4}(y) \right)
+                         \right| y = h_{\mathcal{M}}(t) \right]
+                    }\\
+                    &\vdots
                 \end{split} 
             \end{lenghtydisplaymath}
-            \added{dividing $(2+3y+2y^2+y^3)(1+y+y^2)$ by $y$ yield 
-            $\Delta_{1}(y)=5+7y+6y^2+3y^3+y^4$ and 
-                $(1+y+y^2)\Omega_{1}(y)=2$, this define polynomial $\Omega_{1}$.} 
-            \added{By induction, repeated application of \emph{division theorem}
-            yield the definition for the generic polynomial $\Omega_{i}$:}
+            \added{A pattern seems to emerge and can be captured with the 
+            following rule in order to define polynomial $\Omega_{i}$:}
             \begin{displaymath} 
-                \added{\Omega_{i}(y)=\frac{1+i}{1+y+y^2}}
+                \added{
+                    \left.\left[
+                        \Delta_{i-1}(y) \triangleq q_{i-1}(y) + r_{i-1}
+                        \rightarrow (1+y+y^2)\,\Omega_{i}(y)=r_{i-1}
+                         \right| y = h_{\mathcal{M}}(t) \right]
+                }
             \end{displaymath} 
+            \added{where each polynomial $q_{j}$ satisfies $q_{j}(0)=0$ and
+            each $r_{j}\in\mathbb{N}$ is a remainder, with boundary initial 
+            condition $\Delta_{-1}(y)=1$.}
+
+            \added{It is quite interesting that, as the case for array $\mathcal{P}$,
+            the sequence $\lbrace r_{j} \rbrace_{j\in\mathbb{N}}$ of remainders
+            is exactly the sequence of coefficients of the function defining
+            the second column of array $\mathcal{M}$, namely function 
+            $d_{\mathcal{M}}$ times function $h_{\mathcal{M}}$, shifted by \emph{one}
+            position. Putting it all together, the factorization of polynomial 
+            $A_{\mathcal{M}}$ respect polynomial $\hat{h}_{\mathcal{M}}$ is:}
+            \begin{displaymath}
+                \added{
+                    \left.\left[
+                        A_{\mathcal{M}}(y) = \sum_{i \geq0}{
+                            \left(\frac{[t^{1+i}]d_{\mathcal{M}}(t)h_{\mathcal{M}}(t)}
+                                {1+y+y^2}\right)
+                            \hat{h}_{\mathcal{M}}(y)^{i}} 
+                            \right| y = h_{\mathcal{M}}(t) \right]
+                }
+            \end{displaymath}
 
             \item if terms are not in a polynomial ring, we've difficulty to show a
             factorization: \replaced{for example Delannoy array $\mathcal{D}$ is}
@@ -1226,6 +1329,18 @@
                     +2d_{7,0}+d_{7,1}$, instantiating 
                     $8 = 1-7+21-35+35-21+7-1+2\cdot1+6$ which holds.}
             
+
+            \added{On the other hand, let $d_{6,2}\in\mathcal{M}$ be the
+            combination $(d_{5,1}-d_{5,2}+d_{5,4}-d_{5,5})
+                +2(d_{4,1}-d_{4,2}+d_{4,4})
+                +5(d_{3,1}-d_{3,2})
+                +12(d_{2,1} -d_{2,2})
+                +30\,d_{1,1}$, instantiating: 
+                $69=(30-25+5-1)
+                +2(12-9+1)
+                +5(5-3)
+                +12(2 -1)
+                +30\cdot1$, which holds.}
 
 
     \end{itemize}
