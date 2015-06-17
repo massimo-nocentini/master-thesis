@@ -270,7 +270,7 @@
                 \left. \frac{h(t)^2+h(t)+1}{h(t)^2-1} \right|_{t=0} = -1 \not= 1 
             \end{displaymath} 
             so discard this case;
-        \item $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}=-\frac{h(t)^2+h(t)+1}{h(t)^2-1}$, hence:
+        \item $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}=\frac{h(t)^2+h(t)+1}{1-h(t)^2}$, hence:
             \begin{displaymath}
                 \mathcal{T}_{h(t)}\left(\frac{h(t)^2+h(t)+1}{1-h(t)^2}, h(t) \right)
             \end{displaymath} 
@@ -607,8 +607,8 @@
             combinations involving  $\mathcal{A}^{-1}$ and $\mathcal{B}^{-1}$ too?
 
 
-        \item \added{let $\mathcal{R}(d(t),h(t)$ be a Riordan array in 
-            natural notation, if function $\hat{h}$, the compositional inverse
+        \item \added{let $\mathcal{R}(d(t),h(t))$ be a Riordan array in 
+            natural notation. If function $\hat{h}$, the compositional inverse
             of function $h$, has the following structure:}
             \begin{displaymath}
                 \added{\hat{h}(y) = \frac{y}{\Pi(y)}}

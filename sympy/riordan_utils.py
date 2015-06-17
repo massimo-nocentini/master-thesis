@@ -1,6 +1,8 @@
 
 from string import Template
 from datetime import datetime
+from sage.matrix.constructor import matrix
+from sage.calculus.var import var
 
 def write_tikz_lines_to_file(lines, filename='new_results.tex', joiner='\n'):
     
@@ -93,5 +95,21 @@ class ForSummary:
     def dispatch_on(self, recipient, *args):
         return recipient.dispatched_from_ForSummary(self, *args)
         
+def make_square_matrix_from_functions(n, d, h, y=var('y')):
+    
+    n=20
+    series_expansions = [d(y).series(y,n)]
+    series_expansions += [(d(y)*(h(y)**k)).series(y, n) for k in range(1,n)]
+    
+    def mk_element(i,j):
+        expansion = series_expansions[j].truncate()
+        coefficients = expansion.coefficients(y, sparse=False)
+        print ((i,j), expansion)
+        return coefficients[i] if i < len(coefficients) else 0
+        
+    return matrix(n, mk_element)
+
+
+
 
 
