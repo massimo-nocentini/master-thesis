@@ -2128,6 +2128,35 @@
 
     \section{Motzkin}
 
+    \added[id=dm]{A possible recurrence should be the following, inspired by the 
+    computation of the \emph{fractal dimensionality} of Pascal array:}
+    \begin{displaymath}
+        \added[id=dm]{\mathcal{M}(h+2) = 2\,\left(\mathcal{M}(h+1) + \mathcal{M}(h)\right)}
+    \end{displaymath}
+    It is derived according the following reasoning. Let $\mathcal{M}_{h}$
+    be the principal cluster of order $h$. Looking at the drawn triangle,
+    we observe that cluster $\mathcal{M}_{h+2}$ is composed as follows:
+    \begin{itemize}
+        \item $\mathcal{M}_{h}$ repeats two times ``over the same columns'';
+        \item $\mathcal{M}_{h+1}$ repeats two times: the first one covers the
+            very top position, therefore from column $0$ to column $p^{h+1}-1$, included;
+            the second one covers ``right-most columns'', 
+            specifically covers from column $p^{h+1}$ to column $p^{h+2}-1$, included;
+        \item two upside-down triangles (ie. pointing downward), of coefficients
+            which prime $p$ divides, are introduced
+            but they don't seem releated with the ones present in clusters 
+            $\mathcal{M}_{h}$ and $\mathcal{M}_{h+1}$;
+        \item another two triangles, with mixed coefficients, some of them
+            are multiple of $p$, some aren't: however the two copies look similar.
+            These two copies sit on the left of cluster $\mathcal{M}_{h+1}$ and
+            are separated from it by a ``segment'' of coefficients (all even but
+            the very first and the very last) lying on column $p^{h+1}-1$.
+    \end{itemize}
+    We need to be more precise about involved rows, nonetheless the very first
+    antidiagonal plays a misleading role, since it is composed by $1$s only,
+    and if we consider it, the previous points aren't ultimately correct,
+    especially the repetitions of cluster $\mathcal{M}_{h}$.
+
     Expansion of Riordan array $\mathcal{M}$:
     \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix}
     Expansion of Riordan array $\mathcal{M}^{\diamond}$:
