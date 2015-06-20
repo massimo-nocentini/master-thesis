@@ -2153,6 +2153,102 @@
 
     \subsection{Traditional version}
 
+    \added[id=sid]{Let $\mathcal{C}_{h}$ a principal $h$-cluster of
+    the Catalan array, in its traditional definition: We attempt to point out
+    some properties about $\mathcal{C}_{h+1}$: }
+    \begin{itemize}
+        \item a more general pattern, for any $h\in\mathcal{N}$, 
+            a coefficient $d_{p^{h}-1,k}$, for $k\in\lbrace0,\ldots,p^{h}-1 \rbrace$, 
+            satisfies:
+            \begin{displaymath}
+                d_{p^{h}-1,k} \equiv_{p} 0
+            \end{displaymath}
+        \item consider the subcluster $\mathcal{C}_{h}^{(0,p^{h}-1)}$ of 
+            $\mathcal{C}_{h}$ obtained by removing antidiagonal $0$ (namely,
+            the boundary one, composed by $1$s only) and by removing row $p^{h}-1$.
+            By construction, $\mathcal{C}_{h}^{(0,p^{h}-1)}$ is a triangle too, 
+            with $p^{h}-2$ coefficients per side. Therefore, $\mathcal{C}_{h+1}$
+            is composed on the very top, starting at the root, by a copy of $\mathcal{C}_{h}$,
+            while on the bottom there are three triangles:
+            \begin{itemize}                
+                \item an equilateral triangle $T_{\equiv_{p} 0}^{(h)}$, 
+                    with $p^{h}-1$ coefficients on each side, such that:
+                    \begin{displaymath}
+                        d_{nk} \in T_{\equiv_{p} 0}^{(h)} \rightarrow d_{nk} \equiv_{p} 0
+                    \end{displaymath}
+                    where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$ and 
+                    $k\in\lbrace 0,\ldots, n-p^{h}\rbrace$;
+                \item a mirror copy of $\mathcal{C}_{h}^{(0,p^{h}-1)}$ respect column orientation,
+                    defining coefficients $d_{nk}$  
+                    where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$ and 
+                    $k\in\lbrace 1,\ldots, p^{h}-2\rbrace$;
+                \item a segment of coefficients $d_{n, p^{h}-1} \equiv_{p} 0$ 
+                    where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$;
+                \item a copy of $\mathcal{C}_{h}^{(0,p^{h}-1)}$,
+                    defining coefficients $d_{nk}$  
+                    where $n\in\lbrace p^{h}+1,\ldots,p^{h+1}-2\rbrace$ and 
+                    $k\in\lbrace p^{h},\ldots, n-1\rbrace$;
+            \end{itemize}                
+    \end{itemize}
+    In order to formally proof the above characterization for principal 
+    $(h+1)$-cluster, we tackle the problem more generally, toward
+    an application of \emph{Lagrange Inversion Formula} \footnote{
+        which should be presented and proved in a dedicated 
+        introductory section}:
+    \begin{displaymath}
+        d_{nk} = [t^n] \frac{1-\sqrt{1-4\,t}}{2\,t}\,
+            \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k}
+               = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
+    \end{displaymath}
+    The version of the \emph{LIF} we'll apply is the following one:
+    \begin{displaymath}
+        \alpha\,\left[z^\alpha\right] A(z)^{\beta} = 
+            \beta\,\left[w^{\alpha-\beta}\right]\Phi(w)^{\alpha}
+    \end{displaymath}
+    where $\alpha,\beta\in\mathbb{Z}$ and function $A$ relates to function
+    $\Phi$ according to: 
+    \begin{displaymath} A(z)=z\,\Phi(A(z)) \end{displaymath}
+    
+    We'll use the theorem ``from right to left'' direction, hence our case
+    defines:
+    \begin{displaymath}
+        \begin{split}
+            \Phi(t)&=\frac{1-\sqrt{1-4\,t}}{2}\\
+            \alpha&=k+1\\
+        \end{split}
+    \end{displaymath}
+    Now we've to find $\beta\in\mathbb{Z}$ such that $k+1-\beta=n+1$, 
+    therefore $\beta=k-n$. The last step is find function $A$: since
+    function $\Phi$ is known, unroll right hand side of $A$ defining
+    equation:
+    \begin{displaymath} 
+        A(z)=\frac{z\,\left(1-\sqrt{1-4\,A(z)}\right)}{2}
+    \end{displaymath}
+    therefore $A(z)=z-z^2$. All set for $LIF$ theorem application, 
+    do it:
+    \begin{displaymath}
+        [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
+            = (k+1)\left[z^{k+1}\right]\left(z-z^2\right)^{k-n}
+            = (k+1)\big[z\big]\left(\frac{1}{1-z}\right)^{n}
+    \end{displaymath}
+    Putting it all together we reached the following equation:
+    \begin{displaymath}
+        d_{nk} = (k+1)\big[z\big]\left(\frac{1}{1-z}\right)^{n}
+    \end{displaymath}
+    however a little manipulation allow to reach another 
+    interesting connection:
+    \begin{displaymath}
+        \begin{split}
+            d_{nk} &= (k+1)\big[z\big]\left(\frac{1}{1-z}\right)^{n}
+                       = (k+1)\big[z\big]\frac{1}{1-z}\,\left(\frac{1}{1-z}\right)^{n-1}\\
+                   &= (k+1)\big[z^{n}\big]\frac{1}{1-z}\,\left(\frac{z}{1-z}\right)^{n-1}
+                       = (k+1)\,d_{n,n-1}^{\mathcal{P}}\\
+        \end{split}
+    \end{displaymath}
+
+
+
+
     Expansion of Riordan array $\mathcal{C}$:
     \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
     Expansion of Riordan array $\mathcal{C}^{-1}$:
