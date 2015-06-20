@@ -9,7 +9,10 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{caption}
-\usepackage{changes}
+
+% add 'final' option to make a clear version without any markup or colouring
+\usepackage[authormarkup=none]{changes}
+
 \usepackage{marginnote}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -641,7 +644,7 @@
 
     \subsubsection{\added[id=sid]{An hint\ldots}}
     
-    \added[id=sid]{In this question we offer an hint to tackle question number $1$
+    \added[id=sid]{In this section we offer an hint to tackle question number $1$
     asked in previous enumeration. Let $\mathcal{R}_{h(t)}(\gamma(h(t)), h(t))$
     be a Riordan array written in factored notation, for some function $\gamma$. 
     Now, with abuse of notation, do a \emph{standard} matrix-vector product, namely
