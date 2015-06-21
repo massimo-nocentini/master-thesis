@@ -2208,45 +2208,143 @@
     where $\alpha,\beta\in\mathbb{Z}$ and function $A$ relates to function
     $\Phi$ according to: 
     \begin{displaymath} A(z)=z\,\Phi(A(z)) \end{displaymath}
+    under the constraint $\Phi(0)\not=0$, otherwise a contraddiction arises
+    (critical relation is emphasized with $\circeq$ symbol):
+    \begin{displaymath} A(z)=z\,\Phi(0) \circeq 0 \rightarrow z\circeq\frac{0}{\Phi(0)} \end{displaymath}
     
-    We'll use the theorem ``from right to left'' direction, hence our case
-    defines:
+    An attempt to use theorem's ``from right to left'' direction, makes 
+    the following definitions:
     \begin{displaymath}
         \begin{split}
             \Phi(t)&=\frac{1-\sqrt{1-4\,t}}{2}\\
             \alpha&=k+1\\
         \end{split}
     \end{displaymath}
-    Now we've to find $\beta\in\mathbb{Z}$ such that $k+1-\beta=n+1$, 
-    therefore $\beta=k-n$. The last step is find function $A$: since
-    function $\Phi$ is known, unroll right hand side of $A$ defining
-    equation:
-    \begin{displaymath} 
-        A(z)=\frac{z\,\left(1-\sqrt{1-4\,A(z)}\right)}{2}
-    \end{displaymath}
-    therefore $A(z)=z-z^2$. All set for $LIF$ theorem application, 
-    do it:
+    Since $\Phi(0)=0$ we cannot apply the theorem directly, so try
+    a combinatorial interpretation. Observe that:
     \begin{displaymath}
         [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
-            = (k+1)\left[z^{k+1}\right]\left(z-z^2\right)^{k-n}
-            = (k+1)\big[z\big]\left(\frac{1}{1-z}\right)^{n}
     \end{displaymath}
-    Putting it all together we reached the following equation:
+    requires to extract coefficient $n+1$ from the $(k+1)$-fold
+    convolution of Catalan numbers' generating function, \emph{shifted
+    by one place}, with itself. Before going on, be careful
+    to understand what coefficients are introduced; the
+    following expansion defines a sequence $\lbrace d_{i}\rbrace_{i\in\mathbb{N}}$:
     \begin{displaymath}
-        d_{nk} = (k+1)\big[z\big]\left(\frac{1}{1-z}\right)^{n}
+        \frac{1-\sqrt{1-4\,t}}{2} = t + t^{2} + 2 t^{3} + 5 t^{4} 
+            + 14 t^{5} + 42 t^{6} + 132 t^{7} + 429 t^{8} + 1430 t^{9} 
+            + \mathcal{O}\left(t^{10}\right)
     \end{displaymath}
-    however a little manipulation allow to reach another 
-    interesting connection:
+    where $d_{0}=0$. On the other hand the following one, defines a sequence 
+    $\lbrace c_{i}\rbrace_{i\in\mathbb{N}}$, the traditional Catalan numbers:
+    \begin{displaymath}
+        \frac{1-\sqrt{1-4\,t}}{2\,t} = 1 + t + 2 t^{2} + 5 t^{3} + 14 t^{4} 
+            + 42 t^{5} + 132 t^{6} + 429 t^{7} + 1430 t^{8} + 4862 t^{9} 
+            + \mathcal{O}\left(t^{10}\right)
+    \end{displaymath}
+    so the relationship $d_{j} = c_{j-1}$ holds, for any $j\in\mathbb{N}$, 
+    with boundary condition $c_{-1}=0$. 
+
+    After this subtle point, there exists indices $i_{1}, i_{2}, \ldots, i_{k+1}$,
+    each one $i_{j}\in\mathbb{N}$, such that:
+    \begin{displaymath}
+        [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
+            = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
+                d_{i_{1}}\,d_{i_{2}}\,\ldots\,d_{i_{k+1}} }
+    \end{displaymath}
+    which is the same as:
+    \begin{displaymath}
+        [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
+            = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
+                c_{i_{1}-1}\,c_{i_{2}-1}\,\ldots\,c_{i_{k+1}-1} }
+    \end{displaymath}
+
+    Since $c_{j}$ is a Catalan coefficient, 
+    by definition of array $\mathcal{C}$, we observe that:
+    \begin{displaymath}
+        c_{j} = [t^{j}]d(t)= [t^{j}]\frac{1-\sqrt{1-4\,t}}{2\,t}
+    \end{displaymath}
+    and since $\mathcal{C}$'s $A$-sequence is:
+    \begin{displaymath}
+        A(t)=\frac{1}{1-t}
+    \end{displaymath}
+    each coefficient $c_{j}$ combines as follows:
+    \begin{displaymath}
+        c_{j} = \sum_{k=0}^{j-1}{d_{j-1,k}}
+    \end{displaymath}
+    in other words, $c_{j}$ equals the $(j-1)$-row sum, therefore:
+    \begin{displaymath}
+        c_{j} = [t^{j-1}]\mathcal{C}\,A(t)
+              = [t^{j-1}]d(t)\,A(h(t))
+              = [t^{j}]h(t)\,A(h(t))
+              = [t^{j}]\frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}
+    \end{displaymath}
+    although interesting, this result is again difficult to handle.
+
+    Go back to identity:
+    \begin{displaymath}
+        d_{nk} = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
+                c_{i_{1}-1}\,c_{i_{2}-1}\,\ldots\,c_{i_{k+1}-1} }
+    \end{displaymath}
+    and write a Catalan coefficient $c_{j}$ in a different form:
+    \begin{displaymath}
+        c_{j} = \frac{1}{j+1}{{2j}\choose{j}} 
+            = {{2j}\choose{j}} - {{2j}\choose{j+1}}
+    \end{displaymath}
+    and focus on congruences modulo $2$: rewrite $j$ respect base $2$, 
+    so there exists $k\in\mathbb{N}$ such that 
+    $j=j_{0} + j_{1}\,2 + j_{2}\,2^{2} + \ldots + j_{k}\,2^{k}$, where
+    $j_{r}\in\lbrace0,1\rbrace$, for each $r\in\lbrace0,\ldots,k\rbrace$. 
+    % now start distinguishing $j$ by cases: if even..., if odd...
+    By Lucas theorem:
+    \begin{displaymath}
+        {{2j}\choose{j}}
+            \equiv_{2} {{0}\choose{j_{0}}}{{j_{0}}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
+                \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}
+    \end{displaymath}
+    cleaning out coefficient on the very right, always equal to $1$, we get:
+    \begin{displaymath}
+        c_{j} \equiv_{2} \frac{1}{j+1}{{0}\choose{j_{0}}}{{j_{0}}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
+                \ldots{{j_{k-1}}\choose{j_{k}}}
+    \end{displaymath}
+    A first observation arises looking at the coefficient on the very left:
+    \begin{displaymath}
+        {{0}\choose{j_{0}}} = 0 \leftrightarrow j_{0} = 1
+    \end{displaymath}
+    therefore an interesting consequent, let $\alpha\in\mathbb{N}$:
+    \begin{displaymath}
+        c_{2\alpha+1} \equiv_{2} 0 
+    \end{displaymath}
+    On the other hand, assume there exists $\alpha\in\mathbb{N}$ such
+    that $j=2\alpha$, therefore:
+    \begin{displaymath}
+        c_{2\alpha} \equiv_{2} {{j_{0}}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
+                \ldots{{j_{k-1}}\choose{j_{k}}}
+    \end{displaymath}
+    because $(j+1)\,c_{j}={{2j}\choose{j}}$ and $j+1\equiv_{2}2\,\alpha+1\equiv_{2}1$.
+
+    In order to better understand the previous statements, here
+    we supply a short table about, studying coefficient $d_{n,0}\in\mathcal{C}$,
+    lying on the very first column:
     \begin{displaymath}
         \begin{split}
-            d_{nk} &= (k+1)\big[z\big]\left(\frac{1}{1-z}\right)^{n}
-                       = (k+1)\big[z\big]\frac{1}{1-z}\,\left(\frac{1}{1-z}\right)^{n-1}\\
-                   &= (k+1)\big[z^{n}\big]\frac{1}{1-z}\,\left(\frac{z}{1-z}\right)^{n-1}
-                       = (k+1)\,d_{n,n-1}^{\mathcal{P}}\\
+            d_{0,0} &= \sum_{i_{1}=1}{c_{i_{1}}} = c_{1}\equiv_{2}0 \\
+            d_{1,0} &= \sum_{i_{1}=2}{c_{i_{1}}} = c_{2}
+                \equiv_{2}{{j_{0}}\choose{j_{1}}} \equiv_{2}{{0}\choose{1}}\equiv_{2}0\\
+            d_{2,0} &= \sum_{i_{1}=3}{c_{i_{1}}} = c_{3}\equiv_{2}0\\
+            d_{3,0} &= \sum_{i_{1}=4}{c_{i_{1}}} = c_{4}
+                \equiv_{2}{{j_{0}}\choose{j_{1}}} {{j_{1}}\choose{j_{2}}}
+                \equiv_{2}{{0}\choose{0}} {{0}\choose{1}}\equiv_{2}0\\
+            d_{4,0} &= \sum_{i_{1}=5}{c_{i_{1}}} = c_{5}\equiv_{2}0\\
+            d_{5,0} &= \sum_{i_{1}=6}{c_{i_{1}}} = c_{6}
+                \equiv_{2}{{j_{0}}\choose{j_{1}}} {{j_{1}}\choose{j_{2}}}
+                \equiv_{2}{{0}\choose{1}} {{1}\choose{1}}\equiv_{2}0\\
+            d_{6,0} &= \sum_{i_{1}=7}{c_{i_{1}}} = c_{7}\equiv_{2}0\\
+            d_{7,0} &= \sum_{i_{1}=8}{c_{i_{1}}} = c_{8}
+                \equiv_{2}{{j_{0}}\choose{j_{1}}} {{j_{1}}\choose{j_{2}}}{{j_{2}}\choose{j_{3}}}
+                \equiv_{2}{{0}\choose{0}} {{0}\choose{0}}{{0}\choose{1}}\equiv_{2}0\\
         \end{split}
     \end{displaymath}
-
-
 
 
     Expansion of Riordan array $\mathcal{C}$:
