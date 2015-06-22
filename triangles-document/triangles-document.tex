@@ -2466,6 +2466,49 @@
         a row $2^{\alpha}-1$ is odd, as required.
     \end{proof}
 
+    Another question: 
+    \begin{quote}
+        why each coefficient lying on the segment 
+        $S=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$ of column 
+        $2^{\alpha}-1$, namely $d_{s,2^{\alpha}-1}$ for $s\in S$, is even?
+    \end{quote}
+    \begin{proof}
+    As before, try to use our definition:
+    \begin{displaymath}
+        d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
+            {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}}
+    \end{displaymath}
+    Observe that in this case, the number of Catalan coefficients
+    multiplied together in each summand is the same, namely $2^{\alpha}$,
+    for any $s\in S$; what changes respect to $s$ is the set of values 
+    each $i_{j}$ can take. Look at the following table:
+    \begin{displaymath}
+        \begin{array}{rcc}
+            s = 2^{\alpha} \rightarrow
+                & i_{j}\in\lbrace0,\ldots,2^{\alpha}+1\rbrace 
+                & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha}}\rbrace\\
+            s = 2^{\alpha} +1\rightarrow
+                & i_{j}\in\lbrace0,\ldots,2^{\alpha}+2\rbrace 
+                & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha}+1}\rbrace\\
+            \vdots & & \\
+            s = 2^{\alpha+1} -2\rightarrow
+                & i_{j}\in\lbrace0,\ldots,2^{\alpha+1}-1\rbrace 
+                & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha+1}-2}\rbrace\\
+        \end{array}
+    \end{displaymath}
+    therefore, for any $s\in S$, the bigger set of Catalan coefficients we have 
+    to consider is $\Omega = \lbrace c_{-1},\ldots,c_{2^{\alpha}-1},c_{2^{\alpha}},\ldots,c_{2^{\alpha+1}-2}\rbrace$.
+    Each coefficient $c_{j}\in\Omega$ is even except those of the form $c_{2^{\beta}-1}$, which are odd,
+    and they are $\lbrace c_{2^{\alpha-(\alpha-1)}-1},c_{2^{\alpha-(\alpha-2)}-1},\ldots, 
+        c_{2^{\alpha-1}-1},c_{2^{\alpha}-1}\rbrace$, $\alpha$ in number.
+    Since each summand $t=c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}$ 
+    has $2^{\alpha}$ coefficients, no matter if $t$ contains each coefficient in $\Omega$,
+    the remaining ones make it vanish and $ d_{s, 2^{\alpha}-1} \equiv_{2} 0$, for any $s\in S$,
+    as required.
+
+
+    \end{proof}
+
 
 
     \subsection{Expanded arrays and coloured triangles}
