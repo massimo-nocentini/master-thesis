@@ -2576,6 +2576,22 @@
             {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}+e}-1}}
     \end{lenghtydisplaymath}
 
+    Panic! No idea to tackle the general setting as a whole. So, start small.
+    Let $s=2^{h}+1$, therefore no choices for $e$, obliged $e=1$, so:
+
+    \begin{lenghtydisplaymath}
+        \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-1}=2^{h}+1}
+            {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-1}-1}}
+        \equiv_{2}
+        \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}+1}=2^{h}+2}
+            {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}+1}-1}}
+    \end{lenghtydisplaymath}
+
+    too difficult to proceed this way, sadly. A new idea should be to
+    translate back columns (discarding unnecessary coefficients, subtracting them)
+    on the \emph{left} of the ``pivot'' element. In this way columns should be
+    congruent element-wise.
+
     \subsection{Expanded arrays and coloured triangles}
 
     Expansion of Riordan array $\mathcal{C}$:
