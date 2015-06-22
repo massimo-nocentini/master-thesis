@@ -2229,20 +2229,20 @@
     convolution of Catalan numbers' generating function, \emph{shifted
     by one place}, with itself. Before going on, be careful
     to understand what coefficients are introduced; the
-    following expansion defines a sequence $\lbrace d_{i}\rbrace_{i\in\mathbb{N}}$:
+    following expansion defines a sequence $\lbrace \hat{c}_{i}\rbrace_{i\in\mathbb{N}}$:
     \begin{displaymath}
         \frac{1-\sqrt{1-4\,t}}{2} = t + t^{2} + 2 t^{3} + 5 t^{4} 
             + 14 t^{5} + 42 t^{6} + 132 t^{7} + 429 t^{8} + 1430 t^{9} 
             + \mathcal{O}\left(t^{10}\right)
     \end{displaymath}
-    where $d_{0}=0$. On the other hand the following one, defines a sequence 
+    where $\hat{c}_{0}=0$. On the other hand the following one, defines a sequence 
     $\lbrace c_{i}\rbrace_{i\in\mathbb{N}}$, the traditional Catalan numbers:
     \begin{displaymath}
         \frac{1-\sqrt{1-4\,t}}{2\,t} = 1 + t + 2 t^{2} + 5 t^{3} + 14 t^{4} 
             + 42 t^{5} + 132 t^{6} + 429 t^{7} + 1430 t^{8} + 4862 t^{9} 
             + \mathcal{O}\left(t^{10}\right)
     \end{displaymath}
-    so the relationship $d_{j} = c_{j-1}$ holds, for any $j\in\mathbb{N}$, 
+    so the relationship $\hat{c}_{j} = c_{j-1}$ holds, for any $j\in\mathbb{N}$, 
     with boundary condition $c_{-1}=0$. 
 
     After this subtle point, there exists indices $i_{1}, i_{2}, \ldots, i_{k+1}$,
@@ -2250,7 +2250,7 @@
     \begin{displaymath}
         [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
             = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
-                d_{i_{1}}\,d_{i_{2}}\,\ldots\,d_{i_{k+1}} }
+                \hat{c}_{i_{1}}\,\hat{c}_{i_{2}}\,\ldots\,\hat{c}_{i_{k+1}} }
     \end{displaymath}
     which is the same as:
     \begin{displaymath}
@@ -2296,55 +2296,102 @@
     $j=j_{0} + j_{1}\,2 + j_{2}\,2^{2} + \ldots + j_{k}\,2^{k}$, where
     $j_{r}\in\lbrace0,1\rbrace$, for each $r\in\lbrace0,\ldots,k\rbrace$. 
     % now start distinguishing $j$ by cases: if even..., if odd...
-    By Lucas theorem:
-    \begin{displaymath}
-        {{2j}\choose{j}}
-            \equiv_{2} {{0}\choose{j_{0}}}{{j_{0}}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
-                \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}
-    \end{displaymath}
-    cleaning out coefficient on the very right, always equal to $1$, we get:
-    \begin{displaymath}
-        c_{j} \equiv_{2} \frac{1}{j+1}{{0}\choose{j_{0}}}{{j_{0}}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
-                \ldots{{j_{k-1}}\choose{j_{k}}}
-    \end{displaymath}
-    A first observation arises looking at the coefficient on the very left:
-    \begin{displaymath}
-        {{0}\choose{j_{0}}} = 0 \leftrightarrow j_{0} = 1
-    \end{displaymath}
-    therefore an interesting consequent, let $\alpha\in\mathbb{N}$:
-    \begin{displaymath}
-        c_{2\alpha+1} \equiv_{2} 0 
-    \end{displaymath}
-    On the other hand, assume there exists $\alpha\in\mathbb{N}$ such
-    that $j=2\alpha$, therefore:
-    \begin{displaymath}
-        c_{2\alpha} \equiv_{2} {{j_{0}}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
-                \ldots{{j_{k-1}}\choose{j_{k}}}
-    \end{displaymath}
-    because $(j+1)\,c_{j}={{2j}\choose{j}}$ and $j+1\equiv_{2}2\,\alpha+1\equiv_{2}1$.
+    In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
+    \begin{itemize}
+        \item let $j=2\alpha$, for some $\alpha\in\mathbb{N}$, so $j_{0}=0$,
+            which make vanish the minuend:
+            \begin{displaymath}
+                {{2j}\choose{j+1}}
+                \equiv_{2} {{0}\choose{1}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
+                    \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
+            \end{displaymath}
+            so:
+            \begin{displaymath}
+                c_{2\alpha}\equiv_{2}{{2j}\choose{j}}
+                \equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
+                    \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
+            \end{displaymath}
+            A boundary case pops out when $\alpha=0$, which writes $j$ as 
+            $j=0 + 0\cdot2 + 0\cdot2^{2} + \ldots + 0\cdot2^{k}$, therefore:
+            \begin{displaymath}
+                c_{0}\equiv_{2}{{0}\choose{0}}
+                \equiv_{2} {{0}\choose{0}}{{0}\choose{0}}{{0}\choose{0}}
+                    \ldots{{0}\choose{0}}{{0}\choose{0}}\equiv_{2}1
+            \end{displaymath}
+            this is indeed the only case to have $c_{2\alpha} \equiv_{p}1$,
+            as the following proof confirms:
+            \begin{proof}
+                Assume not, hence there exists $\hat{\alpha}\in\mathbb{N}$, greater than $0$,
+                such that $c_{2\hat{\alpha}} \equiv_{p}1$. So to don't make ${{0}\choose{j_{1}}}$
+                be zero then $j_{1}=0$; in turn this constraint requires a new one, namely
+                to don't make ${{0}\choose{j_{2}}}$ be zero then $j_{2}=0$; 
+                in turn this constraint requires a new one, namely
+                to don't make ${{0}\choose{j_{3}}}$ be zero then $j_{3}=0$; 
+                in turn this constraint requires a new one, namely\ldots
+                to don't make ${{0}\choose{j_{k}}}$ be zero then $j_{k}=0$.
+                Therefore $j=0$ which contradicts the hypothesis $\alpha>0$, so
+                for even $j > 0$ coefficient $c_{j}\equiv_{p}0$, as required.
+            \end{proof}
 
-    In order to better understand the previous statements, here
-    we supply a short table about, studying coefficient $d_{n,0}\in\mathcal{C}$,
-    lying on the very first column:
-    \begin{displaymath}
-        \begin{split}
-            d_{0,0} &= \sum_{i_{1}=1}{c_{i_{1}}} = c_{1}\equiv_{2}0 \\
-            d_{1,0} &= \sum_{i_{1}=2}{c_{i_{1}}} = c_{2}
-                \equiv_{2}{{j_{0}}\choose{j_{1}}} \equiv_{2}{{0}\choose{1}}\equiv_{2}0\\
-            d_{2,0} &= \sum_{i_{1}=3}{c_{i_{1}}} = c_{3}\equiv_{2}0\\
-            d_{3,0} &= \sum_{i_{1}=4}{c_{i_{1}}} = c_{4}
-                \equiv_{2}{{j_{0}}\choose{j_{1}}} {{j_{1}}\choose{j_{2}}}
-                \equiv_{2}{{0}\choose{0}} {{0}\choose{1}}\equiv_{2}0\\
-            d_{4,0} &= \sum_{i_{1}=5}{c_{i_{1}}} = c_{5}\equiv_{2}0\\
-            d_{5,0} &= \sum_{i_{1}=6}{c_{i_{1}}} = c_{6}
-                \equiv_{2}{{j_{0}}\choose{j_{1}}} {{j_{1}}\choose{j_{2}}}
-                \equiv_{2}{{0}\choose{1}} {{1}\choose{1}}\equiv_{2}0\\
-            d_{6,0} &= \sum_{i_{1}=7}{c_{i_{1}}} = c_{7}\equiv_{2}0\\
-            d_{7,0} &= \sum_{i_{1}=8}{c_{i_{1}}} = c_{8}
-                \equiv_{2}{{j_{0}}\choose{j_{1}}} {{j_{1}}\choose{j_{2}}}{{j_{2}}\choose{j_{3}}}
-                \equiv_{2}{{0}\choose{0}} {{0}\choose{0}}{{0}\choose{1}}\equiv_{2}0\\
-        \end{split}
-    \end{displaymath}
+        \item let $j=2\alpha+1$, for some $\alpha\in\mathbb{N}$, so $j_{0}=1$,
+            which make vanish the augend:
+            \begin{displaymath}
+                {{2j}\choose{j}}
+                \equiv_{2} {{0}\choose{1}}{{1}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
+                    \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
+            \end{displaymath}
+            so:
+            \begin{displaymath}
+                c_{2\alpha+1}\equiv_{2}-{{2j}\choose{j+1}}
+                %\equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
+                    %\ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
+            \end{displaymath}
+            observe that $(-1)^{-1}\mod2$, the multiplicative inverse of $-1$, equals $1$
+            since $(-1)\cdot 1 \equiv_{2}1$, therefore we can multiply both members by
+            $(-1)^{-1}\mod2$ to get:
+            \begin{displaymath}
+                c_{2\alpha+1}\equiv_{2}{{2j}\choose{j+1}}
+                %\equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
+                    %\ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
+            \end{displaymath}
+
+            Be careful handling $j+1$, since $j$ is odd a possible chain of carries
+            may happen, so handle in a generic way, writing
+            the generic representation of $j$ in base $2$, putting evidence on coefficients:
+            \begin{displaymath}
+                j=\left(\underbrace{1,1,\ldots,1}_{\beta},0,j_{\beta+1},\ldots,j_{\beta+\gamma}\right)_{2}
+            \end{displaymath}
+            where $\beta,\gamma\in\mathbb{N}$ such that $\beta>0$ and $\beta+\gamma=k$. 
+            
+            Now increment by $1$:
+            \begin{displaymath}
+                j+1=\left(\underbrace{0,0,\ldots,0}_{\beta},1,j_{\beta+1},\ldots,j_{\beta+\gamma}%,j_{\beta+\gamma+1}
+                    \right)_{2}
+            \end{displaymath}
+            so the congruence relation gets the following shape:
+            \begin{displaymath}
+                c_{2\alpha+1}\equiv_{2}{{2j}\choose{j+1}}
+                    \equiv_{2} \underbrace{{{0}\choose{0}}{{1}\choose{0}}{{1}\choose{0}}\ldots{{1}\choose{0}}}_{\beta} 
+                        {{1}\choose{1}}{{0}\choose{j_{\beta+1}}}
+                        \ldots{{j_{\beta+\gamma-1}}\choose{j_{\beta+\gamma}}}{{j_{\beta+\gamma}}\choose{0}}%{\beta+\gamma+1}}
+            \end{displaymath}
+            a simplification yield:
+            \begin{displaymath}
+                c_{2\alpha+1}\equiv_{2} {{0}\choose{j_{\beta+1}}}
+                        \ldots{{j_{\beta+\gamma-1}}\choose{j_{\beta+\gamma}}}
+            \end{displaymath}
+            so $c_{2\alpha+1}\equiv_{2} 1$ if coefficients $j_{\beta+1}, \ldots, j_{\beta+\gamma-1},j_{\beta+\gamma}$
+            are $0$ them all, which implies that:
+            \begin{displaymath}
+                j=\left(\underbrace{1,1,\ldots,1}_{\beta},\underbrace{0,0,\ldots,0}_{k-\beta+1}\right)_{2}
+            \end{displaymath}
+            in other words $j = 2^{\beta+1}-1$. As boundary case, to handle $c_{1}$ correctly 
+            (the above result doesn't cover it because $\beta>0$) observe:
+            \begin{displaymath}
+                c_{1}\equiv_{2} {{2}\choose{2}}\equiv_{2} {{0}\choose{0}}{{1}\choose{1}}\equiv_{2}1
+            \end{displaymath}
+            the moral is: for $j$ odd, $c_{j} \equiv_{p} 1$ if $j$ is one less a power of $2$. 
+    \end{itemize}
 
 
     Expansion of Riordan array $\mathcal{C}$:
