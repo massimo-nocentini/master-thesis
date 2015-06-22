@@ -2246,7 +2246,8 @@
     with boundary condition $c_{-1}=0$. 
 
     After this subtle point, there exists indices $i_{1}, i_{2}, \ldots, i_{k+1}$,
-    each one $i_{j}\in\mathbb{N}$, such that:
+    where $i_{j}\in\lbrace0,\ldots,n+1\rbrace$ for each $j\in\lbrace1,\ldots,k+1\rbrace$, 
+    such that:
     \begin{displaymath}
         [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
             = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
@@ -2419,10 +2420,13 @@
             d_{2^{\alpha}-1,1} = \sum_{i_{1}+ i_{2}=2^{\alpha}}{ c_{i_{1}-1}\,c_{i_{2}-1} }
         \end{displaymath}
         observe how indices $i_{1}, i_{2}$ are related: $i_{1}+ i_{2}=2^{\alpha}$,
-        so $2^{\alpha} \big| \left(i_{1}+ i_{2}\right)$, which is the same to say that 
-        $\frac{i_{1}}{2^{\alpha}}$ and $\frac{i_{2}}{2^{\alpha}}$ are both integers.
-        This implies that there exists $\beta,\gamma\in\mathbb{N}$, where $\beta,\gamma \geq\alpha$,
-        such that $i_{1}=2^{\beta}$ and $i_{2}=2^{\gamma}$, respectively.
+        so $2^{\alpha}$ divides $i_{1}+i_{2}$ \emph{exactly}.
+        %, which is the same to say that 
+        %$\frac{i_{1}}{2^{\alpha}}$ and $\frac{i_{2}}{2^{\alpha}}$ are both integers.
+        This implies that there exists $\beta,\gamma\in\mathbb{N}$, where $\beta,\gamma\leq\alpha$,
+        such that $i_{1}=2^{\beta}$ and $i_{2}=2^{\gamma}$, respectively, since both indices
+        cannot exceed $2^{\alpha}$.
+
         By this fact follows that $c_{i_{1}-1}=c_{2^{\beta}-1}\equiv_{2}1$ and 
         $c_{i_{2}-1}=c_{2^{\gamma}-1}\equiv_{2}1$, moreover $c_{i_{1}-1}\,c_{i_{2}-1}\equiv_{2}1$.
         By construction $i_{1},i_{2}\in\lbrace0,\ldots,2^{\alpha}\rbrace$, fixing one of them in 
