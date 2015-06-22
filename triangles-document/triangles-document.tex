@@ -2177,7 +2177,8 @@
                         d_{nk} \in T_{\equiv_{p} 0}^{(h)} \rightarrow d_{nk} \equiv_{p} 0
                     \end{displaymath}
                     where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$ and 
-                    $k\in\lbrace 0,\ldots, n-p^{h}\rbrace$;
+                    $k\in\lbrace 0,\ldots, n-p^{h}\rbrace$, in other words
+                    $k\in\lbrace 0,\ldots, p^{h}(p-1)-2\rbrace$;
                 \item a mirror copy of $\mathcal{C}_{h}^{(0,p^{h}-1)}$ respect column orientation,
                     defining coefficients $d_{nk}$  
                     where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$ and 
@@ -2506,10 +2507,74 @@
     the remaining ones make it vanish and $ d_{s, 2^{\alpha}-1} \equiv_{2} 0$, for any $s\in S$,
     as required.
 
+    \end{proof}
+
+    Another question, this one should be interpreted keeping the
+    concept of principal $h$-cluster in mind:
+    \begin{quote}
+        show that an equilateral triangle $T_{\equiv_{2} 0}^{(h)}$, 
+        for some $h\in\mathbb{N}$,
+        with $2^{h}-1$ coefficients on each side, satisfies:
+        \begin{displaymath}
+            d_{nk} \in T_{\equiv_{2} 0}^{(h)} \rightarrow d_{nk} \equiv_{2} 0
+        \end{displaymath}
+        where $n\in\lbrace 2^{h},\ldots,2^{h+1}-2\rbrace$ and 
+        $k\in\lbrace 0,\ldots, n-2^{h}\rbrace$, in other words
+        $k\in\lbrace 0,\ldots, 2^{h}-2\rbrace$. Note that triangle
+        $T_{\equiv_{2} 0}^{(h)}$ is a component of the principal cluster
+        of order $h+1$.
+    \end{quote}
+    \begin{proof}
+    In order to answer this question we repeatedly use the approach
+    of the previous proof, considering columns $\Xi=\lbrace 0,\ldots, 2^{h}-2\rbrace$ and
+    for each column $k\in\Xi$, the segment $S_{k}=\lbrace2^{h}+k,\ldots,2^{h+1}-2 \rbrace$.
+
+    Everything is set, so start from column on the very left, column $k=0$.
+    So the corresponding segment $S_{0}=\lbrace2^{h},\ldots,2^{h+1}-2 \rbrace$ is
+    a segment of ``traditional'' Catalan coefficients because coefficients lying on
+    column $0$ are defined by generating function $d_{\mathcal{C}}$. Since no
+    coefficient has the shape $c_{2^{\alpha}-1}$, all such coefficients are even.
+
+    Go ahead with column $k=1$, so the corresponding segment is 
+    $S_{1}=\lbrace2^{h}+1,\ldots,2^{h+1}-2 \rbrace$ and coefficient lying on it
+    are defined according:
+    \begin{displaymath}
+        d_{s, 1} = \sum_{i_{1}+i_{2}=s+1} {c_{i_{1}-1}\,c_{i_{2}-1}}
+    \end{displaymath}
+    where $s\in S_{1}$. This is quite similar to the proof developed before,
+    with the difference to have summand term $t$ with two coefficient, namely
+    $t=c_{i_{1}-1}\,c_{i_{2}-1}$ instead of $2^{h}$, therefore the same argument applies,
+    since if having $2^{h}$ possible choices of coefficients fails to make not vanish
+    the summand $t$, modulo $2$, the same failure is reached if we have only $2$ possible choices.
+
+    The same reasoning holds for remaining columns $\lbrace 2,\ldots, 2^{h}-2\rbrace$,
+    since the above proof covers upto column $2^{h}-1$, hence the triangle $T_{\equiv_{2} 0}^{(h)}$
+    contains only even coefficients, as required.
 
     \end{proof}
 
+    In order to prove that the triangle in the middle within the ``bottom strip'' 
+    of a principal $(h+1)$-cluster and the triangle on the very right 
+    ``mirror'' each other, reason as follow. 
+    
+    Fix a coefficient lying on
+    column $2^{h}-1$ within segment $S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$,
+    denote this coefficient $\hat{d}_{s,2^{h}-1}$, where $s\in S_{2^{h}-1}$. The
+    request can be formalized as follow:
+    \begin{displaymath}
+        d_{s-e,2^{h}-1-e} \equiv_{2} d_{s,2^{h}-1+e}
+    \end{displaymath}
+    for $e\in\lbrace1,\ldots,s-(2^{h}-1)-1\rbrace=\lbrace1,\ldots,s-2^{h}\rbrace$,
+    computed looking at row $s$ toward its end.
+    Using our definition we can rewrite as:
 
+    \begin{lenghtydisplaymath}
+        \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-e}=s-e+1}
+            {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-e}-1}}
+        \equiv_{2}
+        \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}+e}=s+1}
+            {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}+e}-1}}
+    \end{lenghtydisplaymath}
 
     \subsection{Expanded arrays and coloured triangles}
 
