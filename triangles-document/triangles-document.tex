@@ -2592,6 +2592,132 @@
     on the \emph{left} of the ``pivot'' element. In this way columns should be
     congruent element-wise.
 
+    Another approach is to apply definition of a coefficient in a Riordan array,
+    namely find a closed form for $d_{nk} = [t^{n}]d_{\mathcal{C}}(t)h_{\mathcal{C}}(t)^{k}$,
+    which agree with:
+    \begin{displaymath}
+        d_{nk}=\frac{k+1}{n+1}{{2n-k}\choose{n-k}}
+    \end{displaymath}
+    or else:
+    \begin{displaymath}
+        d_{nk}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}
+    \end{displaymath}
+
+    \begin{proof}
+    Assume not, therefore:
+    \begin{displaymath}
+        d_{s-e,2^{h}-1-e} \not\equiv_{2} d_{s,2^{h}-1+e}
+    \end{displaymath}
+    rewriting the congruence according coefficient extraction formula:
+    \begin{displaymath}
+        \frac{2^{h}-e}{s-e+1}{{2(s-e)-(2^{h}-1-e)}\choose{s-e-(2^{h}-1-e)}}
+        \not\equiv_{2}
+        \frac{2^{h}+e}{s+1}{{2s-(2^{h}-1+e)}\choose{s-(2^{h}-1+e)}}
+    \end{displaymath}
+    simplify it:
+    \begin{displaymath}
+        \frac{2^{h}-e}{s-e+1}{{2s-e-2^{h}+1}\choose{s-2^{h}+1}}
+        \not\equiv_{2}
+        \frac{2^{h}+e}{s+1}{{2s-2^{h}+1-e}\choose{s-2^{h}+1-e}}
+    \end{displaymath}
+    manipulate using ${{n}\choose{k}}={{n}\choose{n-k}}$:
+    \begin{displaymath}
+        \frac{2^{h}-e}{s-e+1}{{2s-e-2^{h}+1}\choose{s-e}}
+        \not\equiv_{2}
+        \frac{2^{h}+e}{s+1}{{2s-2^{h}+1-e}\choose{s}}
+    \end{displaymath}
+    dead end, again: however binomial coeffients allow some grunging,
+    fractions on both side are difficult to handle since it's hard
+    they multiplicative inverses, modulo $2$. 
+    
+    Trace back to the second closed formula for coefficient on the left
+    hand side within congruence:
+    \begin{displaymath}
+        d_{s-e,2^{h}-1-e}= {{2(s-e)-(2^{h}-1-e)}\choose{(s-e)-(2^{h}-1-e)}}
+            - {{2(s-e)-(2^{h}-1-e)}\choose{(s-e)-(2^{h}-1-e)-1}}
+    \end{displaymath}
+    Trace back to the second closed formula for coefficient on the right
+    hand side within congruence:
+    \begin{displaymath}
+        d_{s,2^{h}-1+e}={{2s-(2^{h}-1+e)}\choose{s-(2^{h}-1+e)}}
+            - {{2s-(2^{h}-1+e)}\choose{s-(2^{h}-1+e)-1}}
+    \end{displaymath}
+    therefore:
+    \begin{displaymath}
+        \begin{split}
+            {{2s-e-2^{h}+1}\choose{s-2^{h}+1}}
+                - {{2s-e-2^{h}+1}\choose{s-2^{h}}}
+            &\not\equiv_{2}
+            {{2s-2^{h}+1-e}\choose{s-2^{h}+1-e}}
+                - {{2s-2^{h}+1-e}\choose{s-2^{h}-e}}\\
+            {{2s-e-2^{h}+1}\choose{s-e}}
+                - {{2s-e-2^{h}+1}\choose{s-e+1}}
+            &\not\equiv_{2}
+            {{2s-2^{h}+1-e}\choose{s}}
+                - {{2s-2^{h}+1-e}\choose{s+1}}\\
+        \end{split}
+    \end{displaymath}
+
+    Since $e\in\lbrace1,\ldots,s-2^{h}\rbrace$, proceed by cases:
+    \begin{itemize}
+        \item $e=1$ yield the following congruence:
+            \begin{displaymath}
+                    {{2s-2^{h}}\choose{s-1}}-{{2s-2^{h}}\choose{s}}
+                    \not\equiv_{2}
+                    {{2s-2^{h}}\choose{s}}-{{2s-2^{h}}\choose{s+1}}\\
+            \end{displaymath}
+            which is the same to say:
+            \begin{displaymath}
+                    {{2s-2^{h}}\choose{s-1}}+{{2s-2^{h}}\choose{s+1}} \not\equiv_{2} 0
+            \end{displaymath}
+            let $s=s_{0}+s_{1}\,2+s_{2}\,2^{2}+\ldots+s_{h-1}\,2^{h-1} + 2^{h}$
+            be the generic representation of $s$ in base $2$, since 
+            $s\in\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$. By cases on 
+            the parity of $s$:
+            \begin{itemize}
+                \item assume $s$ even, therefore both $s-1$ both $s+1$ are odd, 
+                    let $\hat{s}$ be one of them, hence:
+                    \begin{displaymath}
+                            {{2s-2^{h}}\choose{\hat{s}}} = 
+                                {{0}\choose{1}} 
+                                {{0}\choose{\hat{s}_{1}}}
+                                {{s_{1}}\choose{\hat{s}_{2}}}
+                                \ldots
+                                {{s_{h-2}}\choose{\hat{s}_{h-1}}}
+                                {{s_{h-1}^{*}}\choose{1}}
+                                {{s_{h}^{*}}\choose{0}} = 0
+                    \end{displaymath}
+                    where $(s_{h-1}^{*},s_{h}^{*})$ equals $(0,1)$ if $s_{h-1}=1$,
+                    otherwise equals $(1,0)$.  Observe $\hat{s}_{h}=1$ against boundary cases:
+                    if $s=2^{h}+1$ then $\hat{s}=s-1=2^{h}$, on the other
+                        hand if $s=2^{h+1}-2$ then $\hat{s}=s+1=2^{h+1}-1$,
+                        therefore in both boundary cases the coefficient of $2^{h}$ is $1$.
+                    Since both cases equals $0$ we get $0 \not\equiv_{2}0$ which is a contraddiction;
+                \item assume $s$ odd, therefore both $s-1$ both $s+1$ are even, 
+                    let $\hat{s}$ be one of them, hence:
+                    \begin{displaymath}
+                            {{2s-2^{h}}\choose{s}-1} = 
+                                {{0}\choose{0}} 
+                                {{1}\choose{s_{1}}}
+                                {{s_{1}}\choose{s_{2}}}
+                                \ldots
+                                {{s_{h-2}}\choose{s_{h-1}}}
+                                {{s_{h-1}^{*}}\choose{1}}
+                                {{s_{h}^{*}}\choose{0}}
+                    \end{displaymath}
+                    in order for the right hand side to not vanish, modulo $2$,
+                    it is mandatory for coefficients $\lbrace s_{i}\rbrace_{i\in\lbrace1,\ldots,h\rbrace}$
+                    to satisfy $s_{i}\geq s_{i+1}$: if any one of them, say $s_{j}$ is $0$, then
+                    $s_{j+1},\ldots,s_{h}$ are all zero, but this contradicts the fact that $s_{h}=1$;
+                    on the contrary assume they are all $1$, therefore 
+                    $s=(\underbrace{1,1,1,\ldots,1}_{h+1})_{2}=2^{h+1}-1$ another contraddiction, since
+                    $s$ can assume $2^{h+1}-2$ at most. So ${{2s-2^{h}}\choose{s}-1}\equiv_{2}0$.
+
+            \end{itemize}
+    \end{itemize}
+
+    \end{proof}
+
     \subsection{Expanded arrays and coloured triangles}
 
     Expansion of Riordan array $\mathcal{C}$:
