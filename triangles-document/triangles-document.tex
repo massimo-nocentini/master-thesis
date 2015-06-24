@@ -2658,9 +2658,9 @@
         \end{split}
     \end{displaymath}
 
-    Since $e\in\lbrace1,\ldots,s-2^{h}\rbrace$, proceed by cases:
+    Since $e\in\lbrace1,\ldots,s-2^{h}\rbrace$, by complete induction on $e$:
     \begin{itemize}
-        \item $e=1$ yield the following congruence:
+        \item base case $e=1$ yield the following congruence:
             \begin{displaymath}
                     {{2s-2^{h}}\choose{s-1}}-{{2s-2^{h}}\choose{s}}
                     \not\equiv_{2}
@@ -2672,48 +2672,114 @@
             \end{displaymath}
             let $s=s_{0}+s_{1}\,2+s_{2}\,2^{2}+\ldots+s_{h-1}\,2^{h-1} + 2^{h}$
             be the generic representation of $s$ in base $2$, since 
-            $s\in\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$. By cases on 
-            the parity of $s$:
+            $s\in\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, also  
+            let $2s-2^{h}=s_{0}\,2+s_{1}\,2^{2}+s_{2}\,2^{3}+\ldots+s_{h-1}^{*}\,2^{h} + s_{h}^{*}\,2^{h+1}$,
+            where $(s_{h-1}^{*},s_{h}^{*})$ equals $(0,1)$ if $s_{h-1}=1$, otherwise equals $(1,0)$.
+            By cases on the parity of $s$:
             \begin{itemize}
                 \item assume $s$ even, therefore both $s-1$ both $s+1$ are odd, 
-                    let $\hat{s}$ be one of them, hence:
+                    let $\hat{s}=1+\hat{s}_{1}\,2+\hat{s}_{2}\,2^{2}+\ldots+
+                        \hat{s}_{h-1}\,2^{h-1}+2^{h}$ be one of them, hence:
                     \begin{displaymath}
-                            {{2s-2^{h}}\choose{\hat{s}}} = 
-                                {{0}\choose{1}} 
-                                {{0}\choose{\hat{s}_{1}}}
-                                {{s_{1}}\choose{\hat{s}_{2}}}
-                                \ldots
-                                {{s_{h-2}}\choose{\hat{s}_{h-1}}}
-                                {{s_{h-1}^{*}}\choose{1}}
-                                {{s_{h}^{*}}\choose{0}} = 0
+                            {{2s-2^{h}}\choose{\hat{s}}}  
+                            \equiv_{2}
+                            {{0}\choose{1}} 
+                            {{0}\choose{\hat{s}_{1}}}
+                            {{s_{1}}\choose{\hat{s}_{2}}}
+                            \ldots
+                            {{s_{h-2}}\choose{\hat{s}_{h-1}}}
+                            {{s_{h-1}^{*}}\choose{1}}
+                            {{s_{h}^{*}}\choose{0}} = 0
                     \end{displaymath}
-                    where $(s_{h-1}^{*},s_{h}^{*})$ equals $(0,1)$ if $s_{h-1}=1$,
-                    otherwise equals $(1,0)$.  Observe $\hat{s}_{h}=1$ against boundary cases:
+                    Observe $\hat{s}_{h}=1$ against boundary cases:
                     if $s=2^{h}+1$ then $\hat{s}=s-1=2^{h}$, on the other
-                        hand if $s=2^{h+1}-2$ then $\hat{s}=s+1=2^{h+1}-1$,
-                        therefore in both boundary cases the coefficient of $2^{h}$ is $1$.
-                    Since both cases equals $0$ we get $0 \not\equiv_{2}0$ which is a contraddiction;
+                    hand if $s=2^{h+1}-2$ then $\hat{s}=s+1=2^{h+1}-1$,
+                    therefore in both cases the coefficient of $2^{h}$ is $1$.
+                    Eventually we get $0+0 \not\equiv_{2}0$ which is a contraddiction;
+
                 \item assume $s$ odd, therefore both $s-1$ both $s+1$ are even, 
-                    let $\hat{s}$ be one of them, hence:
+                    let's study the former:
                     \begin{displaymath}
-                            {{2s-2^{h}}\choose{s}-1} = 
-                                {{0}\choose{0}} 
-                                {{1}\choose{s_{1}}}
-                                {{s_{1}}\choose{s_{2}}}
-                                \ldots
-                                {{s_{h-2}}\choose{s_{h-1}}}
-                                {{s_{h-1}^{*}}\choose{1}}
-                                {{s_{h}^{*}}\choose{0}}
+                            {{2s-2^{h}}\choose{s-1}}  
+                            \equiv_{2}
+                            {{0}\choose{0}} 
+                            {{1}\choose{s_{1}}}
+                            {{s_{1}}\choose{s_{2}}}
+                            \ldots
+                            {{s_{h-2}}\choose{s_{h-1}}}
+                            {{s_{h-1}^{*}}\choose{1}}
+                            {{s_{h}^{*}}\choose{0}}
                     \end{displaymath}
                     in order for the right hand side to not vanish, modulo $2$,
-                    it is mandatory for coefficients $\lbrace s_{i}\rbrace_{i\in\lbrace1,\ldots,h\rbrace}$
-                    to satisfy $s_{i}\geq s_{i+1}$: if any one of them, say $s_{j}$ is $0$, then
-                    $s_{j+1},\ldots,s_{h}$ are all zero, but this contradicts the fact that $s_{h}=1$;
-                    on the contrary assume they are all $1$, therefore 
-                    $s=(\underbrace{1,1,1,\ldots,1}_{h+1})_{2}=2^{h+1}-1$ another contraddiction, since
-                    $s$ can assume $2^{h+1}-2$ at most. So ${{2s-2^{h}}\choose{s}-1}\equiv_{2}0$.
+                    it is mandatory for coefficients $\lbrace s_{i}\rbrace_{i\in\lbrace1,\ldots,h-2\rbrace}$
+                    to satisfy $s_{i}\geq s_{i+1}$: if any one of them is $0$, say $s_{j}$, then
+                    $s_{j+1},\ldots,s_{j+k}$, with $j+k=h-1$,
+                    have to be all $0$ too. In particular, if $s_{h-1}=0$ then 
+                    $(s_{h-1}^{*},s_{h}^{*})=(1,0)$
+                    therefore the right hand side reduces to $1$, modulo $2$.
+                    Observe that coefficients $\lbrace s_{i}\rbrace_{i\in\lbrace1,\ldots,h-2\rbrace}$
+                    cannot be all $1$ otherwise 
+                    $s=(\underbrace{1,1,1,\ldots,1}_{h+1})_{2}=2^{h+1}-1$ raises a contraddiction, since
+                    $s$ can assume $2^{h+1}-2$ at most. 
+                    
+                    For the latter, namely $s+1$, assume $s$ can be represented as 
+                    $(\underbrace{1,1,\ldots,1}_{r},0,s_{r+1},s_{r+2},\ldots,s_{h-1},1)_{2}$, for
+                    $r\in\lbrace1,\ldots,h-2\rbrace$, since a $0$ must occur otherwise $s=2^{h+1}-1$
+                    which cannot be the case.  Adding $1$ yield the representation
+                    $(\underbrace{0,0,\ldots,0}_{r},1,s_{r+1},s_{r+2},\ldots,s_{h-1},1)_{2}$, therefore:
+                    \begin{lenghtydisplaymath}
+                            {{2s-2^{h}}\choose{s+1}} 
+                            \equiv_{2} 
+                            \underbrace{
+                                {{0}\choose{0}} 
+                                {{1}\choose{0}}
+                                {{1}\choose{0}}
+                                \ldots
+                                {{1}\choose{0}}
+                            }_{r}
+                            {{1}\choose{1}}
+                            {{0}\choose{s_{r+1}}}
+                            {{s_{r+1}}\choose{s_{r+2}}}
+                            \ldots
+                            {{s_{h-2}}\choose{s_{h-1}}}
+                            {{s_{h-1}^{*}}\choose{1}}
+                            {{s_{h}^{*}}\choose{0}}
+                    \end{lenghtydisplaymath}
+                    In order to not vanish, modulo $2$, 
+                    $s_{r+1}=0$, this propagates in turn that $s_{r+2}=0$, \ldots, 
+                    this propagates in turn that $s_{h-2}=0$,
+                    this propagates in turn that $s_{h-1}=0$. But if $s_{h-1}=0$
+                    then $(s_{h-1}^{*},s_{h}^{*})=(1,0)$, therefore the right
+                    hand side reduces to $1$.
 
+                    Combining the above cases for $s$ odd we reach:
+                    \begin{displaymath}
+                            {{2s-2^{h}}\choose{s-1}}+{{2s-2^{h}}\choose{s+1}} \equiv_{2} 1+1\equiv_{2} 0
+                    \end{displaymath}
             \end{itemize}
+
+            \item assume the argument holds for $k\leq e$ and prove for $k=e+1$, so we need to show:
+
+                \begin{lenghtydisplaymath}
+                    \begin{split}
+                        {{2s-(e+1)-2^{h}+1}\choose{s-2^{h}+1}}
+                            - {{2s-(e+1)-2^{h}+1}\choose{s-2^{h}}}
+                        &\equiv_{2}
+                        {{2s-2^{h}+1-(e+1)}\choose{s-2^{h}+1-(e+1)}}
+                            - {{2s-2^{h}+1-(e+1)}\choose{s-2^{h}-(e+1)}}\\
+                        {{2s-(e+1)-2^{h}+1}\choose{s-(e+1)}}
+                            - {{2s-(e+1)-2^{h}+1}\choose{s-(e+1)+1}}
+                        &\not\equiv_{2}
+                        {{2s-2^{h}+1-(e+1)}\choose{s}}
+                            - {{2s-2^{h}+1-(e+1)}\choose{s+1}}\\
+                        {{2s-e-2^{h}}\choose{s-e-1}}
+                            - {{2s-e-2^{h}}\choose{s-e}}
+                        &\not\equiv_{2}
+                        {{2s-2^{h}-e}\choose{s}}
+                            - {{2s-2^{h}-e}\choose{s+1}}\\
+                    \end{split}
+                \end{lenghtydisplaymath}
+                which follows directly by complete induction hypothesis.
     \end{itemize}
 
     \end{proof}
