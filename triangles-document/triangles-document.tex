@@ -2587,28 +2587,36 @@
             {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}+1}-1}}
     \end{lenghtydisplaymath}
 
-    too difficult to proceed this way, sadly. A new idea should be to
-    translate back columns (discarding unnecessary coefficients, subtracting them)
-    on the \emph{left} of the ``pivot'' element. In this way columns should be
-    congruent element-wise.
+    too difficult to proceed this way, sadly. 
+    
+    Another idea could be to
+    translate back columns (discarding unnecessary coefficients by subtracting them)
+    on the \emph{left} of the choosen ``pivot'' element $\hat{d}_{s,2^{h}-1}$. 
+    In this way columns should be congruent element-wise but, again, it seems difficult
+    to move forward this way.
 
-    Another approach is to apply definition of a coefficient in a Riordan array,
-    namely find a closed form for $d_{nk} = [t^{n}]d_{\mathcal{C}}(t)h_{\mathcal{C}}(t)^{k}$,
-    which agree with:
+    Another approach is to find a closed form for a coefficient in $\mathcal{C}$,
+    using extract operator: $d_{nk} = [t^{n}]d_{\mathcal{C}}(t)h_{\mathcal{C}}(t)^{k}$.
+    According the article \emph{Identities induced by Riordan Arrays}, such
+    coefficient $d_{nk}$ agrees with:
     \begin{displaymath}
         d_{nk}=\frac{k+1}{n+1}{{2n-k}\choose{n-k}}
     \end{displaymath}
+        \marginpar{in these ``modular''
+            proofs it's much easier to rewrite a binomial coefficient
+            into other binomial coefficients, only}
     or else:
     \begin{displaymath}
         d_{nk}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}
     \end{displaymath}
 
+    We attempt a \emph{false start} using the former definition.
     \begin{proof}
-    Assume not, therefore:
+    Assume not, therefore we need to prove the following statement:
     \begin{displaymath}
         d_{s-e,2^{h}-1-e} \not\equiv_{2} d_{s,2^{h}-1+e}
     \end{displaymath}
-    rewriting the congruence according coefficient extraction formula:
+    rewriting the congruence according the former definition for $d_{nk}$:
     \begin{displaymath}
         \frac{2^{h}-e}{s-e+1}{{2(s-e)-(2^{h}-1-e)}\choose{s-e-(2^{h}-1-e)}}
         \not\equiv_{2}
@@ -2626,18 +2634,23 @@
         \not\equiv_{2}
         \frac{2^{h}+e}{s+1}{{2s-2^{h}+1-e}\choose{s}}
     \end{displaymath}
-    dead end, again: however binomial coeffients allow some grunging,
+    dead end: nonetheless binomial coeffients allow some grunging,
     fractions on both side are difficult to handle since it's hard
-    they multiplicative inverses, modulo $2$. 
+    to find their multiplicative inverses, modulo $2$.
+    \end{proof} 
     
-    Trace back to the second closed formula for coefficient on the left
-    hand side within congruence:
+    Trace back to the latter closed formula for coefficient $d_{nk}$. 
+    \begin{proof}
+    Recall we would like to prove the following statement:
+    \begin{displaymath}
+        d_{s-e,2^{h}-1-e} \equiv_{2} d_{s,2^{h}-1+e}
+    \end{displaymath}
+    Rewrite the left hand side:
     \begin{displaymath}
         d_{s-e,2^{h}-1-e}= {{2(s-e)-(2^{h}-1-e)}\choose{(s-e)-(2^{h}-1-e)}}
             - {{2(s-e)-(2^{h}-1-e)}\choose{(s-e)-(2^{h}-1-e)-1}}
     \end{displaymath}
-    Trace back to the second closed formula for coefficient on the right
-    hand side within congruence:
+    in the same spirit, rewrite the right hand side:
     \begin{displaymath}
         d_{s,2^{h}-1+e}={{2s-(2^{h}-1+e)}\choose{s-(2^{h}-1+e)}}
             - {{2s-(2^{h}-1+e)}\choose{s-(2^{h}-1+e)-1}}
@@ -2647,32 +2660,32 @@
         \begin{split}
             {{2s-e-2^{h}+1}\choose{s-2^{h}+1}}
                 - {{2s-e-2^{h}+1}\choose{s-2^{h}}}
-            &\not\equiv_{2}
+            &\equiv_{2}
             {{2s-2^{h}+1-e}\choose{s-2^{h}+1-e}}
                 - {{2s-2^{h}+1-e}\choose{s-2^{h}-e}}\\
             {{2s-e-2^{h}+1}\choose{s-e}}
                 - {{2s-e-2^{h}+1}\choose{s-e+1}}
-            &\not\equiv_{2}
+            &\equiv_{2}
             {{2s-2^{h}+1-e}\choose{s}}
                 - {{2s-2^{h}+1-e}\choose{s+1}}\\
         \end{split}
     \end{displaymath}
 
-    Since $e\in\lbrace1,\ldots,s-2^{h}\rbrace$, by complete induction on $e$:
+    Since $e\in\lbrace1,\ldots,s-2^{h}\rbrace$, proceed by complete induction on $e$:
     \begin{itemize}
         \item base case $e=1$ yield the following congruence:
             \begin{displaymath}
                     {{2s-2^{h}}\choose{s-1}}-{{2s-2^{h}}\choose{s}}
-                    \not\equiv_{2}
+                    \equiv_{2}
                     {{2s-2^{h}}\choose{s}}-{{2s-2^{h}}\choose{s+1}}\\
             \end{displaymath}
             which is the same to say:
             \begin{displaymath}
-                    {{2s-2^{h}}\choose{s-1}}+{{2s-2^{h}}\choose{s+1}} \not\equiv_{2} 0
+                    {{2s-2^{h}}\choose{s-1}}+{{2s-2^{h}}\choose{s+1}} \equiv_{2} 0
             \end{displaymath}
             let $s=s_{0}+s_{1}\,2+s_{2}\,2^{2}+\ldots+s_{h-1}\,2^{h-1} + 2^{h}$
             be the generic representation of $s$ in base $2$, since 
-            $s\in\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, also  
+            $s\in\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$; also  
             let $2s-2^{h}=s_{0}\,2+s_{1}\,2^{2}+s_{2}\,2^{3}+\ldots+s_{h-1}^{*}\,2^{h} + s_{h}^{*}\,2^{h+1}$,
             where $(s_{h-1}^{*},s_{h}^{*})$ equals $(0,1)$ if $s_{h-1}=1$, otherwise equals $(1,0)$.
             By cases on the parity of $s$:
@@ -2695,7 +2708,7 @@
                     if $s=2^{h}+1$ then $\hat{s}=s-1=2^{h}$, on the other
                     hand if $s=2^{h+1}-2$ then $\hat{s}=s+1=2^{h+1}-1$,
                     therefore in both cases the coefficient of $2^{h}$ is $1$.
-                    Eventually we get $0+0 \not\equiv_{2}0$ which is a contraddiction;
+                    Eventually we get $0+0 \equiv_{2}0$, which holds;
 
                 \item assume $s$ odd, therefore both $s-1$ both $s+1$ are even, 
                     let's study the former:
@@ -2719,13 +2732,13 @@
                     therefore the right hand side reduces to $1$, modulo $2$.
                     Observe that coefficients $\lbrace s_{i}\rbrace_{i\in\lbrace1,\ldots,h-2\rbrace}$
                     cannot be all $1$ otherwise 
-                    $s=(\underbrace{1,1,1,\ldots,1}_{h+1})_{2}=2^{h+1}-1$ raises a contraddiction, since
+                    $s=(\underbrace{1,1,1,\ldots,1}_{h+1})_{2}=2^{h+1}-1$ raises a contraddiction, because
                     $s$ can assume $2^{h+1}-2$ at most. 
                     
                     For the latter, namely $s+1$, assume $s$ can be represented as 
                     $(\underbrace{1,1,\ldots,1}_{r},0,s_{r+1},s_{r+2},\ldots,s_{h-1},1)_{2}$, for
                     $r\in\lbrace1,\ldots,h-2\rbrace$, since a $0$ must occur otherwise $s=2^{h+1}-1$
-                    which cannot be the case.  Adding $1$ yield the representation
+                    which cannot be the case, as we've already seen.  Adding $1$ yield the representation
                     $(\underbrace{0,0,\ldots,0}_{r},1,s_{r+1},s_{r+2},\ldots,s_{h-1},1)_{2}$, therefore:
                     \begin{lenghtydisplaymath}
                             {{2s-2^{h}}\choose{s+1}} 
