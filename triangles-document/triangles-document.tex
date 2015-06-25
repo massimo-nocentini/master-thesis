@@ -2797,6 +2797,87 @@
 
     \end{proof}
 
+
+    In order to fully characterize $\mathcal{C}$ in a modular context we're
+    left with a last question:
+    \begin{quote}
+        consider a principal $(h+1)$-cluster $\mathcal{C}_{h+1}$: is the subcluster
+        $\mathcal{C}_{h}^{(0,p^{h}-1)}$ congruent to the subtriangle on the
+        very right in the ``bottom strip'' of $\mathcal{C}_{h+1}$?
+    \end{quote}
+
+    In order to formally state the above question we reason as before, choosing
+    a ``pivot'' element lying on a segment of column $2^{h}-1$, so 
+    denote with $S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$ the segment
+    of such column and let coefficient $\hat{d}_{s,2^{h}-1}$, where $s\in S_{2^{h}-1}$,
+    be the ``pivot'' element. The request can be formalized as follow:
+    \begin{displaymath}
+        d_{s,2^{h}-1+e} \equiv_{2} d_{s-2^{h},e-1}
+    \end{displaymath}
+    for $e\in\lbrace1,\ldots,s-(2^{h}-1)-1\rbrace=\lbrace1,\ldots,s-2^{h}\rbrace$,
+    computed looking at row $s$ toward its end.
+
+    \begin{proof}
+    We tackle the proof using the following definition for $d_{nk}\in\mathcal{C}$:
+    \begin{displaymath}
+        d_{nk}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}
+    \end{displaymath}
+    instantiated with our indices, we have to prove:
+
+    \begin{lenghtydisplaymath}
+        \begin{split}
+            {{2s-(2^{h}-1+e)}\choose{s-(2^{h}-1+e)}} - {{2s-(2^{h}-1+e)}\choose{s-(2^{h}-1+e)-1}}
+            &\equiv_{2}
+            {{2(s-2^{h})-(e-1)}\choose{(s-2^{h})-(e-1)}} - {{2(s-2^{h})-(e-1)}\choose{(s-2^{h})-(e-1)-1}}\\
+            {{2s-2^{h}+1-e}\choose{s-2^{h}+1-e}} - {{2s-2^{h}+1-e}\choose{s-2^{h}-e}}
+            &\equiv_{2}
+            {{2s-2^{h+1}-e+1}\choose{s-2^{h}-e+1}} - {{2s-2^{h+1}-e+1}\choose{s-2^{h}-e}}\\
+            {{2s-2^{h}+1-e}\choose{s}} - {{2s-2^{h}+1-e}\choose{s+1}}
+            &\equiv_{2}
+            {{2s-2^{h+1}-e+1}\choose{s-2^{h}}} - {{2s-2^{h+1}-e+1}\choose{s-2^{h}+1}}\\
+        \end{split}
+    \end{lenghtydisplaymath}
+    Since $e\in\lbrace1,\ldots,s-2^{h}\rbrace$, proceed by complete induction on $e$:
+        \begin{itemize}
+            \item base case $e=1$ therefore:
+
+                \begin{lenghtydisplaymath}
+                    \begin{split}
+                        {{2s-2^{h}}\choose{s}} - {{2s-2^{h}}\choose{s+1}}
+                        &\equiv_{2}
+                        {{2s-2^{h+1}}\choose{s-2^{h}}} - {{2s-2^{h+1}}\choose{s-2^{h}+1}}\\
+                    \end{split}
+                \end{lenghtydisplaymath}
+                In the previous proof a detailed (and boring) derivation has been performed,
+                here we observe that upper terms of each binomial coefficient, $2s-2^{h}$
+                and $2s-2^{h+1}$ respectively, have $2$ in their prime factorization, therefore
+                expanding each binomial, $2$ can be factored out in turn, making congruent $0$
+                each one of them. However an approach similar to the previous one can be
+                taken as well.
+
+            \item assume the argument holds for $k\leq e$ and prove for $k=e+1$, so we need to show:
+
+                \begin{lenghtydisplaymath}
+                    \begin{split}
+                        {{2s-2^{h}+1-(e+1)}\choose{s}} - {{2s-2^{h}+1-(e+1)}\choose{s+1}}
+                        &\equiv_{2}
+                        {{2s-2^{h+1}-(e+1)+1}\choose{s-2^{h}}} - {{2s-2^{h+1}-(e+1)+1}\choose{s-2^{h}+1}}\\
+                        {{2s-2^{h}-e}\choose{s}} - {{2s-2^{h}-e}\choose{s+1}}
+                        &\equiv_{2}
+                        {{2s-2^{h+1}-e}\choose{s-2^{h}}} - {{2s-2^{h+1}-e}\choose{s-2^{h}+1}}\\
+                    \end{split}
+                \end{lenghtydisplaymath}
+                which follows directly by complete induction hypothesis.
+        \end{itemize}
+    \end{proof}
+   
+    Before concluding this section, we would like to note that the last two
+    proofs doesn't say anything about the remainder of a coefficient belonging
+    to subtriangles of interest: we've shown only that a \emph{complete}
+    subtriangle is repeated when coefficients are taken modulo $2$. 
+
+    Enough for this characterization modulo $2$ for Catalan array $\mathcal{C}$.
+
     \subsection{Expanded arrays and coloured triangles}
 
     Expansion of Riordan array $\mathcal{C}$:
