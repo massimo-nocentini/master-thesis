@@ -64,7 +64,7 @@
 %\subtitle {Include Only If Paper Has a Subtitle}
 
 \author[Merlini, Nocentini] % (optional, use only with lots of authors)
-{Donatella Merlini\inst{1} \and Massimo Nocentini\inst{1}}
+{Donatella Merlini\inst{1} \and Massimo Nocentini}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
@@ -154,16 +154,122 @@
 
 \section{Motivation}
 
-\subsection{A little language}
+\subsection{Some definitions}
 
-\subsection{Pascal}
-\subsection{Fibonacci}
+\begin{frame}{Riordan arrays}
+    We consider  Riordan arrays of the form $\mathcal{R}\left( d(t), h(t)\right)$
+    where:
+    \begin{displaymath}
+        d_{nk}\in\mathcal{R} \leftrightarrow d_{nk} = \big[t^{n}\big]d(t)\,h(t)^{k}
+    \end{displaymath}
 
-\begin{frame}{Make Titles Informative. Use Uppercase Letters.}{Subtitles are optional.}
-    Expansion of Riordan array $\mathcal{C}$:
-    \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+    Let $\mathcal{R}$ be a Riordan array and $p$ be a prime.
+    
+    \begin{block}{$\mathcal{R}_{\equiv_{p}}$}
+        Define $\mathcal{R}_{\equiv_{p}}$
+        as the \emph{congruent of} $\mathcal{R}$, modulo $p$, such that:
+        \begin{displaymath}
+            d_{nk}\in\mathcal{R} \leftrightarrow a \in\mathcal{R}_{\equiv_{p}}
+            \quad \text{where} \quad d_{nk}\equiv_{p} a
+        \end{displaymath}
+    \end{block}
+
+    \begin{block}{$\mathcal{R}^{(\alpha)}$}
+        Define $\mathcal{R}^{(\alpha)}$
+        as the \emph{principal $\alpha$-cluster of} $\mathcal{R}$, such that:
+        \begin{displaymath}
+            d_{nk}\in\mathcal{R}^{(\alpha)}\rightarrow d_{nk}\in\mathcal{R}
+            \quad \text{where}\quad n\in\lbrace0,\ldots,p^{\alpha}-1\rbrace
+        \end{displaymath}
+    \end{block}
+    
 
 \end{frame}
+
+\begin{frame}{Riordan arrays}
+    $\mathcal{P}$ascal and $\mathcal{F}$ibonacci arrays, respectively:
+    \begin{displaymath}
+            \mathcal{P}\left(\frac{1}{1-t},\frac{t}{1-t}\right) \quad\quad 
+                \mathcal{F}\left(\frac{1}{1-t-t^2}, \frac{1-\sqrt{1-4t}}{2} \right)
+    \end{displaymath}
+
+    $\mathcal{D}$elannoy and $\mathcal{C}$atalan arrays, respectively:
+    \begin{displaymath}
+        \mathcal{D}\left(\frac{1}{1-t},\frac{t(1+t)}{1-t}\right) \quad\quad
+            \mathcal{C}\left(\frac{1-\sqrt{1-4t}}{2t}, \frac{1-\sqrt{1-4t}}{2}\right)
+    \end{displaymath}
+
+    finally, $\mathcal{M}$otzkin array:
+    \begin{displaymath}
+        \mathcal{M}\left(\frac{1-t-\sqrt{1-2t-3t^2}}{2t^2}, \frac{1-t-\sqrt{1-2t-3t^2}}{2t}\right)
+    \end{displaymath}
+\end{frame}
+
+\subsection{Previous Work}
+
+\begin{frame}{Sved, McIlroy, Lucas theorem et al.}
+Put here some thoughts on works by Marta Sved, McIlroy
+and recall Lucas theorem and its presentation by Fine.
+\end{frame}
+
+\section{Some arrays and their modular counterpart}
+
+\subsection{Pascal}
+\begin{frame}{$\mathcal{P}_{\equiv_{2}}$ where 
+    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
+
+    \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+\end{frame}
+
+\begin{frame}{$\mathcal{P}_{\equiv_{3}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
+
+    \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{P}_{\stackrel{\circ}{\equiv_{3}}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
+
+    \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{P}_{\stackrel{\circ}{\equiv_{5}}}$ where 
+    $\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
+
+    \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{P}_{\stackrel{\circ}{\equiv_{7}}}$ where 
+    $\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
+
+    \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
+\end{frame}
+
+\subsection{Fibonacci}
+
+\begin{frame}{$\mathcal{F}_{\equiv_{2}}$ where 
+    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
+
+    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+\end{frame}
+%\begin{frame}{$\mathcal{F}_{\equiv_{3}}$ where 
+    %$\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
+
+    %\input{../sympy/fibonacci/fibonacci-standard-ignore-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
+%\end{frame}
+\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{3}}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
+
+    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{5}}}$ where 
+    $\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
+
+    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{7}}}$ where 
+    $\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
+
+    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
+\end{frame}
+
 
 \subsection{Catalan}
 \begin{frame}{$\mathcal{C}_{\equiv_{2}}$ where 
@@ -171,11 +277,11 @@
 
     \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
 \end{frame}
-\begin{frame}{$\mathcal{C}_{\equiv_{3}}$ where 
-    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
+%\begin{frame}{$\mathcal{C}_{\equiv_{3}}$ where 
+    %$\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
 
-    \input{../sympy/catalan/catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
-\end{frame}
+    %\input{../sympy/catalan/catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
+%\end{frame}
 \begin{frame}{$\mathcal{C}_{\stackrel{\circ}{\equiv_{3}}}$ where 
     $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
 
@@ -192,9 +298,52 @@
     \input{../sympy/catalan/catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
 \end{frame}
 
+\subsection{Motzkin}
+
+\begin{frame}{$\mathcal{M}_{\equiv_{2}}$ where 
+    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
+
+    \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+\end{frame}
+%\begin{frame}{$\mathcal{M}_{\equiv_{3}}$ where 
+    %$\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
+
+    %\input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
+%\end{frame}
+\begin{frame}{$\mathcal{M}_{\stackrel{\circ}{\equiv_{3}}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
+
+    \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{M}_{\stackrel{\circ}{\equiv_{5}}}$ where 
+    $\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
+
+    \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{M}_{\stackrel{\circ}{\equiv_{7}}}$ where 
+    $\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
+
+    \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
+\end{frame}
+
+
 \subsection{Delannoy}
 
-\subsection{The Basic Problem That We Studied}
+\begin{frame}{$\mathcal{D}_{\stackrel{\circ}{\equiv_{3}}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
+
+    \input{../sympy/delannoy/delannoy-standard-handle-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{D}_{\stackrel{\circ}{\equiv_{5}}}$ where 
+    $\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
+
+    \input{../sympy/delannoy/delannoy-standard-handle-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{D}_{\stackrel{\circ}{\equiv_{7}}}$ where 
+    $\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
+
+    \input{../sympy/delannoy/delannoy-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
+\end{frame}
 
 \begin{frame}{Make Titles Informative. Use Uppercase Letters.}{Subtitles are optional.}
   % - A title should summarize the slide in an understandable fashion
@@ -239,17 +388,21 @@
 \end{frame}
 
 
-\subsection{Previous Work}
+\begin{frame}{Make Titles Informative. Use Uppercase Letters.}{Subtitles are optional.}
+    Expansion of Riordan array $\mathcal{C}$:
+    \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
 
-\begin{frame}{Make Titles Informative.}
 \end{frame}
 
 \begin{frame}{Make Titles Informative.}
 \end{frame}
 
+\begin{frame}{Make Titles Informative.}
+\end{frame}
 
 
-\section{Our Results/Contribution}
+
+\section{Our Contribution}
 
 \subsection{Main Results}
 

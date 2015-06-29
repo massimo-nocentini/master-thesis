@@ -27,7 +27,8 @@ Riordan_array = RiordanArray(
 
 # set to `None' if classic *mod* partitioning is desired
     
-partitioning=RemainderClassesPartitioning(modulo=2)
+#partitioning=RemainderClassesPartitioning(modulo=2)
+partitioning=MultiplesOfPrimePartitioning(prime=7)
 #partitioning=IsPrimePartitioning()
 
 colouring = TriangleColouring(
