@@ -212,9 +212,12 @@ Put here some thoughts on works by Marta Sved, McIlroy
 and recall Lucas theorem and its presentation by Fine.
 \end{frame}
 
-\section{Some arrays and their modular counterpart}
+\section{Some arrays and their congruents}
 
-\subsection{Pascal}
+\subsection{Colouring for some primes}
+
+%\subsection{Pascal}
+
 \begin{frame}{$\mathcal{P}_{\equiv_{2}}$ where 
     $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
 
@@ -242,7 +245,7 @@ and recall Lucas theorem and its presentation by Fine.
     \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
 \end{frame}
 
-\subsection{Fibonacci}
+%\subsection{Fibonacci}
 
 \begin{frame}{$\mathcal{F}_{\equiv_{2}}$ where 
     $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
@@ -271,7 +274,7 @@ and recall Lucas theorem and its presentation by Fine.
 \end{frame}
 
 
-\subsection{Catalan}
+%\subsection{Catalan}
 \begin{frame}{$\mathcal{C}_{\equiv_{2}}$ where 
     $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
 
@@ -298,7 +301,7 @@ and recall Lucas theorem and its presentation by Fine.
     \input{../sympy/catalan/catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
 \end{frame}
 
-\subsection{Motzkin}
+%\subsection{Motzkin}
 
 \begin{frame}{$\mathcal{M}_{\equiv_{2}}$ where 
     $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
@@ -327,7 +330,7 @@ and recall Lucas theorem and its presentation by Fine.
 \end{frame}
 
 
-\subsection{Delannoy}
+%\subsection{Delannoy}
 
 \begin{frame}{$\mathcal{D}_{\stackrel{\circ}{\equiv_{3}}}$ where 
     $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
@@ -345,15 +348,35 @@ and recall Lucas theorem and its presentation by Fine.
     \input{../sympy/delannoy/delannoy-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
 \end{frame}
 
-\begin{frame}{Make Titles Informative. Use Uppercase Letters.}{Subtitles are optional.}
-  % - A title should summarize the slide in an understandable fashion
-  %   for anyone how does not follow everything on the slide itself.
-  \begin{itemize}
-  \item
-    Use \texttt{itemize} a lot.
-  \item
-    Use very short sentences or short phrases.
-  \end{itemize}
+\subsection{Observations}
+
+\begin{frame}{Observations}
+    For increasing values of prime $p$:
+    \begin{itemize} 
+        \item $\mathcal{P}_{\stackrel{\circ}{\equiv_{p}}}$ and
+            $\mathcal{C}_{\stackrel{\circ}{\equiv_{p}}}$ have a \emph{recursive structure}, 
+            like a fractal;
+        \item $\mathcal{D}_{\stackrel{\circ}{\equiv_{p}}}$ has a common pattern but
+            not completly recursive;
+        \item $\mathcal{F}_{\stackrel{\circ}{\equiv_{p}}}$ and
+            $\mathcal{M}_{\stackrel{\circ}{\equiv_{p}}}$ have a pattern but it seems
+            to be augmented for each increase of $p$. 
+    \end{itemize} 
+    By \emph{recursive structure} we mean that $\mathcal{R}^{(\alpha+1)}$ can
+    be built using combinations of  $\mathcal{R}^{(\alpha)}$ only.
+
+    \pause
+    If $p$ isn't a prime, colouring gets ``noise'' and it's difficult
+    to recognize the underlying pattern.
+
+    \pause
+    $\mathcal{D}_{\stackrel{\circ}{\equiv_{2}}}$ isn't very interesting since
+    $d_{nk}\in\mathcal{D}_{\stackrel{\circ}{\equiv_{2}}}\rightarrow d_{nk}\equiv_{2}1$
+
+    \pause
+    Considering the inverse array $\mathcal{R}^{-1}$ of $\mathcal{R}$ yield 
+    interesting colourings: in order to distinguish negative entries, darker
+    and lighter colour variants are introduced.
 \end{frame}
 
 \begin{frame}{Make Titles Informative.}
@@ -387,18 +410,6 @@ and recall Lucas theorem and its presentation by Fine.
   \end{itemize}
 \end{frame}
 
-
-\begin{frame}{Make Titles Informative. Use Uppercase Letters.}{Subtitles are optional.}
-    Expansion of Riordan array $\mathcal{C}$:
-    \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
-
-\end{frame}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
 
 
 
