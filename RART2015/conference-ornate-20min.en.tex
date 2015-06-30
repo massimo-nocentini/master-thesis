@@ -1,6 +1,6 @@
 % $Header: /Users/joseph/Documents/LaTeX/beamer/solutions/conference-talks/conference-ornate-20min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
 
-\documentclass[serif, professionalfont]{beamer}
+\documentclass[10pt,serif, professionalfont]{beamer}
 
 % This file is a solution template for:
 
@@ -30,17 +30,22 @@
   \usetheme{Pittsburgh}
   % or ...
 
-  \setbeamercovered{transparent}
+  %\setbeamercovered{transparent}
   % or whatever (possibly just delete it)
 
-  \usecolortheme{dove}
+  %\usecolortheme{dove}
+  %\usecolortheme{seagull}
+  %\setbeamertemplate{blocks}[rounded][shadow=false]
+  %\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
+  %\setbeamercolor{block body}{bg=normal text.bg!90!black}
+  %\setbeamertemplate{sidebar canvas left}[horizontal shading][left=white!40!black,right=black]
 }
 
 
 \usepackage[english]{babel}
 % or whatever
 
-%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 % or whatever
 
 %\usepackage{times}
@@ -56,6 +61,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{caption}
+\usepackage{bbold}
 
 
 \title%[Short Paper Title] % (optional, use only with long paper titles)
@@ -124,6 +130,7 @@
 
 
 \begin{document}
+
 
 \begin{frame}
   \titlepage
@@ -207,9 +214,43 @@
 
 \subsection{Previous Work}
 
-\begin{frame}{Sved, McIlroy, Lucas theorem et al.}
-Put here some thoughts on works by Marta Sved, McIlroy
-and recall Lucas theorem and its presentation by Fine.
+\begin{frame}{Fine, Sved et al.}
+
+    \begin{block}{Fine in \ldots exposes \emph{Lucas theorem}}
+        Let $p$ be a prime, $a=(a_{0},\ldots,a_{k})_{p}$ and $b=(b_{0},\ldots,b_{k})_{p}$, for some $k\in\mathbb{N}$:
+        \begin{displaymath}
+            {{a}\choose{b}} \equiv_{p} {{a_{0}}\choose{b_{0}}}{{a_{1}}\choose{b_{1}}}
+                \ldots{{a_{k}}\choose{b_{k}}}
+        \end{displaymath}
+    \end{block}
+    \pause
+    \begin{block}{Sved in \cite{Sved1998} introduces:}
+        \begin{itemize}
+            \item {\normalsize a language to talk about triangles modulo some prime $p$}\\
+                \footnotesize{\emph{principal cell}, \emph{principal $\alpha$-cluster}, \emph{zero-holes of order $\alpha$}};
+            \item {\normalsize a graphic interpretation of \emph{Lucas theorem} }\\
+                \footnotesize{each ${{a_i}\choose{b_i}}$ locates ${{a}\choose{b}}$ within a \emph{nest of triangles}};
+            \item {\normalsize an application of \emph{Lucas theorem} to Stirling triangle}\\
+                \footnotesize{via a \emph{mapping} over the numbers of the second kind};
+            \item {\normalsize higher powers of primes}\\
+                \footnotesize{emphasizing coefficient $d_{nk}$ such that 
+                    $p^{\alpha}\big|d_{nk}$ while $p^{\alpha+1}\not\big|d_{nk}$}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Fine, Sved et al.}
+    \begin{block}{Wolfram in \ldots shows:}
+        \begin{itemize}
+            \item {\normalsize \emph{fractal dimensionality} of self-similar patterns in $\mathcal{P}_{\equiv_{2}}$}\\
+                \footnotesize{solving recurrence $T(\frac{i}{2})=3\,T(i)$ yield $T(i)\approx i^{-\log_{2}{3}}$};
+            \item {\normalsize $N(n)=\sum_{k=0}^{n}{\mathbb{1}_{{{n}\choose{k}}\equiv_{2}1}}$ is a very irregular function }\\
+                \footnotesize{also $N(n)=2^{\phi_{1}(n)}$, where $ \phi_{1}((n_{0},n_{1},\ldots,n_{m})_{2})=
+                    \sum_{j=0}^{m}{\mathbb{1}_{n_{j}=1} }$};
+        \end{itemize}
+    \end{block}
+
+    Put other blocks about works of Broomhead and McLean.
 \end{frame}
 
 \section{Some arrays and their congruents}
@@ -363,15 +404,16 @@ and recall Lucas theorem and its presentation by Fine.
             to be augmented for each increase of $p$. 
     \end{itemize} 
     By \emph{recursive structure} we mean that $\mathcal{R}^{(\alpha+1)}$ can
-    be built using combinations of  $\mathcal{R}^{(\alpha)}$ only.
+    be built using combinations of  $\mathcal{R}^{(\alpha)}$ only and \emph{zero-holes}
+    of order $\alpha$.
 
     \pause
     If $p$ isn't a prime, colouring gets ``noise'' and it's difficult
     to recognize the underlying pattern.
 
     \pause
-    $\mathcal{D}_{\stackrel{\circ}{\equiv_{2}}}$ isn't very interesting since
-    $d_{nk}\in\mathcal{D}_{\stackrel{\circ}{\equiv_{2}}}\rightarrow d_{nk}\equiv_{2}1$
+    $\mathcal{D}_{\equiv_{2}}$ isn't very interesting since
+    $d_{nk}\in\mathcal{D}_{\equiv_{2}}\rightarrow d_{nk}\equiv_{2}1$
 
     \pause
     Considering the inverse array $\mathcal{R}^{-1}$ of $\mathcal{R}$ yield 
@@ -492,11 +534,11 @@ and recall Lucas theorem and its presentation by Fine.
   \beamertemplatearticlebibitems
   % Followed by interesting articles. Keep the list short. 
 
-  \bibitem{Someone2000}
-    S.~Someone.
-    \newblock On this and that.
-    \newblock {\em Journal of This and That}, 2(1):50--100,
-    2000.
+  \bibitem{Sved1998}
+    Marta Sved.
+    \newblock Divisibility - with visibility.
+    \newblock {\em The Mathematical Intelligencer}, 10(2):56--64,
+    1998.
   \end{thebibliography}
 \end{frame}
 
