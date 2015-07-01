@@ -33,7 +33,7 @@
   %\setbeamercovered{transparent}
   % or whatever (possibly just delete it)
 
-  %\usecolortheme{dove}
+  \usecolortheme{dove}
   %\usecolortheme{seagull}
   %\setbeamertemplate{blocks}[rounded][shadow=false]
   %\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
@@ -234,7 +234,7 @@
                 \footnotesize{via a \emph{mapping} over the numbers of the second kind};
             \item {\normalsize higher powers of primes}\\
                 \footnotesize{emphasizing coefficient $d_{nk}$ such that 
-                    $p^{\alpha}\big|d_{nk}$ while $p^{\alpha+1}\not\big|d_{nk}$}
+                    $p^{\alpha}\mid d_{nk}$ while $p^{\alpha+1}\nmid d_{nk}$}
         \end{itemize}
     \end{block}
 \end{frame}
@@ -249,8 +249,21 @@
                     \sum_{j=0}^{m}{\mathbb{1}_{n_{j}=1} }$};
         \end{itemize}
     \end{block}
-
-    Put other blocks about works of Broomhead and McLean.
+    \pause
+    \begin{block}{Broomhead in \ldots shows:}
+        \begin{itemize}
+            \item {\normalsize $N(n)=\sum_{k=0}^{n}{\mathbb{1}_{p\nmid{{n}\choose{k}}}}$ has a closed form }\\
+                \footnotesize{namely $N((n_{0},n_{1},\ldots,n_{m})_{2})=(n_{0}+1)(n_{1}+1)\cdots(n_{m}+1)$};
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{block}{McLean in \ldots generalizes:}
+        Broomhead and Sved work over higher power of a prime $p$:
+        \begin{itemize}
+            \item defines \emph{$p$-index of $a$} as {$\nu_{p}\lbrace a\rbrace =t \leftrightarrow p^{t}\mid a \wedge p^{t+1}\nmid a$}
+            \item proves {$\nu_{p}\lbrace {{n}\choose{k}}\rbrace $} equals the \emph{number of carries} in $n-_{p}k$
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 \section{Some arrays and their congruents}
@@ -529,7 +542,6 @@
     A.~Author.
     \newblock {\em Handbook of Everything}.
     \newblock Some Press, 1990.
- 
     
   \beamertemplatearticlebibitems
   % Followed by interesting articles. Keep the list short. 
@@ -537,8 +549,8 @@
   \bibitem{Sved1998}
     Marta Sved.
     \newblock Divisibility - with visibility.
-    \newblock {\em The Mathematical Intelligencer}, 10(2):56--64,
-    1998.
+    \newblock {\em The Mathematical Intelligencer}, 10(2):56--64, 1998.
+
   \end{thebibliography}
 \end{frame}
 
