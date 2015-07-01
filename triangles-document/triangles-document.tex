@@ -2130,7 +2130,7 @@
         number of upside down maximal triangles of coefficients $d_{nk}$, with
         $d_{nk} \equiv_p 0$, equals:
         \begin{displaymath}
-            \frac{(p-1)p}{2}
+            {{p}\choose{2}}
         \end{displaymath}
     \end{theorem}
 
@@ -2184,14 +2184,16 @@
                 n - p^{m} &= n_{0} + n_{1}p + n_{2}p^2 + \ldots + (n_{m}-1)p^m + 0p^{m+1} + \ldots + 0p^k \\
             \end{split}
         \end{displaymath}
-        By Lucas theorem both the congruence:
+        Since $p^{m} \leq n < p^{m+1}$ by hypothesis, then $n_{m}=1$, so
+        by Lucas theorem both the congruence:
         \begin{displaymath}
             {{n+\gamma p^{m+1}} \choose { n - p^{m}}} \equiv_{p} 
                 {{n_{0}} \choose {n_{0}}}  
                 {{n_{1}} \choose {n_{1}}} 
                 {{n_{2}} \choose {n_{2}}}
                 \ldots
-                {{n_{m}} \choose {n_{m}-1}} 
+                {{n_{m-1}} \choose {n_{m-1}} }
+                {{1} \choose {0} }
                 {{\gamma} \choose {0}} 
         \end{displaymath}
         both the following one:
@@ -2201,7 +2203,8 @@
                 {{n_{1}} \choose {n_{1}}} 
                 {{n_{2}} \choose {n_{2}}}
                 \ldots
-                {{n_{m}} \choose {n_{m}-1}} 
+                {{n_{m-1}} \choose {n_{m-1}}} 
+                {{1} \choose {0} }
         \end{displaymath}
         hold. Assuming ${{0}\choose{0}} = {{k}\choose{0}} = 1$ for any $k\in\mathbb{N}$, 
         transitivity property of $\equiv_p$ relation over right sides of

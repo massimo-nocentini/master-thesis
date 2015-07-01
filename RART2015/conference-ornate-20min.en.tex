@@ -415,11 +415,11 @@
                 not completly recursive;
             \item $\mathcal{F}_{\stackrel{\circ}{\equiv_{p}}}$ and
                 $\mathcal{M}_{\stackrel{\circ}{\equiv_{p}}}$ have a pattern but it seems
-                to be augmented for each increase of $p$. 
+                to be augmented for each increment of $p$. 
         \end{itemize} 
         By \emph{recursive structure} we mean that $\mathcal{R}^{(\alpha+1)}$ can
-        be built using combinations of  $\mathcal{R}^{(\alpha)}$ only and \emph{zero-holes}
-        of order $\alpha$.
+        be built using combinations of  $\mathcal{R}^{(\alpha)}$ and \emph{zero-holes}
+        of order $\alpha$ only .
 
         \pause
         \item if $p$ isn't a prime, colouring gets ``noise'' and it's difficult
@@ -441,48 +441,51 @@
     \input{../sympy/catalan/catalan-traditional-inverse-handle-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
 \end{frame}
 
-\begin{frame}{Make Titles Informative.}
-
-  You can create overlays\dots
-  \begin{itemize}
-  \item using the \texttt{pause} command:
-    \begin{itemize}
-    \item
-      First item.
-      \pause
-    \item    
-      Second item.
-    \end{itemize}
-  \item
-    using overlay specifications:
-    \begin{itemize}
-    \item<3->
-      First item.
-    \item<4->
-      Second item.
-    \end{itemize}
-  \item
-    using the general \texttt{uncover} command:
-    \begin{itemize}
-      \uncover<5->{\item
-        First item.}
-      \uncover<6->{\item
-        Second item.}
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-
-
-
 \section{Our Contribution}
 
-\subsection{Main Results}
+\subsection{On $\mathcal{P}_{\equiv_{p}}^{-1}$}
 
 \begin{frame}{Make Titles Informative.}
+    \begin{theorem}
+        let $d_{nk}\in\mathcal{P}$ and  $\hat{d}_{nk}\in\mathcal{P}^{-1}$, then
+            $(p-1)^{k+n}d_{nk}\equiv_{p} \hat{d}_{nk}$
+    \end{theorem}
+    \begin{itemize}
+        \item \emph{proof}: apply $\big[t^{n}\big]$ both to $\mathcal{P}$ and $\mathcal{P}^{-1}$,
+            then set congruence $\equiv_{p}$ 
+        \item $p=2 \rightarrow d_{nk}\equiv_{2}\hat{d}_{nk}$, therefore $\mathcal{P}_{\equiv_{2}}$ and 
+            $\mathcal{P}_{\equiv_{2}}^{-1}$ looks the same
+    \end{itemize}
+    \pause
+    \begin{theorem}
+         $\mathcal{P}^{(\alpha+1)}$ contains 
+        ${{p}\choose{2}}$ \emph{zero-holes} of order $\alpha$
+    \end{theorem}
+    \begin{itemize}
+        \item \emph{proof}: $\mathcal{P}^{(\alpha+1)}$ contains $\lbrace l_{0},\ldots,l_{p-1}\rbrace$ 
+            layers of order $\alpha$, each $l_{j}$ contains $j$ \emph{zero-holes}, therefore
+            $\sum_{j=0}^{p-1}{j}=\frac{(p-1)p}{2}$
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Make Titles Informative.}
+    \begin{theorem}
+        $m, \gamma \in \mathbb{N}$ and $p^{m} \leq n < p^{m+1}$, then 
+            $d_{n,n-p^{m}} \equiv_{p} d_{n+\gamma p^{m+1}, n-p^{m}}$
+    \end{theorem}
+    \begin{itemize}
+        \item \emph{proof}: represent subscripts in base $p$ and apply \emph{Lucas theorem}
+        \item holds both if $d_{nk}\in\mathcal{P}$, both if $d_{nk}\in\mathcal{P}^{-1}$
+    \end{itemize}
+    \pause
+    \begin{theorem}
+        $d_{nk}\in\mathcal{P}$ and $\hat{d}_{nk}\in\mathcal{P}^{-1}$, then
+            \indent $d_{n,n-p^{m}} \equiv_{p} c \leftrightarrow \hat{d}_{n,n-p^{m}} \equiv_{p} p-c$
+    \end{theorem}
+    \begin{itemize}
+        \item \emph{proof}: simple application of our first theorem
+        \item $c\in\lbrace0,\ldots,p-1\rbrace$ is usually seen as a colour
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Make Titles Informative.}
