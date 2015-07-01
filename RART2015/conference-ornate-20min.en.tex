@@ -443,9 +443,9 @@
 
 \section{Our Contribution}
 
-\subsection{On $\mathcal{P}_{\equiv_{p}}^{-1}$}
+\subsection{On $\mathcal{P}_{\equiv_{p}}$ and $\mathcal{P}_{\equiv_{p}}^{-1}$}
 
-\begin{frame}{Make Titles Informative.}
+\begin{frame}{On $\mathcal{P}_{\equiv_{p}}$ and $\mathcal{P}_{\equiv_{p}}^{-1}$}
     \begin{theorem}
         let $d_{nk}\in\mathcal{P}$ and  $\hat{d}_{nk}\in\mathcal{P}^{-1}$, then
             $(p-1)^{k+n}d_{nk}\equiv_{p} \hat{d}_{nk}$
@@ -468,7 +468,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Make Titles Informative.}
+\begin{frame}{On $\mathcal{P}_{\equiv_{p}}$ and $\mathcal{P}_{\equiv_{p}}^{-1}$}
     \begin{theorem}
         $m, \gamma \in \mathbb{N}$ and $p^{m} \leq n < p^{m+1}$, then 
             $d_{n,n-p^{m}} \equiv_{p} d_{n+\gamma p^{m+1}, n-p^{m}}$
@@ -488,19 +488,53 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Make Titles Informative.}
+\subsection{On $\mathcal{C}_{\equiv_{2}}$}
+
+\begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+    let $d_{nk}\in\mathcal{C}$, $c_{j}=d_{j0}$ and $\mathcal{C}_{-(0,p^{h}-1)}^{h}$ be a copy of 
+        $\mathcal{C}_{h}$:
+        \begin{itemize}
+            \item without $d_{nn}$ for each $n$ (antidiagonal $0$)
+            \item without $d_{p^{h}-1,k}$ for each $k$ (row $p^{h}-1$)
+        \end{itemize}
+    \pause
+    \begin{theorem}
+        $c_{j} \equiv_{2}1 \leftrightarrow j=2^{\alpha}-1$ where $\alpha\in\mathbb{N}$
+    \end{theorem}
+    \emph{proof}: $c_{j} = {{2j}\choose{j}} - {{2j}\choose{j+1}}$ and by cases on $j$'s parity
+    \pause
+    \begin{theorem}
+        $h\in\mathbb{N}$ and $s\in\lbrace0,\ldots,2^{h}-1 \rbrace$, then 
+            $d_{2^{h}-1,s} \equiv_{2} 1$
+    \end{theorem}
+    \emph{proof}: $ d_{2^{\alpha}-1,s} = \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}
+                {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{s+1}-1}}$
 \end{frame}
 
-
-\subsection{Basic Ideas for Proofs/Implementation}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-\begin{frame}{Make Titles Informative.}
-\end{frame}
-
-\begin{frame}{Make Titles Informative.}
+\begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+    \begin{theorem}
+        let  $S=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$ be a segment of 
+        column $2^{\alpha}-1$, then $d_{s,2^{\alpha}-1}\equiv_{2}0$ for $s\in S$
+    \end{theorem}
+    \emph{proof}: $d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
+            {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}}$
+    \pause
+    \begin{theorem}
+    let $\hat{d}_{s,2^{h}-1}$ lying on column $2^{h}-1$ within segment 
+    $S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, then:
+        $d_{s-e,2^{h}-1-e} \equiv_{2} d_{s,2^{h}-1+e}$ \\
+    for $e\in\lbrace1,\ldots,s-(2^{h}-1)-1\rbrace=\lbrace1,\ldots,s-2^{h}\rbrace$,
+    \end{theorem}
+    \emph{proof}: $ d_{nk}\in\mathcal{C}\leftrightarrow{{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}$ and \emph{Lucas theorem}
+    \pause
+    \begin{theorem}
+    let $\hat{d}_{s,2^{h}-1}$ lying on column $2^{h}-1$ within segment 
+    $S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, then:
+        $d_{s,2^{h}-1+e} \equiv_{2} d_{s-2^{h},e-1} $ \\
+    for $e\in\lbrace1,\ldots,s-(2^{h}-1)-1\rbrace=\lbrace1,\ldots,s-2^{h}\rbrace$,
+    \end{theorem}
+    \emph{proof}: as before
+        
 \end{frame}
 
 
