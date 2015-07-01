@@ -1639,8 +1639,8 @@
         \item a less used one, \emph{bi}-colour $\mathcal{R}$ with $c_0$ 
             if $d_{nk}$ is a prime, otherwise use a colour $c_1$:
             \begin{displaymath}
-                colouring(n,k) = c_{0} \leftrightarrow \not 
-                    \exists p\in\lbrace 2,\ldots,d_{nk}-1\rbrace.p|d_{nk} 
+                colouring(n,k) = c_{0} \leftrightarrow 
+                    \nexists p\in\lbrace 2,\ldots,d_{nk}-1\rbrace.p|d_{nk} 
             \end{displaymath}
     \end{itemize}
 
@@ -1648,13 +1648,16 @@
 
     \subsection{Some modular proofs}
     
-    In this section we present some proofs about Pascal array and its
-    inverse, taken modulo some prime $p$. Colouring with different
-    colours elements belonging to different remainder classes, we show
+    In this section we present some results about Pascal array and its
+    inverse, taken modulo some prime $p$. 
+    
+    Associating different colours to elements belonging to different 
+    remainder classes, we show
     formally that for $p$ even, ie. $p=2$, elements in the same
     position get the same colour (hence both triangle are coloured the
-    same way, ignoring signs for elements in the inverse array), while
-    for $p$ odd there is not such a simple correspondence and we
+    same way, ignoring signs for elements in the inverse array, which
+    can be negative), while for $p$ odd there is not such a 
+    simple correspondence and we
     attempt to observe some repeating pattern of mapping between
     elements.
 
@@ -1670,7 +1673,7 @@
     
     Let $d_{nk}$ and $\hat{d}_{nk}$ be the generic element of Pascal
     array and of its inverse, respectively. Since both arrays are
-    Riordan, by definition:
+    in the Riordan group, by definition:
     \begin{displaymath}
         \begin{split}
             d_{nk} &= [t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k = [t^{n-k}](1-t)^{-(k+1)} \\
@@ -1689,7 +1692,7 @@
     \begin{displaymath}
       [t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k = (-1)^{k-n}[t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k 
     \end{displaymath}
-    Choose a prime $p$ and take the modulo of both members:
+    Choose a prime $p$ and apply the modulo operator on both members:
     \begin{displaymath}
       [t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k \equiv_{p} (-1)^{k-n}[t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k 
     \end{displaymath}
@@ -2081,45 +2084,42 @@
     \end{lemma}
 
     \begin{proof}
-        By ``bounded'' induction on $j$.
+        By absurd, choose any $j\in \lbrace 1, \ldots, p-1 \rbrace$ and show
+        that between row index $j p^n$ and row index $(j+1)p^n -1$, 
+        a maximal upside down triangle $\mathcal{T}$,
+        such that $d_{nk}\in\mathcal{T} \rightarrow d_{nk} \equiv_{p} 0$,
+        either is missing or is over. Proceed by cases:
         \begin{itemize}
-            \item base $j=1$: this is the case seen before in the proof of
-                Sierpinski structure were it had been proved that a triangle
-                of coefficients, each coefficient multiple of $p$, is surrounded
-                by three copies of the same triangle, considering rows from index 
-                $p^n$ up to $2 p^n -1$, as this case requires;
-            \item induction hp: assume that the statement is true for $j = p-2$, namely
-                between row index $(p-2) p^n$ and row index $(p-1)p^n -1$, 
-                there are $p-2$ maximal upside down triangles
-                such that if a coefficient $d_{nk}$ belongs to one of them, then 
-                $d_{nk} \equiv_{p} 0$; 
-            \item induction step: show the statement holds for $j=p-1$. 
-                We approach this case by a reduction to absurd, therefore assume that
-                between row index $(p-1) p^n$ and row index $p^{n+1} -1$, 
-                there are \emph{at most} $p-2$ maximal upside down triangles
-                such that if a coefficient $d_{nk}$ belongs to one of them, then 
-                $d_{nk} \equiv_{p} 0$. In other words, at least one triangle, call it $\mathcal{T}$,
-                    is missing: there exists a coefficient
+            \item assume triangle $\mathcal{T}$ is missing, so there exists a coefficient
                     $\tilde{d}_{nk}\in\mathcal{T}$ such that $\tilde{d}_{nk}\not\equiv_{p}0$, while all 
                     other coefficient $d_{nk}\in\mathcal{T}$ satisfies $d_{nk} \equiv_{p}0$.
                     Proceed by cases on parity of $j$:
                 \begin{description}
                     \item[$j=2k+1$ for some $k$] Without loss of generality, suppose $\mathcal{T}$ is the one in the 
-                    very middle, due to symmetry of $\mathcal{P}$ (the cases where it is on the left or on the right are less interesting) and
+                    very middle, due to symmetry of $\mathcal{P}$ (the cases where it is on the left or 
+                    on the right are less interesting) and
                     suppose that $\tilde{d}_{(j+1) p^n -2, (k+1)p^n -1}\not\equiv_{p}0$, the coefficient in the very bottom corner.
                     But this is impossible because $d_{nk} = d_{n-1,k-1} + d_{n-1, k}$ if $d_{nk}\in \mathcal{P}$:
                     \begin{displaymath}
                     0\not\equiv_{p}\tilde{d}_{(j+1) p^n -2, (k+1)p^n -1} \equiv_{p} 
-                        \tilde{d}_{(j+1) p^n -1, (k+1)p^n -1} + \tilde{d}_{(j+1) p^n -1, (k+1)p^n }\equiv_{p}0
+                        \tilde{d}_{(j+1) p^n -3, (k+1)p^n -1} + \tilde{d}_{(j+1) p^n -3, (k+1)p^n-2 }\equiv_{p}0
                     \end{displaymath}
 
                     \item[$j=2k$ for some $k$] Without loss of generality, suppose  $\mathcal{T}$ is the one on the very left. 
                     Choose $r \in\lbrace 0,\ldots,p^n-2\rbrace$ and $c \in\lbrace r+1,\ldots,p^n-1\rbrace$,
-                    suppose that $\tilde{d}_{(j+1) p^n +r, c}\not\equiv_{p}0$. By symmetry of $\mathcal{P}$, we get another contradiction: 
+                    suppose that $\tilde{d}_{(j+1) p^n +r, c}\not\equiv_{p}0$. 
+                    By symmetry of $\mathcal{P}$, we get another contradiction: 
                     \begin{displaymath}
                         0\not\equiv_{p}\tilde{d}_{(j+1) p^n +r, c} \equiv_{p} \tilde{d}_{(j+1) p^n +r, (j+1) p^n +r-c}\equiv_{p}0
                     \end{displaymath}
                 \end{description}
+            \item assume triangle $\mathcal{T}$ is over, therefore the very first coefficient 
+                $\tilde{d}$ in the top-left corner of $\mathcal{T}$ have to satisfy:
+                \begin{displaymath}
+                     \tilde{d} \equiv_{p} d_{j\,p^{n},j\,p^{n}+1}
+                \end{displaymath}
+                by structure of $\mathcal{P}$, coefficient $d_{j\,p^{n},j\,p^{n}+1}$ has no
+                meaning so $\tilde{d}$ cannot satisfy the requested congruence.
         \end{itemize}
     \end{proof}
     

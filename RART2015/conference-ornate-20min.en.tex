@@ -227,11 +227,11 @@
     \begin{block}{Sved in \cite{Sved1998} introduces:}
         \begin{itemize}
             \item {\normalsize a language to talk about triangles modulo some prime $p$}\\
-                \footnotesize{\emph{principal cell}, \emph{principal $\alpha$-cluster}, \emph{zero-holes of order $\alpha$}};
+                \footnotesize{\emph{principal cell}, \emph{principal $\alpha$-cluster}, \emph{zero-holes of order $\alpha$}}
             \item {\normalsize a graphic interpretation of \emph{Lucas theorem} }\\
-                \footnotesize{each ${{a_i}\choose{b_i}}$ locates ${{a}\choose{b}}$ within a \emph{nest of triangles}};
+                \footnotesize{each ${{a_i}\choose{b_i}}$ locates ${{a}\choose{b}}$ within a \emph{nest of triangles}}
             \item {\normalsize an application of \emph{Lucas theorem} to Stirling triangle}\\
-                \footnotesize{via a \emph{mapping} over the numbers of the second kind};
+                \footnotesize{via a \emph{mapping} over the numbers of the second kind}
             \item {\normalsize higher powers of primes}\\
                 \footnotesize{emphasizing coefficient $d_{nk}$ such that 
                     $p^{\alpha}\mid d_{nk}$ while $p^{\alpha+1}\nmid d_{nk}$}
@@ -243,17 +243,17 @@
     \begin{block}{Wolfram in \ldots shows:}
         \begin{itemize}
             \item {\normalsize \emph{fractal dimensionality} of self-similar patterns in $\mathcal{P}_{\equiv_{2}}$}\\
-                \footnotesize{solving recurrence $T(\frac{i}{2})=3\,T(i)$ yield $T(i)\approx i^{-\log_{2}{3}}$};
+                \footnotesize{solving recurrence $T(\frac{i}{2})=3\,T(i)$ yield $T(i)\approx i^{-\log_{2}{3}}$}
             \item {\normalsize $N(n)=\sum_{k=0}^{n}{\mathbb{1}_{{{n}\choose{k}}\equiv_{2}1}}$ is a very irregular function }\\
                 \footnotesize{also $N(n)=2^{\phi_{1}(n)}$, where $ \phi_{1}((n_{0},n_{1},\ldots,n_{m})_{2})=
-                    \sum_{j=0}^{m}{\mathbb{1}_{n_{j}=1} }$};
+                    \sum_{j=0}^{m}{\mathbb{1}_{n_{j}=1} }$}
         \end{itemize}
     \end{block}
     \pause
     \begin{block}{Broomhead in \ldots shows:}
         \begin{itemize}
             \item {\normalsize $N(n)=\sum_{k=0}^{n}{\mathbb{1}_{p\nmid{{n}\choose{k}}}}$ has a closed form }\\
-                \footnotesize{namely $N((n_{0},n_{1},\ldots,n_{m})_{2})=(n_{0}+1)(n_{1}+1)\cdots(n_{m}+1)$};
+                \footnotesize{namely $N((n_{0},n_{1},\ldots,n_{m})_{2})=(n_{0}+1)(n_{1}+1)\cdots(n_{m}+1)$}
         \end{itemize}
     \end{block}
     \pause
@@ -405,33 +405,40 @@
 \subsection{Observations}
 
 \begin{frame}{Observations}
-    For increasing values of prime $p$:
-    \begin{itemize} 
-        \item $\mathcal{P}_{\stackrel{\circ}{\equiv_{p}}}$ and
-            $\mathcal{C}_{\stackrel{\circ}{\equiv_{p}}}$ have a \emph{recursive structure}, 
-            like a fractal;
-        \item $\mathcal{D}_{\stackrel{\circ}{\equiv_{p}}}$ has a common pattern but
-            not completly recursive;
-        \item $\mathcal{F}_{\stackrel{\circ}{\equiv_{p}}}$ and
-            $\mathcal{M}_{\stackrel{\circ}{\equiv_{p}}}$ have a pattern but it seems
-            to be augmented for each increase of $p$. 
+    \begin{itemize}
+        \item for increasing values of prime $p$:
+        \begin{itemize} 
+            \item $\mathcal{P}_{\stackrel{\circ}{\equiv_{p}}}$ and
+                $\mathcal{C}_{\stackrel{\circ}{\equiv_{p}}}$ have a \emph{recursive structure}, 
+                like a fractal;
+            \item $\mathcal{D}_{\stackrel{\circ}{\equiv_{p}}}$ has a common pattern but
+                not completly recursive;
+            \item $\mathcal{F}_{\stackrel{\circ}{\equiv_{p}}}$ and
+                $\mathcal{M}_{\stackrel{\circ}{\equiv_{p}}}$ have a pattern but it seems
+                to be augmented for each increase of $p$. 
+        \end{itemize} 
+        By \emph{recursive structure} we mean that $\mathcal{R}^{(\alpha+1)}$ can
+        be built using combinations of  $\mathcal{R}^{(\alpha)}$ only and \emph{zero-holes}
+        of order $\alpha$.
+
+        \pause
+        \item if $p$ isn't a prime, colouring gets ``noise'' and it's difficult
+        to recognize the underlying pattern.
+
+        \pause
+        \item $\mathcal{D}_{\equiv_{2}}$ isn't very interesting since
+        $d_{nk}\in\mathcal{D}_{\equiv_{2}}\rightarrow d_{nk}\equiv_{2}1$
+
+        \pause
+        \item colouring $\mathcal{R}^{-1}$, inverse of $\mathcal{R}$, uses darker
+        and lighter colour variants for positive and negative entries, respectively
     \end{itemize} 
-    By \emph{recursive structure} we mean that $\mathcal{R}^{(\alpha+1)}$ can
-    be built using combinations of  $\mathcal{R}^{(\alpha)}$ only and \emph{zero-holes}
-    of order $\alpha$.
+\end{frame}
 
-    \pause
-    If $p$ isn't a prime, colouring gets ``noise'' and it's difficult
-    to recognize the underlying pattern.
+\begin{frame}{$\mathcal{C}_{\equiv_{3}}^{-1}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$ with negatives}
 
-    \pause
-    $\mathcal{D}_{\equiv_{2}}$ isn't very interesting since
-    $d_{nk}\in\mathcal{D}_{\equiv_{2}}\rightarrow d_{nk}\equiv_{2}1$
-
-    \pause
-    Considering the inverse array $\mathcal{R}^{-1}$ of $\mathcal{R}$ yield 
-    interesting colourings: in order to distinguish negative entries, darker
-    and lighter colour variants are introduced.
+    \input{../sympy/catalan/catalan-traditional-inverse-handle-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
 \end{frame}
 
 \begin{frame}{Make Titles Informative.}
