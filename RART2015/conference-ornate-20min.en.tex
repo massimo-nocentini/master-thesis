@@ -491,17 +491,30 @@
 \subsection{On $\mathcal{C}_{\equiv_{2}}$}
 
 \begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
-    let $d_{nk}\in\mathcal{C}$, $c_{j}=d_{j0}$ and $\mathcal{C}_{-(0,p^{h}-1)}^{h}$ be a copy of 
+    \begin{columns}[T] % contents are top vertically aligned
+        \begin{column}[T]{5cm} % alternative top-align that's better for graphics
+            \input{catalan-tikz/first-column/first-column-include-figure}
+        \end{column}
+        \begin{column}[T]{5cm} % each column can also be its own environment
+            let $d_{nk}\in\mathcal{C}$ and $c_{j}=d_{j0}$ be a Catalan number
+            \begin{theorem}
+                \begin{displaymath}
+                    c_{j} \equiv_{2}1 \leftrightarrow j=2^{\alpha}-1
+                \end{displaymath}
+                where $\alpha\in\mathbb{N}$
+            \end{theorem}
+            \emph{proof}: $c_{j} = {{2j}\choose{j}} - {{2j}\choose{j+1}}$ and by cases on $j$'s parity
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+     $\mathcal{C}_{-(0,p^{h}-1)}^{h}$ be a copy of 
         $\mathcal{C}_{h}$:
         \begin{itemize}
             \item without $d_{nn}$ for each $n$ (antidiagonal $0$)
             \item without $d_{p^{h}-1,k}$ for each $k$ (row $p^{h}-1$)
         \end{itemize}
-    \pause
-    \begin{theorem}
-        $c_{j} \equiv_{2}1 \leftrightarrow j=2^{\alpha}-1$ where $\alpha\in\mathbb{N}$
-    \end{theorem}
-    \emph{proof}: $c_{j} = {{2j}\choose{j}} - {{2j}\choose{j+1}}$ and by cases on $j$'s parity
     \pause
     \begin{theorem}
         $h\in\mathbb{N}$ and $s\in\lbrace0,\ldots,2^{h}-1 \rbrace$, then 
