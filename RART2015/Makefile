@@ -4,10 +4,13 @@
 conference:
 	lualatex conference-ornate-20min.en.tex 
 
-complete: catalan-tikz conference
+complete: catalan-tikz pascal-tikz conference
 
 catalan-tikz:
 	$(MAKE) -C catalan-tikz/
+
+pascal-tikz:
+	$(MAKE) -C pascal-tikz/
 
 
 
