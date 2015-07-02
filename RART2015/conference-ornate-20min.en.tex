@@ -509,26 +509,32 @@
 \end{frame}
 
 \begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
-     $\mathcal{C}_{-(0,p^{h}-1)}^{h}$ be a copy of 
-        $\mathcal{C}_{h}$:
-        \begin{itemize}
-            \item without $d_{nn}$ for each $n$ (antidiagonal $0$)
-            \item without $d_{p^{h}-1,k}$ for each $k$ (row $p^{h}-1$)
-        \end{itemize}
-    \pause
+     %$\mathcal{C}_{-(0,p^{h}-1)}^{h}$ be a copy of 
+        %$\mathcal{C}_{h}$:
+        %\begin{itemize}
+            %\item without $d_{nn}$ for each $n$ (antidiagonal $0$)
+            %\item without $d_{p^{h}-1,k}$ for each $k$ (row $p^{h}-1$)
+        %\end{itemize}
+    %\pause
     \begin{theorem}
-        $h\in\mathbb{N}$ and $s\in\lbrace0,\ldots,2^{h}-1 \rbrace$, then 
-            $d_{2^{h}-1,s} \equiv_{2} 1$
+        $h\in\mathbb{N}$ and $s\in\lbrace0,\ldots,2^{h}-1 \rbrace$, then:
+        \begin{displaymath}
+            d_{2^{h}-1,s} \equiv_{2} 1
+        \end{displaymath}
     \end{theorem}
     \emph{proof}: $ d_{2^{\alpha}-1,s} = \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}
                 {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{s+1}-1}}$
+
     \input{catalan-tikz/odd-row/odd-row-include-figure}
 \end{frame}
 
 \begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
     \begin{theorem}
         let  $S=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$ be a segment of 
-        column $2^{\alpha}-1$, then $d_{s,2^{\alpha}-1}\equiv_{2}0$ for $s\in S$
+        column $2^{\alpha}-1$, then:
+        \begin{displaymath} 
+            d_{s,2^{\alpha}-1}\equiv_{2}0\quad\text{for}\quad s\in S
+        \end{displaymath} 
     \end{theorem}
     \emph{proof}: $d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
             {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}}$
@@ -539,10 +545,11 @@
 
 \begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
     \begin{theorem}
-    let $\hat{d}_{s,2^{h}-1}$ lying on column $2^{h}-1$ within segment 
-    $S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, then:
-        $d_{s-e,2^{h}-1-e} \equiv_{2} d_{s,2^{h}-1+e}$ \\
-    for $e\in\lbrace1,\ldots,s-(2^{h}-1)-1\rbrace=\lbrace1,\ldots,s-2^{h}\rbrace$,
+    let $\hat{d}_{s,2^{h}-1}$ for $s\in S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, then:
+    \begin{displaymath}
+        d_{s-e,2^{h}-1-e} \equiv_{2} d_{s,2^{h}-1+e}\quad\text{where}\quad
+            e\in\lbrace1,\ldots,s-2^{h}\rbrace
+    \end{displaymath}
     \end{theorem}
     \emph{proof}: $ d_{nk}\in\mathcal{C}\leftrightarrow{{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}$ and \emph{Lucas theorem}
 
@@ -552,20 +559,14 @@
 
 \begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
     \begin{theorem}
-    let $\hat{d}_{s,2^{h}-1}$ lying on column $2^{h}-1$ within segment 
-    $S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, then:
-        $d_{s-e,2^{h}-1-e} \equiv_{2} d_{s,2^{h}-1+e}$ \\
-    for $e\in\lbrace1,\ldots,s-(2^{h}-1)-1\rbrace=\lbrace1,\ldots,s-2^{h}\rbrace$,
+    let $\hat{d}_{s,2^{h}-1}$ for $s\in S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, then:
+    \begin{displaymath}
+        d_{s,2^{h}-1+e} \equiv_{2} d_{s-2^{h},e-1}\quad\text{where}\quad e\in\lbrace1,\ldots,s-2^{h}\rbrace
+    \end{displaymath}
     \end{theorem}
     \emph{proof}: $ d_{nk}\in\mathcal{C}\leftrightarrow{{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}$ and \emph{Lucas theorem}
-    \pause
-    \begin{theorem}
-    let $\hat{d}_{s,2^{h}-1}$ lying on column $2^{h}-1$ within segment 
-    $S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, then:
-        $d_{s,2^{h}-1+e} \equiv_{2} d_{s-2^{h},e-1} $ \\
-    for $e\in\lbrace1,\ldots,s-(2^{h}-1)-1\rbrace=\lbrace1,\ldots,s-2^{h}\rbrace$,
-    \end{theorem}
-    \emph{proof}: as before
+
+    \input{catalan-tikz/principal-cluster/principal-cluster-include-figure}
         
 \end{frame}
 
