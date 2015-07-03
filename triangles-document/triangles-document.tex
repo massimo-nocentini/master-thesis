@@ -2167,50 +2167,34 @@
 
     \begin{lemma}
         Let $p$ be a prime and take any $m, \gamma \in \mathbb{N}$. Let $n$ index
-        over rows of a Pascal array $\mathcal{P}$, such that $p^{m} \leq n < p^{m+1}$, then the following holds:
+        over rows of a Pascal array $\mathcal{P}$, such that $p^{m} \leq n < p^{m+1}$,
+        and $k$ index over columns such that $k\in\lbrace0,\ldots,n-p^{m}\rbrace$, 
+        then the following holds:
         \begin{displaymath}
-            d_{n,n-p^{m}} \equiv_{p} d_{n+\gamma p^{m+1}, n-p^{m}}
+            d_{n,k} \equiv_{p} d_{n+\gamma p^{m+1}, k+\gamma p^{m+1}}
         \end{displaymath}
     \end{lemma}
     \begin{proof} % $n+\gamma p^{m+1}$
-        By the basis representation theorem, write $n$  in base $p$ up to $k$ such that $k > m+1$ as necessary:
+        By the basis representation theorem, since $n<p^{m+1}$, write it in base $p$ as:
         \begin{displaymath}
-            n = n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{m}p^m + 0p^{m+1} + \ldots + 0p^k
+            n = n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{m}p^m %+ 0p^{m+1} + \ldots + 0p^k
         \end{displaymath}
-        Now consider the following quantities:
+        similarly, since $n=p^{m}\rightarrow k\in\lbrace0\rbrace$ and 
+        $n=p^{m+1}-1 \rightarrow k\in\lbrace 0,\ldots,p^{m}(p-1)-1\rbrace$, write $k$ as:
         \begin{displaymath}
-            \begin{split}
-                n +\gamma p^{m+1} &= n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{m}p^m + \gamma p^{m+1} + 0p^{m+2} \ldots + 0p^k \\
-                n - p^{m} &= n_{0} + n_{1}p + n_{2}p^2 + \ldots + (n_{m}-1)p^m + 0p^{m+1} + \ldots + 0p^k \\
-            \end{split}
+            k = k_{0} + k_{1}p + k_{2}p^2 + \ldots + k_{m}p^m %+ 0p^{m+1} + \ldots + 0p^k
         \end{displaymath}
-        Since $p^{m} \leq n < p^{m+1}$ by hypothesis, then $n_{m}=1$, so
-        by Lucas theorem both the congruence:
+        apply Lucas theorem:
         \begin{displaymath}
-            {{n+\gamma p^{m+1}} \choose { n - p^{m}}} \equiv_{p} 
-                {{n_{0}} \choose {n_{0}}}  
-                {{n_{1}} \choose {n_{1}}} 
-                {{n_{2}} \choose {n_{2}}}
+            {{n+\gamma p^{m+1}} \choose { k+\gamma p^{m+1}}} \equiv_{p} 
+                {{n_{0}} \choose {k_{0}}}  
+                {{n_{1}} \choose {k_{1}}} 
+                {{n_{2}} \choose {k_{2}}}
                 \ldots
-                {{n_{m-1}} \choose {n_{m-1}} }
-                {{1} \choose {0} }
-                {{\gamma} \choose {0}} 
-        \end{displaymath}
-        both the following one:
-        \begin{displaymath}
-            {{n} \choose { n - p^{m}}} \equiv_{p} 
-                {{n_{0}} \choose {n_{0}}}  
-                {{n_{1}} \choose {n_{1}}} 
-                {{n_{2}} \choose {n_{2}}}
-                \ldots
-                {{n_{m-1}} \choose {n_{m-1}}} 
-                {{1} \choose {0} }
-        \end{displaymath}
-        hold. Assuming ${{0}\choose{0}} = {{k}\choose{0}} = 1$ for any $k\in\mathbb{N}$, 
-        transitivity property of $\equiv_p$ relation over right sides of
-        the previous two congruences, it allows to derive congruence:
-        \begin{displaymath}
-            {{n} \choose { n - p^{m}}} \equiv_{p} {{n+\gamma p^{m+1}} \choose { n - p^{m}}} 
+                {{n_{m-1}} \choose {k_{m-1}} }
+                {{n_{m}} \choose {k_{m}} }
+                {{\gamma} \choose {\gamma}} 
+                \equiv_{p}{{n} \choose {k}}  
         \end{displaymath}
         which is the requested relation.
     \end{proof}
