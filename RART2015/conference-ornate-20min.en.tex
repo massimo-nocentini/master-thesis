@@ -481,8 +481,12 @@
 
 \begin{frame}{On $\mathcal{P}_{\equiv_{p}}$ and $\mathcal{P}_{\equiv_{p}}^{-1}$}
     \begin{theorem}
-        $m, \gamma \in \mathbb{N}$ and $p^{m} \leq n < p^{m+1}$, then 
-            $d_{n,n-p^{m}} \equiv_{p} d_{n+\gamma p^{m+1}, n-p^{m}}$
+        consider $\mathcal{P}^{(m)}$, let $p^{m} \leq n < p^{m+1}$ and 
+        $k\in\lbrace0,\ldots,n-p^{m}\rbrace$, then:
+        \begin{displaymath}
+            d_{n,k} \equiv_{p} d_{n+\gamma p^{m+1}, k+\gamma p^{m+1}}
+                \quad\forall\gamma\in\mathbb{N}
+        \end{displaymath}
     \end{theorem}
     \begin{itemize}
         \item \emph{proof}: represent subscripts in base $p$ and apply \emph{Lucas theorem}
