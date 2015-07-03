@@ -2202,25 +2202,15 @@
     Previous lemma is important because it does hold for the inverse array $\mathcal{P}^{-1}$ too:
     \begin{displaymath}
         \begin{split}
-            \hat{d}_{n,n-p^{m}} &\equiv_{p} \hat{d}_{n+\gamma p^{m+1}, n-p^{m}} \\
-            (-1)^{n-(n-p^{m})}d_{n,n-p^{m}} &\equiv_{p} (-1)^{n+\gamma p^{m+1}-(n-p^{m})}d_{n+\gamma p^{m+1}, n-p^{m}} \\
-            (-1)^{p^{m}}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p^{m}(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
-            (-1)^{p m}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p{m}(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
-            (-1)^{p}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p(\gamma p+1)}d_{n+\gamma p^{m+1}, n-p^{m}} \\
-            (-1)^{p}d_{n,n-p^{m}} &\equiv_{p} (-1)^{p^2\gamma}(-1)^p d_{n+\gamma p^{m+1}, n-p^{m}} \\
-            (-1)^{p}d_{n,n-p^{m}} &\equiv_{p} (-1)^{2p \gamma}(-1)^p d_{n+\gamma p^{m+1}, n-p^{m}} \\
-            (-1)^{p}d_{n,n-p^{m}} &\equiv_{p} (-1)^p d_{n+\gamma p^{m+1}, n-p^{m}} \\
+            \hat{d}_{n,k} &\equiv_{p} \hat{d}_{n+\gamma p^{m+1}, k+\gamma p^{m+1}} \\
+            (-1)^{n-k}d_{n,k} &\equiv_{p} (-1)^{n+\gamma p^{m+1}-(k+\gamma p^{m+1})}d_{n+\gamma p^{m+1}, k+\gamma p^{m+1}} \\
+            (-1)^{n-k}d_{n,k} &\equiv_{p} (-1)^{n-k}d_{n+\gamma p^{m+1}, k+\gamma p^{m+1}} \\
         \end{split}
     \end{displaymath}
-    An even module $p$ produces exactly the same remainder classes both for $\mathcal{P}$ 
-    both for $\mathcal{P}^{-1}$. Suppose $p$ odd, in this case $(-1)^{p} = -1$ and since there
-    exists $(-1)^{-1}\mod p$:
-    \begin{displaymath}
-        \begin{split}
-            d_{n,n-p^{m}} &\equiv_{p} d_{n+\gamma p^{m+1}, n-p^{m}} \\
-        \end{split}
-    \end{displaymath}
-    which holds by the former lemma. Pay attention: this doesn't relate coefficients
+    Since there exists $(-1)^{-1}\mod p$ we can multiply by it both member $n-k$ times,
+    obtaining the congruence proved in the previous lemma.
+    
+    Pay attention: this doesn't relate coefficients
     of $\mathcal{P}$ and $\mathcal{P}^{-1}$ (from the colouring point of view 
     doesn't imply any relation about colours assignment: generally it is not the case,
     except for even $p$), it merely says that 
