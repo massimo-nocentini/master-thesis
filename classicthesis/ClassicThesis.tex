@@ -49,6 +49,9 @@
 %*******************************************************
 \input{classicthesis-config}
 
+% personal commands and particular packages inclusion
+\input{personal-config}
+
 %********************************************************************
 % Hyphenation
 %*******************************************************
@@ -84,28 +87,31 @@
 \pagenumbering{arabic}
 %\setcounter{page}{90}
 % use \cleardoublepage here to avoid problems with pdfbookmark
+
 \cleardoublepage
-\part{Some Kind of Manual}
-\include{Chapters/Chapter01}
+\input{Chapters/back-to-the-basics}
+
 \cleardoublepage
-\ctparttext{You can put some informational part preamble text here. 
-Illo principalmente su nos. Non message \emph{occidental} angloromanic
-da. Debitas effortio simplificate sia se, auxiliar summarios da que,
-se avantiate publicationes via. Pan in terra summarios, capital
-interlingua se que. Al via multo esser specimen, campo responder que
-da. Le usate medical addresses pro, europa origine sanctificate nos se.}
-\part{The Showcase}
-\include{Chapters/Chapter02}
-%\addtocontents{toc}{\protect\clearpage} % <--- just debug stuff, ignore
-\include{Chapters/Chapter03}
-%\include{multiToC} % <--- just debug stuff, ignore for your documents
+\input{Chapters/modular-characterization}
+
+\cleardoublepage
+\input{Chapters/h-characterization}
+
+\cleardoublepage
+\input{Chapters/python-implementation}
+
 % ********************************************************************
 % Backmatter
 %*******************************************************
 \appendix
 \cleardoublepage
-\part{Appendix}
-\include{Chapters/Chapter0A}
+%\part{Appendix}
+\include{Chapters/appendix-sage-sessions}
+
+\appendix
+\cleardoublepage
+\include{Chapters/appendix-listings}
+
 %********************************************************************
 % Other Stuff in the Back
 %*******************************************************

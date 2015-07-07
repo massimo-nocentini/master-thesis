@@ -1,0 +1,351 @@
+
+\section{Main idea}
+
+Consider a \emph{Riordan array} $\mathcal{R}$ defined over generating
+functions $d(t)$ and $h(t)$. By definition, coefficients lying on 
+column $k$ are the coefficients of the following generating function:
+\begin{displaymath}
+    d(t)h(t)^k
+\end{displaymath}
+our idea is to characterize $\mathcal{R}$ doing a variable change, as the
+following manipulation shows:
+\begin{displaymath}
+    d(t)h(t)^k = d(t)(1 + (h(t)-1))^k = \left[ d(\hat{h}(1+y))(1+y)^k \left| y = h(t)-1 \right. \right]
+\end{displaymath}
+where $\hat{h}$ is the compositional inverse function of $h$, the one that
+satisfies $\hat{h}(h(t)) = t$: in order to get $t$ back, apply $\hat{h}$ to
+both members of $y+1 = h(t)$.
+Inside the square brackets there's a shape of a Riordan array, therefore:
+\begin{displaymath}
+    \begin{split}
+        \mathcal{R}\left(d(t),h(t)\right) &= \left[ \mathcal{R}\left(d(\hat{h}(1+y)), 1+y\right) \left| y = h(t)-1 \right. \right]\\
+        &= \mathcal{R}_{y=h(t)-1}\left( f(y), 1+y \right) =  \mathcal{R}_{h(t)}\left( g(h(t)), h(t) \right) 
+    \end{split}
+\end{displaymath}
+$\mathcal{R}_{y=h(t)-1}$ is interesting since its first component $f(y)$ allow to 
+develop another array $\mathcal{R}_{h(t)}$ where it's first component
+is a function $g$ in the ``variable'' $h(t)$, eventually the moral is:
+\begin{verse}
+    using $d$ composed with $\hat{h}$ makes it possible to have $\mathcal{R}_{h}$,
+    a characterization of $\mathcal{R}$ that depends only on $h$
+\end{verse}
+
+\subsection{Applying it to known triangles}
+
+In the following sections we study some well known arrays under this point of view.
+
+\subsubsection{Pascal}
+Let $\mathcal{P}$ be the Riordan array for the Pascal triangle,
+defined as:
+\begin{displaymath} 
+    \mathcal{P} = \left(\frac{1}{1-t}, \frac{t}{1-t}  \right)
+\end{displaymath} 
+computing the compositional inverse of $h$ yields:
+\begin{displaymath} 
+    \hat{h}(y) = \frac{y}{1+y}
+\end{displaymath} 
+so $f(y)=d(\hat{h}(1+y))=2+y$ therefore:
+\begin{displaymath} 
+    \mathcal{P}_{y=h(t)-1}\left( 2+y, 1+y \right)= \mathcal{P}_{h(t)}\left( 1+h(t), h(t) \right)
+\end{displaymath} 
+Now study the generating function which carries coefficients lying on column $k$
+of $\mathcal{P}_{h(t)}$:
+\begin{displaymath} 
+    h(t)^k + h(t)^{k+1}
+\end{displaymath} 
+hence coefficients of column $k$ are computed by sum of $k$ and $k+1$ convolution 
+of function $h$ with itself, which recall the work of Rogers on \emph{renewal arrays}.
+
+\subsubsection{Fibonacci}
+Let $\mathcal{F}$ be the Riordan array for the Fibonacci triangle,
+defined as:
+\begin{displaymath} 
+    \mathcal{F} = \left(\frac{1}{1-t-t^2}, \frac{1-\sqrt{1-4t}}{2}  \right)
+\end{displaymath} 
+computing the compositional inverse of $h$ yields:
+\begin{displaymath} 
+    \hat{h}(y) = y - y^2
+\end{displaymath} 
+so $f(y)=d(\hat{h}(1+y))=\frac{1}{1+y-2y^3-y^4}$ therefore:
+\begin{displaymath} 
+    \begin{split} 
+        & \mathcal{F}_{y=h(t)-1}\left( \frac{1}{1+y-2y^3-y^4}, 1+y \right) = \mathcal{F}_{h(t)}\left( \frac{1}{1-h(t)+2h(t)^3-h(t)^4}, h(t) \right)\\
+    \end{split} 
+\end{displaymath} 
+Now study the generating function which carries coefficients lying on column $k$
+of $\mathcal{F}_{h(t)}$:
+\begin{displaymath} 
+    \frac{h(t)^k}{1-h(t)+2h(t)^3-h(t)^4}
+\end{displaymath} 
+
+\subsubsection{Catalan}
+Let $\mathcal{C}$ be the Riordan array for the Catalan triangle,
+defined as:
+\begin{displaymath} 
+    \mathcal{C} = \left(\frac{1-\sqrt{1-4t}}{2t}, \frac{1-\sqrt{1-4t}}{2}  \right)
+\end{displaymath} 
+computing the compositional inverse of $h$ yields:
+\begin{displaymath} 
+    \hat{h}(y) = y - y^2
+\end{displaymath} 
+so $f(y)=d(\hat{h}(1+y))=\frac{\sqrt{4 \, y^{2} + 4 \, y + 1} - 1}{2 \, {\left(y + 1\right)} y}$ therefore:
+\begin{displaymath} 
+    \begin{split} 
+        &\mathcal{C}_{y=h(t)-1}\left(\frac{\sqrt{4 \, y^{2} + 4 \, y + 1} - 1}{2 \, {\left(y + 1\right)} y}, 1+y \right) \\
+        &= \mathcal{C}_{h(t)}\left(\frac{\sqrt{4 \, h\left(t\right)^{2} - 4 \, h\left(t\right) + 1} - 1}{2 \, {\left(h\left(t\right) - 1\right)} h\left(t\right)}, h(t) \right)\\
+        &= \mathcal{C}_{h(t)}\left(\frac{\sqrt{(2 h\left(t\right) -  1)^2} - 1}{2 \, {\left(h\left(t\right) - 1\right)} h\left(t\right)}, h(t) \right)\\
+    \end{split} 
+\end{displaymath} 
+By cases on $\sqrt{(2 h\left(t\right) -  1)^2}$:
+\begin{itemize}
+    \item $\sqrt{(2 h\left(t\right) -  1)^2}=2 h\left(t\right) -  1$, hence:
+        \begin{displaymath} 
+            \mathcal{C}_{h(t)}\left(\frac{2(h\left(t\right) -  1)}{2 \, {\left(h\left(t\right) - 1\right)} h\left(t\right)}, h(t) \right)=
+            \mathcal{C}_{h(t)}\left(\frac{1}{h\left(t\right)}, h(t) \right)
+        \end{displaymath} 
+        since $h(0)=0$ the previous result has no meaning, therefore discard this case;
+    \item $\sqrt{(2 h\left(t\right) -  1)^2}=1 -2 h\left(t\right)$, hence:
+        \begin{displaymath} 
+            \mathcal{C}_{h(t)}\left(\frac{h\left(t\right)}{ {\left(1-h\left(t\right) \right)} h\left(t\right)}, h(t) \right)=
+            \mathcal{C}_{h(t)}\left(\frac{1}{1-h\left(t\right)}, h(t) \right)
+        \end{displaymath} 
+        checking against $h(0)=0$ the previous result has meaning, therefore accept this case.
+\end{itemize}
+Now study the generating function which carries coefficients lying on column $k$
+of $\mathcal{C}_{h(t)}$:
+\begin{displaymath} 
+    \frac{h(t)^{k}}{1-h\left(t\right)} 
+\end{displaymath} 
+
+
+\subsubsection{Motzkin, classic version}
+
+Let $\mathcal{M}$ be the Riordan array for the Motzkin triangle, defined as:
+\begin{displaymath} 
+    \mathcal{M} =\left( \frac{1-t-\sqrt{1-2t-3t^2}}{2t^2}, \frac{1-t-\sqrt{1-2t-3t^2}}{2t}  \right)
+\end{displaymath} 
+computing the compositional inverse of $h$ yields:
+\begin{displaymath} 
+    \hat{h}(y) = \frac{y}{1+y+y^2}
+\end{displaymath} 
+so $f(y)=d(\hat{h}(1+y))$ equals:
+\begin{lenghtydisplaymath} 
+    \begin{split} 
+        & -\frac{{\left(y^{2} \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - y^{2} + 3 \, y \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - 2 \, y + 3 \, \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - 2\right)} {\left(y^{2} + 3 \, y + 3\right)}}{2 \, {\left(y + 1\right)}^{2}} \\
+        & = -\frac{{ \left(\sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} \left( y^{2}+3y+3 \right) -\left(y^{2}+2y+2\right)\right){\left(y^{2} + 3 \, y + 3\right)}}}{2 \, {\left(y + 1\right)}^{2}} \\
+        & = -\frac{ \left(\sqrt{\left(y^{2} + 4 y + 4\right) y^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} \\
+        & = -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} \\
+    \end{split} 
+\end{lenghtydisplaymath} 
+therefore:
+\begin{lenghtydisplaymath} 
+    \begin{split} 
+        &\mathcal{M}_{y=h(t)-1}\left(
+            -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} , 1+y \right) \\
+        &= \mathcal{M}_{h(t)}\left(
+        -\frac{{\left(\sqrt{\frac{{\left(h(t)^{2} + 2 \, h(t) + 1\right)} {\left(h(t) - 1\right)}^{2}}{{\left(h(t)^{2} + h(t) + 1\right)}^{2}}}\left( h(t)^{2} + h(t) + 1\right) 
+            - (h(t)^{2} + 1) \right)} {\left(h(t)^{2} + h(t) + 1\right)}}{2 \, h(t)^{2}} , h(t) \right)\\
+        &= \mathcal{M}_{h(t)}\left(
+        -\frac{{\left(\sqrt{\left(h(t)^2 - 1\right)^{2}} - (h(t)^{2} + 1) \right)} {\left(h(t)^{2} + h(t) + 1\right)}}{2 \, h(t)^{2}} , h(t) \right)\\
+    \end{split} 
+\end{lenghtydisplaymath} 
+By cases on $\sqrt{\left(h(t)^2 - 1\right)^{2}}$:
+\begin{itemize}
+    \item $\sqrt{\left(h(t)^2 - 1\right)^{2}}= h(t)^2 - 1$, hence:
+        \begin{displaymath} 
+            \mathcal{M}_{h(t)}\left(\frac{ h(t)^{2} + h(t) + 1}{h(t)^{2}} , h(t) \right)\\
+        \end{displaymath} 
+        since $h(0)=0$ the previous result has no meaning, therefore discard this case;
+    \item $\sqrt{\left(h(t)^2 - 1\right)^{2}}= 1-h(t)^2$, hence:
+        \begin{displaymath} 
+            \mathcal{M}_{h(t)}\left( h(t)^{2} + h(t) + 1, h(t) \right)\\
+        \end{displaymath} 
+        checking against $h(0)=0$ the previous result has meaning, therefore accept this case.
+\end{itemize}
+
+It is interesting to note that the tedious derivation developed above can have
+a simpler handling if we defer substituting $h(t)-1$ to $y$, consider the following \ldots
+by cases on $\sqrt{\left(\left(y + 2\right) y\right)^{2}}$:
+\begin{itemize}
+    \item $\sqrt{\left(\left(y + 2\right) y\right)^{2}}=\left(y + 2\right) y$, hence:
+        \begin{displaymath} 
+            \mathcal{M}_{y=h(t)-1}\left(\frac{y^{2} + 3y + 3}{{\left(y + 1\right)}^{2}} , h(t) \right) = 
+                \mathcal{M}_{h(t)}\left( \frac{1+h(t)+h(t)^2}{h(t)^2}, h(t) \right) 
+        \end{displaymath} 
+        since $h(0)=0$ the previous result has no meaning, therefore discard this case;
+    \item $\sqrt{\left(\left(y + 2\right) y\right)^{2}}=-\left(y + 2\right) y$, hence:
+        \begin{displaymath} 
+            \mathcal{M}_{y=h(t)-1}\left(y^{2} + 3y + 3 , h(t) \right) = 
+                \mathcal{M}_{h(t)}\left( 1+h(t)+h(t)^2, h(t) \right) 
+        \end{displaymath} 
+        checking against $h(0)=0$ the previous result has meaning, therefore accept this case.
+\end{itemize}
+
+In both branches same definitions for $\mathcal{M}_{h(t)}$ are reached applying
+same checks, while at the same time substitution of $y$ is easier. 
+
+However, here it is the generating function which carries coefficients 
+lying on column $k$ of $\mathcal{M}_{h(t)}$:
+\begin{displaymath} 
+    h(t)^{k}+h(t)^{k+1}+h(t)^{k+2}
+\end{displaymath} 
+
+
+\subsubsection{Motzkin, $\mathcal{T}$ variant}
+
+Let $\mathcal{T}$ be the Riordan array for a variant of the Motzkin triangle defined as:
+\begin{displaymath} 
+    \mathcal{T} = \left(\frac{1}{\sqrt{1-2t-3t^2}}, 
+       \frac{1-t-\sqrt{1-2t-3t^2}}{2t}  \right)
+\end{displaymath} 
+computing the compositional inverse of $h$ yields:
+\begin{displaymath} 
+    \hat{h}(y) = \frac{y}{1+y+y^2}
+\end{displaymath} 
+so $f(y)=d(\hat{h}(1+y))=\sqrt{\left(\frac{y^2+3y+3}{(y+2)y}\right)^{2}}$ therefore:
+\begin{displaymath} 
+    \mathcal{T}_{y=h(t)-1}\left( \sqrt{\left(\frac{y^2+3y+3}{(y+2)y}\right)^{2}}, 1+y \right) = 
+        \mathcal{T}_{h(t)}\left( \sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}, h(t) \right) 
+\end{displaymath} 
+By cases on $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}$:
+\begin{itemize}
+    \item $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}=\frac{h(t)^2+h(t)+1}{h(t)^2-1}$, hence:
+        \begin{displaymath} 
+            \mathcal{T}_{h(t)}\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}, h(t) \right)
+        \end{displaymath} 
+        requirement $h(0)=0$ doesn't raise a non-sense, so use another 
+        constraint over the first component in order to have a 
+        \emph{proper} array:
+        \begin{displaymath}
+            \left. \frac{h(t)^2+h(t)+1}{h(t)^2-1} \right|_{t=0} = -1 \not= 1 
+        \end{displaymath} 
+        so discard this case;
+    \item $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}=\frac{h(t)^2+h(t)+1}{1-h(t)^2}$, hence:
+        \begin{displaymath}
+            \mathcal{T}_{h(t)}\left(\frac{h(t)^2+h(t)+1}{1-h(t)^2}, h(t) \right)
+        \end{displaymath} 
+        requirement $h(0)=0$ doesn't raise a non-sense, so use another 
+        constraint over the first component in order to have a 
+        \emph{proper} array:
+        \begin{displaymath}
+            \left. \frac{h(t)^2+h(t)+1}{1-h(t)^2} \right|_{t=0} = 1 
+        \end{displaymath} 
+        which fulfill the constraint, so accept this case.
+\end{itemize}
+Now study the generating function which carries coefficients lying on column $k$
+of $\mathcal{T}_{h(t)}$:
+\begin{displaymath} 
+    \frac{h(t)^{k}+h(t)^{k+1}+h(t)^{k+2}}{1-h(t)^2 }
+\end{displaymath} 
+
+
+\subsubsection{Delannoy}
+
+Let $\mathcal{D}$ be the Riordan array for the Delannoy triangle, defined as:
+\begin{displaymath} 
+    \mathcal{D} =\left( \frac{1}{1-t}, \frac{t(1+t)}{1-t}  \right)
+\end{displaymath} 
+computing the compositional inverse of $h$ yields:
+\begin{displaymath} 
+    \hat{h}(y) = \frac{\sqrt{1+6y+y^2}-y-1}{2}
+\end{displaymath} 
+so $f(y)=d(\hat{h}(1+y))=\frac{2}{4 + y - \sqrt{y^2 + 8*y + 8} }$ therefore:
+\begin{displaymath} 
+    \begin{split}
+        & \mathcal{D}_{y=h(t)-1}\left( \frac{2}{4+y-\sqrt{y^2+8y+8}}, 1+y \right)\\
+        &= \mathcal{D}_{h(t)}\left( \frac{2}{3+h(t)-\sqrt{h(t)^2+6h(t)+1}}, h(t) \right) \\
+    \end{split}
+\end{displaymath} 
+Since $h(t)^2+6h(t)+1$ isn't a perfect square, no problem arises with the previous
+derivation; now study the generating function which carries coefficients lying on column $k$
+of $\mathcal{D}_{h(t)}$:
+\begin{displaymath} 
+    \frac{2h(t)^k}{3+h(t)-\sqrt{h(t)^2+6h(t)+1}}
+\end{displaymath} 
+
+\subsection{Points of view}
+
+Let $\mathcal{R}\left(d(t),h(t)\right)$ be a Riordan array and $\mathcal{R}_{h(t)}$ be
+its characterization built using the previous method.
+
+The first point of view is to see $\mathcal{R}_{h(t)}$ as a \emph{factorization}
+of $\mathcal{R}$ in terms of $h(t)$. Namely, the structure of the characterization
+depends both on functions $d$ and $\hat{h}$, but the building block is function $h$
+alone. Moreover, second component of $\mathcal{R}_{h(t)}$ is function $h$ itself,
+therefore it seems that the $k$-fold convolution of $h$ with itself in the generic
+$k$ column expansion is common both to $\mathcal{R}$ both to $\mathcal{R}_{h(t)}$.
+
+The second point of view is to see $\mathcal{R}_{h(t)}$ as a \emph{schema} array.
+To understand this concept abstract over $h(t)$ and think about it as a ``plugin''
+function, one that can be substituted with any function $g(t)$ we like, to get a new array
+$\mathcal{R}^{\stackrel{g(t)}{\rightarrow}}$ (this notation is just a reminder that the array is obtained
+by plugging in $g(t)$ into the schema). It's pretty easy, and sound, to check:
+\begin{displaymath}
+    \mathcal{R}^{\stackrel{h(t)}{\rightarrow}} = \mathcal{R}_{y=h(t)-1}\left( d(\hat{h}(1+y)), 1+y \right) = \mathcal{R}
+\end{displaymath}
+while considering an arbitrary function $g(t)$:
+\begin{displaymath}
+    \mathcal{R}^{\stackrel{g(t)}{\rightarrow}} = \mathcal{R}_{y=g(t)-1}\left( d(\hat{h}(1+y)), 1+y \right) = 
+    \left( d(\hat{h}(g(t))), g(t) \right) 
+\end{displaymath}
+observe how the first component of $\mathcal{R}^{\stackrel{g(t)}{\rightarrow}}$ depends on
+$\mathcal{R}$ by composition of functions $d$ and $\hat{h}$. So, every array seems to have
+a ``nested schema'' that allows to build new arrays.
+\\\\
+We finish with a theorem about arrays in the \emph{renewal} subgroup.
+
+\begin{theorem}
+    Let $\mathcal{R}\left(d(t), h(t)\right)$ a Riordan array belonging
+    to the \emph{renewal} subgroup, so $h(t)=td(t)$. Then:
+    \begin{displaymath}
+        \mathcal{R}_{h(t)}\left(A(h(t)), h(t))\right)=
+        \left[\left.\mathcal{R}\left(A(y), y)\right)\right|y=h(t)\right] =
+        \mathcal{R}_{y=h(t)}\left(A(y), y)\right)
+    \end{displaymath}
+    where $A(t)$ is the generating function over $\mathcal{R}$'s $A$-sequence 
+    $\lbrace a_i \rbrace_{i\in\mathbb{N}}$. 
+\end{theorem}
+
+\begin{proof}
+    Recall that $A$-sequence of a Riordan array $\mathcal{R}\left(d(t), h(t)\right)$
+    satisfies:
+    \begin{displaymath}
+        h(t)=tA(h(t))
+    \end{displaymath}
+    By hypothesis, assume $\mathcal{R}$ belongs to the \emph{renewal} subgroup, therefore
+    \begin{displaymath}
+        \mathcal{R}\left(A(h(t)), h(t)\right)
+    \end{displaymath}
+    Let $\mathcal{R}_{h(t)}\left(g(h(t)), h(t)\right)$ be the factorization of $\mathcal{R}$,
+    for some generating function $g$. Now plug $h(t)$ into $\mathcal{R}_{h(t)}$:
+    \begin{displaymath}
+        \mathcal{R}^{\stackrel{h(t)}{\rightarrow}} =
+            \mathcal{R}\left(g(h(t)), h(t)\right)
+    \end{displaymath}
+    But $\mathcal{R}^{\stackrel{h(t)}{\rightarrow}} = \mathcal{R}$, therefore 
+    $[g(y)=A(y)|y=h(t)]$ follows, as required.
+
+\end{proof}
+
+Looking at it deeply, it is possible to have a stronger formulation, namely the 
+converse holds indeed: the reason for this is the unique existence of an $A$-sequence
+for each Riordan array, the argument follows using $h(t)=tA(h(t))$ again .
+\\\\
+This little theorem shows a possible application of the factorization point of view.
+Consider the Motzkin array defined as:
+\begin{displaymath} 
+    \mathcal{M} =\left( \frac{1-t-\sqrt{1-2t-3t^2}}{2t^2},
+       \frac{1-t-\sqrt{1-2t-3t^2}}{2t}  \right)
+\end{displaymath} 
+Surely $\mathcal{M}$ is a renewal array and, being in the Riordan group, 
+has an $A$-sequence, which satisfies $A(t)=1+t+t^2$: 
+this information \emph{can't} be read from the above definition.
+
+Consider instead: let $h(t)=\frac{1-t-\sqrt{1-2t-3t^2}}{2t}$ be the second
+component of Motzkin array $\mathcal{M}$, which factor as follows:
+\begin{displaymath} 
+    \mathcal{M}_{h(t)}\left( 1+h(t)+h(t)^2, h(t) \right) 
+\end{displaymath} 
+using this definition for $\mathcal{M}$, $A$-sequence $[A(y)=1+y+y^2|y=h(t)]$ can
+be read from the first component directly.
+

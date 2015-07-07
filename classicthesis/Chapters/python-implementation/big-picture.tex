@@ -1,0 +1,39 @@
+
+\section{Big picture}
+
+In the rest of this document we report and comment some figures
+about colourings of \emph{Riordan arrays}: we consider standard triangles
+and their inverses, in the majority of case the congruence partitioning
+is used.
+
+Mathematically, a function $colouring$ has been implemented: let $\mathcal{R}$ be
+a Riordan array and $d_{nk} \in \mathcal{R}$ a generic element, moreover
+define a set of $k$ colours $\lbrace c_0, \ldots, c_{k-1} \rbrace$, so
+the function has the following type:
+\begin{displaymath}
+    colouring : \mathbb{N} \times\mathbb{N} \rightarrow 
+        \lbrace c_0, \ldots, c_{k-1} \rbrace
+\end{displaymath}
+
+The following implementations are available in the Python package:
+\begin{itemize}
+    \item choose a module $p$ (in most cases a prime although) and
+        colour $\mathcal{R}$ associating to each remainder class 
+        $r \in \lbrace[0],\ldots,[p-1]\rbrace$
+        a different colour $c_r$:
+        \begin{displaymath}
+            colouring_{p}(n,k) = c_{r} \leftrightarrow d_{nk} \equiv_{p} r
+        \end{displaymath}
+    \item choose a module $p$ (in most cases a prime although) and
+        \emph{bi}-colour $\mathcal{R}$ with $c_0$ if $d_{nk}$ 
+        is a multiple of $p$, otherwise use a colour $c_1$:
+        \begin{displaymath}
+            colouring_{p}(n,k) = c_{0} \leftrightarrow p | d_{nk}
+        \end{displaymath}
+    \item a less used one, \emph{bi}-colour $\mathcal{R}$ with $c_0$ 
+        if $d_{nk}$ is a prime, otherwise use a colour $c_1$:
+        \begin{displaymath}
+            colouring(n,k) = c_{0} \leftrightarrow 
+                \nexists p\in\lbrace 2,\ldots,d_{nk}-1\rbrace.p|d_{nk} 
+        \end{displaymath}
+\end{itemize}

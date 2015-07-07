@@ -1,0 +1,30 @@
+
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{caption}
+
+% add 'final' option to make a clear version without any markup or colouring
+\usepackage[authormarkup=none]{changes}
+
+\usepackage{marginnote}
+% maybe those new commands should have a dedicated home in an
+% independent file
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+
+% for tracking changes
+\definechangesauthor[name={under review}, color=blue]{testing}
+\definechangesauthor[name={blending edge}, color=orange]{sid}
+
+% an environment for lenghty equations breaking right margin
+% taken from here:
+% http://tex.stackexchange.com/questions/156877/center-over-long-equations-between-both-margins
+\newsavebox{\overlongequation}
+\newenvironment{lenghtydisplaymath}
+ {\begin{displaymath}\begin{lrbox}{\overlongequation}$\displaystyle}
+  {$\end{lrbox}\makebox[300pt]{\usebox{\overlongequation}}\end{displaymath}}
+
