@@ -40,6 +40,7 @@ It's important to understand the meaning of those new symbols:
         be seen as a variable, like a \emph{datum}, and should not be expanded,
         even if $\Omega$'s definition is known. 
 \end{itemize}
+\marginpar{$\mathcal{R}_{t}(d(t),h(t))$ denotes verbosly, but correctly, $\mathcal{R}(d(t),h(t))$ }
 
 \subsection{Applying it to known triangles}
 
@@ -153,7 +154,7 @@ so $f(y)=d(\hat{h}(1+y))$ equals:
     \end{split} 
 \end{lenghtydisplaymath} 
 Recognize a perfect square $y^{2} + 4 y + 4 = (y+2)^{2}$:
-\marginpar{we could stop and reason about $\sqrt{\left(\left(y + 2\right) y\right)^{2}}$
+\marginpar{we could stop and reason by cases about $\pm\left(\left(y + 2\right) y\right)$
     without going on substituting variable $y$\ldots}
 \begin{lenghtydisplaymath} 
         -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} 
@@ -254,7 +255,7 @@ By cases on $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}$:
 Now study the generating function which carries coefficients lying on column $k$
 of $\mathcal{T}_{h(t)}$:
 \marginpar{same numerator as in classic $\mathcal{M}$ array, what's
-    the relation among function $d_{\mathcal{T}}$ and multiplier $\frac{1}{1-h(t)^{2}}$?}
+    the relation among function $d$ and multiplier $\frac{1}{1-h(t)^{2}}$?}
 \begin{displaymath} 
     \frac{h(t)^{k}+h(t)^{k+1}+h(t)^{k+2}}{1-h(t)^2 }
 \end{displaymath} 
@@ -287,20 +288,24 @@ of $\mathcal{D}_{h(t)}$:
 \subsection{Points of view}
 
 Let $\mathcal{R}\left(d(t),h(t)\right)$ be a Riordan array and $\mathcal{R}_{h(t)}$ be
-its characterization built using the previous method.
+its $h$-characterization.
 
-The first point of view is to see $\mathcal{R}_{h(t)}$ as a \emph{factorization}
+The first point of view we would like to introduce is to see 
+$\mathcal{R}_{h(t)}$ as a \emph{factorization} \marginpar{$\mathcal{R}_{h(t)}$ factorizes $\mathcal{R}$}
 of $\mathcal{R}$ in terms of $h(t)$. Namely, the structure of the characterization
 depends both on functions $d$ and $\hat{h}$, but the building block is function $h$
-alone. Moreover, second component of $\mathcal{R}_{h(t)}$ is function $h$ itself,
-therefore it seems that the $k$-fold convolution of $h$ with itself in the generic
+alone. Moreover, second component of $\mathcal{R}_{h(t)}$ is \emph{always} function $h$ itself,
+therefore $k$-fold convolution of function $h$ with itself in the generic
 $k$ column expansion is common both to $\mathcal{R}$ both to $\mathcal{R}_{h(t)}$.
 
-The second point of view is to see $\mathcal{R}_{h(t)}$ as a \emph{schema} array.
-To understand this concept abstract over $h(t)$ and think about it as a ``plugin''
-function, one that can be substituted with any function $g(t)$ we like, to get a new array
+The second point of view is to see $\mathcal{R}_{h(t)}$ as a \emph{schema} array 
+\marginpar{$\mathcal{R}_{h(t)}$ is a schema}.
+To understand this concept, abstract over $h(t)$ and think about it as a ``plugin'', 
+a ``context'' that can be filled with any function $g(t)$ you like, to get a new array
 $\mathcal{R}^{\stackrel{g(t)}{\rightarrow}}$ (this notation is just a reminder that the array is obtained
-by plugging in $g(t)$ into the schema). It's pretty easy, and sound, to check:
+by plugging in $g(t)$ into the schema $\mathcal{R}_{h(t)}$). It's pretty easy, and sound, to check:
+\marginpar{plugging in $h(t)$ itself within schema $\mathcal{R}_{h(t)}$ safely gets back
+    to the original array $\mathcal{R}$}
 \begin{displaymath}
     \mathcal{R}^{\stackrel{h(t)}{\rightarrow}} = \mathcal{R}_{y=h(t)-1}\left( d(\hat{h}(1+y)), 1+y \right) = \mathcal{R}
 \end{displaymath}
@@ -316,14 +321,14 @@ a ``nested schema'' that allows to build new arrays.
 We finish with a theorem about arrays in the \emph{renewal} subgroup.
 
 \begin{theorem}
-    Let $\mathcal{R}\left(d(t), h(t)\right)$ a Riordan array belonging
+    Let $\mathcal{R}\left(d(t), h(t)\right)$ be a Riordan array belonging
     to the \emph{renewal} subgroup, so $h(t)=td(t)$. Then:
     \begin{displaymath}
         \mathcal{R}_{h(t)}\left(A(h(t)), h(t))\right)=
         \left[\left.\mathcal{R}\left(A(y), y)\right)\right|y=h(t)\right] =
         \mathcal{R}_{y=h(t)}\left(A(y), y)\right)
     \end{displaymath}
-    where $A(t)$ is the generating function over $\mathcal{R}$'s $A$-sequence 
+    where $A$ is a \ac{fps} over $\mathcal{R}$'s $A$-sequence 
     $\lbrace a_i \rbrace_{i\in\mathbb{N}}$. 
 \end{theorem}
 
@@ -337,8 +342,8 @@ We finish with a theorem about arrays in the \emph{renewal} subgroup.
     \begin{displaymath}
         \mathcal{R}\left(A(h(t)), h(t)\right)
     \end{displaymath}
-    Let $\mathcal{R}_{h(t)}\left(g(h(t)), h(t)\right)$ be the factorization of $\mathcal{R}$,
-    for some generating function $g$. Now plug $h(t)$ into $\mathcal{R}_{h(t)}$:
+    Let $\mathcal{R}_{h(t)}\left(g(h(t)), h(t)\right)$ be the $h$-characterization of $\mathcal{R}$,
+    for some function $g$. Now plug $h(t)$ into $\mathcal{R}_{h(t)}$:
     \begin{displaymath}
         \mathcal{R}^{\stackrel{h(t)}{\rightarrow}} =
             \mathcal{R}\left(g(h(t)), h(t)\right)
@@ -348,6 +353,9 @@ We finish with a theorem about arrays in the \emph{renewal} subgroup.
 
 \end{proof}
 
+%\marginpar{$\mathcal{R}_{h(t)}\left(A(h(t)), h(t))\right)\rightarrow
+    %\mathcal{R}\left(d(t), t\,d(t)\right)$ holds too}
+\marginpar{the converse is true indeed}
 Looking at it deeply, it is possible to have a stronger formulation, namely the 
 converse holds indeed: the reason for this is the unique existence of an $A$-sequence
 for each Riordan array, the argument follows using $h(t)=tA(h(t))$ again .
@@ -361,12 +369,17 @@ Consider the Motzkin array defined as:
 Surely $\mathcal{M}$ is a renewal array and, being in the Riordan group, 
 has an $A$-sequence, which satisfies $A(t)=1+t+t^2$: 
 this information \emph{can't} be read from the above definition.
-
-Consider instead: let $h(t)=\frac{1-t-\sqrt{1-2t-3t^2}}{2t}$ be the second
+\\\\
+\marginpar{finding $\mathcal{M}$'s $A$-sequence}
+Let $h(t)=\frac{1-t-\sqrt{1-2t-3t^2}}{2t}$ be the second
 component of Motzkin array $\mathcal{M}$, which factor as follows:
 \begin{displaymath} 
     \mathcal{M}_{h(t)}\left( 1+h(t)+h(t)^2, h(t) \right) 
 \end{displaymath} 
-using this definition for $\mathcal{M}$, $A$-sequence $[A(y)=1+y+y^2|y=h(t)]$ can
-be read from the first component directly.
+using this $h$-characterization, $A$-sequence $[A(y)=1+y+y^2|y=h(t)]$ can
+be read from $\mathcal{M}_{h(t)}$'s first component directly, without
+solving the equation as usual:
+\begin{displaymath} 
+    \frac{1-t-\sqrt{1-2t-3t^2}}{2t} = t\,A\left(\frac{1-t-\sqrt{1-2t-3t^2}}{2t}\right)
+\end{displaymath} 
 
