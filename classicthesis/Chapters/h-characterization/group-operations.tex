@@ -36,7 +36,7 @@ we need also function $g$, take it from the $h$-characterization $\mathcal{F}_{h
 \end{displaymath}
 we're ready to apply:
 \begin{displaymath}
-    \left[\mathcal{F}^{-1}\left(1-y-y^2,y\right) | y = \hat{h}(t) \right]=
+    \left[\mathcal{F}^{-1}\left.\left(1-y-y^2,y\right) \right| y = \hat{h}(t) \right]=
     \mathcal{F}_{\hat{h}(t)}^{-1}\left(1-\hat{h}(t)-\hat{h}(t)^2,\hat{h}(t)\right)
 \end{displaymath}
 where function $\hat{h}$ is the compositional inverse of function $h$. Observe that
@@ -54,23 +54,23 @@ If the explicit definition for $\mathcal{F}^{-1}$ is desired, just plug $\hat{h}
 
 \subsection{Multiplying two arrays}
 
-To complete this alternative characterization, let us tackle the product of
-two Riordan arrays. Multiplication, the action of the Riordan group, of two arrays
+Finally, let us tackle the product of two Riordan arrays. 
+Multiplication, the action of the Riordan group, between two elements 
 $\mathcal{A}(d_{\mathcal{A}}(t), h_{\mathcal{A}}(t))$ and 
-$\mathcal{B}(d_{\mathcal{B}}(t), h_{\mathcal{B}}(t))$ is defined as:
+$\mathcal{B}(d_{\mathcal{B}}(t), h_{\mathcal{B}}(t))$ belonging to the group, is defined as:
 \begin{displaymath}
     \mathcal{A}\mathcal{B} = \left(d_{\mathcal{A}}(t)d_{\mathcal{B}}(h_{\mathcal{A}}(t)),
         h_{\mathcal{B}}(h_{\mathcal{A}}(t))\right)
 \end{displaymath}
-Consider the factorization of $\mathcal{A}$:
+Consider the $h_{\mathcal{A}}$-characterization of $\mathcal{A}$:
 \begin{displaymath}
     \mathcal{A}_{h_\mathcal{A}(t)} \left(\gamma(h_{\mathcal{A}}(t)), h_{\mathcal{A}}(t)  \right)
 \end{displaymath}
-for some function $\gamma $ in $h_{\mathcal{A}}(t)$, and the factorization of $\mathcal{B}$:
+for some function $\gamma$, and the $h_{\mathcal{B}}$-characterization of $\mathcal{B}$:
 \begin{displaymath}
     \mathcal{B}_{h_\mathcal{B}(t)} \left(\eta(h_{\mathcal{B}}(t)), h_{\mathcal{B}}(t)  \right)
 \end{displaymath}
-for some function $\eta $ in $h_{\mathcal{B}}(t)$, respectively. Apply now the multiplication rule:
+for some function $\eta$, respectively. Apply now the multiplication rule:
 \begin{displaymath}
     \begin{split}
         & \left(\gamma(h_{\mathcal{A}}(t)), h_{\mathcal{A}}(t)  \right)
@@ -81,15 +81,18 @@ for some function $\eta $ in $h_{\mathcal{B}}(t)$, respectively. Apply now the m
              y=h_{\mathcal{A}}(t) \right]\\
     \end{split}
 \end{displaymath}
-Stop here: it's enough to build a factorization of the product $\mathcal{A}\mathcal{B}$ 
-respect $h_{\mathcal{A}}(t)$:
+Stop here, it's enough to build the $h_{\mathcal{A}}$-characterization 
+of the product $\mathcal{A}\mathcal{B}$:
 \begin{displaymath}
         \left[\left.\left(\Omega(y), h_{\mathcal{B}}(y)  \right) \right| y=h_{\mathcal{A}}(t) \right] 
         =\big(\mathcal{A}\mathcal{B}\big)_{h_{\mathcal{A}}(t)}\left(
             \Omega(h_{\mathcal{A}}(t)), h_{\mathcal{B}}(h_{\mathcal{A}}(t))  \right)
 \end{displaymath}
-where $\left[\Omega(y)= \gamma(y)\eta(h_{\mathcal{B}}(y))| y=h_{\mathcal{A}}(t) \right]$. 
-Nonetheless, from were we stopped, it's possible to factor $\mathcal{A}\mathcal{B}$ respect $h_{\mathcal{B}}(t)$ in
+where $\left[\left.\Omega(y)= \gamma(y)\eta(h_{\mathcal{B}}(y))\right| y=h_{\mathcal{A}}(t) \right]$. 
+\\\\
+Nonetheless, 
+\marginpar{The following can be skipped on a first reading}
+from were we stopped, it's possible to factor $\mathcal{A}\mathcal{B}$ respect $h_{\mathcal{B}}(t)$ in
 a similar way, this time abstracting over $h_{\mathcal{B}}(y)$, remembering to track $y=h_{\mathcal{A}}(t)$:
 \begin{displaymath}
     \begin{split}
@@ -98,13 +101,14 @@ a similar way, this time abstracting over $h_{\mathcal{B}}(y)$, remembering to t
         &=\left.\left[\left.\left(\gamma(\hat{h}_{\mathcal{B}}(k))\eta(k), k  \right) \right|
              k=h_{\mathcal{B}}(y) \right]\right|_{y=h_{\mathcal{A}}(t)}\\
         &=\left.\left[\left.\left(\Theta(k), k  \right) \right| k=h_{\mathcal{B}}(y) \right]\right|_{y=h_{\mathcal{A}}(t)}\\
-        &=\textcolor{red}{\left[\left.\left(\Theta(k), k  \right) \right| 
-            h_{\mathcal{B}}(\hat{h}_{\mathcal{A}}(\hat{h}_{\mathcal{B}}(k)))=h_{\mathcal{B}}(t) \right]} 
-            \marginnote{this writing really abstract over $h_{\mathcal{B}}(t)$ making dependency on $y$ vanish}\\
         &=\left.\big(\mathcal{A}\mathcal{B}\big)_{h_{\mathcal{B}}(y)}\left(
             \Theta(h_{\mathcal{B}}(y)), h_{\mathcal{B}}(y)  \right)\right|_{y=h_{\mathcal{A}}(t)}
     \end{split}
 \end{displaymath}
+\marginpar{in order to stop tracking $y=h_{\mathcal{A}}(t)$, we should write $(\Theta(k), k)$,
+    where $k$ solves
+    $h_{\mathcal{B}}(\hat{h}_{\mathcal{A}}(\hat{h}_{\mathcal{B}}(k)))=h_{\mathcal{B}}(t)$,
+    but it doesn't supply an explicit variable substitution}
 where $\left.\left[\left.\Theta(k)=\gamma(\hat{h}_{\mathcal{B}}(k))\eta(k) \right| 
     k=h_{\mathcal{B}}(y) \right]\right|_{y=h_{\mathcal{A}}(t)}$.
 
@@ -112,11 +116,11 @@ Observe that for the latter factorization, it is necessary to compute function $
 the compositional inverse of function $h_{\mathcal{B}}$.
 \\\\
 For the sake of clarity we apply the previous derivation to the product $\mathcal{P}\mathcal{F}$, namely
-we are multiplying Pascal and Fibonacci arrays, \emph{in the given order}, providing 
+we'll multiply Pascal and Fibonacci arrays, \emph{in the given order}, providing 
 both $\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{P}}(t)}$ 
 both $\left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)}\right|_{y=h_{\mathcal{P}}(t)}$.
 
-Recall how $\mathcal{P}$ and $\mathcal{F}$ are factored:
+Recall $\mathcal{P}$ and $\mathcal{F}$ $h$-characterizations, they are respectively:
 \begin{displaymath}
     \begin{split}
         &\mathcal{P}_{h_{\mathcal{P}}(t)}\left( 1+h_{\mathcal{P}}(t), h_{\mathcal{P}}(t) \right)
@@ -130,23 +134,25 @@ and recognize the following functions under variable constraint (in the followin
 is a ``local'' variable, \emph{it's not shared} among the two definitions):
 \begin{displaymath}
     \begin{split}
-        &\left[\left.\gamma(y) = 1+y \right| y=h_{\mathcal{P}}(t) \right]\\
-        &\left[\left.\eta(y) = \frac{1}{1-y+2y^3-y^4} \right| y=h_{\mathcal{F}}(t) \right]\\
+        &\left.\left[\gamma(y) = 1+y \right| y=h_{\mathcal{P}}(t) \right]\\
+        &\left.\left[\eta(y) = \frac{1}{1-y+2y^3-y^4} \right| y=h_{\mathcal{F}}(t) \right]\\
     \end{split}
 \end{displaymath}
 
 Toward $\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{P}}(t)}$, compute $\Omega$ function:
 \begin{displaymath}
-    \left[\Omega(y)= \gamma(y)\eta(h_{\mathcal{F}}(y))| y=h_{\mathcal{P}}(t) \right]
-        = \left[\Omega(y)= \frac{1+y}{1-y-y^2}| y=h_{\mathcal{P}}(t) \right]
+    \left.\left[\Omega(y)= \gamma(y)\eta(h_{\mathcal{F}}(y))\right| y=h_{\mathcal{P}}(t) \right]
+        = \left.\left[\Omega(y)= \frac{1+y}{1-y-y^2}\right| y=h_{\mathcal{P}}(t) \right]
 \end{displaymath}
-therefore tackle the first request:
+\marginpar{$\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{P}}(t)}$}
+therefore answer the first question:
 \begin{displaymath}
     \big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{P}}(t)} \left(\frac{1+
         h_{\mathcal{P}}(t)}{1-h_{\mathcal{P}}(t)-h_{\mathcal{P}}(t)^2}, \frac{1-\sqrt{1-4h_{\mathcal{P}}(t)}}{2} \right)
 \end{displaymath}
 
-Toward $\left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(t)}\right|_{y=h_{\mathcal{P}}(t)}$, compute $\Theta$ function:
+\marginpar{$\left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)}\right|_{y=h_{\mathcal{P}}(t)}$}
+Toward $\left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)}\right|_{y=h_{\mathcal{P}}(t)}$, compute $\Theta$ function:
 
 \begin{displaymath}
     \begin{split}
@@ -154,13 +160,14 @@ Toward $\left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(t)}\right|_{y=h_
         &= \left.\left[\left.\Theta(k)=\frac{1+k-k^2}{1-k+ 2k^3 - k^4} \right| k=h_{\mathcal{F}}(y) \right]\right|_{y=h_{\mathcal{P}}(t)}\\
     \end{split}
 \end{displaymath}
-where $\hat{h}_{\mathcal{F}}(y)=y-y^2$, therefore tackle the second request:
+where $\hat{h}_{\mathcal{F}}(y)=y-y^2$, therefore answer the second question:
 \begin{displaymath}
     \left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)} \left(
         \frac{1+h_{\mathcal{F}}(y)-h_{\mathcal{F}}(y)^2}{1-h_{\mathcal{F}}(y)+ 2h_{\mathcal{F}}(y)^3 - h_{\mathcal{F}}(y)^4} ,
         h_{\mathcal{F}}(y) \right)\right|_{y=h_{\mathcal{P}}(t)}
 \end{displaymath}
 
+\marginpar{check substituting functions $h_{\mathcal{P}}$ and $h_{\mathcal{F}}$}
 Little check plugging in function $h_{\mathcal{P}}(t)$:
 \begin{displaymath}
     \left(\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{P}}(t)}\right)^{\stackrel{h_{\mathcal{P}}(t)}{\rightarrow}}
