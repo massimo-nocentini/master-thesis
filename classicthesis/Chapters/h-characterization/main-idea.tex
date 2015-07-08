@@ -27,8 +27,9 @@ $\mathcal{R}_{y=h(t)-1}$ is interesting since its first component $f(y)$ allows 
 develop a new array $\mathcal{R}_{h(t)}$ where it's first component
 is a function $g$ in the ``variable'' $h(t)$, eventually the moral is:
 \begin{quote}
+    \graffito{$h$-characterization}
     \emph{function composition $d$ with $\hat{h}$ yields array $\mathcal{R}_{h(t)}$,\\
-        a characterization of $\mathcal{R}$ that depends on function $h$ only }
+        the $h$-characterization of $\mathcal{R}$, which depends on function $h$ only }
 \end{quote}
 It's important to understand the meaning of those new symbols:
 \begin{itemize}
@@ -61,12 +62,13 @@ so $f(y)=d(\hat{h}(1+y))=2+y$ therefore:
 \end{displaymath} 
 Now study the generating function which carries coefficients lying on column $k$
 of $\mathcal{P}_{h(t)}$:
+\marginpar{this recall the Rogers' work about \emph{renewal arrays}, 
+which we described in \autoref{sec:back:to:the:basics:rogers}} 
 \begin{displaymath} 
     h(t)^k + h(t)^{k+1}
 \end{displaymath} 
 hence column $k$ is the sum of $k$-fold and $(k+1)$-fold convolutions 
-of function $h$ with itself. \footnote{this recall the work of Rogers on \emph{renewal arrays}, 
-put here a reference to the section where it is described}
+of function $h$ with itself.
 
 \subsubsection{Fibonacci}
 Let $\mathcal{F}$ be the Riordan array for the Fibonacci triangle,
@@ -101,6 +103,7 @@ computing the compositional inverse of $h$ yields:
     \hat{h}(y) = y - y^2
 \end{displaymath} 
 so $f(y)=d(\hat{h}(1+y))=\frac{\sqrt{4 \, y^{2} + 4 \, y + 1} - 1}{2 \, {\left(y + 1\right)} y}$ therefore:
+\marginpar{$h_{\mathcal{F}}=h_{\mathcal{C}}$, here function $d$ makes the difference}
 \begin{displaymath} 
     \begin{split} 
         &\mathcal{C}_{y=h(t)-1}\left(\frac{\sqrt{4 \, y^{2} + 4 \, y + 1} - 1}{2 \, {\left(y + 1\right)} y}, 1+y \right) \\
@@ -109,6 +112,7 @@ so $f(y)=d(\hat{h}(1+y))=\frac{\sqrt{4 \, y^{2} + 4 \, y + 1} - 1}{2 \, {\left(y
     \end{split} 
 \end{displaymath} 
 By cases on $\sqrt{(2 h\left(t\right) -  1)^2}$:
+\marginpar{$\sqrt{x^{2}}=\pm x$ trick}
 \begin{itemize}
     \item $\sqrt{(2 h\left(t\right) -  1)^2}=2 h\left(t\right) -  1$, hence:
         \begin{displaymath} 
@@ -146,8 +150,13 @@ so $f(y)=d(\hat{h}(1+y))$ equals:
         & -\frac{{\left(y^{2} \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - y^{2} + 3 \, y \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - 2 \, y + 3 \, \sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} - 2\right)} {\left(y^{2} + 3 \, y + 3\right)}}{2 \, {\left(y + 1\right)}^{2}} \\
         & = -\frac{{ \left(\sqrt{\frac{{\left(y^{2} + 4 \, y + 4\right)} y^{2}}{{\left(y^{2} + 3 \, y + 3\right)}^{2}}} \left( y^{2}+3y+3 \right) -\left(y^{2}+2y+2\right)\right){\left(y^{2} + 3 \, y + 3\right)}}}{2 \, {\left(y + 1\right)}^{2}} \\
         & = -\frac{ \left(\sqrt{\left(y^{2} + 4 y + 4\right) y^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} \\
-        & = -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} \\
     \end{split} 
+\end{lenghtydisplaymath} 
+Recognize a perfect square $y^{2} + 4 y + 4 = (y+2)^{2}$:
+\marginpar{we could stop and reason about $\sqrt{\left(\left(y + 2\right) y\right)^{2}}$
+    without going on substituting variable $y$\ldots}
+\begin{lenghtydisplaymath} 
+        -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} 
 \end{lenghtydisplaymath} 
 therefore:
 \begin{lenghtydisplaymath} 
@@ -244,6 +253,8 @@ By cases on $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}$:
 \end{itemize}
 Now study the generating function which carries coefficients lying on column $k$
 of $\mathcal{T}_{h(t)}$:
+\marginpar{same numerator as in classic $\mathcal{M}$ array, what's
+    the relation among function $d_{\mathcal{T}}$ and multiplier $\frac{1}{1-h(t)^{2}}$?}
 \begin{displaymath} 
     \frac{h(t)^{k}+h(t)^{k+1}+h(t)^{k+2}}{1-h(t)^2 }
 \end{displaymath} 
