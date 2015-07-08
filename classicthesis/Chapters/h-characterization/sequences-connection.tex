@@ -2,34 +2,32 @@
 
 \section{Sequences, sequences and sequences}
 
-\subsection{A generalization of the $A$-sequence concept}
-
-Every Riordan array $\mathcal{R}$ has a particular sequence 
+Every Riordan array $\mathcal{R}$, as we've seen in 
+\autoref{sec:back:to:the:basics:sequences}, has a particular sequence 
 $\lbrace a_i\rbrace_{i\in\mathbb{N}}$,
-called $A$-sequence (and denote with $A(t)$ the fps over it),
-such that uniquely characterize it (to be precise another sequence
+called $A$-sequence, such that uniquely characterizes it (to be precise another sequence
 $\lbrace z_i\rbrace_{i\in\mathbb{N}}$, called $Z$-sequence, is needed 
-to fulfill the very first column, together with $d_{00}$, the root element), 
+to fulfill the very first column, together with root element $d_{00}$), 
 capturing the way every element $d_{n+1,k+1}$ can be written as a linear combination
 of elements lying on the previous row, formally:
 \begin{displaymath}
     d_{n+1,k+1} = a_{0}d_{n,k} +a_{1}d_{n,k+1} +a_{2}d_{n,k+2} + 
         \ldots + a_{j}d_{n,k+j}
 \end{displaymath}
-where $j = n-k$. In this section we would like to offer a generalization
-of this ``combinatorial device'', providing a machinery to build sequences 
+where $k+j = n$. In this section we would like to offer a generalization
+of this \emph{combinatorial device}, providing a machinery to build sequences 
 that combine coefficients, possibly lying on arbitrary rows, as desired.
 Finally, a connection with $A$-matrix concept is explored, leaving an open 
 question.
 
-
-What follows doesn't use the alternative characterization developed in 
-previous section, we put it here because use a \emph{column oriented}
-approach, as used in the characterization. For the sake of simplicity,
+What follows doesn't use the $h$-characterization concept directly, 
+we put it here because a \emph{column oriented}
+approach, as used for derivation of $h$-characterizations, is used as well. 
+For the sake of simplicity,
 however, we start from an array $\mathcal{R}(d(t),h(t))$ and its 
-factorization $\mathcal{R}_{h(t)}(g(h(t)), h(t))$, for some function $g$.
+$h$-characterization $\mathcal{R}_{h(t)}(g(h(t)), h(t))$, for some function $g$.
 
-\subsubsection{Localizing $A$-sequences}
+\subsection{Localizing $A$-sequences}
 
 Consider the following question: there exists a sequence 
 $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ of coefficients 
@@ -42,33 +40,37 @@ The previous statement can be written in a compact way, or \emph{column-wise}, a
 \begin{displaymath}
     g(h(t))h(t)^k = \sum_{i\geq0}{\gamma_i\,t\,g(h(t)) h(t)^i}\\
 \end{displaymath}
-To see why, recall that generating function of a generic column 
-$k$ is $g(h(t))h(t)^k$ and imagine that series written vertically, 
+To see why, recall a generic column 
+$k$ has generating function $g(h(t))h(t)^k$ and imagine that series written vertically, 
 with increasing degree of $t$ from top to bottom.
 The required constraint on coefficient of $t^n$, namely $d_{nk}$, 
 to be a linear combination of elements lying on the previous row 
 can be satisfied if we \emph{shift downward} every column,
 namely multiplying each one by $t$, and combining them using coefficients
-from $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$. 
+$\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$. 
 We learned this trick from Shapiro introductory article \emph{The Riordan group}.
 
-Simplifying $g(h(t))$ shows that using the factored representation or
+Simplification of $g(h(t))$ shows that using the factored representation or
 the natural one doesn't make any difference, therefore:
 \begin{displaymath}
     h(t)^k = t \sum_{i\geq 0}{\gamma_i\,h(t)^i} = t \Gamma(h(t))
 \end{displaymath}
-where function $\Gamma$ is a fps over sequence 
-$\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$.
+where function $\Gamma$ is a \ac{fps} over sequence 
+$\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$, which we're searching for.
 Doing a change of variable to abstract over $h(t)$, its possible to
+\marginpar{$y^{\alpha}$ and $\hat{h}(y)^{\beta}$ acts as rulers: \\
+    if an element $d_{nk}$ is combined,\\
+    the former scrolls (leftward) to column $k-\alpha$,\\
+    the latter scrolls (upward) to row $n-\beta$}
 structure the basic for a generic schema (or \emph{device} if you please):
 \begin{displaymath}
-    \left[y^{k} = \hat{h}(y) \Gamma(y) \big| y = h(t) \right]
+    \left.\left[y^{k} = \hat{h}(y)\,\Gamma(y) \right| y = h(t) \right]
 \end{displaymath}
 
-Before going on, just use the previous device against known arrays. Take 
+Before going on, let the device consumes some known arrays. Take 
 array $\mathcal{C}$, so $\hat{h}_{\mathcal{C}}(y) = y-y^2$, hence:
 \begin{displaymath}
-    \left[\frac{y^{k-1}}{1-y} =  \Gamma(y) \big| y = h(t) \right]\\
+    \left.\left[\frac{y^{k-1}}{1-y} =  \Gamma(y) \right| y = h(t) \right]\\
 \end{displaymath}
 so sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ satisfies:
 \begin{displaymath}
@@ -76,15 +78,29 @@ so sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ satisfies:
         \left(\underbrace{\gamma_{0}=0,\ldots,\gamma_{k-2}=0}_{k-1 \text{ zeros}},
             \underbrace{\gamma_{k-1}=1, \ldots}_{\text{infinitely many ones}} \right)
 \end{displaymath}
-what it says is: ``in order to get $d_{nk}\in\mathcal{C}$ take the sum 
-$\sum_{i=k-1}^{n-1}{d_{n-1,i}}$'', as known. Motzkin's turn, 
+so $d_{nk}\in\mathcal{C}$ is the combination of \emph{all} coefficients
+lying on previous row $n-1$ according $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$,
+therefore $d_{nk}=\sum_{i=k-1}^{n-1}{d_{n-1,i}}$.
+\marginpar{exactly as $A_{\mathcal{C}}(t)=\frac{1}{1-t}$ requires} 
+
+Motzkin's turn, 
 $\hat{h}_{\mathcal{M}}(y) = \frac{y}{1+y+y^2}$, hence:
 \begin{displaymath}
-        \left[\Gamma(y)=y^{k-1}+y^{k}+y^{k+1}\big| y = h(t) \right]
+        \left.\left[y^{k-1}+y^{k}+y^{k+1}=\Gamma(y)\right| y = h(t) \right]
 \end{displaymath}
-what it says is: ``in order to get $d_{nk}\in\mathcal{M}$ take the sum 
-$d_{n-1,k-1}+d_{n-1,k}+d_{n-1,k+1}$'', as known.
-
+so sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ satisfies:
+\begin{displaymath}
+    \lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}} = 
+        \left(\underbrace{\gamma_{0}=0,\ldots,\gamma_{k-2}=0}_{k-1 \text{ zeros}},
+            1,1,1,
+            \underbrace{\gamma_{k+2}=0, \ldots}_{\text{infinitely many zeros}} \right)
+\end{displaymath}
+\marginpar{exactly as $A_{\mathcal{M}}(t)=1+t+t^{2}$ requires} 
+so $d_{nk}\in\mathcal{M}$ is the combination of \emph{all} coefficients
+lying on previous row $n-1$ according $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$,
+therefore $d_{nk}=d_{n-1,k-1}+d_{n-1,k}+d_{n-1,k+1}$.
+\\\\
+\marginpar{getting $A$-sequence back}
 What we've done is nothing more nothing less than writing $A$-sequences 
 in a more generic format, putting evidence on the \emph{local} meaning 
 of the combination: it is explicitly written the dependency of 
@@ -93,14 +109,20 @@ are stated with a fixed start index in mind, namely $k-1$ if combining
 for elements in a column $k$.
 
 It is possible to get the natural $A$-sequence back by requiring that 
-combination of elements lying on the previous row starts at index $k-1$, formally:
+combination of elements (denoted by coefficients of \ac{fps} $\Gamma$)  
+lying on the previous row (denoted by $\hat{h}(y)$)
+starts at index $k-1$ (denoted by $y^{k-1}$), formally:
+\marginpar{$y^{1}$ and $\hat{h}(y)^{1}$: if $d_{nk}$ is combined then 
+    scroll rulers to column $k-1$ and to row $n-1$, after 
+    start combining as $\Gamma$ says\ldots}
 \begin{displaymath}
     \left[y^{k} = y^{k-1}\,\hat{h}(y)\,\Gamma(y) \big| y = h(t) \right] = 
     \left[y = \hat{h}(y)\,\Gamma(y) \big| y = h(t) \right]
 \end{displaymath}
-since $h(t) = t\,A(h(t))$, then formal power series 
-$\Gamma(y)$ and $A(t)$ are defined over the same sequence, as desired.
+since $h(t) = t\,A(h(t))$, then \ac{fps}
+$\Gamma$ and $A$ are defined over the same sequence, the $A$-sequence, as desired.
 \\\\
+\marginpar{The following can be skipped on a first reading}
 Here there are a couple of applications. 
 
 What if we ask: find sequences $_{k}\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ 
