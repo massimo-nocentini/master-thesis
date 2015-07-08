@@ -36,11 +36,24 @@ It's important to understand the meaning of those new symbols:
     \item $\mathcal{R}_{\gamma=\Omega(t)}$ denotes an array where a variable
         substitution has to take place, namely $\Omega(t)$ is the substitution 
         for variable $\gamma$;
+        \marginpar{$\mathcal{R}_{t}(d(t),h(t))$ denotes verbosly, but correctly, $\mathcal{R}(d(t),h(t))$ }
     \item $\mathcal{R}_{\Omega(t)}$ denotes an array where $\Omega(t)$ should 
         be seen as a variable, like a \emph{datum}, and should not be expanded,
         even if $\Omega$'s definition is known. 
+        % the same concept can be expressed as follow:
+            %(a point very important to understand: here $h(t)$ shouldn't be
+            %interpreted as a \emph{function}, the one in $\mathcal{R}$'s definition, instead
+            %abstract over it and consider it as a \emph{variable}).
+        % this has been cut from a paragraph within `Group operations, revisited' section
 \end{itemize}
-\marginpar{$\mathcal{R}_{t}(d(t),h(t))$ denotes verbosly, but correctly, $\mathcal{R}(d(t),h(t))$ }
+
+\label{par:h:characterization:is:an:array:polymorphism}
+Moreover, the $h$-characterization $\mathcal{R}_{h(t)}\left(g(h(t)),h(t)\right)$,
+\marginpar{$\mathcal{R}_{h(t)}$ is polymorphic}
+for some function $g$, can be used as a Riordan array \emph{trasparently},
+where traditional function $d$ satisfies $d(t) = g(h(t))$ while function $h$
+is interpreted the same.
+
 
 \subsection{Applying it to known triangles}
 
@@ -154,7 +167,7 @@ so $f(y)=d(\hat{h}(1+y))$ equals:
     \end{split} 
 \end{lenghtydisplaymath} 
 Recognize a perfect square $y^{2} + 4 y + 4 = (y+2)^{2}$:
-\marginpar{we could stop and reason by cases about $\pm\left(\left(y + 2\right) y\right)$
+\marginpar{we could also stop here and reason by cases about $\pm\left(\left(y + 2\right) y\right)$
     without going on substituting variable $y$\ldots}
 \begin{lenghtydisplaymath} 
         -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} 
@@ -355,7 +368,7 @@ We finish with a theorem about arrays in the \emph{renewal} subgroup.
 
 %\marginpar{$\mathcal{R}_{h(t)}\left(A(h(t)), h(t))\right)\rightarrow
     %\mathcal{R}\left(d(t), t\,d(t)\right)$ holds too}
-\marginpar{the converse is true indeed}
+\marginpar{the converse is true indeed, by $A$-sequence uniqueness}
 Looking at it deeply, it is possible to have a stronger formulation, namely the 
 converse holds indeed: the reason for this is the unique existence of an $A$-sequence
 for each Riordan array, the argument follows using $h(t)=tA(h(t))$ again .

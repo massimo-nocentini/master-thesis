@@ -5,29 +5,32 @@
 \subsection{Inverting an array}
 
 Let $\mathcal{R}\left(d(t),h(t)\right)$ be a Riordan array and let 
-$\mathcal{R}_{h(t)}\left(g(h(t)),h(t)\right)$ its factorization, for some
-function $g$ in $h(t)$ (a point very important to understand: here $h(t)$ shouldn't be
-interpreted as a \emph{function}, the one in $\mathcal{R}$'s definition, instead
-abstract over it and consider it as a \emph{variable}). 
-Using rules for inversion in the Riordan group, proceed as follow:
+$\mathcal{R}_{h(t)}\left(g(h(t)),h(t)\right)$ its $h$-characterization, for some
+function $g$. %in the variable $h(t)$. 
+ 
+Using rules for inversion in the Riordan group, 
+\marginpar{using $\mathcal{R}_{h(t)}$ 
+polymorphically as an array, remind \autoref{par:h:characterization:is:an:array:polymorphism}}
+proceed as follow:
 \begin{displaymath}
-    \mathcal{R}^{-1}\left(\frac{1}{g(h(\hat{h}(t)))},\hat{h}(t)\right)=
-    \left[\mathcal{R}^{-1}\left(\frac{1}{g(h(y))},y\right) | y = \hat{h}(t) \right]=
+    \mathcal{R}_{h(t)}^{-1}\left(\frac{1}{g(h(\hat{h}(t)))},\hat{h}(t)\right)=
+    \left[\mathcal{R}^{-1}\left(\left.\frac{1}{g(h(y))},y\right) \right| y = \hat{h}(t) \right]=
     \mathcal{R}_{\hat{h}(t)}^{-1}\left(k(\hat{h}(t)),\hat{h}(t)\right)
 \end{displaymath}
-where $k(y)=\frac{1}{g(h(y))}$, therefore we got a new array $\mathcal{T}_{\hat{h}(t)}$
-factored respect $\hat{h}(t)$ (again, $\hat{h}(t)$ plays the role of a \emph{variable},
-so don't be tempted to say $h(\hat{h}(t))=t$ as in the normal course of things \ldots).
+where function $k$ is defined as $k(y)=\frac{1}{g(h(y))}$, 
+therefore we got a new array $\mathcal{T}_{\hat{h}(t)}$ which is the $\hat{h}$-characterization
+of $\mathcal{R}_{h(t)}^{-1}$ and, as the same time, of $\mathcal{R}^{-1}$.
+\marginpar{again, $\hat{h}(t)$ plays the role of a \emph{variable},
+so don't be tempted to say $h(\hat{h}(t))=t$ as in the normal course of things \ldots}
 \\\\
 For the sake of clarity we apply the previous derivation to build the inverse of $\mathcal{F}$,
-the Fibonacci array.
-To set the stage we need function $h$, take it from the definition directly:
+the Fibonacci array.  To set the stage we need function $h$, take it from the definition:
 \begin{displaymath}
     \begin{split}
         h(t)&=\frac{1-\sqrt{1-4t}}{2}\\
     \end{split}
 \end{displaymath}
-we need also function $g$, take it from the factorization $\mathcal{F}_{h(t)}$:
+we need also function $g$, take it from the $h$-characterization $\mathcal{F}_{h(t)}$:
 \begin{displaymath}
     \left[g(y)=\left.\frac{1}{1-y+2y^3-y^4} \right| y=h(t)\right]
 \end{displaymath}
@@ -38,10 +41,10 @@ we're ready to apply:
 \end{displaymath}
 where function $\hat{h}$ is the compositional inverse of function $h$. Observe that
 $1-y-y^2$ in the left array under variable constraint $y=\hat{h}(t)$, is obtained by
-evaluating $\frac{1}{g(h(y))}$, considering $y$ as a variable (abstracting this way $\hat{h}(t)$
-prevent to use it \emph{functionally}, otherwise $g(h(\hat{h}(k)))=g(k)$, where $k=h(t)$
+evaluating $\frac{1}{g(h(y))}$, considering $y$ as a variable: this abstraction preveent 
+$\hat{h}(t)$ to be used \emph{functionally}, otherwise $g(h(\hat{h}(k)))=g(k)$, where $k=h(t)$
 according constraint under $g$ is defined, yielding a factorization in $h(t)$, not in $\hat{h}(t)$
-as we would like to have).
+as we would like to have.
 
 If the explicit definition for $\mathcal{F}^{-1}$ is desired, just plug $\hat{h}(t)=t-t^2$:
 \begin{displaymath}
