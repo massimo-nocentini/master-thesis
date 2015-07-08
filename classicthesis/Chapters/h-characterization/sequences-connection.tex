@@ -125,14 +125,14 @@ $\Gamma$ and $A$ are defined over the same sequence, the $A$-sequence, as desire
 \marginpar{The following can be skipped on a first reading}
 Here there are a couple of applications. 
 
-What if we ask: find sequences $_{k}\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ 
-such that an element $d_{nk}\in\mathcal{C}$ combines elements lying on 
-row three lines above, starting from column index $2$, 
+What if we ask: find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ 
+such that an element $d_{nk}\in\mathcal{C}$ combines elements lying on a
+row $3$ lines above, starting from column index $2$, 
 namely $d_{n-3,k}$ for all $k\in\lbrace 2,\ldots,n-3\rbrace$. 
 Set the device:
 \begin{displaymath}
     \left[y^{k} = y^{2}\,\hat{h}(y)^3\,\Gamma(y) \big| y = h(t) \right] =
-        \left[\frac{y^{k-5}}{(1-y)^3} = \Gamma(y) \big| y = h(t) \right]
+        \left.\left[\frac{y^{k-5}}{(1-y)^3} = \Gamma(y) \right| y = h(t) \right]
 \end{displaymath}
 
 Two quick checks: in order to find $d_{7,5}$, chosen at random, 
@@ -180,6 +180,10 @@ $\Gamma$ with $k=1$:
     \left.\left[\Gamma(y)=y^2 -y^3 + y^5 -y^6 + y^8 -y^9 + y^{11} + 
         \mathcal{O}(y^{12}) \big| y = h(t) \right]\right|_{k=1}
 \end{displaymath}
+
+\marginpar{what about $d_{n0}\in\mathcal{M}$? 
+    it should provide a combinatorial identity for the $n$th
+    Motzkin number\ldots}
 therefore $d_{8,1}=d_{9,2} - d_{9,3} + d_{9,5}- d_{9,6}+ d_{9,8}- d_{9,9}$, 
 instantiating $512 = 1422 -1140 +369 -147 +9 -1$, which holds.
 \\\\
@@ -188,17 +192,17 @@ sequence found using this approach, knows which elements to combine and which
 ones to discard, we're required to supply the set of available elements only.
 
 
-\subsubsection{Interlude: let's generalize}
+\subsection{Interlude: let's generalize}
 
 Previous applications shows a pattern that can be pointed out looking at 
 the generic device for a Riordan array $\mathcal{R}$ where 
-function $h$ is its second component and function $\hat{h}$ its compositional
-inverse:
+function $h$ is its second component and function $\hat{h}$ 
+is its compositional inverse:
 \begin{displaymath}
     \left[y^{k} = \hat{h}(y) \Gamma(y) \big| y = h(t) \right]
 \end{displaymath}
-on the left hand side of the variable substitution block there's \emph{an
-equation}, where function $\Gamma$ is the unknown. In this format, 
+there's \emph{an equation} on the left hand side of the variable substitution block, 
+where function $\Gamma$ is the unknown. In this format, 
 a constraint is stated: let $d_{nk}\in\mathcal{R}$ be a generic element, 
 then a \emph{localized} sequence 
 $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ respect column $k$ exists, which
@@ -208,10 +212,15 @@ Since we're dealing with an equation, we can augment it as desired in order to
 constrain over additional facts. For instance, consider the following question:
 find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ such that 
 an element $d_{nk}\in\mathcal{R}$ combines \emph{all} elements lying on 
-\emph{some} row $r_\alpha$, with the additional property to add the combination of 
-elements, defined by a sequence $\lbrace \theta_{i} \rbrace_{i\in\mathbb{N}}$, 
-lying on \emph{some different} row $r_\beta$. Formally, $\alpha,\beta\in\mathbb{Z}$ 
-and $\alpha \not=\beta$, so set the device as usual:
+\emph{some} row $n-\alpha$, with the additional property to add the combination of 
+elements, defined by a \emph{given} sequence $\lbrace \theta_{i} \rbrace_{i\in\mathbb{N}}$, 
+lying on \emph{some different} row $n-\beta$. Formally, $\alpha,\beta\in\mathbb{Z}$ 
+and $\alpha \not=\beta$, we would like to express $d_{nk}$ as:
+\begin{displaymath}
+    d_{nk} = \sum_{i=0}^{n-\alpha}{\gamma_{i}\,d_{n-\alpha,i}} + 
+        \sum_{i=0}^{n-\beta}{\theta_{i}\,d_{n-\beta,i}}
+\end{displaymath}
+so set the device as usual:
 \begin{displaymath}
     \left[y^{k} = \hat{h}(y)^{\alpha} \Gamma(y) + \hat{h}(y)^{\beta} \Theta(y) \big| y = h(t) \right]
 \end{displaymath}
@@ -219,11 +228,13 @@ Nonetheless its generality, its not the best one: to be truly general,
 we should introduce two new parameters $c_\mu$ and $c_\nu$, which allow
 to fix the column index from where the combinations denoted by functions
 $\Gamma$ and $\Theta$ start, respectively. Here is the most general device:
+\marginpar{most general device}
 \begin{displaymath}
     \left[y^{k} = y^{c_\mu}\hat{h}(y)^{\alpha} \Gamma(y) + 
         y^{c_\nu}\hat{h}(y)^{\beta} \Theta(y) \big| y = h(t) \right]
 \end{displaymath}
-
+\\\\
+\marginpar{an example involving $\mathcal{D}$}
 Try to make the generalization at work:
 find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ such that 
 an element $d_{nk}\in\mathcal{D}$, in the Delannoy array, 
@@ -243,9 +254,9 @@ and build function $\Theta$ from the additional requirement:
 now we're ready:
 \begin{displaymath}
 \begin{split}
-    &\left[y^{k} = \hat{h}_{\mathcal{D}}(y)^{-1} \Gamma(y) + 
-        \hat{h}_{\mathcal{D}}(y)^{2}\frac{1}{1-y} \big| y = h(t) \right]\\
-    &= \frac{y^{3} + {\left(y^{2} - 1\right)} y^{k} + 6 \, y^{2} - {\left({\left(y - 1\right)} y^{k} + y^{2} + 3 \, y + 1\right)} \sqrt{y^{2} + 6 \, y + 1} + 6 \, y + 1}{2 \, {\left(1-y\right)}}\\
+    &\left.\left[y^{k} = \hat{h}_{\mathcal{D}}(y)^{-1} \Gamma(y) + 
+        \hat{h}_{\mathcal{D}}(y)^{2}\frac{1}{1-y} \right| y = h(t) \right]\\
+    &=\left.\left[\frac{y^{3} + {\left(y^{2} - 1\right)} y^{k} + 6 \, y^{2} - {\left({\left(y - 1\right)} y^{k} + y^{2} + 3 \, y + 1\right)} \sqrt{y^{2} + 6 \, y + 1} + 6 \, y + 1}{2 \, {\left(1-y\right)}}=\Gamma(y) \right| y = h(t) \right]\\
 \end{split}
 \end{displaymath}
 in order to find $d_{8,1}$, chosen at random, expand function $\Gamma$ with $k=1$:
@@ -267,10 +278,10 @@ $k\in\lbrace 0,\ldots,10 \rbrace$:
 \begin{lenghtydisplaymath}
     \begin{split}
         &\left.\left[\Gamma(y)=
-        1 y + {(-2)} y^{2} + 5 y^{3} + {(-17)} y^{4} + 65 y^{5} + {(-273)} y^{6} + 1213 y^{7} + {(-5617)} y^{8} + 26809 y^{9} + \mathcal{O}\left(y^{10}\right)
+        1 y + {(-2)} y^{2} + 5 y^{3} + {(-17)} y^{4} + 65 y^{5} + {(-273)} y^{6} + 1213 y^{7} + {(-5617)} y^{8} + \mathcal{O}\left(y^{9}\right)
             \big| y = h(t) \right]\right|_{k=0}\\
         &\left.\left[\Gamma(y)=
-        1 y^{2} + {(-3)} y^{3} + 11 y^{4} + {(-47)} y^{5} + 211 y^{6} + {(-987)} y^{7} + 4747 y^{8} + {(-23335)} y^{9} + \mathcal{O}\left(y^{10}\right)
+        1 y^{2} + {(-3)} y^{3} + 11 y^{4} + {(-47)} y^{5} + 211 y^{6} + {(-987)} y^{7} + 4747 y^{8} + \mathcal{O}\left(y^{9}\right)
             \big| y = h(t) \right]\right|_{k=1}\\
         &\left.\left[\Gamma(y)=
         3 y^{4} + {(-19)} y^{5} + 99 y^{6} + {(-503)} y^{7} + 2547 y^{8} + {(-12971)} y^{9} + \mathcal{O}\left(y^{10}\right)
@@ -302,12 +313,15 @@ $k\in\lbrace 0,\ldots,10 \rbrace$:
     \end{split}
 \end{lenghtydisplaymath}
 
-From $k=3$, it seems that a coefficient stabilizes in the expansion, pretty nice.
+Starting from index $k=3$, it seems that one more coefficient stabilizes
+in the expansion, one increment of $k$ at a time, pretty nice.
 To finish this section involving Delannoy triangle, we report its natural
 $A$-sequence:
+
+\marginpar{which should not depend on $k$}
 \begin{lenghtydisplaymath}
     \left.\left[\Gamma(y)=
-    1 + 2 y + {(-2)} y^{2} + 6 y^{3} + {(-22)} y^{4} + 90 y^{5} + {(-394)} y^{6} + 1806 y^{7}  + \mathcal{O}\left(y^{8}\right)
+    1 + 2 y -2\,y^{2} + 6 y^{3} -22\,y^{4} + 90 y^{5} -394\,y^{6} + 1806 y^{7}  + \mathcal{O}\left(y^{8}\right)
         \big| y = h(t) \right]\right|_{k=1}\\
 \end{lenghtydisplaymath}
 
