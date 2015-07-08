@@ -1,18 +1,19 @@
 
 \section{Main idea}
 
-Consider a \emph{Riordan array} $\mathcal{R}$ defined over generating
-functions $d(t)$ and $h(t)$. By definition, coefficients lying on 
-column $k$ are the coefficients of the following generating function:
+Consider a \emph{Riordan array} $\mathcal{R}\left(d(t),h(t)\right)$ 
+defined over generating functions $d$ and $h$. 
+By definition, coefficients lying on 
+column $k$ are the coefficients of the following combination:
 \begin{displaymath}
     d(t)h(t)^k
 \end{displaymath}
 our idea is to characterize $\mathcal{R}$ doing a variable change, as the
-following manipulation shows:
+following manipulation catches:
 \begin{displaymath}
-    d(t)h(t)^k = d(t)(1 + (h(t)-1))^k = \left[ d(\hat{h}(1+y))(1+y)^k \left| y = h(t)-1 \right. \right]
+    d(t)h(t)^k = d(t)(1 + (h(t)-1))^k = \left[ \left. d(\hat{h}(1+y))(1+y)^k \right|y = h(t)-1  \right]
 \end{displaymath}
-where $\hat{h}$ is the compositional inverse function of $h$, the one that
+where function $\hat{h}$ is the compositional inverse of $h$, the one that
 satisfies $\hat{h}(h(t)) = t$: in order to get $t$ back, apply $\hat{h}$ to
 both members of $y+1 = h(t)$.
 Inside the square brackets there's a shape of a Riordan array, therefore:
@@ -22,17 +23,27 @@ Inside the square brackets there's a shape of a Riordan array, therefore:
         &= \mathcal{R}_{y=h(t)-1}\left( f(y), 1+y \right) =  \mathcal{R}_{h(t)}\left( g(h(t)), h(t) \right) 
     \end{split}
 \end{displaymath}
-$\mathcal{R}_{y=h(t)-1}$ is interesting since its first component $f(y)$ allow to 
-develop another array $\mathcal{R}_{h(t)}$ where it's first component
+$\mathcal{R}_{y=h(t)-1}$ is interesting since its first component $f(y)$ allows to 
+develop a new array $\mathcal{R}_{h(t)}$ where it's first component
 is a function $g$ in the ``variable'' $h(t)$, eventually the moral is:
-\begin{verse}
-    using $d$ composed with $\hat{h}$ makes it possible to have $\mathcal{R}_{h}$,
-    a characterization of $\mathcal{R}$ that depends only on $h$
-\end{verse}
+\begin{quote}
+    \emph{function composition $d$ with $\hat{h}$ yields array $\mathcal{R}_{h(t)}$,\\
+        a characterization of $\mathcal{R}$ that depends on function $h$ only }
+\end{quote}
+It's important to understand the meaning of those new symbols:
+\begin{itemize}
+    \item $\mathcal{R}_{\gamma=\Omega(t)}$ denotes an array where a variable
+        substitution has to take place, namely $\Omega(t)$ is the substitution 
+        for variable $\gamma$;
+    \item $\mathcal{R}_{\Omega(t)}$ denotes an array where $\Omega(t)$ should 
+        be seen as a variable, like a \emph{datum}, and should not be expanded,
+        even if $\Omega$'s definition is known. 
+\end{itemize}
 
 \subsection{Applying it to known triangles}
 
-In the following sections we study some well known arrays under this point of view.
+In the following sections we characterize some well known 
+arrays under this development.
 
 \subsubsection{Pascal}
 Let $\mathcal{P}$ be the Riordan array for the Pascal triangle,
@@ -53,8 +64,9 @@ of $\mathcal{P}_{h(t)}$:
 \begin{displaymath} 
     h(t)^k + h(t)^{k+1}
 \end{displaymath} 
-hence coefficients of column $k$ are computed by sum of $k$ and $k+1$ convolution 
-of function $h$ with itself, which recall the work of Rogers on \emph{renewal arrays}.
+hence column $k$ is the sum of $k$-fold and $(k+1)$-fold convolutions 
+of function $h$ with itself. \footnote{this recall the work of Rogers on \emph{renewal arrays}, 
+put here a reference to the section where it is described}
 
 \subsubsection{Fibonacci}
 Let $\mathcal{F}$ be the Riordan array for the Fibonacci triangle,
@@ -164,12 +176,12 @@ By cases on $\sqrt{\left(h(t)^2 - 1\right)^{2}}$:
 \end{itemize}
 
 It is interesting to note that the tedious derivation developed above can have
-a simpler handling if we defer substituting $h(t)-1$ to $y$, consider the following \ldots
+a simpler handling if we defer substituting $h(t)-1$ for $y$, consider the following \ldots
 by cases on $\sqrt{\left(\left(y + 2\right) y\right)^{2}}$:
 \begin{itemize}
     \item $\sqrt{\left(\left(y + 2\right) y\right)^{2}}=\left(y + 2\right) y$, hence:
         \begin{displaymath} 
-            \mathcal{M}_{y=h(t)-1}\left(\frac{y^{2} + 3y + 3}{{\left(y + 1\right)}^{2}} , h(t) \right) = 
+            \mathcal{M}_{y=h(t)-1}\left(\frac{y^{2} + 3y + 3}{{\left(y + 1\right)}^{2}} , 1+y \right) = 
                 \mathcal{M}_{h(t)}\left( \frac{1+h(t)+h(t)^2}{h(t)^2}, h(t) \right) 
         \end{displaymath} 
         since $h(0)=0$ the previous result has no meaning, therefore discard this case;
@@ -182,8 +194,8 @@ by cases on $\sqrt{\left(\left(y + 2\right) y\right)^{2}}$:
 \end{itemize}
 
 In both branches same definitions for $\mathcal{M}_{h(t)}$ are reached applying
-same checks, while at the same time substitution of $y$ is easier. 
-
+same checks, while at the same time substituting variable $y$ is easier. 
+\\\\
 However, here it is the generating function which carries coefficients 
 lying on column $k$ of $\mathcal{M}_{h(t)}$:
 \begin{displaymath} 
@@ -193,7 +205,8 @@ lying on column $k$ of $\mathcal{M}_{h(t)}$:
 
 \subsubsection{Motzkin, $\mathcal{T}$ variant}
 
-Let $\mathcal{T}$ be the Riordan array for a variant of the Motzkin triangle defined as:
+Let $\mathcal{T}$ be the Riordan array for a variant
+of the Motzkin array defined as:
 \begin{displaymath} 
     \mathcal{T} = \left(\frac{1}{\sqrt{1-2t-3t^2}}, 
        \frac{1-t-\sqrt{1-2t-3t^2}}{2t}  \right)
@@ -213,9 +226,8 @@ By cases on $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}$:
         \begin{displaymath} 
             \mathcal{T}_{h(t)}\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}, h(t) \right)
         \end{displaymath} 
-        requirement $h(0)=0$ doesn't raise a non-sense, so use another 
-        constraint over the first component in order to have a 
-        \emph{proper} array:
+        requirement $h(0)=0$ doesn't raise a non-sense, so use the 
+        constraint $d(0)=1$, mandatory in order to have a \emph{proper} array:
         \begin{displaymath}
             \left. \frac{h(t)^2+h(t)+1}{h(t)^2-1} \right|_{t=0} = -1 \not= 1 
         \end{displaymath} 
@@ -224,9 +236,7 @@ By cases on $\sqrt{\left(\frac{h(t)^2+h(t)+1}{h(t)^2-1}\right)^{2}}$:
         \begin{displaymath}
             \mathcal{T}_{h(t)}\left(\frac{h(t)^2+h(t)+1}{1-h(t)^2}, h(t) \right)
         \end{displaymath} 
-        requirement $h(0)=0$ doesn't raise a non-sense, so use another 
-        constraint over the first component in order to have a 
-        \emph{proper} array:
+        requirement $h(0)=0$ doesn't raise a non-sense, so check $d(0)=1$ again:
         \begin{displaymath}
             \left. \frac{h(t)^2+h(t)+1}{1-h(t)^2} \right|_{t=0} = 1 
         \end{displaymath} 
@@ -249,7 +259,7 @@ computing the compositional inverse of $h$ yields:
 \begin{displaymath} 
     \hat{h}(y) = \frac{\sqrt{1+6y+y^2}-y-1}{2}
 \end{displaymath} 
-so $f(y)=d(\hat{h}(1+y))=\frac{2}{4 + y - \sqrt{y^2 + 8*y + 8} }$ therefore:
+so $f(y)=d(\hat{h}(1+y))=\frac{2}{4 + y - \sqrt{y^2 + 8y + 8} }$ therefore:
 \begin{displaymath} 
     \begin{split}
         & \mathcal{D}_{y=h(t)-1}\left( \frac{2}{4+y-\sqrt{y^2+8y+8}}, 1+y \right)\\
@@ -260,7 +270,7 @@ Since $h(t)^2+6h(t)+1$ isn't a perfect square, no problem arises with the previo
 derivation; now study the generating function which carries coefficients lying on column $k$
 of $\mathcal{D}_{h(t)}$:
 \begin{displaymath} 
-    \frac{2h(t)^k}{3+h(t)-\sqrt{h(t)^2+6h(t)+1}}
+    \frac{2\,h(t)^k}{3+h(t)-\sqrt{h(t)^2+6h(t)+1}}
 \end{displaymath} 
 
 \subsection{Points of view}
