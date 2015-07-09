@@ -1,0 +1,67 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author : Paul Gaborit (2009)
+% under Creative Commons attribution license.
+% Title : Pascal's triangle and Sierpinski triangle
+% Note : 17 lines maximum
+\documentclass[landscape]{article}
+\usepackage[landscape,margin=1cm]{geometry}
+\pagestyle{empty}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{concrete}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,shadows,backgrounds}
+\usetikzlibrary{external}
+
+%%%<
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{5pt}%
+%%%>
+
+%\tikzexternalize % activate!
+\begin{comment}
+:Title:  Pascal's triangle and Sierpinski triangle
+
+\end{comment}
+
+
+\begin{document}
+\centering
+
+\begin{tikzpicture}[x=13mm,y=9mm]
+  % some colors
+  \input{predefined-colour-table}
+
+  % some styles
+  \tikzset{
+    box/.style={
+        circle,
+      minimum height=5mm,
+      inner sep=.7mm,
+      outer sep=0mm,
+      text width=10mm,
+      text centered,
+      font=\small\bfseries\sffamily,
+      text=#1!50!black,
+      draw=#1,
+      line width=.25mm,
+      top color=#1!5,
+      bottom color=#1!40,
+      shading angle=0,
+      rounded corners=2.3mm,
+      drop shadow={fill=#1!40!gray,fill opacity=.8},
+      rotate=0,
+    },
+%    link/.style={-latex,links,line width=.3mm},
+%    plus/.style={text=links,font=\footnotesize\bfseries\sffamily},
+  }
+  % the following key `pascal-standard-ignore-negatives-plain-colouring-127-rows-mod2-partitioning-tikz-nodes.tex' is used as a template key
+  % to allow Python to do string substitution
+  \input{plain-numbers-tikz.tex}
+\end{tikzpicture}
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
