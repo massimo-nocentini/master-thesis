@@ -70,14 +70,15 @@
 %\subtitle {Include Only If Paper Has a Subtitle}
 
 \author[Merlini, Nocentini] % (optional, use only with lots of authors)
-{Donatella Merlini\inst{1} \and Massimo Nocentini}
+{Donatella Merlini \and Massimo Nocentini}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
 
 \institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
 {
-  \inst{1}%
+  %\inst{1}%
+  \inst{}%
   Dipartimento di Statistica, Informatica, Applicazioni\\
   Universit\`a di Firenze, Italy
   %\and
@@ -212,6 +213,23 @@
     \end{displaymath}
 \end{frame}
 
+\begin{frame}{Sierpinski gasket and main idea}
+    \begin{columns}[T] % contents are top vertically aligned
+        \begin{column}[T]{5cm} % alternative top-align that's better for graphics
+              \vskip-20pt plus.5fill
+            \input{pascal-tikz/main-idea-four-splitted/plain-numbers-include-figure}
+              \vskip-20pt plus.5fill
+            \input{pascal-tikz/main-idea-four-splitted/remainders-include-figure}
+        \end{column}
+        \begin{column}[T]{5cm} % each column can also be its own environment
+              \vskip-20pt plus.5fill
+            \input{pascal-tikz/main-idea-four-splitted/centered-numbers-include-figure}
+              \vskip-20pt plus.5fill
+            \input{pascal-tikz/main-idea-four-splitted/dots-include-figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
 \subsection{Previous Work}
 
 \begin{frame}{Fine, Sved et al.}
@@ -252,7 +270,7 @@
     \pause
     \begin{block}{Broomhead in \cite{Broomhead1972} shows}
         \begin{itemize}
-            \item {\normalsize $N(n)=\sum_{k=0}^{n}{\mathbb{1}_{p\nmid{{n}\choose{k}}}}$ has a closed form }\\
+            \item {\normalsize $N(n)=\sum_{k=0}^{n}{\mathbb{1}_{p\nmid{{n}\choose{k}}}}$ has a closed form in $\mathcal{P}$}\\
                 \footnotesize{namely $N((n_{0},n_{1},\ldots,n_{m})_{2})=(n_{0}+1)(n_{1}+1)\cdots(n_{m}+1)$}
         \end{itemize}
     \end{block}
@@ -299,33 +317,6 @@
     \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
 \end{frame}
 
-%\subsection{Fibonacci}
-
-\begin{frame}{$\mathcal{F}_{\equiv_{2}}$ where 
-    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
-
-    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
-\end{frame}
-%\begin{frame}{$\mathcal{F}_{\equiv_{3}}$ where 
-    %$\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
-
-    %\input{../sympy/fibonacci/fibonacci-standard-ignore-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
-%\end{frame}
-\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{3}}}$ where 
-    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
-
-    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
-\end{frame}
-\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{5}}}$ where 
-    $\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
-
-    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
-\end{frame}
-\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{7}}}$ where 
-    $\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
-
-    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
-\end{frame}
 
 
 %\subsection{Catalan}
@@ -402,6 +393,34 @@
     \input{../sympy/delannoy/delannoy-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
 \end{frame}
 
+%\subsection{Fibonacci}
+
+\begin{frame}{$\mathcal{F}_{\equiv_{2}}$ where 
+    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
+
+    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+\end{frame}
+%\begin{frame}{$\mathcal{F}_{\equiv_{3}}$ where 
+    %$\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
+
+    %\input{../sympy/fibonacci/fibonacci-standard-ignore-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
+%\end{frame}
+\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{3}}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
+
+    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
+\end{frame}
+%\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{5}}}$ where 
+    %$\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
+
+    %\input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
+%\end{frame}
+%\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{7}}}$ where 
+    %$\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
+
+    %\input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
+%\end{frame}
+
 \subsection{Observations}
 
 \begin{frame}{Observations}
@@ -435,8 +454,14 @@
     \end{itemize} 
 \end{frame}
 
+\begin{frame}{$\mathcal{C}_{\equiv_{2}}^{-1}$ where 
+    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$ \emph{ignoring} negatives}
+
+    \input{../sympy/catalan/catalan-traditional-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+\end{frame}
+
 \begin{frame}{$\mathcal{C}_{\equiv_{3}}^{-1}$ where 
-    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$ with negatives}
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$ \emph{with} negatives}
 
     \input{../sympy/catalan/catalan-traditional-inverse-handle-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
 \end{frame}
@@ -526,19 +551,27 @@
             %\item without $d_{p^{h}-1,k}$ for each $k$ (row $p^{h}-1$)
         %\end{itemize}
     %\pause
+
+      % in order to use a `displaymath' environment for the proof
+      \vskip-20pt plus.5fill
     \begin{theorem}
-        $h\in\mathbb{N}$ and $s\in\lbrace0,\ldots,2^{h}-1 \rbrace$, then:
+        let $h\in\mathbb{N}$ and $s\in\lbrace0,\ldots,2^{h}-1 \rbrace$, then:
         \begin{displaymath}
             d_{2^{h}-1,s} \equiv_{2} 1
         \end{displaymath}
     \end{theorem}
-    \emph{proof}: $ d_{2^{\alpha}-1,s} = \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}
-                {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{s+1}-1}}$
+    \emph{proof}: 
+        \begin{displaymath}
+            d_{2^{\alpha}-1,s} = \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}
+                {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{s+1}-1}}
+        \end{displaymath}
 
     \input{catalan-tikz/odd-row/odd-row-include-figure}
 \end{frame}
 
 \begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+      % in order to use a `displaymath' environment for the proof
+      \vskip-20pt plus.5fill
     \begin{theorem}
         let  $S=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$ be a segment of 
         column $2^{\alpha}-1$, then:
@@ -546,8 +579,11 @@
             d_{s,2^{\alpha}-1}\equiv_{2}0\quad\text{for}\quad s\in S
         \end{displaymath} 
     \end{theorem}
-    \emph{proof}: $d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
-            {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}}$
+    \emph{proof}: 
+        \begin{displaymath} 
+            d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
+                {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}}
+        \end{displaymath} 
     
     \input{catalan-tikz/mirror-segment/mirror-segment-include-figure}
         
@@ -581,16 +617,21 @@
 \end{frame}
 
 \begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+      % in order to use a `displaymath' environment for the proof
+      \vskip-20pt plus.5fill
     \begin{theorem}
     let $\mathcal{T}_{\equiv_{2}0} \subset \mathcal{C}^{(\alpha+1)}$ be a %upside-down 
     \emph{zero-hole} with side $2^{\alpha}-1$, then:
     \begin{displaymath}
         d_{nk}\in\mathcal{T}_{\equiv_{2}0}\rightarrow d_{nk}\equiv_{2}0
     \end{displaymath}
-    where $n\in\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$ and $k\in\lbrace0,\ldots,n-2^{\alpha}\rbrace$.
+    where $n\in\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$ and $k\in\lbrace0,\ldots,n-2^{\alpha}\rbrace$. \emph{Proof}: 
     \end{theorem}
-    \emph{proof}: $d_{s, u} = \sum_{i_{1}+\ldots+i_{u+1}=s+1}
-            {c_{i_{1}-1}\cdots\,c_{i_{u+1}-1}}$, $u\in\lbrace0,\ldots,2^{\alpha}-2\rbrace$
+      \vskip-10pt plus.5fill
+    \begin{displaymath}
+        d_{s, u} = \sum_{i_{1}+\ldots+i_{u+1}=s+1}
+            {c_{i_{1}-1}\cdots\,c_{i_{u+1}-1}}, \quad u\in\lbrace0,\ldots,2^{\alpha}-2\rbrace
+    \end{displaymath}
 
     \input{catalan-tikz/zero-hole/zero-hole-include-figure}
         
@@ -612,11 +653,25 @@
   \vskip0pt plus.5fill
   \begin{itemize}
   \item
+    WIP:
+    \begin{itemize}
+        \item on modular characterization of $\mathcal{C}^{-1}$, 
+            nice pictures but hard to handle formally
+        \item on understanding correspondence between modular results and 
+            \emph{combinatorial interpretation} of coefficients in some arrays
+    \end{itemize}
+  \end{itemize}
+
+  % The following outlook is optional.
+  \vskip0pt plus.5fill
+  \begin{itemize}
+  \item
     Open problems:
     \begin{itemize}
-    \item what about a modular characterization of $\mathcal{F},\mathcal{M},\mathcal{D}$?
-    \item is there a way to build proofs using functions $d$ and $h$, without
-        extracting coefficients to the rescue? 
+        \item how to build a formal characterization of $\mathcal{F},\mathcal{M},\mathcal{D}$ and
+            other arrays from the modular point of view?
+        \item is there a way to build proofs using functions $d$ and $h$, without
+            extracting coefficients to the rescue? 
     \end{itemize}
   \end{itemize}
 \end{frame}
