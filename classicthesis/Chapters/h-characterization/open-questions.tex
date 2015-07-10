@@ -4,13 +4,17 @@
 
 Under previous insights, we ask respectively:
 \begin{enumerate}
-    \item let $\mathcal{R}_{h(t)}=\left(g(h(t)), h(t)\right)$ a factorization of $\mathcal{R}$,
-        and consider the series expansion of $[g(y)=g_0 + g_1 y + g_2 y^2 + \ldots|y=h(t)]$: 
-        what's the interpretation of coefficients $\lbrace g_i\rbrace_{i\in\mathbb{N}}$? 
+    \item let $\mathcal{R}_{h(t)}=\left(g(h(t)), h(t)\right)$ a $h$-characterization 
+        of $\mathcal{R}$, and consider the series expansion of funtion $g$:
+        \begin{displaymath}
+            \left.\left[g(y)=g_0 + g_1 y + g_2 y^2 + \ldots\right|y=h(t)\right] 
+        \end{displaymath}
+        what's the interpretation of coefficients in the sequence
+        $\lbrace g_i\rbrace_{i\in\mathbb{N}}$? 
         
-        Last theorem shows that, provided $\mathcal{R}=\left(d(t), td(t)\right)$, then 
+        We've seen that if $\mathcal{R}=\left(d(t), td(t)\right)$, then 
         $[g(y)=A(y)|y=h(t)]$ where $A(t)$ is $\mathcal{R}$'s A-sequence: 
-        does exist a deep relation among those sequences for arbitrary arrays?   
+        does exist a deep relation among those sequences for \emph{arbitrary} arrays?   
         For instance, what about Fibonacci array $\mathcal{F}$: 
         \begin{displaymath}
             \begin{split}
@@ -19,7 +23,7 @@ Under previous insights, we ask respectively:
                 &+7 y^{8} +4 y^{9} + \mathcal{O}\left(y^{10}\right) | y=h_{\mathcal{F}}(t) \big]
             \end{split}
         \end{displaymath}
-        and about Delannoy array $\mathcal{D}$: 
+        or about Delannoy array $\mathcal{D}$: 
         \begin{displaymath}
             \begin{split}
                 \big[ g_{\mathcal{D}}(y) &= 1 + y - y^{2} + 3 y^{3} -11y^{4} + 45 y^{5} -197y^{6}\\ 
@@ -34,52 +38,49 @@ Under previous insights, we ask respectively:
         combinations involving  $\mathcal{A}^{-1}$ and $\mathcal{B}^{-1}$ too?
 
 
-    \item \added{let $\mathcal{R}(d(t),h(t))$ be a Riordan array in 
+    \item let $\mathcal{R}(d(t),h(t))$ be a Riordan array in 
         natural notation. If function $\hat{h}$, the compositional inverse
-        of function $h$, has the following structure:}
+        of function $h$, has the following structure:
         \begin{displaymath}
-            \added{\hat{h}(y) = \frac{y}{\Pi(y)}}
+            \hat{h}(y) = \frac{y}{\Pi(y)}
         \end{displaymath}
-        \added{
         where $\Pi$ is a polynomial such that $\Pi(0)\not=0$, the question is:
         is it always the case that there exists a sequence of polynomials
         $\lbrace \Omega_{i} \rbrace_{i\in\mathbb{N}}$ such
         that $\mathcal{R}$'s $A$-sequence can be be factored respect
-        function $\hat{h}$ as:}
+        function $\hat{h}$ as:
         \begin{displaymath}
-            \added{
                 \left.\left[
                     A_{\mathcal{R}}(y) = \sum_{i \geq0}{
                         \left(\frac{[t^{1+i}]d(t)h(t)}
                             {\Pi(y)}\right)
                         \hat{h}(y)^{i}} 
                         \right| y = h(t) \right]
-            }
         \end{displaymath}
-        \added{in other words, the sequence of coefficients of the function defining
-        the second column of array $\mathcal{R}$, namely function 
-        $d$ times function $h$, shifted by \emph{one} position, does occur in
-        the given factorization?}
+        in other words, the sequence of coefficients of the function defining
+        the second column of array $\mathcal{R}$, namely the convolution of functions 
+        $d$ and $h$, shifted by \emph{one} position, does occur in
+        the given factorization?
 
 \end{enumerate}
 
 \subsection{\added[id=sid]{An hint\ldots}}
 
-\added[id=sid]{In this section we offer an hint to tackle question number $1$
+In this section we offer an hint to tackle question number $1$
 asked in previous enumeration. Let $\mathcal{R}_{h(t)}(\gamma(h(t)), h(t))$
-be a Riordan array written in factored notation, for some function $\gamma$. 
+be a Riordan array written in $h$-characterization form, for some function $\gamma$. 
 Now, with abuse of notation, do a \emph{standard} matrix-vector product, namely
-consider $\mathcal{R}_{h(t)}$ a matrix: multiply it by a vector $\vect{\omega}$
+consider $\mathcal{R}_{h(t)}$ as a matrix: multiply it by a vector $\vect{\omega}$
 whose coefficients are defined by a sequence $\lbrace \omega_i \rbrace_{i\in\mathbb{N}}$
 and set equal to a vector $\vect{a}$ whose coefficients are defined by $\mathcal{R}$'s
 $A$-sequence. Formally:
-}
+
 \begin{displaymath}
     \mathcal{R}_{h(t)}\left[\begin{array}{c} \omega_0 \\ \omega_1 \\ \omega_2 \\ \vdots \end{array}\right] =
         \left[\begin{array}{c} a_0 \\ a_1 \\ a_2 \\ \vdots \end{array}\right]
 \end{displaymath}
-\added[id=sid]{Interpreting columns of $\mathcal{R}_{h(t)}$ and vector $\vect{a}$ via
-corresponding generating functions, rewrite as follow: }
+Interpreting columns of $\mathcal{R}_{h(t)}$ and vector $\vect{a}$ via
+corresponding generating functions, rewrite as follow:
 \begin{displaymath}
     \begin{split}
             \omega_0\,\gamma(h(t))\,h(t)^{0} + 
@@ -93,36 +94,36 @@ corresponding generating functions, rewrite as follow: }
             \gamma(h(t))\,\Omega(h(t)) &= A(t) \\
     \end{split}
 \end{displaymath}
-\added[id=sid]{where functions $A$ and $\Omega$ are fps over sequences
+where functions $A$ and $\Omega$ are \ac{fps} over sequences
 $\lbrace a_i \rbrace_{i\in\mathbb{N}}$ and
 $\lbrace \omega_i \rbrace_{i\in\mathbb{N}}$, respectively. Note that abstracting
-over function $h$ yield:}
+over function $h$ yield:
 \begin{displaymath}
     \left.\left[
         \gamma(y)\,\Omega(y) = A(\hat{h}(y)) \right| y = h(t) \right]
 \end{displaymath}
-\added[id=sid]{but this relationship is quite difficult since introduces function $\hat{h}$,
+but this relationship is quite difficult since introduces function $\hat{h}$,
 the compositional inverse of function $h$. Therefore, function
 $\gamma$, parameterized by function $h$, is related to $\mathcal{R}$'s
 $A$-sequence, parameterized over variable $t$, by the existence of 
-a function $\Omega$, parameterized over function $h$, such that:}
+a function $\Omega$, parameterized over function $h$, such that:
 \begin{displaymath}
     \gamma(h(t))\,\Omega(h(t)) = A(t) 
 \end{displaymath}
-\added[id=sid]{for the sake of clarity, let $\mathcal{M}$ be the Motzkin array, so:}
+for the sake of clarity, let $\mathcal{M}$ be the Motzkin array, so:
 \begin{displaymath}
         \left.\left[
             \Omega_{\mathcal{M}}(y) = \frac{y^{4} + 3 \, y^{3} + 5 \, y^{2} + 3 \, y + 1}{{\left(y^{2} + y + 1\right)}^{3}}
                 \right| y = h(t) \right]
 \end{displaymath}
-\added[id=sid]{and the first terms of fps expansion:}
+and the first terms of fps expansion:
 \begin{displaymath}
         \left.\left[
             \Omega_{\mathcal{M}}(y) = 1 -y^{2} -y^{3} + 4 y^{4} + -2\,y^{5} 
                 + -6\,y^{6} + 11 y^{7}+\mathcal{O}\left(y^{8}\right)
                 \right| y = h(t) \right]
 \end{displaymath}
-\added[id=sid]{an hint has been provided, in turn another question arises: \emph{there
+an hint has been provided, in turn another question arises: \emph{there
 exists a smart way to compute function $\Omega$}? If there exists such a method, then
 $\mathcal{R}$'s $A$-sequence could be computed easily, since function $\gamma$ 
-is read directly from the factorization, for \emph{any} Riordan array\ldots}
+is read directly from the factorization, for \emph{any} Riordan array\ldots
