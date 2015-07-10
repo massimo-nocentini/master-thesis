@@ -58,10 +58,9 @@ the natural one doesn't make any difference, therefore:
 where function $\Gamma$ is a \ac{fps} over sequence 
 $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$, which we're searching for.
 Doing a change of variable to abstract over $h(t)$, its possible to
-\marginpar{$y^{\alpha}$ and $\hat{h}(y)^{\beta}$ acts as rulers: \\
-    if an element $d_{nk}$ is combined,\\
-    the former scrolls (leftward) to column $k-\alpha$,\\
-    the latter scrolls (upward) to row $n-\beta$}
+\marginpar{$\hat{h}(y)^{\alpha}$ acts as a ruler which,
+    if an element $d_{nk}$ is combined,
+    scrolls to row $n-\alpha$}
 structure the basic for a generic schema (or \emph{device} if you please):
 \begin{displaymath}
     \left.\left[y^{k} = \hat{h}(y)\,\Gamma(y) \right| y = h(t) \right]
@@ -108,13 +107,14 @@ elements belonging to a column $k$. On the other hand, natural $A$-sequences
 are stated with a fixed start index in mind, namely $k-1$ if combining 
 for elements in a column $k$.
 
+\marginpar{$y^{\beta}$ acts as a second ruler too, which scrolls
+    to column $\beta$ directly. Rulers $y^{k-1}$ and $\hat{h}(y)$ 
+    scroll to column $k-1$ and to row $n-1$ respectively, after 
+    combination starts as $\Gamma$ says\ldots}
 It is possible to get the natural $A$-sequence back by requiring that 
 combination of elements (denoted by coefficients of \ac{fps} $\Gamma$)  
 lying on the previous row (denoted by $\hat{h}(y)$)
 starts at index $k-1$ (denoted by $y^{k-1}$), formally:
-\marginpar{$y^{1}$ and $\hat{h}(y)^{1}$: if $d_{nk}$ is combined then 
-    scroll rulers to column $k-1$ and to row $n-1$, after 
-    start combining as $\Gamma$ says\ldots}
 \begin{displaymath}
     \left[y^{k} = y^{k-1}\,\hat{h}(y)\,\Gamma(y) \big| y = h(t) \right] = 
     \left[y = \hat{h}(y)\,\Gamma(y) \big| y = h(t) \right]
@@ -135,8 +135,8 @@ Set the device:
         \left.\left[\frac{y^{k-5}}{(1-y)^3} = \Gamma(y) \right| y = h(t) \right]
 \end{displaymath}
 
-Two quick checks: in order to find $d_{7,5}$, chosen at random, 
-expand function $\Gamma$ with $k=5$:
+Checking what we've obtained, assume you want to find coefficient $d_{7,5}$, 
+chosen at random, so expand function $\Gamma$ with $k=5$:
 \begin{displaymath}
     \left.\left[\Gamma(y)=1 + 3y + 6y^2 + 10y^3 + 15y^4 + \mathcal{O}(y^5) 
         \big| y = h(t) \right]\right|_{k=5}
@@ -144,6 +144,9 @@ expand function $\Gamma$ with $k=5$:
 therefore $d_{7,5}=d_{4,2} + 3\,d_{4,3} + 6\,d_{4,4}$, 
 instantiating $27 = 9 + 3\cdot4 + 6\cdot1$, which holds.
 Just another element, say $d_{9,7}$, so expand function $\Gamma$ with $k=7$:
+\marginpar{varing $k$ shifts $\lbrace \gamma_{i}\rbrace_{i\in\mathbb{N}}$ only.
+    In \autoref{par:generalized:A:sequence:Delannoy:example}
+    we will get a new sequence for each $k$}
 \begin{displaymath}
     \left.\left[\Gamma(y)=y^2 + 3y^3 + 6y^4 + 10y^5 +  \mathcal{O}(y^6) 
         \big| y = h(t) \right]\right|_{k=7}
@@ -151,9 +154,9 @@ Just another element, say $d_{9,7}$, so expand function $\Gamma$ with $k=7$:
 therefore $d_{9,7}=d_{6,4} + 3\,d_{6,5} + 6\,d_{6,6}$, 
 instantiating $44 = 20 + 3\cdot6 + 6\cdot1$, which holds.
 It's interesting to observe the following fact: while a natural $A$-sequence
-says how to combine starting always from the previous column index, with
-this generalization we got the same coefficients for combining, while
-an additional information from what column index the combination should start.
+says how to combine starting always from the previous column index; with
+this generalization we got the same coefficients for combining as $A$-sequence
+states, augmenting with the column index from where the combination should start.
 
 The previous two checks shows exactly this aspect: for column index $k=5$
 combination starts at column index $2$, while for column index $k=7$ combination
@@ -234,96 +237,101 @@ $\Gamma$ and $\Theta$ start, respectively. Here is the most general device:
         y^{c_\nu}\hat{h}(y)^{\beta} \Theta(y) \big| y = h(t) \right]
 \end{displaymath}
 \\\\
-\marginpar{an example involving $\mathcal{D}$}
-Try to make the generalization at work:
-find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ such that 
-an element $d_{nk}\in\mathcal{D}$, in the Delannoy array, 
-combines \emph{all} elements lying on 
-the next row, namely $n+1$, in addition to the
-combination of elements lying two row above, namely $n-2$, 
-defined as their sum, simply. 
+\paragraph{An example about $\mathcal{D}$}{
+    \label{par:generalized:A:sequence:Delannoy:example}
+    \marginpar{an example about $\mathcal{D}$}
+    Try to make the generalization at work:
+    find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ such that 
+    an element $d_{nk}\in\mathcal{D}$, in the Delannoy array, 
+    combines \emph{all} elements lying on 
+    the next row, namely $n+1$, in addition to the
+    combination of elements lying two row above, namely $n-2$, 
+    defined as their sum, simply. 
 
-In order to set the device, we need $\hat{h}_{\mathcal{D}}$:
-\begin{displaymath} 
-    \hat{h}_{\mathcal{D}}(y) = \frac{\sqrt{1+6y+y^2}-y-1}{2}
-\end{displaymath} 
-and build function $\Theta$ from the additional requirement:
-\begin{displaymath} 
-    \Theta(y) = \frac{1}{1-y}
-\end{displaymath} 
-now we're ready:
-\begin{displaymath}
-\begin{split}
-    &\left.\left[y^{k} = \hat{h}_{\mathcal{D}}(y)^{-1} \Gamma(y) + 
-        \hat{h}_{\mathcal{D}}(y)^{2}\frac{1}{1-y} \right| y = h(t) \right]\\
-    &=\left.\left[\frac{y^{3} + {\left(y^{2} - 1\right)} y^{k} + 6 \, y^{2} - {\left({\left(y - 1\right)} y^{k} + y^{2} + 3 \, y + 1\right)} \sqrt{y^{2} + 6 \, y + 1} + 6 \, y + 1}{2 \, {\left(1-y\right)}}=\Gamma(y) \right| y = h(t) \right]\\
-\end{split}
-\end{displaymath}
-in order to find $d_{8,1}$, chosen at random, expand function $\Gamma$ with $k=1$:
-\begin{displaymath}
-    \left.\left[\Gamma(y)=y^2 -3y^3 + 11y^4  -47y^5 + 211y^6 -987y^7 + 4747y^8 
-        -23335y^9 + \mathcal{O}(y^{10}) \big| y = h(t) \right]\right|_{k=1}
-\end{displaymath}
-therefore $d_{8,1}=d_{9,2} -3\,d_{9,3} +11\,d_{9,4}-47\,d_{9,5} 
-    +211\,d_{9,6} -987\,d_{9,7} +4747\,d_{9,8}-23335\,d_{9,9}+\epsilon$,
-    where $\epsilon = d_{6,0}+d_{6,1}+d_{6,2}+d_{6,3}+d_{6,4}+d_{6,5}+d_{6,6} = 
-            2(d_{6,0}+d_{6,1}+d_{6,2})+d_{6,3} = 2(1 + 11 + 41) + 63 = 169$: 
-    instantiating $15 = 113 -3\cdot377 +11\cdot681 -47\cdot681 +211\cdot377
-        -987\cdot113 +4747\cdot17 -23335 + \epsilon = -154 + 169$, which holds.
-
-It's interesting to observe that function $\Gamma$ above, an algebraic one,
-produces sequences that use different coefficients for different values of $k$,
-and we observe a curious pattern for increasing values of 
-$k\in\lbrace 0,\ldots,10 \rbrace$:
-\begin{lenghtydisplaymath}
+    In order to set the device, we need $\hat{h}_{\mathcal{D}}$:
+    \begin{displaymath} 
+        \hat{h}_{\mathcal{D}}(y) = \frac{\sqrt{1+6y+y^2}-y-1}{2}
+    \end{displaymath} 
+    and build function $\Theta$ from the additional requirement:
+    \begin{displaymath} 
+        \Theta(y) = \frac{1}{1-y}
+    \end{displaymath} 
+    now we're ready:
+    \begin{lenghtydisplaymath}
     \begin{split}
-        &\left.\left[\Gamma(y)=
-        1 y + {(-2)} y^{2} + 5 y^{3} + {(-17)} y^{4} + 65 y^{5} + {(-273)} y^{6} + 1213 y^{7} + {(-5617)} y^{8} + \mathcal{O}\left(y^{9}\right)
-            \big| y = h(t) \right]\right|_{k=0}\\
-        &\left.\left[\Gamma(y)=
-        1 y^{2} + {(-3)} y^{3} + 11 y^{4} + {(-47)} y^{5} + 211 y^{6} + {(-987)} y^{7} + 4747 y^{8} + \mathcal{O}\left(y^{9}\right)
-            \big| y = h(t) \right]\right|_{k=1}\\
-        &\left.\left[\Gamma(y)=
-        3 y^{4} + {(-19)} y^{5} + 99 y^{6} + {(-503)} y^{7} + 2547 y^{8} + {(-12971)} y^{9} + \mathcal{O}\left(y^{10}\right)
-            \big| y = h(t) \right]\right|_{k=2}\\
-        &\left.\left[\Gamma(y)=
-        {(-1)} y^{3} + 6 y^{4} + {(-27)} y^{5} + 127 y^{6} + {(-615)} y^{7} + 3031 y^{8} + {(-15171)} y^{9} + \mathcal{O}\left(y^{10}\right)
-            \big| y = h(t) \right]\right|_{k=3}\\
-        &\left.\left[\Gamma(y)=
-        {(-1)} y^{3} + 5 y^{4} + {(-24)} y^{5} + 119 y^{6} + {(-587)} y^{7} + 2919 y^{8} + {(-14687)} y^{9} + \mathcal{O}\left(y^{10}\right)
-            \big| y = h(t) \right]\right|_{k=4}\\
-        &\left.\left[\Gamma(y)=
-        {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 122 y^{6} + {(-595)} y^{7} + 2947 y^{8} + {(-14799)} y^{9} + \mathcal{O}\left(y^{10}\right)
-            \big| y = h(t) \right]\right|_{k=5}\\
-        &\left.\left[\Gamma(y)=
-        {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-592)} y^{7} + 2939 y^{8} + {(-14771)} y^{9} + \mathcal{O}\left(y^{10}\right)
-            \big| y = h(t) \right]\right|_{k=6}\\
-        &\left.\left[\Gamma(y)=
-        {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2942 y^{8} + {(-14779)} y^{9} + \mathcal{O}\left(y^{10}\right)
-            \big| y = h(t) \right]\right|_{k=7}\\
-        &\left.\left[\Gamma(y)=
-        {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14776)} y^{9} + \mathcal{O}\left(y^{10}\right)
-            \big| y = h(t) \right]\right|_{k=8}\\
-        &\left.\left[\Gamma(y)=
-        {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14777)} y^{9} + \mathcal{O}\left(y^{10}\right)
-            \big| y = h(t) \right]\right|_{k=9}\\
-        &\left.\left[\Gamma(y)=
-        {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14777)} y^{9} + \mathcal{O}\left(y^{10}\right)
-            \big| y = h(t) \right]\right|_{k=10}\\
+        &\left.\left[y^{k} = \hat{h}_{\mathcal{D}}(y)^{-1} \Gamma(y) + 
+            \hat{h}_{\mathcal{D}}(y)^{2}\frac{1}{1-y} \right| y = h(t) \right]\\
+        &=\left.\left[\frac{y^{3} + {\left(y^{2} - 1\right)} y^{k} + 6 \, y^{2} - {\left({\left(y - 1\right)} y^{k} + y^{2} + 3 \, y + 1\right)} \sqrt{y^{2} + 6 \, y + 1} + 6 \, y + 1}{2 \, {\left(1-y\right)}}=\Gamma(y) \right| y = h(t) \right]\\
     \end{split}
-\end{lenghtydisplaymath}
+    \end{lenghtydisplaymath}
+    in order to find $d_{8,1}$, chosen at random, expand function $\Gamma$ with $k=1$:
+    \begin{lenghtydisplaymath}
+        \left.\left[\Gamma(y)=y^2 -3y^3 + 11y^4  -47y^5 + 211y^6 -987y^7 + 4747y^8 
+            -23335y^9 + \mathcal{O}(y^{10}) \big| y = h(t) \right]\right|_{k=1}
+    \end{lenghtydisplaymath}
+    therefore $d_{8,1}=d_{9,2} -3\,d_{9,3} +11\,d_{9,4}-47\,d_{9,5} 
+        +211\,d_{9,6} -987\,d_{9,7} +4747\,d_{9,8}-23335\,d_{9,9}+\epsilon$,
+        where $\epsilon = d_{6,0}+d_{6,1}+d_{6,2}+d_{6,3}+d_{6,4}+d_{6,5}+d_{6,6} = 
+                2(d_{6,0}+d_{6,1}+d_{6,2})+d_{6,3} = 2(1 + 11 + 41) + 63 = 169$: 
+        instantiating $15 = 113 -3\cdot377 +11\cdot681 -47\cdot681 +211\cdot377
+            -987\cdot113 +4747\cdot17 -23335 + \epsilon = -154 + 169$, which holds.
 
-Starting from index $k=3$, it seems that one more coefficient stabilizes
-in the expansion, one increment of $k$ at a time, pretty nice.
-To finish this section involving Delannoy triangle, we report its natural
-$A$-sequence:
+    It's interesting to observe that function $\Gamma$ above, an algebraic one,
+    produces sequences that use different coefficients for different values of $k$,
+    and we observe a curious pattern for increasing values of 
+    $k\in\lbrace 0,\ldots,10 \rbrace$:
+    \begin{lenghtydisplaymath}
+        \begin{split}
+            &\left.\left[\Gamma(y)=
+            1 y + {(-2)} y^{2} + 5 y^{3} + {(-17)} y^{4} + 65 y^{5} + {(-273)} y^{6} + 1213 y^{7} + {(-5617)} y^{8} + \mathcal{O}\left(y^{9}\right)
+                \big| y = h(t) \right]\right|_{k=0}\\
+            &\left.\left[\Gamma(y)=
+            1 y^{2} + {(-3)} y^{3} + 11 y^{4} + {(-47)} y^{5} + 211 y^{6} + {(-987)} y^{7} + 4747 y^{8} + \mathcal{O}\left(y^{9}\right)
+                \big| y = h(t) \right]\right|_{k=1}\\
+            &\left.\left[\Gamma(y)=
+            3 y^{4} + {(-19)} y^{5} + 99 y^{6} + {(-503)} y^{7} + 2547 y^{8} + {(-12971)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=2}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 6 y^{4} + {(-27)} y^{5} + 127 y^{6} + {(-615)} y^{7} + 3031 y^{8} + {(-15171)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=3}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-24)} y^{5} + 119 y^{6} + {(-587)} y^{7} + 2919 y^{8} + {(-14687)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=4}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 122 y^{6} + {(-595)} y^{7} + 2947 y^{8} + {(-14799)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=5}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-592)} y^{7} + 2939 y^{8} + {(-14771)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=6}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2942 y^{8} + {(-14779)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=7}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14776)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=8}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14777)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=9}\\
+            &\left.\left[\Gamma(y)=
+            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14777)} y^{9} + \mathcal{O}\left(y^{10}\right)
+                \big| y = h(t) \right]\right|_{k=10}\\
+        \end{split}
+    \end{lenghtydisplaymath}
 
-\marginpar{which should not depend on $k$}
-\begin{lenghtydisplaymath}
-    \left.\left[\Gamma(y)=
-    1 + 2 y -2\,y^{2} + 6 y^{3} -22\,y^{4} + 90 y^{5} -394\,y^{6} + 1806 y^{7}  + \mathcal{O}\left(y^{8}\right)
-        \big| y = h(t) \right]\right|_{k=1}\\
-\end{lenghtydisplaymath}
+    Starting from index $k=3$, it seems that one more coefficient stabilizes
+    in the expansion, one increment of $k$ at a time, pretty nice.
+    To finish this section involving Delannoy triangle, we report its natural
+    $A$-sequence, computed with $\left.\left[y^{k} = y^{k-1}
+    \hat{h}_{\mathcal{D}}(y)\,\Gamma(y) \right| y = h(t) \right]$:
+
+    \marginpar{$\mathcal{D}$'s $A$-sequence which, of course, doesn't
+        depends on $k$, it's unique\ldots}
+    \begin{lenghtydisplaymath}
+        \left[\Gamma(y)=
+        1 + 2 y -2\,y^{2} + 6 y^{3} -22\,y^{4} + 90 y^{5} -394\,y^{6} + 1806 y^{7}  + \mathcal{O}\left(y^{8}\right)
+            \big| y = h(t) \right]\\
+    \end{lenghtydisplaymath}
+}
 
 \subsubsection{$A$-matrix connection}
 

@@ -36,7 +36,8 @@ It's important to understand the meaning of those new symbols:
     \item $\mathcal{R}_{\gamma=\Omega(t)}$ denotes an array where a variable
         substitution has to take place, namely $\Omega(t)$ is the substitution 
         for variable $\gamma$;
-        \marginpar{$\mathcal{R}_{t}(d(t),h(t))$ denotes verbosly, but correctly, $\mathcal{R}(d(t),h(t))$ }
+        \marginpar{$\mathcal{R}_{t}(d(t),h(t))$ denotes verbosly, but correctly, the same
+            array $\mathcal{R}(d(t),h(t))$ denotes}
     \item $\mathcal{R}_{\Omega(t)}$ denotes an array where $\Omega(t)$ should 
         be seen as a variable, like a \emph{datum}, and should not be expanded,
         even if $\Omega$'s definition is known. 
@@ -168,7 +169,7 @@ so $f(y)=d(\hat{h}(1+y))$ equals:
 \end{lenghtydisplaymath} 
 Recognize a perfect square $y^{2} + 4 y + 4 = (y+2)^{2}$:
 \marginpar{we could also stop here and reason by cases about $\pm\left(\left(y + 2\right) y\right)$
-    without going on substituting variable $y$\ldots}
+    without going on substituting variable $y$ too soon\ldots}
 \begin{lenghtydisplaymath} 
         -\frac{ \left(\sqrt{\left(\left(y + 2\right) y\right)^{2}} -\left(y^{2}+2y+2\right)\right)\left(y^{2} + 3y + 3\right)}{2 {\left(y + 1\right)}^{2}} 
 \end{lenghtydisplaymath} 
@@ -336,10 +337,10 @@ We finish with a theorem about arrays in the \emph{renewal} subgroup.
 \begin{theorem}
     Let $\mathcal{R}\left(d(t), h(t)\right)$ be a Riordan array belonging
     to the \emph{renewal} subgroup, so $h(t)=td(t)$. Then:
+    \marginpar{it can be written as $\left[\left.\mathcal{R}\left(A(y), y)\right)\right|y=h(t)\right]$
+        or as $\mathcal{R}_{y=h(t)}\left(A(y), y)\right)$ too}
     \begin{displaymath}
-        \mathcal{R}_{h(t)}\left(A(h(t)), h(t))\right)=
-        \left[\left.\mathcal{R}\left(A(y), y)\right)\right|y=h(t)\right] =
-        \mathcal{R}_{y=h(t)}\left(A(y), y)\right)
+        \mathcal{R}_{h(t)}\left(A(h(t)), h(t))\right)
     \end{displaymath}
     where $A$ is a \ac{fps} over $\mathcal{R}$'s $A$-sequence 
     $\lbrace a_i \rbrace_{i\in\mathbb{N}}$. 
