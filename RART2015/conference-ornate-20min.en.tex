@@ -216,16 +216,24 @@
 \begin{frame}{Sierpinski gasket and main idea}
     \begin{columns}[T] % contents are top vertically aligned
         \begin{column}[T]{5cm} % alternative top-align that's better for graphics
-              \vskip-20pt plus.5fill
-            \input{pascal-tikz/main-idea-four-splitted/plain-numbers-include-figure}
-              \vskip-20pt plus.5fill
-            \input{pascal-tikz/main-idea-four-splitted/remainders-include-figure}
+              \onslide<1->{
+                  \vskip-20pt plus.5fill
+                  \input{pascal-tikz/main-idea-four-splitted/plain-numbers-include-figure}
+              }
+              \onslide<3->{
+                  \vskip-20pt plus.5fill
+                  \input{pascal-tikz/main-idea-four-splitted/remainders-include-figure}
+              }
         \end{column}
         \begin{column}[T]{5cm} % each column can also be its own environment
-              \vskip-20pt plus.5fill
-            \input{pascal-tikz/main-idea-four-splitted/centered-numbers-include-figure}
-              \vskip-20pt plus.5fill
-            \input{pascal-tikz/main-idea-four-splitted/dots-include-figure}
+              \onslide<2->{
+                  \vskip-20pt plus.5fill
+                  \input{pascal-tikz/main-idea-four-splitted/centered-numbers-include-figure}
+              }
+              \onslide<4->{
+                  \vskip-20pt plus.5fill
+                  \input{pascal-tikz/main-idea-four-splitted/dots-include-figure}
+              }
         \end{column}
     \end{columns}
 \end{frame}
