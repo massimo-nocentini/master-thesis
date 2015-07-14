@@ -284,7 +284,7 @@
     \end{block}
     \pause
     \begin{block}{McLean in \cite{Lean1974} generalizes}
-        Broomhead and Sved work over higher power of a prime $p$:
+        Broomhead and Sved work over higher powers of a prime $p$:
         \begin{itemize}
             \item defines \emph{$p$-index of $a$} as {$\nu_{p}\lbrace a\rbrace =t \leftrightarrow p^{t}\mid a \wedge p^{t+1}\nmid a$}
             \item proves {$\nu_{p}\lbrace {{n}\choose{k}}\rbrace $} equals the \emph{number of carries} in $n-_{p}k$
@@ -446,15 +446,15 @@
         \end{itemize} 
         By \emph{recursive structure} we mean that $\mathcal{R}^{(\alpha+1)}$ can
         be built using combinations of  $\mathcal{R}^{(\alpha)}$ and \emph{zero-holes}
-        of order $\alpha$ only .
+        of order $\alpha$ only
 
         \pause
         \item if $p$ isn't a prime, colouring gets ``noise'' and it's difficult
-        to recognize the underlying pattern.
+        to recognize the underlying pattern
 
-        \pause
-        \item $\mathcal{D}_{\equiv_{2}}$ isn't very interesting since
-        $d_{nk}\in\mathcal{D}_{\equiv_{2}}\rightarrow d_{nk}\equiv_{2}1$
+        %\pause
+        %\item $\mathcal{D}_{\equiv_{2}}$ isn't very interesting since
+        %$d_{nk}\in\mathcal{D}_{\equiv_{2}}\rightarrow d_{nk}\equiv_{2}1$
 
         \pause
         \item colouring $\mathcal{R}^{-1}$, inverse of $\mathcal{R}$, uses darker
@@ -579,14 +579,15 @@
 
 \begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
       % in order to use a `displaymath' environment for the proof
-      \vskip-20pt plus.5fill
+      \vskip-15pt plus.5fill
     \begin{theorem}
-        let  $S=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$ be a segment of 
-        column $2^{\alpha}-1$, then:
+        let  $S=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$ be a 
+        \flqq mirror\frqq segment of column $2^{\alpha}-1$, then:
         \begin{displaymath} 
             d_{s,2^{\alpha}-1}\equiv_{2}0\quad\text{for}\quad s\in S
         \end{displaymath} 
     \end{theorem}
+      \vskip-10pt plus.5fill
     \emph{proof}: 
         \begin{displaymath} 
             d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
@@ -678,8 +679,7 @@
     \begin{itemize}
         \item how to build a formal characterization of $\mathcal{F},\mathcal{M},\mathcal{D}$ and
             other arrays from the modular point of view?
-        \item is there a way to build proofs using functions $d$ and $h$, without
-            extracting coefficients to the rescue? 
+        \item is there a way to build proofs manipulating functions $d$ and $h$ only? 
     \end{itemize}
   \end{itemize}
 \end{frame}
