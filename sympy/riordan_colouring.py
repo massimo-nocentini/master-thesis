@@ -1,4 +1,6 @@
 
+# this is a simple attempt to make a *navigable* documentation within |Vim|
+
 from sage.rings.integer import Integer
 
 from riordan_utils import *
@@ -101,7 +103,9 @@ class TriangleColouring:
         return handler, None 
 
 
-    def __call__(self, d=None, h=None, array=None, explicit_matrix=None, partitioning=None):
+    def __call__(self, d=None, h=None, array=None, 
+                    explicit_matrix=None, partitioning=None,
+                    handle_triangular_region_only=True):
 
         colouring_handlers = self.colouring(partitioning)
 
@@ -120,7 +124,9 @@ class TriangleColouring:
         else:                   raise Exception("No array to work with")
 
         result_matrix, tikz_coloured_nodes, _ = Riordan_matrix_latex_code ( 
-            array=Riordan_array, order=order, handlers_tuple=colouring_handlers)
+            array=Riordan_array, order=order, 
+            handlers_tuple=colouring_handlers,
+            handle_triangular_region_only=handle_triangular_region_only)
 
         return result_matrix, tikz_coloured_nodes
 
