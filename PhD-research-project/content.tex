@@ -1,0 +1,89 @@
+
+\noindent This project aims to study formal methods to be applied to the
+analysis of algorithms and to data structures used by them.
+\marginpar{analytic combinatorics and discrete objects}A solid base for
+the former ones comes from analytic combinatorics, which comprises tools
+such as generating functions, Riordan arrays and the symbolic method.
+For the latter ones, on the other hand, results about permutations,
+lattice path and combinatorial objects' classes provide many insights.
+Many interesting books  [1]\footnote{[1] P. Flajolet and R. Sedgewick,
+\emph{Analytic Combinatorics}, Cambridge University Press, 2009.},
+[2]\footnote{[2] D. Knuth, \emph{The Art of Computer Programming}, vol.
+1-3, Addison-Wesley, 1973.} and [3]\footnote{[3] Graham, Knuth and
+Patashnik, \emph{Concrete Mathematics: A Foundation for Computer
+Science}, Addison-Wesley, 1994} exists on those subjects, where skillful
+methods to handle sequences of \emph{counting numbers}, combinatorial
+sums and classes of discrete objects, such as graphs, words and trees,
+are contained within. Actually, the goal of this project is
+twofold:\marginpar{combinatorial meaning} we're interested to study how
+such powerful techniques can help in providing a combinatorial
+\emph{interpretation} of analytic results about a class $\mathcal{G}$ of
+objects, usually stated using the ring of \emph{formal power series}
+$\llbracket g(t)=g_{0}+g_{1}\,t+
+g_{2}\,t^{2}+\ldots+g_{k}\,t^{k}+\ldots\rrbracket_{k\in\mathbb{N}}$, so
+the final interest is to find the \emph{combinatorial meaning} of each
+coefficient $g_{k}$ and possibly an explanation for it in terms of
+lattice paths, urn models, bracelets configurations, domino and square
+tiling and so on, in the spirit of [4]\footnote{[4] Benjamin and Quinn,
+\emph{Proofs that really counts}, Mathematical Association of America,
+2003}. Moreover, we would apply such techniques and interpretations to
+the analysis of algorithms for what concerns the analytic aspect, and to
+data structures for what concerns the combinatorial one, in particular
+we would build a language\marginpar{apply formal methods introducing a
+language}, and later giving it an implementation, in order to play with
+classes of combinatorial objects, providing a formal way to define what
+objects can be manipulated and how they can be combined, in a
+\emph{objective} style; only after, integration with a symbolic engine
+would be set in order to derive actual results, so we give importance to
+the modeling phase too. In order to provide some idea, such a language
+could be implemented using the \emph{Xtext} [5]\footnote{[5]
+\url{https://eclipse.org/Xtext/}} framework and all the related tools as
+a set of \emph{Eclipse plug-ins}; another possible implementation is an
+``old-style'' one, toward writing a \emph{Vim plugin} that allows a deep
+integration with other UNIX tools, in order to have an interactive Vim
+session. \marginpar{Riordan arrays: $A$-sequence, $A$-matrix and some
+generalizations} At the same time, we would continue to work on the
+subjects studied in our master thesis, in particular the topic of
+\emph{Riordan arrays}. We are interested in finding new
+characterizations that allow to spot some properties, one example is the
+$h$-characterization $\mathcal{R}_{h(t)}$ of a Riordan array
+$\mathcal{R}$ found by us and explored within the thesis. Another track
+to follow is the study of two particular objects, $A$-sequence $\lbrace
+a_{n}\rbrace_{n\in\mathbb{N}}$ and $A$-matrix $\lbrace
+a_{ij}\rbrace_{i,j\in\mathbb{N}}$ respectively, generalizing them in
+order to discover new combinatorial identities, possibly involving row
+sums. \marginpar{Riordan group theory: back to basics} This lead us
+\emph{backwards}, since we believe that introductory papers by
+\emph{Shapiro}, which introduces the \emph{Riordan group} and builds
+triangles from lattice paths under some constraints; by \emph{Rogers},
+which introduces the concept of \emph{renewal arrays} and finds the
+important concept of their $A$-sequences; by \emph{Eplett}, which gives
+a nice identity involving determinants and \emph{Catalan} numbers;
+finally, by \emph{Sprugnoli}, which uses Riordan arrays in order to find
+generating functions of combinatorial sum in a \emph{constructive} way,
+not just proving that sums equals a \emph{given} value (usually denoted
+by a closed formula); in our opinion, all their works contain some ideas
+that allow further developments and insights, nonetheless they have been
+studied extensively till now. \marginpar{Riordan arrays from modular
+arithmetic point of view} Another track is to continue the description
+and formalization of a Riordan array under the light of modular
+arithmetic: we've shown some congruences about \emph{Pascal} array
+$\mathcal{P}$ and its inverse $\mathcal{P}^{-1}$; a formal description
+for the \emph{Catalan} array $\mathcal{C}$ has been proved also. All
+    this joint work with Prof. \emph{Donatella Merlini} has been shown
+    as contributed talk at [6]\footnote{[6] Second International
+    Symposium on Riordan Arrays and Related Topics}, held in Lecco last
+    July. At the conference all major researchers involved in Riordan
+    group theory was present and some of them advice us with some
+    important ideas: we would like to study if \emph{Mandelbrot} and
+    \emph{Julia} sets can help in proofs of modular formalization by
+    algebraic manipulation, avoiding looking for a closed formula for
+    the generic coefficient $d_{nk}$ in an array $\mathcal{R}$.
+    \marginpar{Mandelbrot and Julia sets. Orthogonal polynomials and
+    continued fractions} Moreover, the topics of \emph{orthogonal
+    polynomials} and \emph{continued fraction expansion} arise in many
+    talks and we would like to study them starting from [7]\footnote{[7]
+    Aoife Hennessy, \emph{A Study of Riordan Arrays with Applications to
+    Continued Fractions, Orthogonal Polynomials and Lattice Paths}, Ph.
+    D.  thesis}.
+

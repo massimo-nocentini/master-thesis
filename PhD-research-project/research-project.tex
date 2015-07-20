@@ -1,0 +1,41 @@
+% article example for classicthesis.sty
+\documentclass[10pt,a4paper]{article} % KOMA-Script article scrartcl
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage[nochapters,eulermath,beramono]{classicthesis} % nochapters
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+
+\begin{document}
+    \title{\rmfamily\normalfont\spacedallcaps{Research Project}}
+    \author{\spacedlowsmallcaps{Massimo Nocentini}}
+    \date{} % no date
+    
+    \maketitle
+    
+    %\begin{abstract}
+        %\noindent\lipsum[1] Just a test.\footnote{This is a footnote.}
+    %\end{abstract}
+       
+    %\tableofcontents
+    
+    \input{content.tex}
+    %\input{korean-connection.tex}
+
+    %\section{A Section}
+    %\finalVersionString \lipsum[1]
+    
+    % bib stuff
+    %\nocite{*}
+    %\addtocontents{toc}{\protect\vspace{\beforebibskip}}
+    %\addcontentsline{toc}{section}{\refname}    
+    %\bibliographystyle{plain}
+    %\bibliography{../Bibliography}
+\end{document}
