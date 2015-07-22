@@ -1,0 +1,260 @@
+
+\section{Pascal characterization}
+
+In this section we present some results about Pascal array and
+its inverse, taken modulo some prime $p$. 
+
+Associating different colours to elements belonging to different remainder
+classes, we show formally that for $p$ even, ie. $p=2$, elements in the same
+position get the same colour, hence both triangles are coloured in the same
+way, ignoring signs for elements in the inverse array, which can happen to be
+negative. On the other hand, for $p$ odd there is not such a simple
+correspondence and we attempt to observe some repeating pattern in the mapping
+among elements in those arrays.
+
+\subsection{A general congruence $\equiv_{p}$ over $\mathcal{P}$ and $\mathcal{P}^{-1}$,
+    for $p$ prime}
+
+Let $\mathcal{P}$ be the Riordan array for the Pascal triangle,
+defined as:
+\begin{displaymath} 
+    \mathcal{P} = \left(\frac{1}{1-t}, \frac{t}{1-t}  \right)
+\end{displaymath} 
+and let $\mathcal{P}^{-1}$ be the inverse of $\mathcal{P}$:
+\begin{displaymath} 
+    \mathcal{P}^{-1} = \left(\frac{1}{1+t}, \frac{t}{1+t}  \right)
+\end{displaymath} 
+
+Let $d_{nk}$ and $\hat{d}_{nk}$ be the generic elements of $\mathcal{P}$ and of
+$\mathcal{P}^{-1}$, respectively. Since both arrays are in the Riordan group,
+$d_{nk}$ can be written as:
+\begin{displaymath}
+    \begin{split}
+        d_{nk} &= [t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k = [t^{n-k}](1-t)^{-(k+1)} \\
+            &= {{-(k+1)} \choose {n-k}}(-1)^{n-k} = {{k+1 +n-k -1} \choose {n-k}} = {{n} \choose {n-k}} \\
+    \end{split}
+\end{displaymath}
+using the same approach $\hat{d}_{nk}$ can be written as:
+\begin{displaymath}
+  \begin{split}
+    \hat{d}_{nk} &= [t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k = [t^{n-k}](1+t)^{-(k+1)} = 
+    {{-(k+1)} \choose {n-k}} \\
+    &= {{k+1 +n-k -1} \choose {n-k}} (-1)^{n-k} = {{n} \choose {n-k}} (-1)^{n-k}\\
+  \end{split}
+\end{displaymath}
+Hence, equating binomial coefficients yields:
+\begin{displaymath}
+  [t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k = (-1)^{k-n}[t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k 
+\end{displaymath}
+Choose a prime $p$ and apply the modulo operator on both members:
+\begin{displaymath}
+  [t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k \equiv_{p} (-1)^{k-n}[t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k 
+\end{displaymath}
+
+
+\marginpar{$b^{-1}\mod p$ exists if and only if $(b,p)=1$} From now on we have
+to reason according modular arithmetic, in particular we have to keep in mind
+that multiplying by a term $a$ both member of an equation for the sake of
+simplification a term $b$, requests to show that $a$ is the
+\emph{multiplicative inverse} of $b$ modulo $p$, denoted by: 
+\begin{displaymath}
+    a = b^{-1}\mod p
+\end{displaymath}
+
+First of all, observe that $-1 \equiv_{p} p-1$ and since $p$ is a
+prime by hp, it follows that $(p, p-1)=1$ (this result holds in
+general, not just for $p$ prime), which proofs the existence of
+both $-1$ and $p-1$ inverses, denoted by $(-1)^{-1}\mod p$ and
+$(p-1)^{-1}\mod p$ respectively.
+
+In order to find $(p-1)^{-1}\mod p$ we have to satisfy the
+congruence equation $(p-1) \cdot (p-1)^{-1} \equiv_{p} 1$. Choose
+$(p-1)^{-1}\mod p = p-1$ and verify
+$(p-1) \cdot (p-1) \equiv_{p} p^{2} -2\,p +1 \equiv_{p} 1$ as required.
+
+Another useful observation concerns raising to negative powers:
+\begin{displaymath}
+    (-1)^{-k} \equiv_{p} \left((-1)^{-1}\right)^{k} \equiv_{p} (p-1)^k
+\end{displaymath}
+where $k \geq 0$ and, since $-1 \equiv_{p} p-1$, it follows that
+$(-1)^{-k} \equiv_{p} (-1)^k$.
+
+Now we can use previous observation on the main congruence:
+\begin{displaymath}
+    \begin{split}
+        [t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k 
+            &\equiv_{p} (-1)^{k-n}[t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k \\
+            &\equiv_{p} (-1)^{k+n}[t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k \\
+            &\equiv_{p} (p-1)^{k+n}[t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k \\
+    \end{split}
+\end{displaymath}
+Hence, multiplying by $(p-1)^{-1}\mod p$ both members $k+n$ times:
+\begin{displaymath}
+    (p-1)^{k+n}[t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k \equiv_{p} [t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k 
+\end{displaymath}
+which is the same as:
+\begin{displaymath}
+    (-1)^{k+n}[t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k \equiv_{p} [t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k 
+\end{displaymath}
+and relating generic elements $d_{nk}$ and $\hat{d}_{nk}$:
+\marginpar{a general congruence $\equiv_{p}$ over $\mathcal{P}$ and $\mathcal{P}^{-1}$, where $p$
+    is an arbitrary prime}
+\begin{equation}
+    \label{eq:general:congruence:over:pascal:arrays}
+    (p-1)^{k+n}d_{nk}\equiv_{p}(-1)^{k+n}d_{nk} \equiv_{p} \hat{d}_{nk}
+\end{equation}
+
+\subsection{$\mathcal{P}_{\equiv_{2}}$} 
+
+The case where $p$ is the even prime produces the colouring reported in
+\autoref{fig:pascal-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle} for $\mathcal{P}$,
+and the colouring reported in
+\autoref{fig:pascal-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle} for $\mathcal{P}^{-1}$,
+where negatives entries are ignored, while in 
+\autoref{fig:pascal-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-triangle} such entries are handled.
+Formally, $\mathcal{P}$ and $\mathcal{P}^{-1}$ look the same because if we fix $p=2$, 
+\autoref{eq:general:congruence:over:pascal:arrays} yields:
+\begin{displaymath} 
+    d_{nk} \equiv_{2} \hat{d}_{nk} 
+\end{displaymath} 
+for any choice of $n$ and $k$ in $\mathbb{N}$.
+
+\input{Chapters/mod-p-characterization/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+\input{Chapters/mod-p-characterization/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+\input{Chapters/mod-p-characterization/pascal/pascal-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+\input{Chapters/mod-p-characterization/pascal/pascal-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+
+\subsection{$\mathcal{P}_{\equiv_{3}}$}
+
+Here there's a more interesting pattern to study, and in general,
+for any odd prime $p$, colourings of $\mathcal{P}$ and its inverse 
+mismatch. In this section we tackle the case for $p=3$,
+instantiating \autoref{eq:general:congruence:over:pascal:arrays} yields:
+\begin{displaymath}
+  2^{k+n}d_{nk}\equiv_{3}(-1)^{k+n}d_{nk} \equiv_{3} \hat{d}_{nk}
+\end{displaymath}
+
+For the sake of clarity, let us consider row $4$ of both triangles:
+\begin{itemize}
+\item $\mathcal{P}_{[3,\,:]} = (1 \quad 3 \quad 3 \quad 1) \equiv_{3}(1 \quad 0 \quad 0 \quad 1)$
+\item $\mathcal{P}^{-1}_{[3,\,:]} = (-1 \quad 3 \quad -3 \quad 1) \equiv_{3}(2 \quad 0 \quad 0 \quad 1)$
+\end{itemize}
+\marginpar{$[\alpha,\beta]$
+ in $\mathcal{R}_{[\alpha,\beta]}$ is the \emph{slice operator}, 
+ where $\alpha,\beta\in\mathbb{Z}\cup\lbrace:\rbrace$, as defined in NumPy or in Octave}
+Hence element $d_{30}$ gets a color $c$ while $\hat{d}_{30}$ gets
+a color $c'$ different from $c$: no general mapping about this relationship appears, so we
+carefully study the two coloured triangles. 
+
+Our exercise here is as follow: first fix the order $\alpha$ of a principal
+cluster $\mathcal{P}^{(\alpha)}$, say $\alpha=4$; then move upwards from the
+last row of $\mathcal{P}^{(4)}$ to the top, one row by one, repeatedly. For
+each considered row, move toward the right over columns, trying to understand a
+possible congruence over coefficients in the two arrays:
+\begin{displaymath}
+    \begin{split}
+        d_{3^4 -1,0} &\equiv_{3} \hat{d}_{3^4 -1,0} \\
+        d_{3^4 -1,1} &\equiv_{3} \hat{d}_{3^4 -2,0} \\
+        d_{3^4 -1,2} &\equiv_{3} \hat{d}_{3^4 -3,0} \\
+        d_{3^4 -1,3} &\equiv_{3} \hat{d}_{3^4 -4,0} \\
+        &\vdots
+    \end{split}
+\end{displaymath}
+next, a congruence going up one row:
+\marginpar{remember that the last row of $\mathcal{P}^{(\alpha)}$ is $p^{\alpha}-1$,
+    for $p$ given }
+\begin{displaymath}
+    \begin{split}
+        d_{3^4 -2,0} &\equiv_{3} \hat{d}_{3^4 -1,1} \\
+        d_{3^4 -2,1} &\equiv_{3} \hat{d}_{3^4 -2,1} \\
+        d_{3^4 -2,2} &\equiv_{3} \hat{d}_{3^4 -3,1} \\
+        d_{3^4 -2,3} &\equiv_{3} \hat{d}_{3^4 -4,1} \\
+        &\vdots
+    \end{split}
+\end{displaymath}
+next, a congruence going up two rows:
+\begin{displaymath}
+    \begin{split}
+        d_{3^4 -3,0} &\equiv_{3} \hat{d}_{3^4 -1,2} \\
+        d_{3^4 -3,1} &\equiv_{3} \hat{d}_{3^4 -2,2} \\
+        d_{3^4 -3,2} &\equiv_{3} \hat{d}_{3^4 -3,2} \\
+        d_{3^4 -3,3} &\equiv_{3} \hat{d}_{3^4 -4,2} \\
+        &\vdots
+    \end{split}
+\end{displaymath}
+
+A structure over indices can be caught, so let us introduce variable
+$b\in\lbrace1,\ldots,3^{4}\rbrace$ running over rows, and variable
+$a\in\lbrace 0,\ldots,3^{4}-b\rbrace$, running over columns. So we can state the following 
+congruence:
+\begin{equation}
+    \label{eq:pascal:arrays:congruence:rows:cols}
+    d_{3^4 -b,a} \equiv_{3} \hat{d}_{3^4 -1-a,b-1} 
+\end{equation}
+\marginpar{column segments of $\mathcal{P}$ are congruent to row segment of
+    $\mathcal{P}^{-1}$ and viceversa}
+
+Let's say, assume the colouring for $\mathcal{P}^{-1}$ triangle is
+given and the colouring for row $26$ of $\mathcal{P}$ is desired. It
+is necessary to find $b$: by $3^4 -b=26$ get $b=55$, so the
+coefficients lying on the required row satisfy the following congruence:
+\begin{displaymath}
+        d_{26,a} \equiv_{3} \hat{d}_{80-a,54} 
+\end{displaymath}
+On the other hand, we could have choosed a column, compute the value 
+for $a$ and then state a congruence with $b$ as free variable.
+
+\iffalse
+\\\\
+A question is still open: why do we choose row $3^4$ as reference
+row?
+
+It is useful to recall a theorem due to Fine:
+\begin{theorem}
+  A necessary and sufficient condition for a binomial coefficient
+  ${{n} \choose {m}}$ to be divisible by a prime $p$ is that $n$
+  be a power of $p$.
+\end{theorem}
+Consider the colouring for triangle $\mathcal{P}$, we can use the
+given theorem to point out ``interesting'' rows, namely those rows
+affected by the theorem, they correspond to powers
+$3^1, 3^2, 3^3, 3^4, \ldots$, each one of them can be easily
+recognized since dots lying on it have all the same colour. In the
+triangle $127$ former rows are drawn and in order to have ``more
+space'' to find a modular relationship between $d_{nk}$ and
+$\hat{d}_{nk}$ we choose as \emph{reference} row the one with
+index $3^4$.  From here we start moving backwards by rows toward
+the root: observe that the entire row $3^4 -1$, containing
+$3^4 -1$ remainders, of triangle $\mathcal{P}$ is the first
+segment of the first column of $\mathcal{P}^{-1}$, in other words
+$d_{3^4 -1,a} \equiv_{3} \hat{d}_{3^4 -1 -a, 0}$ for
+$a \in \lbrace 0, \ldots, 3^4 -1\rbrace$.
+
+\fi
+
+It seems that coefficient $d_{3^4-1,0}$ acts as a pivot on which
+the triangle ``flips'': the root moves toward the reader while the
+bottom edge moves toward opposite the reader. This rigid motion is
+captured by the following modular relationships among three
+important points:
+\begin{displaymath}
+    \begin{split}
+        d_{3^4 -1,0} &\equiv_{3} \hat{d}_{3^4 -1,0} \\
+        d_{3^4 -1,3^4 -1} &\equiv_{3} \hat{d}_{0,0} \\
+        d_{3^4 -3^3,3^3-1} &\equiv_{3} \hat{d}_{3^4 -3^3,3^3-1} \\
+    \end{split}
+\end{displaymath}
+
+It is natural to ask if \autoref{eq:pascal:arrays:congruence:rows:cols}
+holds for an arbitrary prime $p$.
+\begin{conjecture}
+    Let $p$ be a prime and $\alpha\geq0$. \\
+    If $d_{nk}\in\mathcal{P}^{(\alpha)}$ and
+    $\hat{d}_{nk}\in\left(\mathcal{P}^{-1}\right)^{(\alpha)}$, then:
+    \begin{equation}
+        d_{p^\alpha -b,a} \equiv_{p} \hat{d}_{p^\alpha -1-a,b-1} 
+    \end{equation}
+    where $b\in\lbrace1,\ldots,p^{\alpha}\rbrace$ and 
+    $a\in\lbrace 0,\ldots,p^{\alpha}-b\rbrace$.
+
+\end{conjecture}
