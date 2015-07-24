@@ -12,7 +12,7 @@ negative. On the other hand, for $p$ odd there is not such a simple
 correspondence and we attempt to observe some repeating pattern in the mapping
 among elements in those arrays.
 
-\subsection{A general congruence $\equiv_{p}$ over $\mathcal{P}$ and $\mathcal{P}^{-1}$,
+\subsection{$\equiv_{p}$ over $\mathcal{P}$ and $\mathcal{P}^{-1}$,
     for $p$ prime}
 
 Let $\mathcal{P}$ be the Riordan array for the Pascal triangle,
@@ -124,6 +124,7 @@ for any choice of $n$ and $k$ in $\mathbb{N}$.
 \input{Chapters/mod-p-characterization/pascal/pascal-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
 \input{Chapters/mod-p-characterization/pascal/pascal-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
 
+
 \subsection{$\mathcal{P}_{\equiv_{3}}$}
 
 Here there's a more interesting pattern to study, and in general,
@@ -204,6 +205,8 @@ coefficients lying on the required row satisfy the following congruence:
 On the other hand, we could have choosed a column, compute the value 
 for $a$ and then state a congruence with $b$ as free variable.
 
+% the following chunk of statements is not clearly written and
+% I believe it is not so important, so for now skip it.
 \iffalse
 \\\\
 A question is still open: why do we choose row $3^4$ as reference
@@ -245,6 +248,8 @@ important points:
     \end{split}
 \end{displaymath}
 
+\subsection{$\mathcal{P}_{\equiv_{p}}$, where $p$ is a prime greater than $3$}
+
 It is natural to ask if \autoref{eq:pascal:arrays:congruence:rows:cols}
 holds for an arbitrary prime $p$.
 \begin{conjecture}
@@ -256,5 +261,266 @@ holds for an arbitrary prime $p$.
     \end{equation}
     where $b\in\lbrace1,\ldots,p^{\alpha}\rbrace$ and 
     $a\in\lbrace 0,\ldots,p^{\alpha}-b\rbrace$.
-
 \end{conjecture}
+We provide a proof sketch:
+\begin{proof}
+    Using closed formula for coefficients $d_{p^\alpha -b,a}$ and $\hat{d}_{p^\alpha -1-a,b-1}$
+    we can rewrite:
+    \begin{displaymath}
+        {{p^\alpha -b} \choose {a}} \equiv_{p} {{p^\alpha -1-a}\choose{b-1} }\left(-1\right)^{p^{\alpha}-a-b}
+    \end{displaymath}
+    and simple manipulation of binomial coefficients yield:
+    \begin{displaymath}
+        {{p^\alpha -b} \choose {p^\alpha -a-b}} \equiv_{p} 
+            {{p^\alpha -1-a}\choose{p^\alpha -a-b} }\left(-1\right)^{p^{\alpha}-a-b}
+    \end{displaymath}
+    rewrite the right hand side using the identity ${{-n}\choose{k}}={{n+k-1}\choose{k}}(-1)^{k}$:
+    \begin{displaymath}
+        {{p^\alpha -b} \choose {p^\alpha -a-b}} \equiv_{p} 
+            {{-b}\choose{p^\alpha -a-b} }
+    \end{displaymath}
+    to close the proof we could represent $-b$ in base $p$ and, 
+    since $b\in\lbrace1,\ldots,p^{\alpha}\rbrace$, the application of
+    Lucas theorem to both members produces the same product of binomial
+    coefficients, as required.
+
+\end{proof}
+
+\subsection{A proof of \emph{Sierpinski}'s gasket}
+
+In this section we show that in a Pascal array $\mathcal{P}$ it is possible to
+recognize a structure as Sierpinski observed using fractals. More precisely, we
+show that, a principal cluster of order $\alpha$, $\mathcal{P}^{(\alpha)}$,
+repeats itself $3$ times within a \emph{chunk} of the principal cluster of one
+order bigger: such repetitions happens in the first $2\,p^{\alpha}$ rows of
+$\mathcal{P}^{(\alpha+1)}$. Moreover, those copies of $\mathcal{P}^{(\alpha)}$
+surround a zero-hole of order $\alpha$. Note that for even prime $p$,
+$\mathcal{P}^{(\alpha)}$ repeats itself $3$ times in
+$\mathcal{P}^{(\alpha+1)}$, exactly as in the \emph{Sierpinski's gasket},
+having a pure recursive structure.
+
+On the other hand, for $p$ odd prime, $\mathcal{P}^{(\alpha)}$ repeats itself
+in $\mathcal{P}^{(\alpha+1)}$ somewhere, without a complete recursive
+structure, due to the oddness of $p$, ie. other coloured subtriangles appears
+in $\mathcal{P}^{(\alpha+1)}$. However if we study the repetition up to row
+$2\,p^{\alpha}$, the proof still hold.
+
+% the following paragraph should be put in a dedicated section, after this one.
+\iffalse
+, while in general we can say that maximal
+triangles of coefficients multiples of $p$, appear with regularity in
+$\mathcal{P}_{n+1}$ a number of times equals to:
+\begin{displaymath}
+    \frac{(p-1)p}{2}
+\end{displaymath}
+in other words, considering triangles $\mathcal{P}_{n}$ and
+$\mathcal{P}_{n+1}$, there are $\frac{(p-1)p}{2}$ upside-down
+maximal triangles, with all coefficients multiple of $p$, from row $p^n$
+to row $p^{n+1}-1$; this result will be prove at the end of this 
+section.
+\fi
+% ----------------------------------------------------------------------
+
+\begin{proof}
+  Let $\mathcal{P}_n$ be the triangle that starts at the root and
+  extends downward $p^n$ rows, hence a row index $r$ for
+  $\mathcal{P}_n$ satisfies
+  $r \in \lbrace 0, \ldots, p^n -1 \rbrace$.
+    
+  Now consider a bigger triangle $\mathcal{P}_n^\prime$ that
+  starts at the root and extends downward $2p^n$ rows, it is
+  requested to prove that coefficients in \emph{equivalent
+    positions} in the bottom left and bottom right triangles are
+  congruent, modulo $p$, to the coefficient in equivalent position
+  in $\mathcal{P}_n$. In order to formalize the concept of
+  \emph{equivalent positions} think as follow: let
+  $d_{rc}\in\mathcal{P}_n$, since $\mathcal{P}_{n}$ has $p^n$ rows
+  and on the vary last row (ie, the one with index $p^n-1$) lay
+  $p^n$ coefficients (ie, there are $p^n$ columns), the
+  coefficient at \emph{equivalent position} in the bottom left
+  triangle of $\mathcal{P}_{n}^\prime$ is denoted by
+  $d_{p^n+r, c}^{\swarrow}$; on the other hand, the coefficient at
+  \emph{equivalent position} in the bottom right triangle of
+  $\mathcal{P}_{n}^\prime$ is denoted by
+  $d_{p^n+r, p^n+c}^{\searrow}$.  Formal settings described, we've
+  to prove:
+  \begin{displaymath}
+    d_{rc} \equiv_p d_{p^n+r,c}^{\swarrow} \equiv_p d_{p^n+r,p^n+c}^{\searrow} 
+  \end{displaymath}
+  or, in other words:
+  \begin{displaymath}
+    {{r} \choose {c}} \equiv_p {{p^n+r} \choose {c}} \equiv_p {{p^n+r} \choose {p^n+c}} 
+  \end{displaymath}
+
+  In order to prove such congruences we'll use Lucas theorem:
+  first of all, observe that $c \leq r$ since $\mathcal{P}$ is a
+  triangle, therefore $c \in \lbrace 0, \ldots, p^n -1 \rbrace$,
+  as $r$ satisfies.  By basis representation theorem, there exists
+  sequences $\lbrace r_i\rbrace$ and $\lbrace c_i\rbrace$, for
+  $i \in \lbrace 0, \ldots, p^n -1 \rbrace$, with $r_i,c_i < p$,
+  such that:
+  \begin{displaymath}
+    \begin{split}
+      r &= r_0 + r_1 p + r_2 p^2 + \ldots + r_{n-1}p^{n-1} \\
+      c &= c_0 + c_1 p + c_2 p^2 + \ldots + c_{n-1}p^{n-1} \\
+    \end{split}
+  \end{displaymath}
+  Settings for Lucas theorem are ready, hence apply it:
+  \begin{displaymath}
+    \begin{split}
+      {{p^n+r} \choose {c}} &\equiv_{p} {{r_0} \choose {c_0}} {{r_1} \choose {c_1}}{{r_2} \choose {c_2}} \ldots 
+      {{r_{n-1}} \choose {c_{n-1}}}{{1} \choose {0}} \equiv_{p} {{r} \choose {c}}\\
+      {{p^n+r} \choose {p^n+c}} &\equiv_{p} {{r_0} \choose {c_0}} {{r_1} \choose {c_1}}{{r_2} \choose {c_2}} \ldots 
+      {{r_{n-1}} \choose {c_{n-1}}}{{1} \choose {1}} \equiv_{p} {{r} \choose {c}}\\
+    \end{split}
+  \end{displaymath}
+  congruences holds, therefore coefficients located at
+  \emph{equivalent positions} belong to the same remainder class,
+  modulo $p$, as required.
+  \\\\
+  For the second part of the statement, we've to show that in
+  $\mathcal{P}_{n}^\prime$ an upside-down triangle of
+  coefficients, each one of them can by divided by $p$, is
+  surrounded by the three ``congruent'' triangles discussed in the
+  first part of this proof.  Observe that the very first
+  coefficient $d_{p^n, 0}$ and very last $d_{p^n, p^n}$ of row
+  with index $p^n$ are congruent to the unit, modulo $p$:
+  \begin{displaymath}
+    {{p^n} \choose {0}} \equiv_{p}{{p^n} \choose {p^n}} \equiv_{p} 1
+  \end{displaymath}
+  while $p$ divides every coefficient between them, let
+  $c\in\lbrace1,\ldots, p^n-1 \rbrace$:
+  \begin{displaymath}
+    {{p^n} \choose {c}} \equiv_{p} {{0} \choose {c_0}} {{0} \choose {c_1}}{{0} \choose {c_2}} \ldots 
+    {{0} \choose {c_{n-1}}}{{1} \choose {0}} \equiv_{p} 0
+  \end{displaymath}
+  By the recurrence rule $d_{n+1, k+1} = d_{n, k} + d_{n, k+1}$
+  characterizing $\mathcal{P}$, observe that:
+  \begin{displaymath}
+    \begin{split}
+      d_{p^n+1, 1} &\equiv_{p} d_{p^n, 0} + d_{p^n, 1}\equiv_{p} 1 \\
+      d_{p^n+1, p^n} &\equiv_{p} d_{p^n, p^n-1} + d_{p^n, p^n}\equiv_{p} 1 \\
+      d_{p^n+1, i} &\equiv_{p} d_{p^n, i-1} + d_{p^n, i}\equiv_{p} 0 \quad \forall i \in \lbrace 2, \ldots, p^n -1\rbrace \\
+    \end{split}
+  \end{displaymath}
+  therefore row $p^n + 1$ has one coefficient multiple of $p$ less
+  than row $p^n$, and since in $p^n$ there are $p^n-2$ such
+  coefficients, after $p^n-2$ rows there are no such coefficients
+  at all, such a row has index $2(p^n -1)+1$ ($1$ more because
+  indexes are $0$-based). Formally, for any column index $c$:
+  \begin{displaymath}
+    \begin{split}
+      {{2p^n - 1} \choose {c}} &\equiv_{p} {{p^n +(p^n- 1)} \choose {c}} \\
+      &\equiv_{p} {{p-1} \choose {c_0}} {{p-1} \choose {c_1}}{{p-1} \choose {c_2}} \ldots 
+      {{p-1} \choose {c_{n-1}}}{{1} \choose {0}} \\
+      &\not\equiv_{p} 0
+    \end{split}
+  \end{displaymath}
+  The last step holds by representation of $c$:
+  $c_i \in \lbrace 0, \ldots, p-1 \rbrace$, for any $i$.
+
+  The latter argument can be applied to every row with index of
+  the form $p^k -1$, for some $k\geq n$:
+  \begin{displaymath}
+    \begin{split}
+      {{p^k-1} \choose {c}} &\equiv_{p} {{p-1} \choose {c_0}} {{p-1} \choose {c_1}} \ldots 
+      {{p-1} \choose {c_{n-1}}}{{p-1} \choose {0}}\ldots{{p-1} \choose {c_{k-1}=0}} \not\equiv_{p} 0
+    \end{split}
+  \end{displaymath}
+
+  % the following derivation is simply a proof of coefficient extraction
+  % using the definition of Riordan array for Pascal triangle, redundant.
+  % Recall $\mathcal{P}$ is defined as the Riordan array :
+  % \begin{displaymath}
+  %   \mathcal{P} = \left(\frac{1}{1-t}, \frac{t}{1-t}  \right)
+  % \end{displaymath}
+  % hence the following derivation holds:
+  % \begin{displaymath}
+  %   \begin{split}
+  %     {{p^n+r} \choose {c}} &\equiv_p [t^{p^n +r}]\frac{1}{1-t} \left(\frac{t}{1-t}\right)^c \\
+  %     &\equiv_p [t^{p^n +r-c}](1-t)^{-(c+1)} \\
+  %     &\equiv_p [t^{p^n +r-c}]\mathcal{G}\left\lbrace {{-(c+1)} \choose {k}}(-1)^k \right\rbrace_{k\in\mathbb{N}} \\
+  %     &\equiv_p  {{-(c+1)} \choose {p^n +r-c}}(-1)^{p^n +r-c}  \\
+  %     &\equiv_p  {{ p^n +r} \choose {p^n +r-c}} \left((-1)^{p^n +r-c}\right)^2  \\
+  %     &\equiv_p  {{ p^n +r} \choose {c}}  \\
+  %   \end{split}
+  % \end{displaymath}
+
+\end{proof}
+
+\subsection{On the number of \emph{zero-holes} within $\mathcal{P}^{(\alpha)}$}
+
+Let us finish this section with the proof of an observation about
+maximal upside down triangle of coefficients, each one of them 
+multiple of $p$.
+
+\begin{lemma}
+    Let $\mathcal{P}_n$ be a chunk of $\mathcal{P}$ and let $j\in
+    \lbrace 1, \ldots, p-1 \rbrace$. Between row index $j p^n$ and
+    row index $(j+1)p^n -1$, there are $j$ maximal upside down triangles
+    such that if a coefficient $d_{nk}$ belongs to one of them, then 
+    $d_{nk} \equiv_{p} 0$.
+\end{lemma}
+
+\begin{proof}
+    By absurd, choose any $j\in \lbrace 1, \ldots, p-1 \rbrace$ and show
+    that between row index $j p^n$ and row index $(j+1)p^n -1$, 
+    a maximal upside down triangle $\mathcal{T}$,
+    such that $d_{nk}\in\mathcal{T} \rightarrow d_{nk} \equiv_{p} 0$,
+    either is missing or is over. Proceed by cases:
+    \begin{itemize}
+        \item assume triangle $\mathcal{T}$ is missing, so there exists a coefficient
+                $\tilde{d}_{nk}\in\mathcal{T}$ such that $\tilde{d}_{nk}\not\equiv_{p}0$, while all 
+                other coefficient $d_{nk}\in\mathcal{T}$ satisfies $d_{nk} \equiv_{p}0$.
+                Proceed by cases on parity of $j$:
+            \begin{description}
+                \item[$j=2k+1$ for some $k$] Without loss of generality, suppose $\mathcal{T}$ is the one in the 
+                very middle, due to symmetry of $\mathcal{P}$ (the cases where it is on the left or 
+                on the right are less interesting) and
+                suppose that $\tilde{d}_{(j+1) p^n -2, (k+1)p^n -1}\not\equiv_{p}0$, the coefficient in the very bottom corner.
+                But this is impossible because $d_{nk} = d_{n-1,k-1} + d_{n-1, k}$ if $d_{nk}\in \mathcal{P}$:
+                \begin{displaymath}
+                0\not\equiv_{p}\tilde{d}_{(j+1) p^n -2, (k+1)p^n -1} \equiv_{p} 
+                    \tilde{d}_{(j+1) p^n -3, (k+1)p^n -1} + \tilde{d}_{(j+1) p^n -3, (k+1)p^n-2 }\equiv_{p}0
+                \end{displaymath}
+
+                \item[$j=2k$ for some $k$] Without loss of generality, suppose  $\mathcal{T}$ is the one on the very left. 
+                Choose $r \in\lbrace 0,\ldots,p^n-2\rbrace$ and $c \in\lbrace r+1,\ldots,p^n-1\rbrace$,
+                suppose that $\tilde{d}_{(j+1) p^n +r, c}\not\equiv_{p}0$. 
+                By symmetry of $\mathcal{P}$, we get another contradiction: 
+                \begin{displaymath}
+                    0\not\equiv_{p}\tilde{d}_{(j+1) p^n +r, c} \equiv_{p} \tilde{d}_{(j+1) p^n +r, (j+1) p^n +r-c}\equiv_{p}0
+                \end{displaymath}
+            \end{description}
+        \item assume triangle $\mathcal{T}$ is over, therefore the very first coefficient 
+            $\tilde{d}$ in the top-left corner of $\mathcal{T}$ have to satisfy:
+            \begin{displaymath}
+                 \tilde{d} \equiv_{p} d_{j\,p^{n},j\,p^{n}+1}
+            \end{displaymath}
+            by structure of $\mathcal{P}$, coefficient $d_{j\,p^{n},j\,p^{n}+1}$ has no
+            meaning so $\tilde{d}$ cannot satisfy the requested congruence.
+    \end{itemize}
+\end{proof}
+
+
+\begin{theorem}
+    In two adjacent chunks of $\mathcal{P}$, denote them by $\mathcal{P}_n$
+    and $\mathcal{P}_{n+1}$ respectively, the
+    number of upside down maximal triangles of coefficients $d_{nk}$, with
+    $d_{nk} \equiv_p 0$, equals:
+    \begin{displaymath}
+        {{p}\choose{2}}
+    \end{displaymath}
+\end{theorem}
+
+\begin{proof}
+    Choose any $n\in\mathbb{N}$ and let $\mathcal{P}_n$ and $\mathcal{P}_{n+1}$
+    be the two chunk of $\mathcal{P}$ of interest. Let $j\in\lbrace 1, \ldots, p-1 \rbrace$, so
+    by previous lemma between row index $j p^n$ and
+    row index $(j+1)p^n -1$, there are $j$ maximal upside down triangles, therefore consider the sum:
+    \begin{displaymath}
+        \sum_{i=1}^{p-1}{i} = \frac{(p-1)p}{2}
+    \end{displaymath}
+    as required.
+
+\end{proof}
