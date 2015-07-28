@@ -1,0 +1,41 @@
+
+\begin{figure}[p]
+
+    \noindent\makebox[\textwidth]{
+        \centering
+        %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
+
+        % using *angle* property to rotate it is difficult to properly align it
+        % in order to have a "real" matrix representation.
+        \includegraphics[width=14cm, height=14cm, keepaspectratio=true]{Chapters/mod-p-characterization/pascal/pascal-standard-mod3-zero-row-26.pdf}
+    }
+
+    \vskip1cm
+
+    \noindent\makebox[\textwidth]{
+        \centering
+        %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
+
+        % using *angle* property to rotate it is difficult to properly align it
+        % in order to have a "real" matrix representation.
+        \includegraphics[width=14cm, height=14cm, keepaspectratio=true]{Chapters/mod-p-characterization/pascal/pascal-inverse-mod3-zero-row-26.pdf}
+    }
+
+    % this 'particular' line is necessary to use `displaymath' environment
+    % into the caption environment, togheter with the inclusion of 
+    % `caption' package. See here for more explanation:
+    % http://stackoverflow.com/questions/2716227/adding-an-equation-or-formula-to-a-figure-caption-in-latex
+    \captionsetup{singlelinecheck=off}
+    \caption[$\mathcal{P}$'s row $26$ and $\mathcal{P}^{-1}$'s column $54$ ]
+        { Highlighting row $26$ of $\mathcal{P}$, on top, and column $54$ of $\mathcal{P}^{-1}$, on bottom,
+            to show congruence: 
+            \begin{displaymath}
+                d_{26,a} \equiv_{3} \hat{d}_{3^4 -1-a,54} 
+            \end{displaymath}
+            for $a\in\lbrace0,\ldots,26\rbrace$ 
+        }
+
+
+    \label{fig:pascal:standard:mod3:congruence:row:26}
+
+\end{figure}

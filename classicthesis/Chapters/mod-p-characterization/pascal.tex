@@ -145,13 +145,16 @@ For the sake of clarity, let us consider row $4$ of both triangles:
  where $\alpha,\beta\in\mathbb{Z}\cup\lbrace:\rbrace$, as defined in NumPy or in Octave}
 Hence element $d_{30}$ gets a color $c$ while $\hat{d}_{30}$ gets
 a color $c'$ different from $c$: no general mapping about this relationship appears, so we
-carefully study the two coloured triangles. 
+study the two coloured triangles carefully. 
 
 Our exercise here is as follow: first fix the order $\alpha$ of a principal
 cluster $\mathcal{P}^{(\alpha)}$, say $\alpha=4$; then move upwards from the
 last row of $\mathcal{P}^{(4)}$ to the top, one row by one, repeatedly. For
 each considered row, move toward the right over columns, trying to understand a
-possible congruence over coefficients in the two arrays:
+possible congruence over coefficients in the two arrays, see
+\autoref{fig:pascal:standard:mod3:congruence:zero:row:above}
+for some highlights:
+\input{Chapters/mod-p-characterization/pascal/pascal-standard-mod3-zero-row-above-end-include-figure}
 \begin{displaymath}
     \begin{split}
         d_{3^4 -1,0} &\equiv_{3} \hat{d}_{3^4 -1,0} \\
@@ -202,6 +205,8 @@ coefficients lying on the required row satisfy the following congruence:
 \begin{displaymath}
         d_{26,a} \equiv_{3} \hat{d}_{80-a,54} 
 \end{displaymath}
+\input{Chapters/mod-p-characterization/pascal/pascal-standard-mod3-zero-row-26-include-figure}
+an highlighting is shown in \autoref{fig:pascal:standard:mod3:congruence:row:26}.
 On the other hand, we could have choosed a column, compute the value 
 for $a$ and then state a congruence with $b$ as free variable.
 
@@ -235,6 +240,9 @@ $a \in \lbrace 0, \ldots, 3^4 -1\rbrace$.
 
 \fi
 
+% again the following paragraph is a technical detail that can 
+% be understood only by talking.
+\iffalse
 It seems that coefficient $d_{3^4-1,0}$ acts as a pivot on which
 the triangle ``flips'': the root moves toward the reader while the
 bottom edge moves toward opposite the reader. This rigid motion is
@@ -247,15 +255,18 @@ important points:
         d_{3^4 -3^3,3^3-1} &\equiv_{3} \hat{d}_{3^4 -3^3,3^3-1} \\
     \end{split}
 \end{displaymath}
+\fi
 
 \subsection{$\mathcal{P}_{\equiv_{p}}$, where $p$ is a prime greater than $3$}
 
 It is natural to ask if \autoref{eq:pascal:arrays:congruence:rows:cols}
 holds for an arbitrary prime $p$.
 \begin{conjecture}
-    Let $p$ be a prime and $\alpha\geq0$. \\
+    Let $p$ be a prime and let $\alpha\in\mathbb{N}$. 
     If $d_{nk}\in\mathcal{P}^{(\alpha)}$ and
     $\hat{d}_{nk}\in\left(\mathcal{P}^{-1}\right)^{(\alpha)}$, then:
+    \marginpar{a general congruence over rows of $\mathcal{P}$
+        and columns of $\mathcal{P}^{-1}$, for any prime $p$?}
     \begin{equation}
         d_{p^\alpha -b,a} \equiv_{p} \hat{d}_{p^\alpha -1-a,b-1} 
     \end{equation}
