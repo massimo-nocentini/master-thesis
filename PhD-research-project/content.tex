@@ -3,30 +3,30 @@
 the analysis of algorithms and data structures used by them.
 
 \marginpar{analytic combinatorics and discrete objects}A solid base for such
-methods comes from analytic combinatorics, which comprises tools such as
-generating functions, Riordan arrays and the symbolic method. Many interesting
-books \footnote{P. Flajolet and R. Sedgewick, \emph{Analytic
+methods comes from the field of analytic combinatorics, which comprises tools
+such as generating functions, Riordan arrays and the symbolic method. Many
+interesting books \footnote{P. Flajolet and R. Sedgewick, \emph{Analytic
 Combinatorics}, Cambridge University Press, 2009.}, \footnote{D. Knuth,
 \emph{The Art of Computer Programming}, vol.  1-3, Addison-Wesley, 1973.} and
-\footnote{Graham, Knuth and Patashnik, \emph{Concrete Mathematics: A
-Foundation for Computer Science}, Addison-Wesley, 1994} exist on those
-subjects, where skillful methods to handle sequences of \emph{counting
-numbers}, combinatorial sums and classes of discrete objects, such as graphs,
-words and trees, are presented. 
+\footnote{Graham, Knuth and Patashnik, \emph{Concrete Mathematics: A Foundation
+for Computer Science}, Addison-Wesley, 1994} exist on those subjects, where
+    skillful methods to handle sequences of \emph{counting numbers},
+    combinatorial sums and classes of discrete objects, such as graphs, words
+    and trees, are presented. 
 
 Actually, the goal of this project is twofold:\marginpar{to find combinatorial
 meanings and\ldots} we're interested in studying how such powerful techniques
 provide a combinatorial \emph{interpretation} of analytic results about a class
-$\mathcal{G}$ of objects, usually stated using the ring of \emph{formal power
-series} $\llbracket g(t)=\sum_{k\geq0}{g_{k}\,t^{k}}\rrbracket$: our final
-interest is to find a \emph{combinatorial meanings} for each coefficient in
-$\lbrace g_{k}\rbrace_{k\in\mathbb{N}}$ and, possibly, a characterization in
-terms of lattice paths, urn models, bracelets configurations, domino and square
-tiling and so on, in the spirit of \footnote{Benjamin and Quinn,
-\emph{Proofs that really counts}, Mathematical Association of America, 2003}.
-Moreover, we would apply such techniques and interpretations to the analysis of
-algorithms for what concerns the analytic aspect, and to data structures for
-what concerns the combinatorial one. 
+$\mathcal{G}$ of objects, usually stated using a \emph{formal power series}
+$g(t)=\sum_{k\geq0}{g_{k}\,t^{k}}$ in the ring $\mathbb{Z}\llbracket t
+\rrbracket$: our final interest is to find a \emph{combinatorial meanings} for
+each coefficient in $\lbrace g_{k}\rbrace_{k\in\mathbb{N}}$ and, possibly, a
+characterization in terms of lattice paths, urn models, bracelets
+configurations, domino and square tiling and so on, in the spirit of
+\footnote{Benjamin and Quinn, \emph{Proofs that really counts}, Mathematical
+Association of America, 2003}.  Moreover, we would apply such techniques and
+interpretations to the analysis of algorithms for what concerns the analytic
+aspect, and to data structures for what concerns the combinatorial one. 
 
 The second aspect of our goal is to give an implementation of the
 \emph{symbolic method}, departing from \footnote{\texttt{combstruct} Maple
@@ -36,8 +36,9 @@ package, proprietary implementation and closed-source} toward:
 \begin{itemize} 
 
     \item an \emph{open-source} code base with an \emph{on-line} interactive
-    session, in the spirit of \footnote{IPython notebooks, \url{ipython.org}},
-    to provide an open web interface to our implementations; 
+    session, in the spirit of \footnote{\url{http://ipython.org}, in particular
+    the \emph{Notebook} feature}, to provide an open web interface to our
+    implementations; 
 
     \item a tight integration with \emph{Eclipse IDE}, developing a set of
     plug-ins using the \emph{Xtext}\footnote{\url{https://eclipse.org/Xtext/}}
