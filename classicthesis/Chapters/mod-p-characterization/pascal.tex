@@ -300,21 +300,21 @@ We provide a proof sketch:
 \subsection{A proof of \emph{Sierpinski}'s gasket}
 
 In this section we show that in a Pascal array $\mathcal{P}$ it is possible to
-recognize a structure as Sierpinski observed using fractals. More precisely, we
-show that, a principal cluster of order $\alpha$, $\mathcal{P}^{(\alpha)}$,
-repeats itself $3$ times within a \emph{chunk} of the principal cluster of one
-order bigger: such repetitions happens in the first $2\,p^{\alpha}$ rows of
-$\mathcal{P}^{(\alpha+1)}$. Moreover, those copies of $\mathcal{P}^{(\alpha)}$
-surround a zero-hole of order $\alpha$. Note that for even prime $p$,
-$\mathcal{P}^{(\alpha)}$ repeats itself $3$ times in
-$\mathcal{P}^{(\alpha+1)}$, exactly as in the \emph{Sierpinski's gasket},
-having a pure recursive structure.
+recognize a structure similar to the one observed by Sierpinski during his
+studies on fractals. More precisely, we show that $\mathcal{P}^{(\alpha)}$, a
+principal cluster of order $\alpha$, repeats itself $3$ times within a
+\emph{chunk} of the principal cluster of one order bigger: such repetitions
+happens in the first $2\,p^{\alpha}$ rows of $\mathcal{P}^{(\alpha+1)}$.
+Moreover, those copies of $\mathcal{P}^{(\alpha)}$ surround a zero-hole of
+order $\alpha$. Note that for even prime $p$, $\mathcal{P}^{(\alpha)}$ repeats
+itself $3$ times in $\mathcal{P}^{(\alpha+1)}$, exactly as in the
+\emph{Sierpinski's gasket}, having a pure recursive structure.
 
 On the other hand, for $p$ odd prime, $\mathcal{P}^{(\alpha)}$ repeats itself
 in $\mathcal{P}^{(\alpha+1)}$ somewhere, without a complete recursive
 structure, due to the oddness of $p$, ie. other coloured subtriangles appears
 in $\mathcal{P}^{(\alpha+1)}$. However if we study the repetition up to row
-$2\,p^{\alpha}$, the proof still hold.
+$2\,p^{\alpha}$, the proof still hold for arbitrary prime $p$.
 
 % the following paragraph should be put in a dedicated section, after this one.
 \iffalse
@@ -333,63 +333,71 @@ section.
 % ----------------------------------------------------------------------
 
 \begin{proof}
-  Let $\mathcal{P}_n$ be the triangle that starts at the root and
-  extends downward $p^n$ rows, hence a row index $r$ for
-  $\mathcal{P}_n$ satisfies
-  $r \in \lbrace 0, \ldots, p^n -1 \rbrace$.
+
+  Let $\mathcal{P}^{(\alpha)}$ be the principal cluster of order $\alpha$ of
+  Pascal array $\mathcal{P}$ and let $r$ be a row index for
+  $\mathcal{P}^{(\alpha)}$, so $r \in \lbrace 0, \ldots, p^{\alpha} -1
+  \rbrace$.
     
-  Now consider a bigger triangle $\mathcal{P}_n^\prime$ that
-  starts at the root and extends downward $2p^n$ rows, it is
-  requested to prove that coefficients in \emph{equivalent
-    positions} in the bottom left and bottom right triangles are
-  congruent, modulo $p$, to the coefficient in equivalent position
-  in $\mathcal{P}_n$. In order to formalize the concept of
-  \emph{equivalent positions} think as follow: let
-  $d_{rc}\in\mathcal{P}_n$, since $\mathcal{P}_{n}$ has $p^n$ rows
-  and on the vary last row (ie, the one with index $p^n-1$) lay
-  $p^n$ coefficients (ie, there are $p^n$ columns), the
-  coefficient at \emph{equivalent position} in the bottom left
-  triangle of $\mathcal{P}_{n}^\prime$ is denoted by
-  $d_{p^n+r, c}^{\swarrow}$; on the other hand, the coefficient at
-  \emph{equivalent position} in the bottom right triangle of
-  $\mathcal{P}_{n}^\prime$ is denoted by
-  $d_{p^n+r, p^n+c}^{\searrow}$.  Formal settings described, we've
-  to prove:
+  Let $\mathcal{P}_{2;\alpha}$ be a \emph{chunk} of $\mathcal{P}^{(\alpha +1)}$
+  that starts at the root and extends downward $2\,p^{\alpha}$ rows, therefore
+  including $\mathcal{P}^{(\alpha)}$ as its first halve. It is requested to
+  prove that coefficients at \emph{equivalent positions} in the bottom left and
+  bottom right triangles of $\mathcal{P}_{2;\alpha}$ are congruent, modulo $p$,
+  to coefficients at \emph{equivalent positions} in $\mathcal{P}^{\alpha}$. 
+  
+  In order to formalize \marginpar{equivalent position within a \emph{nest} of
+  triangles} the concept of \emph{equivalent positions} we introduce the following 
+  objects: 
+  \begin{itemize}
+    \item the pair $(r,c)$ of indices is an \emph{equivalent position} 
+        for coefficient $d_{rc}\in\mathcal{P}^{(\alpha)}$ and coefficient 
+            $d_{rc}^{\swarrow}$ in the \emph{bottom left} triangle of $\mathcal{P}_{2;\alpha}$ if and only if
+                $d_{rc}^{\swarrow} = d_{p^{\alpha}+r,c}$
+    \item the pair $(r,c)$ of indices is an \emph{equivalent position} 
+        for coefficient $d_{rc}\in\mathcal{P}^{(\alpha)}$ and coefficient 
+            $d_{rc}^{\searrow}$ in the \emph{bottom right} triangle of $\mathcal{P}_{2;\alpha}$ if and only if
+                $d_{rc}^{\searrow} = d_{p^{\alpha}+r,p^{\alpha}+c}$
+  \end{itemize}
+  
+  After these definitions, we've to prove:
   \begin{displaymath}
-    d_{rc} \equiv_p d_{p^n+r,c}^{\swarrow} \equiv_p d_{p^n+r,p^n+c}^{\searrow} 
+    d_{rc} \equiv_p d_{rc}^{\swarrow} \equiv_p d_{rc}^{\searrow} 
   \end{displaymath}
   or, in other words:
   \begin{displaymath}
-    {{r} \choose {c}} \equiv_p {{p^n+r} \choose {c}} \equiv_p {{p^n+r} \choose {p^n+c}} 
+    {{r} \choose {c}} \equiv_p {{p^{\alpha}+r} \choose {c}} \equiv_p {{p^{\alpha}+r} \choose {p^{\alpha}+c}} 
   \end{displaymath}
 
   In order to prove such congruences we'll use Lucas theorem:
-  first of all, observe that $c \leq r$ since $\mathcal{P}$ is a
-  triangle, therefore $c \in \lbrace 0, \ldots, p^n -1 \rbrace$,
+  first of all, observe that $c \leq r$ because $\mathcal{P}^{(\alpha)}$ 
+  is a triangle, therefore $c \in \lbrace 0, \ldots, p^{\alpha} -1 \rbrace$,
   as $r$ satisfies.  By basis representation theorem, there exists
-  sequences $\lbrace r_i\rbrace$ and $\lbrace c_i\rbrace$, for
-  $i \in \lbrace 0, \ldots, p^n -1 \rbrace$, with $r_i,c_i < p$,
+  sequences $\lbrace r_i\rbrace$ and $\lbrace c_i\rbrace$, 
+  with both $r_i< p$ and $c_i < p$, for $i \in \lbrace 0, \ldots, p^{\alpha} -1 \rbrace$,
   such that:
   \begin{displaymath}
     \begin{split}
-      r &= r_0 + r_1 p + r_2 p^2 + \ldots + r_{n-1}p^{n-1} \\
-      c &= c_0 + c_1 p + c_2 p^2 + \ldots + c_{n-1}p^{n-1} \\
+      r &= r_0 + r_1 p + r_2 p^2 + \ldots + r_{{\alpha}-1}p^{{\alpha}-1} \\
+      c &= c_0 + c_1 p + c_2 p^2 + \ldots + c_{{\alpha}-1}p^{{\alpha}-1} \\
     \end{split}
   \end{displaymath}
   Settings for Lucas theorem are ready, hence apply it:
   \begin{displaymath}
     \begin{split}
-      {{p^n+r} \choose {c}} &\equiv_{p} {{r_0} \choose {c_0}} {{r_1} \choose {c_1}}{{r_2} \choose {c_2}} \ldots 
-      {{r_{n-1}} \choose {c_{n-1}}}{{1} \choose {0}} \equiv_{p} {{r} \choose {c}}\\
-      {{p^n+r} \choose {p^n+c}} &\equiv_{p} {{r_0} \choose {c_0}} {{r_1} \choose {c_1}}{{r_2} \choose {c_2}} \ldots 
-      {{r_{n-1}} \choose {c_{n-1}}}{{1} \choose {1}} \equiv_{p} {{r} \choose {c}}\\
+      {{p^{\alpha}+r} \choose {c}} &\equiv_{p} {{r_0} \choose {c_0}} {{r_1} \choose {c_1}}{{r_2} \choose {c_2}} \ldots 
+      {{r_{{\alpha}-1}} \choose {c_{{\alpha}-1}}}{{1} \choose {0}} \equiv_{p} {{r} \choose {c}}\\
+      {{p^{\alpha}+r} \choose {p^{\alpha}+c}} &\equiv_{p} {{r_0} \choose {c_0}} {{r_1} \choose {c_1}}{{r_2} \choose {c_2}} \ldots 
+      {{r_{{\alpha}-1}} \choose {c_{{\alpha}-1}}}{{1} \choose {1}} \equiv_{p} {{r} \choose {c}}\\
     \end{split}
   \end{displaymath}
-  congruences holds, therefore coefficients located at
-  \emph{equivalent positions} belong to the same remainder class,
+  therefore coefficients located at \emph{equivalent position} 
+  $(r,c)$ belong to the same remainder class of congruence relation
   modulo $p$, as required.
   \\\\
-  For the second part of the statement, we've to show that in
+
+  For the second part \marginpar{proving that a zero-hole of order $\alpha$ 
+  is surrounded within $\mathcal{P}_{2;\alpha}$} of the statement, we've to show that in
   $\mathcal{P}_{n}^\prime$ an upside-down triangle of
   coefficients, each one of them can by divided by $p$, is
   surrounded by the three ``congruent'' triangles discussed in the
