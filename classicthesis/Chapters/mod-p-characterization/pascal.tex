@@ -346,9 +346,9 @@ section.
   bottom right triangles of $\mathcal{P}_{2;\alpha}$ are congruent, modulo $p$,
   to coefficients at \emph{equivalent positions} in $\mathcal{P}^{\alpha}$. 
   
-  In order to formalize \marginpar{equivalent position within a \emph{nest} of
-  triangles} the concept of \emph{equivalent positions} we introduce the following 
-  objects: 
+  In order to formalize \marginpar{proving congruences over coefficients at
+  equivalent positions} the concept of \emph{equivalent positions} we
+  introduce the following objects: 
   \begin{itemize}
     \item the pair $(r,c)$ of indices is an \emph{equivalent position} 
         for coefficient $d_{rc}\in\mathcal{P}^{(\alpha)}$ and coefficient 
@@ -398,54 +398,47 @@ section.
 
   For the second part \marginpar{proving that a zero-hole of order $\alpha$ 
   is surrounded within $\mathcal{P}_{2;\alpha}$} of the statement, we've to show that in
-  $\mathcal{P}_{n}^\prime$ an upside-down triangle of
-  coefficients, each one of them can by divided by $p$, is
-  surrounded by the three ``congruent'' triangles discussed in the
-  first part of this proof.  Observe that the very first
-  coefficient $d_{p^n, 0}$ and very last $d_{p^n, p^n}$ of row
-  with index $p^n$ are congruent to the unit, modulo $p$:
+  $\mathcal{P}_{2;\alpha}$ a zero-hole of order $\alpha$ is
+  surrounded by the three ``congruent'' subtriangles composed of
+  coefficients $d_{rc}, d_{rc}^{\swarrow}$ and $d_{rc}^{\searrow} $, respectively.
+
+  Observe that the very first coefficient $d_{p^{\alpha}, 0}$ and very last $d_{p^{\alpha}, p^{\alpha}}$ of row
+  with index $p^{\alpha}$ are congruent to the unit, modulo $p$:
   \begin{displaymath}
-    {{p^n} \choose {0}} \equiv_{p}{{p^n} \choose {p^n}} \equiv_{p} 1
+    {{p^{\alpha}} \choose {0}} \equiv_{p}{{p^{\alpha}} \choose {p^{\alpha}}} \equiv_{p} 1
   \end{displaymath}
   while $p$ divides every coefficient between them, let
-  $c\in\lbrace1,\ldots, p^n-1 \rbrace$:
+  $c\in\lbrace1,\ldots, p^{\alpha}-1 \rbrace$:
   \begin{displaymath}
-    {{p^n} \choose {c}} \equiv_{p} {{0} \choose {c_0}} {{0} \choose {c_1}}{{0} \choose {c_2}} \ldots 
-    {{0} \choose {c_{n-1}}}{{1} \choose {0}} \equiv_{p} 0
+    {{p^{\alpha}} \choose {c}} \equiv_{p} {{0} \choose {c_0}} {{0} \choose {c_1}}{{0} \choose {c_2}} \ldots 
+    {{0} \choose {c_{{\alpha}-1}}}{{1} \choose {0}} \equiv_{p} 0
   \end{displaymath}
-  By the recurrence rule $d_{n+1, k+1} = d_{n, k} + d_{n, k+1}$
+  By the recurrence rule ${{n+1}\choose {k+1}} = {{n} \choose {k}} + {{n}\choose{ k+1}}$
   characterizing $\mathcal{P}$, observe that:
   \begin{displaymath}
     \begin{split}
-      d_{p^n+1, 1} &\equiv_{p} d_{p^n, 0} + d_{p^n, 1}\equiv_{p} 1 \\
-      d_{p^n+1, p^n} &\equiv_{p} d_{p^n, p^n-1} + d_{p^n, p^n}\equiv_{p} 1 \\
-      d_{p^n+1, i} &\equiv_{p} d_{p^n, i-1} + d_{p^n, i}\equiv_{p} 0 \quad \forall i \in \lbrace 2, \ldots, p^n -1\rbrace \\
+      d_{p^{\alpha}+1, 1} &\equiv_{p} d_{p^{\alpha}, 0} + d_{p^{\alpha}, 1}\equiv_{p} 1 \\
+      d_{p^{\alpha}+1, p^{\alpha}} &\equiv_{p} d_{p^{\alpha}, p^{\alpha}-1} + d_{p^{\alpha}, p^{\alpha}}\equiv_{p} 1 \\
+      d_{p^{\alpha}+1, i} &\equiv_{p} d_{p^{\alpha}, i-1} + d_{p^{\alpha}, i}\equiv_{p} 0 \quad \forall i \in \lbrace 2, \ldots, p^{\alpha} -1\rbrace \\
     \end{split}
   \end{displaymath}
-  therefore row $p^n + 1$ has one coefficient multiple of $p$ less
-  than row $p^n$, and since in $p^n$ there are $p^n-2$ such
-  coefficients, after $p^n-2$ rows there are no such coefficients
-  at all, such a row has index $2(p^n -1)+1$ ($1$ more because
-  indexes are $0$-based). Formally, for any column index $c$:
+  therefore row $p^{\alpha} + 1$ has one less coefficient multiple of $p$ 
+  than row $p^{\alpha}$: $\left|\lbrace2,\ldots, p^{\alpha}-1 \rbrace\right|=
+    \left|\lbrace1,\ldots, p^{\alpha}-1 \rbrace\right|-1$. 
+    Since in row $p^{\alpha}$ there are $p^{\alpha}+1$ coefficients, where
+  $p^{\alpha}-1$ of them are multiples of $p$, it follows that after $p^{\alpha}-1$ 
+  rows there are no such coefficients at all, that happens at row $2\,p^{\alpha} -1$. 
+  Formally, for any column index $c$:
   \begin{displaymath}
     \begin{split}
-      {{2p^n - 1} \choose {c}} &\equiv_{p} {{p^n +(p^n- 1)} \choose {c}} \\
+      {{2p^{\alpha} - 1} \choose {c}} &\equiv_{p} {{p^{\alpha} +(p^{\alpha}- 1)} \choose {c}} \\
       &\equiv_{p} {{p-1} \choose {c_0}} {{p-1} \choose {c_1}}{{p-1} \choose {c_2}} \ldots 
-      {{p-1} \choose {c_{n-1}}}{{1} \choose {0}} \\
+      {{p-1} \choose {c_{{\alpha}-1}}}{{1} \choose {0}} \\
       &\not\equiv_{p} 0
     \end{split}
   \end{displaymath}
-  The last step holds by representation of $c$:
-  $c_i \in \lbrace 0, \ldots, p-1 \rbrace$, for any $i$.
-
-  The latter argument can be applied to every row with index of
-  the form $p^k -1$, for some $k\geq n$:
-  \begin{displaymath}
-    \begin{split}
-      {{p^k-1} \choose {c}} &\equiv_{p} {{p-1} \choose {c_0}} {{p-1} \choose {c_1}} \ldots 
-      {{p-1} \choose {c_{n-1}}}{{p-1} \choose {0}}\ldots{{p-1} \choose {c_{k-1}=0}} \not\equiv_{p} 0
-    \end{split}
-  \end{displaymath}
+  by representing $c=(c_{0}, \ldots,c_{\alpha-1})_{p}$ in base $p$, where
+  $c_i \in \lbrace 0, \ldots, p-1 \rbrace$, for any $i\in\lbrace0,\ldots,\alpha-1\rbrace$.
 
   % the following derivation is simply a proof of coefficient extraction
   % using the definition of Riordan array for Pascal triangle, redundant.
@@ -466,6 +459,16 @@ section.
   % \end{displaymath}
 
 \end{proof}
+
+  The \marginpar{for every $k\in\mathbb{N}$, row $p^{k}-1$ does not contain a coefficient multiple of $p$}
+  last argument can be applied to every row with index of
+  the form $p^k -1$, for each $k\in\mathbb{N}$:
+  \begin{displaymath}
+    \begin{split}
+      {{p^k-1} \choose {c}} &\equiv_{p} {{p-1} \choose {c_0}} {{p-1} \choose {c_1}} \ldots 
+      {{p-1} \choose {c_{{\alpha}-1}}}{{p-1} \choose {0}}\ldots{{p-1} \choose {c_{k-1}=0}} \not\equiv_{p} 0
+    \end{split}
+  \end{displaymath}
 
 \subsection{On the number of \emph{zero-holes} within $\mathcal{P}^{(\alpha)}$}
 
