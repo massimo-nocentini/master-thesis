@@ -565,3 +565,125 @@ each one of them composed of $p^{\alpha}$ rows.
     as required.
 
 \end{proof}
+
+\subsection{Congruences over antidiagonals of $\mathcal{P}$ and $\mathcal{P}^{-1}$}
+
+In this section we show two results: a first one about congruences over coefficients
+lying on the same \emph{antidiagonal}, spaced by a fixed distance; a second one
+about a colour mapping among coefficients, in $\mathcal{P}$ and in the inverse,
+at the same location.
+
+
+% PAY ATTENTION: the following corollary is not correct since congruences can be
+% used only in the ring of polynomials.
+\iffalse
+\begin{corollary}
+Let $\mathcal{P}$ be the Pascal array and let $p$ be a prime. Choose $k\in\mathbb{N}$, 
+than $k$-th column is congruent to $k$-antidiagonal, modulo $p$.
+\end{corollary}
+\begin{proof}
+    \begin{displaymath}
+        \begin{split}
+            { {n} \choose {k} } &\equiv_{p} { {n} \choose {n-k} } \\
+            d_{nk} &\equiv_{p} d_{n,n-k}\\
+            \sum_{n\geq 0}{d_{nk} t^n} &\equiv_{p}\sum_{n\geq 0}{d_{n,n-k} t^n} \\
+            d(t)h(t)^k &\equiv_{p}\sum_{n\geq 0}{d_{n,n-k} t^n} \\
+        \end{split}
+    \end{displaymath}
+no a standard form for antidiagonal exists, so on the right we leave the explicit
+expression for the $k$-th antidiagonal.
+\end{proof}
+\fi
+
+In order to state the following lemma we define a subset of $\mathcal{P}$
+composed of coefficients lying on \emph{antidiagonals}. In the following, 
+given $\mathcal{P}^{(\alpha)}$ a principal cluster of order $\alpha$, 
+denote with $\Theta_{\diagdown}^{(\alpha)}$ a set of positions, encoding
+each one of them as a pair of integers:
+\begin{displaymath}
+    \Theta_{\diagdown}^{(\alpha)}=\left\lbrace(n,k) : n\in\lbrace p^{\alpha},\ldots,p^{\alpha+1}-1\rbrace
+        \,,k\in\lbrace0,\ldots,n-p^{\alpha}\rbrace    \right\rbrace
+\end{displaymath}
+
+\begin{lemma}
+    Let $p$ be a prime and $\mathcal{P}^{(\alpha)}$ a principal cluster of order $\alpha$.
+    Consider a position $(n,k)\in \Theta_{\diagdown}^{(\alpha)}$, then for any $\gamma\in\mathbb{N}$:
+    \begin{displaymath}
+        d_{n,k} \equiv_{p} d_{n+\gamma p^{\alpha+1}, k+\gamma p^{\alpha+1}}
+    \end{displaymath}
+\end{lemma}
+\begin{proof} % $n+\gamma p^{m+1}$
+    By the basis representation theorem, write $n$ in base $p$ as:
+    \begin{displaymath}
+        n = n_{0} + n_{1}p + n_{2}p^2 + \ldots + n_{\alpha}p^\alpha %+ 0p^{\alpha+1} + \ldots + 0p^k
+    \end{displaymath}
+    since $n<p^{\alpha+1}$. For $k$, on the other hand, consider extrema cases:
+    \begin{itemize}
+        \item $n=p^{\alpha}\rightarrow k\in\lbrace0\rbrace$
+        \item $n=p^{\alpha+1}-1 \rightarrow k\in\lbrace 0,\ldots,p^{\alpha}(p-1)-1\rbrace$
+    \end{itemize}
+    so, for any choice of $n$, we can write $k$ in base $p$ as:
+    \begin{displaymath}
+        k = k_{0} + k_{1}p + k_{2}p^2 + \ldots + k_{\alpha}p^\alpha %+ 0p^{\alpha+1} + \ldots + 0p^k
+    \end{displaymath}
+    an application of Lucas theorem finishes the proof:
+    \begin{displaymath}
+        {{n+\gamma p^{\alpha+1}} \choose { k+\gamma p^{\alpha+1}}} \equiv_{p} 
+            {{n_{0}} \choose {k_{0}}}  
+            {{n_{1}} \choose {k_{1}}} 
+            {{n_{2}} \choose {k_{2}}}
+            \ldots
+            {{n_{\alpha-1}} \choose {k_{\alpha-1}} }
+            {{n_{\alpha}} \choose {k_{\alpha}} }
+            {{\gamma} \choose {\gamma}} 
+            \equiv_{p}{{n} \choose {k}}  
+    \end{displaymath}
+    which is the requested relation.
+\end{proof}
+
+Previous lemma is important because it does hold for the inverse array $\mathcal{P}^{-1}$ too:
+\begin{displaymath}
+    \begin{split}
+        \hat{d}_{n,k} &\equiv_{p} \hat{d}_{n+\gamma p^{\alpha+1}, k+\gamma p^{\alpha+1}} \\
+        (-1)^{n-k}d_{n,k} &\equiv_{p} (-1)^{n+\gamma p^{\alpha+1}-(k+\gamma p^{\alpha+1})}d_{n+\gamma p^{\alpha+1}, k+\gamma p^{\alpha+1}} \\
+        (-1)^{n-k}d_{n,k} &\equiv_{p} (-1)^{n-k}d_{n+\gamma p^{\alpha+1}, k+\gamma p^{\alpha+1}} \\
+    \end{split}
+\end{displaymath}
+Since there exists $(-1)^{-1}\mod p$ we can multiply by it both member $n-k$ times,
+obtaining the congruence proved in the previous lemma.
+
+Pay attention: this doesn't relate coefficients
+of $\mathcal{P}$ and $\mathcal{P}^{-1}$ (from the colouring point of view 
+doesn't imply any relation about colours assignment: generally it is not the case,
+except for even $p$), it merely says that 
+congruent coefficients on the chosen antidiagonal, \emph{in the same triangle
+either $\mathcal{P}$ or $\mathcal{P}^{-1}$}, repeat with structure.
+\\\\
+The following theorem tackle what the above argument leaves out: it 
+shows how to colour an antidiagonal $p^{\alpha}$ of $\mathcal{P}$
+having coloured the same antidiagonal of $\mathcal{P}^{-1}$, and viceversa.
+
+\begin{theorem}
+    Let $d_{nk}, \hat{d}_{nk}$ be generic elements of arrays $\mathcal{P}$ and $\mathcal{P}^{-1}$,
+    respectively. Choose an odd prime $p$, let $c\in \lbrace 0, \ldots, p-1 \rbrace$ a remainder class
+    witness, then:
+    \begin{displaymath}
+        \begin{split}
+            d_{n,n-p^{\alpha}} \equiv_{p} c &\leftrightarrow \hat{d}_{n,n-p^{\alpha}} \equiv_{p} p-c
+        \end{split}
+    \end{displaymath}
+\end{theorem}
+\begin{proof}
+We show both directions using a set of congruences: reading them from top to bottom provides a 
+proof for $\rightarrow$ direction, while reading them from bottom to top provides a proof for 
+$\leftarrow$ direction. Recall that $p^\alpha$ is odd because $p$ is odd by hp, therefore $(-1)^{p^\alpha} = -1$:
+\begin{displaymath}
+    \begin{split}
+        d_{n,n-p^{\alpha}} &\equiv_{p} c \\
+        (-1)^{p^\alpha}\hat{d}_{n,n-p^{\alpha}} &\equiv_{p} c \\
+        (-1)^{p^\alpha }(-1)\hat{d}_{n,n-p^{\alpha}} &\equiv_{p} -c \\
+        (-1)^{p^\alpha }(-1)\hat{d}_{n,n-p^{\alpha}} &\equiv_{p} p -c \\
+        \hat{d}_{n,n-p^{\alpha}} &\equiv_{p} p -c \\
+    \end{split}
+\end{displaymath}
+\end{proof}
