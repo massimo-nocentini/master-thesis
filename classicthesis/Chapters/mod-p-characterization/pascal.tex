@@ -460,7 +460,7 @@ section.
 
 \end{proof}
 
-  The \marginpar{for every $k\in\mathbb{N}$, row $p^{k}-1$ does not contain a coefficient multiple of $p$}
+  The \marginpar{for every $k\in\mathbb{N}$, no coefficient multiple of $p$ lies on row $p^{k}-1$}
   last argument can be applied to every row with index of
   the form $p^k -1$, for each $k\in\mathbb{N}$:
   \begin{displaymath}
@@ -470,52 +470,76 @@ section.
     \end{split}
   \end{displaymath}
 
-\subsection{On the number of \emph{zero-holes} within $\mathcal{P}^{(\alpha)}$}
+% about the last proof it should be useful to build two images, where
+% some coefficients at equivalent positions are highlighted and a picture
+% that shows a triangle with a different colouring than the principal cluster
+% of one order less.
 
-Let us finish this section with the proof of an observation about
-maximal upside down triangle of coefficients, each one of them 
-multiple of $p$.
+\subsection{On the number of \emph{zero-holes} within 
+    $\mathcal{P}^{(\alpha+1)}$}
+
+Let us finish this section proving an observation about the number
+of \emph{maximal} zero-holes of order $\alpha$ within a principal
+cluster $\mathcal{P}^{(\alpha+1)}$ of one order greater. We start with
+an important lemma that ``slices'' $\mathcal{P}^{(\alpha+1)}$ in strips,
+each one of them composed of $p^{\alpha}$ rows.
 
 \begin{lemma}
-    Let $\mathcal{P}_n$ be a chunk of $\mathcal{P}$ and let $j\in
-    \lbrace 1, \ldots, p-1 \rbrace$. Between row index $j p^n$ and
-    row index $(j+1)p^n -1$, there are $j$ maximal upside down triangles
-    such that if a coefficient $d_{nk}$ belongs to one of them, then 
-    $d_{nk} \equiv_{p} 0$.
+    Let $\mathcal{P}^{(\alpha+1)}$ be a principal cluster of order $\alpha+1$. 
+    Denote with $\Omega_{j}$ the range that starts at row index $j\,p^{\alpha}$ and stops at
+    row index $(j+1)p^{\alpha} -1$, and with $\mathcal{H}_{j}^{\bigtriangledown}$ the number
+    of \emph{maximal} zero-holes of order $\alpha$ within $\Omega_{j}$. 
+    Then: 
+    \begin{displaymath}
+        \mathcal{H}_{j}^{\bigtriangledown}=j \quad\text{where}\quad j\in \lbrace 1, \ldots, p-1 \rbrace
+    \end{displaymath}
 \end{lemma}
 
 \begin{proof}
     By absurd, choose any $j\in \lbrace 1, \ldots, p-1 \rbrace$ and show
-    that between row index $j p^n$ and row index $(j+1)p^n -1$, 
-    a maximal upside down triangle $\mathcal{T}$,
-    such that $d_{nk}\in\mathcal{T} \rightarrow d_{nk} \equiv_{p} 0$,
-    either is missing or is over. Proceed by cases:
+    that in range $\Omega_{j}$ cannot be one zero-hole more \emph{or} one zero-hole less,
+    both of order $\alpha$: formally, $\mathcal{H}_{j}^{\bigtriangledown}=j\pm1$ yields a contraddiction, 
+    for any choice of $j$.
+
+    Proceed by cases:
     \begin{itemize}
-        \item assume triangle $\mathcal{T}$ is missing, so there exists a coefficient
-                $\tilde{d}_{nk}\in\mathcal{T}$ such that $\tilde{d}_{nk}\not\equiv_{p}0$, while all 
-                other coefficient $d_{nk}\in\mathcal{T}$ satisfies $d_{nk} \equiv_{p}0$.
+        \item assume a zero-hole $h^{\bigtriangledown}$ is missing, so there exists a coefficient
+                $\tilde{d}_{nk}\in h^{\bigtriangledown}$ such that $\tilde{d}_{nk}\not\equiv_{p}0$, while all 
+                other coefficient $d_{nk}\in h^{\bigtriangledown}$ satisfies $d_{nk} \equiv_{p}0$.
                 Proceed by cases on parity of $j$:
             \begin{description}
-                \item[$j=2k+1$ for some $k$] Without loss of generality, suppose $\mathcal{T}$ is the one in the 
-                very middle, due to symmetry of $\mathcal{P}$ (the cases where it is on the left or 
+                \item[$j=2k+1$ for some $k$] Without loss of generality, suppose $h^{\bigtriangledown}$ is the one in the 
+                very middle, due to symmetric shape of $\mathcal{P}$ (the cases where it is on the left or 
                 on the right are less interesting) and
-                suppose that $\tilde{d}_{(j+1) p^n -2, (k+1)p^n -1}\not\equiv_{p}0$, the coefficient in the very bottom corner.
-                But this is impossible because $d_{nk} = d_{n-1,k-1} + d_{n-1, k}$ if $d_{nk}\in \mathcal{P}$:
+                suppose that $p$ does not divide the coefficient in the very bottom corner of $h^{\bigtriangledown}$, 
+                formally:
                 \begin{displaymath}
-                0\not\equiv_{p}\tilde{d}_{(j+1) p^n -2, (k+1)p^n -1} \equiv_{p} 
-                    \tilde{d}_{(j+1) p^n -3, (k+1)p^n -1} + \tilde{d}_{(j+1) p^n -3, (k+1)p^n-2 }\equiv_{p}0
+                    \tilde{d}_{(j+1) p^n -2, (k+1)p^n -1}\not\equiv_{p}0
+                \end{displaymath}
+                But this is impossible because if $d_{nk}\in \mathcal{P}$ 
+                then $d_{nk} = d_{n-1,k-1} + d_{n-1, k}$, so:
+                \begin{displaymath}
+                    \begin{split}
+                        0&\not\equiv_{p}\tilde{d}_{(j+1) p^n -2, (k+1)p^n -1} \\
+                        &\equiv_{p} d_{(j+1) p^n -3, (k+1)p^n -1} + d_{(j+1) p^n -3, (k+1)p^n-2 }\\
+                        &\equiv_{p}0
+                    \end{split}
                 \end{displaymath}
 
-                \item[$j=2k$ for some $k$] Without loss of generality, suppose  $\mathcal{T}$ is the one on the very left. 
-                Choose $r \in\lbrace 0,\ldots,p^n-2\rbrace$ and $c \in\lbrace r+1,\ldots,p^n-1\rbrace$,
-                suppose that $\tilde{d}_{(j+1) p^n +r, c}\not\equiv_{p}0$. 
-                By symmetry of $\mathcal{P}$, we get another contradiction: 
+                \item[$j=2k$ for some $k$] Without loss of generality, 
+                suppose  $ h^{\bigtriangledown}$ is the one on the very left. 
+                Choose $r \in\lbrace 0,\ldots,p^n-2\rbrace$, so there exists $c\in\lbrace r+1,\ldots,p^n-1\rbrace$ such that:
                 \begin{displaymath}
-                    0\not\equiv_{p}\tilde{d}_{(j+1) p^n +r, c} \equiv_{p} \tilde{d}_{(j+1) p^n +r, (j+1) p^n +r-c}\equiv_{p}0
+                    \tilde{d}_{j\,p^{\alpha} +r, c}\not\equiv_{p}0
+                \end{displaymath}
+                Since $ h^{\bigtriangledown}$ is the only one missing, by symmetry of $\mathcal{P}$ we get another contradiction: 
+                \begin{displaymath}
+                    0\not\equiv_{p}\tilde{d}_{j\, p^{\alpha} +r, c} 
+                        \equiv_{p} d_{j\, p^{\alpha} +r, j\, p^{\alpha} +r-c}\equiv_{p}0
                 \end{displaymath}
             \end{description}
-        \item assume triangle $\mathcal{T}$ is over, therefore the very first coefficient 
-            $\tilde{d}$ in the top-left corner of $\mathcal{T}$ have to satisfy:
+        \item assume triangle $ h^{\bigtriangledown}$ is over, therefore the very first coefficient 
+            $\tilde{d}$ in the \emph{top-left} corner of $ h^{\bigtriangledown}$ has to satisfy:
             \begin{displaymath}
                  \tilde{d} \equiv_{p} d_{j\,p^{n},j\,p^{n}+1}
             \end{displaymath}
@@ -526,20 +550,15 @@ multiple of $p$.
 
 
 \begin{theorem}
-    In two adjacent chunks of $\mathcal{P}$, denote them by $\mathcal{P}_n$
-    and $\mathcal{P}_{n+1}$ respectively, the
-    number of upside down maximal triangles of coefficients $d_{nk}$, with
-    $d_{nk} \equiv_p 0$, equals:
-    \begin{displaymath}
-        {{p}\choose{2}}
-    \end{displaymath}
+    Let $\mathcal{P}^{(\alpha+1)}$ be a principal cluster of order $\alpha+1$. 
+    Then, within $\mathcal{P}^{(\alpha+1)}$ there are ${{p}\choose{2}}$ 
+    \emph{maximal} zero-holes of order $\alpha$. 
 \end{theorem}
 
 \begin{proof}
-    Choose any $n\in\mathbb{N}$ and let $\mathcal{P}_n$ and $\mathcal{P}_{n+1}$
-    be the two chunk of $\mathcal{P}$ of interest. Let $j\in\lbrace 1, \ldots, p-1 \rbrace$, so
-    by previous lemma between row index $j p^n$ and
-    row index $(j+1)p^n -1$, there are $j$ maximal upside down triangles, therefore consider the sum:
+    Let $j\in\lbrace 1, \ldots, p-1 \rbrace$, by previous lemma between row index $j\,p^n$ and
+    row index $(j+1)p^n -1$, there are $j$ \emph{maximal} zero-holes of order $\alpha$, 
+    therefore consider the sum:
     \begin{displaymath}
         \sum_{i=1}^{p-1}{i} = \frac{(p-1)p}{2}
     \end{displaymath}
