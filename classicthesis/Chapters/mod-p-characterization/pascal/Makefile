@@ -1,5 +1,5 @@
 
-all: pascal-zero-rows-above-end pascal-zero-row-26 pascal-mod5-first-25-rows pascal-mod5-first-25-rows-for-sierpinski pascal-mod5-first-25-rows-for-sierpinski-odd-rows pascal-mod5-first-25-rows-for-sierpinski-zero-hole pascal-mod7-zero-hole
+all: pascal-zero-rows-above-end pascal-zero-row-26 pascal-mod5-first-25-rows pascal-mod5-first-25-rows-for-sierpinski pascal-mod5-first-25-rows-for-sierpinski-odd-rows pascal-mod5-first-25-rows-for-sierpinski-zero-hole pascal-mod7-zero-hole multiples-over-antidiagonal multiples-over-antidiagonal-inverse-array
 
 pascal-zero-rows-above-end:
 	lualatex pascal-standard-mod3-zero-row-above-end.tex
@@ -26,4 +26,10 @@ pascal-mod7-zero-hole:
 
 pascal-mod7-zero-hole-strip:
 	lualatex pascal-mod7-abstracting-zero-holes-strip
+
+multiples-over-antidiagonal:
+	lualatex multiples-over-antidiagonal
+
+multiples-over-antidiagonal-inverse-array:
+	lualatex pascal-inverse-ignore-negatives-centered-colouring-127-rows-mod3-partitioning-triangle.tex
 

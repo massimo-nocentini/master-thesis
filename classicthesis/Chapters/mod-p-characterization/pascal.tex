@@ -668,6 +668,7 @@ each one of them as a pair of integers:
     which is the requested relation.
 \end{proof}
 
+
 Previous lemma is important because it does hold for the inverse array $\mathcal{P}^{-1}$ too:
 \begin{displaymath}
     \begin{split}
@@ -678,6 +679,9 @@ Previous lemma is important because it does hold for the inverse array $\mathcal
 \end{displaymath}
 Since there exists $(-1)^{-1}\mod p$ we can multiply by it both member $n-k$ times,
 obtaining the congruence proved in the previous lemma.
+In \autoref{fig:pascal-multiples-over-antidiagonal} are shown both the set
+$\Theta_{\diagdown}^{(1)}$ and the highlighting of congruent coefficients
+according the previous result, within $\mathcal{P}$ and in its inverse.
 
 Pay attention: this doesn't relate coefficients
 of $\mathcal{P}$ and $\mathcal{P}^{-1}$ (from the colouring point of view 
@@ -689,6 +693,8 @@ either $\mathcal{P}$ or $\mathcal{P}^{-1}$}, repeat with structure.
 The following theorem tackle what the above argument leaves out: it 
 shows how to colour an antidiagonal $p^{\alpha}$ of $\mathcal{P}$
 having coloured the same antidiagonal of $\mathcal{P}^{-1}$, and viceversa.
+
+\input{Chapters/mod-p-characterization/pascal/multiples-over-antidiagonal-include-figure}
 
 \begin{theorem}
     Let $d_{nk}, \hat{d}_{nk}$ be generic elements of arrays $\mathcal{P}$ and $\mathcal{P}^{-1}$,
