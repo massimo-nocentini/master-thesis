@@ -310,10 +310,14 @@ order $\alpha$. Note that for even prime $p$, $\mathcal{P}^{(\alpha)}$ repeats
 itself $3$ times in $\mathcal{P}^{(\alpha+1)}$, exactly as in the
 \emph{Sierpinski's gasket}, having a pure recursive structure.
 
+\input{Chapters/mod-p-characterization/pascal/pascal-standard-handle-negatives-centered-colouring-127-rows-mod5-partitioning-include-figure.tex}
 On the other hand, for $p$ odd prime, $\mathcal{P}^{(\alpha)}$ repeats itself
 in $\mathcal{P}^{(\alpha+1)}$ somewhere, without a complete recursive
 structure, due to the oddness of $p$, ie. other coloured subtriangles appears
-in $\mathcal{P}^{(\alpha+1)}$. However if we study the repetition up to row
+in $\mathcal{P}^{(\alpha+1)}$, see the cluster in the \emph{top left} corner of
+\autoref{fig:pascal:mod5:principal:cluster:for:sierpinski:proof}.
+
+However if we study the repetition up to row
 $2\,p^{\alpha}$, the proof still hold for arbitrary prime $p$.
 
 % the following paragraph should be put in a dedicated section, after this one.
@@ -339,9 +343,11 @@ section.
   $\mathcal{P}^{(\alpha)}$, so $r \in \lbrace 0, \ldots, p^{\alpha} -1
   \rbrace$.
     
-  Let $\mathcal{P}_{2;\alpha}$ be a \emph{chunk} of $\mathcal{P}^{(\alpha +1)}$
-  that starts at the root and extends downward $2\,p^{\alpha}$ rows, therefore
-  including $\mathcal{P}^{(\alpha)}$ as its first halve. It is requested to
+  Let $\mathcal{P}_{k;\alpha}$ be a \emph{chunk} of $\mathcal{P}^{(\alpha +1)}$
+  that starts at the root and extends downward $k\,p^{\alpha}$ rows, therefore
+  including $\mathcal{P}^{(\alpha)}$ as its first rows. 
+  
+  It is requested to
   prove that coefficients at \emph{equivalent positions} in the bottom left and
   bottom right triangles of $\mathcal{P}_{2;\alpha}$ are congruent, modulo $p$,
   to coefficients at \emph{equivalent positions} in $\mathcal{P}^{\alpha}$. 
@@ -359,8 +365,9 @@ section.
             $d_{rc}^{\searrow}$ in the \emph{bottom right} triangle of $\mathcal{P}_{2;\alpha}$ if and only if
                 $d_{rc}^{\searrow} = d_{p^{\alpha}+r,p^{\alpha}+c}$
   \end{itemize}
-  
-  After these definitions, we've to prove:
+  in the \emph{top right} corner of \autoref{fig:pascal:mod5:principal:cluster:for:sierpinski:proof},
+  equivalent position $(2,1)$ for $\mathcal{P}_{\equiv_{5}}^{(2)}$ are highlighted 
+  for the sake of clarity.  After these definitions, we've to prove:
   \begin{displaymath}
     d_{rc} \equiv_p d_{rc}^{\swarrow} \equiv_p d_{rc}^{\searrow} 
   \end{displaymath}
@@ -401,6 +408,8 @@ section.
   $\mathcal{P}_{2;\alpha}$ a zero-hole of order $\alpha$ is
   surrounded by the three ``congruent'' subtriangles composed of
   coefficients $d_{rc}, d_{rc}^{\swarrow}$ and $d_{rc}^{\searrow} $, respectively.
+  In the \emph{bottom left} corner of \autoref{fig:pascal:mod5:principal:cluster:for:sierpinski:proof},
+  a zero-hole of order $1$ in $\mathcal{P}_{2;1}$ is highlighted for the sake of clarity.
 
   Observe that the very first coefficient $d_{p^{\alpha}, 0}$ and very last $d_{p^{\alpha}, p^{\alpha}}$ of row
   with index $p^{\alpha}$ are congruent to the unit, modulo $p$:
@@ -460,15 +469,20 @@ section.
 
 \end{proof}
 
-  The \marginpar{for every $k\in\mathbb{N}$, no coefficient multiple of $p$ lies on row $p^{k}-1$}
-  last argument can be applied to every row with index of
-  the form $p^k -1$, for each $k\in\mathbb{N}$:
-  \begin{displaymath}
+
+The \marginpar{for every positive $k\in\mathbb{N}$, no coefficient multiple of $p$ lies on row $k\,p^{\alpha}-1$}
+last argument can be generalized: consider $\mathcal{P}^{(\alpha)}$, then every row denoted by index 
+$k\,p^{\alpha} -1$, for each $k\in\mathbb{N}\setminus\lbrace0\rbrace$, doesn't contain any 
+coefficient multiple of $p$. Here's a short proof:
+\begin{displaymath}
     \begin{split}
-      {{p^k-1} \choose {c}} &\equiv_{p} {{p-1} \choose {c_0}} {{p-1} \choose {c_1}} \ldots 
-      {{p-1} \choose {c_{{\alpha}-1}}}{{p-1} \choose {0}}\ldots{{p-1} \choose {c_{k-1}=0}} \not\equiv_{p} 0
+      {{kp^{\alpha}-1} \choose {c}} &\equiv_{p}{{(k-1)p^{\alpha}+ (p^{\alpha}-1)} \choose {c}}\\ 
+        &\equiv_{p} {{p-1} \choose {c_0}} {{p-1} \choose {c_1}} \ldots 
+      {{p-1} \choose {c_{{\alpha}-1}}}{{k-1} \choose {0}} \not\equiv_{p} 0
     \end{split}
-  \end{displaymath}
+\end{displaymath}
+in the \emph{bottom right} corner of \autoref{fig:pascal:mod5:principal:cluster:for:sierpinski:proof}
+such rows are highlighted, where $p=5$ and $k\in\lbrace1,\ldots,5\rbrace$.
 
 % about the last proof it should be useful to build two images, where
 % some coefficients at equivalent positions are highlighted and a picture
@@ -514,17 +528,24 @@ each one of them composed of $p^{\alpha}$ rows.
                 suppose that $p$ does not divide the coefficient in the very bottom corner of $h^{\bigtriangledown}$, 
                 formally:
                 \begin{displaymath}
-                    \tilde{d}_{(j+1) p^n -2, (k+1)p^n -1}\not\equiv_{p}0
+                    \tilde{d}_{(j+1) p^{\alpha} -2, (k+1)p^{\alpha} -1}\not\equiv_{p}0
                 \end{displaymath}
                 But this is impossible because if $d_{nk}\in \mathcal{P}$ 
                 then $d_{nk} = d_{n-1,k-1} + d_{n-1, k}$, so:
                 \begin{displaymath}
                     \begin{split}
-                        0&\not\equiv_{p}\tilde{d}_{(j+1) p^n -2, (k+1)p^n -1} \\
-                        &\equiv_{p} d_{(j+1) p^n -3, (k+1)p^n -1} + d_{(j+1) p^n -3, (k+1)p^n-2 }\\
+                        0&\not\equiv_{p}\tilde{d}_{(j+1) p^{\alpha} -2, (k+1)p^{\alpha} -1} \\
+                        &\equiv_{p} d_{(j+1) p^{\alpha} -3, (k+1)p^{\alpha} -1} + d_{(j+1) p^{\alpha} -3, (k+1)p^{\alpha}-2 }\\
                         &\equiv_{p}0
                     \end{split}
                 \end{displaymath}
+                In the \emph{top} of \autoref{fig:pascal-mod7-zero-holes} there's a highlighted strip of rows 
+                within $\mathcal{P}_{\stackrel{\circ}{\equiv_{7}}}^{(2)}$,where $j=5=2\cdot2+1$ and $p=7$, so $k=2$
+                and $\alpha=1$.
+                The highlighted coefficient on the very bottom is the one handled in the proof, it is 
+                $\tilde{d}_{6\cdot 7-2, 3\cdot 7 -1}=\tilde{d}_{40, 20}$: to finish the proof over 
+                those highlighted coefficients it necessary to use recurrence rule for binomial coefficients,
+                otherwise we cannot prove the argument using the symmetry property only. 
 
                 \item[$j=2k$ for some $k$] Without loss of generality, 
                 suppose  $ h^{\bigtriangledown}$ is the one on the very left. 
@@ -548,6 +569,7 @@ each one of them composed of $p^{\alpha}$ rows.
     \end{itemize}
 \end{proof}
 
+\input{Chapters/mod-p-characterization/pascal/pascal-mod7-abstracting-zero-holes-include-figure}
 
 \begin{theorem}
     Let $\mathcal{P}^{(\alpha+1)}$ be a principal cluster of order $\alpha+1$. 
@@ -565,6 +587,11 @@ each one of them composed of $p^{\alpha}$ rows.
     as required.
 
 \end{proof}
+
+In the \emph{bottom} of \autoref{fig:pascal-mod7-zero-holes} 
+$\mathcal{P}_{\stackrel{\circ}{\equiv_{7}}}^{(2)}$ is reported: within it there are
+${{7}\choose{2}}=21$ zero-holes of order $1$.
+
 
 \subsection{Congruences over antidiagonals of $\mathcal{P}$ and $\mathcal{P}^{-1}$}
 

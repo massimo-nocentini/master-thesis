@@ -1,0 +1,49 @@
+
+\begin{figure}[p]
+
+    \noindent\makebox[\textwidth]{
+        \centering
+        %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
+
+        % using *angle* property to rotate it is difficult to properly align it
+        % in order to have a "real" matrix representation.
+        \includegraphics[width=9cm, height=9cm, keepaspectratio=true]{Chapters/mod-p-characterization/pascal/pascal-standard-handle-negatives-centered-colouring-127-rows-mod5-partitioning-triangle.pdf}
+
+        \includegraphics[width=9cm, height=9cm, keepaspectratio=true]{Chapters/mod-p-characterization/pascal/pascal-standard-handle-negatives-centered-colouring-127-rows-mod5-partitioning-for-sierpinski-triangle.pdf}
+    }
+
+    \vskip1cm
+
+    \noindent\makebox[\textwidth]{
+        \centering
+        %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
+
+        % using *angle* property to rotate it is difficult to properly align it
+        % in order to have a "real" matrix representation.
+        \includegraphics[width=9cm, height=9cm, keepaspectratio=true]{Chapters/mod-p-characterization/pascal/pascal-standard-handle-negatives-centered-colouring-127-rows-mod5-partitioning-for-sierpinski-zero-hole-triangle.pdf}
+
+        \includegraphics[width=9cm, height=9cm, keepaspectratio=true]{Chapters/mod-p-characterization/pascal/pascal-standard-handle-negatives-centered-colouring-127-rows-mod5-partitioning-for-sierpinski-odd-rows-triangle.pdf}
+    }
+
+    % this 'particular' line is necessary to use `displaymath' environment
+    % into the caption environment, togheter with the inclusion of 
+    % `caption' package. See here for more explanation:
+    % http://stackoverflow.com/questions/2716227/adding-an-equation-or-formula-to-a-figure-caption-in-latex
+    \captionsetup{singlelinecheck=off}
+    \caption[$\mathcal{P}_{\equiv_{5}}^{(2)}$, $4$-splitted and with highlighted chunks]{
+        \emph{Top left} corner: $\mathcal{P}_{\equiv_{5}}^{(2)}$ containing 
+            $\mathcal{P}_{\equiv_{5}}^{(1)}$ together with some other subtriangles
+
+        \emph{Top right} corner: the chunk $\mathcal{P}_{2;1}$ of $\mathcal{P}_{\equiv_{5}}^{(2)}$,
+            highlighting equivalent position $(2,1)$ for the congruence 
+                \textcolor{red}{$d_{2,1} \equiv_p d_{2,1}^{\swarrow} \equiv_p d_{2,1}^{\searrow} $}
+
+        \emph{Bottom left} corner: a surrounded zero-hole of order $1$ in  $\mathcal{P}_{2;1}$
+
+        \emph{Bottom right} corner: coefficients that $5$ cannot divide lying on row $5k -1$,
+            for $k\in\lbrace1,\ldots,5\rbrace$
+        }
+
+    \label{fig:pascal:mod5:principal:cluster:for:sierpinski:proof}
+
+\end{figure}
