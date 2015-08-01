@@ -1,49 +1,51 @@
 
 \noindent This project aims to study formal methods and their application to
-the analysis of algorithms and data structures used by them.
+the analysis of algorithms and data structures used in them.
 
 \marginpar{analytic combinatorics and discrete objects}A solid base for such
 methods comes from the field of analytic combinatorics, which comprises tools
 such as generating functions, Riordan arrays and the symbolic method. Many
-interesting books \footnote{P. Flajolet and R. Sedgewick, \emph{Analytic
-Combinatorics}, Cambridge University Press, 2009.}, \footnote{D. Knuth,
-\emph{The Art of Computer Programming}, vol.  1-3, Addison-Wesley, 1973.} and
-\footnote{Graham, Knuth and Patashnik, \emph{Concrete Mathematics: A Foundation
-for Computer Science}, Addison-Wesley, 1994} exist on those subjects, where
-    skillful methods to handle sequences of \emph{counting numbers},
-    combinatorial sums and classes of discrete objects, such as graphs, words
-    and trees, are presented. 
+interesting books by Flajolet and Sedgewick\footnote{P. Flajolet and R.
+Sedgewick, \emph{Analytic Combinatorics}, Cambridge University Press, 2009.},
+Knuth\footnote{D. Knuth, \emph{The Art of Computer Programming}, vol.  1-3,
+Addison-Wesley, 1973.} and Graham et al. \footnote{Graham, Knuth and Patashnik,
+\emph{Concrete Mathematics: A Foundation for Computer Science}, Addison-Wesley,
+1994} exist on those subjects, where skillful methods to handle sequences of
+\emph{counting numbers}, combinatorial sums and classes of discrete objects,
+such as graphs, words and trees, are presented. 
 
-Actually, the goal of this project is twofold:\marginpar{to find combinatorial
-meanings and\ldots} we're interested in studying how such powerful techniques
+Actually, the goal of this project is twofold. First, \marginpar{to find combinatorial
+meanings and\ldots} we are interested in studying how such powerful techniques
 provide a combinatorial \emph{interpretation} of analytic results about a class
 $\mathcal{G}$ of objects, usually stated using a \emph{formal power series}
 $g(t)=\sum_{k\geq0}{g_{k}\,t^{k}}$ in the ring $\mathbb{Z}\llbracket t
-\rrbracket$: our final interest is to find a \emph{combinatorial meanings} for
+\rrbracket$: our final interest is to find \emph{combinatorial meanings} for
 each coefficient in $\lbrace g_{k}\rbrace_{k\in\mathbb{N}}$ and, possibly, a
-characterization in terms of lattice paths, urn models, bracelets
-configurations, domino and square tiling and so on, in the spirit of
+characterization in terms of lattice paths, urn models, bracelet
+configurations, domino and square tiling and so on, in the spirit of Benjamin and Quinn
 \footnote{Benjamin and Quinn, \emph{Proofs that really counts}, Mathematical
-Association of America, 2003}.  Moreover, we would apply such techniques and
-interpretations to the analysis of algorithms for what concerns the analytic
-aspect, and to data structures for what concerns the combinatorial one. 
+Association of America, 2003}.  Moreover, we want to apply such techniques and
+interpretations to the analysis of algorithms as far as the analytic
+aspect is concerned, and to data structures for the combinatorial one. % here France advice to substitute `one' with `aspect'. 
 
 The second aspect of our goal is to give an implementation of the
-\emph{symbolic method}, departing from \footnote{\texttt{combstruct} Maple
-package, proprietary implementation and closed-source} toward: 
+\emph{symbolic method}, different from the one supplied by \emph{Maple}
+\footnote{\texttt{combstruct} Maple package, proprietary implementation and
+closed-source}. We aim at: 
     
 \marginpar{\ldots to implement a mathematical language}    
 \begin{itemize} 
 
     \item an \emph{open-source} code base with an \emph{on-line} interactive
-    session, in the spirit of \footnote{\url{http://ipython.org}, in particular
-    the \emph{Notebook} feature}, to provide an open web interface to our
+    session, in the spirit of \emph{IPython
+    notebooks}\footnote{\url{http://ipython.org}, in particular the
+    \emph{Notebook} feature}, to provide an open web interface to our
     implementations; 
 
     \item a tight integration with \emph{Eclipse IDE}, developing a set of
     plug-ins using the \emph{Xtext}\footnote{\url{https://eclipse.org/Xtext/}}
-    framework, with the idea to define a mathematical language that allow to
-    handle combinatorial and discrete objects in a simple a flexible way. Such
+    framework, with the idea of defining a mathematical language that allow us to
+    handle combinatorial and discrete objects in a simple and flexible way. Such
     a language should have constructs to define classes of objects by the
     introduction of \emph{datatypes}; constructs to attach measures of interest
     to each one of them; and, finally, some computational rules in order to
@@ -51,7 +53,7 @@ package, proprietary implementation and closed-source} toward:
     polymorphic ways; 
 
     \item a set of \emph{LISP macros} to tackle enumerative problems, where the
-    generation of discrete objects according a distribution over them is
+    generation of discrete objects according to a given distribution is
     difficult for arbitrary classes: using macros, much of the complexity is
     moved from \emph{run-time} to \emph{compile-time}, as a kind of
     \emph{tabling} technique.
@@ -59,45 +61,45 @@ package, proprietary implementation and closed-source} toward:
 \end{itemize}
 
 \marginpar{Riordan arrays: $A$-sequence, $A$-matrix and some generalizations}
-At the same time, we would continue to work on the subjects studied in our
+At the same time, we want to continue to work on the subjects studied in our
 master thesis, in particular the topic of \emph{Riordan arrays}. We are
-interested in finding new characterizations to spot some properties, one
-example is the $h$-characterization $\mathcal{R}_{h(t)}$ of a Riordan array
-$\mathcal{R}$ found by us and explored within the thesis.  Another track to
-follow is the study of two particular objects, $A$-sequence $\lbrace
-a_{n}\rbrace_{n\in\mathbb{N}}$ and $A$-matrix $\lbrace
+interested in finding new characterizations to spot some properties of their
+structure. One example is the $h$-characterization $\mathcal{R}_{h(t)}$ of a
+Riordan array $\mathcal{R}$ found by us and explored within the thesis.
+Another path to follow is the study of two particular objects, $A$-sequence
+$\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$ and $A$-matrix $\lbrace
 a_{ij}\rbrace_{i,j\in\mathbb{N}}$ respectively, generalizing them in order to
-discover new combinatorial identities, possibly involving row sums.
+discover new combinatorial identities.%, possibly involving row sums.
 
-Nonetheless \emph{Riordan group}\marginpar{Riordan group theory: from the
-basics\ldots} theory is studied intensively in the recent past, we would like
-to rethink about original and introductory papers, in particular those by
-\emph{Shapiro}, which introduces the \emph{Riordan group} and builds triangles
-from lattice paths under some constraints; by \emph{Rogers}, which introduces
-the concept of \emph{renewal arrays} and finds the important concept of their
-$A$-sequences; by \emph{Eplett}, which gives a nice identity involving
-determinants and \emph{Catalan} numbers; and, finally, by \emph{Sprugnoli},
-which uses Riordan arrays in order to find generating functions of
-combinatorial sums in a \emph{constructive} way, not just proving that a sum
-equals a \emph{given} value (usually denoted by a closed formula). 
+Although \emph{Riordan group}\marginpar{Riordan group theory: from the
+basics\ldots} theory has been studied intensively in the recent past, we would
+like to rethink about the original and introductory papers of this theory, in
+particular those by \emph{Shapiro}, who introduces the \emph{Riordan group} and
+builds triangles from lattice paths under some constraints; by \emph{Rogers},
+who introduces the concept of \emph{renewal arrays} and finds the important
+concept of their $A$-sequences; by \emph{Eplett}, who provides an identity
+involving determinants and \emph{Catalan} numbers; and, finally, by
+\emph{Sprugnoli}, who uses Riordan arrays in order to find generating
+functions of combinatorial sums in a \emph{constructive} way, not just proving
+that a sum equals a \emph{given} value (usually denoted by a closed formula). 
 
 \marginpar{\ldots toward a modular arithmetic point of view} The other topic of
 our thesis shows our interest in the description and formalization of Riordan
-arrays under the light of modular arithmetic: we've shown some congruences
-about \emph{Pascal} array $\mathcal{P}$ and its inverse $\mathcal{P}^{-1}$; a
-formal characterization for the \emph{Catalan} array $\mathcal{C}$ has been
-proved also. These results were presented in a contributed talk
-\footnote{Second International Symposium on Riordan Arrays and Related Topics,
-held in Lecco last July}: at the conference all major researchers involved in
-Riordan group theory were present and some of them threw some important ideas,
-such as \emph{Mandelbrot} and \emph{Julia} sets and how those concepts could be
-used to build proofs without looking for a closed formula of the generic
-coefficient $d_{nk}$ in an array $\mathcal{R}$.  
+arrays under the light of modular arithmetic. We have shown some congruences
+about \emph{Pascal} array $\mathcal{P}$ and its inverse $\mathcal{P}^{-1}$. We
+have also proved a formal characterization for the \emph{Catalan} array
+$\mathcal{C}$. These results were presented in a talk contributed at a recent
+conference held in Lecco\footnote{Second International Symposium on Riordan
+Arrays and Related Topics, RART$2015$}. All major researchers involved in Riordan group
+theory were present and some of them threw some important ideas, such as
+\emph{Mandelbrot} and \emph{Julia} sets and how those concepts could be used to
+build proofs without looking for a closed formula of the generic coefficient
+$d_{nk}$ in an array $\mathcal{R}$.  
 
 \marginpar{Mandelbrot and Julia sets.  Orthogonal polynomials and continued
-fractions}Finally, the topics of \emph{orthogonal polynomials} and
-\emph{continued fraction expansion} arise in many talks and we would like to
-study them, starting from \footnote{Aoife Hennessy, \emph{A Study of
+fractions}At the same conference, the topics of \emph{orthogonal polynomials} and
+\emph{continued fraction expansion} arose in many talks and we would like to
+study them, starting from Hennessy's Ph.D. thesis\footnote{Aoife Hennessy, \emph{A Study of
 Riordan Arrays with Applications to Continued Fractions, Orthogonal Polynomials
 and Lattice Paths}, Ph.  D.  thesis}.
 
