@@ -697,14 +697,17 @@ having coloured the same antidiagonal of $\mathcal{P}^{-1}$, and viceversa.
 \input{Chapters/mod-p-characterization/pascal/multiples-over-antidiagonal-include-figure}
 
 \begin{theorem}
-    Let $d_{nk}, \hat{d}_{nk}$ be generic elements of arrays $\mathcal{P}$ and $\mathcal{P}^{-1}$,
-    respectively. Choose an odd prime $p$, let $c\in \lbrace 0, \ldots, p-1 \rbrace$ a remainder class
+    Let $\mathcal{P}^{(\alpha)}$ a principal cluster of order $\alpha$ and denote with 
+    $d_{nk}, \hat{d}_{nk}$ the generic elements in arrays $\mathcal{P}$ and $\mathcal{P}^{-1}$,
+    respectively. 
+    Choose an odd prime $p$ and let $c\in \lbrace 0, \ldots, p-1 \rbrace$ be a remainder class
     witness, then:
     \begin{displaymath}
         \begin{split}
             d_{n,n-p^{\alpha}} \equiv_{p} c &\leftrightarrow \hat{d}_{n,n-p^{\alpha}} \equiv_{p} p-c
         \end{split}
     \end{displaymath}
+    for any $n\geq p^{\alpha}$.
 \end{theorem}
 \begin{proof}
 We show both directions using a set of congruences: reading them from top to bottom provides a 
@@ -720,3 +723,7 @@ $\leftarrow$ direction. Recall that $p^\alpha$ is odd because $p$ is odd by hp, 
     \end{split}
 \end{displaymath}
 \end{proof}
+
+\subsection{When $p$ is not a prime}
+% TODO fill this section in order to show that for this case colouring aren't
+% very interesting, insert `P_{equiv 4}'

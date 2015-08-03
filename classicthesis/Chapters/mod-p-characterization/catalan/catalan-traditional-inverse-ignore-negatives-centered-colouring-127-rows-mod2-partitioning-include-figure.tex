@@ -1,0 +1,28 @@
+
+\begin{figure}[p]
+
+    \noindent\makebox[\textwidth]{
+        \centering
+        %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
+
+        % using *angle* property to rotate it is difficult to properly align it
+        % in order to have a "real" matrix representation.
+        \includegraphics[width=20cm, height=20cm, keepaspectratio=true]{../sympy/catalan/catalan-traditional-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle.pdf}
+    }
+
+    % this 'particular' line is necessary to use `displaymath' environment
+    % into the caption environment, togheter with the inclusion of 
+    % `caption' package. See here for more explanation:
+    % http://stackoverflow.com/questions/2716227/adding-an-equation-or-formula-to-a-figure-caption-in-latex
+    \captionsetup{singlelinecheck=off}
+    \caption[$\mathcal{C}_{\equiv_{2}}^{-1}$]{
+        Catalan traditional triangle, formally: 
+        \begin{displaymath}
+            \mathcal{C}^{-1}=\left(t, t {\left(1-t\right)} \right)
+        \end{displaymath} % \newline % new line no more necessary
+        inverse, ignore negatives, centered colouring, 127 rows, mod2 partitioning
+        }
+
+    \label{fig:catalan-traditional-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}
+
+\end{figure}
