@@ -486,6 +486,260 @@ positioned at the very left in the bottom half of $\mathcal{C}_{\equiv_{2}}^{(\a
 \input{Chapters/mod-p-characterization/catalan/zero-hole-include-figure.tex}
 In \autoref{fig:catalan-zero-hole} is reported $T_{\bigtriangleup}^{(4)}$.
 
+\subsection{On two \flqq mirrored\frqq\,clusters}
+
+\begin{theorem}
+    Consider column $\vect{c}_{2^{{\alpha}}-1}$, as the one considered 
+    for the introduction of the \flqq mirror\frqq\,segment, and let 
+    $\hat{d}_{s,2^{{\alpha}}-1}$ be a coefficient, such that $s$ is in the segment 
+    $S=\lbrace2^{\alpha}+1,\ldots,2^{\alpha+1}-2\rbrace$. Then:
+    \begin{displaymath}
+        d_{s-e,2^{{\alpha}}-1-e} \equiv_{2} d_{s,2^{{\alpha}}-1+e}
+    \end{displaymath}
+    for $e\in\lbrace1,\ldots,s-(2^{{\alpha}}-1)-1\rbrace=\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$,
+    computed looking at row $s$ toward its end.
+\end{theorem}
+
+Using our definition we can rewrite as:
+
+\begin{lenghtydisplaymath}
+    \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-e}=s-e+1}
+        {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-e}-1}}
+    \equiv_{2}
+    \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}+e}=s+1}
+        {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}+e}-1}}
+\end{lenghtydisplaymath}
+
+Panic! No idea to tackle the general setting as a whole. So, start small.
+Let $s=2^{{\alpha}}+1$, therefore no choices for $e$, obliged $e=1$, so:
+
+\begin{lenghtydisplaymath}
+    \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-1}=2^{{\alpha}}+1}
+        {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-1}-1}}
+    \equiv_{2}
+    \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}+1}=2^{{\alpha}}+2}
+        {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}+1}-1}}
+\end{lenghtydisplaymath}
+
+too difficult to proceed this way, too. 
+
+\iffalse
+Another idea could be to
+translate back columns (discarding unnecessary coefficients by subtracting them)
+on the \emph{left} of the choosen ``pivot'' element $\hat{d}_{s,2^{{\alpha}}-1}$. 
+In this way columns should be congruent element-wise but, again, it seems difficult
+to move forward this way.
+\fi
+
+Another approach is to find a closed form for a coefficient in $\mathcal{C}$,
+using the extract operator: $d_{nk} = [t^{n}]d_{\mathcal{C}}(t)h_{\mathcal{C}}(t)^{k}$.
+According the article \emph{Identities induced by Riordan Arrays}, such
+coefficient $d_{nk}$ agrees with the following identities:
+\begin{equation}
+    d_{nk}=\frac{k+1}{n+1}{{2n-k}\choose{n-k}}
+    \label{eq:catalan:array:first:identity}
+\end{equation}
+    \marginpar{in these ``modular''
+        proofs it's much easier to rewrite a binomial coefficient
+        into other binomial coefficients, only}
+or else:
+\begin{equation}
+    d_{nk}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}
+    \label{eq:catalan:array:second:identity}
+\end{equation}
+
+We attempt a \emph{false start} using the first one.
+\begin{proof}
+Assume not, therefore we need to yield a contraddiction if:
+\begin{displaymath}
+    d_{s-e,2^{{\alpha}}-1-e} \not\equiv_{2} d_{s,2^{{\alpha}}-1+e}
+\end{displaymath}
+holds. Rewriting the congruence according \autoref{eq:catalan:array:first:identity}
+ for $d_{nk}$:
+\begin{displaymath}
+    \frac{2^{{\alpha}}-e}{s-e+1}{{2(s-e)-(2^{{\alpha}}-1-e)}\choose{s-e-(2^{{\alpha}}-1-e)}}
+    \not\equiv_{2}
+    \frac{2^{{\alpha}}+e}{s+1}{{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)}}
+\end{displaymath}
+simplify it:
+\begin{displaymath}
+    \frac{2^{{\alpha}}-e}{s-e+1}{{2s-e-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}+1}}
+    \not\equiv_{2}
+    \frac{2^{{\alpha}}+e}{s+1}{{2s-2^{{\alpha}}+1-e}\choose{s-2^{{\alpha}}+1-e}}
+\end{displaymath}
+manipulate using ${{n}\choose{k}}={{n}\choose{n-k}}$:
+\begin{displaymath}
+    \frac{2^{{\alpha}}-e}{s-e+1}{{2s-e-2^{{\alpha}}+1}\choose{s-e}}
+    \not\equiv_{2}
+    \frac{2^{{\alpha}}+e}{s+1}{{2s-2^{{\alpha}}+1-e}\choose{s}}
+\end{displaymath}
+dead end: nonetheless binomial coeffients allow some grunging,
+fractions on both side are difficult to handle since it's hard
+to find their multiplicative inverses, modulo $2$.
+\end{proof} 
+
+Trace back to \autoref{eq:catalan:array:second:identity} for coefficient $d_{nk}$. 
+\begin{proof}
+Recall we would like to prove the following statement:
+\begin{displaymath}
+    d_{s-e,2^{{\alpha}}-1-e} \equiv_{2} d_{s,2^{{\alpha}}-1+e}
+\end{displaymath}
+Rewrite the left hand side:
+\begin{displaymath}
+    d_{s-e,2^{{\alpha}}-1-e}= {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)}}
+        - {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)-1}}
+\end{displaymath}
+in the same spirit, rewrite the right hand side:
+\begin{displaymath}
+    d_{s,2^{{\alpha}}-1+e}={{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)}}
+        - {{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)-1}}
+\end{displaymath}
+therefore:
+\begin{displaymath}
+    \begin{split}
+        {{2s-e-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}+1}}
+            - {{2s-e-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}}}
+        &\equiv_{2}
+        {{2s-2^{{\alpha}}+1-e}\choose{s-2^{{\alpha}}+1-e}}
+            - {{2s-2^{{\alpha}}+1-e}\choose{s-2^{{\alpha}}-e}}\\
+        {{2s-e-2^{{\alpha}}+1}\choose{s-e}}
+            - {{2s-e-2^{{\alpha}}+1}\choose{s-e+1}}
+        &\equiv_{2}
+        {{2s-2^{{\alpha}}+1-e}\choose{s}}
+            - {{2s-2^{{\alpha}}+1-e}\choose{s+1}}\\
+    \end{split}
+\end{displaymath}
+
+Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction on $e$:
+\begin{itemize}
+    \item base case $e=1$ yield the following congruence:
+        \begin{displaymath}
+                {{2s-2^{{\alpha}}}\choose{s-1}}-{{2s-2^{{\alpha}}}\choose{s}}
+                \equiv_{2}
+                {{2s-2^{{\alpha}}}\choose{s}}-{{2s-2^{{\alpha}}}\choose{s+1}}\\
+        \end{displaymath}
+        which is the same to say:
+        \begin{displaymath}
+                {{2s-2^{{\alpha}}}\choose{s-1}}+{{2s-2^{{\alpha}}}\choose{s+1}} \equiv_{2} 0
+        \end{displaymath}
+        let $s=s_{0}+s_{1}\,2+s_{2}\,2^{2}+\ldots+s_{{\alpha}-1}\,2^{{\alpha}-1} + 2^{{\alpha}}$
+        be the generic representation of $s$ in base $2$, since 
+        $s\in\lbrace 2^{{\alpha}}+1,\ldots,2^{{\alpha}+1}-2 \rbrace$; also  
+        let $2s-2^{{\alpha}}=s_{0}\,2+s_{1}\,2^{2}+s_{2}\,2^{3}+\ldots+s_{{\alpha}-1}^{*}\,2^{{\alpha}} + s_{{\alpha}}^{*}\,2^{{\alpha}+1}$,
+        where $(s_{{\alpha}-1}^{*},s_{{\alpha}}^{*})$ equals $(0,1)$ if $s_{{\alpha}-1}=1$, otherwise equals $(1,0)$.
+        By cases on the parity of $s$:
+        \begin{itemize}
+            \item assume $s$ even, therefore both $s-1$ both $s+1$ are odd, 
+                let $\hat{s}=1+\hat{s}_{1}\,2+\hat{s}_{2}\,2^{2}+\ldots+
+                    \hat{s}_{{\alpha}-1}\,2^{{\alpha}-1}+2^{{\alpha}}$ be one of them, hence:
+                \begin{displaymath}
+                        {{2s-2^{{\alpha}}}\choose{\hat{s}}}  
+                        \equiv_{2}
+                        {{0}\choose{1}} 
+                        {{0}\choose{\hat{s}_{1}}}
+                        {{s_{1}}\choose{\hat{s}_{2}}}
+                        \ldots
+                        {{s_{{\alpha}-2}}\choose{\hat{s}_{{\alpha}-1}}}
+                        {{s_{{\alpha}-1}^{*}}\choose{1}}
+                        {{s_{{\alpha}}^{*}}\choose{0}} = 0
+                \end{displaymath}
+                Observe $\hat{s}_{{\alpha}}=1$ against boundary cases:
+                if $s=2^{{\alpha}}+1$ then $\hat{s}=s-1=2^{{\alpha}}$, on the other
+                hand if $s=2^{{\alpha}+1}-2$ then $\hat{s}=s+1=2^{{\alpha}+1}-1$,
+                therefore in both cases the coefficient of $2^{{\alpha}}$ is $1$.
+                Eventually we get $0+0 \equiv_{2}0$, which holds;
+
+            \item assume $s$ odd, therefore both $s-1$ both $s+1$ are even, 
+                let's study the former:
+                \begin{displaymath}
+                        {{2s-2^{{\alpha}}}\choose{s-1}}  
+                        \equiv_{2}
+                        {{0}\choose{0}} 
+                        {{1}\choose{s_{1}}}
+                        {{s_{1}}\choose{s_{2}}}
+                        \ldots
+                        {{s_{{\alpha}-2}}\choose{s_{{\alpha}-1}}}
+                        {{s_{{\alpha}-1}^{*}}\choose{1}}
+                        {{s_{{\alpha}}^{*}}\choose{0}}
+                \end{displaymath}
+                in order for the right hand side to not vanish, modulo $2$,
+                it is mandatory for coefficients $\lbrace s_{i}\rbrace_{i\in\lbrace1,\ldots,{\alpha}-2\rbrace}$
+                to satisfy $s_{i}\geq s_{i+1}$: if any one of them is $0$, say $s_{j}$, then
+                $s_{j+1},\ldots,s_{j+k}$, with $j+k={\alpha}-1$,
+                have to be all $0$ too. In particular, if $s_{{\alpha}-1}=0$ then 
+                $(s_{{\alpha}-1}^{*},s_{{\alpha}}^{*})=(1,0)$
+                therefore the right hand side reduces to $1$, modulo $2$.
+                Observe that coefficients $\lbrace s_{i}\rbrace_{i\in\lbrace1,\ldots,{\alpha}-2\rbrace}$
+                cannot be all $1$ otherwise 
+                $s=(\underbrace{1,1,1,\ldots,1}_{{\alpha}+1})_{2}=2^{{\alpha}+1}-1$ raises a contraddiction, because
+                $s$ can assume $2^{{\alpha}+1}-2$ at most. 
+                
+                For the latter, namely $s+1$, assume $s$ can be represented as 
+                $(\underbrace{1,1,\ldots,1}_{r},0,s_{r+1},s_{r+2},\ldots,s_{{\alpha}-1},1)_{2}$, for
+                $r\in\lbrace1,\ldots,{\alpha}-2\rbrace$, since a $0$ must occur otherwise $s=2^{{\alpha}+1}-1$
+                which cannot be the case, as we've already seen.  Adding $1$ yield the representation
+                $(\underbrace{0,0,\ldots,0}_{r},1,s_{r+1},s_{r+2},\ldots,s_{{\alpha}-1},1)_{2}$, therefore:
+                \begin{lenghtydisplaymath}
+                        {{2s-2^{{\alpha}}}\choose{s+1}} 
+                        \equiv_{2} 
+                        \underbrace{
+                            {{0}\choose{0}} 
+                            {{1}\choose{0}}
+                            {{1}\choose{0}}
+                            \ldots
+                            {{1}\choose{0}}
+                        }_{r}
+                        {{1}\choose{1}}
+                        {{0}\choose{s_{r+1}}}
+                        {{s_{r+1}}\choose{s_{r+2}}}
+                        \ldots
+                        {{s_{{\alpha}-2}}\choose{s_{{\alpha}-1}}}
+                        {{s_{{\alpha}-1}^{*}}\choose{1}}
+                        {{s_{{\alpha}}^{*}}\choose{0}}
+                \end{lenghtydisplaymath}
+                In order to not vanish, modulo $2$, 
+                $s_{r+1}=0$, this propagates in turn that $s_{r+2}=0$, \ldots, 
+                this propagates in turn that $s_{{\alpha}-2}=0$,
+                this propagates in turn that $s_{{\alpha}-1}=0$. But if $s_{{\alpha}-1}=0$
+                then $(s_{{\alpha}-1}^{*},s_{{\alpha}}^{*})=(1,0)$, therefore the right
+                hand side reduces to $1$.
+
+                Combining the above cases for $s$ odd we reach:
+                \begin{displaymath}
+                        {{2s-2^{{\alpha}}}\choose{s-1}}+{{2s-2^{{\alpha}}}\choose{s+1}} \equiv_{2} 1+1\equiv_{2} 0
+                \end{displaymath}
+        \end{itemize}
+
+        \item assume the argument holds for $k\leq e$ and prove for $k=e+1$, so we need to show:
+
+            \begin{lenghtydisplaymath}
+                \begin{split}
+                    {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}+1}}
+                        - {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}}}
+                    &\equiv_{2}
+                    {{2s-2^{{\alpha}}+1-(e+1)}\choose{s-2^{{\alpha}}+1-(e+1)}}
+                        - {{2s-2^{{\alpha}}+1-(e+1)}\choose{s-2^{{\alpha}}-(e+1)}}\\
+                    {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-(e+1)}}
+                        - {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-(e+1)+1}}
+                    &\not\equiv_{2}
+                    {{2s-2^{{\alpha}}+1-(e+1)}\choose{s}}
+                        - {{2s-2^{{\alpha}}+1-(e+1)}\choose{s+1}}\\
+                    {{2s-e-2^{{\alpha}}}\choose{s-e-1}}
+                        - {{2s-e-2^{{\alpha}}}\choose{s-e}}
+                    &\not\equiv_{2}
+                    {{2s-2^{{\alpha}}-e}\choose{s}}
+                        - {{2s-2^{{\alpha}}-e}\choose{s+1}}\\
+                \end{split}
+            \end{lenghtydisplaymath}
+            which follows directly by complete induction hypothesis.
+\end{itemize}
+
+\end{proof}
+
+\input{Chapters/mod-p-characterization/catalan/mirrored-clusters-include-figure.tex}
+In \autoref{fig:catalan-mirrored-clusters} some coefficients in \flqq mirrored\frqq\,
+cluster $\mathcal{C}_{\equiv_{2}}^{(4)}$ are highlighted.
+
 
 \subsection{Some open questions}
 % TODO ask how show the modular characterization of the inverse of C, formally
