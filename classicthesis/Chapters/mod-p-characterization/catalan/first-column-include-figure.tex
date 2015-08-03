@@ -1,0 +1,34 @@
+
+\begin{figure}[p]
+
+    \noindent\makebox[\textwidth]{
+        \centering
+        %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
+
+        % using *angle* property to rotate it is difficult to properly align it
+        % in order to have a "real" matrix representation.
+        \includegraphics[
+            width=10cm, 
+            height=10cm, 
+            keepaspectratio=true]{../RART2015/catalan-tikz/first-column/first-column.pdf}
+    }
+
+    % this 'particular' line is necessary to use `displaymath' environment
+    % into the caption environment, togheter with the inclusion of 
+    % `caption' package. See here for more explanation:
+    % http://stackoverflow.com/questions/2716227/adding-an-equation-or-formula-to-a-figure-caption-in-latex
+    \captionsetup{singlelinecheck=off}
+    \caption[First column of $\mathcal{C}_{\equiv_{2}}$]{ 
+        First column of $\mathcal{C}_{\equiv_{2}}$ is highlighted,
+        see that only coefficients
+        \textcolor{orange}{
+            $   d_{0,0}\equiv_{2}
+                d_{1,0}\equiv_{2}
+                d_{3,0}\equiv_{2}
+                d_{7,0}\equiv_{2}
+                d_{15,0}$} 
+                lying on it are \emph{odd}}
+
+    \label{fig:catalan-first-column}
+
+\end{figure}

@@ -170,7 +170,7 @@ and write a Catalan coefficient $c_{j}$ in a different form:
 according to article \emph{Identities induced by Riordan arrays}. This
 last equation will play an important role in the following sections, in
 particular when reasoning about convolutions will be hard, it will 
-help to close proofs.
+help in closing proofs.
 
 \subsection{On the very first column of $\mathcal{C}_{\equiv_{2}}$}
 
@@ -284,6 +284,9 @@ In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
         \end{displaymath}
 \end{itemize}
 
+In \autoref{fig:catalan-first-column} is reported a chunk of $\mathcal{C}_{\equiv_{2}}$
+which shows the first column and its pattern argument of this section.
+\\\\
 \marginpar{using the ``classic'' closed formula on $c_{2\alpha+1}$ doesn't
     close the above proof}
 It is interesting to observe that if we use the ``traditional'' characterization
@@ -294,13 +297,87 @@ of a Catalan coefficient $c_{j}$:
 where $j=2\alpha+1$, would've been hard to handle, because:
 \begin{displaymath}
     2(\alpha+1)\,c_{j}\equiv_{2} {{0}\choose{1}}{{1}\choose{j_{1}}}
-            \ldots{{j_{k-1}}\choose{j_{k}}}
+            \ldots{{j_{k-1}}\choose{j_{k}}} \equiv_{2} 0
 \end{displaymath}
 reduces to $0\equiv_{2}0$ identity, giving no opportunity to derive some
 properties about coefficient $c_{j}$.
 
+\input{Chapters/mod-p-characterization/catalan/first-column-include-figure.tex}
 
+\subsection{On rows composed of \emph{odd} coeffients only}
 
+\begin{theorem}
+    Every row $\vect{r}_{2^{\alpha}-1}$ of $\mathcal{C}_{\equiv_{2}}$, 
+    for $\alpha\in\mathbb{N}$, is composed of \emph{odd} coefficients only.
+\end{theorem}
+
+\begin{proof}
+    For very first coefficient $d_{2^{\alpha}-1,0}$ we have seen in the
+    previous section that $d_{2^{\alpha}-1,0}\equiv_{2}1$. What about $d_{2^{\alpha}-1,1}$?
+    Recall we can write it as:
+    \begin{displaymath}
+        d_{2^{\alpha}-1,1} = \sum_{i_{1}+ i_{2}=2^{\alpha}}{ c_{i_{1}-1}\,c_{i_{2}-1} }
+    \end{displaymath}
+    observe how indices $i_{1}, i_{2}$ are related: $i_{1}+ i_{2}=2^{\alpha}$,
+    so $2^{\alpha}$ divides $i_{1}+i_{2}$ \emph{exactly}, so:
+    \begin{displaymath}
+        1 = \frac{i_{1}}{2^{\alpha}}+\frac{i_{2}}{2^{\alpha}} \qquad 
+            i_{1},i_{2}\in\lbrace 0,\ldots,2^{\alpha}\rbrace
+    \end{displaymath}
+    %, which is the same to say that 
+    %$\frac{i_{1}}{2^{\alpha}}$ and $\frac{i_{2}}{2^{\alpha}}$ are both integers.
+    This implies that there exists $\beta,\gamma\in\mathbb{N}$, where $\beta,\gamma\leq\alpha$,
+    such that $i_{1}=2^{\beta}$ and $i_{2}=2^{\gamma}$, respectively, since both indices
+    cannot exceed $2^{\alpha}$.
+
+    By this fact follows that $c_{i_{1}-1}=c_{2^{\beta}-1}\equiv_{2}1$ and 
+    $c_{i_{2}-1}=c_{2^{\gamma}-1}\equiv_{2}1$, therefore $c_{i_{1}-1}\,c_{i_{2}-1}\equiv_{2}1$.
+    By construction, fixing one index in  
+    $i_{1}+ i_{2}=2^{\alpha}$ fixes the other as well: there are $2^{\alpha}+1$ available choices
+    for the first index and only $1$ for the second.
+    We're almost finished:
+    \begin{displaymath}
+        d_{2^{\alpha}-1,1} = \sum_{i_{1}+ i_{2}=2^{\alpha}}{ c_{i_{1}-1}\,c_{i_{2}-1} }
+            \equiv_{2} \sum_{k=1}^{2^{\alpha}+1}{1}\equiv_{2} 2^{\alpha}+1\equiv_{2} 1
+    \end{displaymath}
+
+    What about for an arbitrary coefficient $d_{2^{\alpha}-1,s}$ where
+    $s\in\lbrace{2,\ldots,2^{\alpha}-1}\rbrace$?  Recall we can write it as:
+    \begin{displaymath}
+        d_{2^{\alpha}-1,s} = \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}
+            {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{s+1}-1}}
+    \end{displaymath}
+    Using an argument similar the previous one, from:
+    \begin{displaymath}
+        1 = \frac{i_{1}}{2^{\alpha}}+\ldots+\frac{i_{s+1}}{2^{\alpha}} \qquad 
+            i_{j}\in\lbrace 0,\ldots,2^{\alpha}\rbrace
+    \end{displaymath} 
+    the generic index $i_{j}$ has to satisfy $i_{j}=2^{\alpha_{j}}$, for some
+    $\alpha_{j}\leq\alpha$. Therefore $c_{i_{j}-1}\equiv_{2}1$,
+    for $j\in\lbrace1,\ldots,s+1\rbrace$, and rewrite as follow:
+    \begin{displaymath}
+        d_{2^{\alpha}-1,s} \equiv_{2} \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}{1}
+            \equiv_{2} {{s+2^{\alpha}}\choose{2^{\alpha}}}
+    \end{displaymath}
+    because the summation over indices $i_{1},\ldots,i_{s+1}$ asks to 
+    count the number of $2^{\alpha}$-combinations of $s+1$ distinct objects,
+    each of which may appear indefinitely often, that is, $0$ to $2^{\alpha}$
+    times: the saught number is ${{(s+1)+2^{\alpha}-1}\choose{2^{\alpha}}}$.
+
+    Again, we're interested on the parity of such coefficient, therefore
+    write $s=s_{0}+s_{1}\,2+\ldots+s_{\alpha-1}\,2^{\alpha-1}$, because $s$ can equal 
+    $2^{\alpha}-1$ at most, and apply Lucas theorem one more time:
+    \begin{displaymath}
+        {{s+2^{\alpha}}\choose{2^{\alpha}}}\equiv_{2} 
+            {{s_{0}}\choose{0}}{{s_{1}}\choose{0}} \ldots
+                {{s_{\alpha-1}}\choose{0}}{{1}\choose{1}}\equiv_{2}1 
+    \end{displaymath}
+    the general case holds too, therefore each coefficient lying on
+    a row $\vect{r}_{2^{\alpha}-1}$ is odd, as required.
+\end{proof}
+
+\input{Chapters/mod-p-characterization/catalan/odd-row-include-figure.tex}
+In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
 
 
 \subsection{Some open questions}
