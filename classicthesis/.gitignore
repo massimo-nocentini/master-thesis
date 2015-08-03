@@ -113,5 +113,5 @@ sympy-plots-for-*.tex/
 *.tcp
 
 *~
-*.swp
+#*.swp
 *.soc

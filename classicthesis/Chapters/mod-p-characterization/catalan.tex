@@ -379,6 +379,113 @@ properties about coefficient $c_{j}$.
 \input{Chapters/mod-p-characterization/catalan/odd-row-include-figure.tex}
 In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
 
+\subsection{On the \flqq mirror\frqq\, segment}
+
+\begin{theorem}
+    Consider column $\vect{c}_{2^{\alpha}-1}$. 
+    Each coefficient $d_{s,2^{\alpha}-1}$, for $s$ in the segment 
+    $S=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$, is even.
+\end{theorem}
+
+\begin{proof}
+As before, try to use our definition:
+\begin{displaymath}
+    d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
+        {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}}
+\end{displaymath}
+Observe that in this case, the number of Catalan coefficients
+multiplied together in each summand is the same, namely $2^{\alpha}$,
+for any $s\in S$; what changes respect to $s$ is the set of values 
+each index $i_{j}$ can take. Look at the following table:
+\begin{displaymath}
+    \begin{array}{rcc}
+        s = 2^{\alpha} \rightarrow
+            & i_{j}\in\lbrace0,\ldots,2^{\alpha}+1\rbrace 
+            & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha}}\rbrace\\
+        s = 2^{\alpha} +1\rightarrow
+            & i_{j}\in\lbrace0,\ldots,2^{\alpha}+2\rbrace 
+            & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha}+1}\rbrace\\
+        \vdots & & \\
+        s = 2^{\alpha+1} -2\rightarrow
+            & i_{j}\in\lbrace0,\ldots,2^{\alpha+1}-1\rbrace 
+            & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha+1}-2}\rbrace\\
+    \end{array}
+\end{displaymath}
+therefore, for any $s\in S$, the bigger set of Catalan coefficients we have 
+to consider is $\Omega = \lbrace c_{-1},\ldots,c_{2^{\alpha}-1},c_{2^{\alpha}},\ldots,c_{2^{\alpha+1}-2}\rbrace$.
+Each coefficient $c_{j}\in\Omega$ is even except those of the form $c_{2^{\beta}-1}$, which are odd,
+and they are $\lbrace c_{2^{\alpha-(\alpha-1)}-1},c_{2^{\alpha-(\alpha-2)}-1},\ldots, 
+    c_{2^{\alpha-1}-1},c_{2^{\alpha}-1}\rbrace$, $\alpha$ in number.
+Since each summand $t=c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}$ 
+has $2^{\alpha}$ coefficients, no matter if $t$ contains each coefficient in $\Omega$,
+the remaining ones make it vanish and $ d_{s, 2^{\alpha}-1} \equiv_{2} 0$, for any $s\in S$,
+as required.
+
+\end{proof}
+
+\input{Chapters/mod-p-characterization/catalan/mirror-segment-include-figure.tex}
+In \autoref{fig:mirror-segment} the \flqq mirror\frqq\,segment of column $\vect{c}_{2^{4}-1}$ 
+in $\mathcal{C}_{\equiv_{2}}$ is highlighted.
+
+\subsection{On the \flqq mirrored\frqq\,segment of the \flqq mirror\frqq\, segment}
+
+\subsection{On the \emph{upside-down} zero-hole}
+
+Another question, this one should be interpreted keeping the
+concept of principal $h$-cluster in mind:
+\begin{theorem}
+    Let $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ be a principal cluster 
+    of order $\alpha+1$ of the Catalan array $\mathcal{C}$. Then, 
+    $T_{\bigtriangleup}^{({\alpha})}$ denotes an \emph{upside-down} zero-hole of order $\alpha$,
+    such that coefficient $d_{nk}\in T_{\bigtriangleup}^{({\alpha})}$ if 
+    $n\in\lbrace 2^{{\alpha}},\ldots,2^{{\alpha}+1}-2\rbrace$ and 
+    $k\in\lbrace 0,\ldots, n-2^{{\alpha}}\rbrace$. \end{theorem}
+
+Note that $T_{\bigtriangleup}^{({\alpha})}$ is a component of the principal cluster
+    of order ${\alpha}+1$.
+
+\begin{proof}
+In order to answer this question we repeatedly use the approach
+of the proof about the \flqq mirror\frqq\,segment, considering the set of columns 
+$\Xi=\lbrace \vect{c}_{0},\ldots, \vect{c}_{2^{{\alpha}}-2}\rbrace$ and
+for each column $\vect{c}_{k}\in\Xi$, the segment of coefficients
+    $S_{k}=\lbrace d_{2^{{\alpha}}+k,k},\ldots,d_{2^{{\alpha}+1}-2,k} \rbrace$.
+
+Everything is set, so start from column on the very left, column $\vect{c}_{0}$.
+So the corresponding segment $S_{0}$ is
+a segment of Catalan numbers:
+\begin{displaymath}
+ S_{0}=\lbrace c_{2^{{\alpha}}}, \ldots, c_{2^{{\alpha}+1}-2}\rbrace
+\end{displaymath}
+since no coefficient $c_{j}\in S_{0}$ has the shape $c_{2^{\alpha}-1}$, 
+all coefficients in $S_{0}$ are even.
+
+Go ahead with column $\vect{c}_{1}$, so the corresponding segment is :
+\begin{displaymath}
+    S_{1}=\lbrace d_{2^{{\alpha}}+1,1},\ldots,d_{2^{{\alpha}+1}-2,1} \rbrace
+\end{displaymath}
+and coefficients in it are defined according:
+\begin{displaymath}
+    d_{s, 1} = \sum_{i_{1}+i_{2}=s+1} {c_{i_{1}-1}\,c_{i_{2}-1}}
+\end{displaymath}
+where $s\in \lbrace2^{{\alpha}}+1,\ldots,2^{{\alpha}+1}-2\rbrace$. 
+This is quite similar to the proof developed for the \flqq mirror\frqq\,segment,
+with the difference that summand term is composed of two coefficients, namely
+$c_{i_{1}-1}\,c_{i_{2}-1}$ instead of $2^{{\alpha}}$ coefficients as in the previous proof, 
+therefore the same argument applies,
+since if multiplying $2^{{\alpha}}$ coefficients fails to make \emph{not} vanish
+the summand term, modulo $2$, the same failure is reached if multiplying only $2$ coefficients.
+
+The same reasoning holds for remaining columns in $\Xi$: the last one of them is 
+$\vect{c}_{2^{\alpha}-2}$ (with only \emph{one} coefficient, namely $d_{2^{\alpha}-2,2^{\alpha}-2}$), 
+hence $T_{\bigtriangleup}^{({\alpha})}$ is an \emph{upside-down} zero-holes of order $\alpha$,
+positioned at the very left in the bottom half of $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$, as required.
+
+\end{proof}
+
+\input{Chapters/mod-p-characterization/catalan/zero-hole-include-figure.tex}
+In \autoref{fig:catalan-zero-hole} is reported $T_{\bigtriangleup}^{(4)}$.
+
 
 \subsection{Some open questions}
 % TODO ask how show the modular characterization of the inverse of C, formally
