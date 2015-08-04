@@ -1,6 +1,6 @@
 
 \noindent This project aims to study formal methods and their application to
-the analysis of algorithms and data structures used in them.
+the analysis of algorithms and data structures.
 
 \marginpar{analytic combinatorics and discrete objects}A solid base for such
 methods comes from the field of analytic combinatorics, which comprises tools
@@ -10,58 +10,72 @@ Sedgewick, \emph{Analytic Combinatorics}, Cambridge University Press, 2009.},
 Knuth\footnote{D. Knuth, \emph{The Art of Computer Programming}, vol.  1-3,
 Addison-Wesley, 1973.} and Graham et al. \footnote{Graham, Knuth and Patashnik,
 \emph{Concrete Mathematics: A Foundation for Computer Science}, Addison-Wesley,
-1994} exist on those subjects, where skillful methods to handle sequences of
-\emph{counting numbers}, combinatorial sums and classes of discrete objects,
-such as graphs, words and trees, are presented. 
+1994} exist on those topics, where skillful methods to handle sequences of
+\emph{counting numbers}, combinatorial sums and classes of combinatorial
+discrete objects, such as graphs, words, lattice paths and trees, are
+presented. 
 
-Actually, the goal of this project is twofold. First, \marginpar{to find combinatorial
-meanings and\ldots} we are interested in studying how such powerful techniques
-provide a combinatorial \emph{interpretation} of analytic results about a class
-$\mathcal{G}$ of objects, usually stated using a \emph{formal power series}
-$g(t)=\sum_{k\geq0}{g_{k}\,t^{k}}$ in the ring $\mathbb{Z}\llbracket t
-\rrbracket$: our final interest is to find \emph{combinatorial meanings} for
-each coefficient in $\lbrace g_{k}\rbrace_{k\in\mathbb{N}}$ and, possibly, a
-characterization in terms of lattice paths, urn models, bracelet
-configurations, domino and square tiling and so on, in the spirit of Benjamin and Quinn
-\footnote{Benjamin and Quinn, \emph{Proofs that really counts}, Mathematical
-Association of America, 2003}.  Moreover, we want to apply such techniques and
-interpretations to the analysis of algorithms as far as the analytic
-aspect is concerned, and to data structures for the combinatorial one. % here France advice to substitute `one' with `aspect'. 
+Actually, the goal of this project is twofold: 
+\begin{itemize}
 
-The second aspect of our goal is to give an implementation of the
-\emph{symbolic method}, different from the one supplied by \emph{Maple}
-\footnote{\texttt{combstruct} Maple package, proprietary implementation and
-closed-source}. We aim at: 
-    
-\marginpar{\ldots to implement a mathematical language}    
-\begin{itemize} 
+    \item \marginpar{to find combinatorial meanings and\ldots} to study how
+    such powerful techniques provide a combinatorial \emph{interpretation} of
+    analytic results about a class $\mathcal{G}$ of objects, usually stated
+    using \emph{formal power series} $g(t)=\sum_{k\geq0}{g_{k}\,t^{k}}$ in the
+    ring $\mathbb{Z}\llbracket t \rrbracket$: our final interest is to find
+    \emph{combinatorial meanings} for each coefficient in $\lbrace
+    g_{k}\rbrace_{k\in\mathbb{N}}$ and, possibly, a characterization in terms
+    of lattice paths, urn models, bracelet configurations, domino and square
+    tiling and so on, in the spirit of Benjamin and Quinn \footnote{Benjamin
+    and Quinn, \emph{Proofs that really counts}, Mathematical Association of
+    America, 2003} and Stanley\footnote{Richard Stanley, \emph{Enumerative
+    combinatorics. {V}ol. 1\&2}, Cambridge University Press}. Moreover, we want
+    to apply such techniques and interpretations to the analysis of algorithms
+    as far as the analytic aspect is concerned, and to data structures for the
+    combinatorial one. % here France advice to substitute `one' with `aspect'. 
 
-    \item an \emph{open-source} code base with an \emph{on-line} interactive
-    session, in the spirit of \emph{IPython
-    notebooks}\footnote{\url{http://ipython.org}, in particular the
-    \emph{Notebook} feature}, to provide an open web interface to our
-    implementations; 
+    \item to give an implementation of the
+        \emph{symbolic method}, different from the one supplied by \emph{Maple}
+        \footnote{\texttt{combstruct} Maple package, proprietary implementation and
+        closed-source}. We aim at: 
+            
+        \marginpar{\ldots to implement a mathematical language}    
+        \begin{itemize} 
 
-    \item a tight integration with \emph{Eclipse IDE}, developing a set of
-    plug-ins using the \emph{Xtext}\footnote{\url{https://eclipse.org/Xtext/}}
-    framework, with the idea of defining a mathematical language that allow us to
-    handle combinatorial and discrete objects in a simple and flexible way. Such
-    a language should have constructs to define classes of objects by the
-    introduction of \emph{datatypes}; constructs to attach measures of interest
-    to each one of them; and, finally, some computational rules in order to
-    combine matrices, generating functions and arrays in uniform and
-    polymorphic ways; 
+            \item an \emph{open-source} code base with an \emph{on-line} interactive
+            session, in the spirit of \emph{IPython
+            notebooks}\footnote{\url{http://ipython.org}, in particular the
+            \emph{Notebook} feature}, to provide an open web interface to our
+            implementations; 
 
-    \item a set of \emph{LISP macros} to tackle enumerative problems, where the
-    generation of discrete objects according to a given distribution is
-    difficult for arbitrary classes: using macros, much of the complexity is
-    moved from \emph{run-time} to \emph{compile-time}, as a kind of
-    \emph{tabling} technique.
+            \item a tight integration with \emph{Eclipse IDE}, developing a set of
+            plug-ins using the \emph{Xtext}\footnote{\url{https://eclipse.org/Xtext/}}
+            framework, with the idea of defining a mathematical language that allow us to
+            handle combinatorial and discrete objects in a simple and flexible way. Such
+            a language should have constructs to define classes of objects by the
+            introduction of \emph{datatypes}; constructs to attach measures of interest
+            to each one of them; and, finally, some computational rules in order to
+            combine matrices, generating functions and arrays in uniform and
+            polymorphic ways; 
 
+            \item a set of \emph{LISP macros} to tackle enumerative problems,
+            where the generation of discrete objects according to a given
+            distribution is difficult for arbitrary classes: using macros, much
+            of the complexity is moved from \emph{run-time} to
+            \emph{compile-time}, as a kind of \emph{tabling} technique.
+            Moreover, with the introduction of \emph{macros}, we are in a
+            position to extend the \emph{LISP} language, in order to provide a
+            \emph{domain specific language} which, possibly, allows us
+            embedding existing computer algebra systems, in particular
+            \emph{Maxima}\footnote{\emph{Maxima}, a Computer Algebra System,
+            \url{http://maxima.sourceforge.net/}}, which is itself written in
+            \emph{LISP}.
+
+        \end{itemize}
 \end{itemize}
 
 \marginpar{Riordan arrays: $A$-sequence, $A$-matrix and some generalizations}
-At the same time, we want to continue to work on the subjects studied in our
+At the same time, we want to continue to work on the subjects studied in my
 master thesis, in particular the topic of \emph{Riordan arrays}. We are
 interested in finding new characterizations to spot some properties of their
 structure. One example is the $h$-characterization $\mathcal{R}_{h(t)}$ of a
@@ -84,7 +98,7 @@ functions of combinatorial sums in a \emph{constructive} way, not just proving
 that a sum equals a \emph{given} value (usually denoted by a closed formula). 
 
 \marginpar{\ldots toward a modular arithmetic point of view} The other topic of
-our thesis shows our interest in the description and formalization of Riordan
+my thesis shows our interest in the description and formalization of Riordan
 arrays under the light of modular arithmetic. We have shown some congruences
 about \emph{Pascal} array $\mathcal{P}$ and its inverse $\mathcal{P}^{-1}$. We
 have also proved a formal characterization for the \emph{Catalan} array
