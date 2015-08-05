@@ -379,6 +379,47 @@ properties about coefficient $c_{j}$.
 \input{Chapters/mod-p-characterization/catalan/odd-row-include-figure.tex}
 In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
 
+\subsection{On rows composed of alternating odd and even coefficients}
+
+\begin{theorem}
+    Let $\vect{r}_{2^{\alpha}}$ be a row of $\mathcal{C}_{\equiv_{2}}$, 
+    for some $\alpha\in\mathbb{N}$. Then, exclused the very first coefficient 
+        $d_{2^{\alpha},0}$ which is even, $\vect{r}_{2^{\alpha}}$ is composed of
+        alternating even and odd coefficients.
+\end{theorem}
+
+\begin{proof}
+    Let $d_{2^{\alpha},j}$ be a coefficient lying on row $\vect{r}_{2^{\alpha}}$,
+    for some $j\in\lbrace1,\ldots,2^{\alpha}\rbrace$.
+
+    Since $\mathcal{C}$'s $A$-sequence is:
+    \begin{displaymath}
+        A_{\mathcal{C}}(t)=\frac{1}{1-t}=1+t+t^{2}+t^{3}+t^{4}+t^{5}+t^{6}+t^{7}+t^{8}+
+            \mathcal{O}(t^{9})
+    \end{displaymath}
+    it follows that $d_{2^{\alpha},j}$ can be written as the combination of $r+2$
+    coefficients lying on the previous row, namely $\vect{r}_{2^{\alpha}-1}$:
+    \begin{displaymath}
+        d_{2^{\alpha},j} = d_{2^{\alpha}-1,j-1} +d_{2^{\alpha}-1,j} +\ldots+d_{2^{\alpha}-1,j+r} 
+    \end{displaymath}
+    where $r$ satisfies $r=2^{\alpha}-1-j$, so $2^{\alpha}-j+1$ coefficients are 
+    combined.  By the theorem above, row $\vect{r}_{2^{\alpha}-1}$ is composed by \emph{odd}
+    coefficients only, therefore proceed by cases on the parity of $j$:
+    \begin{itemize}
+        \item if $j$ is \emph{odd}, assume $j=2k+1$ for some $k\in\mathbb{N}$, then
+            $2^{\alpha}-2k$ coefficients are combined, which is an \emph{even} number. 
+            Adding an \emph{even} number of \emph{odd} numbers yield an \emph{even} number;
+        \item if $j$ is \emph{even}, assume $j=2k$ for some $k\in\mathbb{N}$, then
+            $2^{\alpha}-2k+1$ coefficients are combined, which is an \emph{odd} number. 
+            Adding an \emph{odd} number of \emph{odd} numbers yield an \emph{odd} number.
+    \end{itemize}
+    therefore $d_{2^{\alpha},j}\equiv_{2}0 \leftrightarrow j=2k+1$, for 
+    some $k\in\mathbb{N}$, as required.
+\end{proof}
+
+\input{Chapters/mod-p-characterization/catalan/alternating-row-include-figure.tex}
+In \autoref{fig:catalan-alternating-row} row $\vect{r}_{2^{4}}$ is highlighted.
+
 \subsection{On the \flqq mirror\frqq\, segment}
 
 \begin{theorem}
@@ -510,6 +551,10 @@ in $\mathcal{C}_{\equiv_{2}}$ is highlighted.
     \end{itemize}
     both cases shows that \ac{rhs} is a multiple of $p$, as required.
 \end{proof}
+
+\input{Chapters/mod-p-characterization/catalan/dual-of-mirror-segment-include-figure.tex}
+In \autoref{fig:dual-of-mirror-segment} the dual of \flqq mirror\frqq\,segment in
+$\mathcal{C}_{\equiv_{2}}^{(5)}$ is highlighted.
 
 \subsection{On the \emph{upside-down} zero-hole}
 
