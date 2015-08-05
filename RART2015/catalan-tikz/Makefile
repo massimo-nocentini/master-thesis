@@ -1,5 +1,5 @@
 
-complete: first-column mirrored-clusters mirror-segment odd-row principal-cluster zero-hole
+complete: first-column mirrored-clusters mirror-segment odd-row principal-cluster zero-hole dual-of-mirror-segment alternating-row
 
 first-column:
 	$(MAKE) -C first-column/
@@ -19,5 +19,8 @@ principal-cluster:
 zero-hole:
 	$(MAKE) -C zero-hole/
 
+dual-of-mirror-segment:
+	$(MAKE) -C dual-of-mirror-segment/
 
-
+alternating-row:
+	$(MAKE) -C alternating-row/
