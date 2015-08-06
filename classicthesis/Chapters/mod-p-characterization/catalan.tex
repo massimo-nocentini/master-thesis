@@ -2,17 +2,18 @@
 \section{Catalan characterization}
 
 \input{Chapters/mod-p-characterization/catalan/catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
-In this section we tackle a modular characterization for the Catalan array
-$\mathcal{C}$ from a formal point of view. We aim at provide a proof driven
-from
+In this section we tackle a modular characterization, using congruence
+$\equiv_{2}$, for the Catalan array $\mathcal{C}$ from a formal point of view.
+We aim at a proof driven from
 \autoref{fig:catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle},
-and in order to accomplish this task we proceed \emph{piecewise}, breaking such
-characterization into sections such that each one of them describes an
-independent chunk of $\mathcal{C}$.
+and in order to complete it, we proceed \emph{piecewise}, breaking such
+characterization into the following sections, where an independent chunk of
+$\mathcal{C}_{\equiv_{2}}$ is described in each one of them.
 
 % inclusion of matrix expansion for C and its inverse.
 \input{Chapters/mod-p-characterization/catalan/catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
 
+% big comment: skip it, maybe the content is interesting, but stated very ugly.
 \iffalse
 Let $\mathcal{C}_{h}$ a principal $h$-cluster of
 the Catalan array, in its traditional definition: We attempt to point out
@@ -54,17 +55,119 @@ some properties about $\mathcal{C}_{h+1}$:
 \end{itemize}
 \fi
 
+\subsection{Introducing array $\mathcal{C}$}
+
+In this section we would like to give a quick description of
+array $\mathcal{C}$ and introduce some mathematical objects
+that will be used later. This array is defined as follow:
+\begin{displaymath}
+    \mathcal{C}=\left(\frac{1-\sqrt{1-4\,t}}{2\,t},
+        \frac{1-\sqrt{1-4\,t}}{2}\right)
+\end{displaymath}
+since $h_{\mathcal{C}}(t)=t\,d_{\mathcal{C}}(t)$, then $\mathcal{C}$
+is in the \emph{renewal} subgroup.
+
+Denote with $c_{j}$ the $j$-th Catalan coefficient and, 
+by definition of array $\mathcal{C}$, observe that:
+\begin{displaymath}
+    c_{j} = [t^{j}]d_{\mathcal{C}}(t)= [t^{j}]\frac{1-\sqrt{1-4\,t}}{2\,t}
+\end{displaymath}
+and since $\mathcal{C}$'s $A$-sequence is:
+\begin{displaymath}
+    A_{\mathcal{C}}(t)=\frac{1}{1-t}=1+t+t^{2}+t^{3}+t^{4}+t^{5}+t^{6}+t^{7}+t^{8}+
+        \mathcal{O}(t^{9})
+\end{displaymath}
+each coefficient $c_{j}$ can be written as the following combination:
+\begin{displaymath}
+    c_{j} = \sum_{k=0}^{j-1}{d_{j-1,k}}
+\end{displaymath}
+in other words, $c_{j}$ equals the $(j-1)$-row sum of $\mathcal{C}$, 
+therefore by the \emph{fundamental theorem} of the Riordan group:
+
+\marginpar{another \ac{gf} for the Catalan numbers}
+\begin{displaymath}
+    c_{j} = [t^{j-1}]\mathcal{C}\,A_{\mathcal{C}}(t)
+          = [t^{j-1}]d_{\mathcal{C}}(t)\,A_{\mathcal{C}}(h_{\mathcal{C}}(t))
+          = [t^{j}]h_{\mathcal{C}}(t)\,A_{\mathcal{C}}(h_{\mathcal{C}}(t))
+\end{displaymath}
+yielding:
+\begin{displaymath}
+    c_{j} = [t^{j}]\frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}
+\end{displaymath}
+with boundary condition $c_{0}=1$, which cannot be read from the above
+series expansion. Moreover, from the above equation, it is possible to derive
+another \ac{gf} for the sequence of Catalan numbers:
+
+\marginpar{yet another \ac{gf} for the Catalan numbers}
+\begin{displaymath}
+    \frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}=
+    \frac{\left(1-\sqrt{1-4 \, t}\right)^{2}}{4 \, t}=
+    \frac{1-2\,t-\sqrt{1-4 \, t}}{2 \, t}
+\end{displaymath}
+
+% no more necessary?
+\iffalse
+Go back to identity:
+\begin{displaymath}
+    d_{nk} = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
+            c_{i_{1}-1}\,c_{i_{2}-1}\,\ldots\,c_{i_{k+1}-1} }
+\end{displaymath}
+\fi
+
+Coefficient extraction on previous \ac{gf} allow us to write 
+a Catalan coefficient $c_{j}$ in a closed form:
+\begin{equation}
+    c_{j} = \frac{1}{j+1}{{2j}\choose{j}} 
+        = {{2j}\choose{j}} - {{2j}\choose{j+1}}
+    \label{eq:catalan:coeff:rewriting}
+\end{equation}
+% TODO put here the reference to the bibitem.
+
+\marginpar{closed formulae for Catalan coefficient $c_{j}$ and $d_{nk}\in\mathcal{C}$}
+On the other hand, the generic element $d_{nk}\in\mathcal{C}$ admits 
+closed formulae too. According to the article \emph{Identities induced by Riordan arrays}, two 
+of them are of particular interest in order to complete our proofs:
+\begin{equation}
+    d_{nk}=\frac{k+1}{n+1}{{2n-k}\choose{n-k}}
+    \label{eq:catalan:array:first:identity}
+\end{equation}
+and:
+\begin{equation}
+    d_{nk}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}
+    \label{eq:catalan:array:second:identity}
+\end{equation}
+
+
+The
+\marginpar{$\diagup_{\lbrace\alpha_{0},\alpha_{1},\alpha_{2},\ldots\rbrace}^{k}$
+is a kind of macro, it is a set builder, eventually}last object we want to
+introduce is a pair that allow to talk about a subset of elements lying on a
+column $\vect{c}_{k}$ of $\mathcal{C}$. Let $S$ be a \emph{countably} set, then
+$\diagup_{S}^{k}$ denotes a \emph{segment} of column $\vect{c}_{k}$ according
+to the following relation:
+\begin{displaymath}
+    \diagup_{\lbrace\alpha_{0},\alpha_{1},\alpha_{2},\ldots\rbrace}^{k}=
+        \left(\vect{c}_{k},\lbrace k+\alpha_{0},k+\alpha_{1},k+\alpha_{2},\ldots\rbrace\right)=
+        \lbrace d_{k+\alpha_{0},k},d_{k+\alpha_{1},k},d_{k+\alpha_{2},k},\ldots\rbrace
+\end{displaymath}
+
+
+
+
 \subsection{Some false starts}
 
-In order to formally proof the modular characterization of array $\mathcal{C}$, 
-we begin with an attempt which applies the \emph{Lagrange Inversion Formula}. 
+In order to formally proof the modular characterization $\mathcal{C}_{\equiv_{2}}$, 
+we begin with an attempt which applies the \ac{LIF}. 
 Write the generic element $d_{nk}\in\mathcal{C}$ using the definition:
 \begin{displaymath}
     d_{nk} = [t^n] \frac{1-\sqrt{1-4\,t}}{2\,t}\,
         \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k}
            = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
 \end{displaymath}
-The version of the \emph{LIF} we'll apply is the following one:
+\marginpar{For explanation of \emph{when} and \emph{how}
+    use \ac{LIF} see \emph{PUT HERE THE REFERENCE TO
+    ARTICLE BY MERLINI, VERRI, SPRUGNOLI}}
+The version of the \ac{LIF} we want to apply is the following one:
 \begin{displaymath}
     \alpha\,\left[z^\alpha\right] A(z)^{\beta} = 
         \beta\,\left[w^{\alpha-\beta}\right]\Phi(w)^{\alpha}
@@ -72,43 +175,48 @@ The version of the \emph{LIF} we'll apply is the following one:
 where $\alpha,\beta\in\mathbb{Z}$ and function $A$ relates to function
 $\Phi$ according to: 
 \begin{displaymath} A(z)=z\,\Phi(A(z)) \end{displaymath}
-under the constraint $\Phi(0)\not=0$, otherwise a contraddiction arises
+under the constraint $\Phi(0)\neq0$.
+% the following explanation for the constraing over 
+% function $\Phi$ should help only *our* understanding.
+\iffalse
+, otherwise a contraddiction arises
 (critical relation is emphasized with $\circeq$ symbol):
 \begin{displaymath} 
     z\,\Phi(0) \circeq 0 \rightarrow z\circeq\frac{0}{\Phi(0)} 
 \end{displaymath}
-
-\emph{LIF} theorem's ``from right to left'' direction allow us to make 
+\fi
+\ac{LIF}'s ``from right to left'' direction allow us to make 
 the following definitions:
 \begin{displaymath}
     \Phi(t)=\frac{1-\sqrt{1-4\,t}}{2}\qquad \alpha=k+1\qquad \beta=k-n
 \end{displaymath}
-Since $\Phi(0)=0$ we cannot apply the theorem directly, so try
-a combinatorial interpretation. Observe that:
+Since $\Phi(0)=0$ we cannot apply \ac{LIF} directly, so start over again 
+and observe that:
 \begin{displaymath}
-    [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
+    d_{nk}=[t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
 \end{displaymath}
 requires to extract coefficient $n+1$ from the $(k+1)$-fold
-convolution of Catalan numbers' generating function, \emph{shifted
-by one place}, with itself. Before going on, be careful
-to understand what coefficients are introduced; the
-following expansion defines a sequence $\lbrace \hat{c}_{i}\rbrace_{i\in\mathbb{N}}$:
+convolution of Catalan numbers' \ac{gf} with itself, \emph{shifted
+by one place}. Before going on, careful
+understanding of what coefficients are introduced is necessary. 
+The following expansion defines a sequence of coefficients 
+$\lbrace \hat{c}_{i}\rbrace_{i\in\mathbb{N}}$:
 \begin{displaymath}
     \frac{1-\sqrt{1-4\,t}}{2} = t + t^{2} + 2 t^{3} + 5 t^{4} 
         + 14 t^{5} + 42 t^{6} + 132 t^{7} + 429 t^{8} + 1430 t^{9} 
         + \mathcal{O}\left(t^{10}\right)
 \end{displaymath}
 where $\hat{c}_{0}=0$. On the other hand the following one, defines a sequence 
-$\lbrace c_{i}\rbrace_{i\in\mathbb{N}}$, the traditional Catalan numbers:
+of coefficients $\lbrace c_{i}\rbrace_{i\in\mathbb{N}}$, 
+the traditional Catalan numbers:
 \begin{displaymath}
     \frac{1-\sqrt{1-4\,t}}{2\,t} = 1 + t + 2 t^{2} + 5 t^{3} + 14 t^{4} 
         + 42 t^{5} + 132 t^{6} + 429 t^{7} + 1430 t^{8} + 4862 t^{9} 
         + \mathcal{O}\left(t^{10}\right)
 \end{displaymath}
 so the relationship $\hat{c}_{j} = c_{j-1}$ holds for any $j\in\mathbb{N}$, 
-with boundary condition $c_{-1}=0$. 
-
-After this subtle point, there exists indices $i_{1}, i_{2}, \ldots, i_{k+1}$,
+with boundary condition $c_{-1}=0$.  Looking at the previous expression for $d_{nk}$,
+there exists indices $i_{1}, i_{2}, \ldots, i_{k+1}$,
 where $i_{j}\in\lbrace0,\ldots,n+1\rbrace$ for each $j\in\lbrace1,\ldots,k+1\rbrace$, 
 such that:
 \begin{displaymath}
@@ -117,63 +225,20 @@ such that:
             \hat{c}_{i_{1}}\,\hat{c}_{i_{2}}\,\ldots\,\hat{c}_{i_{k+1}} }
 \end{displaymath}
 which is the same as:
-\begin{displaymath}
-    [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
-        = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
-            c_{i_{1}-1}\,c_{i_{2}-1}\,\ldots\,c_{i_{k+1}-1} }
-\end{displaymath}
-
-Since $c_{j}$ is a Catalan coefficient, 
-by definition of array $\mathcal{C}$, we observe that:
-\begin{displaymath}
-    c_{j} = [t^{j}]d(t)= [t^{j}]\frac{1-\sqrt{1-4\,t}}{2\,t}
-\end{displaymath}
-and since $\mathcal{C}$'s $A$-sequence is:
-\begin{displaymath}
-    A(t)=\frac{1}{1-t}
-\end{displaymath}
-each coefficient $c_{j}$ combines as follows:
-\begin{displaymath}
-    c_{j} = \sum_{k=0}^{j-1}{d_{j-1,k}}
-\end{displaymath}
-in other words, $c_{j}$ equals the $(j-1)$-row sum, therefore:
-\marginpar{another \ac{gf} for the Catalan numbers}
-\begin{displaymath}
-    c_{j} = [t^{j-1}]\mathcal{C}\,A(t)
-          = [t^{j-1}]d(t)\,A(h(t))
-          = [t^{j}]h(t)\,A(h(t))
-          = [t^{j}]\frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}
-\end{displaymath}
-with boundary condition $c_{0}=1$, which cannot be read from the above
-series expansion. Although interesting, this result is again difficult to
-handle. Moreover, from the above equation, it is possible to derive
-another generating function for the sequence of Catalan numbers:
-\marginpar{yet another \ac{gf} for the Catalan numbers}
-\begin{displaymath}
-    \frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}=
-    \frac{\left(1-\sqrt{1-4 \, t}\right)^{2}}{4 \, t}=
-    \frac{1-2\,t-\sqrt{1-4 \, t}}{2 \, t}
-\end{displaymath}
-
-Go back to identity:
-\begin{displaymath}
+\begin{equation}
     d_{nk} = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
             c_{i_{1}-1}\,c_{i_{2}-1}\,\ldots\,c_{i_{k+1}-1} }
-\end{displaymath}
-and write a Catalan coefficient $c_{j}$ in a different form:
-\begin{equation}
-    c_{j} = \frac{1}{j+1}{{2j}\choose{j}} 
-        = {{2j}\choose{j}} - {{2j}\choose{j+1}}
-    \label{eq:catalan:coeff:rewriting}
+    \label{eq:convolution:expansion:for:generic:element:in:catalan:array}
 \end{equation}
-% TODO put here the reference to the bibitem.
-according to article \emph{Identities induced by Riordan arrays}. This
-last equation will play an important role in the following sections, in
-particular when reasoning about convolutions will be hard, it will 
-help in closing proofs.
+This last equation will be used in the first proofs that follows, while
+in the last ones, \autoref{eq:catalan:array:second:identity} will be used.
+
 
 \subsection{On the very first column of $\mathcal{C}_{\equiv_{2}}$}
 
+In this section we want to characterize the very first column $\vect{c}_{0}$
+of $\mathcal{C}$, namely the column composed of Catalan numbers only,
+formally $c_{j}=d_{j0}\in\vect{c}_{0}$, for any $j\in\mathbb{N}$.  
 Use \autoref{eq:catalan:coeff:rewriting}
 and set a congruence relation, modulo $2$: write $j$ in base $2$, 
 so there exists $k\in\mathbb{N}$ such that 
@@ -204,8 +269,7 @@ In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
             \equiv_{2} {{0}\choose{0}}{{0}\choose{0}}{{0}\choose{0}}
                 \ldots{{0}\choose{0}}{{0}\choose{0}}\equiv_{2}1
         \end{displaymath}
-        this is indeed the only case where $c_{2\alpha} \equiv_{2}1$,
-        as the following alternative proof confirms:
+        this is indeed the only case where $c_{2\alpha} \equiv_{2}1$:
         \begin{proof}
             Assume not, hence there exists $\hat{\alpha}\in\mathbb{N}$, greater than $0$,
             such that $c_{2\hat{\alpha}} \equiv_{2}1$. So for ${{0}\choose{j_{1}}}$
@@ -249,7 +313,7 @@ In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
             j=\left(\underbrace{1,1,\ldots,1}_{\beta},0,j_{\beta+1},\ldots,j_{\beta+\gamma}\right)_{2}
         \end{displaymath}
         where $\beta,\gamma\in\mathbb{N}$ such that $\beta>0$ and $\beta+\gamma=k$. 
-        Increment by $1$:
+        Increment $j$ by $1$:
         \begin{displaymath}
             j+1=\left(\underbrace{0,0,\ldots,0}_{\beta},1,j_{\beta+1},\ldots,j_{\beta+\gamma}%,j_{\beta+\gamma+1}
                 \right)_{2}
@@ -284,8 +348,9 @@ In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
         \end{displaymath}
 \end{itemize}
 
-In \autoref{fig:catalan-first-column} is reported a chunk of $\mathcal{C}_{\equiv_{2}}$
-which shows the first column and its pattern argument of this section.
+In \autoref{fig:catalan-first-column}, segment
+$\diagup_{\lbrace 0,1,2,\ldots,2^{4}\rbrace}^{0}$ of $\mathcal{C}_{\equiv_{2}}$
+is highlighted.
 \\\\
 \marginpar{using the ``classic'' closed formula on $c_{2\alpha+1}$ doesn't
     close the above proof}
@@ -658,22 +723,13 @@ In this way columns should be congruent element-wise but, again, it seems diffic
 to move forward this way.
 \fi
 
-Another approach is to find a closed form for a coefficient in $\mathcal{C}$,
+
+Another approach\footnote{REMOVE THIS PARAGRAPH SINCE IT IS ALREADY
+DESCRIBED IN THE INTRODUCTORY SECTION FOR $\mathcal{C}$} 
+is to find a closed form for a coefficient in $\mathcal{C}$,
 using the extract operator: $d_{nk} = [t^{n}]d_{\mathcal{C}}(t)h_{\mathcal{C}}(t)^{k}$.
 According the article \emph{Identities induced by Riordan Arrays}, such
-coefficient $d_{nk}$ agrees with the following identities:
-\begin{equation}
-    d_{nk}=\frac{k+1}{n+1}{{2n-k}\choose{n-k}}
-    \label{eq:catalan:array:first:identity}
-\end{equation}
-    \marginpar{in these ``modular''
-        proofs it's much easier to rewrite a binomial coefficient
-        into other binomial coefficients, only}
-or else:
-\begin{equation}
-    d_{nk}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}
-    \label{eq:catalan:array:second:identity}
-\end{equation}
+coefficient $d_{nk}$ agrees with the following identities.
 
 We attempt a \emph{false start} using the first one.
 \begin{proof}
