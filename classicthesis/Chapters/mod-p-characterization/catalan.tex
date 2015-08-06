@@ -142,14 +142,18 @@ The
 \marginpar{$\diagup_{\lbrace\alpha_{0},\alpha_{1},\alpha_{2},\ldots\rbrace}^{k}$
 is a kind of macro, it is a set builder, eventually}last object we want to
 introduce is a pair that allow to talk about a subset of elements lying on a
-column $\vect{c}_{k}$ of $\mathcal{C}$. Let $S$ be a \emph{countably} set, then
+column $\vect{c}_{k}$ of $\mathcal{C}$. Let $S$ be a \emph{recursively enumerable} 
+set of natural numbers and $k\in\mathbb{N}$, then
 $\diagup_{S}^{k}$ denotes a \emph{segment} of column $\vect{c}_{k}$ according
 to the following relation:
-\begin{displaymath}
-    \diagup_{\lbrace\alpha_{0},\alpha_{1},\alpha_{2},\ldots\rbrace}^{k}=
-        \left(\vect{c}_{k},\lbrace k+\alpha_{0},k+\alpha_{1},k+\alpha_{2},\ldots\rbrace\right)=
-        \lbrace d_{k+\alpha_{0},k},d_{k+\alpha_{1},k},d_{k+\alpha_{2},k},\ldots\rbrace
-\end{displaymath}
+\begin{equation}
+    \begin{split}
+    \diagup_{\lbrace\alpha_{0},\alpha_{1},\alpha_{2},\ldots\rbrace}^{k}&=
+        \left(\vect{c}_{k},\lbrace k+\alpha_{0},k+\alpha_{1},k+\alpha_{2},\ldots\rbrace\right)\\
+        &= \lbrace d_{k+\alpha_{0},k},d_{k+\alpha_{1},k},d_{k+\alpha_{2},k},\ldots\rbrace
+    \end{split}
+    \label{eq:column:segment}
+\end{equation}
 
 
 
@@ -354,17 +358,17 @@ is highlighted.
 \\\\
 \marginpar{using the ``classic'' closed formula on $c_{2\alpha+1}$ doesn't
     close the above proof}
-It is interesting to observe that if we use the ``traditional'' characterization
-of a Catalan coefficient $c_{j}$:
+It is interesting to observe that if we use the ``traditional'' closed formula
+for a Catalan coefficient $c_{j}$:
 \begin{displaymath}
     (j+1)\,c_{j} = {{2j}\choose{j}} 
 \end{displaymath}
-where $j=2\alpha+1$, would've been hard to handle, because:
+where $j=2\alpha+1$, it would have been hard to handle, because:
 \begin{displaymath}
     2(\alpha+1)\,c_{j}\equiv_{2} {{0}\choose{1}}{{1}\choose{j_{1}}}
             \ldots{{j_{k-1}}\choose{j_{k}}} \equiv_{2} 0
 \end{displaymath}
-reduces to $0\equiv_{2}0$ identity, giving no opportunity to derive some
+reduces to $0\equiv_{2}0$, giving no opportunity to derive some
 properties about coefficient $c_{j}$.
 
 \input{Chapters/mod-p-characterization/catalan/first-column-include-figure.tex}
@@ -377,14 +381,16 @@ properties about coefficient $c_{j}$.
 \end{theorem}
 
 \begin{proof}
-    For very first coefficient $d_{2^{\alpha}-1,0}$ we have seen in the
+    Choose any $\alpha\in\mathbb{N}$. For the very first coefficient $d_{2^{\alpha}-1,0}$ 
+    lying on row $\vect{r}_{2^{\alpha}-1}$ we have seen in the
     previous section that $d_{2^{\alpha}-1,0}\equiv_{2}1$. What about $d_{2^{\alpha}-1,1}$?
-    Recall we can write it as:
+    Recall we can write it, according 
+    \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array}, as:
     \begin{displaymath}
         d_{2^{\alpha}-1,1} = \sum_{i_{1}+ i_{2}=2^{\alpha}}{ c_{i_{1}-1}\,c_{i_{2}-1} }
     \end{displaymath}
-    observe how indices $i_{1}, i_{2}$ are related: $i_{1}+ i_{2}=2^{\alpha}$,
-    so $2^{\alpha}$ divides $i_{1}+i_{2}$ \emph{exactly}, so:
+    Summation constraints indices $i_{1}$ and $i_{2}$ such that 
+    $2^{\alpha}$ divides $i_{1}+i_{2}$ \emph{exactly}, so:
     \begin{displaymath}
         1 = \frac{i_{1}}{2^{\alpha}}+\frac{i_{2}}{2^{\alpha}} \qquad 
             i_{1},i_{2}\in\lbrace 0,\ldots,2^{\alpha}\rbrace
@@ -392,8 +398,7 @@ properties about coefficient $c_{j}$.
     %, which is the same to say that 
     %$\frac{i_{1}}{2^{\alpha}}$ and $\frac{i_{2}}{2^{\alpha}}$ are both integers.
     This implies that there exists $\beta,\gamma\in\mathbb{N}$, where $\beta,\gamma\leq\alpha$,
-    such that $i_{1}=2^{\beta}$ and $i_{2}=2^{\gamma}$, respectively, since both indices
-    cannot exceed $2^{\alpha}$.
+    such that $i_{1}=2^{\beta}$ and $i_{2}=2^{\gamma}$, respectively.
 
     By this fact follows that $c_{i_{1}-1}=c_{2^{\beta}-1}\equiv_{2}1$ and 
     $c_{i_{2}-1}=c_{2^{\gamma}-1}\equiv_{2}1$, therefore $c_{i_{1}-1}\,c_{i_{2}-1}\equiv_{2}1$.
@@ -407,27 +412,28 @@ properties about coefficient $c_{j}$.
     \end{displaymath}
 
     What about for an arbitrary coefficient $d_{2^{\alpha}-1,s}$ where
-    $s\in\lbrace{2,\ldots,2^{\alpha}-1}\rbrace$?  Recall we can write it as:
+    $s\in\lbrace{2,\ldots,2^{\alpha}-1}\rbrace$?  Again, rewrite it as:
     \begin{displaymath}
         d_{2^{\alpha}-1,s} = \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}
             {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{s+1}-1}}
     \end{displaymath}
-    Using an argument similar the previous one, from:
+    Using an argument similar to the previous one, from:
     \begin{displaymath}
         1 = \frac{i_{1}}{2^{\alpha}}+\ldots+\frac{i_{s+1}}{2^{\alpha}} \qquad 
             i_{j}\in\lbrace 0,\ldots,2^{\alpha}\rbrace
     \end{displaymath} 
     the generic index $i_{j}$ has to satisfy $i_{j}=2^{\alpha_{j}}$, for some
     $\alpha_{j}\leq\alpha$. Therefore $c_{i_{j}-1}\equiv_{2}1$,
-    for $j\in\lbrace1,\ldots,s+1\rbrace$, and rewrite as follow:
+    for $j\in\lbrace1,\ldots,s+1\rbrace$, so:
     \begin{displaymath}
         d_{2^{\alpha}-1,s} \equiv_{2} \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}{1}
             \equiv_{2} {{s+2^{\alpha}}\choose{2^{\alpha}}}
     \end{displaymath}
-    because the summation over indices $i_{1},\ldots,i_{s+1}$ asks to 
-    count the number of $2^{\alpha}$-combinations of $s+1$ distinct objects,
-    each of which may appear indefinitely often, that is, $0$ to $2^{\alpha}$
-    times: the saught number is ${{(s+1)+2^{\alpha}-1}\choose{2^{\alpha}}}$.
+    because \marginpar{See \emph{Introduction to Combinatorial Analysis} by
+    Riordan}the summation over indices $i_{1},\ldots,i_{s+1}$ asks to count the
+    number of $2^{\alpha}$-combinations of $s+1$ distinct objects, each of
+    which may appear indefinitely often, that is, $0$ to $2^{\alpha}$ times:
+    the saught number is ${{(s+1)+2^{\alpha}-1}\choose{2^{\alpha}}}$.
 
     Again, we're interested on the parity of such coefficient, therefore
     write $s=s_{0}+s_{1}\,2+\ldots+s_{\alpha-1}\,2^{\alpha-1}$, because $s$ can equal 
@@ -468,7 +474,8 @@ In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
         d_{2^{\alpha},j} = d_{2^{\alpha}-1,j-1} +d_{2^{\alpha}-1,j} +\ldots+d_{2^{\alpha}-1,j+r} 
     \end{displaymath}
     where $r$ satisfies $r=2^{\alpha}-1-j$, so $2^{\alpha}-j+1$ coefficients are 
-    combined.  By the theorem above, row $\vect{r}_{2^{\alpha}-1}$ is composed by \emph{odd}
+    combined.  By \marginpar{$d_{2^{\alpha},j}\equiv_{2}0 \leftrightarrow j$ odd}
+    the theorem above, row $\vect{r}_{2^{\alpha}-1}$ is composed by \emph{odd}
     coefficients only, therefore proceed by cases on the parity of $j$:
     \begin{itemize}
         \item if $j$ is \emph{odd}, assume $j=2k+1$ for some $k\in\mathbb{N}$, then
@@ -478,8 +485,6 @@ In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
             $2^{\alpha}-2k+1$ coefficients are combined, which is an \emph{odd} number. 
             Adding an \emph{odd} number of \emph{odd} numbers yield an \emph{odd} number.
     \end{itemize}
-    therefore $d_{2^{\alpha},j}\equiv_{2}0 \leftrightarrow j=2k+1$, for 
-    some $k\in\mathbb{N}$, as required.
 \end{proof}
 
 \input{Chapters/mod-p-characterization/catalan/alternating-row-include-figure.tex}
@@ -488,50 +493,61 @@ In \autoref{fig:catalan-alternating-row} row $\vect{r}_{2^{4}}$ is highlighted.
 \subsection{On the \flqq mirror\frqq\, segment}
 
 \begin{theorem}
-    Consider column $\vect{c}_{2^{\alpha}-1}$. 
-    Each coefficient $d_{s,2^{\alpha}-1}$, for $s$ in the segment 
-    $S=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$, is even.
+    Choose any $\alpha\in\mathbb{N}$. \marginpar{we call $\Phi^{(\alpha)}$ the \flqq mirror\frqq\,segment}
+    The segment $\Phi^{(\alpha)}=\diagup_{\lbrace 1,2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$, contained 
+    in the principal cluster $\mathcal{C}^{(\alpha+1)}$, satisfies: 
+    \begin{displaymath}
+        d_{s,2^{\alpha}-1}\in\Phi^{(\alpha)} \rightarrow d_{s,2^{\alpha}-1}\equiv_{2}0
+    \end{displaymath}
+    for some $s$ according segment definition in \autoref{eq:column:segment}.
 \end{theorem}
 
 \begin{proof}
-As before, try to use our definition:
+Let $d_{s,2^{\alpha}-1}$ a coefficient in the segment $\Phi^{(\alpha)}$, 
+according \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array} 
+write it as:
 \begin{displaymath}
     d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
         {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}}
 \end{displaymath}
-Observe that in this case, the number of Catalan coefficients
-multiplied together in each summand is the same, namely $2^{\alpha}$,
-for any $s\in S$; what changes respect to $s$ is the set of values 
-each index $i_{j}$ can take. Look at the following table:
+Observe that, for $s$ varing in the allowed range of $\Phi^{(\alpha)}$,
+the number of Catalan coefficients
+multiplied together in each summand is the same, namely $2^{\alpha}$. 
+What changes respect to $s$ is the set of values 
+each index $i_{j}$ can take. Look at the following table, where $j$ and $k$
+are dummy variables:
 \begin{displaymath}
-    \begin{array}{rcc}
-        s = 2^{\alpha} \rightarrow
+    \begin{array}{c|c|c}
+        s = 2^{\alpha} 
             & i_{j}\in\lbrace0,\ldots,2^{\alpha}+1\rbrace 
             & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha}}\rbrace\\
-        s = 2^{\alpha} +1\rightarrow
+        s = 2^{\alpha} +1
             & i_{j}\in\lbrace0,\ldots,2^{\alpha}+2\rbrace 
             & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha}+1}\rbrace\\
-        \vdots & & \\
-        s = 2^{\alpha+1} -2\rightarrow
+        \vdots & \vdots&\vdots \\
+        s = 2^{\alpha+1} -2
             & i_{j}\in\lbrace0,\ldots,2^{\alpha+1}-1\rbrace 
             & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha+1}-2}\rbrace\\
     \end{array}
 \end{displaymath}
-therefore, for any $s\in S$, the bigger set of Catalan coefficients we have 
-to consider is $\Omega = \lbrace c_{-1},\ldots,c_{2^{\alpha}-1},c_{2^{\alpha}},\ldots,c_{2^{\alpha+1}-2}\rbrace$.
-Each coefficient $c_{j}\in\Omega$ is even except those of the form $c_{2^{\beta}-1}$, which are odd,
-and they are $\lbrace c_{2^{\alpha-(\alpha-1)}-1},c_{2^{\alpha-(\alpha-2)}-1},\ldots, 
-    c_{2^{\alpha-1}-1},c_{2^{\alpha}-1}\rbrace$, $\alpha$ in number.
-Since each summand $t=c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}$ 
-has $2^{\alpha}$ coefficients, no matter if $t$ contains each coefficient in $\Omega$,
-the remaining ones make it vanish and $ d_{s, 2^{\alpha}-1} \equiv_{2} 0$, for any $s\in S$,
+observe that set $\lbrace c_{-1},\ldots,c_{2^{\alpha}}\rbrace$, the smaller one, and set
+$\lbrace c_{-1},\ldots,c_{2^{\alpha+1}-2}\rbrace$, the bigger one, have the same subset
+$\Omega^{(\alpha)}$ of \emph{odd} coefficients: 
+\begin{displaymath}
+    \Omega^{(\alpha)}=\lbrace c_{2^{\alpha-(\alpha-1)}-1},c_{2^{\alpha-(\alpha-2)}-1},\ldots, 
+        c_{2^{\alpha-1}-1},c_{2^{\alpha}-1}\rbrace
+\end{displaymath}
+where $\left|\Omega^{(\alpha)}\right|=\alpha$.
+Since each summand term $c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}$ 
+has $2^{\alpha}$ coefficients, no matter if it contains each coefficient in $\Omega^{(\alpha)}$ and,
+more importantly, one of them cannot belong to $\Omega^{(\alpha)}$:
+the remaining ones make it vanish and $d_{s, 2^{\alpha}-1} \equiv_{2} 0$, for any suitable $s$,
 as required.
 
 \end{proof}
 
 \input{Chapters/mod-p-characterization/catalan/mirror-segment-include-figure.tex}
-In \autoref{fig:mirror-segment} the \flqq mirror\frqq\,segment of column $\vect{c}_{2^{4}-1}$ 
-in $\mathcal{C}_{\equiv_{2}}$ is highlighted.
+In \autoref{fig:mirror-segment} the \flqq mirror\frqq\,segment $\Phi^{(4)}$ is highlighted.
 
 \subsection{On the \flqq mirrored\frqq\,segment of the \flqq mirror\frqq\, segment}
 
