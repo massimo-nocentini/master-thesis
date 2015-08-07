@@ -142,18 +142,24 @@ The
 \marginpar{$\diagup_{\lbrace\alpha_{0},\alpha_{1},\alpha_{2},\ldots\rbrace}^{k}$
 is a kind of macro, it is a set builder, eventually}last object we want to
 introduce is a pair that allow to talk about a subset of elements lying on a
-column $\vect{c}_{k}$ of $\mathcal{C}$. Let $S$ be a \emph{recursively enumerable} 
-set of natural numbers and $k\in\mathbb{N}$, then
-$\diagup_{S}^{k}$ denotes a \emph{segment} of column $\vect{c}_{k}$ according
-to the following relation:
+column $\vect{c}_{k}$ of $\mathcal{C}$. Let $S\subseteq\mathbb{N}$  
+and let $k\in\mathbb{N}$, then a \emph{segment} of column $\vect{c}_{k}$ is
+denoted by the following relation:
 \begin{equation}
-    \begin{split}
-    \diagup_{\lbrace\alpha_{0},\alpha_{1},\alpha_{2},\ldots\rbrace}^{k}&=
-        \left(\vect{c}_{k},\lbrace k+\alpha_{0},k+\alpha_{1},k+\alpha_{2},\ldots\rbrace\right)\\
-        &= \lbrace d_{k+\alpha_{0},k},d_{k+\alpha_{1},k},d_{k+\alpha_{2},k},\ldots\rbrace
-    \end{split}
+    \diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}
+        = \left(\vect{c}_{k},\lbrace k+\alpha_{i}\rbrace_{i\in S}\right)
+        = \lbrace d_{k+\alpha_{i},k}\rbrace_{i\in S}
     \label{eq:column:segment}
 \end{equation}
+where $\lbrace\alpha_{i}\rbrace_{i\in S}\subseteq\mathbb{N}$. 
+In order\marginpar{$rows$ helper function} to fetch the set of 
+row indices belonging to a segment we introduce the $rows$ function, defined as follow:
+\begin{displaymath}
+    rows\left(\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}\right)
+        = rows\left(\left(\vect{c}_{k},\lbrace k+\alpha_{i}\rbrace_{i\in S}\right)\right)
+        = \lbrace k+\alpha_{i}\rbrace_{i\in S}
+    \label{eq:column:segment:rows:function}
+\end{displaymath}
 
 
 
@@ -450,7 +456,7 @@ properties about coefficient $c_{j}$.
 \input{Chapters/mod-p-characterization/catalan/odd-row-include-figure.tex}
 In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
 
-\subsection{On rows composed of alternating odd and even coefficients}
+\subsection{On rows composed of odd and even coefficients}
 
 \begin{theorem}
     Let $\vect{r}_{2^{\alpha}}$ be a row of $\mathcal{C}_{\equiv_{2}}$, 
@@ -499,7 +505,7 @@ In \autoref{fig:catalan-alternating-row} row $\vect{r}_{2^{4}}$ is highlighted.
     \begin{displaymath}
         d_{s,2^{\alpha}-1}\in\Phi^{(\alpha)} \rightarrow d_{s,2^{\alpha}-1}\equiv_{2}0
     \end{displaymath}
-    for some $s$ according segment definition in \autoref{eq:column:segment}.
+    where $s\in rows\left(\Phi^{(\alpha)}\right)=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$.
 \end{theorem}
 
 \begin{proof}
@@ -534,10 +540,10 @@ observe that set $\lbrace c_{-1},\ldots,c_{2^{\alpha}}\rbrace$, the smaller one,
 $\lbrace c_{-1},\ldots,c_{2^{\alpha+1}-2}\rbrace$, the bigger one, have the same subset
 $\Omega^{(\alpha)}$ of \emph{odd} coefficients: 
 \begin{displaymath}
-    \Omega^{(\alpha)}=\lbrace c_{2^{\alpha-(\alpha-1)}-1},c_{2^{\alpha-(\alpha-2)}-1},\ldots, 
+    \Omega^{(\alpha)}=\lbrace c_{-1}, c_{2^{\alpha-(\alpha-1)}-1},c_{2^{\alpha-(\alpha-2)}-1},\ldots, 
         c_{2^{\alpha-1}-1},c_{2^{\alpha}-1}\rbrace
 \end{displaymath}
-where $\left|\Omega^{(\alpha)}\right|=\alpha$.
+where $\left|\Omega^{(\alpha)}\right|=\alpha+1$.
 Since each summand term $c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}$ 
 has $2^{\alpha}$ coefficients, no matter if it contains each coefficient in $\Omega^{(\alpha)}$ and,
 more importantly, one of them cannot belong to $\Omega^{(\alpha)}$:
@@ -549,21 +555,18 @@ as required.
 \input{Chapters/mod-p-characterization/catalan/mirror-segment-include-figure.tex}
 In \autoref{fig:mirror-segment} the \flqq mirror\frqq\,segment $\Phi^{(4)}$ is highlighted.
 
-\subsection{On the \flqq mirrored\frqq\,segment of the \flqq mirror\frqq\, segment}
+\subsection{On the \flqq dual\frqq\,segment of the \flqq mirror\frqq\, segment}
 
-
-\marginpar{It should be interesting to introduce a definition for
-    the mirror segment, as a pair (column c, set S), in order to avoid
-    the repetition of column indices in listing coefficient in S, eventually
-    they are all the same}
 \begin{theorem}
-    Let $\vect{c}_{2^{\alpha}-1}$ be the column on which 
-    the \flqq mirror\frqq\,segment $S$ of 
-    $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ lies. Then:
+    Let \marginpar{we call set $\left\lbrace d_{s,s-(2^{\alpha}-1)}\right\rbrace$,
+        for $s\in rows\left(\Phi^{(\alpha)}\right)$, the \flqq dual\frqq\, segment of 
+    the \flqq mirror\frqq\,segment} 
+    $\Phi^{(\alpha)}=\diagup_{\lbrace 1,2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$, 
+    be a \flqq mirror\frqq\,segment in $\mathcal{C}^{(\alpha+1)}$, then: 
     \begin{equation}
-        d_{s,s-(2^{\alpha}-1)}\equiv_{2}d_{s,2^{\alpha}-1}
+        d_{s,2^{\alpha}-1}\in\Phi^{(\alpha)}\rightarrow d_{s,s-(2^{\alpha}-1)}\equiv_{2}d_{s,2^{\alpha}-1}
     \end{equation}
-    where $s\in S$.
+    where $s\in rows\left(\Phi^{(\alpha)}\right)=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$.
 \end{theorem}
 
 \begin{proof}
@@ -587,11 +590,11 @@ In \autoref{fig:mirror-segment} the \flqq mirror\frqq\,segment $\Phi^{(4)}$ is h
         {{s+2^{\alpha}}\choose{s+1}} \equiv_{2} {{2s-2^{\alpha}+2}\choose{s+1}}
     \end{displaymath}
     since $s$ can assume $2^{\alpha}$ at least and $2^{\alpha+1}-2$ at most, 
-    writing $s$   in base $2$:
+    $s$ can be written in base $2$ as follows:
     \begin{displaymath}
         s=s_{0} + s_{1}2 + s_{2}2^{2}+\ldots+s_{\alpha-1}2^{\alpha-1}+2^{\alpha}
     \end{displaymath}
-    and applying Lucas theorem finishes the proof:
+    and applying Lucas theorem we get:
 
     \begin{displaymath}
         \hspace{-2cm}
@@ -634,49 +637,50 @@ In \autoref{fig:mirror-segment} the \flqq mirror\frqq\,segment $\Phi^{(4)}$ is h
 \end{proof}
 
 \input{Chapters/mod-p-characterization/catalan/dual-of-mirror-segment-include-figure.tex}
-In \autoref{fig:dual-of-mirror-segment} the dual of \flqq mirror\frqq\,segment in
-$\mathcal{C}_{\equiv_{2}}^{(5)}$ is highlighted.
+In \autoref{fig:dual-of-mirror-segment} the \flqq dual\frqq\,segment 
+    $\left\lbrace d_{s,s-(2^{4}-1)}\right\rbrace$,
+    for $s\in rows\left(\Phi^{(4)}\right)$, of \flqq mirror\frqq\,segment 
+    $\Phi^{(4)}$ in $\mathcal{C}_{\equiv_{2}}^{(5)}$ is highlighted.
 
 \subsection{On the \emph{upside-down} zero-hole}
 
-Another question, this one should be interpreted keeping the
-concept of principal $h$-cluster in mind:
 \begin{theorem}
-    Let $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ be a principal cluster 
+    Let \marginpar{$H_{\bigtriangleup}^{({\alpha})}\subset\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ }
+    $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ be a principal cluster 
     of order $\alpha+1$ of the Catalan array $\mathcal{C}$. Then, 
-    $T_{\bigtriangleup}^{({\alpha})}$ denotes an \emph{upside-down} zero-hole of order $\alpha$,
-    such that coefficient $d_{nk}\in T_{\bigtriangleup}^{({\alpha})}$ if 
+    $H_{\bigtriangleup}^{({\alpha})}$ denotes an \emph{upside-down} zero-hole of order $\alpha$,
+    such that coefficient $d_{nk}\in H_{\bigtriangleup}^{({\alpha})}$ if 
     $n\in\lbrace 2^{{\alpha}},\ldots,2^{{\alpha}+1}-2\rbrace$ and 
-    $k\in\lbrace 0,\ldots, n-2^{{\alpha}}\rbrace$. \end{theorem}
+    $k\in\lbrace 0,\ldots, n-2^{{\alpha}}\rbrace$. 
+\end{theorem}
 
-Note that $T_{\bigtriangleup}^{({\alpha})}$ is a component of the principal cluster
-    of order ${\alpha}+1$.
 
 \begin{proof}
-In order to answer this question we repeatedly use the approach
+We repeatedly use the approach
 of the proof about the \flqq mirror\frqq\,segment, considering the set of columns 
 $\Xi=\lbrace \vect{c}_{0},\ldots, \vect{c}_{2^{{\alpha}}-2}\rbrace$ and
-for each column $\vect{c}_{k}\in\Xi$, the segment of coefficients
-    $S_{k}=\lbrace d_{2^{{\alpha}}+k,k},\ldots,d_{2^{{\alpha}+1}-2,k} \rbrace$.
+for each column $\vect{c}_{k}\in\Xi$, the segment
+    $\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-2-k\rbrace}^{k}$.
 
 Everything is set, so start from column on the very left, column $\vect{c}_{0}$.
-So the corresponding segment $S_{0}$ is
-a segment of Catalan numbers:
+So the corresponding set of row indices  is a segment of Catalan numbers:
 \begin{displaymath}
- S_{0}=\lbrace c_{2^{{\alpha}}}, \ldots, c_{2^{{\alpha}+1}-2}\rbrace
+    S_{0}=\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-2\rbrace}^{0}
+        = \lbrace c_{2^{\alpha}},c_{2^{\alpha}+1},\ldots,c_{2^{\alpha+1}-2}\rbrace
 \end{displaymath}
 since no coefficient $c_{j}\in S_{0}$ has the shape $c_{2^{\alpha}-1}$, 
 all coefficients in $S_{0}$ are even.
 
 Go ahead with column $\vect{c}_{1}$, so the corresponding segment is :
 \begin{displaymath}
-    S_{1}=\lbrace d_{2^{{\alpha}}+1,1},\ldots,d_{2^{{\alpha}+1}-2,1} \rbrace
+    S_{1}=\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-3\rbrace}^{1}
+    %S_{1}=\lbrace d_{2^{{\alpha}}+1,1},\ldots,d_{2^{{\alpha}+1}-2,1} \rbrace
 \end{displaymath}
 and coefficients in it are defined according:
 \begin{displaymath}
     d_{s, 1} = \sum_{i_{1}+i_{2}=s+1} {c_{i_{1}-1}\,c_{i_{2}-1}}
 \end{displaymath}
-where $s\in \lbrace2^{{\alpha}}+1,\ldots,2^{{\alpha}+1}-2\rbrace$. 
+where $s\in rows(S_{1})= \left\lbrace 2^{\alpha}+1,2^{\alpha}+2,\ldots,2^{\alpha+1}-2\right\rbrace$. 
 This is quite similar to the proof developed for the \flqq mirror\frqq\,segment,
 with the difference that summand term is composed of two coefficients, namely
 $c_{i_{1}-1}\,c_{i_{2}-1}$ instead of $2^{{\alpha}}$ coefficients as in the previous proof, 
@@ -686,30 +690,29 @@ the summand term, modulo $2$, the same failure is reached if multiplying only $2
 
 The same reasoning holds for remaining columns in $\Xi$: the last one of them is 
 $\vect{c}_{2^{\alpha}-2}$ (with only \emph{one} coefficient, namely $d_{2^{\alpha}-2,2^{\alpha}-2}$), 
-hence $T_{\bigtriangleup}^{({\alpha})}$ is an \emph{upside-down} zero-holes of order $\alpha$,
+hence $H_{\bigtriangleup}^{({\alpha})}$ is an \emph{upside-down} zero-holes of order $\alpha$,
 positioned at the very left in the bottom half of $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$, as required.
 
 \end{proof}
 
 \input{Chapters/mod-p-characterization/catalan/zero-hole-include-figure.tex}
-In \autoref{fig:catalan-zero-hole} is reported $T_{\bigtriangleup}^{(4)}$.
+In \autoref{fig:catalan-zero-hole} is reported $H_{\bigtriangleup}^{(4)}$.
 
 \subsection{On two \flqq mirrored\frqq\,clusters}
 
 \begin{theorem}
-    Consider column $\vect{c}_{2^{{\alpha}}-1}$, as the one considered 
-    for the introduction of the \flqq mirror\frqq\,segment, and let 
-    $\hat{d}_{s,2^{{\alpha}}-1}$ be a coefficient, such that $s$ is in the segment 
-    $S=\lbrace2^{\alpha}+1,\ldots,2^{\alpha+1}-2\rbrace$. Then:
+    Let $\Phi^{(\alpha)}=\diagup_{\lbrace 2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$
+    be a \flqq mirror\frqq\,segment and $\hat{d}_{s,2^{{\alpha}}-1}$ 
+    be a coefficient in $\Phi^{(\alpha)}$, for some $s\in rows\left(\Phi^{(\alpha)}\right)$. Then:
     \begin{displaymath}
         d_{s-e,2^{{\alpha}}-1-e} \equiv_{2} d_{s,2^{{\alpha}}-1+e}
     \end{displaymath}
-    for $e\in\lbrace1,\ldots,s-(2^{{\alpha}}-1)-1\rbrace=\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$,
-    computed looking at row $s$ toward its end.
+    for $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$.
 \end{theorem}
 
-Using our definition we can rewrite as:
-
+Before approaching a structured proof, we look for some insights.
+According \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array},
+rewrite both members:
 \begin{lenghtydisplaymath}
     \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-e}=s-e+1}
         {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-e}-1}}
@@ -717,10 +720,8 @@ Using our definition we can rewrite as:
     \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}+e}=s+1}
         {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}+e}-1}}
 \end{lenghtydisplaymath}
-
-Panic! No idea to tackle the general setting as a whole. So, start small.
-Let $s=2^{{\alpha}}+1$, therefore no choices for $e$, obliged $e=1$, so:
-
+panic! No idea to tackle the general setting as a whole. So, start small and
+let $s=2^{{\alpha}}+1$, therefore no choices for $e$, $e=1$ is mandatory:
 \begin{lenghtydisplaymath}
     \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-1}=2^{{\alpha}}+1}
         {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-1}-1}}
@@ -729,7 +730,7 @@ Let $s=2^{{\alpha}}+1$, therefore no choices for $e$, obliged $e=1$, so:
         {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}+1}-1}}
 \end{lenghtydisplaymath}
 
-too difficult to proceed this way, too. 
+too difficult to proceed on this path, too. 
 
 \iffalse
 Another idea could be to
@@ -737,7 +738,6 @@ translate back columns (discarding unnecessary coefficients by subtracting them)
 on the \emph{left} of the choosen ``pivot'' element $\hat{d}_{s,2^{{\alpha}}-1}$. 
 In this way columns should be congruent element-wise but, again, it seems difficult
 to move forward this way.
-\fi
 
 
 Another approach\footnote{REMOVE THIS PARAGRAPH SINCE IT IS ALREADY
@@ -746,8 +746,10 @@ is to find a closed form for a coefficient in $\mathcal{C}$,
 using the extract operator: $d_{nk} = [t^{n}]d_{\mathcal{C}}(t)h_{\mathcal{C}}(t)^{k}$.
 According the article \emph{Identities induced by Riordan Arrays}, such
 coefficient $d_{nk}$ agrees with the following identities.
+\fi
 
-We attempt a \emph{false start} using the first one.
+We attempt another \emph{false start} using closed formulae for
+the generic element $d_{nk}\in\mathcal{C}$.
 \begin{proof}
 Assume not, therefore we need to yield a contraddiction if:
 \begin{displaymath}
@@ -774,21 +776,22 @@ manipulate using ${{n}\choose{k}}={{n}\choose{n-k}}$:
 \end{displaymath}
 dead end: nonetheless binomial coeffients allow some grunging,
 fractions on both side are difficult to handle since it's hard
-to find their multiplicative inverses, modulo $2$.
+to find their multiplicative inverses, modulo $2$. A contraddiction
+is difficult to be reached using this approach.
 \end{proof} 
 
-Trace back to \autoref{eq:catalan:array:second:identity} for coefficient $d_{nk}$. 
+Trace back and use \autoref{eq:catalan:array:second:identity}. 
 \begin{proof}
 Recall we would like to prove the following statement:
 \begin{displaymath}
     d_{s-e,2^{{\alpha}}-1-e} \equiv_{2} d_{s,2^{{\alpha}}-1+e}
 \end{displaymath}
-Rewrite the left hand side:
+Rewrite the \ac{lhs}:
 \begin{displaymath}
     d_{s-e,2^{{\alpha}}-1-e}= {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)}}
         - {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)-1}}
 \end{displaymath}
-in the same spirit, rewrite the right hand side:
+in the same spirit, rewrite the \ac{rhs}:
 \begin{displaymath}
     d_{s,2^{{\alpha}}-1+e}={{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)}}
         - {{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)-1}}
@@ -920,12 +923,12 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
                         - {{2s-2^{{\alpha}}+1-(e+1)}\choose{s-2^{{\alpha}}-(e+1)}}\\
                     {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-(e+1)}}
                         - {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-(e+1)+1}}
-                    &\not\equiv_{2}
+                    &\equiv_{2}
                     {{2s-2^{{\alpha}}+1-(e+1)}\choose{s}}
                         - {{2s-2^{{\alpha}}+1-(e+1)}\choose{s+1}}\\
                     {{2s-e-2^{{\alpha}}}\choose{s-e-1}}
                         - {{2s-e-2^{{\alpha}}}\choose{s-e}}
-                    &\not\equiv_{2}
+                    &\equiv_{2}
                     {{2s-2^{{\alpha}}-e}\choose{s}}
                         - {{2s-2^{{\alpha}}-e}\choose{s+1}}\\
                 \end{split}
@@ -946,32 +949,20 @@ In order to fully characterize $\mathcal{C}$ in a modular context we are
 left with a last theorem.
 
 \begin{theorem}
-
     $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ 
-    contains, located at the very right of its bottom strip,
-    a copy of $\mathcal{C}_{\equiv_{2}}^{(\alpha)}$.
-
+    contains a copy of $\mathcal{C}_{\equiv_{2}}^{(\alpha)}$,
+    located at the very right of its bottom half. Formally, 
+    let $\Phi^{(\alpha)}=\diagup_{\lbrace 2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$
+    be a \flqq mirror\frqq\,segment and $\hat{d}_{s,2^{{\alpha}}-1}$ 
+    be a coefficient in $\Phi^{(\alpha)}$, for some $s\in rows\left(\Phi^{(\alpha)}\right)$. Then:
+    \begin{displaymath}
+        d_{s,2^{{\alpha}}-1+e} \equiv_{2} d_{s-2^{{\alpha}},e-1}
+    \end{displaymath}
+    for $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$.
 \end{theorem}
 
-In order to formally state the above question we reason as before, choosing a
-\emph{pivot} element lying on the \flqq mirror\frqq\,segment of column
-$\vect{c}_{2^{{\alpha}}-1}$. Denote with $S_{2^{{\alpha}}-1}=\lbrace
-2^{{\alpha}}+1,\ldots,2^{{\alpha}+1}-2 \rbrace$ the segment of such column and
-let coefficient $\hat{d}_{s,2^{{\alpha}}-1}$, where $s\in S_{2^{{\alpha}}-1}$,
-be the ``pivot'' element. The request can be formalized as follow:
-
-\begin{displaymath}
-    d_{s,2^{{\alpha}}-1+e} \equiv_{2} d_{s-2^{{\alpha}},e-1}
-\end{displaymath}
-for $e\in\lbrace1,\ldots,s-(2^{{\alpha}}-1)-1\rbrace=\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$,
-computed looking at row $s$ toward its end.
-
 \begin{proof}
-We tackle the proof using the following definition for $d_{nk}\in\mathcal{C}$:
-\begin{displaymath}
-    d_{nk}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}
-\end{displaymath}
-instantiated with our indices, we have to prove:
+We tackle the proof using \autoref{eq:catalan:array:second:identity}:
 
 \begin{lenghtydisplaymath}
     \begin{split}
@@ -1022,17 +1013,20 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
 
 \input{Chapters/mod-p-characterization/catalan/principal-cluster-include-figure.tex}
 
-Before concluding this section, we would like to note that the last two
-proofs doesn't say anything about the remainder of a coefficient belonging
-to subtriangles of interest: we've shown only that a \emph{complete}
-subtriangle is repeated when coefficients are taken modulo $2$. 
+Before concluding the modular characterization of $\mathcal{C}$, 
+we would like to observe that the last two
+theorems do not say anything about the \emph{value} of remainder for 
+a coefficient belonging to subtriangles of interest: 
+we have only shown that a \emph{complete} subtriangle is repeated 
+when coefficients are taken modulo $2$. 
 
-Enough for this characterization modulo $2$ for Catalan array $\mathcal{C}$.
 
 \subsection{Some open questions}
-% TODO ask how show the modular characterization of the inverse of C, formally
-\input{Chapters/mod-p-characterization/catalan/catalan-traditional-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
-What about a formal proof for the modular characterization of $\mathcal{C}_{\equiv_{2}}^{-1}$, reported in 
-\autoref{fig:catalan-traditional-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}?
 
-And in general, how generalize to an arbitrary prime $p$?
+\input{Chapters/mod-p-characterization/catalan/catalan-traditional-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+We finish this section leaving some problems we are currently working on:
+\begin{itemize}
+    \item find a modular characterization of $\mathcal{C}_{\equiv_{2}}^{-1}$, reported in 
+        \autoref{fig:catalan-traditional-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}
+    \item how the characterization described in this section can be generalized to congruences modulo an arbitrary prime $p$?
+\end{itemize}
