@@ -116,7 +116,8 @@ combinatorial interpretation to $c_{j}$:
 
 Another interesting observation of \citeauthor{shapiro:1976} is about the computation
 of \emph{row sums}. Choose a row $n$, then: 
-\marginpar{row sums: collecting ``distance dimension''}
+\marginpar{row sums: $s_{n}$ is the number of \emph{non-intersecting} pairs of 
+    paths of length $n$, no matter the distance between them}
 \begin{displaymath}
     \sum_{k=1}^{n}{d_{nk}}=s_{n}
 \end{displaymath}
@@ -133,3 +134,64 @@ The recurrence holds because $s_{n}$ denotes the number of
 \emph{non-intersecting} paths of length $n$ and, since two paths can be
 extended in $4$ ways, then we've to remove all of them that intersect after the
 extension, which are $c_{n-1}$ in number.
+
+Another interesting observation is the following recurrence:
+\begin{displaymath}
+    d_{nk}=\sum_{j=1}^{n-k+1}{d_{n-j,k-1}c_{j}}
+\end{displaymath}
+
+\begin{proof}
+    If two \emph{non-intersecting} paths have distance $k$ then there
+    exists $j\in\mathbb{N}$ such that, at step $n-j$, they have distance 
+    $k-1$ for the last time. For the remaining $j$ steps, starting from
+    step $n-j+1$ to step $n$, the two paths have to be extended so as to keep
+    distance at least $k$ and, at step $n$, distance has to be $k$ exactly.
+    One way to do this extensions is to apply the same sequence of steps to both paths,
+    which keep distance $k$ for all the remaining $j$ steps, which is the same to say
+    that paths can be extended in $c_{j}$ ways.
+\end{proof}
+
+Previous recurrence is important when it is used to characterize columns. Take the second
+column, so let $k=2$:
+\marginpar{$2$-fold convolution of function $C$ with itself}
+\begin{displaymath}
+    d_{n,2}=\sum_{j=1}^{n-1}{d_{n-j,1}c_{j}}
+           =\sum_{j=1}^{n-1}{c_{n-j}c_{j}}
+           =[t^{n}]C(t)^{2}-c_{0}c_{n}
+           =[t^{n}]C(t)^{2}
+\end{displaymath}
+where $C(t)=t+2t^{2}+5t^{3}+14t^{4}+42t^{5}+132t^{6}+\mathcal{O}(t^{7})$ is the
+\ac{fps} for the Catalan numbers, shifted by one place, so $c_{0}=0$.
+
+Take the third column, so let $k=3$:
+\marginpar{$3$-fold convolution of function $C$ with itself}
+\begin{displaymath}
+    \begin{split}
+        d_{n,3}&=\sum_{j=1}^{n-2}{d_{n-j,2}c_{j}}
+               =\sum_{j=1}^{n-2}{\left(\sum_{i=1}^{n-j-1}{d_{n-j-i,1}c_{i}}\right)c_{j}}\\
+               &=\sum_{j=1}^{n-2}{\sum_{i=1}^{n-j-1}{c_{n-j-i}c_{i}}c_{j}}
+               =\sum_{i+j+l=n}{c_{i}c_{j}c_{l}}
+               =[t^{n}]C(t)^{3}
+    \end{split}
+\end{displaymath}
+
+So, take any column $k$, then coefficients lying on it are coefficients
+of the $k$-fold convolution of function $C$ with itself.
+\\\\
+Finally, \citeauthor{shapiro:1976} asks the following question:
+\begin{quote}
+    \emph{Is there a theory of arithmetic triangles where a simple function
+    of the generating function (or \ac{fps}) of the first column yields
+    the generating function (or \ac{fps}) of the $n$-th column?}
+\end{quote}
+Rogers found such a theory, as we will see in the next section.
+
+
+
+
+
+
+
+
+
+

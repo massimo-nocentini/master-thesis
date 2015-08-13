@@ -1,3 +1,43 @@
 
 \subsection{Renewal arrays, by Rogers}
 \label{sec:back:to:the:basics:rogers}
+
+\citeauthor{rogers:1977}, in \cite{rogers:1977}, proposes a theory
+as a solution to the question left open by \citeauthor{shapiro:1976}, 
+introducing the concept of \emph{renewal arrays}.
+
+In order to understand his work, we formalize first the concept of $k$-fold
+convolution of a sequence $\lbrace s_{i}\rbrace_{i\in\mathbb{N}}$ 
+with itself and, second, the concept of \emph{renewal arrays}.
+\\\\
+Let $\lbrace \alpha_{i}\rbrace_{i\in\mathbb{N}}$ and 
+$\lbrace \beta_{i}\rbrace_{i\in\mathbb{N}}$ be two sequences. Denote
+with $\cdot$ the \emph{convolution} operator which consumes a pair
+of sequences and produces a new sequence, written in \emph{infix} 
+notation:
+\begin{displaymath}
+    \lbrace \alpha_{i}\rbrace_{i\in\mathbb{N}}\cdot
+    \lbrace \beta_{i}\rbrace_{i\in\mathbb{N}} =
+    \lbrace \theta_{i}\rbrace_{i\in\mathbb{N}}
+\end{displaymath}
+where sequence  $\lbrace \theta_{i}\rbrace_{i\in\mathbb{N}}$ satisfies:
+\begin{displaymath}
+    \theta_{n}=\sum_{j=0}^{n}{\alpha_{j}\beta_{n-j}}
+\end{displaymath}
+
+The $k$-fold convolution of a sequence $\lbrace \theta_{i}\rbrace_{i\in\mathbb{N}}$
+\marginpar{$k$-fold convolution, precisely}
+with itself, denoted with  $\lbrace \theta_{i}^{(k)}\rbrace_{i\in\mathbb{N}}$, is defined
+recursively as:
+\begin{displaymath}
+    \lbrace\theta_{n}^{(k+1)}\rbrace= \lbrace\theta_{n}^{(k)}\rbrace\cdot
+        \lbrace\theta_{n}\rbrace
+\end{displaymath}
+with boundary condition $\lbrace\theta_{n}^{(0)}\rbrace=(1,0,0,\ldots)$ so as:
+\begin{displaymath}
+    \lbrace\theta_{n}^{(1)}\rbrace= \lbrace\theta_{n}^{(0)}\rbrace\cdot
+        \lbrace\theta_{n}\rbrace=
+        \lbrace\theta_{n}+0\theta_{n-1}+\ldots+0\theta_{0}\rbrace=
+        \lbrace\theta_{n}\rbrace
+\end{displaymath}
+
