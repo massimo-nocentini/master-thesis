@@ -18,6 +18,7 @@ column:
         6&132 &165 &110 &44 &10 &1& \\
         \vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\vdots&\ddots \\
     \end{array}
+    \label{eq:shapiro:catalan:triangle:expanded}
 \end{equation}
 
 Such a triangle counts the pairs of \emph{non-intersecting} paths, in an
@@ -135,7 +136,7 @@ The recurrence holds because $s_{n}$ denotes the number of
 extended in $4$ ways, then we've to remove all of them that intersect after the
 extension, which are $c_{n-1}$ in number.
 
-Another interesting observation is the following recurrence:
+Yet another interesting observation is the following recurrence:
 \begin{displaymath}
     d_{nk}=\sum_{j=1}^{n-k+1}{d_{n-j,k-1}c_{j}}
 \end{displaymath}
@@ -177,6 +178,10 @@ Take the third column, so let $k=3$:
 
 So, take any column $k$, then coefficients lying on it are coefficients
 of the $k$-fold convolution of function $C$ with itself.
+\begin{equation}
+    d_{nk}=\sum_{i_{1}+\ldots+i_{k}=n}{c_{i_{1}}\cdots c_{i_{k}}}
+    \label{eq:shapiro:catalan:triangle:convolution:for:generic:coefficient}
+\end{equation}
 \\\\
 Finally, \citeauthor{shapiro:1976} asks the following question:
 \begin{quote}

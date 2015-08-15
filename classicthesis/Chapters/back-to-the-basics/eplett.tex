@@ -1,14 +1,15 @@
 
 \subsection{Eplett identity, by Eplett}
 
-John Riordan in his book \emph{Introduction to combinatorial analysis},
-asks the solve the following exercise:
+\citeauthor{riordan:intro:combinatorial:analysis},
+in his book \cite{riordan:intro:combinatorial:analysis},
+asks for a solution of the following exercise:
 
 \begin{quote}
-    let $\lbrace a_{n} \rbrace_{n\in\mathbb{N}}$ be a sequence and
-    $\lbrace a_{n}^{\prime} \rbrace_{n\in\mathbb{N}}$ be its inverse:
+    let $\lbrace a_{n} \rbrace_{n\in\mathbb{N}}$ be a sequence, with $a_{0}\neq0$, 
+    and $\lbrace a_{n}^{\prime} \rbrace_{n\in\mathbb{N}}$ be its \emph{inverse}:
     if $A(t)$ and $A^{\prime}(t)$ are two \ac{fps} over them, respectively, 
-        then $A(t)A^{\prime}(t)=1$. Show that:
+    then $A(t)A^{\prime}(t)=1$. Show that:
     \begin{displaymath}                
         a_{n}^{\prime} = \frac{(-1)^{n}}{a_{0}^{n+1}}
             \left|
@@ -26,13 +27,13 @@ asks the solve the following exercise:
 \end{quote}
 
 \begin{proof}
-Nonetheless it is explicitly requested to show for $n\geq2$, it's useful
-to recall formula about $a_{0}^{\prime}$ and $a_{1}^{\prime}$, since
-they'll occur in the following. 
+Although not explicitly requested, %to show for $n\geq2$, 
+it's useful to recall formula about $a_{0}^{\prime}$ and $a_{1}^{\prime}$, 
+since they'll occur in the following. 
 
 First of all we interpret the product
-$A(t)A^{\prime}(t)=1$ as the Cauchy product over \ac{fps}, namely as a convolution,  
-therefore: 
+$A(t)A^{\prime}(t)=1$ as the Cauchy product over the ring of \ac{fps}, 
+namely as a convolution, therefore: 
 \begin{displaymath}
     \left[t^{0}\right]A(t)A^{\prime}(t)=a_{0}a_{0}^{\prime}=1
 \end{displaymath}
@@ -40,7 +41,7 @@ is the relation which defines $a_{0}^{\prime}=\frac{1}{a_0}$.  On the other hand
 \begin{displaymath}
     \left[t^{1}\right]A(t)A^{\prime}(t)=a_{0}a_{1}^{\prime}+a_{1}a_{0}^{\prime}=0
 \end{displaymath}
-is the relation which defines $a_{1}^{\prime}=\frac{a_1}{a_{0}^{2}}$.
+is the relation which defines $a_{1}^{\prime}=-\frac{a_1}{a_{0}^{2}}$.
 
 The proof proceeds by induction on $n$:
 \begin{itemize}
@@ -190,3 +191,98 @@ The proof proceeds by induction on $n$:
 \end{itemize}
 
 \end{proof}
+
+Previous exercise is actually a lemma for an identity which
+\citeauthor{eplett:1979} finds and discusses in \cite{eplett:1979}.  Let
+$\lbrace d_{nk}\rbrace_{n,k\in\mathbb{N}}$ be the Catalan triangle as defined
+in \autoref{eq:shapiro:catalan:triangle:expanded}, so \citeauthor{eplett:1979}'s
+result reads as follow.
+
+\begin{theorem}
+    \marginpar{in other words, $c_{j-1}$, the first coefficient of row $j-1$,
+        combines coefficients lying on the next row $j$, summing with alternating signs}
+    \begin{displaymath}                
+        c_{j-1}=\sum_{k=1}^{j}{(-1)^{k-1}d_{jk}}
+    \end{displaymath}                
+\end{theorem}
+\begin{proof}
+    Let $\vect{a}=\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$ be a sequence such
+    that $a_{0}=1$ and consider its \emph{inverse} sequence, call it $\vect{b}$,
+    where $b_{0}=1$ by inverse relation on the very first coefficient.
+    By previous exercise observe that:
+    \begin{equation}                
+        \hspace{-2cm}
+        a_{n} = b_{n}+a_{1}b_{n-1}+a_{2}b_{n-2}+\ldots+a_{n-1}b_{1}
+        \leftrightarrow
+        b_{n} = (-1)^{n-1}
+            \left|
+            \begin{array}{ccccc}
+                a_1 & a_2 & \ldots & a_{n-1} & a_{n}\\
+                1 & a_1 & \ldots & a_{n-2} & a_{n-1}\\
+                0   & 1 & \ldots & a_{n-3} & a_{n-2}\\
+                \vdots & \vdots & \vdots & \vdots & \vdots\\
+                0 & 0 & \ldots & a_{1} & a_{2}\\
+                0 & 0 & \ldots & 1 & a_{1}\\
+            \end{array}
+            \right|
+        \label{eq:eplett:det:inverse:identity:lemma}
+    \end{equation}                
+    As we have seen in
+    \autoref{eq:shapiro:catalan:triangle:convolution:for:generic:coefficient}, 
+    we can rewrite theorem's \ac{rhs}, calling the new term $b_{j}$:
+    \begin{displaymath}                
+        c_{j-1}=\sum_{k=1}^{j}{(-1)^{k-1}d_{jk}}
+            = \sum_{k=1}^{j}{(-1)^{k-1}\sum_{i_{1}+\ldots+i_{k}=j}{c_{i_{1}}\cdots c_{i_{k}}}}=b_{j}
+    \end{displaymath}                
+    Applying \autoref{eq:eplett:det:inverse:identity:lemma} \emph{from right to left}, 
+    it is necessary to find a sequence $\vect{a}$ such that:
+    \begin{displaymath}                
+        a_{n} = c_{n-1}+a_{1}c_{n-2}+a_{2}c_{n-3}+\ldots+a_{n-1}c_{0}
+    \end{displaymath}                
+    according \citeauthor{feller:intro:combinatorial:analysis}, page $94$ of
+    \cite{feller:intro:combinatorial:analysis}, the following combination over
+    Catalan numbers holds, for $n>0$:
+    \begin{displaymath}                
+        c_{n}=\sum_{k=1}^{n}{c_{k-1}c_{n-k}}\quad\wedge\quad c_{0}=1
+    \end{displaymath}                
+    therefore setting $a_{n}=c_{n}$ sequence $\vect{a}$ is found and theorem
+    is proved.
+
+\end{proof}
+
+The above proof shows another interesting identity which relates Catalan numbers
+with matrix determinants\marginpar{yet another characterization for $c_{j}$ using
+    matrix theory}:
+\begin{displaymath}                
+    c_{n-1} = (-1)^{n-1}
+        \left|
+        \begin{array}{ccccc}
+            c_1 & c_2 & \ldots & c_{n-1} & c_{n}\\
+            1 & c_1 & \ldots & c_{n-2} & c_{n-1}\\
+            0   & 1 & \ldots & c_{n-3} & c_{n-2}\\
+            \vdots & \vdots & \vdots & \vdots & \vdots\\
+            0 & 0 & \ldots & c_{1} & c_{2}\\
+            0 & 0 & \ldots & 1 & c_{1}\\
+        \end{array}
+        \right|
+\end{displaymath}                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
