@@ -234,6 +234,8 @@ result reads as follow.
         c_{j-1}=\sum_{k=1}^{j}{(-1)^{k-1}d_{jk}}
             = \sum_{k=1}^{j}{(-1)^{k-1}\sum_{i_{1}+\ldots+i_{k}=j}{c_{i_{1}}\cdots c_{i_{k}}}}=b_{j}
     \end{displaymath}                
+    % TODO in order to be truly precise, we should prove that the term abstracted out by `b_{j}'
+    % actually equals the determinant of Catalan matrix.
     Applying \autoref{eq:eplett:det:inverse:identity:lemma} \emph{from right to left}, 
     it is necessary to find a sequence $\vect{a}$ such that:
     \begin{displaymath}                
@@ -267,6 +269,22 @@ with matrix determinants\marginpar{yet another characterization for $c_{j}$ usin
         \right|
 \end{displaymath}                
 
+The theorem can be stated also as:
+\begin{displaymath}                
+    c_{j-1} + \sum_{{k \text{ is even}}}{d_{jk}}
+        = \sum_{{k \text{ is odd}}}{d_{jk}}
+\end{displaymath}
+which supplies a combinatorial interpretation in terms of 
+\emph{non-intersecting} pairs of paths:
+\begin{quote}
+    \marginpar{a combinatorial interpretation of \citeauthor{eplett:1979}'s result}
+    consider the set $S$ of pairs of paths with distance $j$. Then,
+    the subset of $S$ composed of \emph{non-intersecting} pairs of paths 
+    with \emph{even} distance augmented by the subset of $S$ of 
+    pairs of paths that \emph{intersect} for the first time at step $j$
+    equals, in number, the subset of $S$ of pairs of paths with \emph{odd}
+    distance
+\end{quote}
 
 
 
