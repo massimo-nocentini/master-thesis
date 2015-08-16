@@ -269,13 +269,22 @@ with matrix determinants\marginpar{yet another characterization for $c_{j}$ usin
         \right|
 \end{displaymath}                
 
-The theorem can be stated also as:
+Taking apart the sum in theorem's \ac{rhs}, we can restate it as:
 \begin{displaymath}                
     c_{j-1} + \sum_{{k \text{ is even}}}{d_{jk}}
-        = \sum_{{k \text{ is odd}}}{d_{jk}}
+        = \sum_{{k \text{ is odd}}}{d_{jk}}\qquad\text{where } k\in\mathbb{N}\setminus \lbrace0\rbrace
 \end{displaymath}
-which supplies a combinatorial interpretation in terms of 
-\emph{non-intersecting} pairs of paths:
+Since $d_{j0}$ has no meaning by definition of the triangle, we can
+attach to it a combinatorial meaning: let $d_{j0}$ denotes the
+number of pairs of paths that intersect for the first time at
+step $j$ and possibly after again. Therefore $d_{j0}=c_{j-1}$, so 
+we can rewrite one more time:
+\begin{displaymath}                
+    \sum_{{k \text{ is even}}}{d_{jk}}
+        = \sum_{{k \text{ is odd}}}{d_{jk}} \qquad\text{where } k\in\mathbb{N}
+\end{displaymath}
+This last version supplies a combinatorial 
+interpretation in terms of \emph{non-intersecting} pairs of paths:
 \begin{quote}
     \marginpar{a combinatorial interpretation of \citeauthor{eplett:1979}'s result}
     consider the set $S$ of pairs of paths with distance $j$. Then,
@@ -285,6 +294,18 @@ which supplies a combinatorial interpretation in terms of
     equals, in number, the subset of $S$ of pairs of paths with \emph{odd}
     distance
 \end{quote}
+\begin{proof}
+
+    Consider a pair of paths $(\vect{\rho},\vect{\sigma})$ of length $j$ with
+    \emph{even} distance $k$.  If a pair of steps, such that they \emph{do not
+    point to the same direction}, is applied to $(\vect{\rho},\vect{\sigma})$
+    then a new pair of paths $(\vect{\rho}^{\prime},\vect{\sigma}^{\prime})$ of
+    length $j+1$ with \emph{odd} distance $k+1$ is built. This production is a
+    bijection, therefore the number of pairs of paths with \emph{even} distance
+    equal the one with \emph{odd} distance, under the constraint that paths
+    have the same length them all, as required.
+
+\end{proof}
 
 
 
