@@ -1,2 +1,189 @@
 
 \subsection{The Riordan group}
+
+In \cite{shapiro:1991}, \citeauthor{shapiro:1991} introduces a
+generalization of the concepts developed so far: a group called 
+\emph{Riordan group}, in honor of professor John Riordan
+\marginpar{Thank you John Riordan, $1903-1988$}.
+This group has been defined in order to unify many themes in 
+enumeration and combinatoric problems; to solve binomial, 
+inverse identities and, more recently, combinatorial
+sums and binary words counting. 
+\\\\
+Let $\mathcal{M}=\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$ be an \emph{infinite
+lower triangular matrix}, namely:
+\begin{displaymath}
+     m_{nk}\in\mathbb{Z} \quad\wedge\quad n < k \rightarrow m_{nk} = 0
+\end{displaymath}
+Call $\mathcal{M}_{(t)}$ the vector produced by the following product, 
+where $t$ is an \emph{dummy variable}\marginpar{$\mathcal{M}$ is a matrix of integers, 
+$\mathcal{M}_{(t)}$ is a vector of \ac{fps} in $\mathbb{Z}\llbracket t \rrbracket$}:
+\begin{displaymath}
+    \left[
+        \begin{array}{cccccc}
+            1 & t & t^{2} & t^{3} & t^{4} &\ldots
+        \end{array}
+    \right]
+    \left[
+        \begin{array}{cccccc}
+            m_{00} & & & &  &\\
+            m_{10} & m_{11} & & &  &\\
+            m_{20} & m_{21}& m_{22}& &  &\\
+            m_{30} & m_{31}& m_{32}& m_{33}&  &\\
+            m_{40} & m_{41}& m_{42}& m_{43}& m_{44} &\\
+            \vdots & \vdots& \vdots& \vdots& \vdots & \ddots\\
+        \end{array}
+    \right]
+\end{displaymath}
+therefore $\mathcal{M}_{(t)} =
+    \left[
+        \begin{array}{cccccc}
+            m_{0}(t) & m_{1}(t) & m_{2}(t) & m_{3}(t) &m_{4}(t) & \ldots
+        \end{array}
+    \right]$ 
+with function $m_{j}$, for $j\in\mathbb{N}$, is a \ac{fps} in the ring 
+$\mathbb{Z}\llbracket t \rrbracket$. If there exists two analytic functions $d$
+and $h$, such that $d(0)\neq0$ and $h(0)=0 \wedge h^{\prime}(0)\neq0$, which
+satisfy \marginpar{matrix $\mathcal{M}$ will be denoted by the pair $(d(t),h(t))$}:
+\begin{displaymath}
+    m_{j}(t)=d(t)\,h(t)^{j} \quad \forall j\in\mathbb{N}
+\end{displaymath}
+then matrix $\mathcal{M}$ is called a \emph{Riordan matrix}.
+
+\begin{theorem}[Fundamental theorem]
+    Let $\mathcal{M}=(d(t),h(t))$ be a Riordan matrix and $\vect{b}=
+    \left[\begin{array}{cccc}b_{0}&b_{1}&b_{2}&\ldots\end{array}\right]^{T}$ 
+    be an infinite column vector with $b_{j}\in\mathbb{Z}$, for $j\in\mathbb{N}$. Then:
+    \begin{displaymath}
+        \mathcal{M}_{(t)}\cdot\vect{b}=d(t)b(h(t))
+    \end{displaymath}
+    where function $b$ is a \ac{fps} over coefficients in $\vect{b}$.
+    \label{thm:riordan:group:fundamental:theorem}
+\end{theorem}
+\begin{proof}
+    By definition of vector $\mathcal{M}_{(t)}$:
+    \begin{displaymath}
+        \mathcal{M}_{(t)}\cdot\vect{b}= b_{0}\,m_{0}(t) + b_{1}\,m_{1}(t) + b_{2}\,m_{2}(t) 
+            + b_{3}\,m_{3}(t) + b_{4}\,m_{4}(t) + \ldots
+    \end{displaymath}
+    by definition of function $m_{j}$, for any $j\in\mathbb{N}$:
+    \begin{displaymath}
+        = b_{0}\,d(t)h(t)^{0} + b_{1}\,d(t)h(t) + b_{2}\,d(t)h(t)^{2} 
+            + b_{3}\,d(t)h(t)^{3} + b_{4}\,d(t)h(t)^{4} + \ldots
+    \end{displaymath}
+    factor out function $d$:
+    \begin{displaymath}
+        = d(t)\left(b_{0}\,h(t)^{0} + b_{1}\,h(t) + b_{2}\,h(t)^{2} 
+            + b_{3}\,h(t)^{3} + b_{4}\,h(t)^{4} + \ldots\right)
+    \end{displaymath}
+    finally, rewrite composing function $h$ with function $b$:
+    \begin{displaymath}
+        = d(t)b(h(t))  
+    \end{displaymath}
+    as required.
+
+\end{proof}
+
+In the introductory paragraph we said that the current generalization
+we are studying is a \emph{group}. More formally, we are going to define a 
+\emph{group of Riordan matrices} $(\lbrace \mathcal{M}_{i}\rbrace_{i\in\mathbb{N}},\cdot)$, 
+where $\cdot$ is the \emph{group
+operator}: additionally it is required to show the \emph{identity element} and,
+finally, to prove that there exists an \emph{inverse} for every element in the group.
+\\\\
+Let $\mathcal{M}=\left(d_{\mathcal{M}}(t),h_{\mathcal{M}}(t)\right)$ and
+$\mathcal{N}=\left(d_{\mathcal{N}}(t),h_{\mathcal{N}}(t)\right)$ be two Riordan matrices.
+Define the \emph{group operator} as their product
+\marginpar{matrix multiplication as group operator}, formally:
+\begin{displaymath}
+    \left(d_{\mathcal{M}}(t),h_{\mathcal{M}}(t)\right)\cdot
+        \left(d_{\mathcal{N}}(t),h_{\mathcal{N}}(t)\right) = 
+        \left(d_{\mathcal{M}}(t)d_{\mathcal{N}}(h_{\mathcal{M}}(t)),
+            h_{\mathcal{N}}(h_{\mathcal{M}}(t))\right)
+\end{displaymath}
+\begin{proof}
+    Consider a column $j$ of matrix $\mathcal{N}$,
+    for some $j\in\mathbb{N}$. Denoting by $\vect{e}_{j}$ the $j$-th versor and
+    by $n_{j}(t)=d_{\mathcal{N}}(t)h_{\mathcal{N}}(t)^{j}$ the \ac{fps} over such column, 
+    by \autoref{thm:riordan:group:fundamental:theorem} the following holds:
+    \begin{displaymath}
+        \mathcal{M}_{(t)}\cdot\left(\mathcal{N}\cdot\vect{e}_{j}\right)
+            = d_{\mathcal{M}}(t) d_{\mathcal{N}}(h_{\mathcal{M}}(t))
+                h_{\mathcal{N}}(h_{\mathcal{M}}(t))^{j}
+    \end{displaymath}
+    Let $d_{\mathcal{M}\mathcal{N}}$ be a function such that 
+    $d_{\mathcal{M}\mathcal{N}}(t)=d_{\mathcal{M}}(t) d_{\mathcal{N}}( h_{\mathcal{M}}(t))$,
+    and let $h_{\mathcal{M}\mathcal{N}}$ be a function such that 
+    $h_{\mathcal{M}\mathcal{N}}(t)=h_{\mathcal{N}}(h_{\mathcal{M}}(t))$, then the \ac{rhs}
+    has the shape
+    $d_{\mathcal{M}\mathcal{N}}(t)h_{\mathcal{M}\mathcal{N}}(t)^{j}$, which denotes the
+    Riordan matrix $\mathcal{M}\mathcal{N}$, as required.
+
+\end{proof}
+
+The \marginpar{$(1,t)$ is the identity element} identity element of the group
+is the Riordan matrix $\mathcal{I}=(1,t)$.
+\begin{proof}
+    Let $\mathcal{M}=\left(d_{\mathcal{M}}(t),h_{\mathcal{M}}(t)\right)$ be a Riordan matrix.
+    By definition of group operator:
+    \begin{displaymath}
+        \left(d_{\mathcal{M}}(t),h_{\mathcal{M}}(t)\right)\cdot \left(1,t\right) = 
+            \left(d_{\mathcal{M}}(t), h_{\mathcal{M}}(t)\right)
+    \end{displaymath}
+    since group operator $\cdot$ is no commutative in general, check the following also:
+    \begin{displaymath}
+        \left(1,t\right) \cdot \left(d_{\mathcal{M}}(t),h_{\mathcal{M}}(t)\right)= 
+            \left(d_{\mathcal{M}}(t), h_{\mathcal{M}}(t)\right)
+    \end{displaymath}
+    as required.
+\end{proof}
+
+Finally, in order to find the \emph{inverse} of a Riordan matrix, we have to
+introduce the concept of \marginpar{compositional inverse of a function}
+\emph{compositional inverse} of an analytic function $h$.
+Let $h$ be a function such that $h(0)=0 \wedge h^{\prime}(0)\neq0$, then
+$\hat{h}$ is the \emph{compositional inverse} of function $h$ if and only if 
+$\hat{h}(h(t))=h(\hat{h})(t)=t$. 
+\\\\
+Let $\mathcal{M}=\left(d_{\mathcal{M}}(t),h_{\mathcal{M}}(t)\right)$ be a Riordan matrix.
+The inverse matrix $\mathcal{M}^{-1}$ of $\mathcal{M}$ satisfies the following relation:
+\begin{displaymath}
+    \mathcal{M}^{-1}=\left(
+        \frac{1}{d_{\mathcal{M}}(\hat{h}_{\mathcal{M}}(t))}, \hat{h}_{\mathcal{M}}(t)
+    \right)
+\end{displaymath}
+
+\begin{proof}
+    By definition of inverse element, we have to find a matrix $\mathcal{M}^{-1}$ which
+    satisfies the following relation:
+    \begin{displaymath}
+        \mathcal{M}\cdot\mathcal{M}^{-1}
+            =\left(d_{\mathcal{M}}(t)d_{\mathcal{M}^{-1}}(h_{\mathcal{M}}(t)),
+                    h_{\mathcal{M}^{-1}}(h_{\mathcal{M}}(t))\right)
+            =\left(1,t\right)
+    \end{displaymath}
+
+    Looking at the first component we get:
+    \begin{displaymath}
+        d_{\mathcal{M}}(t)d_{\mathcal{M}^{-1}}(h_{\mathcal{M}}(t))=1    
+    \end{displaymath}
+    which can be rewritten as\marginpar{abstracting function $g$ in the
+        composition $f(g(t))$ yield $\left.\left[f(y)\right|y=g(t)\right]$,
+        a trick also called ``changing variable''}:
+    \begin{displaymath}
+        d_{\mathcal{M}^{-1}}(h_{\mathcal{M}}(t))=\frac{1}{d_{\mathcal{M}}(t)}    
+            = \left.\left[
+                d_{\mathcal{M}^{-1}}(y)=\frac{1}{d_{\mathcal{M}}(\hat{h}_{\mathcal{M}}(y))}
+                    \right|y=h_{\mathcal{M}}(t)
+                \right]
+    \end{displaymath}
+
+    On the other hand, looking at the second component we get:
+    \begin{displaymath}
+        h_{\mathcal{M}^{-1}}(h_{\mathcal{M}}(t))=t
+    \end{displaymath}
+    therefore $h_{\mathcal{M}^{-1}}=\hat{h}_{\mathcal{M}}$, as required.
+\end{proof}
+
+
+
