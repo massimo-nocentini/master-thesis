@@ -1,0 +1,78 @@
+
+
+\subsection{Applications to combinatorial sums}
+
+\citeauthor{sprugnoli:1991}, in \cite{sprugnoli:1991}, shows how the
+\emph{Riordan group} and its elements \emph{Riordan arrays} provide an elegant
+methodology to solve combinatorial sums. This method is quite different from
+ones by others\footnote{put here some bib references} since it offer a
+\emph{constructive} proof for a sum identity $\sum_{k}f_{k}=v$: in addition to
+be a \emph{certification} for the identity, it shows how to find such value
+$v$.
+
+\begin{theorem}[Sprugnoli]
+    Let $\mathcal{M}=(d(t),h(t))$ be a Riordan matrix and $\vect{\omega}$ 
+    be a \emph{given} sequence $\lbrace\omega_{i}\rbrace_{i\in\mathbb{N}}$. Choose
+    a row index $n\in\mathbb{N}$, then:
+    \begin{displaymath}
+        \sum_{k=0}^{n}{m_{nk}\,\omega_{k}}=[t^{n}]d(t)\Omega(h(t))
+    \end{displaymath}
+    where function $\Omega$ is a \ac{fps} over sequence $\vect{\omega}$.
+    \label{thm:sprugnoli:riordan:combinatorial:sums}
+\end{theorem}
+
+\begin{proof}
+    By relation among Riordan array $\mathcal{M}$ and matrix 
+    $\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$:
+    \begin{displaymath}
+        \sum_{k=0}^{n}{m_{nk}\omega_{k}}
+            =\sum_{k=0}^{n}{[t^{n}]m_{k}(t)\,\omega_{k}}
+            =d(t)\sum_{k=0}^{n}{[t^{n}]h(t)^{k}\,\omega_{k}}
+    \end{displaymath}
+    since summing $n+1$ coefficients extracted from $n+1$
+    convolutions of function $h$ with itself, is the same as
+    do $n+1$ convolutions of function $h$ with itself, sum them
+    and, lately, do \emph{one} coefficient extraction, the following holds:
+    \begin{displaymath}
+        =[t^{n}]d(t)\sum_{k=0}^{n}{\omega_{k}\,h(t)^{k}}
+        =[t^{n}]d(t)\Omega(h(t))
+    \end{displaymath}
+    as required.
+\end{proof}
+
+It is very interesting the following result that allows us to solve
+yet another combinatorial sum using both a Riordan array $\mathcal{M}$
+and its inverse.
+
+\begin{theorem}
+    Let $\mathcal{M}=(d(t),h(t))$ be a Riordan matrix and $\vect{\omega}$ 
+    be a sequence $\lbrace\omega_{i}\rbrace_{i\in\mathbb{N}}$ with an \emph{unknown} 
+    \ac{gf} $\Omega$. Choose a row index $n\in\mathbb{N}$, if $\vect{\theta}$ is a  
+    sequence $\lbrace\theta_{i}\rbrace_{i\in\mathbb{N}}$ with a \emph{given} \ac{gf} $\Theta$, 
+    then:
+    \begin{displaymath}
+        \sum_{k=0}^{n}{m_{nk}\,\omega_{k}}=\theta_{n}
+            \quad\leftarrow\quad 
+            \sum_{k=0}^{n}{\tilde{m}_{nk}\,\theta_{k}}=\omega_{n}
+    \end{displaymath}
+    where $\tilde{m}_{nk}\in\mathcal{M}^{-1}$.
+\end{theorem}
+
+\begin{proof}
+    By \autoref{thm:sprugnoli:riordan:combinatorial:sums} we can rewrite:
+    \begin{displaymath}
+        \sum_{k=0}^{n}{\tilde{m}_{nk}\,\theta_{k}}
+            = [t^{n}]\frac{1}{d(\hat{h}(t))}\,\Theta(\hat{h}(t)) 
+            = [t^{n}]\Omega(t) = \omega_{n}
+    \end{displaymath}
+    which sets unknown function $\Omega$, which is the \ac{gf} for 
+    sequence $\vect{\omega}$, such that $\Omega(t)=\frac{1}{d(\hat{h}(t))}\,\Theta(\hat{h}(t))$. 
+    Then:
+    \begin{displaymath}
+        \sum_{k=0}^{n}{m_{nk}\,\omega_{k}}
+            = [u^{n}]d(u)\Omega(h(u))
+            = [u^{n}]\Theta(u)
+            = \theta_{n}
+    \end{displaymath}
+    as required.
+\end{proof}

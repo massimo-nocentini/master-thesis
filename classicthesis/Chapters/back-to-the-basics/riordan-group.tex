@@ -48,7 +48,12 @@ satisfy \marginpar{matrix $\mathcal{M}$ will be denoted by the pair $(d(t),h(t))
 \begin{displaymath}
     m_{j}(t)=d(t)\,h(t)^{j} \quad \forall j\in\mathbb{N}
 \end{displaymath}
-then matrix $\mathcal{M}$ is called a \emph{Riordan matrix}.
+then matrix $\mathcal{M}$ is called a \emph{Riordan array}. Such an array is
+directly related to coefficients matrix $\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$ as follows:
+\begin{displaymath}
+    [t^{n}]m_{j}(t)=m_{nj}
+\end{displaymath}
+
 
 \begin{theorem}[Fundamental theorem]
     Let $\mathcal{M}=(d(t),h(t))$ be a Riordan matrix and $\vect{b}=
@@ -86,7 +91,8 @@ then matrix $\mathcal{M}$ is called a \emph{Riordan matrix}.
 
 In the introductory paragraph we said that the current generalization
 we are studying is a \emph{group}. More formally, we are going to define a 
-\emph{group of Riordan matrices} $(\lbrace \mathcal{M}_{i}\rbrace_{i\in\mathbb{N}},\cdot)$, 
+\emph{group} over a \emph{set of Riordan matrices}, 
+denoted by $(\lbrace \mathcal{M}_{i}\rbrace_{i\in\mathbb{N}},\cdot)$, 
 where $\cdot$ is the \emph{group
 operator}: additionally it is required to show the \emph{identity element} and,
 finally, to prove that there exists an \emph{inverse} for every element in the group.
@@ -143,7 +149,7 @@ introduce the concept of \marginpar{compositional inverse of a function}
 \emph{compositional inverse} of an analytic function $h$.
 Let $h$ be a function such that $h(0)=0 \wedge h^{\prime}(0)\neq0$, then
 $\hat{h}$ is the \emph{compositional inverse} of function $h$ if and only if 
-$\hat{h}(h(t))=h(\hat{h})(t)=t$. 
+$\hat{h}(h(t))=h(\hat{h}(t))=t$. 
 \\\\
 Let $\mathcal{M}=\left(d_{\mathcal{M}}(t),h_{\mathcal{M}}(t)\right)$ be a Riordan matrix.
 The inverse matrix $\mathcal{M}^{-1}$ of $\mathcal{M}$ satisfies the following relation:
@@ -154,8 +160,9 @@ The inverse matrix $\mathcal{M}^{-1}$ of $\mathcal{M}$ satisfies the following r
 \end{displaymath}
 
 \begin{proof}
-    By definition of inverse element, we have to find a matrix $\mathcal{M}^{-1}$ which
-    satisfies the following relation:
+    By definition of inverse element\marginpar{inverse of an element in 
+    $\left(\lbrace \mathcal{M}_{i}\rbrace,\cdot\right)$}, 
+    we have to find a matrix $\mathcal{M}^{-1}$ which satisfies the following relation:
     \begin{displaymath}
         \mathcal{M}\cdot\mathcal{M}^{-1}
             =\left(d_{\mathcal{M}}(t)d_{\mathcal{M}^{-1}}(h_{\mathcal{M}}(t)),
@@ -184,6 +191,51 @@ The inverse matrix $\mathcal{M}^{-1}$ of $\mathcal{M}$ satisfies the following r
     \end{displaymath}
     therefore $h_{\mathcal{M}^{-1}}=\hat{h}_{\mathcal{M}}$, as required.
 \end{proof}
+
+It \marginpar{subgroups of the Riordan group}
+is interesting to dig a little on the \emph{Riordan group}, looking at
+common patterns that arises in Riordan matrices definitions. Denoting with
+$\cdot$ the group operator defined as before, we report
+these patterns by introducing the following \emph{subgroups}:
+\begin{itemize}
+    \item $\left(\lbrace \mathcal{M}_{i}=(d_{\mathcal{M}_{i}}(t),t)
+        \rbrace_{i\in\mathbb{N}},\cdot\right)$, the \emph{Appell subgroup};
+    \item $\left(\lbrace \mathcal{M}_{i}=(1,h_{\mathcal{M}_{i}}(t))
+        \rbrace_{i\in\mathbb{N}},\cdot\right)$, the \emph{Associated subgroup};
+    \item $\left(\lbrace \mathcal{M}_{i}=(d_{\mathcal{M}_{i}}(t),td_{\mathcal{M}_{i}}(t))
+        \rbrace_{i\in\mathbb{N}},\cdot\right)$, the \emph{Renewal subgroup};
+    \item $\left(\lbrace \mathcal{M}_{i}=(d_{\mathcal{M}_{i}}(t),h_{\mathcal{M}_{i}}(t))
+        \rbrace_{i\in\mathbb{N}},\cdot\right)$, where function $d$ is \emph{even} and 
+        function $h$ is \emph{odd}, the \emph{Checkerboard subgroup};
+    \item $\left(\left\lbrace \mathcal{M}_{i}=\left(\frac{t\,h_{\mathcal{M}_{i}}^{\prime}(t)}
+            {h_{\mathcal{M}_{i}}(t)},h_{\mathcal{M}_{i}}(t)\right)
+        \right\rbrace_{i\in\mathbb{N}},\cdot\right)$, the \emph{Hitting-time subgroup};
+\end{itemize}
+
+Finally, \marginpar{a characterization using a bivariate function}
+we would like to discuss another interesting definition which characterize
+a Riordan array $\mathcal{M}=(d_{\mathcal{M}}(t),h_{\mathcal{M}}(t))$. 
+The main point is to associate a bivariate function $m$ 
+to the infinite lower triangular matrix $\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$
+of coefficients, used to build $\mathcal{M}$. Function $m$ is defined as follows:
+\begin{displaymath}
+    m(t,u) = \sum_{k\in\mathbb{N}}{\sum_{n\geq k}{m_{nk} t^{n} u^{k}}}
+        = \sum_{k\in\mathbb{N}}{m_{k}(t)u^{k}}
+\end{displaymath}
+by definition of function $m_{k}$:
+\begin{displaymath}
+    = \sum_{k\in\mathbb{N}}{d_{\mathcal{M}}(t)\,h_{\mathcal{M}}(t)^{k}\,u^{k}}
+    = \frac{d_{\mathcal{M}}(t)}{1-h_{\mathcal{M}}(t)\,u}
+\end{displaymath}
+this characterization is more general and allows us to have \ac{fps} $m_{j}^{(t)}(u)$
+for a column $j$, if it is expanded respect variable $t$; and, by symmetry,
+to have \ac{fps} $m_{l}^{(u)}(t)$ for a row $l$, if it is expanded respect variable $u$.
+
+
+
+
+
+
 
 
 
