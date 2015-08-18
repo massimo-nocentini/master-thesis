@@ -1,3 +1,143 @@
 
-\subsection{$A$-sequence and $A$-matrix, Merlini et al.}
+\subsection{$A$-sequence and $A$-matrix}
 \label{sec:back:to:the:basics:sequences}
+
+In this section we rework the concept of $A$-sequence introduced by
+\citeauthor{rogers:1977}, subject of our discussion in
+\autoref{sec:back:to:the:basics:rogers}, using the \emph{Riordan group}
+to characterize it for \emph{Riordan arrays}. Furthermore, we will see
+a generalization of this concept, introducing $A$-matrices and some
+applications are reported for the sake of clarity.
+
+\begin{theorem}
+    $\mathcal{M}$ is a Riordan array over a matrix of coefficients
+    $\lbrace m_{n,k}\rbrace_{n,k\in\mathbb{N}}$ if and only if
+    there exists a sequence $\vect{a}=\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$,
+    with $a_{0}\neq0$, such that:
+    \begin{displaymath}
+        m_{n+1,k+1}=a_{0}m_{n,k}+a_{1}m_{n,k+1}+a_{2}m_{n,k+2}+\ldots+a_{j}m_{n,k+j}
+    \end{displaymath}
+    where $n,k,j\in\mathbb{N}$ and $k+j=n$. Sequence $\vect{a}$ is called the $A$-sequence
+    of Riordan array $\mathcal{M}$. 
+    \label{thm:merlini:A:sequence:characterization} 
+\end{theorem}
+\marginpar{The idea behind this proof cames from \cite{he:sprugnoli:2009}}
+\begin{proof}[Proof of ($\rightarrow$) direction]
+    Let $\mathcal{M}=(d_{\mathcal{M}}(t),h_{\mathcal{M}}(t))$ be a Riordan array. Since it is requested
+    to prove that such a sequence $\vect{a}$ \emph{exists}, we proceed to
+    build a Riordan array $\mathcal{A}=(d_{\mathcal{A}}(t),h_{\mathcal{A}}(t))$ such
+    that function $d_{\mathcal{A}}$ is the \ac{gf} for sequence $\vect{a}$, proving this direction.
+    Riordan array $\mathcal{A}$ is the defined as the solution of the following relation:
+    \begin{displaymath}
+        (d_{\mathcal{M}}(t),h_{\mathcal{M}}(t))\cdot(d_{\mathcal{A}}(t),h_{\mathcal{A}}(t))
+            = \left(d_{\mathcal{M}}(t)\frac{h_{\mathcal{M}}(t)}{t},h_{\mathcal{M}}(t)\right)
+    \end{displaymath}
+    by definition of group operator $\cdot$, the \ac{lhs} can be rewritten as:
+    \begin{displaymath}
+        (d_{\mathcal{M}}(t)d_{\mathcal{A}}(h_{\mathcal{M}}(t)),h_{\mathcal{A}}(h_{\mathcal{M}}(t)))
+            = \left(d_{\mathcal{M}}(t)\frac{h_{\mathcal{M}}(t)}{t},h_{\mathcal{M}}(t)\right)
+    \end{displaymath}
+    
+    Looking at second components, the following relation defines function $h_{\mathcal{A}}$:
+    \begin{displaymath}
+         \left[h_{\mathcal{A}}(y)=y \mid y = h_{\mathcal{M}}(t)\right]
+    \end{displaymath}
+    while looking at the first component, the following relation defines function $d_{\mathcal{A}}$:
+    \marginpar{a \ac{gf} over $A$-sequence $\vect{a}$ for Riordan arrays}
+    \begin{displaymath}
+         \left[d_{\mathcal{A}}(y)=\frac{y}{\hat{h}_{\mathcal{M}}(y)} \mid y = h_{\mathcal{M}}(t)\right]
+    \end{displaymath}
+    therefore it is possible to write the complete definition for array $\mathcal{A}$:
+    \begin{displaymath}
+         \mathcal{A}=(d_{\mathcal{A}}(y),h_{\mathcal{A}}(y))
+            =\left(\frac{y}{\hat{h}_{\mathcal{M}}(y)}, y \right)
+    \end{displaymath}
+    
+    \marginpar{although we are in the Riordan group, here we go back to 
+        matrix theory}
+    Assume function $d_{\mathcal{A}}$ can be expanded as \ac{fps} over a sequence
+    $\vect{a}=\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$, therefore expanding array $\mathcal{A}$
+    as a matrix $\lbrace a_{nk}\rbrace_{n,k\in\mathbb{N}}$ yield:
+    \begin{displaymath}
+        \mathcal{A} =
+        \left[
+            \begin{array}{cccccc}
+                a_{0} & & & &  &\\
+                a_{1} & a_{0} & & &  &\\
+                a_{2} & a_{1}& a_{0}& &  &\\
+                a_{3} & a_{2}& a_{1}& a_{0}&  &\\
+                a_{4} & a_{3}& a_{2}& a_{1}& a_{0} &\\
+                \vdots & \vdots& \vdots& \vdots& \vdots & \ddots\\
+            \end{array}
+        \right]
+    \end{displaymath}
+    so doing the \emph{matrix} product of array $\mathcal{M}$ with array $\mathcal{A}$ yield:
+    \begin{displaymath}
+        \mathcal{M}\mathcal{A}
+        = 
+        \left[
+            \begin{array}{cccccc}
+                m_{00} & & & &  &\\
+                m_{10} & m_{11} & & &  &\\
+                m_{20} & m_{21}& m_{22}& &  &\\
+                m_{30} & m_{31}& m_{32}& m_{33}&  &\\
+                m_{40} & m_{41}& m_{42}& m_{43}& m_{44} &\\
+                \vdots & \vdots& \vdots& \vdots& \vdots & \ddots\\
+            \end{array}
+        \right]
+        \left[
+            \begin{array}{cccccc}
+                a_{0} & & & &  &\\
+                a_{1} & a_{0} & & &  &\\
+                a_{2} & a_{1}& a_{0}& &  &\\
+                a_{3} & a_{2}& a_{1}& a_{0}&  &\\
+                a_{4} & a_{3}& a_{2}& a_{1}& a_{0} &\\
+                \vdots & \vdots& \vdots& \vdots& \vdots & \ddots\\
+            \end{array}
+        \right]
+    \end{displaymath}
+    Consider coefficient at row $n$ and column $k$ of $\mathcal{M}\mathcal{A}$, by definition
+    of \emph{matrix} product:
+    \begin{displaymath}
+        \left(\mathcal{M}\mathcal{A}\right)_{nk}=
+        \sum_{j=0}^{n}{m_{nj}{a_{jk}}}
+            =\sum_{j=0}^{n-k}{m_{n,k+j}{a_{k+j,k}}}
+            =\sum_{j=0}^{n-k}{m_{n,k+j}{a_{j}}}
+    \end{displaymath}
+    Do the same for coefficient at row $n$ and column $k$ of
+    $\left(d_{\mathcal{M}}(t)\frac{h_{\mathcal{M}}(t)}{t},h_{\mathcal{M}}(t)\right)$:
+    \begin{displaymath}
+        [t^{n+1}]d_{\mathcal{M}}(t)\,h_{\mathcal{M}}(t)^{k+1} = m_{n+1,k+1}
+    \end{displaymath}
+    so equating this and the previous result yield:
+    \begin{displaymath}
+        m_{n+1,k+1}=\sum_{j=0}^{n}{m_{n,k+j}{a_{j}}}
+    \end{displaymath}
+    as required.
+\end{proof}
+
+The above proof leave space for another result. Start again from the following equation:
+\begin{displaymath}
+    (d_{\mathcal{M}}(t)d_{\mathcal{A}}(h_{\mathcal{M}}(t)),h_{\mathcal{M}}(t))
+        = \left(d_{\mathcal{M}}(t)\frac{h_{\mathcal{M}}(t)}{t},h_{\mathcal{M}}(t)\right)
+\end{displaymath}
+and consider coefficient at row $n$ and column $k$ in both arrays, as done before:
+\begin{displaymath}
+    [t^{n}]d_{\mathcal{A}}(h_{\mathcal{M}}(t))\left(d_{\mathcal{M}}(t)\,h_{\mathcal{M}}(t)^{k}\right)
+        = [t^{n+1}]d_{\mathcal{M}}(t)\,h_{\mathcal{M}}(t)^{k+1}
+\end{displaymath}
+\marginpar{sequence $\vect{\hat{a}}$, with \ac{gf} $\hat{A}(t)$, 
+is yet another characterization}
+on the \ac{lhs} appears a convolution of function $\hat{A}(t)=d_{\mathcal{A}}(h_{\mathcal{M}}(t))$,
+which can be written as \ac{fps} over sequence $\vect{\hat{a}}=\lbrace\hat{a}_{i}\rbrace_{i\in\mathbb{N}}$,
+with function $m_{k}(t)=d_{\mathcal{M}}(t)\,h_{\mathcal{M}}(t)^{k}$. Therefore the following identity
+holds as well:
+\begin{displaymath}
+    \sum_{j=0}^{n}{\hat{a}_{j}\,m_{n-j,k}}
+        = m_{n+1,k+1}
+\end{displaymath}
+combining this result with the one stated in the above theorem, the following holds:
+\begin{displaymath}
+    \sum_{j=0}^{n}{\hat{a}_{j}\,m_{n-j,k}}
+        =\sum_{j=0}^{n}{m_{n,k+j}{a_{j}}}
+\end{displaymath}
