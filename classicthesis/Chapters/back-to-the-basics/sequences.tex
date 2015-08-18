@@ -141,3 +141,81 @@ combining this result with the one stated in the above theorem, the following ho
     \sum_{j=0}^{n}{\hat{a}_{j}\,m_{n-j,k}}
         =\sum_{j=0}^{n}{m_{n,k+j}{a_{j}}}
 \end{displaymath}
+
+Yet another characterization for a coefficient $m_{nk}$ in a Riordan array $\mathcal{M}$
+can be stated and is closely related to $\mathcal{M}$'s $A$-sequence.
+\begin{theorem}
+    Let $\mathcal{M}$ be a Riordan array over a matrix of coefficients
+    $\lbrace m_{n,k}\rbrace_{n,k\in\mathbb{N}}$, then there exists a sequence
+    $\vect{\omega}=\lbrace \omega_{n}\rbrace_{n\in\mathbb{N}}$ such that:
+    \begin{displaymath}
+        m_{nk}=\sum_{j=0}^{n-k}{\omega_{j}\,m_{n+1,k+1+j}}
+    \end{displaymath}
+    moreover, denoting with $\Omega$ a \ac{gf} over sequence $\vect{\omega}$ and
+    with $A$ the \ac{gf} for $\mathcal{M}$'s $A$-sequence, then:
+    \begin{displaymath}
+        A(t)\,\Omega(t)=1
+    \end{displaymath}
+\end{theorem}
+\begin{proof}
+    Assume not, therefore for \emph{each} sequence $\vect{\omega}=\lbrace \omega_{n}\rbrace_{n\in\mathbb{N}}$,
+    from:
+    \begin{displaymath}
+        m_{nk}\neq\sum_{j=0}^{n-k}{\omega_{j}\,m_{n+1,k+1+j}}
+    \end{displaymath}
+    we have to reach a contraddiction. By $A$-sequence characterization, 
+    there exists a sequence $\vect{a}=\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$
+    such that allows us to rewrite terms $m_{n+1,k+1+j}$
+    within the sum in the \ac{rhs}:
+    \begin{displaymath}
+        \begin{split}
+            m_{nk} &\neq \omega_{0}\left(a_{0}m_{n,k}+a_{1}m_{n,k+1}+a_{2}m_{n,k+2}+a_{3}m_{n,k+3}+\ldots+a_{j_{0}}m_{n,k+j_{0}}\right)\\
+                   &+ \omega_{1}\left(a_{0}m_{n,k+1}+a_{1}m_{n,k+2}+a_{2}m_{n,k+3}+a_{3}m_{n,k+4}+\ldots+a_{j_{1}}m_{n,k+j_{1}}\right)\\
+                   &+ \omega_{2}\left(a_{0}m_{n,k+2}+a_{1}m_{n,k+3}+a_{2}m_{n,k+4}+a_{3}m_{n,k+5}+\ldots+a_{j_{2}}m_{n,k+j_{2}}\right)\\
+                   &+ \omega_{3}\left(a_{0}m_{n,k+3}+a_{1}m_{n,k+4}+a_{2}m_{n,k+5}+a_{3}m_{n,k+6}+\ldots+a_{j_{3}}m_{n,k+j_{3}}\right)\\
+                   &\ldots\\
+                   &+ \omega_{n-k-1}\left(a_{0}m_{n,n-1}+a_{1}m_{n,n}\right)\\
+                   &+ \omega_{n-k}\left(a_{0}m_{n,n}\right)\\
+        \end{split}
+    \end{displaymath}
+    factoring coefficients $m_{nk}$, the \ac{rhs} can be rewritten as:
+    \begin{displaymath}
+        \begin{split}
+            m_{nk}&\neq \omega_{0}a_{0}m_{n,k} + \left(\sum_{i_{1}+i_{2}=1}{\omega_{i_{1}}a_{i_{2}}}\right)m_{n,k+1}
+                + \left(\sum_{i_{1}+i_{2}=2}{\omega_{i_{1}}a_{i_{2}}}\right)m_{n,k+2}\\
+                &+ \left(\sum_{i_{1}+i_{2}=3}{\omega_{i_{1}}a_{i_{2}}}\right)m_{n,k+3}
+                + \ldots 
+                + \left(\sum_{i_{1}+i_{2}=n-k}{\omega_{i_{1}}a_{i_{2}}}\right)m_{n,n}
+        \end{split}
+    \end{displaymath}
+    which can be written more compactly as:
+    \begin{displaymath}
+        m_{nk} \neq \omega_{0}a_{0}m_{n,k} +
+            \sum_{j=1}^{n-k}{\left(\sum_{i_{1}+i_{2}=j}{\omega_{i_{1}}a_{i_{2}}}\right)m_{n,k+j}}
+    \end{displaymath}
+    but if we take sequence $\vect{\omega}$ to be the \emph{inverse} sequence of 
+    $\mathcal{M}$'s $A$-sequence $\vect{a}$, then the previous equation is false,
+    since $\omega_{0}a_{0}=1$ and $\sum_{i_{1}+i_{2}=j}{\omega_{i_{1}}a_{i_{2}}}=0$,
+    for each $j\in\lbrace1,\ldots,n-k\rbrace$. A contraddiction occurs and the argument holds,
+    as required.        
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
