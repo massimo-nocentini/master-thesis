@@ -8,7 +8,7 @@ methodology to solve combinatorial sums. This method is quite different from
 ones by others\footnote{put here some bib references} since it offer a
 \emph{constructive} proof for a sum identity $\sum_{k}f_{k}=v$: in addition to
 be a \emph{certification} for the identity, it shows how to find such value
-$v$.
+$v$. \marginpar{not only a $certification$ for $\sum_{k}f_{k}=v$}
 
 \begin{theorem}[Sprugnoli]
     Let $\mathcal{M}=(d(t),h(t))$ be a Riordan matrix and $\vect{\omega}$ 
@@ -17,7 +17,7 @@ $v$.
     \begin{displaymath}
         \sum_{k=0}^{n}{m_{nk}\,\omega_{k}}=[t^{n}]d(t)\Omega(h(t))
     \end{displaymath}
-    where function $\Omega$ is a \ac{fps} over sequence $\vect{\omega}$.
+    where function $\Omega$ is a \ac{gf} of sequence $\vect{\omega}$.
     \label{thm:sprugnoli:riordan:combinatorial:sums}
 \end{theorem}
 
@@ -30,9 +30,10 @@ $v$.
             =d(t)\sum_{k=0}^{n}{[t^{n}]h(t)^{k}\,\omega_{k}}
     \end{displaymath}
     since summing $n+1$ coefficients extracted from $n+1$
+    \marginpar{a trick on $[t^{n}]$ within a sum: moving it from inside to outside}
     convolutions of function $h$ with itself, is the same as
     do $n+1$ convolutions of function $h$ with itself, sum them
-    and, lately, do \emph{one} coefficient extraction, the following holds:
+    and, lately, do \emph{one} coefficient extraction. Therefore:
     \begin{displaymath}
         =[t^{n}]d(t)\sum_{k=0}^{n}{\omega_{k}\,h(t)^{k}}
         =[t^{n}]d(t)\Omega(h(t))
@@ -51,11 +52,15 @@ and its inverse.
     sequence $\lbrace\theta_{i}\rbrace_{i\in\mathbb{N}}$ with a \emph{given} \ac{gf} $\Theta$, 
     then:
     \begin{displaymath}
+        \sum_{k=0}^{n}{\tilde{m}_{nk}\,\theta_{k}}=\omega_{n}
+        \quad\rightarrow\quad 
         \sum_{k=0}^{n}{m_{nk}\,\omega_{k}}=\theta_{n}
-            \quad\leftarrow\quad 
-            \sum_{k=0}^{n}{\tilde{m}_{nk}\,\theta_{k}}=\omega_{n}
     \end{displaymath}
-    where $\tilde{m}_{nk}\in\mathcal{M}^{-1}$.
+    where $\tilde{m}_{nk}\in\mathcal{M}^{-1}$. Moreover, 
+    $\Omega(t)=\frac{1}{d(\hat{h}(t))}\,\Theta(\hat{h}(t))$,
+    where function $\hat{h}$ is the compositional inverse of 
+    function $h$.
+    \label{thm:sprugnoli:sequences:inversion:by:combinatorial:sums}
 \end{theorem}
 
 \begin{proof}
@@ -65,7 +70,7 @@ and its inverse.
             = [t^{n}]\frac{1}{d(\hat{h}(t))}\,\Theta(\hat{h}(t)) 
             = [t^{n}]\Omega(t) = \omega_{n}
     \end{displaymath}
-    which sets unknown function $\Omega$, which is the \ac{gf} for 
+    which sets unknown function $\Omega$, namely the \ac{gf} for 
     sequence $\vect{\omega}$, such that $\Omega(t)=\frac{1}{d(\hat{h}(t))}\,\Theta(\hat{h}(t))$. 
     Then:
     \begin{displaymath}
@@ -76,3 +81,27 @@ and its inverse.
     \end{displaymath}
     as required.
 \end{proof}
+
+Why is \autoref{thm:sprugnoli:sequences:inversion:by:combinatorial:sums} important?
+\marginpar{another way to find \ac{gf} for a row in a Riordan array}
+Assume that you have a Riordan array $\mathcal{M}=(d(t),h(t))$ over a matrix of coefficients
+$\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$. You are interested to find the
+\ac{gf} $\Omega$ of a row $r\in\mathbb{N}$ over the sequence:
+\begin{displaymath}
+    \vect{\omega} 
+        =(w_{0},w_{1},w_{2},\ldots,w_{r},0,\ldots)
+        =(m_{r0},m_{r1},m_{r2},\ldots,m_{rr},0,\ldots)
+\end{displaymath}
+when you know the \ac{gf} $\Theta$ over a sequence $\vect{\theta}$ such that:
+\begin{displaymath}
+    \sum_{k=0}^{n}{m_{nk}\,\omega_{k}}
+        =\sum_{k=0}^{n}{m_{nk}\,m_{rk}}
+        =\theta_{n}
+\end{displaymath}
+applying \autoref{thm:sprugnoli:sequences:inversion:by:combinatorial:sums},
+it is necessary to find $\mathcal{M}^{-1}$ and compute function $\Omega$ as:
+\begin{displaymath}
+    \Omega(t)=\frac{1}{d(\hat{h}(t))}\,\Theta(\hat{h}(t))
+\end{displaymath}
+such function $\Omega$ is the desired one, namely the \ac{gf} over
+sequence $\vect{\omega}$, itself over coefficients lying on row $r$, as required.
