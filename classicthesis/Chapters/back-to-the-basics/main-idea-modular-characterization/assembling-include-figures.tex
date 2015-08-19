@@ -1,0 +1,52 @@
+
+\begin{figure}[p]
+
+    \noindent\makebox[\textwidth]{
+        \centering
+        %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
+
+        % using *angle* property to rotate it is difficult to properly align it
+        % in order to have a "real" matrix representation.
+        \includegraphics[width=9cm, height=9cm, keepaspectratio=true]
+            {../RART2015/pascal-tikz/main-idea-four-splitted/plain-numbers.pdf}
+
+        \includegraphics[width=9cm, height=9cm, keepaspectratio=true]
+            {../RART2015/pascal-tikz/main-idea-four-splitted/centered-numbers.pdf}
+
+    }
+
+    \vskip1cm
+
+    \noindent\makebox[\textwidth]{
+        \centering
+        %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
+
+        % using *angle* property to rotate it is difficult to properly align it
+        % in order to have a "real" matrix representation.
+        \includegraphics[width=9cm, height=9cm, keepaspectratio=true]
+            {../RART2015/pascal-tikz/main-idea-four-splitted/remainders.pdf}
+
+        \includegraphics[width=9cm, height=9cm, keepaspectratio=true]
+            {../RART2015/pascal-tikz/main-idea-four-splitted/dots.pdf}
+    }
+
+    % this 'particular' line is necessary to use `displaymath' environment
+    % into the caption environment, togheter with the inclusion of 
+    % `caption' package. See here for more explanation:
+    % http://stackoverflow.com/questions/2716227/adding-an-equation-or-formula-to-a-figure-caption-in-latex
+    \captionsetup{singlelinecheck=off}
+    \caption[$\mathcal{P}_{\equiv_{2}}^{(3)}$: from plain matrix to coloured triangle]{
+        \emph{Top left} corner: chunk of raw expansion of Pascal array $\mathcal{P}$
+
+        \emph{Top right} corner: the same chunk but using a centered layout, a-l\`a Sierpinski gasket
+
+        \emph{Bottom left} corner: apply modular transformation on the same chunk of coefficient, where $p=2$.
+            Associate colour \textcolor{blue}{blue} to $[0]$ 
+            remainder class and colour \textcolor{orange}{orange} to $[1]$ remainder class
+
+        \emph{Bottom right} corner: abstract each coefficient $m_{nk}$ with a coloured dot 
+            according $m_{nk}$'s remainder class membership}
+
+    \label{fig:main:idea:modular:characterization}
+
+\end{figure}
