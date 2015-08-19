@@ -156,6 +156,7 @@ can be stated and is closely related to $\mathcal{M}$'s $A$-sequence.
     \begin{displaymath}
         A(t)\,\Omega(t)=1
     \end{displaymath}
+    \label{thm:characterization:next:row}
 \end{theorem}
 \begin{proof}
     Assume not, therefore for \emph{each} sequence $\vect{\omega}=\lbrace \omega_{n}\rbrace_{n\in\mathbb{N}}$,
@@ -163,7 +164,7 @@ can be stated and is closely related to $\mathcal{M}$'s $A$-sequence.
     \begin{displaymath}
         m_{nk}\neq\sum_{j=0}^{n-k}{\omega_{j}\,m_{n+1,k+1+j}}
     \end{displaymath}
-    we have to reach a contraddiction. By $A$-sequence characterization, 
+    we have to show a contraddiction. By $A$-sequence characterization, 
     there exists a sequence $\vect{a}=\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$
     such that allows us to rewrite terms $m_{n+1,k+1+j}$
     within the sum in the \ac{rhs}:
@@ -196,11 +197,126 @@ can be stated and is closely related to $\mathcal{M}$'s $A$-sequence.
     but if we take sequence $\vect{\omega}$ to be the \emph{inverse} sequence of 
     $\mathcal{M}$'s $A$-sequence $\vect{a}$, then the previous equation is false,
     since $\omega_{0}a_{0}=1$ and $\sum_{i_{1}+i_{2}=j}{\omega_{i_{1}}a_{i_{2}}}=0$,
-    for each $j\in\lbrace1,\ldots,n-k\rbrace$. A contraddiction occurs and the argument holds,
-    as required.        
+    for each $j\in\lbrace1,\ldots,n-k\rbrace$, equality \emph{holds}. 
+    A contraddiction occurs, as required.        
 \end{proof}
 
+\subsubsection{$A$-matrix}
 
+We are now ready to tackle the most general characterization for a coefficient
+$m_{nk}$ in a Riordan array $\mathcal{M}$, the concept of $A$-matrix. Actually,
+we will see only one formulation but there exist another two of them, yet more
+general indeed. The following theorem and the proof idea comes from 
+\cite{merlini:some:alternative:characterizations:1997}, where additional
+formulation of the $A$-matrix concept can be found.
+
+\begin{theorem}
+    $\mathcal{M}$ is a Riordan array, over a matrix of coefficients
+    $\lbrace m_{n,k}\rbrace_{n,k\in\mathbb{N}}$, if there exists a matrix
+    $\lbrace \sigma_{nk}\rbrace_{n,k\in\mathbb{N}}$ such that:
+    \begin{displaymath}
+        m_{n+1,k+1}=\sum_{i\in\mathbb{N}}{\sum_{j\in\mathbb{N}}{\sigma_{ij}m_{n-i,k+j}}}
+    \end{displaymath}
+\end{theorem}
+
+\begin{proof}
+    The idea underlying this proof is to show that a sequence 
+    $\vect{a}=\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$ can be built from
+    matrix $\lbrace \sigma_{nk}\rbrace_{n,k\in\mathbb{N}}$,
+    such that $\vect{a}$ can be used to combine elements in matrix
+    $\lbrace m_{n,k}\rbrace_{n,k\in\mathbb{N}}$ according: 
+    \begin{displaymath}
+        m_{n+1,k+1}=a_{0}m_{nk}+a_{1}m_{n,k+1}+\ldots+a_{j}m_{n,k+j}
+    \end{displaymath}
+    where $k+j=n$, as usual.  If we success, then sequence $\vect{a}$ is the $A$-sequence for 
+    $\lbrace m_{n,k}\rbrace_{n,k\in\mathbb{N}}$, therefore $\mathcal{M}$ is a Riordan array.
+    \\\\
+    Choose $n\in\mathbb{N}$, then proceed by natural induction on $n-k$:
+    \begin{itemize}
+        \item base case, $n-k=0$. By assumption the following holds:
+            \begin{displaymath}
+                m_{n+1,n+1}=\sigma_{00}\,m_{nn}
+            \end{displaymath}
+            which suggests to set $a_{0}=\sigma_{00}$;
+        \item although not required, consider case $n-k=1$. By assumption the following holds:
+            \begin{displaymath}
+                m_{n+1,n}=\sigma_{00}m_{n,n-1}+\sigma_{01}m_{n,n}+\sigma_{10}m_{n-1,n-1}
+            \end{displaymath}
+            by \autoref{thm:characterization:next:row}, there exist a sequence $\vect{\omega}=
+            \lbrace \omega_{n}\rbrace_{n\in\mathbb{N}}$ which allow us to rewrite $m_{n-1,n-1}$
+            as a combination of $m_{nn}$:
+            \begin{displaymath}
+                m_{n+1,n}=\sigma_{00}m_{n,n-1}+\left(\sigma_{01}+\sigma_{10}\omega_{0}\right)m_{nn}
+            \end{displaymath}
+            which reinforces $a_{0}=\sigma_{00}$ and suggests to set 
+            $a_{1}=\sigma_{01}+\sigma_{10}\omega_{0}$; moreover, using sequence $\vect{\omega}$
+            to rewrite terms in the \ac{rhs}:
+            \begin{displaymath}
+                m_{n+1,n}=\sigma_{00}\left(\omega_{0}m_{n+1,n}+\omega_{1}m_{n+1,n+1}\right)+
+                    \left(\frac{\sigma_{01}+\sigma_{10}\omega_{0}}{\sigma_{00}}\right)m_{n+1,n+1}
+            \end{displaymath}
+            manipulating:
+            \begin{displaymath}
+                m_{n+1,n}=
+                    \left(\frac{\sigma_{00}^{2}\omega_{1}+\sigma_{01}+\sigma_{10}\omega_{0}}
+                    {(1-\sigma_{00}\omega_{0})\sigma_{00}}\right)m_{n+1,n+1}
+            \end{displaymath}
+        \item \emph{induction hp} assume that, for $n-k=n-1$, ie. $k=1$, if:
+            \begin{displaymath}
+                m_{n+1,2}=\sum_{i\in\mathbb{N}}{\sum_{j\in\mathbb{N}}{\sigma_{ij}m_{n-i,1+j}}}
+            \end{displaymath}
+            then there exists a sequence $\vect{\hat{a}}$ such that:
+            \begin{displaymath}
+                m_{n+1,2}=\hat{a}_{0}m_{n1}+\hat{a}_{1}m_{n,2}+\ldots+\hat{a}_{j}m_{n,1+j}
+            \end{displaymath}
+            where $1+j=n$;
+        \item \emph{induction step} show that, for $n-k=n$, ie. $k=0$, if:
+            \begin{displaymath}
+                m_{n+1,1}=\sum_{i\in\mathbb{N}}{\sum_{j\in\mathbb{N}}{\sigma_{ij}m_{n-i,j}}}
+            \end{displaymath}
+            then there exists a sequence $\vect{a}$ such that:
+            \begin{displaymath}
+                m_{n+1,1}=a_{0}m_{n0}+a_{1}m_{n,1}+\ldots+a_{n}m_{n,n}
+            \end{displaymath}
+
+            Begin by expanding the assumption:
+            \begin{displaymath}
+                \hspace{-2cm}
+                \begin{split}
+                    m_{n+1,1}&=\sigma_{00}m_{n0}+\sigma_{01}m_{n1}+\sigma_{02}m_{n2}+\ldots
+                                +\sigma_{0,n-2}m_{n,n-2}+\sigma_{0,n-1}m_{n,n-1}+\sigma_{0n}m_{nn}\\
+                             &+\sigma_{10}m_{n-1,0}+\sigma_{11}m_{n-1,1}+\sigma_{12}m_{n-1,2}+\ldots
+                                +\sigma_{1,n-2}m_{n-1,n-2}+\sigma_{1,n-1}m_{n-1,n-1}\\
+                             &+\sigma_{20}m_{n-2,0}+\sigma_{21}m_{n-2,1}+\sigma_{22}m_{n-2,2}+\ldots+\sigma_{2,n-2}m_{n-2,n-2}\\
+                             &\ldots\\
+                             &+\sigma_{n-1,0}m_{10}+\sigma_{n-1,1}m_{11}\\
+                             &+\sigma_{n0}m_{00}\\
+                \end{split}
+            \end{displaymath}
+            from the bottom line of the previous sum expansion, keep applying
+            \autoref{thm:characterization:next:row} to every coefficient $m_{rc}$, for
+            $r\in\lbrace0,\ldots,n-1\rbrace$ and, consequently, $c\in\lbrace0,\ldots,r\rbrace$.
+            When every coefficient $m_{n-1,c}$, for $c\in\lbrace0,\ldots,n-1\rbrace$, has been
+            expanded, coefficient $m_{n+1,1}$ is a combination of coefficients 
+            $\lbrace m_{n0}\rbrace\cup\lbrace m_{n,1},m_{n,2}\ldots,m_{n,n}\rbrace$ using
+            a sequence $\vect{\beta}$, namely:
+            \begin{displaymath}
+                m_{n+1,1}=\beta_{0}m_{n0}+\beta_{1}m_{n1}+\ldots+\beta_{n}m_{nn}
+            \end{displaymath}
+            By induction hypothesis, there exists a sequence $\vect{\hat{a}}$ such that:
+            \begin{displaymath}
+                m_{n+1,2}=\hat{a}_{0}m_{n1}+\hat{a}_{1}m_{n2}+\ldots+\hat{a}_{n-1}m_{nn}
+            \end{displaymath}
+            so, we can build a sequence $\vect{a}$ as follows:
+            \begin{displaymath}
+                \vect{a}=\left(\hat{a}_{0},\hat{a}_{1},\hat{a}_{2},\ldots,\hat{a}_{n-1},\beta_{n}\right)
+            \end{displaymath}
+            where $\beta_{n}$ can be possibly different from $\hat{a}_{n-1}$. 
+            Sequence $\vect{a}$ is the $A$-sequence
+            for matrix $\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$, therefore $\mathcal{M}$ is a Riordan
+            array, as required.
+    \end{itemize}
+\end{proof}
 
 
 
