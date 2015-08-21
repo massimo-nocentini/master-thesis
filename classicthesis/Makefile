@@ -3,10 +3,10 @@ pdf:
 	pdflatex --shell-escape ClassicThesis.tex
 
 bibtex-and-references:
-	pdflatex ClassicThesis.tex
+	pdflatex --shell-escape ClassicThesis.tex
 	bibtex ClassicThesis
-	pdflatex ClassicThesis.tex
-	pdflatex ClassicThesis.tex
+	pdflatex --shell-escape ClassicThesis.tex
+	pdflatex --shell-escape ClassicThesis.tex
 
 complete: pascal-explanations bibtex-and-references
 

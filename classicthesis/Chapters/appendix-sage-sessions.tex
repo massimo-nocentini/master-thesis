@@ -5,7 +5,7 @@
 %\markboth{\spacedlowsmallcaps{Appendix}}{\spacedlowsmallcaps{Appendix}}
 \chapter{Appendix: Python implementation}
 
-\section{Big picture}
+\section{Engineering Python's modules}
 
 In the rest of this document we report and comment some figures about
 colourings of \emph{Riordan arrays}: we consider standard triangles and their
@@ -42,15 +42,70 @@ The following implementations are available in our Python package:
         \end{displaymath}
 \end{itemize}
 
-\section{Engineering Python's modules}
+We choose the \emph{Python} language to implement such a function and we rest
+on the \emph{Sage} \cite{sage} framework to do hard computational stuff, like
+Taylor expansion of a function or solving equations \emph{symbolically}.
+
+Our implementation aims at a subset of the \emph{Riordan group} theory, focusing
+on simplicity and sound design principles. The interest of the author for the
+\emph{Smalltalk} programming language has influenced the design of this code
+base, with a strong focus on the concept of \emph{messaging} between objects as
+the core programming paradigm. We believe that keeping such an approach,
+classes are structured to be really extendible, keeping the whole
+implementation limited to few core concept. In addition to this orientation, we
+have integrated some particular features supplied by the Python programming
+language in order to ease the experience of playing with our objects.
+
+We wont describe all the ``nitty-gritty'' details of the implementation, on the
+other hand we focus on the architecture, pointing out the concepts, and some
+design principles and patterns used to implement it.
+
+\subsection{Architecture}
+
+Talking about \emph{an architecture} to describe the implementation of a single
+\emph{functionality}, namely the $colouring$ function defined in the previous
+section, seems to be wasteful. However, \emph{Smalltalkers} like to introduce a
+little language for each problem they tackle, which is the same to say they
+introduce \emph{an architecture}, eventually. What is important is the spirit
+and the principle behind their approach: \emph{messaging}. As
+\citeauthor{kay:on:messaging} states in \cite{kay:on:messaging}, what is really
+important is the relation and the net of messages that a set of objects sends
+to each other. Pairing this principle with the one shown in
+\cite{friedman:felleisen:few:java:few:patterns}, about looking at behavior as
+an object, we have a solid track to follow.
+
+Our objects are instances of a few class hierarchies, many of which can be seen
+as \emph{dispatching objects}, while actual behavior is performed on a very
+restricted set of them, what we call \emph{action objects}. So, the whole
+$colouring$ functionality is taken apart into a set of small hierarchy, each
+one of them caught a \emph{context} that can happen in the study session, for
+example the desired type of partitioning or if the representation should have a
+plain layout or a centered one, and so on. All these little hierarchies doesn't
+know how to do hard symbolic computation or how to generate a result
+\TeX\,file, their only duty is to inform that \emph{the current functionality
+should be performed under the context they represent}. This is pretty similar
+to the approach advised by \emph{functional programming}, where \emph{pattern
+matching} over type constructors is a compact way to express the same
+computation as we do with a net of \emph{messages}.
+
+Only a small set of \emph{action objects}, aka \emph{visitors} if we look at
+them from the design patterns point of view, code the actual implementation
+because only them know the \emph{entire} context. With this approach, if we
+would like to implement a new \emph{functionality}, we have to \emph{create} a
+new \emph{action object}; on the other hand, if we would like to augment the
+context with new informations, we are required to \emph{refine} methods already
+implemented in \emph{action objects}, without updating the remaining classes.
+
+
+\subsection{Core classes}
 
 \section{A \emph{Sage} study file}
 
 In this section we show a typical session to study the \emph{Motzkin} array
 $\mathcal{M}$.  First we report the complete file that we have used to generate
 matrix raw expansion and a coloured representation of
-$\mathcal{M}_{\equiv_{p}}$, for some prime $p$; after we take it apart
-describing the meaning of each chunk of code.
+$\mathcal{M}_{\equiv_{7}}$; after we take it apart describing the meaning of
+each chunk of code.
 
 \inputminted[
     mathescape,
@@ -168,9 +223,15 @@ supply an \emph{help} function, which will allow \emph{Sage} to solve an
 equation yielding function $\hat{h}$. Formally, to find $\hat{h}$ we could
 solve a \emph{functional} equation $h(\hat{h}(t))=t$ because $h$ is known.
 Otherwise, we could use the \emph{change of variable} trick yielding
-$\hat{h}(y)$ if we can solve $h(t)=y$. This is exactly the aim of the helper
-function, it receive three arguments: variable $y$, variable $t$ and an equation
-such that:
+$\hat{h}(y)$ if we can solve $h(t)=y$: 
+\begin{displaymath}
+    \left.\left[\hat{h}(y)=t\right|y=h(t)\right)
+\end{displaymath}
+so, at the end, we have to solve another equation respect 
+variable $t$, obtaining it as a function of variable $y$.
+
+This is exactly the aim of the helper function. It receive three arguments, 
+namely variable $y$, variable $t$ and an equation over function $h$ such that:
 \begin{displaymath}
     y=h(t)
 \end{displaymath}
@@ -198,6 +259,12 @@ to find the desired function $\hat{h}$ as:
     \left.\left[\hat{h}(y)=\frac{y}{1+y+y^{2}}\right|
         y=\frac{1-t-\sqrt{1-2t-3t^{2}}}{2t} \right]
 \end{displaymath}
+
+To be truly precise, the above \emph{helper} lambda expression is actually an
+help to \emph{Sage} to build the inverse of an array, but it is also a
+\emph{certificate} for the computed compositional inverse function $\hat{h}$.
+Under the hood it is used also at the end of the search of $\hat{h}$ to check
+if it really satisfies $\hat{h}(h(t))=t$.
 
 \inputminted[
     mathescape,
