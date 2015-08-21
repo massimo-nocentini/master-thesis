@@ -1,6 +1,6 @@
 
 pdf:
-	pdflatex ClassicThesis.tex
+	pdflatex --shell-escape ClassicThesis.tex
 
 bibtex-and-references:
 	pdflatex ClassicThesis.tex
