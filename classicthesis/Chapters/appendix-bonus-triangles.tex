@@ -1,6 +1,64 @@
 
 \chapter{Appendix: Bonus triangles under $\equiv_{p}$}
 
+In this appendix we collect a set of modular representations as coloured
+triangles for some Riordan arrays. They are here to remove clutter from
+previous chapters, where they are not really necessary to ease the discussion;
+however some of them are pretty interesting for the patterns shown and,
+although we have not been able to characterize those patterns formally, it is
+pleasant to have a collection of them as a starting point for further studies.
+
+We prefer to report an \emph{aggregate} representation of the modular
+transformation in order to make pattern appear clearly. Formally, given a
+Riordan array $\mathcal{M}$ and a congruence relation $\equiv_{p}$, where $p$
+is a prime number, we report the representation of
+$\mathcal{M}_{\stackrel{\circ}\equiv_{p}}$, which uses only \emph{two} colours,
+namely $b$ (for \textcolor{blue}{blue}) and $o$ (for
+\textcolor{orange}{orange}). 
+
+Let $\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$ be the matrix of coefficients of
+array $\mathcal{M}$, then coefficient at row $r$ and column $k$ of
+$\mathcal{M}_{\stackrel{\circ}\equiv_{p}}$ satisfies the following relation:
+\begin{displaymath}
+    \left(\mathcal{M}_{\stackrel{\circ}\equiv_{p}}\right)_{nk} = b 
+    \leftrightarrow m_{nk}\equiv_{p}  0
+\end{displaymath}
+
+therefore all coefficients belonging to remainder classes:
+$\left\lbrace[1],[2],\ldots,[p-1]\right\rbrace_{p}$ get associated with colour
+$c$, while all those coefficients which are multiples of $p$, therefore
+belonging to class $[0]_{p}$, get associated with colour $b$.
+
+Every congruence relation $\equiv_{p}$ used in the following representations,
+uses a \emph{prime} module $p$ since it seems that interesting patterns appear
+only under this constraint. We tried to represent an array under $\equiv_{p}$
+where $p\in\lbrace4,6,8\rbrace$, but the resulting representation was difficult
+to study and not so much appealing as the ones produced where $p$ is a prime
+number. In \autoref{subsection:pascal:congruence:characterization:p:not:prime}
+is discussed the case about Pascal array $\mathcal{P}$ and in
+\autoref{fig:pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-4-partitioning-triangle}
+$\mathcal{P}_{\stackrel{\circ}{\equiv_{4}}}$ is shown.
+
+In the following table we recap formal definitions of represented Riordan
+arrays:
+\begin{displaymath}
+    \hspace{-6cm}
+    \begin{split}
+        \mathcal{P}\left(\frac{1}{1-t},\frac{t}{1-t}\right) &\quad
+            \mathcal{P}^{-1}\left(\frac{t}{1+t}, \frac{t}{1+t}\right) \\
+        \mathcal{C}\left(\frac{1-\sqrt{1-4\,t}}{2t},\frac{1-\sqrt{1-4\,t}}{2}\right) &\quad
+            \mathcal{C}^{-1}\left(t,t-t^{2}\right) \\
+        \mathcal{M}\left(\frac{1-t - \sqrt{1- 2 \, t -3 \, t^{2} }}{2 \, t^{2}}, 
+                \frac{1-t - \sqrt{1 - 2 \, t-3 \, t^{2}}}{2 \, t}\right) &\quad
+            \mathcal{M}^{-1}\left(\frac{2\,t^{2}}{t^{4}+t^{3}-t^{2}-t-2}, \frac{t}{1+t+t^{2}}\right) \\
+        \mathcal{D}\left(\frac{1}{1-t},\frac{t(1+t)}{1-t}\right) &\quad
+            \mathcal{D}^{-1}\left(\frac{3+t-\sqrt{t^{2} + 6 \, t + 1}}{2}, 
+                \frac{\sqrt{t^{2} + 6 \, t + 1}-t-1}{2}\right) \\
+        \mathcal{F}\left(\frac{1}{1-t-t^{2}}, \frac{1-\sqrt{1-4 \, t}}{2}\right) &\quad
+            \mathcal{F}^{-1}\left(1-t + 2 \, t^{3} -t^{4}, t - t^{2}\right) \\
+    \end{split}
+\end{displaymath}
+
 % Pascal triangles
 \input{Chapters/appendix-bonus-triangles/pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
 \input{Chapters/appendix-bonus-triangles/pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
