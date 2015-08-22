@@ -7,41 +7,44 @@
 
 \section{Engineering Python's modules}
 
+In this appendix we talk about how we implemented a subset of the \emph{Riordan
+group} theory using the Python programming language.  Although our code is pure
+Python code, we rest on the \emph{Sage} \cite{sage} mathematical framework for
+symbolic computations\marginpar{pure Python classes, delegating to \emph{Sage}}.
+
+We start from the abstract world of mathematics and, gradually, introduce the
+architecture, principles, design choices and, finally, hierarchies of classes
+that allow us to fullfil our implementation.
+
 \subsection{From mathematics to code}
 \label{subsection:python:appendix:from:math:to:code}
 
-In the rest of this document we report and comment some figures about
-colourings of \emph{Riordan arrays}: we consider standard triangles and their
-inverses, in the majority of case the congruence partitioning is used.
-
-Mathematically, a function $colouring$ has been implemented. Let $\mathcal{R}$
-be a Riordan array and $d_{nk} \in \mathcal{R}$ its generic element, moreover
-define a set of $k$ colours $\lbrace c_0, \ldots, c_{k-1} \rbrace$, so the
-function has the following type: 
+Mathematically, a function $colouring$ has been implemented. Let $\mathcal{M}$
+be a Riordan array and $m_{nk} \in \mathcal{M}$ its generic element, moreover
+define a set of $k$ colours $\lbrace c_0, \ldots, c_{k-1} \rbrace$. So,
+function $colouring$ has the following type: 
 \begin{displaymath} 
     colouring : \mathbb{N} \times\mathbb{N} \rightarrow \lbrace c_0, \ldots, c_{k-1} \rbrace
 \end{displaymath}
-
-The following implementations are available in our Python package:
+Let $p\in\mathbb{N}$, usually a prime number, the following definitions have been implemented:
 \begin{itemize}
-    \item choose a module $p$ (in most cases a prime although) and
-        colour $\mathcal{R}$ associating to each remainder class 
-        $r \in \lbrace[0],\ldots,[p-1]\rbrace$
-        a different colour $c_r$:
+    \item colour $\mathcal{M}$ associating to each remainder class 
+        $r \in \lbrace[0],\ldots,[p-1]\rbrace$ a different colour $c_r$:
         \begin{displaymath}
-            colouring_{p}(n,k) = c_{r} \leftrightarrow d_{nk} \equiv_{p} r
+            colouring_{p}(n,k) = c_{r} \leftrightarrow m_{nk} \equiv_{p} r
         \end{displaymath}
-    \item choose a module $p$ (in most cases a prime although) and
-        \emph{bi}-colour $\mathcal{R}$ with $c_0$ if $d_{nk}$ 
+    \item \emph{bi}-colour $\mathcal{M}$ with $c_0$ if $m_{nk}$ 
         is a multiple of $p$, otherwise use a colour $c_1$:
         \begin{displaymath}
-            colouring_{p}(n,k) = c_{0} \leftrightarrow p | d_{nk}
+            colouring_{p}(n,k) = c_{0} \leftrightarrow p | m_{nk}
         \end{displaymath}
-    \item a less used one, \emph{bi}-colour $\mathcal{R}$ with $c_0$ 
-        if $d_{nk}$ is a prime, otherwise use a colour $c_1$:
+    \item a less used one, \emph{bi}-colour $\mathcal{M}$ with $c_0$ 
+        if $m_{nk}$ is a prime, otherwise use a colour $c_1$
+            \marginpar{``prime'' definition of $colouring$ 
+                seems to produce triangles coloured at random\ldots}:
         \begin{displaymath}
             colouring(n,k) = c_{0} \leftrightarrow 
-                \nexists p\in\lbrace 2,\ldots,d_{nk}-1\rbrace.p|d_{nk} 
+                \nexists s\in\lbrace 2,\ldots,m_{nk}-1\rbrace.s|m_{nk} 
         \end{displaymath}
 \end{itemize}
 
@@ -49,62 +52,68 @@ We choose the \emph{Python} language to implement such a function and we rest
 on the \emph{Sage} \cite{sage} framework to do hard computational stuff, like
 Taylor expansion of a function or solving equations \emph{symbolically}.
 
-Our implementation aims at a subset of the \emph{Riordan group} theory, focusing
-on simplicity and sound design principles. The interest of the author for the
-\emph{Smalltalk} programming language has influenced the design of this code
-base, with a strong focus on the concept of \emph{messaging} between objects as
-the core programming paradigm. We believe that keeping such an approach,
-classes are structured to be really extendible, keeping the whole
-implementation limited to few core concept. In addition to this orientation, we
-have integrated some particular features supplied by the Python programming
-language in order to ease the experience of playing with our objects.
+Our implementation aims at a subset of the \emph{Riordan group} theory,
+focusing on simplicity and sound design principles. The interest of the author
+for the \emph{Smalltalk} programming language \cite{Goldberg:1983:SLI:273} has
+    influenced the design of the code base, with a strong focus on the concept
+    of \emph{messaging} between objects as the core programming paradigm. We
+    believe that keeping such an approach, classes are structured to be really
+    extendible, keeping the whole implementation limited to few core concept.
+    In addition to this orientation, we have integrated some particular
+    features supplied by the Python programming language in order to ease the
+    experience of playing with our objects.
 
-We wont describe all the ``nitty-gritty'' details of the implementation, on the
-other hand we focus on the architecture, pointing out the concepts, and some
-design principles and patterns used to implement it. Finally, we review a set
-of core classes, pointing the interested reader to the complete implementation,
-which is freely available on line, in the \emph{Git} repository
-\cite{nocentini:git:repository}.
+We \marginpar{all Python code and \LaTeX files of this work is under \emph{Git}
+version control} wont describe all the ``nitty-gritty'' details of the
+implementation, on the other hand we focus on the architecture, pointing out
+the concepts, and some design principles and patterns used to implement it.
+Finally, we review a set of core classes, pointing the interested reader to the
+complete implementation, which is freely available on line, in the \emph{Git}
+repository \cite{nocentini:git:repository}.
 
 \subsection{Architecture}
 
 Talking about \emph{an architecture} to describe the implementation of a single
-\emph{functionality}, namely the $colouring$ function defined in the previous
-section, seems to be wasteful. However, \emph{Smalltalkers} like to introduce a
-little language for each problem they tackle, which is the same to say they
-introduce \emph{an architecture}, eventually. What is important is the spirit
-and the principle behind their approach: \emph{messaging}. As
-\citeauthor{kay:on:messaging} states in \cite{kay:on:messaging}, what is really
-important is the relation and the net of messages that a set of objects sends
-to each other. Pairing this principle with the one shown in
+\emph{functionality}, namely the $colouring$ function, seems to be wasteful.
+However, \emph{Smalltalkers} like to introduce a little language for each
+problem they tackle, which is the same to say they introduce \emph{an
+architecture}, eventually. What is important is the spirit and the principle
+behind their approach: \emph{messaging}. As \citeauthor{kay:on:messaging}
+states in \cite{kay:on:messaging}, what is really important is the relation and
+the net of messages that a set of objects send to each other. Pairing this
+principle with the one shown in
 \cite{friedman:felleisen:few:java:few:patterns}, about looking at behavior as
 an object, we have a solid track to follow.
 
 Our objects are instances of a few class hierarchies, many of which can be seen
-as \emph{dispatching objects}, while actual behavior is performed on a very
-restricted set of them, what we call \emph{action objects}. So, the whole
-$colouring$ functionality is taken apart into a set of small hierarchy, each
-one of them caught a \emph{context} that can happen in the study session, for
-example the desired type of partitioning or if the representation should have a
-plain layout or a centered one, and so on. All these little hierarchies doesn't
-know how to do hard symbolic computation or how to generate a result
-\TeX\,file, their only duty is to inform that \emph{the current functionality
-should be performed under the context they represent}. This is pretty similar
-to the approach advised by \emph{functional programming}, where \emph{pattern
-matching} over type constructors is a compact way to express the same
-computation as we do with a net of \emph{messages}.
+\marginpar{dispatching and action objects} as \emph{dispatching objects}, while
+actual behavior is performed by a very restricted set of them, what we call
+\emph{action objects}. So, the whole $colouring$ functionality is taken apart
+into a set of small hierarchies, such that each one of them catches a
+\emph{context} that can happen in a study session; example contexts are the
+desired type of partitioning or if the representation should have a plain
+layout or a centered one\ldots Each object which is an instance of a little
+hierarchy, doesn't know how to do hard symbolic computation or how to generate
+a result \TeX\,file. Its only responsibility is to inform that \emph{the
+requested functionality should be performed under the context it represents}.
+This is pretty similar to the approach advised by \emph{functional
+programming}, where \emph{pattern matching} over type constructors is a compact
+way to express the same computation as we do with a net of \emph{messages}.
 
-Only a small set of \emph{action objects}, aka \emph{visitors} if we look at
-them from the design patterns point of view, code the actual implementation
-because only them know the \emph{entire} context. With this approach, if we
-would like to implement a new \emph{functionality}, we have to \emph{create} a
-new \emph{action object}; on the other hand, if we would like to augment the
-context with new informations, we are required to \emph{refine} methods already
-implemented in \emph{action objects}, without updating the remaining classes.
+Only a small set of \emph{action objects}\marginpar{an action object is the
+recipient of a chain of dispatching messages}, aka \emph{visitors} if we look
+at them from the design patterns \cite{Gamma:1995:DPE:186897} point of view,
+code the actual implementation because only them know the \emph{entire}
+context.  With this approach, if we would like to implement a new
+\emph{functionality}, we have to \emph{create} a new \emph{action object}; on
+the other hand, if we would like to augment the context with new informations,
+we are required to \emph{refine} methods already implemented in \emph{action
+objects}, without updating the remaining classes.
 
-Finally, this approach leads quite naturally to favor \emph{composition} over
+Finally, this approach leads quite naturally to\marginpar{favor
+\emph{composition} over \emph{inheritance}} favor \emph{composition} over
 \emph{inheritance}. Due to the \emph{dynamic} typing of Python, without the
-constraint to assign a type to every expression \emph{explicitly}, using the
+constraint to assign \emph{explicitly} a type to every expression, using the
 proposed methodology we have built a code base that is highly polymorphic,
 without constraining objects in rigid inheritance structures.
 
@@ -119,13 +128,15 @@ many things. It can be \emph{indexed} to supply a coefficient $m_{nk}$ it
 contains but asking for raw matrix expansion or doing group operations, such as
 multiplication or inversion, depends on how the Riordan array has been
 \emph{characterized}, and this context information is caught by the
-\emph{Characterization} hierarchy. We provide the following characterizations:
+\emph{Characterization} hierarchy\marginpar{instances built from a class in the
+Characterization hierarchy are dispatching objects}. We provide the following
+characterizations: 
 \begin{itemize}
     \item by \emph{sequences}, that is using $A$ and $Z$ sequences, together with
         coefficient $m_{00}$;
-    \item by \emph{matrices}, that is using $A$-matrix, which can be expressed as a
-        matrix of coefficients $\lbrace a_{nk}\rbrace_{n,k\in\mathbb{N}}$ or as a 
-        sequence of \ac{gf}, one for each matrix's row;
+    \item by \emph{matrices}, that is using $A$-matrices, where each $A$-matrix can 
+        be expressed as a table of coefficients $\lbrace a_{nk}\rbrace_{n,k\in\mathbb{N}}$ 
+        or as a sequence of \ac{gf}, one for each matrix's row;
     \item by \emph{subgroup}, which essentially allows the client to use \emph{analytic
         functions} $d$ and $h$ to define the desired array. Up to now, only one
         subgroup is implemented, the \emph{vanilla} subgroup which resembles the
@@ -133,37 +144,43 @@ multiplication or inversion, depends on how the Riordan array has been
         We will extend the set of \emph{subgroups} toward the one studied in the literature:
         this will allow the client to play with our object having a \emph{mathematical}
         experience, for example if an array in the \emph{Renewal} subgroup is desired,
-        the client should only define function $d$, since function $h$ is automatically
+        the client should only define function $d$, since function $h$ is implicitly
         defined as $h(t)=t\,d(t)$.
 \end{itemize}
-Therefore, under the \emph{characterization} context denoted by an object instance of the
-previous classes, it is possible for a \emph{RiordanArray} instance to \emph{dispatch} on such
-characterization, requests it cannot fullfil by itself, so group operations, raw matrix expansion,
-building a formal \emph{mathematical} name formatted as a pair of functions $(d(t),h(t))$.
+
+Therefore, with the introduction of \emph{characterization} context, denoted by
+an object instance of the previous classes, it is possible for a
+\emph{RiordanArray} instance to \emph{dispatch} messages on such
+characterization that it cannot fullfil by itself, for example messages about
+doing group operations, raw matrix expansion, building a formal
+\emph{mathematical} name, formatted as a pair of functions $(d(t),h(t))$.
 
 \subsubsection{\emph{TriangleColouring} class and auxiliary hierarchies}
 
 The \emph{TriangleColouring} class is the second \emph{interface} class, which
 denotes the desired colouring, namely a representatation of a Riordan array
-under a congruence relation $\equiv_{p}$, for some modulo $p$. An object
-instance of this class builds context objects about the desired layout of the
+under a congruence relation $\equiv_{p}$, for some modulo $p$. An object,
+instance of this class, builds context objects about the desired layout of the
 triangle (\emph{centered} or \emph{left-aligned}) or if negative coefficient in
 an inverse array should be associated with \emph{lighter} colour variant
-respect positive coefficients, both belonging to the same remainder class of
-$\equiv_{p}$ relation. Such additional context objects are instances of \emph{auxiliary
-hierarchies}, such as \emph{TriangleShape} and \emph{NegativeChoices}.
+respect positive coefficients, when both belong to the same remainder class of
+$\equiv_{p}$ relation. Such additional context objects are instances of
+\emph{auxiliary hierarchies}, such as \emph{TriangleShape} and
+\emph{NegativeChoices}.
 
 Python language allows to \emph{override} some \emph{special} methods that the
 virtual machine calls on an object when it is used in a particular
-\emph{syntatic context}.  One of such method is \mintinline{python}|__call__|,
-which is sent to an object \mintinline{python}|obj| when it is used like a
-function, for example: \mint{python}|obj(array=anArray,
-partitioning=aPartitioning)| for some objects \mintinline{python}|anArray| and
-\mintinline{python}|aPartitioning|. We have \emph{overridden} such a method in
-order to provide a more \emph{fluent} interface: recall that, eventually, our
-interest is to implement the function $colouring$, so it is nice to be able to
-use the object that denotes such functionality \emph{like} a function, as in
-\emph{mathematics} we are able to do. 
+\emph{syntatic context}. \marginpar{\mintinline{python}|__getindex__(index)| is
+another message that the vm sends to an object $obj$ when it is indexed, as in
+$obj[n,k]$} One of such method is \mintinline{python}|__call__|, which is sent
+to an object \mintinline{python}|obj| when it is used like a function, for
+example: \mint{python}|obj(array=anArray, partitioning=aPartitioning)| for some
+objects \mintinline{python}|anArray| and \mintinline{python}|aPartitioning|. We
+have \emph{overridden} such a method in order to provide a more \emph{fluent}
+interface: recall that, eventually, our interest is to implement the function
+$colouring$, so it is nice to be able to use the object that denotes such
+functionality \emph{like} a function, as in \emph{mathematics} we are able to
+do. 
 
 \subsubsection{\emph{Partitioning} hierarchy}
 
@@ -185,7 +202,7 @@ since they \emph{can} perform a functionality since they \emph{know} the entire 
 having collected all context informations \emph{dispatched} from remaining objects.
 There are the following classes in this hierarchy, each one denoting a \emph{major}
 functionality that is necessary to fullfil the implementation of the $colouring$ 
-function:
+function\marginpar{action objects}:
 \begin{itemize}
     \item \emph{ExpansionActionUsingSubgroupCharacterization} class denotes
         the operation of doing raw matrix expansion of an array $\mathcal{M}$; 
@@ -197,22 +214,25 @@ function:
         the array $\mathcal{M}^{-1}$.
 \end{itemize}
 
-All the above classes stricly depends on how the Riordan array has been
+All the above classes stricly depend on how the Riordan array has been
 characterized, therefore they code a different implementation for each such
 characterization. Looking at them from this point of view, it is easy to
 recognize that the set of \emph{action objects} is actually a set of
-\emph{visitors}. It is interesting how the \emph{Visitor pattern} can be
-generalized to a net of \emph{dispatching messages}, without limiting its
-application to hierarchies denoting a recursive domain.
+\emph{visitors}. It is interesting how the\marginpar{Visitor pattern}
+\emph{Visitor pattern} can be generalized to a net of \emph{dispatching
+messages}, without limiting its application to hierarchies denoting a recursive
+domain.
 
 
 \section{A \emph{Sage} study file}
 
-In this section we show a typical session to study the \emph{Motzkin} array
-$\mathcal{M}$.  First we report the complete file that we have used to generate
-matrix raw expansion and a coloured representation of
-$\mathcal{M}_{\equiv_{7}}$; after we take it apart describing the meaning of
-each chunk of code.
+In this section we show a typical session where we study the \emph{Motzkin}
+array $\mathcal{M}$.  First we report the complete script that we have used to
+generate matrix raw expansion and coloured representations of
+$\mathcal{M}_{\equiv_{p}}$, for some prime $p$; after we take it apart
+describing the meaning of each chunk of code.
+
+\subsection{The complete \emph{study} script for Motzkin array $\mathcal{M}$...}
 
 \inputminted[
     mathescape,
@@ -224,8 +244,11 @@ each chunk of code.
     breaklines
     ]{python}{../sympy/motzkin/motzkin-for-document-inclusion.sage}
 
-Having seen the complete session file for array $\mathcal{M}$, in the
-following paragraphs we take it apart, describing each little chunk.
+\subsection{...and taking it apart, bite after bite}
+
+Having seen the complete session script for array $\mathcal{M}$, in the
+following paragraphs we take it apart, describing each little chunk in greater
+detail.
 
 \inputminted[
     mathescape,
@@ -241,8 +264,10 @@ following paragraphs we take it apart, describing each little chunk.
     
 In this chunk we do some boring \emph{imports} and prepare a variable
 \mintinline{python}|tex_parent_prefix| in order to localize the destination
-path for files that will be generated. Finally, variable \mintinline{python}|t| is
-defined in order to denote a \emph{math} undeterminate variable $t$.
+path for files that will be generated. Finally, variable \mintinline{python}|t|
+is defined in order to denote a \emph{math} undeterminate variable
+$t$\marginpar{\mintinline{python}|t| denotes a \emph{Python object}, $t$
+denotes a \emph{math variable}}.
 
 \inputminted[
     mathescape,
@@ -259,10 +284,10 @@ defined in order to denote a \emph{math} undeterminate variable $t$.
 Here we define the desired partitioning, in this case we want
 $\mathcal{M}_{\stackrel{\circ}{\equiv_{7}}}$, and the colouring object. It
 keeps track of the number of rows, namely $127$; if the representation should
-be centered or aligned to the left, as a raw matrix expansion; and, finally, if
-negative coefficients in the inverse array $\mathcal{M}^{-1}$ should get
-lighter colour variants respect ones that positive coefficient in $\mathcal{M}$
-get, under congruence relation $\equiv_{7}$.
+be centered or aligned to the left, as a raw matrix expansion looks like; and,
+finally, if negative coefficients in the inverse array $\mathcal{M}^{-1}$
+should get lighter colour variants respect ones that positive coefficient in
+$\mathcal{M}$ get, under congruence relation $\equiv_{7}$.
 
 \inputminted[
     mathescape,
@@ -277,8 +302,8 @@ get, under congruence relation $\equiv_{7}$.
     ]{python}{../sympy/motzkin/motzkin-for-document-inclusion.sage}
 
 Here we define function $d$ and function $h$ of $\mathcal{M}$ and build an
-object that denotes the \emph{mathematical} concept of Riordan array, 
-composed of the following slots:
+object that denotes the \emph{mathematical} concept of Riordan array, composed
+of the following slots\marginpar{we provide strong integration with \LaTeX}:
 \begin{itemize}
     \item a \emph{subgroup}, in this case we use the \emph{plain vanilla} definition by
         providing functions $d$ and $h$ directly;
@@ -302,9 +327,11 @@ composed of the following slots:
     lastline=56
     ]{python}{../sympy/motzkin/motzkin-for-document-inclusion.sage}
 
-Here some computation happen actually: application of function
-\mintinline{python}|colouring| does raw expansion of $\mathcal{M}$ up to row $126$ included,
-starting from row 0, and write all files containing results, splitted according their content.
+Here some computation happen, actually: application of
+\mintinline{python}|colouring| object expands $\mathcal{M}$ as a matrix
+$\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$, up to row $126$ included, starting
+from row $0$. Finally, it writes a bunch of files containing results, splitted
+according their content.
 
 \inputminted[
     mathescape,
@@ -318,19 +345,22 @@ starting from row 0, and write all files containing results, splitted according 
     lastline=62
     ]{python}{../sympy/motzkin/motzkin-for-document-inclusion.sage}
 
-Here we tackle the settings for computing $\mathcal{M}^{-1}$. Mathematically,
-it is necessary to compute the \emph{computational inverse} $\hat{h}$ of
-function $h$ and this is the main difficult point to solve, for \emph{Sage}
-\cite{sage} too.  \emph{Sage} framework is pretty powerful, for instance it can
-compute function $\hat{h}_{\mathcal{P}}$ for the Pascal array $\mathcal{P}$,
-but for Motzkin array things get complicated because a radical appears in
-function $h$. For this, the \emph{message} \mintinline{python}|inverse| sent to
-the object denoting $\mathcal{M}$ is a curious one because it allow us to
-supply an \emph{help} function, which will allow \emph{Sage} to solve an
-equation yielding function $\hat{h}$. Formally, to find $\hat{h}$ we could
-solve a \emph{functional} equation $h(\hat{h}(t))=t$ because $h$ is known.
-Otherwise, we could use the \emph{change of variable} trick yielding
-$\hat{h}(y)$ if we can solve $h(t)=y$: 
+Here we tackle the settings for computing
+$\mathcal{M}^{-1}$\marginpar{computing $\mathcal{M}^{-1}$ providing an helper
+lambda expression}. Mathematically, it is necessary to compute the
+\emph{computational inverse} $\hat{h}$ of function $h$ and this is the main
+difficult point to solve, for \emph{Sage} \cite{sage} too.  \emph{Sage}
+framework is pretty powerful, for instance it can compute function
+$\hat{h}_{\mathcal{P}}$ for the Pascal array $\mathcal{P}$, but for Motzkin
+array things get complicated because a radical appears in function $h$. 
+
+For this reason, \emph{message} \mintinline{python}|inverse| sent to the object
+denoting $\mathcal{M}$ is a curious one, because it asks for an \emph{help}
+function which will allow \emph{Sage} to solve an equation, yielding function
+$\hat{h}$ eventually. Formally, to find $\hat{h}$ we could solve a
+\emph{functional} equation $h(\hat{h}(t))=t$ because $h$ is known.  Otherwise,
+we could use the \emph{change of variable} trick yielding $\hat{h}(y)$ if we
+can solve $h(t)=y$: 
 \begin{displaymath}
     \left.\left[\hat{h}(y)=t\right|y=h(t)\right)
 \end{displaymath}
@@ -360,18 +390,19 @@ we can do the following steps, in the given order:
 which is exactly the meaning of the supplied lambda: \mint{python}|lambda y, t,
 equation: (equation*2*t*(-1) -(t-1))**2| 
 
-\emph{Sage} is now able to solve the last equation respect variable $t$ and allow
-to find the desired function $\hat{h}$ as:
+\emph{Sage} is now able to solve the last equation respect variable $t$ and it
+can find the desired function $\hat{h}$ as:
 \begin{displaymath}
     \left.\left[\hat{h}(y)=\frac{y}{1+y+y^{2}}\right|
         y=\frac{1-t-\sqrt{1-2t-3t^{2}}}{2t} \right]
 \end{displaymath}
 
-To be truly precise, the above \emph{helper} lambda expression is actually an
-help to \emph{Sage} to build the inverse of an array, but it is also a
-\emph{certificate} for the computed compositional inverse function $\hat{h}$.
-Under the hood it is used also at the end of the search of $\hat{h}$ to check
-if it really satisfies $\hat{h}(h(t))=t$.
+To be truly precise,\marginpar{the supplied helper works as a certificate as
+well} the above \emph{helper} lambda expression is both an help to \emph{Sage}
+to build the inverse of an array  and it is also a \emph{certificate} for the
+computed compositional inverse function $\hat{h}$.  Under the hood it is used
+also at the end of the search of $\hat{h}$ to check if it really satisfies
+$\hat{h}(h(t))=t$.
 
 \inputminted[
     mathescape,
@@ -385,10 +416,10 @@ if it really satisfies $\hat{h}(h(t))=t$.
     lastline=74
     ]{python}{../sympy/motzkin/motzkin-for-document-inclusion.sage}
 
-Finally, as before, we do actually the computation that will raw expand
-$\mathcal{M}^{-1}$ and will produce desired \LaTeX\,files composed of code
-necessary to build the modular representation
+Finally, as before, we actually do the computation that will expand
+$\mathcal{M}^{-1}$ as a matrix of coefficients and will produce desired
+\LaTeX\,files composed of code necessary to build the modular representation
 $\left(\mathcal{M}^{-1}\right)_{\equiv_{7}}$.
-
-This is the most complete example our simple implementation allow us to do but,
-although simple, it generate \emph{objects of beauty}.
+\\\\
+This is the most complete example our simple implementation allows us to do and,
+although simple, it generates \emph{objects of beauty}.
