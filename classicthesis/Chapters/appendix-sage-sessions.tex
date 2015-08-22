@@ -7,6 +7,9 @@
 
 \section{Engineering Python's modules}
 
+\subsection{From mathematics to code}
+\label{subsection:python:appendix:from:math:to:code}
+
 In the rest of this document we report and comment some figures about
 colourings of \emph{Riordan arrays}: we consider standard triangles and their
 inverses, in the majority of case the congruence partitioning is used.
@@ -58,7 +61,10 @@ language in order to ease the experience of playing with our objects.
 
 We wont describe all the ``nitty-gritty'' details of the implementation, on the
 other hand we focus on the architecture, pointing out the concepts, and some
-design principles and patterns used to implement it.
+design principles and patterns used to implement it. Finally, we review a set
+of core classes, pointing the interested reader to the complete implementation,
+which is freely available on line, in the \emph{Git} repository
+\cite{nocentini:git:repository}.
 
 \subsection{Architecture}
 
@@ -96,8 +102,109 @@ new \emph{action object}; on the other hand, if we would like to augment the
 context with new informations, we are required to \emph{refine} methods already
 implemented in \emph{action objects}, without updating the remaining classes.
 
+Finally, this approach leads quite naturally to favor \emph{composition} over
+\emph{inheritance}. Due to the \emph{dynamic} typing of Python, without the
+constraint to assign a type to every expression \emph{explicitly}, using the
+proposed methodology we have built a code base that is highly polymorphic,
+without constraining objects in rigid inheritance structures.
 
-\subsection{Core classes}
+\subsection{Core classes and hierarchies}
+
+\subsubsection{\emph{RiordanArray} class and \emph{Characterization} hierarchy}
+
+The \emph{RiordanArray} class is the first of a set of \emph{interface} classes
+that the client will work with.  Its responsibility is to denote the
+\emph{mathematical} concept of Riordan array, but kept alone, it couldn't do
+many things. It can be \emph{indexed} to supply a coefficient $m_{nk}$ it
+contains but asking for raw matrix expansion or doing group operations, such as
+multiplication or inversion, depends on how the Riordan array has been
+\emph{characterized}, and this context information is caught by the
+\emph{Characterization} hierarchy. We provide the following characterizations:
+\begin{itemize}
+    \item by \emph{sequences}, that is using $A$ and $Z$ sequences, together with
+        coefficient $m_{00}$;
+    \item by \emph{matrices}, that is using $A$-matrix, which can be expressed as a
+        matrix of coefficients $\lbrace a_{nk}\rbrace_{n,k\in\mathbb{N}}$ or as a 
+        sequence of \ac{gf}, one for each matrix's row;
+    \item by \emph{subgroup}, which essentially allows the client to use \emph{analytic
+        functions} $d$ and $h$ to define the desired array. Up to now, only one
+        subgroup is implemented, the \emph{vanilla} subgroup which resembles the
+        formal way to define a Riordan array $\mathcal{M}$ as a pair of functions $(d(t),h(t))$.
+        We will extend the set of \emph{subgroups} toward the one studied in the literature:
+        this will allow the client to play with our object having a \emph{mathematical}
+        experience, for example if an array in the \emph{Renewal} subgroup is desired,
+        the client should only define function $d$, since function $h$ is automatically
+        defined as $h(t)=t\,d(t)$.
+\end{itemize}
+Therefore, under the \emph{characterization} context denoted by an object instance of the
+previous classes, it is possible for a \emph{RiordanArray} instance to \emph{dispatch} on such
+characterization, requests it cannot fullfil by itself, so group operations, raw matrix expansion,
+building a formal \emph{mathematical} name formatted as a pair of functions $(d(t),h(t))$.
+
+\subsubsection{\emph{TriangleColouring} class and auxiliary hierarchies}
+
+The \emph{TriangleColouring} class is the second \emph{interface} class, which
+denotes the desired colouring, namely a representatation of a Riordan array
+under a congruence relation $\equiv_{p}$, for some modulo $p$. An object
+instance of this class builds context objects about the desired layout of the
+triangle (\emph{centered} or \emph{left-aligned}) or if negative coefficient in
+an inverse array should be associated with \emph{lighter} colour variant
+respect positive coefficients, both belonging to the same remainder class of
+$\equiv_{p}$ relation. Such additional context objects are instances of \emph{auxiliary
+hierarchies}, such as \emph{TriangleShape} and \emph{NegativeChoices}.
+
+Python language allows to \emph{override} some \emph{special} methods that the
+virtual machine calls on an object when it is used in a particular
+\emph{syntatic context}.  One of such method is \mintinline{python}|__call__|,
+which is sent to an object \mintinline{python}|obj| when it is used like a
+function, for example: \mint{python}|obj(array=anArray,
+partitioning=aPartitioning)| for some objects \mintinline{python}|anArray| and
+\mintinline{python}|aPartitioning|. We have \emph{overridden} such a method in
+order to provide a more \emph{fluent} interface: recall that, eventually, our
+interest is to implement the function $colouring$, so it is nice to be able to
+use the object that denotes such functionality \emph{like} a function, as in
+\emph{mathematics} we are able to do. 
+
+\subsubsection{\emph{Partitioning} hierarchy}
+
+\emph{Partitioning} hierarchy denotes how the \emph{modular transformation} is
+applied to an array $\mathcal{M}$. It is composed of three classes, one for
+each implementation of \emph{math} function $colouring$ described in
+\autoref{subsection:python:appendix:from:math:to:code}.
+
+\subsubsection{\emph{ActionUsingSubgroupCharacterization} hierarchy}
+
+Previous classes, hierarchies and auxiliaries build instances that belong to a
+set of objects that we call \emph{dispatching objects}, since their responsibilities
+are to dispatch messages, where each such object augment the message with the
+context information it is responsible for. 
+
+Classes in the \emph{ActionUsingSubgroupCharacterization} hierarchy, on the other hand,
+build instances that belong to a set of objects that we call \emph{action objects},
+since they \emph{can} perform a functionality since they \emph{know} the entire context,
+having collected all context informations \emph{dispatched} from remaining objects.
+There are the following classes in this hierarchy, each one denoting a \emph{major}
+functionality that is necessary to fullfil the implementation of the $colouring$ 
+function:
+\begin{itemize}
+    \item \emph{ExpansionActionUsingSubgroupCharacterization} class denotes
+        the operation of doing raw matrix expansion of an array $\mathcal{M}$; 
+    \item \emph{FormalDefLatexCodeUsingSubgroupCharacterization} class denotes
+        the operation of producing a formal description of the array, 
+        formatted as $\mathcal{M}=(d(t),h(t))$;
+    \item \emph{BuildInverseActionUsingSubgroupCharacterization} class denotes
+        the operation of \emph{inverting} an array $\mathcal{M}$ to produce 
+        the array $\mathcal{M}^{-1}$.
+\end{itemize}
+
+All the above classes stricly depends on how the Riordan array has been
+characterized, therefore they code a different implementation for each such
+characterization. Looking at them from this point of view, it is easy to
+recognize that the set of \emph{action objects} is actually a set of
+\emph{visitors}. It is interesting how the \emph{Visitor pattern} can be
+generalized to a net of \emph{dispatching messages}, without limiting its
+application to hierarchies denoting a recursive domain.
+
 
 \section{A \emph{Sage} study file}
 

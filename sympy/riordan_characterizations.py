@@ -5,7 +5,7 @@ class AbstractCharacterization: pass
 
 class SequencesCharacterization(AbstractCharacterization):
     
-    def __init__(self, d_zero, A_sequence, Z_sequence): pass
+    def __init__(self, d_zero_zero, A_sequence, Z_sequence): pass
 
 
 class MatrixCharacterization(AbstractCharacterization):
