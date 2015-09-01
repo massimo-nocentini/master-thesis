@@ -1,0 +1,178 @@
+
+\section{Previous work}
+
+In this section we recall existing literature about the application of modular
+arithmetic to infinite lower triangular matrices. In particular, we report a
+fundamental theorem about binomial coefficients, proved by
+\citeauthor{lucas:theorie:des:nombres} in \cite{lucas:theorie:des:nombres}, and
+how it has been used by various authors to establish new and curious results.
+
+\subsection{Lucas theorem exposed, by Fine}
+
+In \cite{fine:1947}, \citeauthor{fine:1947} exposes a theorem given by
+\citeauthor{lucas:theorie:des:nombres}. We state it and report a proof since
+it is a fundamental result for our work. 
+\begin{theorem}[Lucas theorem]
+    Let $p$ be a prime and $m,n\in\mathbb{N}$. Then:
+    \begin{displaymath}
+        {{m}\choose{n}} \equiv_{p} 
+            {{m_{0}}\choose{n_{0}}} 
+            {{m_{1}}\choose{n_{1}}} 
+            \cdots 
+            {{m_{k}}\choose{n_{k}}} 
+    \end{displaymath}
+    \label{thm:lucas:theorem}
+\end{theorem}
+where $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$ and
+$n=\left(n_{0},n_{1},\ldots,n_{k}\right)_{p}$, for some $k\in\mathbb{N}$, such
+that both $m_{j}$ and $n_{j}$ are in $\lbrace 0,\ldots, p-1 \rbrace$, for
+$j\in\lbrace 0,\ldots,k\rbrace$.
+
+\begin{proof}
+    Consider the sequence $\vect{\alpha}_{m}=\left\lbrace{{m}\choose{n}}\right\rbrace_{n\in\mathbb{N}}$ 
+    of coefficients which counts the number of subset
+    of a set composed by $m$ elements. Use sequence $\vect{\alpha}$ to define a \ac{fps}:
+    \begin{displaymath}
+        \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} = \left(1+t\right)^{m}
+            = \left(1+t\right)^{m_{0}+m_{1}p+\ldots+m_{k}p^{k}}
+            = \prod_{r=0}^{k}{{\left(1+t\right)^{m_{r}p^{r}}}}
+            = \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
+    \end{displaymath}
+    expansion of $\left(1+t\right)^{p^{r}}$ yield: 
+    \begin{displaymath}
+            \left(1+t\right)^{p^{r}} = \sum_{s=0}^{p^{r}}{{{p^{r}}\choose{s}}\,t^{s}}
+                = 1+\sum_{s=1}^{p^{r}-1}{{{p^{r}}\choose{s}}\,t^{s}}+t^{p^{r}}
+    \end{displaymath}
+    application of congruence relation modulo $p$ makes the sum vanish since ${{p^{r}}\choose{s}}=p\,u_{s}$,
+    for some $u_{s}\in\mathbb{N}$ and $s\in\lbrace 1,\ldots,p^{r}-1\rbrace$, therefore:
+    \begin{displaymath}
+        \left(1+t\right)^{p^{r}} = 1+t^{p^{r}}
+    \end{displaymath}
+    so:
+    \begin{displaymath}
+        \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
+            \equiv_{p} \prod_{r=0}^{k}{\left(1+t^{p^{r}}\right)^{m_{r}}}
+            \equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
+    \end{displaymath}
+    on the very \ac{rhs} there is a product of $k+1$ \ac{fps}, properly shifted according coefficients
+    $m_{0},m_{1},\ldots,m_{k}$. Such product yields a new \ac{fps} which satisfies:
+    \begin{displaymath}
+        \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} 
+        \equiv_{p}
+        \sum_{n=0}^{m}{\left(\sum_{\vect{\omega}\in\Omega_{n}}{\prod_{i=0}^{k}{{{m_{i}}\choose{\omega_{i}}}}}\right)\,t^{n}}
+    \end{displaymath}
+    where $\Omega_{n}=\left\lbrace\vect{\omega}=\left(\omega_{0},\ldots,\omega_{k}\right):
+        \sum_{j=0}^{k}{\omega_{j}p^{j}}=n\right\rbrace$.
+    By the representation theorem, there exists a \emph{unique} set of coefficients
+    $\lbrace n_{0},n_{1},\ldots,n_{k}\rbrace$ such that $n=\sum_{j=0}^{k}{n_{j}p^{j}}$, therefore
+    each set $\Omega_{n}$ contains only one element, namely $\vect{\omega}=(n_{0},\ldots,n_{k})$, so:
+    \begin{displaymath}
+        \equiv_{p} \sum_{n=0}^{m}{\left({\prod_{i=0}^{k}{{{m_{i}}\choose{n_{i}}}}}\right)\,t^{n}}
+    \end{displaymath}
+    equating coefficients the argument follows, as required.
+
+\end{proof}
+
+\citeauthor{fine:1947} uses such powerful theorem to prove additional facts
+about binomial coefficients modulo a prime $p$. The following results concerns
+part of our work and we report them without a complete proof.
+
+\begin{theorem}
+    Let $p$ be a prime, $m\in\mathbb{N}$ and $\Theta_{m}$ be a set of integers defined as: 
+    \begin{displaymath}
+        \Theta_{m}=\left\lbrace n\in\mathbb{N}: 
+            {{m}\choose{n}}\not\equiv_{p}0\right\rbrace
+    \end{displaymath}
+    representing $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$, then:
+    \begin{displaymath}
+        \left|\Theta_{m}\right|=\prod_{r=0}^{k}{(m_{r}+1)}
+    \end{displaymath}
+\end{theorem}
+
+Previous little theorem together with \autoref{thm:lucas:theorem} 
+allow \citeauthor{fine:1947} to prove the following arguments.
+
+\begin{theorem}
+    Let $p$ be a prime, $m\in\mathbb{N}$ and $\Theta_{m}$ 
+    be a set of integers defined as before. Then:   
+    \begin{displaymath}
+        \left|\Theta_{m}\right|=2\leftrightarrow m=p^{u}
+    \end{displaymath}
+    for some $u\in\mathbb{N}$.
+\end{theorem}
+
+Which can be read as: \flqq $m$ being a power of $p$ is a necessary and 
+sufficient condition for coefficients ${{m}\choose{n}}$, for $n\in\lbrace1,\ldots,m-1\rbrace$, 
+    to be multiples of $p$\frqq.
+
+\begin{theorem}
+    Let $p$ be a prime, $m\in\mathbb{N}$ and $\Theta_{m}$ 
+    be a set of integers defined as before.
+    If $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$, for some $k\in\mathbb{N}$, then:
+    \begin{displaymath}
+        \left|\Theta_{m}\right|=p^{k+1}\leftrightarrow m=p^{k+1}-1
+    \end{displaymath}
+    which is the same to say $m_{j}=p-1$, for each $j\in\lbrace 0,\ldots,k\rbrace$.
+\end{theorem}
+
+Again, last theorem can be read as: \flqq $m$ being one less a power of $p$ is a 
+necessary and sufficient condition for coefficients ${{m}\choose{n}}$, for $n\in\lbrace0,\ldots,m\rbrace$ to
+    be \emph{not} multiples of $p$\frqq.
+
+
+\subsection{Divisibility--with visibility, by Sved}
+
+In \cite{sved:1988}, \citeauthor{sved:1988} gives solid bases to understand
+divisibility properties of some \emph{counting numbers}, that is coefficients
+occurring in combinatorics, such as binomials and Stirling numbers. Many of
+such coefficients shows divisibility structures of remarkable design. 
+
+She starts working on the Pascal triangle, namely the lower triangular infinite
+matrix defined inductively by the recurrence: 
+\begin{displaymath}
+    {{n}\choose{k}}={{n-1}\choose{k-1}}+{{n-1}\choose{k}}
+\end{displaymath}
+and applies a modification to build the Pascal array modulo a prime $p$, 
+reporting some interesting tables for some values of $p$.
+
+We believe that one of the core concepts she introduces is a little language
+that allows us to characterize these arrays and we adopt it in later chapter as well and
+in the following paragraphs we describe that language. Let 
+$\mathcal{M}=\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$, where $k\leq n$, be an infinite 
+lower triangular array. Choose a prime $p$, then build a modular array
+denoted by $\mathcal{M}_{\equiv_{p}}=\lbrace m_{nk}\mod p\rbrace_{n,k\in\mathbb{N}}$.
+
+A \emph{principal cell} is a chunk of $\mathcal{M}_{\equiv_{p}}$ denoted by:
+\begin{displaymath}
+    \mathcal{M}_{\equiv_{p}}^{\bigtriangleup} = 
+        \left\lbrace m_{nk}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p-1\rbrace\right\rbrace
+\end{displaymath}
+
+A \emph{cell} is a copy of the \emph{principal cell} with each entry multiplied 
+by the same constant $k\in\mathbb{N}$, formally:
+\begin{displaymath}
+    \left\lbrace k\,m_{nk}\mod p:m_{nk}\in \mathcal{M}_{\equiv_{p}}^{\bigtriangleup}\right\rbrace
+\end{displaymath}
+
+A \emph{principal cluster} of order $\alpha$ is a chunk of $\mathcal{M}_{\equiv_{p}}$ denoted by:
+\begin{displaymath}
+    \mathcal{M}_{\equiv_{p}}^{(\alpha)} = 
+        \left\lbrace m_{nk}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p^{\alpha}-1\rbrace\right\rbrace
+\end{displaymath}
+
+A \emph{cluster} of order $\alpha$ is a copy of the \emph{principal cluster}
+of order $\alpha$ with each entry multiplied 
+by the same constant $k\in\mathbb{N}$, formally:
+\begin{displaymath}
+    \left\lbrace k\,m_{nk}\mod p:m_{nk}\in \mathcal{M}_{\equiv_{p}}^{(\alpha)}\right\rbrace
+\end{displaymath}
+
+Finally, a \emph{zero-hole} of order $\alpha$ is an inverted triangular array of
+coefficients multiples of $p$, from here the name, consisting of $p^{\alpha}-1$
+coefficients lying on the first row, $p^{\alpha}-2$ coefficients on the second row
+and a single coefficient on the $(p^{\alpha}-1)$-th row. 
+
+
+%\subsection{Fractal dimensionality, by Wolfram}
+\subsection{Pascal (mod $p$), by Broomhead}
+\subsection{Higher powers of primes, by McLean}
