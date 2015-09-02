@@ -87,6 +87,7 @@ part of our work and we report them without a complete proof.
     \begin{displaymath}
         \left|\Theta_{m}\right|=\prod_{r=0}^{k}{(m_{r}+1)}
     \end{displaymath}
+    \label{thm:fine:divisibility:binomial:coeffs:on:row}
 \end{theorem}
 
 Previous little theorem together with \autoref{thm:lucas:theorem} 
@@ -137,9 +138,9 @@ and applies a modification to build the Pascal array modulo a prime $p$,
 reporting some interesting tables for some values of $p$.
 
 We believe that one of the core concepts she introduces is a little language
-that allows us to characterize these arrays and we adopt it in later chapter as well and
-in the following paragraphs we describe that language. 
-
+that allows us to characterize these arrays and we adopt it in the next chapter
+as well. In the following paragraphs we describe this language. 
+\\\\
 Let $\mathcal{M}=\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$ 
 be an infinite lower triangular array, where $m_{nk}=0$ if 
 $n<k$. Choose a prime $p$, then build a modular array
@@ -152,9 +153,9 @@ A \emph{principal cell} is a chunk of $\mathcal{M}_{\equiv_{p}}$ denoted by:
 \end{displaymath}
 
 A \emph{cell} is a copy of the \emph{principal cell} with each entry multiplied 
-by the same constant $k\in\mathbb{N}$, formally:
+by the same constant $\beta\in\mathbb{N}$, formally:
 \begin{displaymath}
-    \left\lbrace k\,m_{nk}\mod p:m_{nk}\in \mathcal{M}_{\equiv_{p}}^{\bigtriangleup}\right\rbrace
+    \left\lbrace \beta\,m_{nk}\mod p:m_{nk}\in \mathcal{M}_{\equiv_{p}}^{\bigtriangleup}\right\rbrace
 \end{displaymath}
 
 A \emph{principal cluster} of order $\alpha$ is a chunk of $\mathcal{M}_{\equiv_{p}}$ denoted by:
@@ -165,9 +166,9 @@ A \emph{principal cluster} of order $\alpha$ is a chunk of $\mathcal{M}_{\equiv_
 
 A \emph{cluster} of order $\alpha$ is a copy of the \emph{principal cluster}
 of order $\alpha$ with each entry multiplied 
-by the same constant $k\in\mathbb{N}$, formally:
+by the same constant $\beta\in\mathbb{N}$, formally:
 \begin{displaymath}
-    \left\lbrace k\,m_{nk}\mod p:m_{nk}\in \mathcal{M}_{\equiv_{p}}^{(\alpha)}\right\rbrace
+    \left\lbrace \beta\,m_{nk}\mod p:m_{nk}\in \mathcal{M}_{\equiv_{p}}^{(\alpha)}\right\rbrace
 \end{displaymath}
 
 Finally, a \emph{zero-hole} of order $\alpha$ is an inverted triangular array of
@@ -243,8 +244,43 @@ $k=(k_{0},\ldots,k_{\alpha})_{p}$. Proceed by cases:
 of Stirling and Gaussian numbers and finishes with an advice about how modular
 transformation using \emph{higher powers of primes} can be done.
 
+\subsection{McLean, Broomhead and Wolfram}
 
+Although not stricly necessary for our work, we would like to recall some
+additional results. Several other authors study interesting aspects when
+modular transformation is applied to infinite lower triangular matrices.
 
-%\subsection{Fractal dimensionality, by Wolfram}
-\subsection{Pascal (mod $p$), by Broomhead}
-\subsection{Higher powers of primes, by McLean}
+Consider again the modular Pascal array $\mathcal{P}_{\equiv_{p}}$.
+\citeauthor{broomhead:1972}, in \cite{broomhead:1972}, shows that:
+\begin{displaymath}
+    N(n)=\sum_{k=0}^{n}{\mathbb{1}_{\left\lbrace p\text{ does not divide }{{n}\choose{k}}\right\rbrace}}
+\end{displaymath}
+where $\mathbb{1}_{\lbrace \gamma \rbrace}=1$ if and only if predicate $\gamma$ is true,
+has a closed form:
+\begin{displaymath}
+    N((n_{0},n_{1},\ldots,n_{m})_{2})=(n_{0}+1)(n_{1}+1)\cdots(n_{m}+1)
+\end{displaymath}
+which confirms \autoref{thm:fine:divisibility:binomial:coeffs:on:row}, stated in different words.
+Moreover, he attempts a system that is quite similar to the language introduced by \citeauthor{sved:1988},
+although with an operational nature instead of a declarative one as her language has.
+
+\citeauthor{mclean:1974}, in \cite{mclean:1974}, works on modular transformations using
+higher powers of primes:
+\begin{itemize}
+    \item defines function $\nu_{p}$, called \emph{$p$-index}, which satisfies the following relation,
+        for some $t\in\mathbb{N}$: 
+        \begin{displaymath}
+            \nu_{p}\lbrace a\rbrace =t \leftrightarrow p^{t}\mid a \wedge p^{t+1}\nmid a
+        \end{displaymath}
+    \item proves that {$\nu_{p}\left\lbrace {{n}\choose{k}}\right\rbrace $} 
+        equals the \emph{number of carries} in $n-_{p}k$
+\end{itemize}
+
+Finally, \citeauthor{wolfram:1984} in \cite{wolfram:1984}:
+\begin{itemize}
+    \item finds the \emph{fractal dimensionality} of self-similar patterns in $\mathcal{P}_{\equiv_{2}}$,
+        solving recurrence $T\left(\frac{i}{2}\right)=3\,T(i)$ yield $T(i)\approx i^{-\log_{2}{3}}$
+    \item observes $N(n)=\sum_{k=0}^{n}{\mathbb{1}_{\left\lbrace{{n}\choose{k}}\equiv_{2}1\right\rbrace}}$ 
+        is a very irregular function. Also $N(n)=2^{\phi_{1}(n)}$, where $ \phi_{1}((n_{0},n_{1},\ldots,n_{m})_{2})=
+            \sum_{j=0}^{m}{\mathbb{1}_{\lbrace n_{j}=1\rbrace} }$
+\end{itemize}
