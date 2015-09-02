@@ -129,18 +129,21 @@ such coefficients shows divisibility structures of remarkable design.
 
 She starts working on the Pascal triangle, namely the lower triangular infinite
 matrix defined inductively by the recurrence: 
-\begin{displaymath}
+\begin{equation}
     {{n}\choose{k}}={{n-1}\choose{k-1}}+{{n-1}\choose{k}}
-\end{displaymath}
+    \label{eq:binomial:recurrence}
+\end{equation}
 and applies a modification to build the Pascal array modulo a prime $p$, 
 reporting some interesting tables for some values of $p$.
 
 We believe that one of the core concepts she introduces is a little language
 that allows us to characterize these arrays and we adopt it in later chapter as well and
-in the following paragraphs we describe that language. Let 
-$\mathcal{M}=\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$, where $k\leq n$, be an infinite 
-lower triangular array. Choose a prime $p$, then build a modular array
-denoted by $\mathcal{M}_{\equiv_{p}}=\lbrace m_{nk}\mod p\rbrace_{n,k\in\mathbb{N}}$.
+in the following paragraphs we describe that language. 
+
+Let $\mathcal{M}=\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$ 
+be an infinite lower triangular array, where $m_{nk}=0$ if 
+$n<k$. Choose a prime $p$, then build a modular array
+$\lbrace m_{nk}\mod p\rbrace_{n,k\in\mathbb{N}}$ denoted by $\mathcal{M}_{\equiv_{p}}$.
 
 A \emph{principal cell} is a chunk of $\mathcal{M}_{\equiv_{p}}$ denoted by:
 \begin{displaymath}
@@ -171,6 +174,75 @@ Finally, a \emph{zero-hole} of order $\alpha$ is an inverted triangular array of
 coefficients multiples of $p$, from here the name, consisting of $p^{\alpha}-1$
 coefficients lying on the first row, $p^{\alpha}-2$ coefficients on the second row
 and a single coefficient on the $(p^{\alpha}-1)$-th row. 
+Observe that a \emph{zero-hole} of order $\alpha$ has $p^{\alpha}-1$ rows, one less
+than a \emph{principal cluster} of the same order.
+
+Although a formal proof can be stated by induction using \autoref{eq:binomial:recurrence},
+the following fact about the modular Pascal array, has an easier formulation
+using our language.
+
+\begin{theorem}
+    Let $p$ be a prime and $\mathcal{P}_{\equiv_{p}}$ be the 
+    modular Pascal array. The principal cluster $\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$,
+    of order $\alpha + 1$, consists of $p$ layers of clusters of order $\alpha$, alternating
+    with zero-holes of order $\alpha$ too. The first layer containing only the principal
+    cluster of order $\alpha$.
+\end{theorem}
+
+A second core concepts she introduces is a \emph{graphical interpretation} of
+\autoref{thm:lucas:theorem}, we follow her original explanation in the
+following exposition.  First of all, within
+$\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$ the \emph{head} of the $(c+1)$-th cluster,
+of order $\alpha$, in the $(r+1)$-th layer is ${{r}\choose{c}}\mod p$.
+
+Consider $\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$ and introduce 
+two indices, $n$ and $k$, running over rows and columns, respectively.
+Expand both of them in base $p$, so $n=(n_{0},\ldots,n_{\alpha})_{p}$ and 
+$k=(k_{0},\ldots,k_{\alpha})_{p}$. Proceed by cases:
+\begin{itemize}
+
+    \item $k_{i}\leq n_{i}$, for all $i\in\lbrace0,\ldots,\alpha\rbrace$: in
+    this case $m_{nk}\in\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$ is in a
+    \emph{nest of clusters}.  Coefficients of order $\alpha$ state that
+    $m_{nk}$ is inside the $(k_{\alpha}+1)$-th cluster
+    $\mathcal{C}^{k_{\alpha}}$, of order $\alpha$, of the $(n_{\alpha}+1)$-th
+    layer.  Within cluster $\mathcal{C}^{k_{\alpha}}$ there are $p$ layers of
+    clusters of order $\alpha-1$ and coefficients of order $\alpha-1$ state
+    that $m_{nk}$ is inside the $(k_{\alpha-1}+1)$-th cluster
+    $\mathcal{C}^{k_{\alpha-1}}$ of the $(n_{\alpha-1}+1)$-th layer of cluster
+    $\mathcal{C}^{k_{\alpha}}$. Using coefficients of orders
+    $\alpha-2,\alpha-3,\ldots,0$ repeatedly, we finally arrive to the
+    \emph{cell} containing $m_{nk}$, which is the $(k+1)$-th element of the
+    $(n+1)$-th row of $\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$.
+
+    Now, the head of cluster $\mathcal{C}^{k_{\alpha}}$ is
+    ${{n_{\alpha}}\choose{k_{\alpha}}}\mod p$ therefore, by definition, cluster
+    $\mathcal{C}^{k_{\alpha}}$ is ${{n_{\alpha}}\choose{k_{\alpha}}}\mod p$
+    times the copy of $\mathcal{P}_{\equiv_{p}}^{(\alpha)}$.  Using the same
+    argument, the head of cluster $\mathcal{C}^{k_{\alpha-1}}$ is
+    ${{n_{\alpha}}\choose{k_{\alpha}}}{{n_{\alpha-1}}\choose{k_{\alpha-1}}}\mod
+    p$ therefore, by definition, cluster $\mathcal{C}^{k_{\alpha-1}}$ is
+    ${{n_{\alpha}}\choose{k_{\alpha}}}{{n_{\alpha-1}}\choose{k_{\alpha-1}}}\mod
+    p$ times the copy of $\mathcal{P}_{\equiv_{p}}^{(\alpha-1)}$.
+
+    Continuing in this manner, elements of the \emph{cell} containing $m_{nk}$
+    are ${{n_{\alpha}}\choose{k_{\alpha}}}{{n_{\alpha-1}}\choose
+    {k_{\alpha-1}}}\ldots{{n_{1}}\choose{k_{1}}}\mod p$ times the elements of 
+    the \emph{principal cell} $\mathcal{P}_{\equiv_{p}}^{\bigtriangleup}$, whose
+    \emph{head} is ${{n_{0}}\choose{k_{0}}}$. 
+
+    \item let $i$ be the greater index such that $n_{i}<k_{i}$: $m_{nk}$ cannot
+    be in the $(k_{i}+1)$-th cluster, of order $i$, of the $(n_{i}+1)$-th layer
+    of cluster $\mathcal{C}^{k_{i+1}}$, since such cluster does not exist,
+    therefore $m_{nk}$ falls into the \emph{zero-hole} of order $i$ to the
+    right of $\mathcal{C}^{k_{i+1}}$.
+
+\end{itemize}
+
+\citeauthor{sved:1988} continues to apply modular transformation to triangles
+of Stirling and Gaussian numbers and finishes with an advice about how modular
+transformation using \emph{higher powers of primes} can be done.
+
 
 
 %\subsection{Fractal dimensionality, by Wolfram}
