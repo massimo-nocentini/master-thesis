@@ -24,6 +24,7 @@ asks for a solution of the following exercise:
             \right|
     \end{displaymath}                
     for $n \geq 2$.
+    \marginpar{another way to find the inverse of a given sequence}
 \end{quote}
 
 \begin{proof}
@@ -126,6 +127,7 @@ The proof proceeds by induction on $n$:
             \right|
     \end{displaymath}                
     expanding the determinant a second time:
+    \marginpar{tedious manipulations, skip them at a first reading}
     \begin{displaymath}                
         a_{2}
             \left|
@@ -199,11 +201,13 @@ in \autoref{eq:shapiro:catalan:triangle:expanded}, so \citeauthor{eplett:1979}'s
 result reads as follow.
 
 \begin{theorem}
-    \marginpar{in other words, $c_{j-1}$, the first coefficient of row $j-1$,
-        combines coefficients lying on the next row $j$, summing with alternating signs}
+    \marginpar{\ldots this combination can be also expressed using a $A$-matrix, as
+        we will see later}
     \begin{displaymath}                
         c_{j-1}=\sum_{k=1}^{j}{(-1)^{k-1}d_{jk}}
     \end{displaymath}                
+    In other words, coefficient $c_{j-1}$, the first one lying on row $j-1$,
+    combines coefficients lying on row $j$, summing with alternating signs.
 \end{theorem}
 \begin{proof}
     Let $\vect{a}=\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$ be a sequence such
@@ -251,10 +255,11 @@ result reads as follow.
     is proved.
 
 \end{proof}
-
-The above proof shows another interesting identity which relates Catalan numbers
-with matrix determinants\marginpar{yet another characterization for $c_{j}$ using
-    matrix theory}:
+\quad
+\\\\
+The above proof shows another interesting identity which relates Catalan
+numbers with matrix determinants\marginpar{yet another characterization for
+coefficient $c_{j}$ using matrix theory}:
 \begin{displaymath}                
     c_{n-1} = (-1)^{n-1}
         \left|

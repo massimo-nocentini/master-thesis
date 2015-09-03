@@ -21,22 +21,24 @@ it is a fundamental result for our work.
             \cdots 
             {{m_{k}}\choose{n_{k}}} 
     \end{displaymath}
+    where $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$ and
+    $n=\left(n_{0},n_{1},\ldots,n_{k}\right)_{p}$, for some $k\in\mathbb{N}$.
+    So both $m_{j}$ and $n_{j}$ are in $\lbrace 0,\ldots, p-1 \rbrace$, for
+    $j\in\lbrace 0,\ldots,k\rbrace$.
     \label{thm:lucas:theorem}
 \end{theorem}
-where $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$ and
-$n=\left(n_{0},n_{1},\ldots,n_{k}\right)_{p}$, for some $k\in\mathbb{N}$, such
-that both $m_{j}$ and $n_{j}$ are in $\lbrace 0,\ldots, p-1 \rbrace$, for
-$j\in\lbrace 0,\ldots,k\rbrace$.
 
 \begin{proof}
     Consider the sequence $\vect{\alpha}_{m}=\left\lbrace{{m}\choose{n}}\right\rbrace_{n\in\mathbb{N}}$ 
     of coefficients which counts the number of subset
     of a set composed by $m$ elements. Use sequence $\vect{\alpha}$ to define a \ac{fps}:
     \begin{displaymath}
-        \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} = \left(1+t\right)^{m}
-            = \left(1+t\right)^{m_{0}+m_{1}p+\ldots+m_{k}p^{k}}
-            = \prod_{r=0}^{k}{{\left(1+t\right)^{m_{r}p^{r}}}}
-            = \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
+        \begin{split}
+            \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} &= \left(1+t\right)^{m}
+                = \left(1+t\right)^{m_{0}+m_{1}p+\ldots+m_{k}p^{k}}\\
+                &= \prod_{r=0}^{k}{{\left(1+t\right)^{m_{r}p^{r}}}}
+                = \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
+        \end{split}
     \end{displaymath}
     expansion of $\left(1+t\right)^{p^{r}}$ yield: 
     \begin{displaymath}
@@ -48,12 +50,13 @@ $j\in\lbrace 0,\ldots,k\rbrace$.
     \begin{displaymath}
         \left(1+t\right)^{p^{r}} = 1+t^{p^{r}}
     \end{displaymath}
-    so:
+    we can rewrite as:
     \begin{displaymath}
         \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
             \equiv_{p} \prod_{r=0}^{k}{\left(1+t^{p^{r}}\right)^{m_{r}}}
             \equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
     \end{displaymath}
+    \marginpar{abstracting a convolution introducing set $\Omega_{n}$}
     on the very \ac{rhs} there is a product of $k+1$ \ac{fps}, properly shifted according coefficients
     $m_{0},m_{1},\ldots,m_{k}$. Such product yields a new \ac{fps} which satisfies:
     \begin{displaymath}
@@ -84,6 +87,8 @@ part of our work and we report them without a complete proof.
             {{m}\choose{n}}\not\equiv_{p}0\right\rbrace
     \end{displaymath}
     representing $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$, then:
+    \marginpar{this identity appears in \autoref{subsection:modular:alter:works} also,
+    proved by \citeauthor{broomhead:1972}}
     \begin{displaymath}
         \left|\Theta_{m}\right|=\prod_{r=0}^{k}{(m_{r}+1)}
     \end{displaymath}
@@ -105,7 +110,7 @@ allow \citeauthor{fine:1947} to prove the following arguments.
 Which can be read as: \flqq $m$ being a power of $p$ is a necessary and 
 sufficient condition for coefficients ${{m}\choose{n}}$, for $n\in\lbrace1,\ldots,m-1\rbrace$, 
     to be multiples of $p$\frqq.
-
+\marginpar{such rows can be found in \autoref{fig:pascal-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}}
 \begin{theorem}
     Let $p$ be a prime, $m\in\mathbb{N}$ and $\Theta_{m}$ 
     be a set of integers defined as before.
@@ -116,9 +121,9 @@ sufficient condition for coefficients ${{m}\choose{n}}$, for $n\in\lbrace1,\ldot
     which is the same to say $m_{j}=p-1$, for each $j\in\lbrace 0,\ldots,k\rbrace$.
 \end{theorem}
 
-Again, last theorem can be read as: \flqq $m$ being one less a power of $p$ is a 
-necessary and sufficient condition for coefficients ${{m}\choose{n}}$, for $n\in\lbrace0,\ldots,m\rbrace$ to
-    be \emph{not} multiples of $p$\frqq.
+Again, last theorem can be read as: \flqq $m$ being one less a power of $p$ is
+a necessary and sufficient condition for coefficients ${{m}\choose{n}}$ to be
+\emph{not} multiples of $p$, where $n\in\lbrace0,\ldots,m\rbrace$\frqq.
 
 
 \subsection{Divisibility--with visibility, by Sved}
@@ -142,6 +147,7 @@ that allows us to characterize these arrays and we adopt it in the next chapter
 as well. In the following paragraphs we describe this language. 
 \\\\
 Let $\mathcal{M}=\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$ 
+\marginpar{a little language for modular infinite arrays}
 be an infinite lower triangular array, where $m_{nk}=0$ if 
 $n<k$. Choose a prime $p$, then build a modular array
 $\lbrace m_{nk}\mod p\rbrace_{n,k\in\mathbb{N}}$ denoted by $\mathcal{M}_{\equiv_{p}}$.
@@ -172,6 +178,9 @@ by the same constant $\beta\in\mathbb{N}$, formally:
 \end{displaymath}
 
 Finally, a \emph{zero-hole} of order $\alpha$ is an inverted triangular array of
+\marginpar{as we will see, modular Catalan array has upside-down zero-holes, placed
+    somewhere on the right of the first column, have a look at
+    \autoref{fig:catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}}
 coefficients multiples of $p$, from here the name, consisting of $p^{\alpha}-1$
 coefficients lying on the first row, $p^{\alpha}-2$ coefficients on the second row
 and a single coefficient on the $(p^{\alpha}-1)$-th row. 
@@ -189,8 +198,10 @@ using our language.
     with zero-holes of order $\alpha$ too. The first layer containing only the principal
     cluster of order $\alpha$.
 \end{theorem}
-
+\quad
+\\\\
 A second core concepts she introduces is a \emph{graphical interpretation} of
+\marginpar{a graphical interpretation of Lucas theorem}
 \autoref{thm:lucas:theorem}, we follow her original explanation in the
 following exposition.  First of all, within
 $\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$ the \emph{head} of the $(c+1)$-th cluster,
@@ -239,13 +250,14 @@ $k=(k_{0},\ldots,k_{\alpha})_{p}$. Proceed by cases:
     right of $\mathcal{C}^{k_{i+1}}$.
 
 \end{itemize}
-
+\quad
+\\\\
 \citeauthor{sved:1988} continues to apply modular transformation to triangles
 of Stirling and Gaussian numbers and finishes with an advice about how modular
 transformation using \emph{higher powers of primes} can be done.
 
 \subsection{McLean, Broomhead and Wolfram}
-
+\label{subsection:modular:alter:works}
 Although not stricly necessary for our work, we would like to recall some
 additional results. Several other authors study interesting aspects when
 modular transformation is applied to infinite lower triangular matrices.
@@ -266,6 +278,7 @@ although with an operational nature instead of a declarative one as her language
 
 \citeauthor{mclean:1974}, in \cite{mclean:1974}, works on modular transformations using
 higher powers of primes:
+\marginpar{The method of \citeauthor{sved:1988} is studied in depth by \citeauthor{mclean:1974}}
 \begin{itemize}
     \item defines function $\nu_{p}$, called \emph{$p$-index}, which satisfies the following relation,
         for some $t\in\mathbb{N}$: 
@@ -277,6 +290,8 @@ higher powers of primes:
 \end{itemize}
 
 Finally, \citeauthor{wolfram:1984} in \cite{wolfram:1984}:
+\marginpar{\citeauthor{wolfram:1984} applies some ideas about the theory of fractals
+    introduced by \citeauthor{mandlebrot:1978} in \cite{mandlebrot:1978}}
 \begin{itemize}
     \item finds the \emph{fractal dimensionality} of self-similar patterns in $\mathcal{P}_{\equiv_{2}}$,
         solving recurrence $T\left(\frac{i}{2}\right)=3\,T(i)$ yield $T(i)\approx i^{-\log_{2}{3}}$

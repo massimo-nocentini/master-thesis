@@ -121,12 +121,12 @@ a Catalan coefficient $c_{j}$ in a closed form:
         = {{2j}\choose{j}} - {{2j}\choose{j+1}}
     \label{eq:catalan:coeff:rewriting}
 \end{equation}
-% TODO put here the reference to the bibitem.
 
-\marginpar{closed formulae for Catalan coefficient $c_{j}$ and $d_{nk}\in\mathcal{C}$}
-On the other hand, the generic element $d_{nk}\in\mathcal{C}$ admits 
-closed formulae too. According to the article \emph{Identities induced by Riordan arrays}, two 
-of them are of particular interest in order to complete our proofs:
+\marginpar{closed formulae for Catalan coefficient $c_{j}$ and
+$d_{nk}\in\mathcal{C}$} On the other hand, the generic element
+$d_{nk}\in\mathcal{C}$ admits closed formulae too. According
+\citeauthor{luzon:2012631} in \cite{luzon:2012631}, two of them are of
+particular interest in order to complete our proofs:
 \begin{equation}
     d_{nk}=\frac{k+1}{n+1}{{2n-k}\choose{n-k}}
     \label{eq:catalan:array:first:identity}
@@ -174,9 +174,8 @@ Write the generic element $d_{nk}\in\mathcal{C}$ using the definition:
         \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k}
            = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
 \end{displaymath}
-\marginpar{For explanation of \emph{when} and \emph{how}
-    use \ac{LIF} see \emph{PUT HERE THE REFERENCE TO
-    ARTICLE BY MERLINI, VERRI, SPRUGNOLI}}
+\marginpar{For explanation of when and how
+    about \ac{LIF} see \cite{merlini:lagrange:2006}}
 The version of the \ac{LIF} we want to apply is the following one:
 \begin{displaymath}
     \alpha\,\left[z^\alpha\right] A(z)^{\beta} = 
@@ -731,22 +730,6 @@ let $s=2^{{\alpha}}+1$, therefore no choices for $e$, $e=1$ is mandatory:
 \end{lenghtydisplaymath}
 
 too difficult to proceed on this path, too. 
-
-\iffalse
-Another idea could be to
-translate back columns (discarding unnecessary coefficients by subtracting them)
-on the \emph{left} of the choosen ``pivot'' element $\hat{d}_{s,2^{{\alpha}}-1}$. 
-In this way columns should be congruent element-wise but, again, it seems difficult
-to move forward this way.
-
-
-Another approach\footnote{REMOVE THIS PARAGRAPH SINCE IT IS ALREADY
-DESCRIBED IN THE INTRODUCTORY SECTION FOR $\mathcal{C}$} 
-is to find a closed form for a coefficient in $\mathcal{C}$,
-using the extract operator: $d_{nk} = [t^{n}]d_{\mathcal{C}}(t)h_{\mathcal{C}}(t)^{k}$.
-According the article \emph{Identities induced by Riordan Arrays}, such
-coefficient $d_{nk}$ agrees with the following identities.
-\fi
 
 We attempt another \emph{false start} using closed formulae for
 the generic element $d_{nk}\in\mathcal{C}$.

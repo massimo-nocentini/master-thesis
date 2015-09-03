@@ -17,7 +17,7 @@ lower triangular matrix}, namely:
 \end{displaymath}
 Call $\mathcal{M}_{(t)}$ the vector produced by the following product, 
 where $t$ is an \emph{dummy variable}\marginpar{$\mathcal{M}$ is a matrix of integers, 
-$\mathcal{M}_{(t)}$ is a vector of \ac{fps} in $\mathbb{Z}\llbracket t \rrbracket$}:
+$\mathcal{M}_{(t)}$ is a vector of \ac{fps} in $\mathbb{Z}[\![t]\!]$}:
 \begin{displaymath}
     \left[
         \begin{array}{cccccc}
@@ -42,7 +42,7 @@ therefore $\mathcal{M}_{(t)} =
         \end{array}
     \right]$ 
 with function $m_{j}$, for $j\in\mathbb{N}$, is a \ac{fps} in the ring 
-$\mathbb{Z}\llbracket t \rrbracket$. If there exists two analytic functions $d$
+$\mathbb{Z}[\![t]\!]$. If there exists two analytic functions $d$
 and $h$, such that $d(0)\neq0$ and $h(0)=0 \wedge h^{\prime}(0)\neq0$, which
 satisfy \marginpar{matrix $\mathcal{M}$ will be denoted by the pair $(d(t),h(t))$}:
 \begin{displaymath}
@@ -126,7 +126,8 @@ Define the \emph{group operator} as their product
     Riordan matrix $\mathcal{M}\mathcal{N}$, as required.
 
 \end{proof}
-
+\quad
+\\\\
 The \marginpar{$(1,t)$ is the identity element} identity element of the group
 is the Riordan matrix $\mathcal{I}=(1,t)$.
 \begin{proof}
@@ -143,8 +144,9 @@ is the Riordan matrix $\mathcal{I}=(1,t)$.
     \end{displaymath}
     as required.
 \end{proof}
-
-Finally, in order to find the \emph{inverse} of a Riordan matrix, we have to
+\quad
+\\\\
+In order to find the \emph{inverse} of a Riordan matrix, we have to
 introduce the concept of \marginpar{compositional inverse of a function}
 \emph{compositional inverse} of an analytic function $h$.
 Let $h$ be a function such that $h(0)=0 \wedge h^{\prime}(0)\neq0$, then
@@ -191,7 +193,8 @@ The inverse matrix $\mathcal{M}^{-1}$ of $\mathcal{M}$ satisfies the following r
     \end{displaymath}
     therefore $h_{\mathcal{M}^{-1}}=\hat{h}_{\mathcal{M}}$, as required.
 \end{proof}
-
+\quad
+\\\\
 It \marginpar{subgroups of the Riordan group}
 is interesting to dig a little on the \emph{Riordan group}, looking at
 common patterns that arises in Riordan matrices definitions. Denoting with
@@ -211,7 +214,8 @@ these patterns by introducing the following \emph{subgroups}:
             {h_{\mathcal{M}_{i}}(t)},h_{\mathcal{M}_{i}}(t)\right)
         \right\rbrace_{i\in\mathbb{N}},\cdot\right)$, the \emph{Hitting-time subgroup};
 \end{itemize}
-
+\quad
+\\\\
 Finally, \marginpar{a characterization using a bivariate function}
 we would like to discuss another interesting definition which characterize
 a Riordan array $\mathcal{M}=(d_{\mathcal{M}}(t),h_{\mathcal{M}}(t))$. 
@@ -219,15 +223,15 @@ The main point is to associate a bivariate function $m$
 to the infinite lower triangular matrix $\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$
 of coefficients, used to build $\mathcal{M}$. Function $m$ is defined as follows:
 \begin{displaymath}
-    m(t,u) = \sum_{k\in\mathbb{N}}{\sum_{n\geq k}{m_{nk} t^{n} u^{k}}}
-        = \sum_{k\in\mathbb{N}}{m_{k}(t)u^{k}}
+    \begin{split}
+        m(t,u) &= \sum_{k\in\mathbb{N}}{\sum_{n\geq k}{m_{nk} t^{n} u^{k}}}
+            = \sum_{k\in\mathbb{N}}{u^{k}\sum_{n\geq k}{m_{nk} t^{n}}}
+            = \sum_{k\in\mathbb{N}}{m_{k}(t)u^{k}}\\
+            &= \sum_{k\in\mathbb{N}}{d_{\mathcal{M}}(t)\,h_{\mathcal{M}}(t)^{k}\,u^{k}}
+            = \frac{d_{\mathcal{M}}(t)}{1-h_{\mathcal{M}}(t)\,u}
+    \end{split}
 \end{displaymath}
-by definition of function $m_{k}$:
-\begin{displaymath}
-    = \sum_{k\in\mathbb{N}}{d_{\mathcal{M}}(t)\,h_{\mathcal{M}}(t)^{k}\,u^{k}}
-    = \frac{d_{\mathcal{M}}(t)}{1-h_{\mathcal{M}}(t)\,u}
-\end{displaymath}
-this characterization is more general and allows us to have \ac{fps} $m_{j}^{(t)}(u)$
+This characterization is more general and allows us to have \ac{fps} $m_{j}^{(t)}(u)$
 for a column $j$, if it is expanded respect variable $t$; and, by symmetry,
 to have \ac{fps} $m_{l}^{(u)}(t)$ for a row $l$, if it is expanded respect variable $u$.
 
