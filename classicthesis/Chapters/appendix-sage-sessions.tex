@@ -164,7 +164,7 @@ under a congruence relation $\equiv_{p}$, for some modulo $p$. An object,
 instance of this class, builds context objects about the desired layout of the
 triangle (\emph{centered} or \emph{left-aligned}) or if negative coefficient in
 an inverse array should be associated with \emph{lighter} colour variant
-respect positive coefficients, when both belong to the same remainder class of
+respect to positive coefficients, when both belong to the same remainder class of
 $\equiv_{p}$ relation. Such additional context objects are instances of
 \emph{auxiliary hierarchies}, such as \emph{TriangleShape} and
 \emph{NegativeChoices}.
@@ -287,7 +287,7 @@ $\mathcal{M}_{\stackrel{\circ}{\equiv_{7}}}$, and the colouring object. It
 keeps track of the number of rows, namely $127$; if the representation should
 be centered or aligned to the left, as a raw matrix expansion looks like; and,
 finally, if negative coefficients in the inverse array $\mathcal{M}^{-1}$
-should get lighter colour variants respect ones that positive coefficient in
+should get lighter colour variants respect to ones that positive coefficient in
 $\mathcal{M}$ get, under congruence relation $\equiv_{7}$.
 
 \inputminted[
@@ -332,7 +332,7 @@ Here some computation happen, actually: application of
 \mintinline{python}|colouring| object expands $\mathcal{M}$ as a matrix
 $\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$, up to row $126$ included, starting
 from row $0$. Finally, it writes a bunch of files containing results, splitted
-according their content.
+according to their content.
 
 \inputminted[
     mathescape,
@@ -365,7 +365,7 @@ can solve $h(t)=y$:
 \begin{displaymath}
     \left.\left[\hat{h}(y)=t\right|y=h(t)\right]
 \end{displaymath}
-so, at the end, we have to solve another equation respect 
+so, at the end, we have to solve another equation respect to 
 variable $t$, obtaining it as a function of variable $y$.
 
 This is exactly the aim of the helper function. It receive three arguments, 
@@ -391,7 +391,7 @@ we can do the following steps, in the given order:
 which is exactly the meaning of the supplied lambda: \mint{python}|lambda y, t,
 equation: (equation*2*t*(-1) -(t-1))**2| 
 
-\emph{Sage} is now able to solve the last equation respect variable $t$ and it
+\emph{Sage} is now able to solve the last equation respect to variable $t$ and it
 can find the desired function $\hat{h}$ as:
 \begin{displaymath}
     \left.\left[\hat{h}(y)=\frac{y}{1+y+y^{2}}\right|

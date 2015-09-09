@@ -41,7 +41,7 @@ some properties about $\mathcal{C}_{h+1}$:
                 where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$ and 
                 $k\in\lbrace 0,\ldots, n-p^{h}\rbrace$, in other words
                 $k\in\lbrace 0,\ldots, p^{h}(p-1)-2\rbrace$;
-            \item a mirror copy of $\mathcal{C}_{h}^{(0,p^{h}-1)}$ respect column orientation,
+            \item a mirror copy of $\mathcal{C}_{h}^{(0,p^{h}-1)}$ respect to column orientation,
                 defining coefficients $d_{nk}$  
                 where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$ and 
                 $k\in\lbrace 1,\ldots, p^{h}-2\rbrace$;
@@ -124,7 +124,7 @@ a Catalan coefficient $c_{j}$ in a closed form:
 
 \marginpar{closed formulae for Catalan coefficient $c_{j}$ and
 $d_{nk}\in\mathcal{C}$} On the other hand, the generic element
-$d_{nk}\in\mathcal{C}$ admits closed formulae too. According
+$d_{nk}\in\mathcal{C}$ admits closed formulae too. According to
 \citeauthor{luzon:2012631} in \cite{luzon:2012631}, two of them are of
 particular interest in order to complete our proofs:
 \begin{equation}
@@ -389,7 +389,7 @@ properties about coefficient $c_{j}$.
     Choose any $\alpha\in\mathbb{N}$. For the very first coefficient $d_{2^{\alpha}-1,0}$ 
     lying on row $\vect{r}_{2^{\alpha}-1}$ we have seen in the
     previous section that $d_{2^{\alpha}-1,0}\equiv_{2}1$. What about $d_{2^{\alpha}-1,1}$?
-    Recall we can write it, according 
+    Recall we can write it, according to 
     \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array}, as:
     \begin{displaymath}
         d_{2^{\alpha}-1,1} = \sum_{i_{1}+ i_{2}=2^{\alpha}}{ c_{i_{1}-1}\,c_{i_{2}-1} }
@@ -509,7 +509,7 @@ In \autoref{fig:catalan-alternating-row} row $\vect{r}_{2^{4}}$ is highlighted.
 
 \begin{proof}
 Let $d_{s,2^{\alpha}-1}$ a coefficient in the segment $\Phi^{(\alpha)}$, 
-according \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array} 
+according to \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array} 
 write it as:
 \begin{displaymath}
     d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
@@ -675,7 +675,7 @@ Go ahead with column $\vect{c}_{1}$, so the corresponding segment is :
     S_{1}=\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-3\rbrace}^{1}
     %S_{1}=\lbrace d_{2^{{\alpha}}+1,1},\ldots,d_{2^{{\alpha}+1}-2,1} \rbrace
 \end{displaymath}
-and coefficients in it are defined according:
+and coefficients in it are defined according to:
 \begin{displaymath}
     d_{s, 1} = \sum_{i_{1}+i_{2}=s+1} {c_{i_{1}-1}\,c_{i_{2}-1}}
 \end{displaymath}
@@ -710,7 +710,7 @@ In \autoref{fig:catalan-zero-hole} is reported $H_{\bigtriangleup}^{(4)}$.
 \end{theorem}
 
 Before approaching a structured proof, we look for some insights.
-According \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array},
+According to \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array},
 rewrite both members:
 \begin{lenghtydisplaymath}
     \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-e}=s-e+1}
@@ -738,7 +738,7 @@ Assume not, therefore we need to yield a contraddiction if:
 \begin{displaymath}
     d_{s-e,2^{{\alpha}}-1-e} \not\equiv_{2} d_{s,2^{{\alpha}}-1+e}
 \end{displaymath}
-holds. Rewriting the congruence according \autoref{eq:catalan:array:first:identity}
+holds. Rewriting the congruence according to \autoref{eq:catalan:array:first:identity}
  for $d_{nk}$:
 \begin{displaymath}
     \frac{2^{{\alpha}}-e}{s-e+1}{{2(s-e)-(2^{{\alpha}}-1-e)}\choose{s-e-(2^{{\alpha}}-1-e)}}

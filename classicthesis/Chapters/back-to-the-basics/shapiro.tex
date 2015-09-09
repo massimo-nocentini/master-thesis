@@ -35,11 +35,13 @@ where each $\rho_{i}$ is a pair $(a_{i},b_{i})$ of natural numbers, such that:
     (\rho_{i+1}=(a_{i}+1,b_{i})) \vee 
     (\rho_{i+1}=(a_{i},b_{i}+1)) 
 \end{displaymath}
-the first term in the \ac{rhs} denotes a \emph{west-east} step, while the second
-term denotes a \emph{south-north} step. Two paths $\vect{\rho}$ and $\vect{\sigma}$
-\emph{intersect} after $j$ steps if $\rho_{j}=\sigma_{j}$. Moreover, they have distance
-$d$ if $\left|\rho_{n-1}^{(1)}-\sigma_{n-1}^{(1)}\right|=d$, where $\gamma_{j}^{(1)}$ is
-the first component of a generic pair $\gamma_{j}$, for each $j\in\lbrace0,\ldots,n-1\rbrace$.
+the first term in the \ac{rhs} denotes a \emph{vertical} step, while the second
+term denotes an \emph{horizontal} step. Two paths $\vect{\rho}$ and
+$\vect{\sigma}$ \emph{intersect} after $j$ steps if $\rho_{j}=\sigma_{j}$.
+Moreover, they have distance $d$ if
+$\left|\rho_{n-1}^{(1)}-\sigma_{n-1}^{(1)}\right|=d$, where $\gamma_{j}^{(1)}$
+is the first component of a generic pair $\gamma_{j}$, for each
+$j\in\lbrace0,\ldots,n-1\rbrace$.
 
 \citeauthor{shapiro:1976} observes a recurrence relation over elements in the triangle.
 Denote with $d_{nk}$ such an element, then the following holds:
@@ -79,7 +81,7 @@ combinatorial interpretation to $c_{j}$:
             of paths that intersect, for the \emph{first} time, at step $2$; 
         \item assume that $c_j$ counts pairs of paths that intersect, 
             for the \emph{first} time, at step $j+1$; then show for $c_{j+1}$. 
-            According this hypothesis, paths $\vect{\rho}$ and $\vect{\sigma}$ 
+            According to this hypothesis, paths $\vect{\rho}$ and $\vect{\sigma}$ 
             do not intersect until step $j+1$, therefore one of them is \emph{above}
             the other one for the first $j$ steps. 
             Without loss of generality, let $\vect{\rho}$ be the higher one. So, 

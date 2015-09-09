@@ -1,20 +1,20 @@
 
 In this section we recall some fundamental concepts that are essential building
-blocks for the treatment that follows. First of all we denote a \emph{countable}
-sequence $\vect{a}$ of integers with:
+blocks for the treatment that follows. First of all we denote a sequence
+$\vect{\omega}$ of \emph{countable} integers with:
 \begin{displaymath}
-    \vect{a}=\lbrace a_{n} \rbrace_{n\in\mathbb{N}}
+    \vect{\omega}=\lbrace \omega_{n} \rbrace_{n\in\mathbb{N}}
 \end{displaymath}
-where term $a_{n}$ is called the \emph{generic coefficient} of
-sequence $\vect{a}$, which can be either simply a costant $a_{n}\in\mathbb{Z}$
+where term $\omega_{n}$ is called the \emph{generic coefficient} of
+sequence $\vect{\omega}$, which can be either simply a costant $\omega_{n}\in\mathbb{Z}$
 or a function in the variable $n$, denoting a rule for building each
-coefficient belonging to sequence $\vect{a}$.
+coefficient belonging to sequence $\vect{\omega}$.
 
 When a sequence depends on \emph{two} indices, we denote it with:
 \begin{displaymath}
-    \lbrace a_{nk} \rbrace_{n,k\in\mathbb{N}}
+    \lbrace \omega_{nk} \rbrace_{n,k\in\mathbb{N}}
 \end{displaymath}
-which is usually called \emph{matrix}.
+which is usually called an \emph{infinite matrix}.
 
 We will be interested to handle coefficients in a sequence $\vect{\omega}$,
 using them to build \ac{fps} over the ring $\mathbb{Z}[\![t]\!]$, as follows:
@@ -28,20 +28,107 @@ Moreover, such \ac{fps} is the Taylor expansion of the \ac{gf}
 $\Omega$ for sequence $\vect{\omega}$, formally:
 \begin{equation}
     \sum_{n\geq0}{\omega_{n}\,t^{n}} = \sum_{i\geq0}{\frac{1}{i!}\frac{
-        \partial^{i}\Omega(t)}{\partial\,t^{i}}t^{i}}
+        \partial^{i}\Omega(0)}{\partial\,t^{i}}t^{i}}
     \label{eq:fps:gf:relation}
 \end{equation}
 where function $\Omega$ satisfies:
 \begin{displaymath}
-    \Omega(t) = \mathcal{G}\left(\lbrace\omega_{n}\rbrace_{n\in\mathbb{N}}\right)
+    \Omega(t) = \mathcal{G}_{t}\left(\lbrace\omega_{n}\rbrace_{n\in\mathbb{N}}\right)
 \end{displaymath}
-denoting with $\mathcal{G}$ the operator which consumes a sequence $\vect{\omega}$
-and produces the function $\Omega$ satisfying \autoref{eq:fps:gf:relation}.
+denoting with $\mathcal{G}_{t}$ the operator which consumes a sequence
+$\vect{\omega}$ and produces the function $\Omega$, in the undeterminate
+variable $t$, satisfying \autoref{eq:fps:gf:relation}. From now on, we
+omit the subscript $_{n\in\mathbb{N}}$ when ambiguities do not arise 
+in the context where it should appear.
 
-We don't care about questions of convergence in infinite series, such as in 
-\autoref{eq:fps:formally}, since a systematic theory of \ac{fps} has been proposed
-by \citeauthor{niven:1969} in \cite{niven:1969} from the theoretical point of view,
-and by \citeauthor{riordan:1964}, in \cite{riordan:1964}, for the combinatorial aspect.
-Those theories do not involve any question of convergence or divergence, characterizing
-solutions of functional equations, how coefficients attached to the same power of an underterminate
-variable can be equated, how \ac{fps} can be multiplied or derived and so on.
+We don't care about questions of convergence in infinite series, such as in
+\autoref{eq:fps:formally}, since a systematic theory of \ac{fps} has been
+proposed by \citeauthor{niven:1969} in \cite{niven:1969} from the theoretical
+point of view, and by \citeauthor{riordan:1964}, in \cite{riordan:1964}, for
+the combinatorial aspect.  Those theories do not involve any question of
+convergence or divergence; on the other hand they provide some
+characterizations of solutions of functional equations, how coefficients
+attached to the same power of an underterminate variable can be equated, how
+\ac{fps} can be multiplied or derived and so on. Additional treatment of \ac{gf}
+using this kind of approach can be found in \cite{Wilf:2006:GEN:1204575}.
+\\\\
+We report a simple example involving two basic sequences, first the one
+composed of all $1$s, namely $\vect{1}=\lbrace1\rbrace_{n\in\mathbb{N}}$; second, the
+one composed of natural numbers, namely $\vect{n}=\lbrace n\rbrace_{n\in\mathbb{N}}$.
+We start recalling an important result about sequences.
+
+\begin{theorem}[Identity Principle]
+    Let $\vect{\omega}=\lbrace\omega_{n}\rbrace_{n\in\mathbb{N}}$ and 
+        $\vect{\theta}=\lbrace\theta_{n}\rbrace_{n\in\mathbb{N}}$ be two sequences.
+        Then, for each $n\in\mathbb{N}$, the following hold:
+    \begin{displaymath}
+        \omega_{n}=\theta_{n}\leftrightarrow\mathcal{G}_{t}\left(\vect{\omega}\right)
+            =\mathcal{G}_{t}\left(\vect{\theta}\right)
+    \end{displaymath}
+    \label{thm:identity:principle}
+\end{theorem}
+
+In order to find the \ac{gf} $\Omega$ of sequence
+$\vect{\omega}=\lbrace\omega_{n}\rbrace_{n\in\mathbb{N}}
+=\lbrace1\rbrace_{n\in\mathbb{N}}=\vect{1}$ we reason as follows.  Define a sequence
+$\vect{\theta}=\lbrace\theta_{n}\rbrace_{n\in\mathbb{N}}=\lbrace\omega_{n+1}\rbrace_{n\in\mathbb{N}}$.
+Since $\omega_{n}=\theta_{n}$ because $\omega_{n}=\omega_{n+1}=1$, for each
+$n\in\mathbb{N}$, then it is possible to apply
+\autoref{thm:identity:principle}, so:
+\begin{displaymath}
+    \mathcal{G}_{t}\left(\lbrace\omega_{n}\rbrace\right) 
+        =\mathcal{G}_{t}\left(\lbrace\omega_{n+1}\rbrace\right)
+        =\frac{\mathcal{G}_{t}\left(\lbrace\omega_{n}\rbrace\right)-\omega_{0}}{t}
+        =\frac{\mathcal{G}_{t}\left(\lbrace\omega_{n}\rbrace\right)-1}{t}
+\end{displaymath}
+where the middle step hold because $\lbrace\omega_{n+1}\rbrace_{n\in\mathbb{N}}$ is
+just sequence $\vect{\omega}$ shifted by one position. A simple manipulation yield:
+\begin{equation}
+    \Omega(t)=\mathcal{G}_{t}\left(\vect{1}\right) =\frac{1}{1-t}
+    \label{eq:1:gf}
+\end{equation}
+which we are going to expand as \ac{fps}. Taylor expansion of function $\Omega$
+yields:
+\begin{displaymath}
+    \Omega(t)=1+t+t^{2}+t^{3}+t^{4}+t^{5}+\mathcal{O}(t^{6})
+\end{displaymath}
+as required.
+
+In order to find the \ac{gf} $N$ of sequence $\vect{n}=\lbrace
+n\rbrace_{n\in\mathbb{N}}$, namely the sequence of natural numbers, observe
+that sequence $\vect{n}$ can be written, more verbosly, as $\vect{n}=\lbrace
+n\cdot1\rbrace_{n\in\mathbb{N}}$, which has shape $\lbrace
+n\cdot\omega_{n}\rbrace_{n\in\mathbb{N}}$, where $\omega_{n}=1$, for each
+$n\in\mathbb{N}$, so $\vect{\omega}=\vect{1}$. Therefore:
+\begin{equation}
+    N(t)=\mathcal{G}_{t}\left(\vect{n}\right) =\frac{t}{(1-t)^{2}}
+    \label{eq:n:gf}
+\end{equation}
+because $\mathcal{G}_{t}\left(\lbrace n\omega_{n}\rbrace\right) =t\,
+\frac{\partial\,\mathcal{G}_{t}\left(\lbrace
+\omega_{n}\rbrace\right)}{\partial\,t}$, in our case
+$\mathcal{G}_{t}\left(\lbrace n\cdot1\rbrace\right) =
+t\,\frac{\partial\,\mathcal{G}_{t}\left(\vect{1}\right)}{\partial\,t}$.
+Again, do a little check, expanding function $N$ as a \ac{fps}:
+\begin{displaymath}
+    N(t)=t+2t^{2}+3t^{3}+4t^{4}+5t^{5}+\mathcal{O}(t^{6})
+\end{displaymath}
+as required.
+\\\\
+Another important concept that will be used in the definition of
+\emph{Riordan arrays} is the $\left[t^{n}\right]$ operator, where
+$t$ is un undeterminate function and $n\in\mathbb{N}$, also called
+\emph{coefficient extractor}. This operator is defined by the following
+relation:
+\begin{equation}
+    \left[t^{n}\right]\mathcal{G}_{t}\left(\lbrace\omega_{n}\rbrace\right) = \omega_{n}
+    \label{eq:coefficient:extractor:def}
+\end{equation}
+for some sequence $\vect{\omega}=\lbrace\omega_{n}\rbrace_{n\in\mathbb{N}}$. More properties
+of $\left[t^{n}\right]$ operator can be found in \cite{merlini:method:of:coefficient}.
+
+
+
+% put here something about the method of coefficient
+%\cite{merlini:method:of:coefficient}
+
