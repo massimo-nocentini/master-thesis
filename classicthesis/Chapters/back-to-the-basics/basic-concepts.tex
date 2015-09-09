@@ -1,0 +1,47 @@
+
+In this section we recall some fundamental concepts that are essential building
+blocks for the treatment that follows. First of all we denote a \emph{countable}
+sequence $\vect{a}$ of integers with:
+\begin{displaymath}
+    \vect{a}=\lbrace a_{n} \rbrace_{n\in\mathbb{N}}
+\end{displaymath}
+where term $a_{n}$ is called the \emph{generic coefficient} of
+sequence $\vect{a}$, which can be either simply a costant $a_{n}\in\mathbb{Z}$
+or a function in the variable $n$, denoting a rule for building each
+coefficient belonging to sequence $\vect{a}$.
+
+When a sequence depends on \emph{two} indices, we denote it with:
+\begin{displaymath}
+    \lbrace a_{nk} \rbrace_{n,k\in\mathbb{N}}
+\end{displaymath}
+which is usually called \emph{matrix}.
+
+We will be interested to handle coefficients in a sequence $\vect{\omega}$,
+using them to build \ac{fps} over the ring $\mathbb{Z}[\![t]\!]$, as follows:
+\begin{equation}
+    \sum_{n\geq0}{\omega_{n}\,t^{n}}
+    \label{eq:fps:formally}
+\end{equation}
+where $t$ is an undeterminate variable, it usually does \emph{not} take
+any value in order to \emph{evaluate} the sum at a given point. 
+Moreover, such \ac{fps} is the Taylor expansion of the \ac{gf}
+$\Omega$ for sequence $\vect{\omega}$, formally:
+\begin{equation}
+    \sum_{n\geq0}{\omega_{n}\,t^{n}} = \sum_{i\geq0}{\frac{1}{i!}\frac{
+        \partial^{i}\Omega(t)}{\partial\,t^{i}}t^{i}}
+    \label{eq:fps:gf:relation}
+\end{equation}
+where function $\Omega$ satisfies:
+\begin{displaymath}
+    \Omega(t) = \mathcal{G}\left(\lbrace\omega_{n}\rbrace_{n\in\mathbb{N}}\right)
+\end{displaymath}
+denoting with $\mathcal{G}$ the operator which consumes a sequence $\vect{\omega}$
+and produces the function $\Omega$ satisfying \autoref{eq:fps:gf:relation}.
+
+We don't care about questions of convergence in infinite series, such as in 
+\autoref{eq:fps:formally}, since a systematic theory of \ac{fps} has been proposed
+by \citeauthor{niven:1969} in \cite{niven:1969} from the theoretical point of view,
+and by \citeauthor{riordan:1964}, in \cite{riordan:1964}, for the combinatorial aspect.
+Those theories do not involve any question of convergence or divergence, characterizing
+solutions of functional equations, how coefficients attached to the same power of an underterminate
+variable can be equated, how \ac{fps} can be multiplied or derived and so on.
