@@ -46,15 +46,17 @@ Under previous insights, we ask respectively:
         \end{displaymath}
         where $\Pi$ is a polynomial such that $\Pi(0)\not=0$, the question is:
         is it always the case that there exists a sequence of polynomials
-        $\lbrace \Omega_{i} \rbrace_{i\in\mathbb{N}}$ such
-        that $\mathcal{R}$'s $A$-sequence can be be factored respect to
+        $\lbrace \Omega_{i} \rbrace_{i\in\mathbb{N}}$, where function $\Omega_{i}$
+        is defined as:
+        \begin{displaymath}
+            \Omega_{i}(y)=\left(\frac{[t^{1+i}]d(t)h(t)} {\Pi(y)}\right)
+        \end{displaymath}
+        such that $\mathcal{R}$'s $A$-sequence can be be factored respect to
         function $\hat{h}$ as:
         \begin{displaymath}
                 \left.\left[
                     A_{\mathcal{R}}(y) = \sum_{i \geq0}{
-                        \left(\frac{[t^{1+i}]d(t)h(t)}
-                            {\Pi(y)}\right)
-                        \hat{h}(y)^{i}} 
+                        \Omega_{i}(y) \hat{h}(y)^{i}} 
                         \right| y = h(t) \right]
         \end{displaymath}
         in other words, the sequence of coefficients of the function defining

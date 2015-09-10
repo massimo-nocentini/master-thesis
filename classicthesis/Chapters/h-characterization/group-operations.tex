@@ -2,6 +2,12 @@
 
 \section{Group operations, revisited}
 
+In this section we revise \emph{Riordan group} concepts described in
+\autoref{subsection:back:to:the:basics:riordan:group}, looking at them under
+the light of $h$-characterization. In particular, we show how a Riordan arrays
+written using the proposed characterization, allows us to build new arrays
+respect to group operation $\cdot$ and to find their inverses.
+
 \subsection{Inverting an array}
 
 Let $\mathcal{R}\left(d(t),h(t)\right)$ be a Riordan array and let 
@@ -39,12 +45,14 @@ we're ready to apply:
     \left[\mathcal{F}^{-1}\left.\left(1-y-y^2,y\right) \right| y = \hat{h}(t) \right]=
     \mathcal{F}_{\hat{h}(t)}^{-1}\left(1-\hat{h}(t)-\hat{h}(t)^2,\hat{h}(t)\right)
 \end{displaymath}
-where function $\hat{h}$ is the compositional inverse of function $h$. Observe that
-$1-y-y^2$ in the left array under variable constraint $y=\hat{h}(t)$, is obtained by
-evaluating $\frac{1}{g(h(y))}$, considering $y$ as a variable: this abstraction preveent 
-$\hat{h}(t)$ to be used \emph{functionally}, otherwise $g(h(\hat{h}(k)))=g(k)$, where $k=h(t)$
-according to constraint under $g$ is defined, yielding a factorization in $h(t)$, not in $\hat{h}(t)$
-as we would like to have.
+where function $\hat{h}$ is the compositional inverse of function $h$. Observe
+that $1-y-y^2$ in the left array under variable constraint $y=\hat{h}(t)$, is
+obtained by evaluating $\frac{1}{g(h(y))}$, considering $y$ as a variable:
+using this abstraction, function $\hat{h}(t)$ cannot be used
+\emph{functionally}, otherwise $g(h(\hat{h}(k)))=g(k)$, where $k=h(t)$
+according to constraint under $g$ is defined. If that would be the case, it
+yields a factorization in $h(t)$, not in $\hat{h}(t)$, as we would like to
+have.
 
 If the explicit definition for $\mathcal{F}^{-1}$ is desired, just plug $\hat{h}(t)=t-t^2$:
 \begin{displaymath}
@@ -118,7 +126,7 @@ the compositional inverse of function $h_{\mathcal{B}}$.
 For the sake of clarity we apply the previous derivation to the product $\mathcal{P}\mathcal{F}$, namely
 we'll multiply Pascal and Fibonacci arrays, \emph{in the given order}, providing 
 both $\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{P}}(t)}$ 
-both $\left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)}\right|_{y=h_{\mathcal{P}}(t)}$.
+and $\left.\big(\mathcal{P}\mathcal{F}\big)_{h_{\mathcal{F}}(y)}\right|_{y=h_{\mathcal{P}}(t)}$.
 
 Recall $\mathcal{P}$ and $\mathcal{F}$ $h$-characterizations, they are respectively:
 \begin{displaymath}

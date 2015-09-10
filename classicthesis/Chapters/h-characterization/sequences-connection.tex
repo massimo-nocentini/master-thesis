@@ -62,9 +62,10 @@ Doing a change of variable to abstract over $h(t)$, its possible to
     if an element $d_{nk}$ is combined,
     scrolls to row $n-\alpha$}
 structure the basic for a generic schema (or \emph{device} if you please):
-\begin{displaymath}
+\begin{equation}
     \left.\left[y^{k} = \hat{h}(y)\,\Gamma(y) \right| y = h(t) \right]
-\end{displaymath}
+    \label{eq:localizing:A:sequence}
+\end{equation}
 
 Before going on, let the device consumes some known arrays. Take 
 array $\mathcal{C}$, so $\hat{h}_{\mathcal{C}}(y) = y-y^2$, hence:
@@ -100,7 +101,7 @@ lying on previous row $n-1$ according $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N
 therefore $d_{nk}=d_{n-1,k-1}+d_{n-1,k}+d_{n-1,k+1}$.
 \\\\
 \marginpar{getting $A$-sequence back}
-What we've done is nothing more nothing less than writing $A$-sequences 
+What we've done is nothing more nor less than writing $A$-sequences 
 in a more generic format, putting evidence on the \emph{local} meaning 
 of the combination: it is explicitly written the dependency of 
 elements belonging to a column $k$. On the other hand, natural $A$-sequences 
@@ -123,7 +124,7 @@ since $h(t) = t\,A(h(t))$, then \ac{fps}
 $\Gamma$ and $A$ are defined over the same sequence, the $A$-sequence, as desired.
 \\\\
 \marginpar{The following can be skipped on a first reading}
-Here there are a couple of applications. 
+Here there are a couple of applications of concepts described in previous paragraphs. 
 
 What if we ask: find a sequence $\lbrace \gamma_{i} \rbrace_{i\in\mathbb{N}}$ 
 such that an element $d_{nk}\in\mathcal{C}$ combines elements lying on a
@@ -136,7 +137,7 @@ Set the device:
 \end{displaymath}
 
 Checking what we've obtained, assume you want to find coefficient $d_{7,5}$, 
-chosen at random, so expand function $\Gamma$ with $k=5$:
+ so expand function $\Gamma$ with $k=5$:
 \begin{displaymath}
     \left.\left[\Gamma(y)=1 + 3y + 6y^2 + 10y^3 + 15y^4 + \mathcal{O}(y^5) 
         \big| y = h(t) \right]\right|_{k=5}
@@ -154,7 +155,7 @@ Just another element, say $d_{9,7}$, so expand function $\Gamma$ with $k=7$:
 therefore $d_{9,7}=d_{6,4} + 3\,d_{6,5} + 6\,d_{6,6}$, 
 instantiating $44 = 20 + 3\cdot6 + 6\cdot1$, which holds.
 It's interesting to observe the following fact: while a natural $A$-sequence
-says how to combine starting always from the previous column index; with
+says how to combine starting always from the previous column index. With
 this generalization we got the same coefficients for combining as $A$-sequence
 states, augmenting with the column index from where the combination should start.
 
@@ -171,7 +172,7 @@ The first step is always setting the device:
     \left[y^{k} = \hat{h}(y)^{-1}\,\Gamma(y) \big| y = h(t) \right]=
         \left[ \frac{y^{k + 1}}{y^2 + y + 1} = \Gamma(y) \big| y = h(t) \right]
 \end{displaymath}
-in order to find $d_{6,3}$, chosen at random, expand function $\Gamma$ with $k=3$:
+in order to find $d_{6,3}$,  expand function $\Gamma$ with $k=3$:
 \begin{displaymath}
     \left.\left[\Gamma(y)=y^4 -y^5 + y^7 -y^8 +y^{10} + \mathcal{O}(y^{11}) 
         \big| y = h(t) \right]\right|_{k=3}
@@ -189,11 +190,12 @@ $\Gamma$ with $k=1$:
     Motzkin number\ldots}
 therefore $d_{8,1}=d_{9,2} - d_{9,3} + d_{9,5}- d_{9,6}+ d_{9,8}- d_{9,9}$, 
 instantiating $512 = 1422 -1140 +369 -147 +9 -1$, which holds.
+\iffalse
 \\\\
 As a final remark, under the insights of two solved exercises, is that a
 sequence found using this approach, knows which elements to combine and which
 ones to discard, we're required to supply the set of available elements only.
-
+\fi
 
 \subsection{Interlude: let's generalize}
 \label{subsec:sequences:interluce:generalization}
@@ -265,7 +267,7 @@ $\Gamma$ and $\Theta$ start, respectively. Here is the most general device:
         &=\left.\left[\frac{y^{3} + {\left(y^{2} - 1\right)} y^{k} + 6 \, y^{2} - {\left({\left(y - 1\right)} y^{k} + y^{2} + 3 \, y + 1\right)} \sqrt{y^{2} + 6 \, y + 1} + 6 \, y + 1}{2 \, {\left(1-y\right)}}=\Gamma(y) \right| y = h(t) \right]\\
     \end{split}
     \end{lenghtydisplaymath}
-    in order to find $d_{8,1}$, chosen at random, expand function $\Gamma$ with $k=1$:
+    in order to find $d_{8,1}$,  expand function $\Gamma$ with $k=1$:
     \begin{lenghtydisplaymath}
         \left.\left[\Gamma(y)=y^2 -3y^3 + 11y^4  -47y^5 + 211y^6 -987y^7 + 4747y^8 
             -23335y^9 + \mathcal{O}(y^{10}) \big| y = h(t) \right]\right|_{k=1}
@@ -284,37 +286,37 @@ $\Gamma$ and $\Theta$ start, respectively. Here is the most general device:
     \begin{lenghtydisplaymath}
         \begin{split}
             &\left.\left[\Gamma(y)=
-            1 y + {(-2)} y^{2} + 5 y^{3} + {(-17)} y^{4} + 65 y^{5} + {(-273)} y^{6} + 1213 y^{7} + {(-5617)} y^{8} + \mathcal{O}\left(y^{9}\right)
+            y -2 y^{2} + 5 y^{3} + -17 y^{4} + 65 y^{5} -273 y^{6} + 1213 y^{7} -5617 y^{8} + \mathcal{O}\left(y^{9}\right)
                 \big| y = h(t) \right]\right|_{k=0}\\
             &\left.\left[\Gamma(y)=
-            1 y^{2} + {(-3)} y^{3} + 11 y^{4} + {(-47)} y^{5} + 211 y^{6} + {(-987)} y^{7} + 4747 y^{8} + \mathcal{O}\left(y^{9}\right)
+            y^{2} -3 y^{3} + 11 y^{4} -47 y^{5} + 211 y^{6} -987 y^{7} + 4747 y^{8} + \mathcal{O}\left(y^{9}\right)
                 \big| y = h(t) \right]\right|_{k=1}\\
             &\left.\left[\Gamma(y)=
-            3 y^{4} + {(-19)} y^{5} + 99 y^{6} + {(-503)} y^{7} + 2547 y^{8} + {(-12971)} y^{9} + \mathcal{O}\left(y^{10}\right)
+            3 y^{4} -19 y^{5} + 99 y^{6} -503 y^{7} + 2547 y^{8} -12971 y^{9} + \mathcal{O}\left(y^{10}\right)
                 \big| y = h(t) \right]\right|_{k=2}\\
             &\left.\left[\Gamma(y)=
-            {(-1)} y^{3} + 6 y^{4} + {(-27)} y^{5} + 127 y^{6} + {(-615)} y^{7} + 3031 y^{8} + {(-15171)} y^{9} + \mathcal{O}\left(y^{10}\right)
+            - y^{3} + 6 y^{4} -27 y^{5} + 127 y^{6} -615 y^{7} + 3031 y^{8} -15171 y^{9} + \mathcal{O}\left(y^{10}\right)
                 \big| y = h(t) \right]\right|_{k=3}\\
             &\left.\left[\Gamma(y)=
-            {(-1)} y^{3} + 5 y^{4} + {(-24)} y^{5} + 119 y^{6} + {(-587)} y^{7} + 2919 y^{8} + {(-14687)} y^{9} + \mathcal{O}\left(y^{10}\right)
+            - y^{3} + 5 y^{4} -24 y^{5} + 119 y^{6} -587 y^{7} + 2919 y^{8} -14687 y^{9} + \mathcal{O}\left(y^{10}\right)
                 \big| y = h(t) \right]\right|_{k=4}\\
             &\left.\left[\Gamma(y)=
-            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 122 y^{6} + {(-595)} y^{7} + 2947 y^{8} + {(-14799)} y^{9} + \mathcal{O}\left(y^{10}\right)
+            - y^{3} + 5 y^{4} -25 y^{5} + 122 y^{6} -595 y^{7} + 2947 y^{8} -14799 y^{9} + \mathcal{O}\left(y^{10}\right)
                 \big| y = h(t) \right]\right|_{k=5}\\
             &\left.\left[\Gamma(y)=
-            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-592)} y^{7} + 2939 y^{8} + {(-14771)} y^{9} + \mathcal{O}\left(y^{10}\right)
+            - y^{3} + 5 y^{4} -25 y^{5} + 121 y^{6} -592 y^{7} + 2939 y^{8} -14771 y^{9} + \mathcal{O}\left(y^{10}\right)
                 \big| y = h(t) \right]\right|_{k=6}\\
             &\left.\left[\Gamma(y)=
-            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2942 y^{8} + {(-14779)} y^{9} + \mathcal{O}\left(y^{10}\right)
+            - y^{3} + 5 y^{4} -25 y^{5} + 121 y^{6} -593 y^{7} + 2942 y^{8} -14779 y^{9} + \mathcal{O}\left(y^{10}\right)
                 \big| y = h(t) \right]\right|_{k=7}\\
             &\left.\left[\Gamma(y)=
-            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14776)} y^{9} + \mathcal{O}\left(y^{10}\right)
+            - y^{3} + 5 y^{4} -25 y^{5} + 121 y^{6} -593 y^{7} + 2941 y^{8} -14776 y^{9} + \mathcal{O}\left(y^{10}\right)
                 \big| y = h(t) \right]\right|_{k=8}\\
             &\left.\left[\Gamma(y)=
-            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14777)} y^{9} + \mathcal{O}\left(y^{10}\right)
+            - y^{3} + 5 y^{4} -25 y^{5} + 121 y^{6} -593 y^{7} + 2941 y^{8} -14777 y^{9} + \mathcal{O}\left(y^{10}\right)
                 \big| y = h(t) \right]\right|_{k=9}\\
             &\left.\left[\Gamma(y)=
-            {(-1)} y^{3} + 5 y^{4} + {(-25)} y^{5} + 121 y^{6} + {(-593)} y^{7} + 2941 y^{8} + {(-14777)} y^{9} + \mathcal{O}\left(y^{10}\right)
+            - y^{3} + 5 y^{4} -25 y^{5} + 121 y^{6} -593 y^{7} + 2941 y^{8} -14777 y^{9} + \mathcal{O}\left(y^{10}\right)
                 \big| y = h(t) \right]\right|_{k=10}\\
         \end{split}
     \end{lenghtydisplaymath}
@@ -446,15 +448,15 @@ repeatedly. For the sake of clarity, consider the following cases:
             \hat{h}_{\mathcal{P}}(y)=\frac{y}{1+y} \quad\quad A_{\mathcal{P}}(y)=1+y
         \end{displaymath} 
         therefore, by \emph{division theorem}, 
-        there exist polynomials $\Omega_{0}$ and $\Delta_{0}$ such that:
+        there exist functions $\Omega_{0}$ and $\Delta_{0}$ such that:
         \begin{displaymath}
             \left.\left[
                 (1+y)^2 =  (1+y)\Omega_{0}(y) + y\,\Delta_{0}(y) \right| y = h_{\mathcal{P}}(t) \right]
         \end{displaymath}
         dividing $(1+y)^2$ by $y$ yield $\Delta_{0}(y)=2+y$ and $(1+y)\Omega_{0}(y)=1$, 
-        which defines polynomial $\Omega_{0}$. We need to 
+        which defines function $\Omega_{0}$. We need to 
         keep applying \emph{division theorem}, so there exist the following
-        sequences of polynomials such that:
+        sequences of functions such that:
 
         %\vskip+20pt plus.5fill
         \marginpar{$\triangleq$ is the \emph{unify} operator}
@@ -484,7 +486,7 @@ repeatedly. For the sake of clarity, consider the following cases:
             \end{split} 
         \end{lenghtydisplaymath}
         A pattern seems to emerge and can be captured with the 
-        following rule in order to define polynomial $\Omega_{i}$:
+        following rule in order to define function $\Omega_{i}$:
         \begin{displaymath} 
                 \left.\left[
                     \Delta_{i-1}(y) \triangleq 
@@ -496,7 +498,7 @@ repeatedly. For the sake of clarity, consider the following cases:
         each $r_{j}\in\mathbb{N}$ is a remainder, with boundary initial 
         condition $\Delta_{-1}(y)=0\,\hat{h}_{\mathcal{P}}(y)+1$. 
         Therefore it is possible to state
-        a closed formula for polynomial $\Omega_{i}$: 
+        a closed formula for function $\Omega_{i}$: 
         \begin{displaymath} 
             \Omega_{i}(y)=\frac{1+i}{1+y}
         \end{displaymath} 
@@ -519,7 +521,7 @@ repeatedly. For the sake of clarity, consider the following cases:
                 A_{\mathcal{C}}(y)=\frac{1}{1-y}
         \end{displaymath} 
         therefore, by \emph{division theorem}, 
-        there exist polynomials $\Omega_{0}$ and $\Delta_{0}$ such that:
+        there exist functions $\Omega_{0}$ and $\Delta_{0}$ such that:
         \begin{displaymath}
             \left.\left[
                 1 = (1-y)\Omega_{0}(y) + y(1-y)^{2}\,\Delta_{0}(y) 
@@ -528,7 +530,7 @@ repeatedly. For the sake of clarity, consider the following cases:
         \marginpar{congecture: is Catalan array's $A$-matrix \emph{unique}? 
             Moreover: $\Omega_{k}=0$ for $k>0$?}
         dividing $1$ by $y(1-y)^2$ yield $\Delta_{0}(y)=0$ 
-        and $(1-y)\Omega_{0}(y)=1$, this define polynomial $\Omega_{0}$. 
+        and $(1-y)\Omega_{0}(y)=1$, this defines function $\Omega_{0}$. 
         This means that ``polynomial'' $A_{\mathcal{C}}$ is already
         the factorization of itself, which is the same to say that
         there exists a \emph{unique} $A$-matrix for $\mathcal{C}$, pretty curious;
@@ -541,14 +543,14 @@ repeatedly. For the sake of clarity, consider the following cases:
                     A_{\mathcal{M}}(y)=1+y+y^2
             \end{displaymath} 
             therefore, by \emph{division theorem}, 
-            there exist polynomials $\Omega_{0}$ and $\Delta_{0}$ such that:
+            there exist functions $\Omega_{0}$ and $\Delta_{0}$ such that:
             \begin{displaymath}
                 \left.\left[
                     (1+y+y^2)^2 = (1+y+y^2)\Omega_{0}(y) + y\,\Delta_{0}(y) 
                         \right| y = h_{\mathcal{M}}(t) \right]
             \end{displaymath}
             dividing $(1+y+y^2)^2$ by $y$ yield $\Delta_{0}(y)=2+3y+2y^2+y^3$ 
-            and $(1+y+y^2)\Omega_{0}(y)=1$, this define polynomial $\Omega_{0}$,
+            and $(1+y+y^2)\Omega_{0}(y)=1$, this defines function $\Omega_{0}$,
             which expanded as fps equals: 
             \begin{displaymath}
                 \left.\left[
@@ -558,7 +560,7 @@ repeatedly. For the sake of clarity, consider the following cases:
                         \right| y = h_{\mathcal{M}}(t) \right]
             \end{displaymath}
             We need to keep applying \emph{division theorem}, so there exist 
-            the following sequences of polynomials such that:
+            the following sequences of functions such that:
             \begin{lenghtydisplaymath}
                 \begin{split} 
                     & \left.\left[
@@ -587,7 +589,7 @@ repeatedly. For the sake of clarity, consider the following cases:
                 \end{split} 
             \end{lenghtydisplaymath}
             A pattern seems to emerge and can be captured with the 
-            following rule in order to define polynomial $\Omega_{i}$:
+            following rule in order to defines function $\Omega_{i}$:
             \begin{displaymath} 
                     \left.\left[
                         \Delta_{i-1}(y) \triangleq q_{i-1}(y)\,\hat{h}_{\mathcal{M}}(y)
@@ -624,12 +626,11 @@ repeatedly. For the sake of clarity, consider the following cases:
 
 \subsubsection{$A$-matrix from another point of view}
 
-Looking at the formulation under study, we observe that functions
-in the collection $\lbrace\Omega_{i}\rbrace_{i\in\mathbb{N}}$ 
-are exactly the same as those functions in the collection 
-$\lbrace P_{i}\rbrace_{i\in\mathbb{N}}$ 
-introduced by Merlini et al., therefore we've expressed
-the $A$-matrix concept from a different point of view. 
+We observe that functions in the collection
+$\lbrace\Omega_{i}\rbrace_{i\in\mathbb{N}}$ are exactly the same as those
+functions in the collection $\lbrace P_{i}\rbrace_{i\in\mathbb{N}}$ introduced
+by Merlini et al., therefore we've expressed the $A$-matrix concept from a
+different point of view. 
 
 \marginpar{a system difficult to solve}
 A problem is still open: what if we would like to find all such functions? A reply
@@ -647,13 +648,13 @@ then add the tripled sum of elements lying on row $n-3$
 using alternating signs; and so on \ldots, all respect to column index $k$. 
 
 \marginpar{combining\\$d_{7,4}\in\mathcal{P}$}
-Element $d_{7,4}$, chosen at random, is the combination 
+Element $d_{7,4}$,  is the combination 
     $(d_{6,3}-d_{6,4}+d_{6,5}-d_{6,6})+
     2(d_{5,3}-d_{5,4}+d_{5,5}) + 3(d_{4,3}-d_{4,4}) + 4d_{4,4}$, 
     instantiating $35 = (20-15+6-1)+2(10-5+1)+3(4-1)+4\cdot1$
      which holds.
 %\deleted[remark=boring and tedious the combination for $d_{8,1}$]{
-    %Element $d_{8,1}$, chosen at random, is the combination
+    %Element $d_{8,1}$,  is the combination
     %$d_{7,0}-d_{7,1}+d_{7,2}-d_{7,3}+d_{7,4}-d_{7,5}+d_{7,6}-d_{7,7}
         %+2d_{7,0}+d_{7,1}$, instantiating 
         %$8 = 1-7+21-35+35-21+7-1+2\cdot1+6$ which holds.}
