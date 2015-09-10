@@ -11,7 +11,11 @@ $\sum_{k}f_{k}=v$: \marginpar{not only a $certification$ for $\sum_{k}f_{k}=v$}
 in addition to be a \emph{certification} for the identity, it shows how to find
 such value $v$. 
 
-\begin{theorem}[Sprugnoli]
+The following result is another way to state
+\autoref{thm:riordan:group:fundamental:theorem} and it allows us to show in the
+proof an interesting trick about coefficient extractor $[t^{n}]$. 
+
+\begin{theorem}
     Let $\mathcal{M}=(d(t),h(t))$ be a Riordan matrix and $\vect{\omega}$ 
     be a \emph{given} sequence $\lbrace\omega_{i}\rbrace_{i\in\mathbb{N}}$. Choose
     a row index $n\in\mathbb{N}$, then:
@@ -42,6 +46,46 @@ such value $v$.
     as required.
 \end{proof}
 
+For the sake of clarity, we would like to apply previous result to
+Pascal array $\mathcal{P}$ in order to find diagonal sums. Define
+a new array $\hat{\mathcal{P}}$ as:
+\begin{equation}
+    \hat{\mathcal{P}}=\left(\frac{1}{1-t},\frac{t^{2}}{1-t}\right)
+    \label{eq:pascal:array:for:diagonals}
+\end{equation}
+in order to have coefficients lying on diagonals in \autoref{eq:pascal:array:derived:for:example}
+to lie on rows. The following is the matrix denoted by $\hat{\mathcal{P}}$:
+\marginpar{an example: computing diagonal sums of array $\mathcal{P}$}
+\begin{displaymath} 
+    \left[
+    \begin{array}{rrrrr}
+    1 &  &  &  &   \\
+    1 &  &  &  &   \\
+    1 & 1 &  &  &   \\
+    1 & 2 &  &  &   \\
+    1 & 3 & 1 &  &   \\
+    1 & 4 & 3 &  &   \\
+    1 & 5 & 6 & 1 &   \\
+    1 & 6 & 10 & 4 &  \\
+    1 & 7 & 15 & 10 & 1 \\
+    1 & 8 & 21 & 20 & 5 
+    \end{array}
+    \right] 
+\end{displaymath}
+where $d_{nk}\in\mathcal{P} \rightarrow d_{n-k,k}\in\hat{\mathcal{P}}$, 
+therefore array $\hat{\mathcal{P}}$ is defined over matrix 
+$\left\lbrace{{n-k}\choose{k}}\right\rbrace_{n,k\in\mathbb{N}}$.
+Consider sequence $\vect{1}=\lbrace1\rbrace_{n\in\mathbb{N}}$, 
+\autoref{thm:sprugnoli:riordan:combinatorial:sums} allows us to write:
+\marginpar{sum of the $n$-th $\mathcal{P}$'s diagonal yield the $n$-th Fibonacci number}
+\begin{displaymath}
+    \sum_{k=0}^{n}{{{n-k}\choose{k}}}=[t^{n}]
+        \frac{d_{\hat{\mathcal{P}}}(t)}{1-h_{\hat{\mathcal{P}}}(t)}
+        =[t^{n}]\frac{1}{1-t-t^{2}}
+        =F_{n}
+\end{displaymath}
+where $F_{n}$ is the $n$-th \emph{Fibonacci number}.
+\\\\
 It is very interesting the following result that allows us to solve
 yet another combinatorial sum using both a Riordan array $\mathcal{M}$
 and its inverse.

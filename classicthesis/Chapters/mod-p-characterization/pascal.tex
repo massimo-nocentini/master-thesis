@@ -5,7 +5,7 @@ In this section we present some results about Pascal array and
 its inverse, taken modulo some prime $p$. 
 
 Associating different colours to elements belonging to different remainder
-classes, we show formally that for $p$ even, ie. $p=2$, elements in the same
+classes, we show formally that for $p=2$, elements in the same
 position get the same colour, hence both triangles are coloured in the same
 way, ignoring signs for elements in the inverse array, which can happen to be
 negative. On the other hand, for $p$ odd there is not such a simple
@@ -51,26 +51,23 @@ Choose a prime $p$ and apply the modulo operator on both members:
   [t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k \equiv_{p} (-1)^{k-n}[t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k 
 \end{displaymath}
 
-
-\marginpar{$b^{-1}\mod p$ exists if and only if $(b,p)=1$} From now on we have
-to reason according to modular arithmetic, in particular we have to keep in mind
-that multiplying by a term $a$ both member of an equation for the sake of
-simplification a term $b$, requests to show that $a$ is the
+From now on we have \marginpar{$b^{-1}\mod p$ exists if and only if $(b,p)=1$}
+to reason according to modular arithmetic rules. In particular, we have to keep in
+mind that multiplying a term $b$ by a term $a$ in order to simplify it, namely
+to get $1$, we are requested  to show that $a$ is the
 \emph{multiplicative inverse} of $b$ modulo $p$, denoted by: 
 \begin{displaymath}
     a = b^{-1}\mod p
 \end{displaymath}
 
-First of all, observe that $-1 \equiv_{p} p-1$ and since $p$ is a
-prime by hp, it follows that $(p, p-1)=1$ (this result holds in
-general, not just for $p$ prime), which proofs the existence of
-both $-1$ and $p-1$ inverses, denoted by $(-1)^{-1}\mod p$ and
-$(p-1)^{-1}\mod p$ respectively.
+First of all, observe that $-1 \equiv_{p} p-1$ and since $p$ is a prime by
+hypothesis, it follows that $(p, p-1)=1$ (this result holds in general, not
+just for $p$ prime), which proofs the existence of both $-1$ and $p-1$
+inverses, denoted by $(-1)^{-1}\mod p$ and $(p-1)^{-1}\mod p$ respectively.
 
-In order to find $(p-1)^{-1}\mod p$ we have to satisfy the
-congruence equation $(p-1) \cdot (p-1)^{-1} \equiv_{p} 1$. Choose
-$(p-1)^{-1}\mod p = p-1$ and verify
-$(p-1) \cdot (p-1) \equiv_{p} p^{2} -2\,p +1 \equiv_{p} 1$ as required.
+In order to find $(p-1)^{-1}\mod p$ we have to satisfy the congruence equation
+$(p-1) \cdot (p-1)^{-1} \equiv_{p} 1$. Choose $(p-1)^{-1}\mod p = p-1$ and
+verify $(p-1) \cdot (p-1) \equiv_{p} p^{2} -2\,p +1 \equiv_{p} 1$ as required.
 
 Another useful observation concerns raising to negative powers:
 \begin{displaymath}
@@ -90,7 +87,8 @@ Now we can use previous observation on the main congruence:
 \end{displaymath}
 Hence, multiplying by $(p-1)^{-1}\mod p$ both members $k+n$ times:
 \begin{displaymath}
-    (p-1)^{k+n}[t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k \equiv_{p} [t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k 
+    (p-1)^{k+n}[t^n]\frac{1}{1-t}\left(\frac{t}{1-t}\right)^k 
+        \equiv_{p} [t^n]\frac{1}{1+t}\left(\frac{t}{1+t}\right)^k 
 \end{displaymath}
 which is the same as:
 \begin{displaymath}
@@ -301,12 +299,18 @@ We provide a proof sketch:
 
 In this section we show that in a Pascal array $\mathcal{P}$ it is possible to
 recognize a structure similar to the one observed by Sierpinski during his
-studies on fractals. More precisely, we show that $\mathcal{P}^{(\alpha)}$, a
-principal cluster of order $\alpha$, repeats itself $3$ times within a
-\emph{chunk} of the principal cluster of one order bigger: such repetitions
-happens in the first $2\,p^{\alpha}$ rows of $\mathcal{P}^{(\alpha+1)}$.
-Moreover, those copies of $\mathcal{P}^{(\alpha)}$ surround a zero-hole of
-order $\alpha$. Note that for even prime $p$, $\mathcal{P}^{(\alpha)}$ repeats
+studies on fractals. More precisely, we state it as a theorem.
+
+\begin{theorem}
+    Let $\mathcal{P}^{(\alpha)}$ be the principal cluster of order $\alpha$. 
+    $\mathcal{P}^{(\alpha)}$ repeats itself $3$ times within a
+    \emph{chunk} of the principal cluster of one order bigger: such repetitions
+    happens in the first $2\,p^{\alpha}$ rows of $\mathcal{P}^{(\alpha+1)}$.
+    Moreover, those copies of $\mathcal{P}^{(\alpha)}$ surround a zero-hole of
+    order $\alpha$. 
+\end{theorem}
+
+Note that for even prime $p$, $\mathcal{P}^{(\alpha)}$ repeats
 itself $3$ times in $\mathcal{P}^{(\alpha+1)}$, exactly as in the
 \emph{Sierpinski's gasket}, having a pure recursive structure.
 
@@ -521,8 +525,8 @@ each one of them composed of $p^{\alpha}$ rows.
                 $\tilde{d}_{nk}\in h^{\bigtriangledown}$ such that $\tilde{d}_{nk}\not\equiv_{p}0$, while all 
                 other coefficient $d_{nk}\in h^{\bigtriangledown}$ satisfies $d_{nk} \equiv_{p}0$.
                 Proceed by cases on parity of $j$:
-            \begin{description}
-                \item[$j=2k+1$ for some $k$] Without loss of generality, suppose $h^{\bigtriangledown}$ is the one in the 
+            \begin{itemize}
+                \item $j=2k+1$ for some $k\in\mathbb{N}$. Without loss of generality, suppose $h^{\bigtriangledown}$ is the one in the 
                 very middle, due to symmetric shape of $\mathcal{P}$ (the cases where it is on the left or 
                 on the right are less interesting) and
                 suppose that $p$ does not divide the coefficient in the very bottom corner of $h^{\bigtriangledown}$, 
@@ -547,7 +551,7 @@ each one of them composed of $p^{\alpha}$ rows.
                 those highlighted coefficients it necessary to use recurrence rule for binomial coefficients,
                 otherwise we cannot prove the argument using the symmetry property only. 
 
-                \item[$j=2k$ for some $k$] Without loss of generality, 
+                \item $j=2k$ for some $k\in\mathbb{N}$. Without loss of generality, 
                 suppose  $ h^{\bigtriangledown}$ is the one on the very left. 
                 Choose $r \in\lbrace 0,\ldots,p^n-2\rbrace$, so there exists $c\in\lbrace r+1,\ldots,p^n-1\rbrace$ such that:
                 \begin{displaymath}
@@ -558,7 +562,7 @@ each one of them composed of $p^{\alpha}$ rows.
                     0\not\equiv_{p}\tilde{d}_{j\, p^{\alpha} +r, c} 
                         \equiv_{p} d_{j\, p^{\alpha} +r, j\, p^{\alpha} +r-c}\equiv_{p}0
                 \end{displaymath}
-            \end{description}
+            \end{itemize}
         \item assume triangle $ h^{\bigtriangledown}$ is over, therefore the very first coefficient 
             $\tilde{d}$ in the \emph{top-left} corner of $ h^{\bigtriangledown}$ has to satisfy:
             \begin{displaymath}

@@ -54,25 +54,25 @@ For the sake of clarity, let $n\in\mathbb{N}$, then
 % the following set should be helpful if subscript index change `n-m'
 % hasn't be done in the definition of Renewal array 
 %let $S_{m}=\mathbb{N}\setminus\lbrace0,\ldots,m-1\rbrace$, then 
-the following is the sequence on the very first column, where $m=0$:
+the following is the sequence of the very first column, where $m=0$:
 \begin{displaymath}
     \lbrace b_{n0}\rbrace
         =\lbrace b_{n}^{(1)}\rbrace
         =\lbrace b_{n}\rbrace
 \end{displaymath}
-the following is the sequence on the second column, where $m=1$:
+the following is the sequence of the second column, where $m=1$:
 \begin{displaymath}
     \lbrace b_{n1}\rbrace
         =\lbrace b_{n-1}^{(2)}\rbrace
         =\left\lbrace \sum_{j=0}^{n-1}{b_{j}b_{n-1-j}}\right\rbrace
 \end{displaymath}
-the following is the sequence on the third column, where $m=2$:
+the following is the sequence of the third column, where $m=2$:
 \begin{displaymath}
     \lbrace b_{n2}\rbrace
         =\lbrace b_{n-2}^{(3)}\rbrace
         =\left\lbrace \sum_{i+j+l=n-2}{b_{i}b_{j}b_{l}}\right\rbrace
 \end{displaymath}
-and, in general, the following is the sequence on column $m\in\mathbb{N}$:
+and, in general, the following is the sequence of column $m\in\mathbb{N}$:
 \begin{displaymath}
     \lbrace b_{nm}\rbrace
         =\lbrace b_{n-m}^{(m+1)}\rbrace
@@ -92,7 +92,7 @@ the following relation exists between functions $B$ and $B^{(m)}$:
 \end{displaymath}
 Consider a sequence\marginpar{$A$-sequence, informally}
 $\vect{a}=\lbrace a_{n} \rbrace_{n\in\mathbb{n}}$ and let $A$ be
-a \ac{fps} over $\vect{a}$.
+a \ac{fps} over it:
 \begin{displaymath}
     A\left(t\,B(t)\right) 
         = \sum_{r\geq 0}{a_{r}\left(t\,B(t)\right)^{r}}

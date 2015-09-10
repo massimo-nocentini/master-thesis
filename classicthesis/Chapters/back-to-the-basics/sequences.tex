@@ -3,11 +3,11 @@
 \label{sec:back:to:the:basics:sequences}
 
 In this section we rework the concept of $A$-sequence introduced by
-\citeauthor{rogers:1977}, subject of our discussion in
-\autoref{sec:back:to:the:basics:rogers}, using the \emph{Riordan group}
-to characterize it for \emph{Riordan arrays}. Furthermore, we will see
-a generalization of this concept, introducing $A$-matrices and some
-applications are reported for the sake of clarity.
+\citeauthor{rogers:1977} and discussed in
+\autoref{sec:back:to:the:basics:rogers}, using the \emph{Riordan group} to
+characterize it for \emph{Riordan arrays}. Furthermore, we will see a
+generalization of this concept, introducing $A$-matrices and some applications
+are reported for the sake of clarity.
 
 \begin{theorem}
     $\mathcal{M}$ is a Riordan array over a matrix of coefficients
@@ -27,7 +27,7 @@ applications are reported for the sake of clarity.
     to prove that such a sequence $\vect{a}$ \emph{exists}, we proceed to
     build a Riordan array $\mathcal{A}=(d_{\mathcal{A}}(t),h_{\mathcal{A}}(t))$ such
     that function $d_{\mathcal{A}}$ is the \ac{gf} for sequence $\vect{a}$, proving this direction.
-    Riordan array $\mathcal{A}$ is the defined as the solution of the following relation:
+    Riordan array $\mathcal{A}$ is defined as the solution of the following relation:
     \begin{displaymath}
         (d_{\mathcal{M}}(t),h_{\mathcal{M}}(t))\cdot(d_{\mathcal{A}}(t),h_{\mathcal{A}}(t))
             = \left(d_{\mathcal{M}}(t)\frac{h_{\mathcal{M}}(t)}{t},h_{\mathcal{M}}(t)\right)
@@ -115,7 +115,9 @@ applications are reported for the sake of clarity.
     \end{displaymath}
     as required.
 \end{proof}
-
+The other direction is less interesting since it is not a \emph{constructive} one,
+so we left it as an exercise.
+\\\\
 The above proof leave space for another result. Start again from the following equation:
 \begin{displaymath}
     (d_{\mathcal{M}}(t)d_{\mathcal{A}}(h_{\mathcal{M}}(t)),h_{\mathcal{M}}(t))
