@@ -1,7 +1,8 @@
 
 
 \begin{figure}[p]
-
+    
+    \hspace{-1.5cm}
     \noindent\makebox[\textwidth]{
         \centering
         %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
@@ -17,11 +18,15 @@
     % http://stackoverflow.com/questions/2716227/adding-an-equation-or-formula-to-a-figure-caption-in-latex
     \captionsetup{singlelinecheck=off}
     \caption[$\mathcal{P}_{\equiv_{2}}$]{
+        $\mathcal{P}_{\equiv_{2}}$
+        \iffalse
         Pascal triangle, formally: 
         \begin{displaymath}
             \mathcal{P}=\left(\frac{1}{1-t}, \frac{t}{1-t}\right)
         \end{displaymath} % \newline % new line no more necessary
-        standard, ignore negatives, centered colouring, 127 rows, mod2 partitioning}
+        standard, ignore negatives, centered colouring, 127 rows, mod2 partitioning
+        \fi
+        }
 
     \label{fig:pascal-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}
 

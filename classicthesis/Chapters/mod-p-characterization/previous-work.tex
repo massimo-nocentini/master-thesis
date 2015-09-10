@@ -7,7 +7,7 @@ fundamental theorem about binomial coefficients, proved by
 \citeauthor{lucas:theorie:des:nombres} in \cite{lucas:theorie:des:nombres}, and
 how it has been used by various authors to establish new and curious results.
 
-\subsection{Lucas theorem exposed, by Fine}
+\subsection{Lucas theorem exposed}
 
 In \cite{fine:1947}, \citeauthor{fine:1947} exposes a theorem given by
 \citeauthor{lucas:theorie:des:nombres}. We state it and report a proof since
@@ -52,9 +52,11 @@ it is a fundamental result for our work.
     \end{displaymath}
     we can rewrite as:
     \begin{displaymath}
-        \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
-            \equiv_{p} \prod_{r=0}^{k}{\left(1+t^{p^{r}}\right)^{m_{r}}}
-            \equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
+        \begin{split}
+            \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
+                &\equiv_{p} \prod_{r=0}^{k}{\left(1+t^{p^{r}}\right)^{m_{r}}}\\
+                &\equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
+        \end{split}
     \end{displaymath}
     \marginpar{abstracting a convolution introducing set $\Omega_{n}$}
     on the very \ac{rhs} there is a product of $k+1$ \ac{fps}, properly shifted according to coefficients
@@ -126,7 +128,7 @@ a necessary and sufficient condition for coefficients ${{m}\choose{n}}$ to be
 \emph{not} multiples of $p$, where $n\in\lbrace0,\ldots,m\rbrace$\frqq.
 
 
-\subsection{Divisibility--with visibility, by Sved}
+\subsection{Divisibility--with visibility}
 
 In \cite{sved:1988}, \citeauthor{sved:1988} gives solid bases to understand
 divisibility properties of some \emph{counting numbers}, that is coefficients
@@ -256,7 +258,7 @@ $k=(k_{0},\ldots,k_{\alpha})_{p}$. Proceed by cases:
 of Stirling and Gaussian numbers and finishes with an advice about how modular
 transformation using \emph{higher powers of primes} can be done.
 
-\subsection{McLean, Broomhead and Wolfram}
+\subsection{McLean, Broomhead and Wolfram works}
 \label{subsection:modular:alter:works}
 Although not stricly necessary for our work, we would like to recall some
 additional results. Several other authors study interesting aspects when

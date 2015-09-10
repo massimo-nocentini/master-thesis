@@ -1,6 +1,7 @@
 
 \begin{figure}[p]
 
+    \hspace{-1.5cm}
     \noindent\makebox[\textwidth]{
         \centering
         %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
@@ -16,11 +17,14 @@
     % http://stackoverflow.com/questions/2716227/adding-an-equation-or-formula-to-a-figure-caption-in-latex
     \captionsetup{singlelinecheck=off}
     \caption[$\mathcal{C}_{\equiv_{2}}$]{
+        $\mathcal{C}_{\equiv_{2}}$
+        \iffalse
         Catalan traditional triangle, formally: 
         \begin{displaymath}
             \mathcal{C}=\left(\frac{1-\sqrt{1-4 \, t}}{2 \, t}, \frac{1-\sqrt{1-4 \, t}}{2}\right)
         \end{displaymath} % \newline % new line no more necessary
         standard, ignore negatives, centered colouring, 127 rows, mod2 partitioning
+        \fi
         }
 
     \label{fig:catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}

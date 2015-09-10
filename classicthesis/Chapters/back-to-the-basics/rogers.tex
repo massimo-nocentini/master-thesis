@@ -1,5 +1,5 @@
 
-\subsection{Renewal arrays, by Rogers}
+\subsection{Renewal arrays theory}
 \label{sec:back:to:the:basics:rogers}
 
 \citeauthor{rogers:1977}, in \cite{rogers:1977}, proposes a theory
@@ -101,9 +101,11 @@ a \ac{fps} over it:
 \end{displaymath}
 by definition of $B^{(r-1)}$ rewrite:
 \begin{displaymath}
-    \sum_{r\geq 0}{a_{r}B^{(r-1)}(t)t^{r}}
-        =\sum_{r\geq 0}{a_{r}\left(\sum_{n\geq r-1}{b_{n,r-1}t^{n-r+1}}\right)t^{r}}
-        =\sum_{r\geq 0}{\sum_{n\geq r-1}{a_{r}b_{n,r-1}t^{n+1}}}
+    \begin{split}
+        \sum_{r\geq 0}{a_{r}B^{(r-1)}(t)t^{r}}
+            &=\sum_{r\geq 0}{a_{r}\left(\sum_{n\geq r-1}{b_{n,r-1}t^{n-r+1}}\right)t^{r}}\\
+            &=\sum_{r\geq 0}{\sum_{n\geq r-1}{a_{r}b_{n,r-1}t^{n+1}}}
+    \end{split}
 \end{displaymath}
 now we tabulate sums respect to index $r$:
 \begin{displaymath}

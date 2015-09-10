@@ -1,13 +1,14 @@
 
 \begin{figure}[p]
 
+    \hspace{1cm}
     \noindent\makebox[\textwidth]{
         \centering
         %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
 
         % using *angle* property to rotate it is difficult to properly align it
         % in order to have a "real" matrix representation.
-        \includegraphics[width=20cm, height=20cm, keepaspectratio=true]{../sympy/pascal/pascal-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-triangle.pdf}
+        \includegraphics[width=15cm, height=15cm, keepaspectratio=true]{../sympy/pascal/pascal-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-triangle.pdf}
     }
 
     % this 'particular' line is necessary to use `displaymath' environment
@@ -16,11 +17,15 @@
     % http://stackoverflow.com/questions/2716227/adding-an-equation-or-formula-to-a-figure-caption-in-latex
     \captionsetup{singlelinecheck=off}
     \caption[$\mathcal{P}_{\equiv_{2}}^{-1}$, handle negative entries]{
+        $\mathcal{P}_{\equiv_{2}}^{-1}$, showing negative coefficients
+        \iffalse
         Pascal triangle, formally: 
         \begin{displaymath}
             \mathcal{P}^{-1}=\left(\frac{1}{t + 1}, \frac{t}{t + 1}\right)
         \end{displaymath} % \newline % new line no more necessary
-        inverse, handle negatives, centered colouring, 127 rows, mod2 partitioning}
+        inverse, handle negatives, centered colouring, 127 rows, mod2 partitioning
+        \fi
+        }
 
     \label{fig:pascal-inverse-handle-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}
 

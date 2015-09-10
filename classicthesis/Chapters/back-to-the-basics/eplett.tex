@@ -1,5 +1,5 @@
 
-\subsection{Eplett identity, by Eplett}
+\subsection{Eplett's identity}
 
 \citeauthor{riordan:intro:combinatorial:analysis},
 in his book \cite{riordan:intro:combinatorial:analysis},
@@ -215,10 +215,11 @@ result reads as follow.
     that $a_{0}=1$ and consider its \emph{inverse} sequence, call it $\vect{b}$,
     where $b_{0}=1$ by inverse relation on the very first coefficient.
     By previous exercise observe that:
-    \begin{equation}                
-        \hspace{-2cm}
+    \begin{displaymath}                
         a_{n} = b_{n}+a_{1}b_{n-1}+a_{2}b_{n-2}+\ldots+a_{n-1}b_{1}
-        \leftrightarrow
+    \end{displaymath}                
+    holds \emph{if and only if}:
+    \begin{equation}                
         b_{n} = (-1)^{n-1}
             \left|
             \begin{array}{ccccc}
