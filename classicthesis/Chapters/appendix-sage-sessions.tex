@@ -102,9 +102,9 @@ programming}, where \emph{pattern matching} over type constructors is a compact
 way to express the same computation as we do with a net of \emph{messages}.
 
 Only a small set of \emph{action objects}\marginpar{an action object is the
-recipient of a chain of dispatching messages}, aka \emph{visitors} if we look
-at them from the design patterns \cite{Gamma:1995:DPE:186897} point of view,
-code the actual implementation because only them know the \emph{entire}
+recipient of a chain of dispatching messages}, also known as \emph{visitors} if
+we look at them from the design patterns \cite{Gamma:1995:DPE:186897} point of
+view, code the actual implementation because only them know the \emph{entire}
 context.  With this approach, if we would like to implement a new
 \emph{functionality}, we have to \emph{create} a new \emph{action object}; on
 the other hand, if we would like to augment the context with new informations,

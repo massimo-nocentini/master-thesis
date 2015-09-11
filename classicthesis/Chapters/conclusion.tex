@@ -1,3 +1,64 @@
 
 \chapter{Conclusions}
 \label{ch:conclusions}
+
+We are approaching the end of our work, in this space we would like
+to do a quick review of what we have done e point out some directions
+for further studies.
+\\\\
+
+At the beginning we explain motivations underlying our interest for the
+\emph{Riordan array} concepts and make a list of target we aims at.  Then, we
+recall some basic definitions and facts about essential building blocks, such
+as sequences, matrices, \ac{gf} and \ac{fps}. From here, a chronological
+description of concepts, starting from a combinatorial triangle definition
+toward alternative characterizations, has been provided to show how
+\emph{Riordan arrays} have been defined. Two parallel studies have been shown:
+a first one about the application of modular transformations to coefficients of
+an array; a second one about an alternative way to denote an array.  Finally,
+we have described our implementation of a subset of the \emph{Riordan group
+theory} using the Python language, providing a detailed comment to an usual
+\emph{study script}.
+\\\\
+\indent Modular transformations yield interesting patterns when modified arrays
+are represented as triangles composed of coloured dots, where each colour is
+associated to a class of the congruence relation. This should suggest relations
+about combinatorial objects that are counted by coefficients lying on the
+pattern of interest. Therefore, it could be possible to explain relations among
+objects from a combinatorial point of view, in the spirit of
+\cite{benjamin:quinn:proofs:really:count}. Moreover, we believe that further
+interest studies concerns modular transformations which use congruence
+relations where moduloes are higher powers of primes. Starting points are
+\cite{sved:1988} and \cite{mclean:1974}.  Finally, we are interested to look
+for a way of manipulation of modular arrays which avoid the computation of a
+closed formula for their generic elements: at RART$2015$ conference, where
+part of this work has been presented in a contributed talk, some experts of
+the field suggests to investigate \emph{Mandelbrot} and \emph{Julia} sets.
+\\\\
+On a parallel track, a new way to denote a Riordan array has been provided, we
+have called it $h$-characterization. Starting from an array $\mathcal{R}$
+defined as usual, $\mathcal{R}=(d(t),h(t))$, it is possible to combine function $d$
+and the compositional inverse $\hat{h}$ with a simple algebraic trick, to denote
+the same array with $\mathcal{R}_{h(t)}(\gamma(h(t)),h(t))$, where $h(t)$ has
+to been considered a \emph{variable}, for some function $\gamma$. This characterization
+allows us to revise group operations from a new point of view and if the given array
+belongs to the \emph{renewal subgroup}, then the first component of $\mathcal{R}_{h(t)}$
+shows the $A$-sequence in function of $h(t)$, pretty nice. An open question is to look for 
+meanings of function $\gamma$ when the given array is not in the renewal subgroup, take 
+as a starting point \emph{Delannoy array} $\mathcal{D}$.
+
+Using the proposed characterization, we have restated $A$-sequence and
+$A$-matrix concepts, providing a new point of view to look at combinations of
+coefficients when additional constraint in the combinations are desired. We
+would like to enhance this power combinator device in order to consider
+combinatorial sums where terms could be product of coefficients lying on
+different rows in the array: this allows us to count those combined combinatorial
+objects.
+\\\\
+The last point we left open to further developments is our Python implementation.
+It is very minimal but strongly oriented to be extended, thanks to the core principle
+underlying the design of our classes: \emph{messaging}. We are interested to implement
+all subgroups and work together to the Korean team met at RART$2015$ in order to 
+apply modular transformation to \emph{block-wise} \emph{Riordan arrays} belonging to 
+the Riordan group in \emph{several variables}. 
+
