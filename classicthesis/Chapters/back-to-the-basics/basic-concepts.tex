@@ -25,18 +25,15 @@ using them to build \ac{fps} over the ring $\mathbb{Z}[\![t]\!]$, as follows:
 \end{equation}
 where $t$ is an undeterminate variable, it usually does \emph{not} take
 any value in order to \emph{evaluate} the sum at a given point. 
-Moreover, such \ac{fps} is the Taylor expansion of the \ac{gf}
-$\Omega$ for sequence $\vect{\omega}$, formally:
-\marginpar{\ac{fps} $\Omega$ over a sequence $\vect{\omega}$}
+Moreover, let $\Omega$ be  the \ac{gf} for sequence $\vect{\omega}$, so
+Taylor expansion of function $\Omega$ yields the \ac{fps} for sequence $\vect{\omega}$, 
+formally: \marginpar{\ac{fps} over a sequence $\vect{\omega}$ by Taylor expansion of \ac{gf} $\Omega$}
 \begin{equation}
-    \sum_{n\geq0}{\omega_{n}\,t^{n}} = \sum_{i\geq0}{\frac{1}{i!}\frac{
-        \partial^{i}\Omega(0)}{\partial\,t^{i}}t^{i}}
+    \mathcal{G}_{t}\left(\lbrace\omega_{n}\rbrace_{n\in\mathbb{N}}\right)=\Omega(t)
+        =\sum_{n\geq0}{\omega_{n}\,t^{n}} = \sum_{n\geq0}{\frac{1}{n!}\frac{
+            \partial^{n}\Omega(0)}{\partial\,t^{n}}t^{n}}
     \label{eq:fps:gf:relation}
 \end{equation}
-where function $\Omega$ satisfies:
-\begin{displaymath}
-    \Omega(t) = \mathcal{G}_{t}\left(\lbrace\omega_{n}\rbrace_{n\in\mathbb{N}}\right)
-\end{displaymath}
 denoting with $\mathcal{G}_{t}$ the operator which consumes a sequence
 $\vect{\omega}$ and produces the function $\Omega$, in the undeterminate
 variable $t$, satisfying \autoref{eq:fps:gf:relation}. From now on, we
