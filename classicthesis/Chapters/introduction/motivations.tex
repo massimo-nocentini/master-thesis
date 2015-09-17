@@ -1,8 +1,8 @@
 
 This work aims to study\marginpar{analytic combinatorics and discrete objects}
-a subset of objects belonging to the field of analytic combinatorics, which
-comprises tools such as generating functions, Riordan arrays and the symbolic
-method. Many interesting books exist on those topics, such as
+a subset of objects belonging to the field of analytic combinatorics, in
+particular generating functions, formal power series and infinite lower
+triangular matrices . Many interesting books exist on those topics, such as
 \cite{Flajolet:2009:AC:1506267}, \cite{Knuth:1998:ACP:521463} and
 \cite{Graham:1994:CMF:562056} by \citeauthor{Flajolet:2009:AC:1506267},
 \citeauthor{Knuth:1998:ACP:521463} and \citeauthor{Graham:1994:CMF:562056},
@@ -22,27 +22,29 @@ concepts.
 Although \emph{Riordan group}\marginpar{Riordan group theory: from the
 basics\ldots} theory has been studied intensively in the recent past, we would
 like to give an introduction using our words, rethink about the original and
-introductory papers of this theory and \emph{reworking by ourself, almost from scratch,
-most important proofs}.  We are interested, in particular, to papers by
-\emph{Shapiro}, who introduces the \emph{Riordan group} and builds a
-combinatorial triangle counting \emph{non-intersecting} paths; by
-\emph{Rogers}, who introduces the concept of \emph{renewal arrays} and finds
-the important concept of their $A$-sequences; by \emph{Eplett}, who provides an
+introductory papers of this theory and \emph{reworking by ourself, almost from
+scratch, most important proofs}.  We are interested, in particular, to papers
+by \emph{Shapiro} \cite{shapiro:1976}, \cite{shapiro:1991}, who introduces the
+\emph{Riordan group} and builds a combinatorial triangle counting
+\emph{non-intersecting} paths; by \emph{Rogers} \cite{rogers:1977}, who
+introduces the concept of \emph{renewal arrays} and finds the important concept
+of their $A$-sequences; by \emph{Eplett} \cite{eplett:1979}, who provides an
 identity involving determinants and \emph{Catalan} numbers; and, finally, by
-\emph{Sprugnoli}, who uses Riordan arrays in order to find generating functions
-of combinatorial sums in a \emph{constructive} way, not just proving that a sum
-equals a \emph{given} value.% (usually denoted by a closed formula). 
+\emph{Sprugnoli} \cite{sprugnoli:1991}, who uses Riordan arrays in order to
+find generating functions of combinatorial sums in a \emph{constructive} way,
+not just proving that a sum equals a \emph{given} value.
 
-\marginpar{\ldots toward a modular arithmetic point of view} The other topic of
+The other topic of \marginpar{\ldots toward a modular arithmetic point of view}
 this work is the description and formalization of Riordan arrays under the
 light of modular arithmetic. We have shown some congruences about \emph{Pascal}
-array $\mathcal{P}$ and its inverse $\mathcal{P}^{-1}$. We have also proved a
-formal characterization for the \emph{Catalan} array $\mathcal{C}$. These
-results were presented in a talk contributed at a recent conference held in
-Lecco\footnote{Second International Symposium on Riordan Arrays and Related
-Topics, RART$2015$}. All major researchers involved in Riordan group theory
-were present and some of them threw some important ideas about possible
-enhancement of our results.  
+array $\mathcal{P}$ and its inverse $\mathcal{P}^{-1}$ and how a proof of the
+\emph{Sierpinski} gasket can be applied to array $\mathcal{P}$ too with little
+modifications. We have also proved a formal characterization for the
+\emph{Catalan} array $\mathcal{C}$. These results were presented in a talk
+contributed at a recent conference held in Lecco\footnote{Second International
+Symposium on Riordan Arrays and Related Topics, RART$2015$}.  All major
+researchers involved in Riordan group theory were present and some of them
+threw some important ideas about possible enhancement of our results.  
 
 Finally, we have implemented a subset of \emph{Riordan group theory} using the
 Python programming language, on top of \emph{Sage} mathematical framework.  Our

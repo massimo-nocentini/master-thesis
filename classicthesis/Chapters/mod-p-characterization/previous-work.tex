@@ -6,6 +6,8 @@ arithmetic to infinite lower triangular matrices. In particular, we report a
 fundamental theorem about binomial coefficients, proved by
 \citeauthor{lucas:theorie:des:nombres} in \cite{lucas:theorie:des:nombres}, and
 how it has been used by various authors to establish new and curious results.
+Finally, it allows us to apply a proof about the \emph{Sierpinski} gasket to 
+\emph{Pascal} Riordan array.
 
 \subsection{Lucas theorem exposed}
 
@@ -21,8 +23,8 @@ it is a fundamental result for our work.
             \cdots 
             {{m_{k}}\choose{n_{k}}} 
     \end{displaymath}
-    where $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$ and
-    $n=\left(n_{0},n_{1},\ldots,n_{k}\right)_{p}$, for some $k\in\mathbb{N}$.
+    representing $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$ and
+    $n=\left(n_{0},n_{1},\ldots,n_{k}\right)_{p}$ in base $p$, for some $k\in\mathbb{N}$.
     So both $m_{j}$ and $n_{j}$ are in $\lbrace 0,\ldots, p-1 \rbrace$, for
     $j\in\lbrace 0,\ldots,k\rbrace$.
     \label{thm:lucas:theorem}
@@ -189,9 +191,9 @@ and a single coefficient on the $(p^{\alpha}-1)$-th row.
 Observe that a \emph{zero-hole} of order $\alpha$ has $p^{\alpha}-1$ rows, one less
 than a \emph{principal cluster} of the same order.
 
-Although a formal proof can be stated by induction using \autoref{eq:binomial:recurrence},
-the following fact about the modular Pascal array, has an easier formulation
-using our language.
+Although a formal proof can be stated by induction using
+\autoref{eq:binomial:recurrence}, the following fact about the modular Pascal
+array has an easier formulation using the proposed language.
 
 \begin{theorem}
     Let $p$ be a prime and $\mathcal{P}_{\equiv_{p}}$ be the 
@@ -204,10 +206,10 @@ using our language.
 \\\\
 A second core concepts she introduces is a \emph{graphical interpretation} of
 \marginpar{a graphical interpretation of Lucas theorem}
-\autoref{thm:lucas:theorem}, we follow her original explanation in the
-following exposition.  First of all, within
-$\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$ the \emph{head} of the $(c+1)$-th cluster,
-of order $\alpha$, in the $(r+1)$-th layer is ${{r}\choose{c}}\mod p$.
+\autoref{thm:lucas:theorem}. We follow her original explanation in the
+following exposition: first of all, observe that within
+$\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$ the \emph{head} of the $(c+1)$-th cluster
+of order $\alpha$ in the $(r+1)$-th layer is ${{r}\choose{c}}\mod p$.
 
 Consider $\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$ and introduce 
 two indices, $n$ and $k$, running over rows and columns, respectively.
