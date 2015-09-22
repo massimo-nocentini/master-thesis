@@ -8,10 +8,22 @@
 \let\cleardoublepage\relax
 \let\cleardoublepage\relax
 
-\vskip-2cm
 \chapter*{Abstract}
+%\vskip-3cm
 
 \iftrue 
+{\small
+\begingroup
+    {\footnotesize 
+        \myUni,
+        %\myFaculty\\
+        \emph{\myDegree}}\\\\
+    {\color{Maroon}\spacedallcaps{\myTitle}} \\ 
+    {\color{Maroon}\spacedallcaps{\myEnglishTitle}} \\\\ 
+    Candidate: \emph{\myName}, \url{massimo.nocentini@stud.unifi.it} \\ 
+    Professor: \emph{\myProf}, \url{donatella.merlini@unifi.it}\\
+\endgroup
+\\
 This work aims to study\marginpar{analytic combinatorics and discrete
 objects} a subset of objects belonging to the field of analytic combinatorics,
 in particular generating functions, formal power series
@@ -55,12 +67,15 @@ Topics, RART$2015$}. All major researchers involved in Riordan group theory
 were present and some of them threw some important ideas about possible
 enhancement of our results.  
 
-Finally, we have implemented a subset of \emph{Riordan group theory} using the
+Finally, \marginpar{a bunch of Python classes}
+we have implemented a subset of \emph{Riordan group theory} using the
 Python programming language, on top of \emph{Sage} mathematical framework.  Our
 implementation is written in \emph{pure object-oriented} style and allows us to
 do raw matrix expansion, computing inverse arrays, applying modular
-    transformation, using a set of partition functions, and building \LaTeX\,code
-    for representing such modular arrays as coloured triangles.
+    transformation, using a set of partition functions, and building
+    \LaTeX\,code for representing such modular arrays as coloured triangles.
+
+}
 \fi
 
 \iffalse
