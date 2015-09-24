@@ -1,0 +1,886 @@
+% $Header: /Users/joseph/Documents/LaTeX/beamer/solutions/conference-talks/conference-ornate-20min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
+
+\documentclass[10pt,serif, professionalfont]{beamer}
+
+% This file is a solution template for:
+
+% - Talk at a conference/colloquium.
+% - Talk length is about 20min.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  %\usetheme{Singapore}
+  %\usetheme{Goettingen}
+  \usetheme{Pittsburgh}
+  % or ...
+
+  %\setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+
+  \usecolortheme{dove}
+  %\usecolortheme{seagull}
+  %\setbeamertemplate{blocks}[rounded][shadow=false]
+  %\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
+  %\setbeamercolor{block body}{bg=normal text.bg!90!black}
+  %\setbeamertemplate{sidebar canvas left}[horizontal shading][left=white!40!black,right=black]
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[utf8]{inputenc}
+% or whatever
+
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\usepackage{concrete}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{bbold}
+
+\newcommand{\myTitle}{Regolarit\`a nei Riordan array\xspace}
+\newcommand{\myItalianTitle}{Regolarit\`a nei Riordan array\xspace}
+\newcommand{\myEnglishTitle}{Patterns in Riordan arrays\xspace}
+%\newcommand{\mySubtitle}{$\equiv_{p}$ and $h$ characterizations\xspace}
+\newcommand{\myDegree}{\xspace}
+\newcommand{\myName}{Massimo Nocentini\xspace}
+\newcommand{\myProf}{Donatella Merlini\xspace}
+\newcommand{\myOtherProf}{Put name here\xspace}
+\newcommand{\mySupervisor}{Put name here\xspace}
+\newcommand{\myFaculty}{{S}cuola di {S}cienze {M}atematiche, {F}isiche e {N}aturali\xspace}
+\newcommand{\myDepartment}{Put data here\xspace}
+\newcommand{\myUni}{Universit\`a degli Studi di Firenze\xspace}
+\newcommand{\myLocation}{Firenze\xspace}
+\newcommand{\myTime}{Anno Accademico 2014-2015\xspace}
+\newcommand{\myVersion}{version 1.0\xspace}
+
+\title%[Short Paper Title] % (optional, use only with long paper titles)
+{Patterns in Riordan arrays}
+
+%\subtitle {Include Only If Paper Has a Subtitle}
+
+\author[Nocentini, Massimo] % (optional, use only with lots of authors)
+{Massimo Nocentini}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universit\`a degli Studi di Firenze] % (optional, but mostly needed)
+{
+  %\inst{1}%
+  \inst{}%
+    {S}cuola di {S}cienze {M}atematiche, {F}isiche e {N}aturali\\
+    Corso di Laurea Magistrale in Informatica
+  %\and
+  %\inst{2}%
+  %Department of Theoretical Philosophy\\
+  %University of Elsewhere
+    \begin{center}
+        \includegraphics[width=3cm]{logo/unifi} \\ \medskip
+    \end{center}
+    {\small Professor: \emph{Donatella Merlini}}
+  }
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+
+\date[\today] % (optional, should be abbreviation of conference name)
+{Anno Accademico $2014-2015$}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Theoretical Computer Science}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+\pgfdeclareimage[height=0.5cm]{university-logo}{logo/unifi}
+\logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+% Structuring a talk is a difficult task and the following structure
+% may not be suitable. Here are some rules that apply for this
+% solution: 
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+% - A conference audience is likely to know very little of what you
+%   are going to talk about. So *simplify*!
+% - In a 20min talk, getting the main ideas across is hard
+%   enough. Leave out details, even if it means being less precise than
+%   you think necessary.
+% - If you omit details that are vital to the proof/implementation,
+%   just say so once. Everybody will be happy with that.
+
+\section{Motivation}
+
+\subsection{Some definitions}
+
+\begin{frame}{Riordan arrays, formally}
+    Let $\mathcal{M}=\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$ be an \emph{infinite
+    lower triangular matrix}:
+    \begin{displaymath}
+         m_{nk}\in\mathbb{Z} \quad\wedge\quad n < k \rightarrow m_{nk} = 0
+    \end{displaymath}
+    Let $t$ be an \emph{undeterminate variable} and denote with 
+    $\mathcal{M}_{(t)}$ the following product: 
+    %$\mathcal{M}_{(t)}$ is a vector of {fps} in $\mathbb{Z}[\![t]\!]$}:
+    \begin{displaymath}
+        \small
+        \left[
+            \begin{array}{cccccc}
+                1 & t & t^{2} & t^{3} & t^{4} &\ldots
+            \end{array}
+        \right]
+        \left[
+            \begin{array}{cccccc}
+                m_{00} & & & &  &\\
+                m_{10} & m_{11} & & &  &\\
+                m_{20} & m_{21}& m_{22}& &  &\\
+                m_{30} & m_{31}& m_{32}& m_{33}&  &\\
+                m_{40} & m_{41}& m_{42}& m_{43}& m_{44} &\\
+                \vdots & \vdots& \vdots& \vdots& \vdots & \ddots\\
+            \end{array}
+        \right]
+    \end{displaymath}
+\end{frame}
+
+\begin{frame}{Riordan arrays, formally}
+    Therefore $\mathcal{M}_{(t)} =
+        \left[
+            \begin{array}{cccccc}
+                m_{0}(t) & m_{1}(t) & m_{2}(t) & m_{3}(t) &m_{4}(t) & \ldots
+            \end{array}
+        \right]$ 
+    where function $m_{j}$, for $j\in\mathbb{N}$, is a {fps} in the ring 
+    $\mathbb{Z}[\![t]\!]$.
+    
+    \begin{definition}
+        If there exists two analytic functions $d$
+        and $h$, such that $d(0)\neq0$ and $h(0)=0 \wedge h^{\prime}(0)\neq0$, which
+        satisfy:
+        \begin{displaymath}
+            m_{j}(t)=d(t)\,h(t)^{j} \quad \forall j\in\mathbb{N}
+        \end{displaymath}
+        then matrix $\mathcal{M}$ is called a \emph{Riordan array}, denoted by 
+        $\mathcal{M}(d(t),h(t))$ 
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Riordan arrays, formally}
+
+    Let $\mathcal{R}$ be a Riordan array and $p$ be a prime.
+    
+    \begin{block}{$\mathcal{R}_{\equiv_{p}}$}
+        Define $\mathcal{R}_{\equiv_{p}}$
+        as the \emph{congruent of} $\mathcal{R}$, modulo $p$, such that:
+        \begin{displaymath}
+            d_{nk}\in\mathcal{R} \leftrightarrow a \in\mathcal{R}_{\equiv_{p}}
+            \quad \text{where} \quad d_{nk}\equiv_{p} a
+        \end{displaymath}
+    \end{block}
+
+    \begin{block}{$\mathcal{R}^{(\alpha)}$}
+        Define $\mathcal{R}^{(\alpha)}$
+        as the \emph{principal $\alpha$-cluster of} $\mathcal{R}$, such that:
+        \begin{displaymath}
+            d_{nk}\in\mathcal{R}^{(\alpha)}\rightarrow d_{nk}\in\mathcal{R}
+            \quad \text{where}\quad n\in\lbrace0,\ldots,p^{\alpha}-1\rbrace
+        \end{displaymath}
+    \end{block}
+    
+
+\end{frame}
+
+\subsection{An example: the binomial triangle}
+
+\begin{frame}{Riordan arrays, an example}
+    What's the Riordan array $\mathcal{P}$ of the following matrix?
+    \begin{displaymath} 
+        %\hspace{-2.5cm}
+        \left[
+        \begin{array}{rrrrrrrrrr}
+        1 &  &  &  &  &  &  &  &  &  \\
+        1 & 1 &  &  &  &  &  &  &  &  \\
+        1 & 2 & 1 &  &  &  &  &  &  &  \\
+        1 & 3 & 3 & 1 &  &  &  &  &  &  \\
+        1 & 4 & 6 & 4 & 1 &  &  &  &  &  \\
+        1 & 5 & 10 & 10 & 5 & 1 &  &  &  &  \\
+        1 & 6 & 15 & 20 & 15 & 6 & 1 &  &  &  \\
+        1 & 7 & 21 & 35 & 35 & 21 & 7 & 1 &  &  \\
+        1 & 8 & 28 & 56 & 70 & 56 & 28 & 8 & 1 &  \\
+        1 & 9 & 36 & 84 & 126 & 126 & 84 & 36 & 9 & 1
+        \end{array}
+        \right] 
+    \end{displaymath}
+\end{frame}
+
+\begin{frame}{Riordan arrays, an example}
+    Coefficients lying on the very first column belongs to 
+    sequence $\lbrace1\rbrace_{n\in\mathbb{N}}$, therefore function $m_{0}$
+    satisfies:
+    \begin{displaymath}
+        m_{0}(t)=\frac{1}{1-t}
+    \end{displaymath}
+    therefore $m_{0}(t)=d(t)$, so function $d$ has been defined. \\
+    \pause
+    In order to find function $h$, coeffiecients lying on the second column 
+    belongs to sequence $\lbrace n\rbrace_{n\in\mathbb{N}}$ of natural numbers,
+    therefore function $m_{1}$ satisfies:
+    \begin{displaymath}
+        m_{1}(t)=d(t)\,h(t)=\frac{t}{(1-t)^{2}} \rightarrow
+        h(t)=\frac{t}{1-t}
+    \end{displaymath}
+    defining function $h$. Therefore the array $\mathcal{P}$ we are looking for is:
+    \begin{equation}
+        \mathcal{P}=\left(\frac{1}{1-t},\frac{t}{1-t}\right)
+        \label{eq:pascal:array:derived:for:example}
+    \end{equation}
+\end{frame}
+
+\section{Modular transformations}
+
+\subsection{Main idea}
+
+\begin{frame}{Sierpinski gasket and main idea}
+    \begin{columns}[T] % contents are top vertically aligned
+        \begin{column}[T]{5cm} % alternative top-align that's better for graphics
+              \onslide<1->{
+                  \vskip-20pt plus.5fill
+                  \input{../RART2015/pascal-tikz/main-idea-four-splitted/plain-numbers-include-figure}
+              }
+              \onslide<3->{
+                  \vskip-20pt plus.5fill
+                  \input{../RART2015/pascal-tikz/main-idea-four-splitted/remainders-include-figure}
+              }
+        \end{column}
+        \begin{column}[T]{5cm} % each column can also be its own environment
+              \onslide<2->{
+                  \vskip-20pt plus.5fill
+                  \input{../RART2015/pascal-tikz/main-idea-four-splitted/centered-numbers-include-figure}
+              }
+              \onslide<4->{
+                  \vskip-20pt plus.5fill
+                  \input{../RART2015/pascal-tikz/main-idea-four-splitted/dots-include-figure}
+              }
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\subsection{Previous Work}
+
+\begin{frame}{Fine, Sved et al.}
+
+    \begin{block}{Fine in \cite{Fine1947} exposes \emph{Lucas theorem}}
+        Let $p$ be a prime, $a=(a_{0},\ldots,a_{k})_{p}$ and $b=(b_{0},\ldots,b_{k})_{p}$, for some $k\in\mathbb{N}$:
+        \begin{displaymath}
+            {{a}\choose{b}} \equiv_{p} {{a_{0}}\choose{b_{0}}}{{a_{1}}\choose{b_{1}}}
+                \ldots{{a_{k}}\choose{b_{k}}}
+        \end{displaymath}
+    \end{block}
+    \pause
+    \begin{block}{Sved in \cite{Sved1998} introduces}
+        \begin{itemize}
+            \item {\normalsize a language to talk about triangles modulo some prime $p$}\\
+                \footnotesize{\emph{principal cell}, \emph{principal $\alpha$-cluster}, \emph{zero-holes of order $\alpha$}}
+            \item {\normalsize a graphic interpretation of \emph{Lucas theorem} }\\
+                \footnotesize{each ${{a_i}\choose{b_i}}$ locates ${{a}\choose{b}}$ within a \emph{nest of triangles}}
+            \item {\normalsize an application of \emph{Lucas theorem} to Stirling triangle}\\
+                \footnotesize{via a \emph{mapping} over the numbers of the second kind}
+            \item {\normalsize higher powers of primes}\\
+                \footnotesize{emphasizing coefficient $d_{nk}$ such that 
+                    $p^{\alpha}\mid d_{nk}$ while $p^{\alpha+1}\nmid d_{nk}$}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Fine, Sved et al.}
+    \begin{block}{Wolfram in \cite{Wolfram1984} shows}
+        \begin{itemize}
+            \item {\normalsize \emph{fractal dimensionality} of self-similar patterns in $\mathcal{P}_{\equiv_{2}}$}\\
+                \footnotesize{solving recurrence $T(\frac{i}{2})=3\,T(i)$ yield $T(i)\approx i^{-\log_{2}{3}}$}
+            \item {\normalsize $N(n)=\sum_{k=0}^{n}{\mathbb{1}_{{{n}\choose{k}}\equiv_{2}1}}$ is a very irregular function }\\
+                \footnotesize{also $N(n)=2^{\phi_{1}(n)}$, where $ \phi_{1}((n_{0},n_{1},\ldots,n_{m})_{2})=
+                    \sum_{j=0}^{m}{\mathbb{1}_{n_{j}=1} }$}
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{block}{Broomhead in \cite{Broomhead1972} shows}
+        \begin{itemize}
+            \item {\normalsize $N(n)=\sum_{k=0}^{n}{\mathbb{1}_{p\nmid{{n}\choose{k}}}}$ has a closed form in $\mathcal{P}$}\\
+                \footnotesize{namely $N((n_{0},n_{1},\ldots,n_{m})_{2})=(n_{0}+1)(n_{1}+1)\cdots(n_{m}+1)$}
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{block}{McLean in \cite{Lean1974} generalizes}
+        Broomhead and Sved work over higher powers of a prime $p$:
+        \begin{itemize}
+            \item defines \emph{$p$-index of $a$} as {$\nu_{p}\lbrace a\rbrace =t \leftrightarrow p^{t}\mid a \wedge p^{t+1}\nmid a$}
+            \item proves {$\nu_{p}\lbrace {{n}\choose{k}}\rbrace $} equals the \emph{number of carries} in $n-_{p}k$
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\subsection{Associating a colour to each remainder class of $\equiv_{p}$}
+
+%\subsection{Pascal}
+
+\begin{frame}{$\mathcal{P}_{\equiv_{2}}$ where 
+    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
+
+    \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+\end{frame}
+
+\begin{frame}{$\mathcal{P}_{\equiv_{3}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
+
+    \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{P}_{\stackrel{\circ}{\equiv_{3}}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
+
+    \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{P}_{\stackrel{\circ}{\equiv_{5}}}$ where 
+    $\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
+
+    \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{P}_{\stackrel{\circ}{\equiv_{7}}}$ where 
+    $\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
+
+    \input{../sympy/pascal/pascal-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
+\end{frame}
+
+
+
+%\subsection{Catalan}
+\begin{frame}{$\mathcal{C}_{\equiv_{2}}$ where 
+    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
+
+    \input{../sympy/catalan/Catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+\end{frame}
+%\begin{frame}{$\mathcal{C}_{\equiv_{3}}$ where 
+    %$\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
+
+    %\input{../sympy/catalan/catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
+%\end{frame}
+\begin{frame}{$\mathcal{C}_{\stackrel{\circ}{\equiv_{3}}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
+
+    \input{../sympy/catalan/catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{C}_{\stackrel{\circ}{\equiv_{5}}}$ where 
+    $\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
+
+    \input{../sympy/catalan/catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{C}_{\stackrel{\circ}{\equiv_{7}}}$ where 
+    $\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
+
+    \input{../sympy/catalan/catalan-traditional-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
+\end{frame}
+
+%\subsection{Motzkin}
+
+\begin{frame}{$\mathcal{M}_{\equiv_{2}}$ where 
+    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
+
+    \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+\end{frame}
+%\begin{frame}{$\mathcal{M}_{\equiv_{3}}$ where 
+    %$\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
+
+    %\input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
+%\end{frame}
+\begin{frame}{$\mathcal{M}_{\stackrel{\circ}{\equiv_{3}}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
+
+    \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{M}_{\stackrel{\circ}{\equiv_{5}}}$ where 
+    $\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
+
+    \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{M}_{\stackrel{\circ}{\equiv_{7}}}$ where 
+    $\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
+
+    \input{../sympy/motzkin/motzkin-standard-ignore-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
+\end{frame}
+
+
+%\subsection{Delannoy}
+
+\begin{frame}{$\mathcal{D}_{\stackrel{\circ}{\equiv_{3}}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
+
+    \input{../sympy/delannoy/delannoy-standard-handle-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{D}_{\stackrel{\circ}{\equiv_{5}}}$ where 
+    $\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
+
+    \input{../sympy/delannoy/delannoy-standard-handle-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
+\end{frame}
+\begin{frame}{$\mathcal{D}_{\stackrel{\circ}{\equiv_{7}}}$ where 
+    $\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
+
+    \input{../sympy/delannoy/delannoy-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
+\end{frame}
+
+%\subsection{Fibonacci}
+
+\begin{frame}{$\mathcal{F}_{\equiv_{2}}$ where 
+    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$}
+
+    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
+\end{frame}
+%\begin{frame}{$\mathcal{F}_{\equiv_{3}}$ where 
+    %$\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$}
+
+    %\input{../sympy/fibonacci/fibonacci-standard-ignore-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
+%\end{frame}
+\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{3}}}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{\lbrace [1],[2] \rbrace_{3}}$}
+
+    \input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-3-partitioning-include-figure}
+\end{frame}
+%\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{5}}}$ where 
+    %$\textcolor{blue}{[0]_{5}},\textcolor{orange}{\lbrace [1],[2],[3],[4] \rbrace_{5}}$}
+
+    %\input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-5-partitioning-include-figure}
+%\end{frame}
+%\begin{frame}{$\mathcal{F}_{\stackrel{\circ}{\equiv_{7}}}$ where 
+    %$\textcolor{blue}{[0]_{7}},\textcolor{orange}{\lbrace [1],[2],[3],[4],[5],[6] \rbrace_{7}}$}
+
+    %\input{../sympy/fibonacci/fibonacci-standard-handle-negatives-centered-colouring-127-rows-multiples-of-7-partitioning-include-figure}
+%\end{frame}
+
+\subsection{Observations}
+
+\begin{frame}{Observations}
+    \begin{itemize}
+        \item for increasing values of prime $p$:
+        \begin{itemize} 
+            \item $\mathcal{P}_{\stackrel{\circ}{\equiv_{p}}}$ and
+                $\mathcal{C}_{\stackrel{\circ}{\equiv_{p}}}$ have a \emph{recursive structure}, 
+                like a fractal;
+            \item $\mathcal{D}_{\stackrel{\circ}{\equiv_{p}}}$ has a common pattern but
+                not completely recursive;
+            \item $\mathcal{F}_{\stackrel{\circ}{\equiv_{p}}}$ and
+                $\mathcal{M}_{\stackrel{\circ}{\equiv_{p}}}$ have a pattern but it seems
+                to be augmented for each increment of $p$. 
+        \end{itemize} 
+        By \emph{recursive structure} we mean that $\mathcal{R}^{(\alpha+1)}$ can
+        be built using combinations of  $\mathcal{R}^{(\alpha)}$ and \emph{zero-holes}
+        of order $\alpha$ only
+
+        \pause
+        \item if $p$ isn't a prime, colouring gets ``noise'' and it's difficult
+        to recognize the underlying pattern
+
+        %\pause
+        %\item $\mathcal{D}_{\equiv_{2}}$ isn't very interesting since
+        %$d_{nk}\in\mathcal{D}_{\equiv_{2}}\rightarrow d_{nk}\equiv_{2}1$
+
+        \pause
+        \item colouring $\mathcal{R}^{-1}$, inverse of $\mathcal{R}$, uses darker
+        and lighter colour variants for positive and negative entries, respectively
+    \end{itemize} 
+\end{frame}
+
+\begin{frame}{$\mathcal{C}_{\equiv_{2}}^{-1}$ where 
+    $\textcolor{blue}{[0]_{2}},\textcolor{orange}{[1]_{2}}$ \emph{ignoring} negatives}
+
+    \input{../sympy/catalan/catalan-traditional-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+\end{frame}
+
+\begin{frame}{$\mathcal{C}_{\equiv_{3}}^{-1}$ where 
+    $\textcolor{blue}{[0]_{3}},\textcolor{orange}{[1]_{3}},\textcolor{red}{[2]_{3}}$ \emph{with} negatives}
+
+    \input{../sympy/catalan/catalan-traditional-inverse-handle-negatives-centered-colouring-127-rows-mod3-partitioning-include-figure}
+\end{frame}
+
+\section{Our Contribution}
+
+\subsection{On $\mathcal{P}_{\equiv_{p}}$ and $\mathcal{P}_{\equiv_{p}}^{-1}$}
+
+\begin{frame}{On $\mathcal{P}_{\equiv_{p}}$ and $\mathcal{P}_{\equiv_{p}}^{-1}$}
+    \begin{theorem}
+        let $d_{nk}\in\mathcal{P}$ and  $\hat{d}_{nk}\in\mathcal{P}^{-1}$, then:
+            \begin{displaymath}
+                (p-1)^{k+n}d_{nk}\equiv_{p} \hat{d}_{nk}
+            \end{displaymath}
+    \end{theorem}
+      \vskip-20pt plus.5fill
+    \begin{itemize}
+        \item \emph{proof}: apply $\big[t^{n}\big]$ both to $\mathcal{P}$ and $\mathcal{P}^{-1}$,
+            then set congruence $\equiv_{p}$ 
+        \item $p=2 \rightarrow d_{nk}\equiv_{2}\hat{d}_{nk}$, therefore $\mathcal{P}_{\equiv_{2}}$ and 
+            $\mathcal{P}_{\equiv_{2}}^{-1}$ looks the same
+    \end{itemize}
+    \pause
+    \begin{theorem}
+        $d_{nk}\in\mathcal{P}$ and $\hat{d}_{nk}\in\mathcal{P}^{-1}$, then:
+            \begin{displaymath}
+                d_{n,n-p^{m}} \equiv_{p} c \leftrightarrow \hat{d}_{n,n-p^{m}} \equiv_{p} p-c
+            \end{displaymath}
+    \end{theorem}
+      \vskip-20pt plus.5fill
+    \begin{itemize}
+        \item \emph{proof}: simple application of the above theorem
+        \item $c\in\lbrace0,\ldots,p-1\rbrace$ is usually seen as a colour
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{On $\mathcal{P}_{\equiv_{p}}$ and $\mathcal{P}_{\equiv_{p}}^{-1}$}
+    \begin{theorem}
+         $\mathcal{P}^{(\alpha+1)}$ contains 
+        ${{p}\choose{2}}$ \emph{zero-holes} of order $\alpha$
+    \end{theorem}
+    \begin{itemize}
+        \item \emph{proof}: $\mathcal{P}^{(\alpha+1)}$ contains $\lbrace l_{0},\ldots,l_{p-1}\rbrace$ 
+            layers of order $\alpha$, each $l_{j}$ contains $j$ \emph{zero-holes}, therefore
+            $\sum_{j=0}^{p-1}{j}=\frac{(p-1)p}{2}$
+    \end{itemize}
+    
+    \input{../RART2015/pascal-tikz/zero-holes/zero-holes-include-figure}
+\end{frame}
+
+\begin{frame}{On $\mathcal{P}_{\equiv_{p}}$ and $\mathcal{P}_{\equiv_{p}}^{-1}$}
+    \begin{theorem}
+        consider $\mathcal{P}^{(m)}$, let $p^{m} \leq n < p^{m+1}$ and 
+        $k\in\lbrace0,\ldots,n-p^{m}\rbrace$, then:
+        \begin{displaymath}
+            d_{n,k} \equiv_{p} d_{n+\gamma p^{m+1}, k+\gamma p^{m+1}}
+                \quad\forall\gamma\in\mathbb{N}
+        \end{displaymath}
+    \end{theorem}
+    \begin{itemize}
+        \item \emph{proof}: represent subscripts in base $p$ and apply \emph{Lucas theorem}
+        \item holds both if $d_{nk}\in\mathcal{P}$, both if $d_{nk}\in\mathcal{P}^{-1}$
+    \end{itemize}
+
+    \input{../RART2015/pascal-tikz/multiples-over-antidiagonal/multiples-over-antidiagonal-include-figure}
+\end{frame}
+
+\subsection{On $\mathcal{C}_{\equiv_{2}}$}
+
+\begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+    \begin{columns}[T] % contents are top vertically aligned
+        \begin{column}[T]{5cm} % alternative top-align that's better for graphics
+            \input{catalan-tikz/first-column/first-column-include-figure}
+        \end{column}
+        \begin{column}[T]{5cm} % each column can also be its own environment
+            let $d_{nk}\in\mathcal{C}$ and $c_{j}=d_{j0}$ be a Catalan number
+            \begin{theorem}
+                \begin{displaymath}
+                    c_{j} \equiv_{2}1 \leftrightarrow j=2^{\alpha}-1
+                \end{displaymath}
+                where $\alpha\in\mathbb{N}$
+            \end{theorem}
+            \emph{proof}: $c_{j} = {{2j}\choose{j}} - {{2j}\choose{j+1}}$ and by cases on $j$'s parity
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+     %$\mathcal{C}_{-(0,p^{h}-1)}^{h}$ be a copy of 
+        %$\mathcal{C}_{h}$:
+        %\begin{itemize}
+            %\item without $d_{nn}$ for each $n$ (antidiagonal $0$)
+            %\item without $d_{p^{h}-1,k}$ for each $k$ (row $p^{h}-1$)
+        %\end{itemize}
+    %\pause
+
+      % in order to use a `displaymath' environment for the proof
+      \vskip-20pt plus.5fill
+    \begin{theorem}
+        let $h\in\mathbb{N}$ and $s\in\lbrace0,\ldots,2^{h}-1 \rbrace$, then:
+        \begin{displaymath}
+            d_{2^{h}-1,s} \equiv_{2} 1
+        \end{displaymath}
+    \end{theorem}
+    \emph{proof}: 
+        \begin{displaymath}
+            d_{2^{\alpha}-1,s} = \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}
+                {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{s+1}-1}}
+        \end{displaymath}
+
+    \input{../RART2015/catalan-tikz/odd-row/odd-row-include-figure}
+\end{frame}
+
+\begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+      % in order to use a `displaymath' environment for the proof
+      \vskip-15pt plus.5fill
+    \begin{theorem}
+        let  $S=\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$ be a 
+        \flqq mirror\frqq segment of column $2^{\alpha}-1$, then:
+        \begin{displaymath} 
+            d_{s,2^{\alpha}-1}\equiv_{2}0\quad\text{for}\quad s\in S
+        \end{displaymath} 
+    \end{theorem}
+      \vskip-10pt plus.5fill
+    \emph{proof}: 
+        \begin{displaymath} 
+            d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
+                {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}}
+        \end{displaymath} 
+    
+    \input{../RART2015/catalan-tikz/mirror-segment/mirror-segment-include-figure}
+        
+\end{frame}
+
+\begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+    \begin{theorem}
+    let $\hat{d}_{s,2^{h}-1}$ for $s\in S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, then:
+    \begin{displaymath}
+        d_{s-e,2^{h}-1-e} \equiv_{2} d_{s,2^{h}-1+e}\quad\text{where}\quad
+            e\in\lbrace1,\ldots,s-2^{h}\rbrace
+    \end{displaymath}
+    \end{theorem}
+    \emph{proof}: $ d_{nk}\in\mathcal{C}\leftrightarrow 
+        d_{nk}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}$ and \emph{Lucas theorem}
+
+    \input{../RART2015/catalan-tikz/mirrored-clusters/mirrored-clusters-include-figure}
+        
+\end{frame}
+
+\begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+    \begin{theorem}
+    let $\hat{d}_{s,2^{h}-1}$ for $s\in S_{2^{h}-1}=\lbrace 2^{h}+1,\ldots,2^{h+1}-2 \rbrace$, then:
+    \begin{displaymath}
+        d_{s,2^{h}-1+e} \equiv_{2} d_{s-2^{h},e-1}\quad\text{where}\quad e\in\lbrace1,\ldots,s-2^{h}\rbrace
+    \end{displaymath}
+    \end{theorem}
+    \emph{proof}: $ d_{nk}\in\mathcal{C}\leftrightarrow 
+        d_{nk}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}$ and \emph{Lucas theorem}
+
+    \input{../RART2015/catalan-tikz/principal-cluster/principal-cluster-include-figure}
+        
+\end{frame}
+
+\begin{frame}{On $\mathcal{C}_{\equiv_{2}}$}
+      % in order to use a `displaymath' environment for the proof
+      \vskip-20pt plus.5fill
+    \begin{theorem}
+    let $\mathcal{T}_{\equiv_{2}0} \subset \mathcal{C}^{(\alpha+1)}$ be a %upside-down 
+    \emph{zero-hole} with side $2^{\alpha}-1$, then:
+    \begin{displaymath}
+        d_{nk}\in\mathcal{T}_{\equiv_{2}0}\rightarrow d_{nk}\equiv_{2}0
+    \end{displaymath}
+    where $n\in\lbrace2^{\alpha},\ldots,2^{\alpha+1}-2\rbrace$ and $k\in\lbrace0,\ldots,n-2^{\alpha}\rbrace$. \emph{Proof}: 
+    \end{theorem}
+      \vskip-10pt plus.5fill
+    \begin{displaymath}
+        d_{s, u} = \sum_{i_{1}+\ldots+i_{u+1}=s+1}
+            {c_{i_{1}-1}\cdots\,c_{i_{u+1}-1}}, \quad u\in\lbrace0,\ldots,2^{\alpha}-2\rbrace
+    \end{displaymath}
+
+    \input{../RART2015/catalan-tikz/zero-hole/zero-hole-include-figure}
+        
+\end{frame}
+
+\subsection{$h$-characterization}
+
+\begin{frame}{Another way to denote a Riordan array}
+    Consider a \emph{Riordan array} $\mathcal{R}\left(d(t),h(t)\right)$ 
+    By definition, coefficients lying on 
+    column $k$ are the coefficients of $d(t)h(t)^k$.\\
+    \pause
+    Characterize $\mathcal{R}$ \emph{changing} variable $t$ by a simple
+    algebraic trick:
+    \begin{displaymath}
+        d(t)h(t)^k = d(t)(1 + (h(t)-1))^k = \left[ \left. d(\hat{h}(1+y))(1+y)^k \right|y = h(t)-1  \right]
+    \end{displaymath}
+    where function $\hat{h}$ is the compositional inverse of $h$, the one that
+    satisfies $\hat{h}(h(t)) = t$.
+    \pause
+    Inside the square brackets there's a shape of a Riordan array, therefore:
+    \begin{displaymath}
+        \begin{split}
+            \mathcal{R}\left(d(t),h(t)\right) &= \left[ \mathcal{R}\left(d(\hat{h}(1+y)), 1+y\right) \left| y = h(t)-1 \right. \right]\\
+            &= \mathcal{R}_{y=h(t)-1}\left( f(y), 1+y \right) =  \mathcal{R}_{h(t)}\left( g(h(t)), h(t) \right) 
+        \end{split}
+    \end{displaymath}
+    We call $\mathcal{R}_{h(t)}$ the \emph{$h$-characterization} of array $\mathcal{R}$ 
+\end{frame}
+
+\begin{frame}{Another way to denote a Riordan array}
+    \begin{displaymath} 
+        \mathcal{P}_{h(t)}\left( 1+h(t), h(t) \right)
+    \end{displaymath} 
+    \begin{displaymath} 
+        \mathcal{C}_{h(t)}\left(\frac{1}{1-h\left(t\right)}, h(t) \right)
+    \end{displaymath} 
+    \begin{displaymath} 
+         \mathcal{D}_{h(t)}\left( \frac{2}{3+h(t)-\sqrt{h(t)^2+6h(t)+1}}, h(t) \right)
+    \end{displaymath} 
+    \pause
+    \begin{theorem}
+        Let $\mathcal{M}(d(t), h(t))$ be a Riordan array and $\mathcal{M}_{h(t)}\left( g(h(t)), h(t) \right) $
+        its $h$-characterization. Then: $h(t)=t\,d(t) \rightarrow g(t)=A(t)$\\
+        where function $A$ is the $A$-sequence of array $\mathcal{M}$, that is:
+        \begin{displaymath}
+            A(t)=\sum_{i\in\mathbb{N}}{a_{i}t^i} \leftrightarrow m_{n+1,k+1}=a_{0}m_{n,k}+a_{1}m_{n,k+1}+\ldots+a_{n-k}m_{n,n}
+        \end{displaymath}
+    \end{theorem}
+\end{frame}
+
+\section*{Summary}
+
+\begin{frame}{Summary}
+
+  % Keep the summary *very short*.
+  \begin{itemize}
+      \item representation of modular Riordan arrays in \LaTeX-ready code% (\TikZ)
+      \item some properties about $\mathcal{P}$ and $\mathcal{P}^{-1}$ modulo a prime $p$
+      \item a formal characterization of $\mathcal{C}_{\equiv_{2}}$
+  \end{itemize}
+  
+  % The following outlook is optional.
+  \vskip0pt plus.5fill
+  \begin{itemize}
+  \item
+    WIP:
+    \begin{itemize}
+        \item on modular characterization of $\mathcal{C}^{-1}$, 
+            nice pictures but hard to handle formally
+        \item on understanding correspondence between modular results and 
+            \emph{combinatorial interpretation} of coefficients in some arrays
+        \item \emph{very in progress}: $h$-characterization!
+    \end{itemize}
+  \end{itemize}
+
+  % The following outlook is optional.
+  \vskip0pt plus.5fill
+  \begin{itemize}
+  \item
+    Open problems:
+    \begin{itemize}
+        \item how to build a formal characterization of $\mathcal{F},\mathcal{M},\mathcal{D}$ and
+            other arrays from the modular point of view?
+        \item is there a way to build proofs manipulating functions $d$ and $h$ only? 
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+
+% All of the following is optional and typically not needed. 
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{For Further Reading}
+
+\begin{frame}[allowframebreaks]
+  \frametitle<presentation>{For Further Reading}
+    
+  \begin{thebibliography}{10}
+    
+  \beamertemplatebookbibitems
+  % Start with overview books.
+
+    
+  \beamertemplatearticlebibitems
+  % Followed by interesting articles. Keep the list short. 
+
+  \bibitem{Sved1998}
+    Marta Sved.
+    \newblock Divisibility - with visibility.
+    \newblock {\em The Mathematical Intelligencer}, 10(2):56--64, 1998.
+
+  \bibitem{Wolfram1984}
+    Stephen Wolfram.
+    \newblock Geometry of Binomial Coefficients.
+    \newblock {\em The American Mathematical Monthly}, 91(9):566--571, 1984.
+
+  \bibitem{Broomhead1972}
+    Antony Broomhead.
+    \newblock Pascal (mod $p$).
+    \newblock {\em The Mathematical Gazette}, 56(398):267--271, 1972.
+
+  \bibitem{Lean1974}
+    K. R. McLean.
+    \newblock Divisibility Properties of Binomial Coefficients.
+    \newblock {\em The Mathematical Gazette}, 58(403):17--24, 1974.
+
+  \bibitem{Fine1947}
+    N. J. Fine.
+    \newblock Binomial Coefficients Modulo a Prime.
+    \newblock {\em The American Mathematical Monthly}, 54(10):589--592, 1947.
+  \end{thebibliography}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \Large Thanks everybody!
+    \end{center}
+\end{frame}
+
+\end{document}
+
+

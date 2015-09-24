@@ -1,0 +1,22 @@
+
+\begin{figure}[p]
+
+    \noindent\makebox[\textwidth]{
+        \centering
+        %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
+
+        % using *angle* property to rotate it is difficult to properly align it
+        % in order to have a "real" matrix representation.
+        \includegraphics[width=5cm, height=5cm, keepaspectratio=true]{pascal-tikz/main-idea-four-splitted/remainders.pdf}
+    }
+
+    % this 'particular' line is necessary to use `displaymath' environment
+    % into the caption environment, togheter with the inclusion of 
+    % `caption' package. See here for more explanation:
+    % http://stackoverflow.com/questions/2716227/adding-an-equation-or-formula-to-a-figure-caption-in-latex
+    \captionsetup{singlelinecheck=off}
+    %\caption[.]{ }
+
+    \label{fig:main:idea:remainders}
+
+\end{figure}
