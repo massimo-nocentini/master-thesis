@@ -1,0 +1,58 @@
+% article example for classicthesis.sty
+\documentclass[11pt,a4paper]{article} % KOMA-Script article scrartcl
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage[nochapters,eulermath,beramono]{classicthesis} % nochapters
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{caption}
+
+% add 'final' option to make a clear version without any markup or colouring
+\usepackage[authormarkup=none]{changes}
+
+\usepackage{marginnote}
+
+\usepackage[T1]{fontenc}
+%\usepackage{concrete}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{proof}[theorem]{Proof}
+
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+
+% for tracking changes
+\definechangesauthor[name={under review}, color=blue]{testing}
+\definechangesauthor[name={blending edge}, color=orange]{sid}
+
+
+\begin{document}
+    \title{\rmfamily\normalfont\spacedallcaps{Colouring Riordan arrays}}
+    \author{\spacedlowsmallcaps{Donatella Merlini} \\ \spacedlowsmallcaps{Massimo Nocentini}}
+    \date{\today} 
+    
+    \maketitle
+    
+    \begin{abstract}
+        This short document is a collection of some \emph{Riordan arrays}, coloured 
+        according different partition schemes.
+    \end{abstract}
+       
+    \tableofcontents
+
+    \newpage
+
+    \lipsum[1]
+
+    % bib stuff
+    %\nocite{*}
+    %\addtocontents{toc}{\protect\vspace{\beforebibskip}}
+    %\addcontentsline{toc}{section}{\refname}    
+    %\bibliographystyle{plain}
+    %\bibliography{../Bibliography}
+\end{document}
