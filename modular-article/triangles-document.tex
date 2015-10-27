@@ -9,6 +9,10 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{caption}
+\usepackage{acronym}
+\usepackage{bm}
+\usepackage{bbold}
+\usepackage[english]{babel}
 
 % add 'final' option to make a clear version without any markup or colouring
 \usepackage[authormarkup=none]{changes}
@@ -45,14 +49,16 @@
        
     \tableofcontents
 
+    \input{catalan.tex}
+
     \newpage
 
     \lipsum[1]
 
     % bib stuff
-    %\nocite{*}
-    %\addtocontents{toc}{\protect\vspace{\beforebibskip}}
-    %\addcontentsline{toc}{section}{\refname}    
-    %\bibliographystyle{plain}
-    %\bibliography{../Bibliography}
+    \nocite{*}
+    \addtocontents{toc}{\protect\vspace{\beforebibskip}}
+    \addcontentsline{toc}{section}{\refname}    
+    \bibliographystyle{plain}
+    \bibliography{../classicthesis/Bibliography}
 \end{document}

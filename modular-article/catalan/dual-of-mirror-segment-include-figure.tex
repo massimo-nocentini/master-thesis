@@ -1,0 +1,30 @@
+
+\begin{figure}[p]
+
+    \noindent\makebox[\textwidth]{
+        \centering
+        %\includegraphics[width=0.8\textwidth]{../../sympy/catalan/coloured.pdf}
+
+        % using *angle* property to rotate it is difficult to properly align it
+        % in order to have a "real" matrix representation.
+        \includegraphics[width=10cm, height=10cm, keepaspectratio=true]
+            {../RART2015/catalan-tikz/dual-of-mirror-segment/dual-of-mirror-segment.pdf}
+    }
+
+    % this 'particular' line is necessary to use `displaymath' environment
+    % into the caption environment, togheter with the inclusion of 
+    % `caption' package. See here for more explanation:
+    % http://stackoverflow.com/questions/2716227/adding-an-equation-or-formula-to-a-figure-caption-in-latex
+    \captionsetup{singlelinecheck=off}
+    \caption[\flqq dual\frqq\,segment $\left\lbrace d_{s,s-(2^{4}-1)}\right\rbrace$,
+        for $s\in rows\left(\Phi^{(4)}\right)$, in $\mathcal{C}_{\equiv_{2}}^{(5)}$]
+        { \flqq dual\frqq\,segment 
+                $\left\lbrace d_{s,s-(2^{4}-1)}\right\rbrace$,
+                for $s\in rows\left(\Phi^{(4)}\right)$, of \flqq mirror\frqq\,segment 
+                $\Phi^{(4)}$ }
+
+
+
+    \label{fig:dual-of-mirror-segment}
+
+\end{figure}
