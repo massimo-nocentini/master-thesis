@@ -84,7 +84,7 @@ each coefficient $c_{j}$ can be written as the following combination:
 in other words, $c_{j}$ equals the $(j-1)$-row sum of $\mathcal{C}$, 
 therefore by the \emph{fundamental theorem} of the Riordan group:
 
-\marginpar{another \ac{gf} for the Catalan numbers}
+\marginpar{another generating function for the Catalan numbers}
 \begin{displaymath}
     c_{j} = [t^{j-1}]\mathcal{C}\,A_{\mathcal{C}}(t)
           = [t^{j-1}]d_{\mathcal{C}}(t)\,A_{\mathcal{C}}(h_{\mathcal{C}}(t))
@@ -96,9 +96,9 @@ yielding:
 \end{displaymath}
 with boundary condition $c_{0}=1$, which cannot be read from the above
 series expansion. Moreover, from the above equation, it is possible to derive
-another \ac{gf} for the sequence of Catalan numbers:
+another generating function for the sequence of Catalan numbers:
 
-\marginpar{yet another \ac{gf} for the Catalan numbers}
+\marginpar{yet another generating function for the Catalan numbers}
 \begin{displaymath}
     \frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}=
     \frac{\left(1-\sqrt{1-4 \, t}\right)^{2}}{4 \, t}=
@@ -114,7 +114,7 @@ Go back to identity:
 \end{displaymath}
 \fi
 
-Coefficient extraction on previous \ac{gf} allow us to write 
+Coefficient extraction on previous generating function allow us to write 
 a Catalan coefficient $c_{j}$ in a closed form:
 \begin{equation}
     c_{j} = \frac{1}{j+1}{{2j}\choose{j}} 
@@ -164,7 +164,7 @@ row indices belonging to a segment we introduce the $rows$ function, defined as 
 \subsection{Some initial attempts}
 
 In order to formally proof the modular characterization $\mathcal{C}_{\equiv_{2}}$, 
-we begin with an attempt which applies the \ac{LIF}. 
+we begin with an attempt which applies the Lagrange Inversion Formula. 
 Write the generic element $d_{nk}\in\mathcal{C}$ using the definition:
 \begin{displaymath}
     d_{nk} = [t^n] \frac{1-\sqrt{1-4\,t}}{2\,t}\,
@@ -172,8 +172,8 @@ Write the generic element $d_{nk}\in\mathcal{C}$ using the definition:
            = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
 \end{displaymath}
 \marginpar{For explanation of when and how
-    about \ac{LIF} see \cite{merlini:lagrange:2006}}
-The version of the \ac{LIF} we want to apply is the following one:
+    about Lagrange Inversion Formula see \cite{merlini:lagrange:2006}}
+The version of the Lagrange Inversion Formula we want to apply is the following one:
 \begin{displaymath}
     \alpha\,\left[z^\alpha\right] A(z)^{\beta} = 
         \beta\,\left[w^{\alpha-\beta}\right]\Phi(w)^{\alpha}
@@ -191,18 +191,18 @@ under the constraint $\Phi(0)\neq0$.
     z\,\Phi(0) \circeq 0 \rightarrow z\circeq\frac{0}{\Phi(0)} 
 \end{displaymath}
 \fi
-\ac{LIF}'s ``from right to left'' direction allow us to make 
+Lagrange Inversion Formula's ``from right to left'' direction allow us to make 
 the following definitions:
 \begin{displaymath}
     \Phi(t)=\frac{1-\sqrt{1-4\,t}}{2}\qquad \alpha=k+1\qquad \beta=k-n
 \end{displaymath}
-Since $\Phi(0)=0$ we cannot apply \ac{LIF} directly, so start over again 
+Since $\Phi(0)=0$ we cannot apply Lagrange Inversion Formula directly, so start over again 
 and observe that:
 \begin{displaymath}
     d_{nk}=[t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
 \end{displaymath}
 requires to extract coefficient $n+1$ from the $(k+1)$-fold
-convolution of Catalan numbers' \ac{gf} with itself, \emph{shifted
+convolution of Catalan numbers' generating function with itself, \emph{shifted
 by one place}. Before going on, careful
 understanding of what coefficients are introduced is necessary. 
 The following expansion defines a sequence of coefficients 
@@ -326,6 +326,7 @@ In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
         \end{displaymath}
         so the congruence relation gets the following shape:
         \begin{displaymath}
+            \hspace{-2cm}
             c_{j}\equiv_{2}{{2j}\choose{j+1}}
                 \equiv_{2} \underbrace{{{0}\choose{0}}{{1}\choose{0}}
                 {{1}\choose{0}}\ldots{{1}\choose{0}}}_{\beta} 
@@ -625,11 +626,11 @@ In \autoref{fig:mirror-segment} the \flqq mirror\frqq\,segment $\Phi^{(4)}$ is h
         the $A$-sequence of $\mathcal{C}$}
     By cases on the parity of $s$:
     \begin{itemize}
-        \item assume $s$ is \emph{even}, therefore $s_{0}=0$ and the \ac{rhs} vanishes due to ${{0}\choose{s_{0}+1}}=0$;
+        \item assume $s$ is \emph{even}, therefore $s_{0}=0$ and the right hand side vanishes due to ${{0}\choose{s_{0}+1}}=0$;
         \item assume $s$ is \emph{odd}, therefore $s_{0}=1$, so apply Lucas theorem to ${{0}\choose{2}}$ again,
             yielding ${{0}\choose{2}}\equiv_{2}{{0}\choose{0}}{{0}\choose{1}}\equiv_{2}0$.
     \end{itemize}
-    both cases shows that \ac{rhs} is a multiple of $p$, as required.
+    both cases shows that right hand side is a multiple of $p$, as required.
 \end{proof}
 
 \input{catalan/dual-of-mirror-segment-include-figure.tex}
@@ -710,6 +711,7 @@ Before approaching a structured proof, we look for some insights.
 According to \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array},
 rewrite both members:
 \begin{displaymath}
+    \hspace{-2cm}
     \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-e}=s-e+1}
         {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-e}-1}}
     \equiv_{2}
@@ -719,6 +721,7 @@ rewrite both members:
 panic! No idea to tackle the general setting as a whole. So, start small and
 let $s=2^{{\alpha}}+1$, therefore no choices for $e$, $e=1$ is mandatory:
 \begin{displaymath}
+    \hspace{-2cm}
     \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-1}=2^{{\alpha}}+1}
         {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-1}-1}}
     \equiv_{2}
@@ -766,12 +769,12 @@ Recall we would like to prove the following statement:
 \begin{displaymath}
     d_{s-e,2^{{\alpha}}-1-e} \equiv_{2} d_{s,2^{{\alpha}}-1+e}
 \end{displaymath}
-Rewrite the \ac{lhs}:
+Rewrite the left hand side:
 \begin{displaymath}
     d_{s-e,2^{{\alpha}}-1-e}= {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)}}
         - {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)-1}}
 \end{displaymath}
-in the same spirit, rewrite the \ac{rhs}:
+in the same spirit, rewrite the right hand side:
 \begin{displaymath}
     d_{s,2^{{\alpha}}-1+e}={{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)}}
         - {{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)-1}}
@@ -862,22 +865,23 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
                 which cannot be the case, as we've already seen.  Adding $1$ yield the representation
                 $(\underbrace{0,0,\ldots,0}_{r},1,s_{r+1},s_{r+2},\ldots,s_{{\alpha}-1},1)_{2}$, therefore:
                 \begin{displaymath}
-                        {{2s-2^{{\alpha}}}\choose{s+1}} 
-                        \equiv_{2} 
-                        \underbrace{
-                            {{0}\choose{0}} 
-                            {{1}\choose{0}}
-                            {{1}\choose{0}}
-                            \ldots
-                            {{1}\choose{0}}
-                        }_{r}
-                        {{1}\choose{1}}
-                        {{0}\choose{s_{r+1}}}
-                        {{s_{r+1}}\choose{s_{r+2}}}
+                    \hspace{-2cm}
+                    {{2s-2^{{\alpha}}}\choose{s+1}} 
+                    \equiv_{2} 
+                    \underbrace{
+                        {{0}\choose{0}} 
+                        {{1}\choose{0}}
+                        {{1}\choose{0}}
                         \ldots
-                        {{s_{{\alpha}-2}}\choose{s_{{\alpha}-1}}}
-                        {{s_{{\alpha}-1}^{*}}\choose{1}}
-                        {{s_{{\alpha}}^{*}}\choose{0}}
+                        {{1}\choose{0}}
+                    }_{r}
+                    {{1}\choose{1}}
+                    {{0}\choose{s_{r+1}}}
+                    {{s_{r+1}}\choose{s_{r+2}}}
+                    \ldots
+                    {{s_{{\alpha}-2}}\choose{s_{{\alpha}-1}}}
+                    {{s_{{\alpha}-1}^{*}}\choose{1}}
+                    {{s_{{\alpha}}^{*}}\choose{0}}
                 \end{displaymath}
                 In order to not vanish, modulo $2$, 
                 $s_{r+1}=0$, this propagates in turn that $s_{r+2}=0$, \ldots, 
@@ -893,8 +897,8 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
         \end{itemize}
 
         \item assume the argument holds for $k\leq e$ and prove for $k=e+1$, so we need to show:
-
             \begin{displaymath}
+                \hspace{-6cm}
                 \begin{split}
                     {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}+1}}
                         - {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}}}
@@ -943,8 +947,8 @@ left with a last theorem.
 
 \begin{proof}
 We tackle the proof using \autoref{eq:catalan:array:second:identity}:
-
 \begin{displaymath}
+    \hspace{-4cm}
     \begin{split}
         {{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)}} - {{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)-1}}
         &\equiv_{2}
@@ -977,7 +981,7 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
 
         \item assume the argument holds for $k\leq e$ and prove for $k=e+1$, so we need to show:
             \begin{displaymath}
-                \hspace{-4cm}
+                \hspace{-7cm}
                 \begin{split}
                     {{2s-2^{{\alpha}}+1-(e+1)}\choose{s}} - {{2s-2^{{\alpha}}+1-(e+1)}\choose{s+1}}
                     &\equiv_{2}
