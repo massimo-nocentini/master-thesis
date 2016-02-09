@@ -2,7 +2,7 @@
 \section{Catalan characterization}
 
 \input{catalan/catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
-In this section we tackle a modular characterization, using congruence
+In this section we tackle a modular characterization, using congruence relation
 $\equiv_{2}$, for the Catalan array $\mathcal{C}$ from a formal point of view.
 We aim at a proof driven from
 \autoref{fig:catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle},
@@ -84,7 +84,6 @@ each coefficient $c_{j}$ can be written as the following combination:
 in other words, $c_{j}$ equals the $(j-1)$-row sum of $\mathcal{C}$, 
 therefore by the \emph{fundamental theorem} of the Riordan group:
 
-\marginpar{another generating function for the Catalan numbers}
 \begin{displaymath}
     c_{j} = [t^{j-1}]\mathcal{C}\,A_{\mathcal{C}}(t)
           = [t^{j-1}]d_{\mathcal{C}}(t)\,A_{\mathcal{C}}(h_{\mathcal{C}}(t))
@@ -98,7 +97,6 @@ with boundary condition $c_{0}=1$, which cannot be read from the above
 series expansion. Moreover, from the above equation, it is possible to derive
 another generating function for the sequence of Catalan numbers:
 
-\marginpar{yet another generating function for the Catalan numbers}
 \begin{displaymath}
     \frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}=
     \frac{\left(1-\sqrt{1-4 \, t}\right)^{2}}{4 \, t}=
@@ -122,8 +120,7 @@ a Catalan coefficient $c_{j}$ in a closed form:
     \label{eq:catalan:coeff:rewriting}
 \end{equation}
 
-\marginpar{closed formulae for Catalan coefficient $c_{j}$ and
-$d_{nk}\in\mathcal{C}$} On the other hand, the generic element
+On the other hand, the generic element
 $d_{nk}\in\mathcal{C}$ admits closed formulae too. According to
 \cite{luzon:2012631}, two of them are of
 particular interest in order to complete our proofs:
@@ -138,9 +135,7 @@ and:
 \end{equation}
 
 
-The
-\marginpar{$\diagup_{\lbrace\alpha_{0},\alpha_{1},\alpha_{2},\ldots\rbrace}^{k}$
-is a kind of macro, it is a set builder, eventually}last object we want to
+The last object we want to
 introduce is a pair that allow to talk about a subset of elements lying on a
 column $\vect{c}_{k}$ of $\mathcal{C}$. Let $S\subseteq\mathbb{N}$  
 and let $k\in\mathbb{N}$, then a \emph{segment} of column $\vect{c}_{k}$ is
@@ -152,7 +147,7 @@ denoted by the following relation:
     \label{eq:column:segment}
 \end{equation}
 where $\lbrace\alpha_{i}\rbrace_{i\in S}\subseteq\mathbb{N}$. 
-In order\marginpar{$rows$ helper function} to fetch the set of 
+In order to fetch the set of 
 row indices belonging to a segment we introduce the $rows$ function, defined as follow:
 \begin{displaymath}
     rows\left(\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}\right)
@@ -161,47 +156,15 @@ row indices belonging to a segment we introduce the $rows$ function, defined as 
     \label{eq:column:segment:rows:function}
 \end{displaymath}
 
-\subsection{Some initial attempts}
 
 In order to formally proof the modular characterization $\mathcal{C}_{\equiv_{2}}$, 
-we begin with an attempt which applies the Lagrange Inversion Formula. 
-Write the generic element $d_{nk}\in\mathcal{C}$ using the definition:
+write the generic element $d_{nk}\in\mathcal{C}$ using the definition:
 \begin{displaymath}
     d_{nk} = [t^n] \frac{1-\sqrt{1-4\,t}}{2\,t}\,
         \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k}
            = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
 \end{displaymath}
-\marginpar{For explanation of when and how
-    about Lagrange Inversion Formula see \cite{merlini:lagrange:2006}}
-The version of the Lagrange Inversion Formula we want to apply is the following one:
-\begin{displaymath}
-    \alpha\,\left[z^\alpha\right] A(z)^{\beta} = 
-        \beta\,\left[w^{\alpha-\beta}\right]\Phi(w)^{\alpha}
-\end{displaymath}
-where $\alpha,\beta\in\mathbb{Z}$ and function $A$ relates to function
-$\Phi$ according to: 
-\begin{displaymath} A(z)=z\,\Phi(A(z)) \end{displaymath}
-under the constraint $\Phi(0)\neq0$.
-% the following explanation for the constraing over 
-% function $\Phi$ should help only *our* understanding.
-\iffalse
-, otherwise a contraddiction arises
-(critical relation is emphasized with $\circeq$ symbol):
-\begin{displaymath} 
-    z\,\Phi(0) \circeq 0 \rightarrow z\circeq\frac{0}{\Phi(0)} 
-\end{displaymath}
-\fi
-Lagrange Inversion Formula's ``from right to left'' direction allow us to make 
-the following definitions:
-\begin{displaymath}
-    \Phi(t)=\frac{1-\sqrt{1-4\,t}}{2}\qquad \alpha=k+1\qquad \beta=k-n
-\end{displaymath}
-Since $\Phi(0)=0$ we cannot apply Lagrange Inversion Formula directly, so start over again 
-and observe that:
-\begin{displaymath}
-    d_{nk}=[t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
-\end{displaymath}
-requires to extract coefficient $n+1$ from the $(k+1)$-fold
+the right most term requires to extract coefficient $n+1$ from the $(k+1)$-fold
 convolution of Catalan numbers' generating function with itself, \emph{shifted
 by one place}. Before going on, careful
 understanding of what coefficients are introduced is necessary. 
@@ -242,6 +205,7 @@ in the last ones, \autoref{eq:catalan:array:second:identity} will be used.
 
 \subsection{On the very first column of $\mathcal{C}_{\equiv_{2}}$}
 
+
 In this section we want to characterize the very first column $\vect{c}_{0}$
 of $\mathcal{C}$, namely the column composed of Catalan numbers only,
 formally $c_{j}=d_{j0}\in\vect{c}_{0}$, for any $j\in\mathbb{N}$.  
@@ -250,6 +214,14 @@ and set a congruence relation, modulo $2$: write $j$ in base $2$,
 so there exists $k\in\mathbb{N}$ such that 
 $j=j_{0} + j_{1}\,2 + j_{2}\,2^{2} + \ldots + j_{k}\,2^{k}$, where
 $j_{r}\in\lbrace0,1\rbrace$, for each $r\in\lbrace0,\ldots,k\rbrace$. 
+
+\begin{theorem}
+    Let $\alpha\in\mathbb{N}$, then $c_{2^{\alpha}-1} \equiv_{2} 1$; 
+    otherwise, for any $j$ odd, $c_{j} \equiv_{2} 0$.
+    Moreover, $c_{0}$ is the only odd Catalan number among those 
+    $\lbrace c_{j}\rbrace_{j\in\mathbb{N}}$ for which $j$ is even.
+\end{theorem}
+
 % now start distinguishing $j$ by cases: if even..., if odd...
 In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
 \begin{itemize}
@@ -266,8 +238,6 @@ In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
             \equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
                 \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
         \end{displaymath}
-        \marginpar{$c_{0}$ is the only odd Catalan number among those 
-            $\lbrace c_{j}\rbrace_{j\in\mathbb{N}}$ for which $j$ is even}
         A boundary case pops out when $\alpha=0$ where $j$ has to be written as 
         $j=0 + 0\cdot2 + 0\cdot2^{2} + \ldots + 0\cdot2^{k}$, therefore:
         \begin{displaymath}
@@ -346,8 +316,6 @@ In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
             j=\left(\underbrace{1,1,\ldots,1}_{\beta},\underbrace{0,0,\ldots,0}_{k-\beta+1}\right)_{2}
         \end{displaymath}
 
-        \marginpar{$c_{2^{\alpha}-1} \equiv_{2} 1$\\Otherwise, for any $j$ odd, 
-            $c_{j} \equiv_{2} 0$} 
         in other words $j = 2^{\beta+1}-1$. As boundary case, to handle $c_{1}$ correctly 
         (the above result doesn't cover it because $\beta>0$) observe:
         \begin{displaymath}
@@ -359,8 +327,6 @@ In \autoref{fig:catalan-first-column}, segment
 $\diagup_{\lbrace 0,1,2,\ldots,2^{4}\rbrace}^{0}$ of $\mathcal{C}_{\equiv_{2}}$
 is highlighted.
 \\\\
-\marginpar{using the ``classic'' closed formula on $c_{2\alpha+1}$ doesn't
-    close the above proof}
 It is interesting to observe that if we use the ``traditional'' closed formula
 for a Catalan coefficient $c_{j}$:
 \begin{displaymath}
