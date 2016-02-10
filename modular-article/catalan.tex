@@ -398,11 +398,11 @@ properties about coefficient $c_{j}$.
         d_{2^{\alpha}-1,s} \equiv_{2} \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}{1}
             \equiv_{2} {{s+2^{\alpha}}\choose{2^{\alpha}}}
     \end{displaymath}
-    because \marginpar{See \emph{Introduction to Combinatorial Analysis} by
-    Riordan}the summation over indices $i_{1},\ldots,i_{s+1}$ asks to count the
+    because the summation over indices $i_{1},\ldots,i_{s+1}$ asks to count the
     number of $2^{\alpha}$-combinations of $s+1$ distinct objects, each of
     which may appear indefinitely often, that is, $0$ to $2^{\alpha}$ times:
-    the saught number is ${{(s+1)+2^{\alpha}-1}\choose{2^{\alpha}}}$.
+    the saught number is ${{(s+1)+2^{\alpha}-1}\choose{2^{\alpha}}}$
+    (see \cite{riordan:intro:combinatorial:analysis}, pag. 7, equation 10).
 
     Again, we're interested on the parity of such coefficient, therefore
     write $s=s_{0}+s_{1}\,2+\ldots+s_{\alpha-1}\,2^{\alpha-1}$, because $s$ can equal 
@@ -423,9 +423,13 @@ In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
 
 \begin{theorem}
     Let $\vect{r}_{2^{\alpha}}$ be a row of $\mathcal{C}_{\equiv_{2}}$, 
-    for some $\alpha\in\mathbb{N}$. Then, exclused the very first coefficient 
-        $d_{2^{\alpha},0}$ which is even, $\vect{r}_{2^{\alpha}}$ is composed of
-        alternating even and odd coefficients.
+    for some $\alpha\in\mathbb{N}$. Then, excluded the very first coefficient 
+    $d_{2^{\alpha},0}$, which is even, $\vect{r}_{2^{\alpha}}$ is composed of
+    alternating even and odd coefficients. Formally:
+    \begin{displaymath}
+        d_{2^{\alpha},j}\equiv_{2}0 \leftrightarrow j = 2k+1
+    \end{displaymath}
+    for some $k\in\mathbb{N}$.
 \end{theorem}
 
 \begin{proof}
@@ -443,8 +447,7 @@ In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
         d_{2^{\alpha},j} = d_{2^{\alpha}-1,j-1} +d_{2^{\alpha}-1,j} +\ldots+d_{2^{\alpha}-1,j+r} 
     \end{displaymath}
     where $r$ satisfies $r=2^{\alpha}-1-j$, so $2^{\alpha}-j+1$ coefficients are 
-    combined.  By \marginpar{$d_{2^{\alpha},j}\equiv_{2}0 \leftrightarrow j$ odd}
-    the theorem above, row $\vect{r}_{2^{\alpha}-1}$ is composed by \emph{odd}
+    combined.  By     the theorem above, row $\vect{r}_{2^{\alpha}-1}$ is composed by \emph{odd}
     coefficients only, therefore proceed by cases on the parity of $j$:
     \begin{itemize}
         \item if $j$ is \emph{odd}, assume $j=2k+1$ for some $k\in\mathbb{N}$, then
@@ -461,10 +464,17 @@ In \autoref{fig:catalan-alternating-row} row $\vect{r}_{2^{4}}$ is highlighted.
 
 \subsection{On the \flqq mirror\frqq\, segment}
 
+Before showing new theorems, we introduce the object
+$\Phi^{(\alpha)}$ which denotes a particular segment contained 
+in the principal cluster $\mathcal{C}^{(\alpha+1)}$. 
+We call $\Phi^{(\alpha)}$ the \flqq mirror\frqq\,segment in 
+$\mathcal{C}^{(\alpha+1)}$ and it is defined as follows:
+\begin{displaymath}
+    \Phi^{(\alpha)}=\diagup_{\lbrace 1,2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}
+\end{displaymath}
+
 \begin{theorem}
-    Choose any $\alpha\in\mathbb{N}$. \marginpar{we call $\Phi^{(\alpha)}$ the \flqq mirror\frqq\,segment}
-    The segment $\Phi^{(\alpha)}=\diagup_{\lbrace 1,2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$, contained 
-    in the principal cluster $\mathcal{C}^{(\alpha+1)}$, satisfies: 
+    Choose any $\alpha\in\mathbb{N}$, then $\Phi^{(\alpha)}$ satisfies: 
     \begin{displaymath}
         d_{s,2^{\alpha}-1}\in\Phi^{(\alpha)} \rightarrow d_{s,2^{\alpha}-1}\equiv_{2}0
     \end{displaymath}
@@ -520,11 +530,14 @@ In \autoref{fig:mirror-segment} the \flqq mirror\frqq\,segment $\Phi^{(4)}$ is h
 
 \subsection{On the \flqq dual\frqq\,segment of the \flqq mirror\frqq\, segment}
 
+Next theorem needs a new piece of notation that allows us to identify a 
+new portion within a principal cluster $\mathcal{C}^{(\alpha+1)}$.
+Let $\hat{\Phi}^{(\alpha)}$ denote the set $\left\lbrace d_{s,s-(2^{\alpha}-1)}\right\rbrace$,
+for $s\in rows\left(\Phi^{(\alpha)}\right)$: we call $\hat{\Phi}^{(\alpha)}$  
+the \flqq dual\frqq\, segment of the \flqq mirror\frqq\,segment $\Phi^{(\alpha)}$.
+
 \begin{theorem}
-    Let \marginpar{we call set $\left\lbrace d_{s,s-(2^{\alpha}-1)}\right\rbrace$,
-        for $s\in rows\left(\Phi^{(\alpha)}\right)$, the \flqq dual\frqq\, segment of 
-    the \flqq mirror\frqq\,segment} 
-    $\Phi^{(\alpha)}=\diagup_{\lbrace 1,2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$, 
+    Let  $\Phi^{(\alpha)}=\diagup_{\lbrace 1,2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$, 
     be a \flqq mirror\frqq\,segment in $\mathcal{C}^{(\alpha+1)}$, then: 
     \begin{equation}
         d_{s,2^{\alpha}-1}\in\Phi^{(\alpha)}\rightarrow d_{s,s-(2^{\alpha}-1)}\equiv_{2}d_{s,2^{\alpha}-1}
@@ -587,9 +600,9 @@ In \autoref{fig:mirror-segment} the \flqq mirror\frqq\,segment $\Phi^{(4)}$ is h
         {{s_{\alpha-2}}\choose{s_{\alpha-1}}}
         {{s_{\alpha-1}-1}\choose{1}}
     \end{displaymath}
-    \marginpar{in order to finish this proof we have to introduce a lemma about
-        the row of alternating odd and even coefficient, which can be proved using
-        the $A$-sequence of $\mathcal{C}$}
+    %\marginpar{in order to finish this proof we have to introduce a lemma about
+    %    the row of alternating odd and even coefficient, which can be proved using
+    %    the $A$-sequence of $\mathcal{C}$}
     By cases on the parity of $s$:
     \begin{itemize}
         \item assume $s$ is \emph{even}, therefore $s_{0}=0$ and the right hand side vanishes due to ${{0}\choose{s_{0}+1}}=0$;
@@ -608,8 +621,7 @@ In \autoref{fig:dual-of-mirror-segment} the \flqq dual\frqq\,segment
 \subsection{On the \emph{upside-down} zero-hole}
 
 \begin{theorem}
-    Let \marginpar{$H_{\bigtriangleup}^{({\alpha})}\subset\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ }
-    $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ be a principal cluster 
+    Let $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ be a principal cluster 
     of order $\alpha+1$ of the Catalan array $\mathcal{C}$. Then, 
     $H_{\bigtriangleup}^{({\alpha})}$ denotes an \emph{upside-down} zero-hole of order $\alpha$,
     such that coefficient $d_{nk}\in H_{\bigtriangleup}^{({\alpha})}$ if 
@@ -617,6 +629,8 @@ In \autoref{fig:dual-of-mirror-segment} the \flqq dual\frqq\,segment
     $k\in\lbrace 0,\ldots, n-2^{{\alpha}}\rbrace$. 
 \end{theorem}
 
+It is simple to observe that $H_{\bigtriangleup}^{({\alpha})}\subset
+\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$. 
 
 \begin{proof}
 We repeatedly use the approach
@@ -970,6 +984,49 @@ a coefficient belonging to subtriangles of interest:
 we have only shown that a \emph{complete} subtriangle is repeated 
 when coefficients are taken modulo $2$. 
 
+\subsection{A Python prototype}
+
+Observation in last paragraph allows us to code a bunch of Python functions, 
+lying on top of SymPy module, that produce 
+$\mathcal{C}_{\equiv 2}^{(\alpha+1)}$ consuming $\mathcal{C}_{\equiv 2}^{(\alpha)}$:
+the construction is strictly \emph{blockwise}, according theorems stated
+in previous section. Here's the implementation:
+
+\begin{adjustwidth}{-4cm}{0cm}
+    \inputminted{python}{../../PhD/projects/recurrences-unfolding/sympy-notebook/colouring.py}
+\end{adjustwidth}
+
+The following is a session that builds $\mathcal{C}_{\equiv 2}^{(7)}$:
+\begin{minted}{python}
+    catalan_matrix = Matrix([
+        [1,0,0,0,0,0], 
+        [1,1,0,0,0,0], 
+        [2,2,1,0,0,0], 
+        [5,5,3,1,0,0], 
+        [14,14,9,4,1,0], 
+        [42,42,28,14,5,1]])
+    alpha = 2
+    bound = 2**alpha
+    pc = catalan_matrix[:bound, :bound]
+    pc = pc.applyfunc(lambda c: c % 2)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+\end{minted}
+
+Function \mintinline{python}|build_modular_catalan| implements given theorems to avoid
+computing convolutions and series expansion: the starting building block in the 
+above session is $\mathcal{C}_{\equiv 2}^{(2)}$, hence it is very quick. 
+If desired, it is possible to display coloured triangles as svg images:
+just uncomment \mintinline{python}|# _ = colour_matrix(pc)| lines.
 
 \subsection{Some open questions}
 

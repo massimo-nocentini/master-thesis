@@ -6,4 +6,6 @@
 *.out
 *.soc
 
-
+_minted-modular-article/
+modular-article.bbl
+modular-article.blg

@@ -13,6 +13,8 @@
 \usepackage{bm}
 \usepackage{bbold}
 \usepackage[english]{babel}
+\usepackage{minted}
+\usepackage{changepage}				
 
 % add 'final' option to make a clear version without any markup or colouring
 \usepackage[authormarkup=none]{changes}
@@ -57,7 +59,8 @@
     \input{catalan.tex}
 
     % bib stuff
-    \nocite{*}
+    % http://tex.stackexchange.com/questions/20138/how-to-show-the-bibliography-which-is-only-cited
+    %\nocite{*}
     \addtocontents{toc}{\protect\vspace{\beforebibskip}}
     \addcontentsline{toc}{section}{\refname}    
     \bibliographystyle{plain}
