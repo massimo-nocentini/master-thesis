@@ -1,6 +1,54 @@
 
-Put here an introduction.
-\\\\
+\noindent Catalan numbers were introduced with this name back in $1838$ by
+Eugene Catalan, although they have been used even before by Ming Antu
+in $1730$. Let $c_{n}$ denote the $n$-th Catalan number, then the following
+table shows the first fifteen element of the infinite sequence 
+$\lbrace c_{n}\rbrace_{n\in\mathbb{N}}$ ($A000108$\footnote{All integer sequences
+defined in this paper are recorded in Sloane \cite{sloane:oeis}: keys of
+the form $Annnnnn$ refer to entries in that database.}):
+\begin{displaymath}
+    \footnotesize
+    \begin{array}{c|ccccccccccccccc}
+        n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 \\
+        \hline
+        c_{n} & 1 & 1 & 2 & 5 & 14 & 42 & 132 & 429 & 1430 & 4862 & 16796 & 58786 & 208012 & 742900 & 2674440
+    \end{array}
+\end{displaymath}
+
+A comprehensive manuscript entirely devoted to these numbers has been recently
+published by Stanley \cite{stanley:2015}, where it is possible to find their history,
+formal characterizations using generating functions and, finally, $214$ combinatorial 
+interpretations.  For the sake of clarity, we report three classes of objects counted by 
+$c_{n}$: first, binary trees with $n$ nodes; 
+second, admissible bracketing of a string with length $n+1$ using $n-1$ pairs
+of curly braces; at last, Dyck paths of length $2n$ using $\diagup$ and $\diagdown$ steps.
+
+It is possible to take $c_{n}$ apart introducing an additional dimension,
+obtaining coefficients $c_{n,k}$ defining a lower triangular infinite 
+matrix $\mathcal{C}$ ($A033184$): in \autoref{tab:catalan:array} 
+we report the upper chunk of that matrix where a coefficient at row $n$ 
+and column $k$ can be interpreted as the number
+of Dyck paths of length $2(n+1)$ with $k$ returns to the ground, start
+and end points excluded -- conventionally, indexes are $0$-based.
+
+% inclusion of matrix expansion for C and its inverse.
+\input{catalan/catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
+
+In the literature, matrix $\mathcal{C}$ is known as \emph{Catalan triangle} and
+it turns out to be a Riordan array. Those arrays forms a family of matrices enjoying
+nice properties and, looking at them from the abstract algebra perspective, 
+form a group structure. 
+Formally, a Riordan array is denoted by a pair of functions $d$ and $h$ which provide a unique 
+characterization for the generic coefficient $d_{n,k}$, lying at row $n$ and column $k$, 
+by extraction of the $n$-th coefficient from the following $k$-convolution:
+\begin{displaymath}
+    d_{n,k} = [t^{n}]d(t)h(t)^{k}
+\end{displaymath}
+Riordan arrays have been introduced by Shapiro et al. \cite{shapiro:1991} in $1991$;
+furthermore, Sprugnoli \cite{sprugnoli:1991} in $1994$ pointed out their importance
+to solve combinatorial sums.
+
+
 We recall some basics of modular arithmetic. Let $a,b\in\mathbb{Z}$
 and $n\in\mathbb{N}$, we say that $a$ is congruent to $b$ modulo $n$,
 written $a \equiv_{n} b$, if and only if $a\mod\,n = b\mod\,n$,

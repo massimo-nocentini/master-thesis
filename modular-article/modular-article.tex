@@ -2,7 +2,8 @@
 \documentclass[11pt,a4paper]{article} % KOMA-Script article scrartcl
 \usepackage{lipsum}
 \usepackage{url}
-\usepackage[nochapters,eulermath,beramono]{classicthesis} % nochapters
+%\usepackage[nochapters,eulermath,beramono]{classicthesis} % nochapters
+\usepackage{concrete}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{amsmath}
@@ -15,6 +16,7 @@
 \usepackage[english]{babel}
 \usepackage{minted}
 \usepackage{changepage}				
+\usepackage{hyperref}				
 
 % add 'final' option to make a clear version without any markup or colouring
 \usepackage[authormarkup=none]{changes}
@@ -38,9 +40,15 @@
 
 
 \begin{document}
-    \title{\rmfamily\normalfont\spacedallcaps{Colouring Catalan triangle}}
-    \author{\spacedlowsmallcaps{Donatella Merlini} \\
-            \spacedlowsmallcaps{Massimo Nocentini}}
+
+    %\title{\rmfamily\normalfont\spacedallcaps{Colouring Catalan triangle}}
+    %\author{\spacedlowsmallcaps{Donatella Merlini} \\
+            %\spacedlowsmallcaps{Massimo Nocentini}}
+
+    \title{Colouring Catalan triangle}
+    \author{Donatella Merlini\\
+            Massimo Nocentini}
+
     \date{\today} 
     
     \maketitle
@@ -52,7 +60,7 @@
         a formal characterization, guided by such picture.
     \end{abstract}
        
-    \tableofcontents
+    %\tableofcontents
 
     \input{preamble.tex}
     \input{previous-work.tex}
@@ -61,7 +69,7 @@
     % bib stuff
     % http://tex.stackexchange.com/questions/20138/how-to-show-the-bibliography-which-is-only-cited
     %\nocite{*}
-    \addtocontents{toc}{\protect\vspace{\beforebibskip}}
+    %\addtocontents{toc}{\protect\vspace{\beforebibskip}}
     \addcontentsline{toc}{section}{\refname}    
     \bibliographystyle{plain}
     \bibliography{../classicthesis/Bibliography}
