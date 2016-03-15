@@ -1,12 +1,13 @@
 
 
 \section{Previous work}
+\label{sec:previous:work}
 
-In this section we recall existing literature about the application of modular
-arithmetic to infinite lower triangular matrices. In particular, we report a
-fundamental theorem about binomial coefficients, proved by Lucas
-in \cite{lucas:theorie:des:nombres}, and
-how it has been used by various authors to establish new and curious results.
+
+First of all, we recall some modular arithmetic fundamentals: let $a,b\in\mathbb{Z}$
+and $n\in\mathbb{N}$, we say that $a$ is congruent to $b$ modulo $n$,
+written $a \equiv_{n} b$, if and only if $a\mod\,n = b\mod\,n$,
+which is the same to say that $a - b = nk$ for some $k\in\mathbb{Z}$.
 
 \subsection{Lucas theorem exposed}
 
@@ -59,7 +60,7 @@ it is a fundamental result for our work.
                 &\equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
         \end{split}
     \end{displaymath}
-    \marginpar{abstracting a convolution introducing set $\Omega_{n}$}
+    %\marginpar{abstracting a convolution introducing set $\Omega_{n}$}
     on the very right hand side there is a product of $k+1$ formal power series, properly shifted according to coefficients
     $m_{0},m_{1},\ldots,m_{k}$. Such product yields a new formal power series which satisfies:
     \begin{displaymath}
@@ -79,8 +80,6 @@ it is a fundamental result for our work.
 
 \end{proof}
 
-Fine used such powerful theorem to prove additional facts
-about binomial coefficients modulo a prime $p$; moreover
 
 \subsection{Divisibility -- with visibility}
 

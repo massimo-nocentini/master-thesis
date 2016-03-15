@@ -1,4 +1,6 @@
 
+\section{Introduction}
+
 \noindent Catalan numbers were introduced with this name back in $1838$ by
 Eugene Catalan, although they have been used even before by Ming Antu
 in $1730$. Let $c_{n}$ denote the $n$-th Catalan number, then the following
@@ -48,8 +50,44 @@ Riordan arrays have been introduced by Shapiro et al. \cite{shapiro:1991} in $19
 furthermore, Sprugnoli \cite{sprugnoli:1991} in $1994$ pointed out their importance
 to solve combinatorial sums.
 
+In this paper we apply a modular transformation of $\mathcal{C}$, denoted by
+$\mathcal{C}_{\equiv_{2}}$, where every coefficient is taken modulo $2$. This
+is a parallel study of the same modular transformation applied to the Pascal array $\mathcal{P}$,
+depicted in \autoref{fig:pascal-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-triangle},
+where a coefficient lying at row $n$ and column $k$ counts the number of subsets
+with $k$ elements of a set with $n$ elements, in other words ${{n}\choose{k}}$.
+Although array $\mathcal{P}_{\equiv_{2}}$ has been studied in depth both because its 
+relation to congruences about binomial coefficients and its connection with
+the Sierpinski gasket \cite{stewart:four:encounters:sierpinski} \cite{sokolov},
+to the best of our knowledge array $\mathcal{C}_{\equiv_{2}}$ seems to be fresh.  
+Our study takes the long track to formally characterize $\mathcal{C}_{\equiv_{2}}$,
+getting back an efficient procedure to build it as a reward: first,
+using the Riordan array definition of $\mathcal{C}$, we find different closed form for
+the generic coefficient $c_{n,k}\in\mathcal{C}$; second, we prove congruences over coefficients
+lying in different regions of the matrix; lastly, use such congruences to implement a procedure
+that builds $\mathcal{C}_{\equiv_{2}}$. 
 
-We recall some basics of modular arithmetic. Let $a,b\in\mathbb{Z}$
-and $n\in\mathbb{N}$, we say that $a$ is congruent to $b$ modulo $n$,
-written $a \equiv_{n} b$, if and only if $a\mod\,n = b\mod\,n$,
-which is the same to say that $a - b = nk$ for some $k\in\mathbb{Z}$.
+To support our work, a bunch of functions using the Python 
+programming language have been implemented on top of the Sage framework 
+\cite{sage}: these allow us to table expansion of a Riordan array
+resorting to Taylor series -- the hard way --, to generate \TeX\,code
+for graphical triangles representations and, finally, to build $\mathcal{C}_{\equiv_{2}}$ 
+in a cheaper way.
+
+\input{pascal/pascal-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
+
+This paper is structured as follows: in this section 
+Catalan numbers and the concept of Riordan arrays have been introduced, moreover we stated the modular
+transformation subject of our study; in \autoref{sec:previous:work} important
+results from existing literature about the application of modular
+arithmetic to infinite lower triangular matrices are refreshed;
+in \autoref{sec:C:precisely} Catalan array $\mathcal{C}$ is formally defined
+and some facts about it are derived; 
+in \autoref{sec:catalan:characterization} $\mathcal{C}_{\equiv_{2}}$ is broken down
+in order to reason on it piecewise; finally, \autoref{sec:conclusions} concludes
+with final comments and open questions.
+
+ %In particular, we report a
+%fundamental theorem about binomial coefficients, proved by Lucas
+%in \cite{lucas:theorie:des:nombres}, and
+%how it has been used by various authors to establish new and curious results.
