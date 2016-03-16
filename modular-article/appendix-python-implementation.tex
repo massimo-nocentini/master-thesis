@@ -1,0 +1,46 @@
+
+\appendix
+
+\section{A Python prototype}
+
+Observation in last paragraph allows us to code a bunch of Python functions, 
+lying on top of SymPy module, that produce 
+$\mathcal{C}_{\equiv 2}^{(\alpha+1)}$ consuming $\mathcal{C}_{\equiv 2}^{(\alpha)}$:
+the construction is strictly \emph{blockwise}, according theorems stated
+in previous section. Here's the implementation:
+
+\begin{adjustwidth}{-4cm}{0cm}
+    \inputminted{python}{../../PhD/projects/recurrences-unfolding/sympy-notebook/colouring.py}
+\end{adjustwidth}
+
+The following is a session that builds $\mathcal{C}_{\equiv 2}^{(7)}$:
+\begin{minted}{python}
+    catalan_matrix = Matrix([
+        [1,0,0,0,0,0], 
+        [1,1,0,0,0,0], 
+        [2,2,1,0,0,0], 
+        [5,5,3,1,0,0], 
+        [14,14,9,4,1,0], 
+        [42,42,28,14,5,1]])
+    alpha = 2
+    bound = 2**alpha
+    pc = catalan_matrix[:bound, :bound]
+    pc = pc.applyfunc(lambda c: c % 2)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+    pc = build_modular_catalan(pc)
+    # _ = colour_matrix(pc)
+\end{minted}
+
+Function \mintinline{python}|build_modular_catalan| implements given theorems to avoid
+computing convolutions and series expansion: the starting building block in the 
+above session is $\mathcal{C}_{\equiv 2}^{(2)}$, hence it is very quick. 
+If desired, it is possible to display coloured triangles as svg images:
+just uncomment \mintinline{python}|# _ = colour_matrix(pc)| lines.

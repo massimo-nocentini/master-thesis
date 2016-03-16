@@ -44,71 +44,89 @@ some properties about $\mathcal{C}_{h+1}$:
 \end{itemize}
 \fi
 
-In this section we would like to give a quick description of
+We are now in the position to formally define the Catalan
 array $\mathcal{C}$ and introduce some mathematical objects
-that will be used later. This array is defined as follow:
+that will be used later. Using Riordan arrays, $\mathcal{C}$ 
+is defined as follow:
 \begin{displaymath}
     \mathcal{C}=\left(\frac{1-\sqrt{1-4\,t}}{2\,t},
         \frac{1-\sqrt{1-4\,t}}{2}\right)
 \end{displaymath}
-since $h_{\mathcal{C}}(t)=t\,d_{\mathcal{C}}(t)$, then $\mathcal{C}$
-is in the \emph{renewal} subgroup.
-
-Denote with $c_{j}$ the $j$-th Catalan coefficient and, 
-by definition of array $\mathcal{C}$, observe that:
+since $h(t)=t\,d(t)$, then $\mathcal{C}$ is in the \emph{renewal} subgroup.
+Instantiating $k=0$ in \autoref{eq:Riordan:array:coefficient},
+$c_{n}$, the $n$-th Catalan number, satisfies the following relation:
 \begin{displaymath}
-    c_{j} = [t^{j}]d_{\mathcal{C}}(t)= [t^{j}]\frac{1-\sqrt{1-4\,t}}{2\,t}
+    c_{n} = c_{n,0} = [t^{n}]d(t)= [t^{n}]\frac{1-\sqrt{1-4\,t}}{2\,t}
 \end{displaymath}
-and since $\mathcal{C}$'s $A$-sequence is:
+
+Every matrix $\mathcal{R}(d(t), h(t))$ in the Riordan group can be characterized, equivalently,
+by two sequences of coefficients: $\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$  and
+$\lbrace z_{n}\rbrace_{n\in\mathbb{N}}$ called $A$-sequence and $Z$-sequence, 
+respectively \cite{rogers:1977}. We can use them to inductively define every coefficient $d_{nk}$ in a Riordan array
+as follows:
+\begin{equation}
+    d_{n+1, k+1} = a_{0}d_{n,k} + a_{1}d_{n,k+1} + a_{2}d_{n,k+2} + \ldots + a_{j}d_{n,k+j} 
+\end{equation}
+where $k>0$ and $j\in\mathbb{N}$ such that $n=k+j$. On the other hand, if $k=0$ then:
+\begin{equation}
+    d_{n+1, 0} = z_{0}d_{n,0} + z_{1}d_{n,1} + z_{2}d_{n,2} + \ldots + z_{n}d_{n,n} 
+\end{equation}
+Moreover, let $A$ and $Z$ be two generating functions over $A$-sequence and $Z$-sequence, respectively;
+then the following relations with functions $d$ and $h$ hold
+\cite{merlini:some:alternative:characterizations:1997}:
+\begin{equation}
+    h(t) = tA(h(t)) \quad d(t)=\frac{d_{00}}{1-tZ(h(t))}
+\end{equation}
+where $d_{00}$ is the very first element in the top left corner of $\mathcal{R}$.
+
+A last fact to be aware of is a fundamental theorem that allows us to multiply $\mathcal{R}$ on the right with
+an infinite column vector $\vect{\omega}=(\omega_{0},\omega_{1},\omega_{2},\ldots)$ 
+as generating functions convolution. It states as follows:
+\begin{equation}
+    \mathcal{R}\vect{\omega} = d(t)\Omega(h(t))    
+\end{equation}
+where $\Omega$ is a generating function such that $\Omega(t)=\sum_{k\in\mathbb{N}}{\omega_{k}t^{k}}$.
+
+We can instantiate previous properties for $\mathcal{C}$, starting with its $A$-sequence:
 \begin{displaymath}
     A_{\mathcal{C}}(t)=\frac{1}{1-t}=1+t+t^{2}+t^{3}+t^{4}+t^{5}+t^{6}+t^{7}+t^{8}+
         \mathcal{O}(t^{9})
 \end{displaymath}
-each coefficient $c_{j}$ can be written as the following combination:
+and, since $\mathcal{C}$ is in the renewal subgroup, it is not difficult to see that its
+$Z$-sequence is the same as $A$-sequence. Using $Z$-sequence characterization then 
+each coefficient $c_{n}$ can be written as the following combination:
 \begin{displaymath}
-    c_{j} = \sum_{k=0}^{j-1}{d_{j-1,k}}
+    c_{n} = \sum_{k=0}^{n-1}{d_{n-1,k}}
 \end{displaymath}
-in other words, $c_{j}$ equals the $(j-1)$-row sum of $\mathcal{C}$, 
-therefore by the \emph{fundamental theorem} of the Riordan group:
-
+in other words, $c_{n}$ equals the $(n-1)$-row sum of $\mathcal{C}$, 
+therefore by the fundamental theorem:
 \begin{displaymath}
-    c_{j} = [t^{j-1}]\mathcal{C}\,A_{\mathcal{C}}(t)
-          = [t^{j-1}]d_{\mathcal{C}}(t)\,A_{\mathcal{C}}(h_{\mathcal{C}}(t))
-          = [t^{j}]h_{\mathcal{C}}(t)\,A_{\mathcal{C}}(h_{\mathcal{C}}(t))
+    c_{n} = [t^{n-1}]\mathcal{C}\,A_{\mathcal{C}}(t)
+          = [t^{n-1}]d(t)\,A_{\mathcal{C}}(h(t))
+          = [t^{n}]h(t)\,A_{\mathcal{C}}(h(t))
 \end{displaymath}
 yielding:
 \begin{displaymath}
-    c_{j} = [t^{j}]\frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}
+    c_{n} = [t^{n}]\frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}
 \end{displaymath}
-with boundary condition $c_{0}=1$, which cannot be read from the above
-series expansion. Moreover, from the above equation, it is possible to derive
+for $n>0$ and boundary condition $c_{0}=1$. 
+Moreover, from the above equation, it is possible to derive
 another generating function for the sequence of Catalan numbers:
-
 \begin{displaymath}
     \frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}=
     \frac{\left(1-\sqrt{1-4 \, t}\right)^{2}}{4 \, t}=
     \frac{1-2\,t-\sqrt{1-4 \, t}}{2 \, t}
 \end{displaymath}
-
-% no more necessary?
-\iffalse
-Go back to identity:
-\begin{displaymath}
-    d_{nk} = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
-            c_{i_{1}-1}\,c_{i_{2}-1}\,\ldots\,c_{i_{k+1}-1} }
-\end{displaymath}
-\fi
-
 Coefficient extraction on previous generating function allow us to write 
-a Catalan coefficient $c_{j}$ in a closed form:
+a well known closed formula for the $n$-th Catalan number:
 \begin{equation}
-    c_{j} = \frac{1}{j+1}{{2j}\choose{j}} 
-        = {{2j}\choose{j}} - {{2j}\choose{j+1}}
+    c_{n} = \frac{1}{n+1}{{2n}\choose{n}} 
+        = {{2n}\choose{n}} - {{2n}\choose{n+1}}
     \label{eq:catalan:coeff:rewriting}
 \end{equation}
 
-On the other hand, the generic element
-$d_{nk}\in\mathcal{C}$ admits closed formulae too. According to
+On the other hand, the generic element $c_{nk}\in\mathcal{C}$ 
+admits closed formulae too. According to
 \cite{luzon:2012631}, two of them are of
 particular interest in order to complete our proofs:
 \begin{equation}
@@ -122,8 +140,8 @@ and:
 \end{equation}
 
 
-The last object we want to
-introduce is a pair that allow to talk about a subset of elements lying on a
+The last object we want to introduce is a pair that allows us 
+to talk about a subset of elements lying on a
 column $\vect{c}_{k}$ of $\mathcal{C}$. Let $S\subseteq\mathbb{N}$  
 and let $k\in\mathbb{N}$, then a \emph{segment} of column $\vect{c}_{k}$ is
 denoted by the following relation:

@@ -5,13 +5,16 @@
 
 
 First of all, we recall some modular arithmetic fundamentals: let $a,b\in\mathbb{Z}$
-and $n\in\mathbb{N}$, we say that $a$ is congruent to $b$ modulo $n$,
-written $a \equiv_{n} b$, if and only if $a\mod\,n = b\mod\,n$,
-which is the same to say that $a - b = nk$ for some $k\in\mathbb{Z}$.
+and $n\in\mathbb{N}$, to say that $a$ is congruent to $b$ modulo $n$,
+written as $a \equiv_{n} b$, is the same to say:
+\begin{displaymath}
+    a\mod n = b\mod n\quad \leftrightarrow\quad n \left| (a-b)\right. \quad\leftrightarrow \quad a - b = nk
+\end{displaymath}
+for some $k\in\mathbb{Z}$.
 
 \subsection{Lucas theorem exposed}
 
-In \cite{fine:1947}, Fine exposes Lucas theorem; we state it and report a proof since
+In \cite{fine:1947}, Fine exposes Lucas theorem: we state it and report a proof since
 it is a fundamental result for our work. 
 
 \begin{theorem}[Lucas theorem]
@@ -88,14 +91,14 @@ divisibility properties of some \emph{counting numbers}, that is coefficients
 occurring in combinatorics, such as binomials and Stirling numbers. Many of
 such coefficients shows divisibility structures of remarkable design. 
 
-She starts working on the Pascal triangle, namely the lower triangular infinite
-matrix defined inductively by the recurrence: 
+She starts working on the Pascal triangle $\mathcal{P}$, whose coefficients
+can be defined inductively using the following recurrence: 
 \begin{equation}
     {{n}\choose{k}}={{n-1}\choose{k-1}}+{{n-1}\choose{k}}
     \label{eq:binomial:recurrence}
 \end{equation}
-and applies a modification to build the Pascal array modulo a prime $p$.
-%reporting some interesting tables for some values of the module.
+and studies $\mathcal{P}_{\equiv_{p}}$, where $p$ ranges over the first primes, 
+namely the Pascal array where each coefficient is taken modulo $p$.
 
 We believe that one of the core concepts she introduces is a little language
 that allows her to characterize these arrays and we adopt it 
