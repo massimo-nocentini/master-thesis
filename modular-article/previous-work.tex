@@ -38,12 +38,14 @@ it is a fundamental result for our work.
     of coefficients which counts the number of subset
     of a set composed by $m$ elements. Use sequence $\vect{\alpha}$ to define a formal power series:
     \begin{displaymath}
-        \begin{split}
-            \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} &= \left(1+t\right)^{m}
-                = \left(1+t\right)^{m_{0}+m_{1}p+\ldots+m_{k}p^{k}}\\
-                &= \prod_{r=0}^{k}{{\left(1+t\right)^{m_{r}p^{r}}}}
+        %\begin{split}
+            \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} %&
+                = \left(1+t\right)^{m}
+                = \left(1+t\right)^{m_{0}+m_{1}p+\ldots+m_{k}p^{k}}%\\
+                %&
+                = \prod_{r=0}^{k}{{\left(1+t\right)^{m_{r}p^{r}}}}
                 = \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
-        \end{split}
+        %\end{split}
     \end{displaymath}
     expansion of $\left(1+t\right)^{p^{r}}$ yield: 
     \begin{displaymath}
@@ -51,17 +53,12 @@ it is a fundamental result for our work.
                 = 1+\sum_{s=1}^{p^{r}-1}{{{p^{r}}\choose{s}}\,t^{s}}+t^{p^{r}}
     \end{displaymath}
     application of congruence relation modulo $p$ makes the sum vanish since ${{p^{r}}\choose{s}}=p\,u_{s}$,
-    for some $u_{s}\in\mathbb{N}$ and $s\in\lbrace 1,\ldots,p^{r}-1\rbrace$, therefore:
+    for some $u_{s}\in\mathbb{N}$ and $s\in\lbrace 1,\ldots,p^{r}-1\rbrace$, therefore $\left(1+t\right)^{p^{r}} = 1+t^{p^{r}}$.
+    We can rewrite as:
     \begin{displaymath}
-        \left(1+t\right)^{p^{r}} = 1+t^{p^{r}}
-    \end{displaymath}
-    we can rewrite as:
-    \begin{displaymath}
-        \begin{split}
             \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
-                &\equiv_{p} \prod_{r=0}^{k}{\left(1+t^{p^{r}}\right)^{m_{r}}}\\
-                &\equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
-        \end{split}
+                \equiv_{p} \prod_{r=0}^{k}{\left(1+t^{p^{r}}\right)^{m_{r}}}
+                \equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
     \end{displaymath}
     %\marginpar{abstracting a convolution introducing set $\Omega_{n}$}
     on the very right hand side there is a product of $k+1$ formal power series, properly shifted according to coefficients
@@ -77,9 +74,10 @@ it is a fundamental result for our work.
     $\lbrace n_{0},n_{1},\ldots,n_{k}\rbrace$ such that $n=\sum_{j=0}^{k}{n_{j}p^{j}}$, therefore
     each set $\Omega_{n}$ contains only one element, namely $\vect{\omega}=(n_{0},\ldots,n_{k})$, so:
     \begin{displaymath}
+        \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} 
         \equiv_{p} \sum_{n=0}^{m}{\left({\prod_{i=0}^{k}{{{m_{i}}\choose{n_{i}}}}}\right)\,t^{n}}
     \end{displaymath}
-    equating coefficients the argument follows, as required.
+    equating coefficients attached to $t^{n}$, for $n\in\lbrace0,\ldots,m\rbrace$, the argument follows, as required.
 
 \end{proof}
 
@@ -104,36 +102,36 @@ We believe that one of the core concepts she introduces is a little language
 that allows her to characterize these arrays and we adopt it 
 as well. In the following paragraphs we describe this language. 
 \\\\
-Let $\mathcal{M}=\lbrace m_{nk}\rbrace_{n,k\in\mathbb{N}}$ 
-be an infinite lower triangular array, where $m_{nk}=0$ if 
+Let $\mathcal{M}=\lbrace m_{n,k}\rbrace_{n,k\in\mathbb{N}}$ 
+be an infinite lower triangular array, where $m_{n,k}=0$ if 
 $n<k$. Choose a prime $p$, then build a modular array
 $\mathcal{M}_{\equiv_{p}}$ defined as 
-$\lbrace m_{nk}\mod p : m_{nk} \in \mathcal{M}\rbrace$.
+$\lbrace m_{n,k}\mod p : m_{n,k} \in \mathcal{M}\rbrace$.
 
 
 A \emph{principal cell} is a chunk of $\mathcal{M}_{\equiv_{p}}$ denoted by:
 \begin{displaymath}
     \mathcal{M}_{\equiv_{p}}^{\bigtriangleup} = 
-        \left\lbrace m_{nk}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p-1\rbrace\right\rbrace
+        \left\lbrace m_{n,k}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p-1\rbrace\right\rbrace
 \end{displaymath}
 
 A \emph{cell} $c_{\beta}$ is a copy of the \emph{principal cell} with each entry multiplied 
 by the same constant $\beta\in\mathbb{N}$, formally:
 \begin{displaymath}
-    c_{\beta}=\left\lbrace \beta\,m_{nk}\mod p:m_{nk}\in \mathcal{M}_{\equiv_{p}}^{\bigtriangleup}\right\rbrace
+    c_{\beta}=\left\lbrace \beta\,m_{n,k}\mod p:m_{n,k}\in \mathcal{M}_{\equiv_{p}}^{\bigtriangleup}\right\rbrace
 \end{displaymath}
 
 A \emph{principal cluster} of order $\alpha$ is a chunk of $\mathcal{M}_{\equiv_{p}}$ denoted by:
 \begin{displaymath}
     \mathcal{M}_{\equiv_{p}}^{(\alpha)} = 
-        \left\lbrace m_{nk}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p^{\alpha}-1\rbrace\right\rbrace
+        \left\lbrace m_{n,k}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p^{\alpha}-1\rbrace\right\rbrace
 \end{displaymath}
 
 A \emph{cluster} $\mathcal{C}_{\beta}^{(\alpha)}$ of order $\alpha$ is a copy of the \emph{principal cluster}
 of order $\alpha$ with each entry multiplied 
 by the same constant $\beta\in\mathbb{N}$, formally:
 \begin{displaymath}
-    \mathcal{C}_{\beta}^{(\alpha)}=\left\lbrace \beta\,m_{nk}\mod p:m_{nk}\in \mathcal{M}_{\equiv_{p}}^{(\alpha)}\right\rbrace
+    \mathcal{C}_{\beta}^{(\alpha)}=\left\lbrace \beta\,m_{n,k}\mod p:m_{n,k}\in \mathcal{M}_{\equiv_{p}}^{(\alpha)}\right\rbrace
 \end{displaymath}
 
 Finally, a \emph{zero-hole} of order $\alpha$ is an inverted triangular array of

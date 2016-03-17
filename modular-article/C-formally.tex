@@ -54,15 +54,15 @@ is defined as follow:
 \end{displaymath}
 since $h(t)=t\,d(t)$, then $\mathcal{C}$ is in the \emph{renewal} subgroup.
 Instantiating $k=0$ in \autoref{eq:Riordan:array:coefficient},
-$c_{n}$, the $n$-th Catalan number, satisfies the following relation:
+the $n$-th Catalan number $c_{n}$ satisfies the following relation:
 \begin{displaymath}
-    c_{n} = c_{n,0} = [t^{n}]d(t)= [t^{n}]\frac{1-\sqrt{1-4\,t}}{2\,t}
+    c_{n} = [t^{n}]d(t)= [t^{n}]\frac{1-\sqrt{1-4\,t}}{2\,t}
 \end{displaymath}
 
 Every matrix $\mathcal{R}(d(t), h(t))$ in the Riordan group can be characterized, equivalently,
 by two sequences of coefficients: $\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$  and
 $\lbrace z_{n}\rbrace_{n\in\mathbb{N}}$ called $A$-sequence and $Z$-sequence, 
-respectively \cite{rogers:1977}. We can use them to inductively define every coefficient $d_{nk}$ in a Riordan array
+respectively \cite{rogers:1977}. We can use them to define inductively every coefficient $d_{nk}$ in a Riordan array
 as follows:
 \begin{equation}
     d_{n+1, k+1} = a_{0}d_{n,k} + a_{1}d_{n,k+1} + a_{2}d_{n,k+2} + \ldots + a_{j}d_{n,k+j} 
@@ -75,9 +75,9 @@ Moreover, let $A$ and $Z$ be two generating functions over $A$-sequence and $Z$-
 then the following relations with functions $d$ and $h$ hold
 \cite{merlini:some:alternative:characterizations:1997}:
 \begin{equation}
-    h(t) = tA(h(t)) \quad d(t)=\frac{d_{00}}{1-tZ(h(t))}
+    h(t) = tA(h(t)) \quad d(t)=\frac{d_{0,0}}{1-tZ(h(t))}
 \end{equation}
-where $d_{00}$ is the very first element in the top left corner of $\mathcal{R}$.
+where $d_{0,0}$ is the very first element in the top left corner of $\mathcal{R}$.
 
 A last fact to be aware of is a fundamental theorem that allows us to multiply $\mathcal{R}$ on the right with
 an infinite column vector $\vect{\omega}=(\omega_{0},\omega_{1},\omega_{2},\ldots)$ 
@@ -94,9 +94,9 @@ We can instantiate previous properties for $\mathcal{C}$, starting with its $A$-
 \end{displaymath}
 and, since $\mathcal{C}$ is in the renewal subgroup, it is not difficult to see that its
 $Z$-sequence is the same as $A$-sequence. Using $Z$-sequence characterization then 
-each coefficient $c_{n}$ can be written as the following combination:
+each coefficient $c_{n}$ can be written as the combination of coefficients $c_{n,k}\in\mathcal{C}$:
 \begin{displaymath}
-    c_{n} = \sum_{k=0}^{n-1}{d_{n-1,k}}
+    c_{n} = \sum_{k=0}^{n-1}{c_{n-1,k}}
 \end{displaymath}
 in other words, $c_{n}$ equals the $(n-1)$-row sum of $\mathcal{C}$, 
 therefore by the fundamental theorem:
@@ -129,15 +129,12 @@ On the other hand, the generic element $c_{nk}\in\mathcal{C}$
 admits closed formulae too. According to
 \cite{luzon:2012631}, two of them are of
 particular interest in order to complete our proofs:
-\begin{equation}
-    d_{nk}=\frac{k+1}{n+1}{{2n-k}\choose{n-k}}
-    \label{eq:catalan:array:first:identity}
-\end{equation}
-and:
-\begin{equation}
-    d_{nk}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}
+\begin{eqnarray}
+    & c_{n,k}=\frac{k+1}{n+1}{{2n-k}\choose{n-k}}
+    \label{eq:catalan:array:first:identity}\\
+    & c_{n,k}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}
     \label{eq:catalan:array:second:identity}
-\end{equation}
+\end{eqnarray}
 
 
 The last object we want to introduce is a pair that allows us 
@@ -163,9 +160,9 @@ row indices belonging to a segment we introduce the $rows$ function, defined as 
 
 
 In order to formally proof the modular characterization $\mathcal{C}_{\equiv_{2}}$, 
-write the generic element $d_{nk}\in\mathcal{C}$ using the definition:
+write the generic element $c_{n,k}\in\mathcal{C}$ using the definition:
 \begin{displaymath}
-    d_{nk} = [t^n] \frac{1-\sqrt{1-4\,t}}{2\,t}\,
+    c_{n,k} = [t^n] \frac{1-\sqrt{1-4\,t}}{2\,t}\,
         \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k}
            = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
 \end{displaymath}
@@ -189,7 +186,7 @@ the traditional Catalan numbers:
         + \mathcal{O}\left(t^{7}\right)
 \end{displaymath}
 so the relationship $\hat{c}_{j} = c_{j-1}$ holds for any $j\in\mathbb{N}$, 
-with boundary condition $c_{-1}=0$.  Looking at the previous expression for $d_{nk}$,
+with boundary condition $c_{-1}=0$.  Looking at the previous expression for $d_{n,k}$,
 there exists indices $i_{1}, i_{2}, \ldots, i_{k+1}$,
 where $i_{j}\in\lbrace0,\ldots,n+1\rbrace$ for each $j\in\lbrace1,\ldots,k+1\rbrace$, 
 such that:
@@ -200,7 +197,7 @@ such that:
 \end{displaymath}
 which is the same as:
 \begin{equation}
-    d_{nk} = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
+    d_{n,k} = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
             c_{i_{1}-1}\,c_{i_{2}-1}\,\ldots\,c_{i_{k+1}-1} }
     \label{eq:convolution:expansion:for:generic:element:in:catalan:array}
 \end{equation}

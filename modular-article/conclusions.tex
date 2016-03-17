@@ -2,32 +2,18 @@
 \section{Conclusions}
 \label{sec:conclusions}
 
-We would like to point out that \autoref{thm:mirror:segment:definition},
-\autoref{thm:upside:down:zero:hole}, \autoref{thm:two:mirrored:clusters} and
-\autoref{thm:principal:cluster:copy:containment} allow us to build an efficient
-procedure, written using the Python language, that builds $\mathcal{C}_{\equiv_{2}}$
-inductively without resorting to the hard-way approach, which consists to compute
-matrix expansion of $\mathcal{C}$ doing convolutions and Taylor expansion for each column, 
-then take each coefficient modulo 2 and, finally, plot the result. Using theorems,
-we can build a principal cluster $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ consuming
-a principal cluster $\mathcal{C}_{\equiv_{2}}^{(\alpha)}$ and acting as follows:
-first, place $\mathcal{C}_{\equiv_{2}}^{(\alpha)}$ on top; second, place another copy
-on the very right in the bottom halve of $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$;
-third, mirror last copy respect the mirror segment; finally, fill the upside-down
-triangle on the very left in the bottm halve with zeros. Such procedure is much faster
-and easier to implement that the one written by strait implementation of definitions.
 
-To summarize our work, we provide a study of the congruence $\equiv_{2}$ to the
+To summarize our work, we provide a study of the congruence $\equiv_{2}$ mapped to the
 Catalan array $\mathcal{C}$, both a formal approach to characterize different
-regions and an implementation are given. As $\mathcal{P}_{\equiv_{2}}$ is very interesting,
-is our opionion that $\mathcal{P}_{\equiv_{2}}$ should deserve interest too because
-of its recursive flavor and connection to universal counting Catalan numbers.
+regions and implementations are given. Even though array $\mathcal{P}_{\equiv_{2}}$ is very interesting 
+and deeply studied, is our opionion that $\mathcal{P}_{\equiv_{2}}$ should deserve interest as well 
+because of its recursive flavor and connection to universal counting Catalan numbers.
 
 We finish pointing out directions for further studies: we would like to understand
 how a generalization to congruence $\equiv_{p}$, for $p$ prime, can be proved using
 either a closed formula for the generic coefficient or algebraic generating function manipulations;
 at last, find a modular characterization of $\mathcal{C}_{\equiv_{2}}^{-1}$, the inverse
-element of $\mathcal{C}_{\equiv_{2}}$, depicted in 
+group element of $\mathcal{C}_{\equiv_{2}}$, depicted in 
 \autoref{fig:catalan-traditional-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}.
 
 \input{catalan/catalan-traditional-inverse-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}

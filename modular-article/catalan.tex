@@ -105,7 +105,7 @@ In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
         \end{displaymath}
         so the congruence relation gets the following shape:
         \begin{displaymath}
-            \hspace{-2cm}
+            %\hspace{-2cm}
             c_{j}\equiv_{2}{{2j}\choose{j+1}}
                 \equiv_{2} \underbrace{{{0}\choose{0}}{{1}\choose{0}}
                 {{1}\choose{0}}\ldots{{1}\choose{0}}}_{\beta} 
@@ -381,9 +381,8 @@ the \flqq dual\frqq\, segment of the \flqq mirror\frqq\,segment $\Phi^{(\alpha)}
         s=s_{0} + s_{1}2 + s_{2}2^{2}+\ldots+s_{\alpha-1}2^{\alpha-1}+2^{\alpha}
     \end{displaymath}
     and applying Lucas theorem we get:
-
     \begin{displaymath}
-        \hspace{-2cm}
+        %\hspace{-2cm}
         {{s_{0}}\choose{s_{0}+1}}
         {{s_{1}}\choose{s_{1}}}
         \ldots
@@ -459,15 +458,13 @@ So the corresponding set of row indices  is a segment of Catalan numbers:
 since no coefficient $c_{j}\in S_{0}$ has the shape $c_{2^{\alpha}-1}$, 
 all coefficients in $S_{0}$ are even.
 
-Go ahead with column $\vect{c}_{1}$, so the corresponding segment is :
-\begin{displaymath}
-    S_{1}=\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-3\rbrace}^{1}
+Go ahead with column $\vect{c}_{1}$, so the corresponding segment is
+%\begin{displaymath}
+    $S_{1}=\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-3\rbrace}^{1}$
     %S_{1}=\lbrace d_{2^{{\alpha}}+1,1},\ldots,d_{2^{{\alpha}+1}-2,1} \rbrace
-\end{displaymath}
-and coefficients in it are defined according to:
-\begin{displaymath}
-    d_{s, 1} = \sum_{i_{1}+i_{2}=s+1} {c_{i_{1}-1}\,c_{i_{2}-1}}
-\end{displaymath}
+%\end{displaymath}
+and coefficients in it are defined according to 
+$d_{s, 1} = \sum_{i_{1}+i_{2}=s+1} {c_{i_{1}-1}\,c_{i_{2}-1}}$,
 where $s\in rows(S_{1})= \left\lbrace 2^{\alpha}+1,2^{\alpha}+2,\ldots,2^{\alpha+1}-2\right\rbrace$. 
 This is quite similar to the proof developed for the \flqq mirror\frqq\,segment,
 with the difference that summand term is composed of two coefficients, namely
@@ -503,7 +500,7 @@ Before approaching a structured proof, we look for some insights.
 According to \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array},
 rewrite both members:
 \begin{displaymath}
-    \hspace{-2cm}
+    %\hspace{-2cm}
     \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-e}=s-e+1}
         {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-e}-1}}
     \equiv_{2}
@@ -513,7 +510,7 @@ rewrite both members:
 panic! No idea to tackle the general setting as a whole. So, start small and
 let $s=2^{{\alpha}}+1$, therefore no choices for $e$, $e=1$ is mandatory:
 \begin{displaymath}
-    \hspace{-2cm}
+    %\hspace{-2cm}
     \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-1}=2^{{\alpha}}+1}
         {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-1}-1}}
     \equiv_{2}
@@ -526,10 +523,8 @@ too difficult to proceed on this path, too.
 We attempt another \emph{false start} using closed formulae for
 the generic element $d_{nk}\in\mathcal{C}$.
 \begin{proof}
-Assume not, therefore we need to yield a contraddiction if:
-\begin{displaymath}
-    d_{s-e,2^{{\alpha}}-1-e} \not\equiv_{2} d_{s,2^{{\alpha}}-1+e}
-\end{displaymath}
+Assume not, therefore we need to yield a contraddiction if
+    $d_{s-e,2^{{\alpha}}-1-e} \not\equiv_{2} d_{s,2^{{\alpha}}-1+e}$
 holds. Rewriting the congruence according to \autoref{eq:catalan:array:first:identity}
  for $d_{nk}$:
 \begin{displaymath}
@@ -657,7 +652,7 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
                 which cannot be the case, as we've already seen.  Adding $1$ yield the representation
                 $(\underbrace{0,0,\ldots,0}_{r},1,s_{r+1},s_{r+2},\ldots,s_{{\alpha}-1},1)_{2}$, therefore:
                 \begin{displaymath}
-                    \hspace{-2cm}
+                    %\hspace{-2cm}
                     {{2s-2^{{\alpha}}}\choose{s+1}} 
                     \equiv_{2} 
                     \underbrace{
@@ -690,7 +685,7 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
 
         \item assume the argument holds for $k\leq e$ and prove for $k=e+1$, so we need to show:
             \begin{displaymath}
-                \hspace{-6cm}
+                \hspace{-3cm}
                 \begin{split}
                     {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}+1}}
                         - {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}}}
@@ -741,7 +736,7 @@ left with a last theorem.
 \begin{proof}
 We tackle the proof using \autoref{eq:catalan:array:second:identity}:
 \begin{displaymath}
-    \hspace{-4cm}
+    %\hspace{-4cm}
     \begin{split}
         {{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)}} - {{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)-1}}
         &\equiv_{2}
@@ -774,7 +769,7 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
 
         \item assume the argument holds for $k\leq e$ and prove for $k=e+1$, so we need to show:
             \begin{displaymath}
-                \hspace{-7cm}
+                \hspace{-3cm}
                 \begin{split}
                     {{2s-2^{{\alpha}}+1-(e+1)}\choose{s}} - {{2s-2^{{\alpha}}+1-(e+1)}\choose{s+1}}
                     &\equiv_{2}
@@ -797,3 +792,22 @@ a coefficient belonging to subtriangles of interest:
 we have only shown that a \emph{complete} subtriangle is repeated 
 when coefficients are taken modulo $2$. 
 
+\subsection{A cheaper procedure to build $\mathcal{C}_{\equiv_{2}}$}
+
+We have used \autoref{thm:mirror:segment:definition},
+\autoref{thm:upside:down:zero:hole}, \autoref{thm:two:mirrored:clusters} and
+\autoref{thm:principal:cluster:copy:containment} to build an efficient
+procedure, written using the Python language, that builds $\mathcal{C}_{\equiv_{2}}$
+inductively without resorting to the hard-way approach. The latter consists of 
+computing the matrix expansion of $\mathcal{C}$ by doing convolutions and 
+Taylor expansion for each column, then taking each coefficient $c_{nk}\in\mathcal{C}$ modulo 2. 
+On the contrary, the former uses theorems to 
+assemble $\mathcal{C}_{\equiv_{2}}$ blockwise: it builds a principal cluster 
+$\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ consuming a principal cluster 
+$\mathcal{C}_{\equiv_{2}}^{(\alpha)}$, treating it as a whole block. For the sake of clarity,
+let us divide $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ in half obtaining two strips, then the former approach acts as follows:
+first, it places $\mathcal{C}_{\equiv_{2}}^{(\alpha)}$ in the top strip -- which is a triangle itself; 
+second, it places another copy of $\mathcal{C}_{\equiv_{2}}^{(\alpha)}$ on the very right portion in the bottom strip;
+third, it mirrors last copied block respect to the mirror segment; 
+finally, it fills with zeros the upside-down triangle on the very left portion in the bottom strip. 
+Such procedure is much faster and easier to code that the one that implements definitions explicitly.
