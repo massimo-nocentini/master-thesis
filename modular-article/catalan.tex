@@ -5,34 +5,31 @@
 \input{catalan/catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
 In this section we tackle a modular characterization, using congruence relation
 $\equiv_{2}$, for the Catalan array $\mathcal{C}$ from a formal point of view.
-We aim at a proof driven from
+We aim at a proof driven by
 \autoref{fig:catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle},
-and in order to complete it, we proceed \emph{piecewise}, breaking such
-characterization into the following sections, where an independent chunk of
+and, in order to fullfil it, we proceed \emph{piece-wise} breaking such
+characterization into the following sections, where an independent region of
 $\mathcal{C}_{\equiv_{2}}$ is described in each one of them.
 
 
 \subsection{On the very first column of $\mathcal{C}_{\equiv_{2}}$}
 
-
 In this section we want to characterize the very first column $\vect{c}_{0}$
-of $\mathcal{C}$, namely the column composed of Catalan numbers only,
-formally $c_{j}=d_{j0}\in\vect{c}_{0}$, for any $j\in\mathbb{N}$.  
-Use \autoref{eq:catalan:coeff:rewriting}
-and set a congruence relation, modulo $2$: write $j$ in base $2$, 
-so there exists $k\in\mathbb{N}$ such that 
+of $\mathcal{C}_{\equiv_{2}}$, namely the column composed of Catalan numbers only,
+formally $c_{j}=c_{j,0}\in\vect{c}_{0}$, for any $j\in\mathbb{N}$:  
+for the sake of clarity, in \autoref{fig:catalan-first-column} segment
+$\diagup_{\lbrace 0,1,2,\ldots,2^{4}\rbrace}^{0}$ of $\vect{c}_{0}\subset\mathcal{C}_{\equiv_{2}}$
+is highlighted. In the proof, congruence relation $\equiv_{2}$ is applied to \autoref{eq:catalan:coeff:rewriting};
+moreover, we write $j$ in base $2$, so there exists $k\in\mathbb{N}$ such that 
 $j=j_{0} + j_{1}\,2 + j_{2}\,2^{2} + \ldots + j_{k}\,2^{k}$, where
 $j_{r}\in\lbrace0,1\rbrace$, for each $r\in\lbrace0,\ldots,k\rbrace$. 
 
 \begin{theorem}
-    Let $\alpha\in\mathbb{N}$, then $c_{2^{\alpha}-1} \equiv_{2} 1$; 
-    otherwise, for any $j$ odd, $c_{j} \equiv_{2} 0$.
-    Moreover, $c_{0}$ is the only odd Catalan number among those 
-    $\lbrace c_{j}\rbrace_{j\in\mathbb{N}}$ for which $j$ is even.
+    Let $j\in\mathbb{N}$, then $c_{j} \equiv_{2} 0$ unless $j=2^{\alpha}-1$ for some $\alpha\in\mathbb{N}$, 
+    where $c_{2^{\alpha}-1} \equiv_{2} 1$ holds.
 \end{theorem}
-
-% now start distinguishing $j$ by cases: if even..., if odd...
-In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
+As a boundary case, observe that $c_{0} \equiv_{2} 1$ because for the subscript $j=0$
+let $\alpha=0$ so that $j = 2^{\alpha}-1$. In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
 \begin{itemize}
     \item let $j=2\alpha$, for some $\alpha\in\mathbb{N}$, so $j_{0}=0$,
         which make vanish the minuend:
@@ -132,10 +129,6 @@ In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
         \end{displaymath}
 \end{itemize}
 
-In \autoref{fig:catalan-first-column}, segment
-$\diagup_{\lbrace 0,1,2,\ldots,2^{4}\rbrace}^{0}$ of $\mathcal{C}_{\equiv_{2}}$
-is highlighted.
-\\\\
 It is interesting to observe that if we use the ``traditional'' closed formula
 for a Catalan coefficient $c_{j}$:
 \begin{displaymath}
@@ -146,12 +139,12 @@ where $j=2\alpha+1$, it would have been hard to handle, because:
     2(\alpha+1)\,c_{j}\equiv_{2} {{0}\choose{1}}{{1}\choose{j_{1}}}
             \ldots{{j_{k-1}}\choose{j_{k}}} \equiv_{2} 0
 \end{displaymath}
-reduces to $0\equiv_{2}0$, giving no opportunity to derive some
-properties about coefficient $c_{j}$.
+reduces to $0\equiv_{2}0$, giving no opportunity to derive any
+property about coefficient $c_{j}$.
 
 \input{catalan/first-column-include-figure.tex}
 
-\subsection{On rows composed of \emph{odd} coeffients only}
+\subsection{On rows composed of \emph{odd} coefficients only}
 
 \begin{theorem}
     Every row $\vect{r}_{2^{\alpha}-1}$ of $\mathcal{C}_{\equiv_{2}}$, 
@@ -210,7 +203,7 @@ properties about coefficient $c_{j}$.
     because the summation over indices $i_{1},\ldots,i_{s+1}$ asks to count the
     number of $2^{\alpha}$-combinations of $s+1$ distinct objects, each of
     which may appear indefinitely often, that is, $0$ to $2^{\alpha}$ times:
-    the saught number is ${{(s+1)+2^{\alpha}-1}\choose{2^{\alpha}}}$
+    the sought number is ${{(s+1)+2^{\alpha}-1}\choose{2^{\alpha}}}$
     (see \cite{riordan:intro:combinatorial:analysis}, pag. 7, equation 10).
 
     Again, we're interested on the parity of such coefficient, therefore
@@ -299,11 +292,10 @@ write it as:
     d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
         {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}}
 \end{displaymath}
-Observe that, for $s$ varing in the allowed range of $\Phi^{(\alpha)}$,
-the number of Catalan coefficients
-multiplied together in each summand is the same, namely $2^{\alpha}$. 
-What changes respect to $s$ is the set of values 
-each index $i_{j}$ can take. Look at the following table, where $j$ and $k$
+Observe that, for $s\in\Phi^{(\alpha)}$, the number of Catalan
+coefficients multiplied together in each summand is the same, namely
+$2^{\alpha}$.  What changes respect to $s$ is the set of values each
+index $i_{j}$ can take. Look at the following table, where $j$ and $k$
 are dummy variables:
 \begin{displaymath}
     \begin{array}{c|c|c}
@@ -523,7 +515,7 @@ too difficult to proceed on this path, too.
 We attempt another \emph{false start} using closed formulae for
 the generic element $d_{nk}\in\mathcal{C}$.
 \begin{proof}
-Assume not, therefore we need to yield a contraddiction if
+Assume not, therefore we need to yield a contradiction if
     $d_{s-e,2^{{\alpha}}-1-e} \not\equiv_{2} d_{s,2^{{\alpha}}-1+e}$
 holds. Rewriting the congruence according to \autoref{eq:catalan:array:first:identity}
  for $d_{nk}$:
@@ -544,9 +536,9 @@ manipulate using ${{n}\choose{k}}={{n}\choose{n-k}}$:
     \not\equiv_{2}
     \frac{2^{{\alpha}}+e}{s+1}{{2s-2^{{\alpha}}+1-e}\choose{s}}
 \end{displaymath}
-dead end: nonetheless binomial coeffients allow some grunging,
+dead end: nonetheless binomial coeffients allow some grudging,
 fractions on both side are difficult to handle since it's hard
-to find their multiplicative inverses, modulo $2$. A contraddiction
+to find their multiplicative inverses, modulo $2$. A contradiction
 is difficult to be reached using this approach.
 \end{proof} 
 
@@ -643,7 +635,7 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
                 therefore the right hand side reduces to $1$, modulo $2$.
                 Observe that coefficients $\lbrace s_{i}\rbrace_{i\in\lbrace1,\ldots,{\alpha}-2\rbrace}$
                 cannot be all $1$ otherwise 
-                $s=(\underbrace{1,1,1,\ldots,1}_{{\alpha}+1})_{2}=2^{{\alpha}+1}-1$ raises a contraddiction, because
+                $s=(\underbrace{1,1,1,\ldots,1}_{{\alpha}+1})_{2}=2^{{\alpha}+1}-1$ raises a contradiction, because
                 $s$ can assume $2^{{\alpha}+1}-2$ at most. 
                 
                 For the latter, namely $s+1$, assume $s$ can be represented as 
@@ -788,8 +780,8 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
 Before concluding the modular characterization of $\mathcal{C}$, 
 we would like to observe that the last two
 theorems do not say anything about the \emph{value} of remainder for 
-a coefficient belonging to subtriangles of interest: 
-we have only shown that a \emph{complete} subtriangle is repeated 
+a coefficient belonging to sub triangles of interest: 
+we have only shown that a \emph{complete} sub triangle is repeated 
 when coefficients are taken modulo $2$. 
 
 \subsection{A cheaper procedure to build $\mathcal{C}_{\equiv_{2}}$}
@@ -802,7 +794,7 @@ inductively without resorting to the hard-way approach. The latter consists of
 computing the matrix expansion of $\mathcal{C}$ by doing convolutions and 
 Taylor expansion for each column, then taking each coefficient $c_{nk}\in\mathcal{C}$ modulo 2. 
 On the contrary, the former uses theorems to 
-assemble $\mathcal{C}_{\equiv_{2}}$ blockwise: it builds a principal cluster 
+assemble $\mathcal{C}_{\equiv_{2}}$ block-wise: it builds a principal cluster 
 $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ consuming a principal cluster 
 $\mathcal{C}_{\equiv_{2}}^{(\alpha)}$, treating it as a whole block. For the sake of clarity,
 let us divide $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ in half obtaining two strips, then the former approach acts as follows:

@@ -4,7 +4,7 @@
 \label{sec:previous:work}
 
 
-First of all, we recall some modular arithmetic fundamentals: let $a,b\in\mathbb{Z}$
+First of all, we recall some modular arithmetic fundamentals. Let $a,b\in\mathbb{Z}$
 and $n\in\mathbb{N}$, to say that $a$ is congruent to $b$ modulo $n$,
 written as $a \equiv_{n} b$, is the same to say:
 \begin{displaymath}
@@ -53,16 +53,16 @@ it is a fundamental result for our work.
                 = 1+\sum_{s=1}^{p^{r}-1}{{{p^{r}}\choose{s}}\,t^{s}}+t^{p^{r}}
     \end{displaymath}
     application of congruence relation modulo $p$ makes the sum vanish since ${{p^{r}}\choose{s}}=p\,u_{s}$,
-    for some $u_{s}\in\mathbb{N}$ and $s\in\lbrace 1,\ldots,p^{r}-1\rbrace$, therefore $\left(1+t\right)^{p^{r}} = 1+t^{p^{r}}$.
-    We can rewrite as:
+    for some $u_{s}\in\mathbb{N}$ and $s\in\lbrace 1,\ldots,p^{r}-1\rbrace$, 
+    therefore $\left(1+t\right)^{p^{r}} \equiv_{p} 1+t^{p^{r}}$. We can rewrite as:
     \begin{displaymath}
             \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
                 \equiv_{p} \prod_{r=0}^{k}{\left(1+t^{p^{r}}\right)^{m_{r}}}
                 \equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
     \end{displaymath}
     %\marginpar{abstracting a convolution introducing set $\Omega_{n}$}
-    on the very right hand side there is a product of $k+1$ formal power series, properly shifted according to coefficients
-    $m_{0},m_{1},\ldots,m_{k}$. Such product yields a new formal power series which satisfies:
+    on the very right hand side there is a product of $k+1$ formal power series, properly shifted according to 
+    $p_{0},p_{1},\ldots,p_{k}$. Such product yields a new formal power series which satisfies:
     \begin{displaymath}
         \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} 
         \equiv_{p}
@@ -96,11 +96,9 @@ can be defined inductively using the following recurrence:
     \label{eq:binomial:recurrence}
 \end{equation}
 and studies $\mathcal{P}_{\equiv_{p}}$, where $p$ ranges over the first primes, 
-namely the Pascal array where each coefficient is taken modulo $p$.
-
-We believe that one of the core concepts she introduces is a little language
-that allows her to characterize these arrays and we adopt it 
-as well. In the following paragraphs we describe this language. 
+namely the Pascal array where each coefficient is taken modulo $p$. Besides, 
+she introduces a little language, described in the next paragraph, that allows her to characterize these arrays 
+and we adopt it as well.
 \\\\
 Let $\mathcal{M}=\lbrace m_{n,k}\rbrace_{n,k\in\mathbb{N}}$ 
 be an infinite lower triangular array, where $m_{n,k}=0$ if 
@@ -135,9 +133,9 @@ by the same constant $\beta\in\mathbb{N}$, formally:
 \end{displaymath}
 
 Finally, a \emph{zero-hole} of order $\alpha$ is an inverted triangular array of
-coefficients multiples of $p$, from here the name, consisting of $p^{\alpha}-1$
-coefficients lying on the first row, $p^{\alpha}-2$ coefficients on the second row
-and a single coefficient on the $(p^{\alpha}-1)$-th row. 
+coefficients multiples of $p$, from here the name: it consists of $p^{\alpha}-1$
+coefficients lying on the first row, $p^{\alpha}-2$ coefficients lying on the second row
+and a single coefficient on the $(p^{\alpha}-1)$-th row, eventually. 
 Observe that a \emph{zero-hole} of order $\alpha$ has $p^{\alpha}-1$ rows, one less
 than a \emph{principal cluster} of the same order.
 

@@ -45,14 +45,14 @@ some properties about $\mathcal{C}_{h+1}$:
 \fi
 
 We are now in the position to formally define the Catalan
-array $\mathcal{C}$ and introduce some mathematical objects
-that will be used later. Using Riordan arrays, $\mathcal{C}$ 
-is defined as follow:
+array $\mathcal{C}$ and to introduce some mathematical objects
+that will be used later. Matrix $\mathcal{C}$ is defined 
+as a Riordan array as follows:
 \begin{displaymath}
     \mathcal{C}=\left(\frac{1-\sqrt{1-4\,t}}{2\,t},
         \frac{1-\sqrt{1-4\,t}}{2}\right)
 \end{displaymath}
-since $h(t)=t\,d(t)$, then $\mathcal{C}$ is in the \emph{renewal} subgroup.
+since $h(t)=t\,d(t)$, then $\mathcal{C}$ is also a \emph{renewal} array \cite{rogers:1977}.
 Instantiating $k=0$ in \autoref{eq:Riordan:array:coefficient},
 the $n$-th Catalan number $c_{n}$ satisfies the following relation:
 \begin{displaymath}
@@ -62,8 +62,7 @@ the $n$-th Catalan number $c_{n}$ satisfies the following relation:
 Every matrix $\mathcal{R}(d(t), h(t))$ in the Riordan group can be characterized, equivalently,
 by two sequences of coefficients: $\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$  and
 $\lbrace z_{n}\rbrace_{n\in\mathbb{N}}$ called $A$-sequence and $Z$-sequence, 
-respectively \cite{rogers:1977}. We can use them to define inductively every coefficient $d_{nk}$ in a Riordan array
-as follows:
+respectively. We can use them to define inductively every coefficient $d_{nk}$ in a Riordan array as follows:
 \begin{equation}
     d_{n+1, k+1} = a_{0}d_{n,k} + a_{1}d_{n,k+1} + a_{2}d_{n,k+2} + \ldots + a_{j}d_{n,k+j} 
 \end{equation}
@@ -71,8 +70,8 @@ where $k>0$ and $j\in\mathbb{N}$ such that $n=k+j$. On the other hand, if $k=0$ 
 \begin{equation}
     d_{n+1, 0} = z_{0}d_{n,0} + z_{1}d_{n,1} + z_{2}d_{n,2} + \ldots + z_{n}d_{n,n} 
 \end{equation}
-Moreover, let $A$ and $Z$ be two generating functions over $A$-sequence and $Z$-sequence, respectively;
-then the following relations with functions $d$ and $h$ hold
+Moreover, let $A$ and $Z$ be two generating functions over $A$-sequence and $Z$-sequence, respectively,
+then the following relations connect them with functions $d$ and $h$
 \cite{merlini:some:alternative:characterizations:1997}:
 \begin{equation}
     h(t) = tA(h(t)) \quad d(t)=\frac{d_{0,0}}{1-tZ(h(t))}
@@ -94,7 +93,7 @@ We can instantiate previous properties for $\mathcal{C}$, starting with its $A$-
 \end{displaymath}
 and, since $\mathcal{C}$ is in the renewal subgroup, it is not difficult to see that its
 $Z$-sequence is the same as $A$-sequence. Using $Z$-sequence characterization then 
-each coefficient $c_{n}$ can be written as the combination of coefficients $c_{n,k}\in\mathcal{C}$:
+each coefficient $c_{n}$ can be written as the combination of coefficients lying on the previous row $n-1$:
 \begin{displaymath}
     c_{n} = \sum_{k=0}^{n-1}{c_{n-1,k}}
 \end{displaymath}
@@ -125,7 +124,7 @@ a well known closed formula for the $n$-th Catalan number:
     \label{eq:catalan:coeff:rewriting}
 \end{equation}
 
-On the other hand, the generic element $c_{nk}\in\mathcal{C}$ 
+On the other hand, the generic element $c_{n,k}\in\mathcal{C}$ 
 admits closed formulae too. According to
 \cite{luzon:2012631}, two of them are of
 particular interest in order to complete our proofs:
@@ -137,19 +136,18 @@ particular interest in order to complete our proofs:
 \end{eqnarray}
 
 
-The last object we want to introduce is a pair that allows us 
+The last object we would like to introduce allows us 
 to talk about a subset of elements lying on a
 column $\vect{c}_{k}$ of $\mathcal{C}$. Let $S\subseteq\mathbb{N}$  
-and let $k\in\mathbb{N}$, then a \emph{segment} of column $\vect{c}_{k}$ is
-denoted by the following relation:
+and let $k\in\mathbb{N}$, then a \emph{segment} $\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}$ 
+of a column $\vect{c}_{k}$ is defined as a pair:
 \begin{equation}
     \diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}
         = \left(\vect{c}_{k},\lbrace k+\alpha_{i}\rbrace_{i\in S}\right)
         = \lbrace d_{k+\alpha_{i},k}\rbrace_{i\in S}
     \label{eq:column:segment}
 \end{equation}
-where $\lbrace\alpha_{i}\rbrace_{i\in S}\subseteq\mathbb{N}$. 
-In order to fetch the set of 
+where $\lbrace\alpha_{i}\rbrace_{i\in S}\subseteq\mathbb{N}$. In order to fetch the set of 
 row indices belonging to a segment we introduce the $rows$ function, defined as follow:
 \begin{displaymath}
     rows\left(\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}\right)
@@ -159,8 +157,8 @@ row indices belonging to a segment we introduce the $rows$ function, defined as 
 \end{displaymath}
 
 
-In order to formally proof the modular characterization $\mathcal{C}_{\equiv_{2}}$, 
-write the generic element $c_{n,k}\in\mathcal{C}$ using the definition:
+In order to formally characterize $\mathcal{C}_{\equiv_{2}}$, 
+we write the generic element $c_{n,k}\in\mathcal{C}$ using the definition:
 \begin{displaymath}
     c_{n,k} = [t^n] \frac{1-\sqrt{1-4\,t}}{2\,t}\,
         \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k}
@@ -185,22 +183,17 @@ the traditional Catalan numbers:
         + 42 t^{5} + 132 t^{6} %+ 429 t^{7} + 1430 t^{8} + 4862 t^{9} 
         + \mathcal{O}\left(t^{7}\right)
 \end{displaymath}
-so the relationship $\hat{c}_{j} = c_{j-1}$ holds for any $j\in\mathbb{N}$, 
-with boundary condition $c_{-1}=0$.  Looking at the previous expression for $d_{n,k}$,
+so $\hat{c}_{j} = c_{j-1}$ holds for any $j\in\mathbb{N}$, 
+with boundary condition $c_{-1}=0$.  Looking at the previous expression for $c_{n,k}$,
 there exists indices $i_{1}, i_{2}, \ldots, i_{k+1}$,
 where $i_{j}\in\lbrace0,\ldots,n+1\rbrace$ for each $j\in\lbrace1,\ldots,k+1\rbrace$, 
 such that:
-\begin{displaymath}
-    [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
-        = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
-            \hat{c}_{i_{1}}\,\hat{c}_{i_{2}}\,\ldots\,\hat{c}_{i_{k+1}} }
-\end{displaymath}
-which is the same as:
 \begin{equation}
-    d_{n,k} = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
-            c_{i_{1}-1}\,c_{i_{2}-1}\,\ldots\,c_{i_{k+1}-1} }
+    \footnotesize
+    c_{n,k} = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
+            = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
+                \hat{c}_{i_{1}}\,\hat{c}_{i_{2}}\,\ldots\,\hat{c}_{i_{k+1}} }
+            = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
+                c_{i_{1}-1}\,c_{i_{2}-1}\,\ldots\,c_{i_{k+1}-1} }
     \label{eq:convolution:expansion:for:generic:element:in:catalan:array}
 \end{equation}
-This last equation will be used in the first proofs that follows, while
-in the last ones, \autoref{eq:catalan:array:second:identity} will be used.
-

@@ -1,8 +1,8 @@
 
 \section{Introduction}
 
-\noindent Catalan numbers were introduced with this name back in $1838$ by
-Eugene Catalan, although they have been used even before by Ming Antu
+\noindent Catalan numbers were introduced with this name by
+Eugene Catalan in $1838$, although they have been used even before by Ming Antu
 in $1730$. Let $c_{n}$ be the $n$-th Catalan number, then the following
 table shows the first fifteen element of the infinite sequence 
 $\lbrace c_{n}\rbrace_{n\in\mathbb{N}}$ ($A000108$\footnote{All integer sequences
@@ -38,31 +38,31 @@ and end points excluded -- conventionally, indexes are $0$-based.
 
 In the literature, matrix $\mathcal{C}$ is known as \emph{Catalan triangle} and
 it turns out to be a Riordan array. Those arrays forms a family of matrices enjoying
-nice properties and, looking at them from the abstract algebra perspective, 
-form a group structure. 
-Formally, a Riordan array is denoted by a pair of functions $d$ and $h$ which provide a unique 
-characterization for the generic coefficient $d_{n,k}$, lying at row $n$ and column $k$, 
+nice properties and, looking at them from the abstract algebra perspective, are a group. 
+Formally, a Riordan array $\mathcal{R}$ is denoted by a pair of functions $d$ and $h$ which provides a unique 
+characterization for the generic coefficient $d_{n,k}\in\mathcal{R}$, lying at row $n$ and column $k$, 
 by extraction of the $n$-th coefficient from the following $k$-convolution:
 \begin{equation}
     d_{n,k} = [t^{n}]d(t)h(t)^{k}
     \label{eq:Riordan:array:coefficient}
 \end{equation}
 Riordan arrays have been introduced by Shapiro et al. \cite{shapiro:1991} in $1991$;
-furthermore, Sprugnoli \cite{sprugnoli:1991} in $1994$ pointed out their importance
+thereafter, in $1994$, Sprugnoli \cite{sprugnoli:1991} pointed out their importance
 to solve combinatorial sums.
 
-In this paper we apply a modular transformation to $\mathcal{C}$ where every coefficient 
-is taken modulo $2$, denoting the resulting matrix with $\mathcal{C}_{\equiv_{2}}$ and
-depicted in \autoref{fig:catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}.
+In this paper we apply a modular transformation to $\mathcal{C}$ which maps every coefficient 
+to its remainder respect the congruence relation $\equiv_{2}$: the resulting matrix is 
+denoted by $\mathcal{C}_{\equiv_{2}}$ and is graphically represented in 
+\autoref{fig:catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}.
 This is a parallel study of the same modular transformation applied to the Pascal array $\mathcal{P}$,
-depicted in \autoref{fig:pascal-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-triangle},
+represented in \autoref{fig:pascal-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-triangle},
 where a coefficient lying at row $n$ and column $k$ counts the number of subsets
 with $k$ elements of a set with $n$ elements, in other words ${{n}\choose{k}}$.
 In both pictures, we center the root of the triangle and represent every coefficient 
-with a coloured dot, using \textcolor{blue}{blue} for \emph{evens} and \textcolor{orange}{orange} 
-for \emph{odds} remainders, respectively. 
+with a colored dot, using colors \textcolor{blue}{blue} and \textcolor{orange}{orange} 
+for \emph{evens} and \emph{odds} remainders, respectively. 
 
-Although array $\mathcal{P}_{\equiv_{2}}$ has been studied in depth both because its 
+Although array $\mathcal{P}_{\equiv_{2}}$ has been deeply studied already, both because its 
 relation to congruences about binomial coefficients and its connection with
 the Sierpinski gasket \cite{stewart:four:encounters:sierpinski} \cite{sokolov},
 to the best of our knowledge array $\mathcal{C}_{\equiv_{2}}$ seems to be fresh.  
@@ -73,8 +73,8 @@ the generic coefficient $c_{n,k}\in\mathcal{C}$; second, we prove congruences ov
 lying in different regions of the matrix; lastly, we use such congruences to implement a procedure
 that builds $\mathcal{C}_{\equiv_{2}}$ inductively. 
 
-To support our work, a bunch of functions using the Python 
-programming language have been implemented on top of the Sage framework 
+To support our work, a bunch of functions have been implemented using the Python 
+programming language, on top of the Sage framework 
 \cite{sage}: these allow us to table expansion of a Riordan array
 resorting to Taylor series -- the hard way --, to generate \TeX\,code
 for graphical triangles representations and, finally, to build $\mathcal{C}_{\equiv_{2}}$ 
@@ -90,7 +90,7 @@ arithmetic to infinite lower triangular matrices are refreshed;
 in \autoref{sec:C:precisely} Catalan array $\mathcal{C}$ is formally defined
 and some facts about it are derived; 
 in \autoref{sec:catalan:characterization} $\mathcal{C}_{\equiv_{2}}$ is taken apart 
-in order to reason on it piecewise; finally, \autoref{sec:conclusions} concludes
+in order to reason on it piece-wise; finally, \autoref{sec:conclusions} concludes
 with final comments and open questions.
 
  %In particular, we report a
