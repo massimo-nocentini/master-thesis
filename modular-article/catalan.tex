@@ -155,8 +155,8 @@ property about coefficient $c_{j}$.
     Choose any $\alpha\in\mathbb{N}$. For the very first coefficient $d_{2^{\alpha}-1,0}$ 
     lying on row $\vect{r}_{2^{\alpha}-1}$ we have seen in the
     previous section that $d_{2^{\alpha}-1,0}\equiv_{2}1$. What about $d_{2^{\alpha}-1,1}$?
-    Recall we can write it, according to 
-    \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array}, as:
+    Recall we can write it according to 
+    \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array}:
     \begin{displaymath}
         d_{2^{\alpha}-1,1} = \sum_{i_{1}+ i_{2}=2^{\alpha}}{ c_{i_{1}-1}\,c_{i_{2}-1} }
     \end{displaymath}
@@ -182,8 +182,8 @@ property about coefficient $c_{j}$.
             \equiv_{2} \sum_{k=1}^{2^{\alpha}+1}{1}\equiv_{2} 2^{\alpha}+1\equiv_{2} 1
     \end{displaymath}
 
-    What about for an arbitrary coefficient $d_{2^{\alpha}-1,s}$ where
-    $s\in\lbrace{2,\ldots,2^{\alpha}-1}\rbrace$?  Again, rewrite it as:
+    On the other hand, for an arbitrary coefficient $d_{2^{\alpha}-1,s}$, where
+    $s\in\lbrace{2,\ldots,2^{\alpha}-1}\rbrace$, we rewrite it as:
     \begin{displaymath}
         d_{2^{\alpha}-1,s} = \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}
             {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{s+1}-1}}
@@ -236,9 +236,7 @@ In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
 
 \begin{proof}
     Let $d_{2^{\alpha},j}$ be a coefficient lying on row $\vect{r}_{2^{\alpha}}$,
-    for some $j\in\lbrace1,\ldots,2^{\alpha}\rbrace$.
-
-    Since $\mathcal{C}$'s $A$-sequence is:
+    for some $j\in\lbrace1,\ldots,2^{\alpha}\rbrace$. Since $\mathcal{C}$'s $A$-sequence is:
     \begin{displaymath}
         A_{\mathcal{C}}(t)=\frac{1}{1-t}=1+t+t^{2}+t^{3}+t^{4}+t^{5}+t^{6}+t^{7}+t^{8}+
             \mathcal{O}(t^{9})
@@ -295,8 +293,8 @@ write it as:
 Observe that, for $s\in\Phi^{(\alpha)}$, the number of Catalan
 coefficients multiplied together in each summand is the same, namely
 $2^{\alpha}$.  What changes respect to $s$ is the set of values each
-index $i_{j}$ can take. Look at the following table, where $j$ and $k$
-are dummy variables:
+index $i_{j}$ can take. In the following table we report instantiated sets
+of values, depending on $s$, for both indexes and coefficients:
 \begin{displaymath}
     \begin{array}{c|c|c}
         s = 2^{\alpha} 
@@ -311,9 +309,9 @@ are dummy variables:
             & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha+1}-2}\rbrace\\
     \end{array}
 \end{displaymath}
-observe that set $\lbrace c_{-1},\ldots,c_{2^{\alpha}}\rbrace$, the smaller one, and set
-$\lbrace c_{-1},\ldots,c_{2^{\alpha+1}-2}\rbrace$, the bigger one, have the same subset
-$\Omega^{(\alpha)}$ of \emph{odd} coefficients: 
+Set $\lbrace c_{-1},\ldots,c_{2^{\alpha}}\rbrace$ and set
+$\lbrace c_{-1},\ldots,c_{2^{\alpha+1}-2}\rbrace$ are the smaller and the bigger one, respectively, and
+have the same subset $\Omega^{(\alpha)}$ of \emph{odd} coefficients: 
 \begin{displaymath}
     \Omega^{(\alpha)}=\lbrace c_{-1}, c_{2^{\alpha-(\alpha-1)}-1},c_{2^{\alpha-(\alpha-2)}-1},\ldots, 
         c_{2^{\alpha-1}-1},c_{2^{\alpha}-1}\rbrace
@@ -441,8 +439,8 @@ $\Xi=\lbrace \vect{c}_{0},\ldots, \vect{c}_{2^{{\alpha}}-2}\rbrace$ and
 for each column $\vect{c}_{k}\in\Xi$, the segment
     $\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-2-k\rbrace}^{k}$.
 
-Everything is set, so start from column on the very left, column $\vect{c}_{0}$.
-So the corresponding set of row indices  is a segment of Catalan numbers:
+If we start from the column $\vect{c}_{0}$ on the very left,
+then the corresponding set of row indices is a segment of Catalan numbers:
 \begin{displaymath}
     S_{0}=\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-2\rbrace}^{0}
         = \lbrace c_{2^{\alpha}},c_{2^{\alpha}+1},\ldots,c_{2^{\alpha+1}-2}\rbrace
@@ -450,7 +448,7 @@ So the corresponding set of row indices  is a segment of Catalan numbers:
 since no coefficient $c_{j}\in S_{0}$ has the shape $c_{2^{\alpha}-1}$, 
 all coefficients in $S_{0}$ are even.
 
-Go ahead with column $\vect{c}_{1}$, so the corresponding segment is
+In turn, take into account column $\vect{c}_{1}$, so the corresponding segment is
 %\begin{displaymath}
     $S_{1}=\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-3\rbrace}^{1}$
     %S_{1}=\lbrace d_{2^{{\alpha}}+1,1},\ldots,d_{2^{{\alpha}+1}-2,1} \rbrace
@@ -488,72 +486,15 @@ In \autoref{fig:catalan-zero-hole} is reported $H_{\bigtriangleup}^{(4)}$.
     \label{thm:two:mirrored:clusters}
 \end{theorem}
 
-Before approaching a structured proof, we look for some insights.
-According to \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array},
-rewrite both members:
-\begin{displaymath}
-    %\hspace{-2cm}
-    \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-e}=s-e+1}
-        {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-e}-1}}
-    \equiv_{2}
-    \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}+e}=s+1}
-        {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}+e}-1}}
-\end{displaymath}
-panic! No idea to tackle the general setting as a whole. So, start small and
-let $s=2^{{\alpha}}+1$, therefore no choices for $e$, $e=1$ is mandatory:
-\begin{displaymath}
-    %\hspace{-2cm}
-    \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}-1}=2^{{\alpha}}+1}
-        {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}-1}-1}}
-    \equiv_{2}
-    \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}+1}=2^{{\alpha}}+2}
-        {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}+1}-1}}
-\end{displaymath}
-
-too difficult to proceed on this path, too. 
-
-We attempt another \emph{false start} using closed formulae for
-the generic element $d_{nk}\in\mathcal{C}$.
 \begin{proof}
-Assume not, therefore we need to yield a contradiction if
-    $d_{s-e,2^{{\alpha}}-1-e} \not\equiv_{2} d_{s,2^{{\alpha}}-1+e}$
-holds. Rewriting the congruence according to \autoref{eq:catalan:array:first:identity}
- for $d_{nk}$:
-\begin{displaymath}
-    \frac{2^{{\alpha}}-e}{s-e+1}{{2(s-e)-(2^{{\alpha}}-1-e)}\choose{s-e-(2^{{\alpha}}-1-e)}}
-    \not\equiv_{2}
-    \frac{2^{{\alpha}}+e}{s+1}{{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)}}
-\end{displaymath}
-simplify it:
-\begin{displaymath}
-    \frac{2^{{\alpha}}-e}{s-e+1}{{2s-e-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}+1}}
-    \not\equiv_{2}
-    \frac{2^{{\alpha}}+e}{s+1}{{2s-2^{{\alpha}}+1-e}\choose{s-2^{{\alpha}}+1-e}}
-\end{displaymath}
-manipulate using ${{n}\choose{k}}={{n}\choose{n-k}}$:
-\begin{displaymath}
-    \frac{2^{{\alpha}}-e}{s-e+1}{{2s-e-2^{{\alpha}}+1}\choose{s-e}}
-    \not\equiv_{2}
-    \frac{2^{{\alpha}}+e}{s+1}{{2s-2^{{\alpha}}+1-e}\choose{s}}
-\end{displaymath}
-dead end: nonetheless binomial coeffients allow some grudging,
-fractions on both side are difficult to handle since it's hard
-to find their multiplicative inverses, modulo $2$. A contradiction
-is difficult to be reached using this approach.
-\end{proof} 
-
-Trace back and use \autoref{eq:catalan:array:second:identity}. 
-\begin{proof}
-Recall we would like to prove the following statement:
-\begin{displaymath}
-    d_{s-e,2^{{\alpha}}-1-e} \equiv_{2} d_{s,2^{{\alpha}}-1+e}
-\end{displaymath}
-Rewrite the left hand side:
+In this proof we use \autoref{eq:catalan:array:second:identity} as 
+an identity defining the generic coefficient. It allows to rewrite the left hand side 
+of the argument:
 \begin{displaymath}
     d_{s-e,2^{{\alpha}}-1-e}= {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)}}
         - {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)-1}}
 \end{displaymath}
-in the same spirit, rewrite the right hand side:
+in the same spirit, the same can be applied to the right hand side:
 \begin{displaymath}
     d_{s,2^{{\alpha}}-1+e}={{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)}}
         - {{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)-1}}
@@ -736,8 +677,7 @@ We tackle the proof using \autoref{eq:catalan:array:second:identity}:
         {{2s-2^{{\alpha}}+1-e}\choose{s-2^{{\alpha}}+1-e}} - {{2s-2^{{\alpha}}+1-e}\choose{s-2^{{\alpha}}-e}}
         &\equiv_{2}
         {{2s-2^{{\alpha}+1}-e+1}\choose{s-2^{{\alpha}}-e+1}} - {{2s-2^{{\alpha}+1}-e+1}\choose{s-2^{{\alpha}}-e}}\\
-        {{2s-2^{{\alpha}}+1-e}\choose{s}} - {{2s-2^{{\alpha}}+1-e}\choose{s+1}}
-        &\equiv_{2}
+        {{2s-2^{{\alpha}}+1-e}\choose{s}} - {{2s-2^{{\alpha}}+1-e}\choose{s+1}} &\equiv_{2}
         {{2s-2^{{\alpha}+1}-e+1}\choose{s-2^{{\alpha}}}} - {{2s-2^{{\alpha}+1}-e+1}\choose{s-2^{{\alpha}}+1}}\\
     \end{split}
 \end{displaymath}
