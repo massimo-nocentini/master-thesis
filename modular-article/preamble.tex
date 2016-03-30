@@ -3,9 +3,9 @@
 
 \noindent Catalan numbers were introduced with this name by
 Eugene Catalan in $1838$, although they have been used even before by Ming Antu
-in $1730$. Let $c_{n}$ be the $n$-th Catalan number, then the following
+in $1730$. Let $C_{n}$ be the $n$-th Catalan number, then the following
 table shows the first fifteen element of the infinite sequence 
-$\lbrace c_{n}\rbrace_{n\in\mathbb{N}}$ ($A000108$\footnote{All integer sequences
+$\lbrace C_{n}\rbrace_{n\in\mathbb{N}}$ ($A000108$\footnote{All integer sequences
 defined in this paper are recorded in Sloane \cite{sloane:oeis}: keys of
 the form $Annnnnn$ refer to entries in that database.}):
 \begin{displaymath}
@@ -13,27 +13,26 @@ the form $Annnnnn$ refer to entries in that database.}):
     \begin{array}{c|ccccccccccccccc}
         n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 \\
         \hline
-        c_{n} & 1 & 1 & 2 & 5 & 14 & 42 & 132 & 429 & 1430 & 4862 & 16796 & 58786 & 208012 & 742900 & 2674440
+        C_{n} & 1 & 1 & 2 & 5 & 14 & 42 & 132 & 429 & 1430 & 4862 & 16796 & 58786 & 208012 & 742900 & 2674440
     \end{array}
 \end{displaymath}
 
-A comprehensive manuscript entirely devoted to these numbers has been recently
+A comprehensive manuscript, having origin in $1970$, entirely devoted to these numbers has been recently
 published by Stanley \cite{stanley:2015}, where it is possible to find their history,
 formal characterizations using generating functions and, finally, $214$ combinatorial 
 interpretations.  For the sake of clarity, we report three classes of objects counted by 
-$c_{n}$: first, binary trees with $n$ nodes; 
+$C_{n}$: first, binary trees with $n$ nodes; 
 second, admissible bracketing of a string with length $n+1$ using $n-1$ pairs
 of curly braces; at last, Dyck paths of length $2n$ using $\diagup$ and $\diagdown$ steps.
 
-It is possible to augment $c_{n}$ with an additional dimension,
-obtaining coefficients $c_{n,k}$ defining a lower triangular infinite 
+It is possible to augment $C_{n}$ with an additional dimension,
+obtaining coefficients $C_{n,k}$ defining a lower triangular infinite 
 matrix $\mathcal{C}$ ($A033184$): in \autoref{tab:catalan:array} 
 we report the upper chunk of that matrix where a coefficient at row $n$ 
 and column $k$ can be interpreted as the number
 of Dyck paths of length $2(n+1)$ with $k$ returns to the ground, start
 and end points excluded -- conventionally, indexes are $0$-based.
 
-% inclusion of matrix expansion for C and its inverse.
 \input{catalan/catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
 
 In the literature, matrix $\mathcal{C}$ is known as \emph{Catalan triangle} and
@@ -59,8 +58,8 @@ represented in \autoref{fig:pascal-standard-handle-negatives-centered-colouring-
 where a coefficient lying at row $n$ and column $k$ counts the number of subsets
 with $k$ elements of a set with $n$ elements, in other words ${{n}\choose{k}}$.
 In both pictures, we center the root of the triangle and represent every coefficient 
-with a colored dot, using colors \textcolor{blue}{blue} and \textcolor{orange}{orange} 
-for \emph{evens} and \emph{odds} remainders, respectively. 
+with a colored dot, using colors blue and orange 
+for \textcolor{blue}{\emph{evens}} and \textcolor{orange}{\emph{odds}} remainders, respectively. 
 
 Although array $\mathcal{P}_{\equiv_{2}}$ has been deeply studied already, both because its 
 relation to congruences about binomial coefficients and its connection with
@@ -76,10 +75,11 @@ that builds $\mathcal{C}_{\equiv_{2}}$ inductively.
 To support our work, a bunch of functions have been implemented using the Python 
 programming language, on top of the Sage framework 
 \cite{sage}: these allow us to table expansion of a Riordan array
-resorting to Taylor series -- the hard way --, to generate \TeX\,code
+resorting to series expansion -- the hard way --, to generate \LaTeX\,code
 for graphical triangles representations and, finally, to build $\mathcal{C}_{\equiv_{2}}$ 
 in a cheaper way.
 
+\input{catalan/catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
 \input{pascal/pascal-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
 
 This paper is structured as follows: in this section 
@@ -89,7 +89,7 @@ results from existing literature about the application of modular
 arithmetic to infinite lower triangular matrices are refreshed;
 in \autoref{sec:C:precisely} Catalan array $\mathcal{C}$ is formally defined
 and some facts about it are derived; 
-in \autoref{sec:catalan:characterization} $\mathcal{C}_{\equiv_{2}}$ is taken apart 
+in \autoref{sec:catalan:characterization} matrix $\mathcal{C}_{\equiv_{2}}$ is taken apart 
 in order to reason on it piece-wise; finally, \autoref{sec:conclusions} concludes
 with final comments and open questions.
 

@@ -2,7 +2,6 @@
 \section{Catalan characterization}
 \label{sec:catalan:characterization}
 
-\input{catalan/catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
 In this section we tackle a modular characterization, using congruence relation
 $\equiv_{2}$, for the Catalan array $\mathcal{C}$ from a formal point of view.
 We aim at a proof driven by
@@ -16,7 +15,7 @@ $\mathcal{C}_{\equiv_{2}}$ is described in each one of them.
 
 In this section we want to characterize the very first column $\vect{c}_{0}$
 of $\mathcal{C}_{\equiv_{2}}$, namely the column composed of Catalan numbers only,
-formally $c_{j}=c_{j,0}\in\vect{c}_{0}$, for any $j\in\mathbb{N}$:  
+formally $C_{j}=c_{j,0}\in\vect{c}_{0}$, for any $j\in\mathbb{N}$:  
 for the sake of clarity, in \autoref{fig:catalan-first-column} segment
 $\diagup_{\lbrace 0,1,2,\ldots,2^{4}\rbrace}^{0}$ of $\vect{c}_{0}\subset\mathcal{C}_{\equiv_{2}}$
 is highlighted. In the proof, congruence relation $\equiv_{2}$ is applied to \autoref{eq:catalan:coeff:rewriting};
@@ -25,36 +24,40 @@ $j=j_{0} + j_{1}\,2 + j_{2}\,2^{2} + \ldots + j_{k}\,2^{k}$, where
 $j_{r}\in\lbrace0,1\rbrace$, for each $r\in\lbrace0,\ldots,k\rbrace$. 
 
 \begin{theorem}
-    Let $j\in\mathbb{N}$, then $c_{j} \equiv_{2} 0$ unless $j=2^{\alpha}-1$ for some $\alpha\in\mathbb{N}$, 
-    where $c_{2^{\alpha}-1} \equiv_{2} 1$ holds.
+    Let $j\in\mathbb{N}$, then $C_{j} \equiv_{2} 0$ unless $j=2^{\alpha}-1$ for some $\alpha\in\mathbb{N}$, 
+    in which case $C_{2^{\alpha}-1} \equiv_{2} 1$ holds.
 \end{theorem}
-As a boundary case, observe that $c_{0} \equiv_{2} 1$ because for the subscript $j=0$
-let $\alpha=0$ so that $j = 2^{\alpha}-1$. In order to apply Lucas theorem, we proceed by cases on $j$'s parity:
+
+\begin{proof}
+We start with the boundary case for $j=0$, then $C_{0} \equiv_{2} 1$ because for the subscript $j=0$
+there is $\alpha=0$ so that $j = 2^{\alpha}-1$. On the contrary, for $j>0$ %in order to apply Lucas theorem, 
+we proceed by cases on $j$'s parity:
 \begin{itemize}
     \item let $j=2\alpha$, for some $\alpha\in\mathbb{N}$, so $j_{0}=0$,
-        which make vanish the minuend:
+        which make vanish the subtrahend of \autoref{eq:catalan:coeff:rewriting}:
         \begin{displaymath}
             {{2j}\choose{j+1}}
             \equiv_{2} {{0}\choose{1}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
                 \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
         \end{displaymath}
-        so:
+        Also the minuend vanishes:
         \begin{displaymath}
-            c_{j}\equiv_{2}{{2j}\choose{j}}
+            C_{j}\equiv_{2}{{2j}\choose{j}}
             \equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
                 \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
         \end{displaymath}
         A boundary case pops out when $\alpha=0$ where $j$ has to be written as 
         $j=0 + 0\cdot2 + 0\cdot2^{2} + \ldots + 0\cdot2^{k}$, therefore:
         \begin{displaymath}
-            c_{0}\equiv_{2}{{0}\choose{0}}
+            C_{0}\equiv_{2}{{0}\choose{0}}
             \equiv_{2} {{0}\choose{0}}{{0}\choose{0}}{{0}\choose{0}}
                 \ldots{{0}\choose{0}}{{0}\choose{0}}\equiv_{2}1
         \end{displaymath}
-        this is indeed the only case where $c_{2\alpha} \equiv_{2}1$:
+        this is indeed the only case where $C_{2\alpha} \equiv_{2}1$.
+        \iffalse
         \begin{proof}
             Assume not, hence there exists $\hat{\alpha}\in\mathbb{N}$, greater than $0$,
-            such that $c_{2\hat{\alpha}} \equiv_{2}1$. So for ${{0}\choose{j_{1}}}$
+            such that $C_{2\hat{\alpha}} \equiv_{2}1$. So for ${{0}\choose{j_{1}}}$
             be not zero then $j_{1}=0$; in turn, this constraint requires a new one, namely
             for ${{0}\choose{j_{2}}}$ be not zero then $j_{2}=0$; 
             in turn, this constraint requires a new one, namely
@@ -62,11 +65,12 @@ let $\alpha=0$ so that $j = 2^{\alpha}-1$. In order to apply Lucas theorem, we p
             in turn, this constraint requires a new one, namely\ldots
             for ${{0}\choose{j_{k}}}$ be not zero then $j_{k}=0$.
             Therefore $j=0$, which contradicts the hypothesis $\alpha>0$. So,
-            for even $j > 0$, coefficient $c_{j}\equiv_{2}0$, as required.
+            for even $j > 0$, coefficient $C_{j}\equiv_{2}0$, as required.
         \end{proof}
+        \fi
 
     \item let $j=2\alpha+1$, for some $\alpha\in\mathbb{N}$, so $j_{0}=1$,
-        which make vanish the augend:
+        which make vanish the minuend of \autoref{eq:catalan:coeff:rewriting}:
         \begin{displaymath}
             {{2j}\choose{j}}
             \equiv_{2} {{0}\choose{1}}{{1}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
@@ -74,15 +78,15 @@ let $\alpha=0$ so that $j = 2^{\alpha}-1$. In order to apply Lucas theorem, we p
         \end{displaymath}
         so:
         \begin{displaymath}
-            c_{j}\equiv_{2}-{{2j}\choose{j+1}}
+            C_{j}\equiv_{2}-{{2j}\choose{j+1}}
             %\equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
                 %\ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
         \end{displaymath}
-        observe that $(-1)^{-1}\mod2$, the multiplicative inverse of $-1$, equals $1$
+        Now observe that $(-1)^{-1}\mod2$, the multiplicative inverse of $-1$, equals $1$
         since $(-1)\cdot 1 \equiv_{2}1$, therefore we can multiply both members by
         $(-1)^{-1}\mod2$ to get:
         \begin{displaymath}
-            c_{j}\equiv_{2}{{2j}\choose{j+1}}
+            C_{j}\equiv_{2}{{2j}\choose{j+1}}
             %\equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
                 %\ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
         \end{displaymath}
@@ -103,7 +107,7 @@ let $\alpha=0$ so that $j = 2^{\alpha}-1$. In order to apply Lucas theorem, we p
         so the congruence relation gets the following shape:
         \begin{displaymath}
             %\hspace{-2cm}
-            c_{j}\equiv_{2}{{2j}\choose{j+1}}
+            C_{j}\equiv_{2}{{2j}\choose{j+1}}
                 \equiv_{2} \underbrace{{{0}\choose{0}}{{1}\choose{0}}
                 {{1}\choose{0}}\ldots{{1}\choose{0}}}_{\beta} 
                     {{1}\choose{1}}{{0}\choose{j_{\beta+1}}}{{j_{\beta+1}}\choose{j_{\beta+2}}}
@@ -111,36 +115,37 @@ let $\alpha=0$ so that $j = 2^{\alpha}-1$. In order to apply Lucas theorem, we p
         \end{displaymath}
         a simplification yield:
         \begin{displaymath}
-            c_{j}\equiv_{2} {{0}\choose{j_{\beta+1}}}
+            C_{j}\equiv_{2} {{0}\choose{j_{\beta+1}}}
                 {{j_{\beta+1}}\choose{j_{\beta+2}}}
                     \ldots{{j_{\beta+\gamma-1}}\choose{j_{\beta+\gamma}}}
         \end{displaymath}
-        so $c_{j}\equiv_{2} 1$ if coefficients 
+        so $C_{j}\equiv_{2} 1$ if coefficients 
             $j_{\beta+1}, \ldots, j_{\beta+\gamma-1},j_{\beta+\gamma}$
         are $0$ them all, which implies that:
         \begin{displaymath}
             j=\left(\underbrace{1,1,\ldots,1}_{\beta},\underbrace{0,0,\ldots,0}_{k-\beta+1}\right)_{2}
         \end{displaymath}
 
-        in other words $j = 2^{\beta+1}-1$. As boundary case, to handle $c_{1}$ correctly 
+        in other words $j = 2^{\beta+1}-1$. As boundary case, to handle $C_{1}$ correctly 
         (the above result doesn't cover it because $\beta>0$) observe:
         \begin{displaymath}
-            c_{1}\equiv_{2} {{2}\choose{2}}\equiv_{2} {{0}\choose{0}}{{1}\choose{1}}\equiv_{2}1
+            C_{1}\equiv_{2} {{2}\choose{2}}\equiv_{2} {{0}\choose{0}}{{1}\choose{1}}\equiv_{2}1
         \end{displaymath}
 \end{itemize}
+\end{proof}
 
 It is interesting to observe that if we use the ``traditional'' closed formula
-for a Catalan coefficient $c_{j}$:
+for a Catalan coefficient $C_{j}$:
 \begin{displaymath}
-    (j+1)\,c_{j} = {{2j}\choose{j}} 
+    (j+1)\,C_{j} = {{2j}\choose{j}} 
 \end{displaymath}
 where $j=2\alpha+1$, it would have been hard to handle, because:
 \begin{displaymath}
-    2(\alpha+1)\,c_{j}\equiv_{2} {{0}\choose{1}}{{1}\choose{j_{1}}}
+    2(\alpha+1)\,C_{j}\equiv_{2} {{0}\choose{1}}{{1}\choose{j_{1}}}
             \ldots{{j_{k-1}}\choose{j_{k}}} \equiv_{2} 0
 \end{displaymath}
 reduces to $0\equiv_{2}0$, giving no opportunity to derive any
-property about coefficient $c_{j}$.
+property about coefficient $C_{j}$.
 
 \input{catalan/first-column-include-figure.tex}
 
@@ -149,6 +154,7 @@ property about coefficient $c_{j}$.
 \begin{theorem}
     Every row $\vect{r}_{2^{\alpha}-1}$ of $\mathcal{C}_{\equiv_{2}}$, 
     for $\alpha\in\mathbb{N}$, is composed of \emph{odd} coefficients only.
+    \label{thm:odd:coeff:only:on:last:but:one:row}
 \end{theorem}
 
 \begin{proof}
@@ -158,7 +164,7 @@ property about coefficient $c_{j}$.
     Recall we can write it according to 
     \autoref{eq:convolution:expansion:for:generic:element:in:catalan:array}:
     \begin{displaymath}
-        d_{2^{\alpha}-1,1} = \sum_{i_{1}+ i_{2}=2^{\alpha}}{ c_{i_{1}-1}\,c_{i_{2}-1} }
+        d_{2^{\alpha}-1,1} = \sum_{i_{1}+ i_{2}=2^{\alpha}}{ C_{i_{1}-1}\,C_{i_{2}-1} }
     \end{displaymath}
     Summation constraints indices $i_{1}$ and $i_{2}$ such that 
     $2^{\alpha}$ divides $i_{1}+i_{2}$ \emph{exactly}, so:
@@ -171,14 +177,14 @@ property about coefficient $c_{j}$.
     This implies that there exists $\beta,\gamma\in\mathbb{N}$, where $\beta,\gamma\leq\alpha$,
     such that $i_{1}=2^{\beta}$ and $i_{2}=2^{\gamma}$, respectively.
 
-    By this fact follows that $c_{i_{1}-1}=c_{2^{\beta}-1}\equiv_{2}1$ and 
-    $c_{i_{2}-1}=c_{2^{\gamma}-1}\equiv_{2}1$, therefore $c_{i_{1}-1}\,c_{i_{2}-1}\equiv_{2}1$.
+    By this fact follows that $C_{i_{1}-1}=C_{2^{\beta}-1}\equiv_{2}1$ and 
+    $C_{i_{2}-1}=C_{2^{\gamma}-1}\equiv_{2}1$, therefore $C_{i_{1}-1}\,C_{i_{2}-1}\equiv_{2}1$.
     By construction, fixing one index in  
     $i_{1}+ i_{2}=2^{\alpha}$ fixes the other as well: there are $2^{\alpha}+1$ available choices
     for the first index and only $1$ for the second.
     We're almost finished:
     \begin{displaymath}
-        d_{2^{\alpha}-1,1} = \sum_{i_{1}+ i_{2}=2^{\alpha}}{ c_{i_{1}-1}\,c_{i_{2}-1} }
+        d_{2^{\alpha}-1,1} = \sum_{i_{1}+ i_{2}=2^{\alpha}}{ C_{i_{1}-1}\,C_{i_{2}-1} }
             \equiv_{2} \sum_{k=1}^{2^{\alpha}+1}{1}\equiv_{2} 2^{\alpha}+1\equiv_{2} 1
     \end{displaymath}
 
@@ -186,7 +192,7 @@ property about coefficient $c_{j}$.
     $s\in\lbrace{2,\ldots,2^{\alpha}-1}\rbrace$, we rewrite it as:
     \begin{displaymath}
         d_{2^{\alpha}-1,s} = \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}
-            {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{s+1}-1}}
+            {C_{i_{1}-1}\,C_{i_{2}-1}\ldots\,C_{i_{s+1}-1}}
     \end{displaymath}
     Using an argument similar to the previous one, from:
     \begin{displaymath}
@@ -194,7 +200,7 @@ property about coefficient $c_{j}$.
             i_{j}\in\lbrace 0,\ldots,2^{\alpha}\rbrace
     \end{displaymath} 
     the generic index $i_{j}$ has to satisfy $i_{j}=2^{\alpha_{j}}$, for some
-    $\alpha_{j}\leq\alpha$. Therefore $c_{i_{j}-1}\equiv_{2}1$,
+    $\alpha_{j}\leq\alpha$. Therefore $C_{i_{j}-1}\equiv_{2}1$,
     for $j\in\lbrace1,\ldots,s+1\rbrace$, so:
     \begin{displaymath}
         d_{2^{\alpha}-1,s} \equiv_{2} \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}{1}
@@ -247,7 +253,8 @@ In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
         d_{2^{\alpha},j} = d_{2^{\alpha}-1,j-1} +d_{2^{\alpha}-1,j} +\ldots+d_{2^{\alpha}-1,j+r} 
     \end{displaymath}
     where $r$ satisfies $r=2^{\alpha}-1-j$, so $2^{\alpha}-j+1$ coefficients are 
-    combined.  By     the theorem above, row $\vect{r}_{2^{\alpha}-1}$ is composed by \emph{odd}
+    combined.  By \autoref{thm:odd:coeff:only:on:last:but:one:row}, 
+    row $\vect{r}_{2^{\alpha}-1}$ is composed by \emph{odd}
     coefficients only, therefore proceed by cases on the parity of $j$:
     \begin{itemize}
         \item if $j$ is \emph{odd}, assume $j=2k+1$ for some $k\in\mathbb{N}$, then
@@ -262,12 +269,12 @@ In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
 \input{catalan/alternating-row-include-figure.tex}
 In \autoref{fig:catalan-alternating-row} row $\vect{r}_{2^{4}}$ is highlighted.
 
-\subsection{On the \flqq mirror\frqq\, segment}
+\subsection{On the \emph{mirror} segment}
 
 Before showing new theorems, we introduce the object
 $\Phi^{(\alpha)}$ which denotes a particular segment contained 
 in the principal cluster $\mathcal{C}^{(\alpha+1)}$. 
-We call $\Phi^{(\alpha)}$ the \flqq mirror\frqq\,segment in 
+We call $\Phi^{(\alpha)}$ the \emph{mirror} segment in 
 $\mathcal{C}^{(\alpha+1)}$ and it is defined as follows:
 \begin{displaymath}
     \Phi^{(\alpha)}=\diagup_{\lbrace 1,2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}
@@ -288,7 +295,7 @@ according to \autoref{eq:convolution:expansion:for:generic:element:in:catalan:ar
 write it as:
 \begin{displaymath}
     d_{s, 2^{\alpha}-1} = \sum_{i_{1}+i_{2}+\ldots+i_{2^{\alpha}}=s+1}
-        {c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}}
+        {C_{i_{1}-1}\,C_{i_{2}-1}\cdots\,C_{i_{2^{\alpha}}-1}}
 \end{displaymath}
 Observe that, for $s\in\Phi^{(\alpha)}$, the number of Catalan
 coefficients multiplied together in each summand is the same, namely
@@ -299,25 +306,25 @@ of values, depending on $s$, for both indexes and coefficients:
     \begin{array}{c|c|c}
         s = 2^{\alpha} 
             & i_{j}\in\lbrace0,\ldots,2^{\alpha}+1\rbrace 
-            & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha}}\rbrace\\
+            & C_{k}\in\lbrace C_{-1},\ldots,C_{2^{\alpha}}\rbrace\\
         s = 2^{\alpha} +1
             & i_{j}\in\lbrace0,\ldots,2^{\alpha}+2\rbrace 
-            & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha}+1}\rbrace\\
+            & C_{k}\in\lbrace C_{-1},\ldots,C_{2^{\alpha}+1}\rbrace\\
         \vdots & \vdots&\vdots \\
         s = 2^{\alpha+1} -2
             & i_{j}\in\lbrace0,\ldots,2^{\alpha+1}-1\rbrace 
-            & c_{k}\in\lbrace c_{-1},\ldots,c_{2^{\alpha+1}-2}\rbrace\\
+            & C_{k}\in\lbrace C_{-1},\ldots,C_{2^{\alpha+1}-2}\rbrace\\
     \end{array}
 \end{displaymath}
-Set $\lbrace c_{-1},\ldots,c_{2^{\alpha}}\rbrace$ and set
-$\lbrace c_{-1},\ldots,c_{2^{\alpha+1}-2}\rbrace$ are the smaller and the bigger one, respectively, and
+Set $\lbrace C_{-1},\ldots,C_{2^{\alpha}}\rbrace$ and set
+$\lbrace C_{-1},\ldots,C_{2^{\alpha+1}-2}\rbrace$ are the smaller and the bigger one, respectively, and
 have the same subset $\Omega^{(\alpha)}$ of \emph{odd} coefficients: 
 \begin{displaymath}
-    \Omega^{(\alpha)}=\lbrace c_{-1}, c_{2^{\alpha-(\alpha-1)}-1},c_{2^{\alpha-(\alpha-2)}-1},\ldots, 
-        c_{2^{\alpha-1}-1},c_{2^{\alpha}-1}\rbrace
+    \Omega^{(\alpha)}=\lbrace C_{-1}, C_{2^{\alpha-(\alpha-1)}-1},C_{2^{\alpha-(\alpha-2)}-1},\ldots, 
+        C_{2^{\alpha-1}-1},C_{2^{\alpha}-1}\rbrace
 \end{displaymath}
 where $\left|\Omega^{(\alpha)}\right|=\alpha+1$.
-Since each summand term $c_{i_{1}-1}\,c_{i_{2}-1}\ldots\,c_{i_{2^{\alpha}}-1}$ 
+Since each summand term $C_{i_{1}-1}\,C_{i_{2}-1}\ldots\,C_{i_{2^{\alpha}}-1}$ 
 has $2^{\alpha}$ coefficients, no matter if it contains each coefficient in $\Omega^{(\alpha)}$ and,
 more importantly, one of them cannot belong to $\Omega^{(\alpha)}$:
 the remaining ones make it vanish and $d_{s, 2^{\alpha}-1} \equiv_{2} 0$, for any suitable $s$,
@@ -326,19 +333,19 @@ as required.
 \end{proof}
 
 \input{catalan/mirror-segment-include-figure.tex}
-In \autoref{fig:mirror-segment} the \flqq mirror\frqq\,segment $\Phi^{(4)}$ is highlighted.
+In \autoref{fig:mirror-segment} the \emph{mirror} segment $\Phi^{(4)}$ is highlighted.
 
-\subsection{On the \flqq dual\frqq\,segment of the \flqq mirror\frqq\, segment}
+\subsection{On the \emph{dual} segment of the \emph{mirror} segment}
 
 Next theorem needs a new piece of notation that allows us to identify a 
 new portion within a principal cluster $\mathcal{C}^{(\alpha+1)}$.
 Let $\hat{\Phi}^{(\alpha)}$ denote the set $\left\lbrace d_{s,s-(2^{\alpha}-1)}\right\rbrace$,
 for $s\in rows\left(\Phi^{(\alpha)}\right)$: we call $\hat{\Phi}^{(\alpha)}$  
-the \flqq dual\frqq\, segment of the \flqq mirror\frqq\,segment $\Phi^{(\alpha)}$.
+the \emph{dual} segment of the \emph{mirror} segment $\Phi^{(\alpha)}$.
 
 \begin{theorem}
     Let  $\Phi^{(\alpha)}=\diagup_{\lbrace 1,2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$, 
-    be a \flqq mirror\frqq\,segment in $\mathcal{C}^{(\alpha+1)}$, then: 
+    be a \emph{mirror} segment in $\mathcal{C}^{(\alpha+1)}$, then: 
     \begin{equation}
         d_{s,2^{\alpha}-1}\in\Phi^{(\alpha)}\rightarrow d_{s,s-(2^{\alpha}-1)}\equiv_{2}d_{s,2^{\alpha}-1}
     \end{equation}
@@ -412,29 +419,28 @@ the \flqq dual\frqq\, segment of the \flqq mirror\frqq\,segment $\Phi^{(\alpha)}
 \end{proof}
 
 \input{catalan/dual-of-mirror-segment-include-figure.tex}
-In \autoref{fig:dual-of-mirror-segment} the \flqq dual\frqq\,segment 
-    $\left\lbrace d_{s,s-(2^{4}-1)}\right\rbrace$,
-    for $s\in rows\left(\Phi^{(4)}\right)$, of \flqq mirror\frqq\,segment 
-    $\Phi^{(4)}$ in $\mathcal{C}_{\equiv_{2}}^{(5)}$ is highlighted.
+In \autoref{fig:dual-of-mirror-segment} the \emph{dual} segment $\hat{\Phi}^{(4)}$
+    %$\left\lbrace d_{s,s-(2^{4}-1)}\right\rbrace$,
+    %for $s\in rows\left(\Phi^{(4)}\right)$, 
+    of \emph{mirror} segment $\Phi^{(4)}$, within $\mathcal{C}_{\equiv_{2}}^{(5)}$, is highlighted.
 
 \subsection{On the \emph{upside-down} zero-hole}
 
 \begin{theorem}
     Let $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ be a principal cluster 
-    of order $\alpha+1$ of the Catalan array $\mathcal{C}$. Then, 
-    $H_{\bigtriangleup}^{({\alpha})}$ denotes an \emph{upside-down} zero-hole of order $\alpha$,
-    such that coefficient $d_{nk}\in H_{\bigtriangleup}^{({\alpha})}$ if 
+    of order $\alpha+1$ of the Catalan array $\mathcal{C}$. Then, $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$
+    contains an \emph{upside-down} zero-hole of order $\alpha$, denoted by $H_{\bigtriangleup}^{({\alpha})}$, 
+    such that coefficient $d_{n,k}\in H_{\bigtriangleup}^{({\alpha})}$ if 
     $n\in\lbrace 2^{{\alpha}},\ldots,2^{{\alpha}+1}-2\rbrace$ and 
     $k\in\lbrace 0,\ldots, n-2^{{\alpha}}\rbrace$. 
     \label{thm:upside:down:zero:hole}
 \end{theorem}
 
-It is simple to observe that $H_{\bigtriangleup}^{({\alpha})}\subset
-\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$. 
+%It is simple to observe that $H_{\bigtriangleup}^{({\alpha})}\subset \mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$. 
 
 \begin{proof}
 We repeatedly use the approach
-of the proof about the \flqq mirror\frqq\,segment, considering the set of columns 
+of the proof about the \emph{mirror} segment, considering the set of columns 
 $\Xi=\lbrace \vect{c}_{0},\ldots, \vect{c}_{2^{{\alpha}}-2}\rbrace$ and
 for each column $\vect{c}_{k}\in\Xi$, the segment
     $\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-2-k\rbrace}^{k}$.
@@ -443,9 +449,9 @@ If we start from the column $\vect{c}_{0}$ on the very left,
 then the corresponding set of row indices is a segment of Catalan numbers:
 \begin{displaymath}
     S_{0}=\diagup_{\lbrace 2^{\alpha},2^{\alpha}+1,\ldots,2^{\alpha+1}-2\rbrace}^{0}
-        = \lbrace c_{2^{\alpha}},c_{2^{\alpha}+1},\ldots,c_{2^{\alpha+1}-2}\rbrace
+        = \lbrace C_{2^{\alpha}},C_{2^{\alpha}+1},\ldots,C_{2^{\alpha+1}-2}\rbrace
 \end{displaymath}
-since no coefficient $c_{j}\in S_{0}$ has the shape $c_{2^{\alpha}-1}$, 
+since no coefficient $C_{j}\in S_{0}$ has the shape $C_{2^{\alpha}-1}$, 
 all coefficients in $S_{0}$ are even.
 
 In turn, take into account column $\vect{c}_{1}$, so the corresponding segment is
@@ -454,11 +460,11 @@ In turn, take into account column $\vect{c}_{1}$, so the corresponding segment i
     %S_{1}=\lbrace d_{2^{{\alpha}}+1,1},\ldots,d_{2^{{\alpha}+1}-2,1} \rbrace
 %\end{displaymath}
 and coefficients in it are defined according to 
-$d_{s, 1} = \sum_{i_{1}+i_{2}=s+1} {c_{i_{1}-1}\,c_{i_{2}-1}}$,
+$d_{s, 1} = \sum_{i_{1}+i_{2}=s+1} {C_{i_{1}-1}\,C_{i_{2}-1}}$,
 where $s\in rows(S_{1})= \left\lbrace 2^{\alpha}+1,2^{\alpha}+2,\ldots,2^{\alpha+1}-2\right\rbrace$. 
-This is quite similar to the proof developed for the \flqq mirror\frqq\,segment,
+This is quite similar to the proof developed for the \emph{mirror} segment,
 with the difference that summand term is composed of two coefficients, namely
-$c_{i_{1}-1}\,c_{i_{2}-1}$ instead of $2^{{\alpha}}$ coefficients as in the previous proof, 
+$C_{i_{1}-1}\,C_{i_{2}-1}$ instead of $2^{{\alpha}}$ coefficients as in the previous proof, 
 therefore the same argument applies,
 since if multiplying $2^{{\alpha}}$ coefficients fails to make \emph{not} vanish
 the summand term, modulo $2$, the same failure is reached if multiplying only $2$ coefficients.
@@ -473,11 +479,11 @@ positioned at the very left in the bottom half of $\mathcal{C}_{\equiv_{2}}^{(\a
 \input{catalan/zero-hole-include-figure.tex}
 In \autoref{fig:catalan-zero-hole} is reported $H_{\bigtriangleup}^{(4)}$.
 
-\subsection{On two \flqq mirrored\frqq\,clusters}
+\subsection{On two \emph{mirrored} clusters}
 
 \begin{theorem}
     Let $\Phi^{(\alpha)}=\diagup_{\lbrace 2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$
-    be a \flqq mirror\frqq\,segment and $\hat{d}_{s,2^{{\alpha}}-1}$ 
+    be a \emph{mirror} segment and $d_{s,2^{{\alpha}}-1}$ 
     be a coefficient in $\Phi^{(\alpha)}$, for some $s\in rows\left(\Phi^{(\alpha)}\right)$. Then:
     \begin{displaymath}
         d_{s-e,2^{{\alpha}}-1-e} \equiv_{2} d_{s,2^{{\alpha}}-1+e}
@@ -527,14 +533,14 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
         \begin{displaymath}
                 {{2s-2^{{\alpha}}}\choose{s-1}}+{{2s-2^{{\alpha}}}\choose{s+1}} \equiv_{2} 0
         \end{displaymath}
-        let $s=s_{0}+s_{1}\,2+s_{2}\,2^{2}+\ldots+s_{{\alpha}-1}\,2^{{\alpha}-1} + 2^{{\alpha}}$
+        Let $s=s_{0}+s_{1}\,2+s_{2}\,2^{2}+\ldots+s_{{\alpha}-1}\,2^{{\alpha}-1} + 2^{{\alpha}}$
         be the generic representation of $s$ in base $2$, since 
         $s\in\lbrace 2^{{\alpha}}+1,\ldots,2^{{\alpha}+1}-2 \rbrace$; also  
         let $2s-2^{{\alpha}}=s_{0}\,2+s_{1}\,2^{2}+s_{2}\,2^{3}+\ldots+s_{{\alpha}-1}^{*}\,2^{{\alpha}} + s_{{\alpha}}^{*}\,2^{{\alpha}+1}$,
         where $(s_{{\alpha}-1}^{*},s_{{\alpha}}^{*})$ equals $(0,1)$ if $s_{{\alpha}-1}=1$, otherwise equals $(1,0)$.
         By cases on the parity of $s$:
         \begin{itemize}
-            \item assume $s$ even, therefore both $s-1$ both $s+1$ are odd, 
+            \item assume $s$ even, therefore both $s-1$ and $s+1$ are odd, so 
                 let $\hat{s}=1+\hat{s}_{1}\,2+\hat{s}_{2}\,2^{2}+\ldots+
                     \hat{s}_{{\alpha}-1}\,2^{{\alpha}-1}+2^{{\alpha}}$ be one of them, hence:
                 \begin{displaymath}
@@ -554,7 +560,7 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
                 therefore in both cases the coefficient of $2^{{\alpha}}$ is $1$.
                 Eventually we get $0+0 \equiv_{2}0$, which holds;
 
-            \item assume $s$ odd, therefore both $s-1$ both $s+1$ are even, 
+            \item assume $s$ odd, therefore both $s-1$ and $s+1$ are even, 
                 let's study the former:
                 \begin{displaymath}
                         {{2s-2^{{\alpha}}}\choose{s-1}}  
@@ -579,11 +585,16 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
                 $s=(\underbrace{1,1,1,\ldots,1}_{{\alpha}+1})_{2}=2^{{\alpha}+1}-1$ raises a contradiction, because
                 $s$ can assume $2^{{\alpha}+1}-2$ at most. 
                 
-                For the latter, namely $s+1$, assume $s$ can be represented as 
-                $(\underbrace{1,1,\ldots,1}_{r},0,s_{r+1},s_{r+2},\ldots,s_{{\alpha}-1},1)_{2}$, for
-                $r\in\lbrace1,\ldots,{\alpha}-2\rbrace$, since a $0$ must occur otherwise $s=2^{{\alpha}+1}-1$
-                which cannot be the case, as we've already seen.  Adding $1$ yield the representation
-                $(\underbrace{0,0,\ldots,0}_{r},1,s_{r+1},s_{r+2},\ldots,s_{{\alpha}-1},1)_{2}$, therefore:
+                For the latter, namely $s+1$, assume $s$ can be represented as:
+                \begin{displaymath}
+                    (\underbrace{1,1,\ldots,1}_{r},0,s_{r+1},s_{r+2},\ldots,s_{{\alpha}-1},1)_{2}
+                \end{displaymath}
+                for $r\in\lbrace1,\ldots,{\alpha}-2\rbrace$. Since a $0$ must occur, otherwise $s=2^{{\alpha}+1}-1$
+                which cannot be the case as we've already seen, adding $1$ yield the representation:
+                \begin{displaymath}
+                    (\underbrace{0,0,\ldots,0}_{r},1,s_{r+1},s_{r+2},\ldots,s_{{\alpha}-1},1)_{2}
+                \end{displaymath}
+                Therefore we have:
                 \begin{displaymath}
                     %\hspace{-2cm}
                     {{2s-2^{{\alpha}}}\choose{s+1}} 
@@ -604,11 +615,9 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
                     {{s_{{\alpha}}^{*}}\choose{0}}
                 \end{displaymath}
                 In order to not vanish, modulo $2$, 
-                $s_{r+1}=0$, this propagates in turn that $s_{r+2}=0$, \ldots, 
-                this propagates in turn that $s_{{\alpha}-2}=0$,
-                this propagates in turn that $s_{{\alpha}-1}=0$. But if $s_{{\alpha}-1}=0$
-                then $(s_{{\alpha}-1}^{*},s_{{\alpha}}^{*})=(1,0)$, therefore the right
-                hand side reduces to $1$.
+                $s_{r+1}$ has to be $0$; eventually, this property propagates among $s_{r+2}, \ldots, s_{{\alpha}-1}$. 
+                But if they are all $0$, %$s_{{\alpha}-1}=0$
+                then $(s_{{\alpha}-1}^{*},s_{{\alpha}}^{*})=(1,0)$, therefore the right hand side reduces to $1$.
 
                 Combining the above cases for $s$ odd we reach:
                 \begin{displaymath}
@@ -643,7 +652,7 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
 \end{proof}
 
 \input{catalan/mirrored-clusters-include-figure.tex}
-In \autoref{fig:catalan-mirrored-clusters} some coefficients in \flqq mirrored\frqq\,
+In \autoref{fig:catalan-mirrored-clusters} some coefficients in \emph{mirrored}
 cluster $\mathcal{C}_{\equiv_{2}}^{(4)}$ are highlighted.
 
 \subsection{$\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ 
@@ -657,7 +666,7 @@ left with a last theorem.
     contains a copy of $\mathcal{C}_{\equiv_{2}}^{(\alpha)}$,
     located at the very right of its bottom half. Formally, 
     let $\Phi^{(\alpha)}=\diagup_{\lbrace 2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$
-    be a \flqq mirror\frqq\,segment and $\hat{d}_{s,2^{{\alpha}}-1}$ 
+    be a \emph{mirror} segment and $\hat{d}_{s,2^{{\alpha}}-1}$ 
     be a coefficient in $\Phi^{(\alpha)}$, for some $s\in rows\left(\Phi^{(\alpha)}\right)$. Then:
     \begin{displaymath}
         d_{s,2^{{\alpha}}-1+e} \equiv_{2} d_{s-2^{{\alpha}},e-1}
@@ -683,7 +692,7 @@ We tackle the proof using \autoref{eq:catalan:array:second:identity}:
 \end{displaymath}
 Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction on $e$:
     \begin{itemize}
-        \item base case $e=1$ therefore:
+        \item for the base case $e=1$ we have:
 
             \begin{displaymath}
                 \begin{split}
@@ -732,7 +741,7 @@ We have used \autoref{thm:mirror:segment:definition},
 procedure, written using the Python language, that builds $\mathcal{C}_{\equiv_{2}}$
 inductively without resorting to the hard-way approach. The latter consists of 
 computing the matrix expansion of $\mathcal{C}$ by doing convolutions and 
-Taylor expansion for each column, then taking each coefficient $c_{nk}\in\mathcal{C}$ modulo 2. 
+series expansion of each column, then taking each coefficient $c_{n,k}\in\mathcal{C}$ modulo 2. 
 On the contrary, the former uses theorems to 
 assemble $\mathcal{C}_{\equiv_{2}}$ block-wise: it builds a principal cluster 
 $\mathcal{C}_{\equiv_{2}}^{(\alpha+1)}$ consuming a principal cluster 
