@@ -36,7 +36,8 @@ it is a fundamental result for our work.
 \begin{proof}
     Consider the sequence $\vect{\alpha}_{m}=\left\lbrace{{m}\choose{n}}\right\rbrace_{n\in\mathbb{N}}$ 
     of coefficients which counts the number of subset
-    of a set composed by $m$ elements. Use sequence $\vect{\alpha}_{m}$ to define a formal power series:
+    of a set composed by $m$ elements. We can use sequence $\vect{\alpha}_{m}$ to define a 
+    formal power series on the indeterminate variable $t$ and manipulate:
     \begin{displaymath}
         %\begin{split}
             \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} %&
@@ -46,22 +47,21 @@ it is a fundamental result for our work.
                 = \prod_{r=0}^{k}{{\left(1+t\right)^{m_{r}p^{r}}}}
                 = \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
         %\end{split}
-    \end{displaymath}
-    The expansion of $\left(1+t\right)^{p^{r}}$ yield: 
+    \end{displaymath}. The expansion of $\left(1+t\right)^{p^{r}}$ yield: 
     \begin{displaymath}
             \left(1+t\right)^{p^{r}} = \sum_{s=0}^{p^{r}}{{{p^{r}}\choose{s}}\,t^{s}}
                 = 1+\sum_{s=1}^{p^{r}-1}{{{p^{r}}\choose{s}}\,t^{s}}+t^{p^{r}}
     \end{displaymath}
     and the application of congruence relation modulo $p$ makes the sum vanish since ${{p^{r}}\choose{s}}=p\,u_{s}$,
     for some $u_{s}\in\mathbb{N}$ and $s\in\lbrace 1,\ldots,p^{r}-1\rbrace$, 
-    therefore $\left(1+t\right)^{p^{r}} \equiv_{p} 1+t^{p^{r}}$. We can rewrite as:
+    therefore $\left(1+t\right)^{p^{r}} \equiv_{p} 1+t^{p^{r}}$. On the very right hand side of 
+    the rewriting
     \begin{displaymath}
             \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
                 \equiv_{p} \prod_{r=0}^{k}{\left(1+t^{p^{r}}\right)^{m_{r}}}
                 \equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
     \end{displaymath}
-    %\marginpar{abstracting a convolution introducing set $\Omega_{n}$}
-    on the very right hand side there is a product of $k+1$ formal power series, properly shifted according to 
+    there is a product of $k+1$ formal power series, properly shifted according to 
     $p_{0},p_{1},\ldots,p_{k}$. Such product yields a new formal power series which satisfies:
     \begin{displaymath}
         \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} 
@@ -72,12 +72,13 @@ it is a fundamental result for our work.
         \sum_{j=0}^{k}{\omega_{j}p^{j}}=n\right\rbrace$.
     There exists a \emph{unique} set of coefficients
     $\lbrace n_{0},n_{1},\ldots,n_{k}\rbrace$ such that $n=\sum_{j=0}^{k}{n_{j}p^{j}}$, therefore
-    each set $\Omega_{n}$ contains only one element, namely $\vect{\omega}=(n_{0},\ldots,n_{k})$, so:
+    each set $\Omega_{n}$ contains only one element, namely $\vect{\omega}=(n_{0},\ldots,n_{k})$, so
     \begin{displaymath}
         \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} 
         \equiv_{p} \sum_{n=0}^{m}{\left({\prod_{i=0}^{k}{{{m_{i}}\choose{n_{i}}}}}\right)\,t^{n}}
     \end{displaymath}
-    equating coefficients attached to $t^{n}$, for $n\in\lbrace0,\ldots,m\rbrace$, the argument follows, as required.
+    holds and the argument follows by equating coefficients attached to $t^{n}$, 
+    for $n\in\lbrace0,\ldots,m\rbrace$, as required.
 
 \end{proof}
 
