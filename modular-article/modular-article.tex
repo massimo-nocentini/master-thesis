@@ -2,8 +2,8 @@
 \documentclass[11pt,a4paper]{article} % KOMA-Script article scrartcl
 \usepackage{lipsum}
 \usepackage{url}
-\usepackage[nochapters,eulermath,beramono]{classicthesis} % nochapters
-%\usepackage{concrete}
+%\usepackage[nochapters,eulermath,beramono]{classicthesis} % nochapters
+\usepackage{concrete}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{amsmath}
@@ -24,13 +24,18 @@
 \usepackage{marginnote}
 
 \usepackage[T1]{fontenc}
-%\usepackage{concrete}
+
+% the following package allows us to capitalize autorefs of sections, taken from:
+% http://tex.stackexchange.com/questions/34155/autoref-does-not-capitalize-initial-character-in-sentence-when-referencing-labe
+\usepackage{cleveref}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{corollary}[theorem]{Corollary}
-%\newtheorem{proof}[theorem]{Proof}
+%\renewcommand*{\sectionautorefname}{Section}%
+%\renewcommand*{\subsectionautorefname}{Section}%
+%\renewcommand*{\subsubsectionautorefname}{Section}% 	
 
 \newcommand{\vect}[1]{\boldsymbol{#1}}
 

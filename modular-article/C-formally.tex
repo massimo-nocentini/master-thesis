@@ -47,17 +47,19 @@ some properties about $\mathcal{C}_{h+1}$:
 We are now in the position to formally define the Catalan
 array $\mathcal{C}$ and to introduce some mathematical objects
 that will be used later. Matrix $\mathcal{C}$ is defined 
-as a Riordan array as follows:
+as a Riordan array as
 \begin{displaymath}
     \mathcal{C}=\left(\frac{1-\sqrt{1-4\,t}}{2\,t},
         \frac{1-\sqrt{1-4\,t}}{2}\right)
 \end{displaymath}
-since $h(t)=t\,d(t)$, then $\mathcal{C}$ is also a \emph{renewal} array \cite{rogers:1977}.
+and it is a \emph{renewal} array \cite{rogers:1977} also, because $h(t)=t\,d(t)$.
 Instantiating $k=0$ in \autoref{eq:Riordan:array:coefficient},
-the $n$-th Catalan number $C_{n}$ satisfies the following relation:
+the $n$-th Catalan number $C_{n}$ satisfies the relation
 \begin{displaymath}
     C_{n} = [t^{n}]d(t)= [t^{n}]\frac{1-\sqrt{1-4\,t}}{2\,t}
 \end{displaymath}
+where $[t^{n}]g(t)$ extracts the coefficient attached to $t^{n}$ 
+in the series expansion of function $g(t)$.
 
 Every matrix $\mathcal{R}(d(t), h(t))$ in the Riordan group can be characterized, equivalently,
 by two sequences of coefficients: $\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$  and

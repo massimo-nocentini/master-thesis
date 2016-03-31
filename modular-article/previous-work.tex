@@ -47,7 +47,8 @@ it is a fundamental result for our work.
                 = \prod_{r=0}^{k}{{\left(1+t\right)^{m_{r}p^{r}}}}
                 = \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
         %\end{split}
-    \end{displaymath}. The expansion of $\left(1+t\right)^{p^{r}}$ yield: 
+    \end{displaymath} where $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$ represented in 
+    base $p$. The expansion of $\left(1+t\right)^{p^{r}}$ yield
     \begin{displaymath}
             \left(1+t\right)^{p^{r}} = \sum_{s=0}^{p^{r}}{{{p^{r}}\choose{s}}\,t^{s}}
                 = 1+\sum_{s=1}^{p^{r}-1}{{{p^{r}}\choose{s}}\,t^{s}}+t^{p^{r}}
@@ -62,7 +63,7 @@ it is a fundamental result for our work.
                 \equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
     \end{displaymath}
     there is a product of $k+1$ formal power series, properly shifted according to 
-    $p_{0},p_{1},\ldots,p_{k}$. Such product yields a new formal power series which satisfies:
+    $p_{0},p_{1},\ldots,p_{k}$: such product yields a new formal power series which satisfies
     \begin{displaymath}
         \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} 
         \equiv_{p}
@@ -78,7 +79,8 @@ it is a fundamental result for our work.
         \equiv_{p} \sum_{n=0}^{m}{\left({\prod_{i=0}^{k}{{{m_{i}}\choose{n_{i}}}}}\right)\,t^{n}}
     \end{displaymath}
     holds and the argument follows by equating coefficients attached to $t^{n}$, 
-    for $n\in\lbrace0,\ldots,m\rbrace$, as required.
+    %for $n\in\lbrace0,\ldots,m\rbrace$, 
+    as required.
 
 \end{proof}
 
@@ -91,47 +93,44 @@ occurring in combinatorics, such as binomials and Stirling numbers. Many of
 such coefficients shows divisibility structures of remarkable design. 
 
 She starts working on the Pascal triangle $\mathcal{P}$, whose coefficients
-can be defined inductively using the following recurrence: 
+can be defined inductively using the recurrence
 \begin{equation}
     {{n}\choose{k}}={{n-1}\choose{k-1}}+{{n-1}\choose{k}}
     \label{eq:binomial:recurrence}
 \end{equation}
-and studies $\mathcal{P}_{\equiv_{p}}$, where $p$ ranges over the first primes, 
-namely the Pascal array where each coefficient is taken modulo $p$. Besides, 
-she introduces a little language, described in the next paragraph, that allows her to characterize these arrays 
-and we adopt it as well.
-\\\\
+and studies the Pascal array where each coefficient is taken modulo $p$, 
+denoted by $\mathcal{P}_{\equiv_{p}}$, for some small prime $p$. Besides, 
+she introduces a little language, described in the next paragraph, 
+that allows her to characterize these arrays and we adopt it as well.
+
 Let $\mathcal{M}=\lbrace m_{n,k}\rbrace_{n,k\in\mathbb{N}}$ 
 be an infinite lower triangular array, where $m_{n,k}=0$ if 
 $n<k$. Choose a prime $p$, then build a modular array
-$\mathcal{M}_{\equiv_{p}}$ defined as 
-$\lbrace m_{n,k}\mod p : m_{n,k} \in \mathcal{M}\rbrace$.
+$\mathcal{M}_{\equiv_{p}}$, defined as 
+$\lbrace m_{n,k}\mod p : m_{n,k} \in \mathcal{M}\rbrace$, containing
+the following regions:
+\begin{itemize}
 
+\item a \emph{principal cell} is % a chunk of $\mathcal{M}_{\equiv_{p}}$ 
+    defined as
+    $\mathcal{M}_{\equiv_{p}}^{\bigtriangleup} = 
+        \left\lbrace m_{n,k}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p-1\rbrace\right\rbrace$;
 
-A \emph{principal cell} is a chunk of $\mathcal{M}_{\equiv_{p}}$ denoted by:
-\begin{displaymath}
-    \mathcal{M}_{\equiv_{p}}^{\bigtriangleup} = 
-        \left\lbrace m_{n,k}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p-1\rbrace\right\rbrace
-\end{displaymath}
+\item a \emph{cell} $c_{\beta}$ is a copy of the \emph{principal cell} with each entry multiplied 
+by the same constant $\beta\in\mathbb{N}$, formally
+    $c_{\beta}=\left\lbrace \beta\,m_{n,k}\mod p:m_{n,k}\in \mathcal{M}_{\equiv_{p}}^{\bigtriangleup}\right\rbrace$;
 
-A \emph{cell} $c_{\beta}$ is a copy of the \emph{principal cell} with each entry multiplied 
-by the same constant $\beta\in\mathbb{N}$, formally:
-\begin{displaymath}
-    c_{\beta}=\left\lbrace \beta\,m_{n,k}\mod p:m_{n,k}\in \mathcal{M}_{\equiv_{p}}^{\bigtriangleup}\right\rbrace
-\end{displaymath}
+\item a \emph{principal cluster} of order $\alpha$ is %a chunk of $\mathcal{M}_{\equiv_{p}}$ 
+    defined as
+    $\mathcal{M}_{\equiv_{p}}^{(\alpha)} = 
+        \left\lbrace m_{n,k}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p^{\alpha}-1\rbrace\right\rbrace$;
 
-A \emph{principal cluster} of order $\alpha$ is a chunk of $\mathcal{M}_{\equiv_{p}}$ denoted by:
-\begin{displaymath}
-    \mathcal{M}_{\equiv_{p}}^{(\alpha)} = 
-        \left\lbrace m_{n,k}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p^{\alpha}-1\rbrace\right\rbrace
-\end{displaymath}
-
-A \emph{cluster} $\mathcal{C}_{\beta}^{(\alpha)}$ of order $\alpha$ is a copy of the \emph{principal cluster}
+\item a \emph{cluster} $\mathcal{C}_{\beta}^{(\alpha)}$ of order $\alpha$ is a copy of the \emph{principal cluster}
 of order $\alpha$ with each entry multiplied 
-by the same constant $\beta\in\mathbb{N}$, formally:
-\begin{displaymath}
-    \mathcal{C}_{\beta}^{(\alpha)}=\left\lbrace \beta\,m_{n,k}\mod p:m_{n,k}\in \mathcal{M}_{\equiv_{p}}^{(\alpha)}\right\rbrace
-\end{displaymath}
+by the same constant $\beta\in\mathbb{N}$, formally 
+    $\mathcal{C}_{\beta}^{(\alpha)}=\left\lbrace \beta\,m_{n,k}\mod p:m_{n,k}\in \mathcal{M}_{\equiv_{p}}^{(\alpha)}\right\rbrace$.
+
+\end{itemize}
 
 Finally, a \emph{zero-hole} of order $\alpha$ is an inverted triangular array of
 coefficients multiples of $p$, from here the name: it consists of $p^{\alpha}-1$
