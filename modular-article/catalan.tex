@@ -78,7 +78,7 @@ we proceed by cases on $j$'s parity:
         \end{displaymath}
         so:
         \begin{displaymath}
-            C_{j}\equiv_{2}-{{2j}\choose{j+1}}
+            C_{j}\equiv_{2}-{{2j}\choose{j+1}}.
             %\equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
                 %\ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
         \end{displaymath}
@@ -86,7 +86,7 @@ we proceed by cases on $j$'s parity:
         since $(-1)\cdot 1 \equiv_{2}1$, therefore we can multiply both members by
         $(-1)^{-1}\mod2$ to get:
         \begin{displaymath}
-            C_{j}\equiv_{2}{{2j}\choose{j+1}}
+            C_{j}\equiv_{2}{{2j}\choose{j+1}}.
             %\equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
                 %\ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
         \end{displaymath}
@@ -99,12 +99,12 @@ we proceed by cases on $j$'s parity:
             j=\left(\underbrace{1,1,\ldots,1}_{\beta},0,j_{\beta+1},\ldots,j_{\beta+\gamma}\right)_{2}
         \end{displaymath}
         where $\beta,\gamma\in\mathbb{N}$ such that $\beta>0$ and $\beta+\gamma=k$. 
-        Increment $j$ by $1$:
+        Incrementing $j$ by $1$ we get
         \begin{displaymath}
             j+1=\left(\underbrace{0,0,\ldots,0}_{\beta},1,j_{\beta+1},\ldots,j_{\beta+\gamma}%,j_{\beta+\gamma+1}
                 \right)_{2}
         \end{displaymath}
-        so the congruence relation gets the following shape:
+        so the congruence relation gets the shape
         \begin{displaymath}
             %\hspace{-2cm}
             C_{j}\equiv_{2}{{2j}\choose{j+1}}
@@ -113,24 +113,24 @@ we proceed by cases on $j$'s parity:
                     {{1}\choose{1}}{{0}\choose{j_{\beta+1}}}{{j_{\beta+1}}\choose{j_{\beta+2}}}
                     \ldots{{j_{\beta+\gamma-1}}\choose{j_{\beta+\gamma}}}{{j_{\beta+\gamma}}\choose{0}}%{\beta+\gamma+1}}
         \end{displaymath}
-        a simplification yield:
+        and a simplification yield
         \begin{displaymath}
             C_{j}\equiv_{2} {{0}\choose{j_{\beta+1}}}
                 {{j_{\beta+1}}\choose{j_{\beta+2}}}
-                    \ldots{{j_{\beta+\gamma-1}}\choose{j_{\beta+\gamma}}}
+                    \ldots{{j_{\beta+\gamma-1}}\choose{j_{\beta+\gamma}}}.
         \end{displaymath}
-        so $C_{j}\equiv_{2} 1$ if coefficients 
+        At last, $C_{j}\equiv_{2} 1$ holds if coefficients 
             $j_{\beta+1}, \ldots, j_{\beta+\gamma-1},j_{\beta+\gamma}$
-        are $0$ them all, which implies that:
+        are $0$ them all, which implies that
         \begin{displaymath}
-            j=\left(\underbrace{1,1,\ldots,1}_{\beta},\underbrace{0,0,\ldots,0}_{k-\beta+1}\right)_{2}
+            j=\left(\underbrace{1,1,\ldots,1}_{\beta},\underbrace{0,0,\ldots,0}_{k-\beta+1}\right)_{2},
         \end{displaymath}
-
         in other words $j = 2^{\beta+1}-1$. As boundary case, to handle $C_{1}$ correctly 
-        (the above result doesn't cover it because $\beta>0$) observe:
+        (the above result doesn't cover it because $\beta>0$) observe that
         \begin{displaymath}
-            C_{1}\equiv_{2} {{2}\choose{2}}\equiv_{2} {{0}\choose{0}}{{1}\choose{1}}\equiv_{2}1
+            C_{1}\equiv_{2} {{2}\choose{2}}\equiv_{2} {{0}\choose{0}}{{1}\choose{1}}\equiv_{2}1,
         \end{displaymath}
+        as required.
 \end{itemize}
 \end{proof}
 
@@ -192,7 +192,7 @@ property about coefficient $C_{j}$.
     $s\in\lbrace{2,\ldots,2^{\alpha}-1}\rbrace$, we rewrite it as:
     \begin{displaymath}
         d_{2^{\alpha}-1,s} = \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}
-            {C_{i_{1}-1}\,C_{i_{2}-1}\ldots\,C_{i_{s+1}-1}}
+            {C_{i_{1}-1}\,C_{i_{2}-1}\ldots\,C_{i_{s+1}-1}}.
     \end{displaymath}
     Using an argument similar to the previous one, from:
     \begin{displaymath}
@@ -204,7 +204,7 @@ property about coefficient $C_{j}$.
     for $j\in\lbrace1,\ldots,s+1\rbrace$, so:
     \begin{displaymath}
         d_{2^{\alpha}-1,s} \equiv_{2} \sum_{i_{1}+i_{2}+\ldots+i_{s+1}=2^{\alpha}}{1}
-            \equiv_{2} {{s+2^{\alpha}}\choose{2^{\alpha}}}
+            \equiv_{2} {{s+2^{\alpha}}\choose{2^{\alpha}}},
     \end{displaymath}
     because the summation over indices $i_{1},\ldots,i_{s+1}$ asks to count the
     number of $2^{\alpha}$-combinations of $s+1$ distinct objects, each of
@@ -498,12 +498,12 @@ an identity defining the generic coefficient. It allows to rewrite the left hand
 of the argument:
 \begin{displaymath}
     d_{s-e,2^{{\alpha}}-1-e}= {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)}}
-        - {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)-1}}
+        - {{2(s-e)-(2^{{\alpha}}-1-e)}\choose{(s-e)-(2^{{\alpha}}-1-e)-1}};
 \end{displaymath}
 in the same spirit, the same can be applied to the right hand side:
 \begin{displaymath}
     d_{s,2^{{\alpha}}-1+e}={{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)}}
-        - {{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)-1}}
+        - {{2s-(2^{{\alpha}}-1+e)}\choose{s-(2^{{\alpha}}-1+e)-1}},
 \end{displaymath}
 therefore:
 \begin{displaymath}
@@ -531,7 +531,7 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
         \end{displaymath}
         which is the same to say:
         \begin{displaymath}
-                {{2s-2^{{\alpha}}}\choose{s-1}}+{{2s-2^{{\alpha}}}\choose{s+1}} \equiv_{2} 0
+                {{2s-2^{{\alpha}}}\choose{s-1}}+{{2s-2^{{\alpha}}}\choose{s+1}} \equiv_{2} 0.
         \end{displaymath}
         Let $s=s_{0}+s_{1}\,2+s_{2}\,2^{2}+\ldots+s_{{\alpha}-1}\,2^{{\alpha}-1} + 2^{{\alpha}}$
         be the generic representation of $s$ in base $2$, since 
@@ -552,7 +552,7 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
                         \ldots
                         {{s_{{\alpha}-2}}\choose{\hat{s}_{{\alpha}-1}}}
                         {{s_{{\alpha}-1}^{*}}\choose{1}}
-                        {{s_{{\alpha}}^{*}}\choose{0}} = 0
+                        {{s_{{\alpha}}^{*}}\choose{0}} = 0.
                 \end{displaymath}
                 Observe $\hat{s}_{{\alpha}}=1$ against boundary cases:
                 if $s=2^{{\alpha}}+1$ then $\hat{s}=s-1=2^{{\alpha}}$, on the other
@@ -693,13 +693,11 @@ We tackle the proof using \autoref{eq:catalan:array:second:identity}:
 Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction on $e$:
     \begin{itemize}
         \item for the base case $e=1$ we have:
-
             \begin{displaymath}
-                \begin{split}
-                    {{2s-2^{{\alpha}}}\choose{s}} - {{2s-2^{{\alpha}}}\choose{s+1}}
-                    &\equiv_{2}
-                    {{2s-2^{{\alpha}+1}}\choose{s-2^{{\alpha}}}} - {{2s-2^{{\alpha}+1}}\choose{s-2^{{\alpha}}+1}}\\
-                \end{split}
+                %\begin{split}
+                    {{2s-2^{{\alpha}}}\choose{s}} - {{2s-2^{{\alpha}}}\choose{s+1}} \equiv_{2}
+                        {{2s-2^{{\alpha}+1}}\choose{s-2^{{\alpha}}}} - {{2s-2^{{\alpha}+1}}\choose{s-2^{{\alpha}}+1}}.
+                %\end{split}
             \end{displaymath}
             In the previous proof a detailed (and boring) derivation has been performed,
             here we observe that upper terms of each binomial coefficient, $2s-2^{{\alpha}}$

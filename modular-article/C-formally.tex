@@ -62,32 +62,40 @@ where $[t^{n}]g(t)$ extracts the coefficient attached to $t^{n}$
 in the series expansion of function $g(t)$.
 
 Every matrix $\mathcal{R}(d(t), h(t))$ in the Riordan group can be characterized, equivalently,
-by two sequences of coefficients: $\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$  and
-$\lbrace z_{n}\rbrace_{n\in\mathbb{N}}$ called $A$-sequence and $Z$-sequence, 
-respectively. We can use them to define inductively every coefficient $d_{n,k}$ in a Riordan array as follows:
+by two sequences of coefficients: $\left(a_{n}\right)_{n\in\mathbb{N}}$  and
+$\left(z_{n}\right)_{n\in\mathbb{N}}$ called $A$-sequence and $Z$-sequence, 
+respectively. The former one can be used to define inductively every coefficient $d_{n,k}$, with $k>0$, as 
 \begin{equation}
-    d_{n+1, k+1} = a_{0}d_{n,k} + a_{1}d_{n,k+1} + a_{2}d_{n,k+2} + \ldots + a_{j}d_{n,k+j} 
+    d_{n+1, k+1} = a_{0}d_{n,k} + a_{1}d_{n,k+1} + a_{2}d_{n,k+2} + \ldots + a_{j}d_{n,k+j} + a_{j+1}d_{n,k+j+1} + \cdots
 \end{equation}
-where $k>0$ and $j\in\mathbb{N}$ such that $n=k+j$. On the other hand, if $k=0$ then:
+where the sum if finite because exists $j\in\mathbb{N}$ such that $n=k+j$. On the other hand, the latter one
+can be used to define coefficients $d_{n,0}$ lying on the first column, formally
 \begin{equation}
-    d_{n+1, 0} = z_{0}d_{n,0} + z_{1}d_{n,1} + z_{2}d_{n,2} + \ldots + z_{n}d_{n,n} 
+    d_{n+1, 0} = z_{0}d_{n,0} + z_{1}d_{n,1} + z_{2}d_{n,2} + \ldots + z_{n}d_{n,n} + z_{n+1}d_{n,n+1} + \cdots
 \end{equation}
-Moreover, let $A(t)$ and $Z(t)$ be two generating functions over $A$-sequence and $Z$-sequence, respectively,
-then the following relations connect them with functions $d(t)$ and $h(t)$
-\cite{merlini:some:alternative:characterizations:1997}:
+where the sum is finite again because $d_{n,k}=0$ whenever $k>n$.
+
+Moreover, let $A(t)$ and $Z(t)$ be the generating functions of the $A$-sequence and $Z$-sequence, respectively,
+then relations 
 \begin{equation}
     h(t) = tA(h(t)) \quad d(t)=\frac{d_{0,0}}{1-tZ(h(t))}
 \end{equation}
-where $d_{0,0}$ is the very first element in the top left corner of $\mathcal{R}$.
+connect them with functions $d(t)$ and $h(t)$ \cite{merlini:some:alternative:characterizations:1997},
+where $d_{0,0}$ is the very first element %in the top left corner 
+of $\mathcal{R}$.
 
-A last fact to be aware of is a fundamental theorem that allows us to multiply $\mathcal{R}$ on the right with
-an infinite column vector $\vect{\omega}=(\omega_{0},\omega_{1},\omega_{2},\ldots)$ 
+A last fact to be aware of is a fundamental theorem that allows us to perform 
+matrix-vector product, of array $\mathcal{R}$ and an infinite column vector 
+$\vect{\omega}=(\omega_{0},\omega_{1},\omega_{2},\ldots)$,
 as generating functions convolution. It states as follows:
 \begin{equation}
     \mathcal{R}\cdot\vect{\omega} = d(t)\Omega(h(t))    
 \end{equation}
-where $\Omega$ is a generating function such that $\Omega(t)=\sum_{k\in\mathbb{N}}{\omega_{k}t^{k}}$.
+where $\Omega$ is a generating function such that it can be expanded 
+as a series $\sum_{k\in\mathbb{N}}{\omega_{k}t^{k}}$.
 
+In the rest of the paper we use the notation $c_{n,k}\in\mathcal{C}$ to denote
+a coefficient belonging to the Catalan array at row $r$ and column $k$.
 We can instantiate previous properties for Catalan array $\mathcal{C}$, starting with its $A$-sequence:
 \begin{displaymath}
     A_{\mathcal{C}}(t)=\frac{1}{1-t}=1+t+t^{2}+t^{3}+t^{4}+t^{5}+t^{6}+t^{7}+t^{8}+
@@ -95,9 +103,10 @@ We can instantiate previous properties for Catalan array $\mathcal{C}$, starting
 \end{displaymath}
 and, since $\mathcal{C}$ is in the renewal subgroup, it is not difficult to see that its
 $Z$-sequence is the same as $A$-sequence. Using $Z$-sequence characterization then 
-each coefficient $C_{n}$ can be written as the combination of coefficients lying on the previous row $n-1$:
+each coefficient $C_{n}$ can be written as the combination of coefficients 
+lying on the previous row $n-1$:
 \begin{displaymath}
-    C_{n} = \sum_{k=0}^{n-1}{C_{n-1,k}}
+    C_{n} = c_{n,0} = \sum_{k=0}^{n-1}{c_{n-1,k}}
 \end{displaymath}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \iffalse
