@@ -152,8 +152,9 @@ property about coefficient $C_{j}$.
 \subsection{On rows composed of \emph{odd} coefficients only}
 
 \begin{theorem}
-    Every row $\vect{r}_{2^{\alpha}-1}$ of $\mathcal{C}_{\equiv_{2}}$, 
-    for $\alpha\in\mathbb{N}$, is composed of \emph{odd} coefficients only.
+    Every row of $\mathcal{C}_{\equiv_{2}}$ with index $2^{\alpha}-1$, 
+    denoted by $\vect{r}_{2^{\alpha}-1}$, for $\alpha\in\mathbb{N}$, 
+    is composed of \emph{odd} coefficients only.
     \label{thm:odd:coeff:only:on:last:but:one:row}
 \end{theorem}
 
@@ -232,7 +233,7 @@ In \autoref{fig:catalan-odd-row} row $\vect{r}_{2^{4}-1}$ is highlighted.
 \begin{theorem}
     Let $\vect{r}_{2^{\alpha}}$ be a row of $\mathcal{C}_{\equiv_{2}}$, 
     for some $\alpha\in\mathbb{N}$. Then, excluded the very first coefficient 
-    $d_{2^{\alpha},0}$, which is even, $\vect{r}_{2^{\alpha}}$ is composed of
+    $d_{2^{\alpha},0}$ which is even, $\vect{r}_{2^{\alpha}}$ is composed of
     alternating even and odd coefficients. Formally:
     \begin{displaymath}
         d_{2^{\alpha},j}\equiv_{2}0 \leftrightarrow j = 2k+1
@@ -627,7 +628,8 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
 
         \item assume the argument holds for $k\leq e$ and prove for $k=e+1$, so we need to show:
             \begin{displaymath}
-                \hspace{-3cm}
+                \footnotesize
+                %\hspace{-3cm}
                 \begin{split}
                     {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}+1}}
                         - {{2s-(e+1)-2^{{\alpha}}+1}\choose{s-2^{{\alpha}}}}
@@ -666,7 +668,7 @@ left with a last theorem.
     contains a copy of $\mathcal{C}_{\equiv_{2}}^{(\alpha)}$,
     located at the very right of its bottom half. Formally, 
     let $\Phi^{(\alpha)}=\diagup_{\lbrace 2,\ldots,2^{\alpha}-1\rbrace}^{2^{\alpha}-1}$
-    be a \emph{mirror} segment and $\hat{d}_{s,2^{{\alpha}}-1}$ 
+    be a \emph{mirror} segment and $d_{s,2^{{\alpha}}-1}$ 
     be a coefficient in $\Phi^{(\alpha)}$, for some $s\in rows\left(\Phi^{(\alpha)}\right)$. Then:
     \begin{displaymath}
         d_{s,2^{{\alpha}}-1+e} \equiv_{2} d_{s-2^{{\alpha}},e-1}
@@ -708,7 +710,8 @@ Since $e\in\lbrace1,\ldots,s-2^{{\alpha}}\rbrace$, proceed by complete induction
 
         \item assume the argument holds for $k\leq e$ and prove for $k=e+1$, so we need to show:
             \begin{displaymath}
-                \hspace{-3cm}
+                %\hspace{-3cm}
+                \footnotesize
                 \begin{split}
                     {{2s-2^{{\alpha}}+1-(e+1)}\choose{s}} - {{2s-2^{{\alpha}}+1-(e+1)}\choose{s+1}}
                     &\equiv_{2}

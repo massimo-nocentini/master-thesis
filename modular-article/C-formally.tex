@@ -58,20 +58,19 @@ the $n$-th Catalan number $C_{n}$ satisfies the relation
 \begin{displaymath}
     C_{n} = [t^{n}]d(t)= [t^{n}]\frac{1-\sqrt{1-4\,t}}{2\,t}
 \end{displaymath}
-where $[t^{n}]g(t)$ extracts the coefficient attached to $t^{n}$ 
-in the series expansion of function $g(t)$.
+where $[t^{n}]g(t)$ extracts the coefficient of $t^{n}$ in the series expansion of function $g(t)$.
 
 Every matrix $\mathcal{R}(d(t), h(t))$ in the Riordan group can be characterized, equivalently,
 by two sequences of coefficients: $\left(a_{n}\right)_{n\in\mathbb{N}}$  and
 $\left(z_{n}\right)_{n\in\mathbb{N}}$ called $A$-sequence and $Z$-sequence, 
 respectively. The former one can be used to define inductively every coefficient $d_{n,k}$, with $k>0$, as 
 \begin{equation}
-    d_{n+1, k+1} = a_{0}d_{n,k} + a_{1}d_{n,k+1} + a_{2}d_{n,k+2} + \ldots + a_{j}d_{n,k+j} + a_{j+1}d_{n,k+j+1} + \cdots
+    d_{n+1, k+1} = a_{0}d_{n,k} + a_{1}d_{n,k+1} + a_{2}d_{n,k+2} + \ldots + a_{j}d_{n,k+j} + \ldots %+ a_{j+1}d_{n,k+j+1} + \cdots
 \end{equation}
-where the sum if finite because exists $j\in\mathbb{N}$ such that $n=k+j$. On the other hand, the latter one
+where the sum is finite because exists $j\in\mathbb{N}$ such that $n=k+j$. On the other hand, the latter one
 can be used to define coefficients $d_{n,0}$ lying on the first column, formally
 \begin{equation}
-    d_{n+1, 0} = z_{0}d_{n,0} + z_{1}d_{n,1} + z_{2}d_{n,2} + \ldots + z_{n}d_{n,n} + z_{n+1}d_{n,n+1} + \cdots
+    d_{n+1, 0} = z_{0}d_{n,0} + z_{1}d_{n,1} + z_{2}d_{n,2} + \ldots + z_{n}d_{n,n} + \ldots %+ z_{n+1}d_{n,n+1} + \cdots
 \end{equation}
 where the sum is finite again because $d_{n,k}=0$ whenever $k>n$.
 
@@ -80,12 +79,12 @@ then relations
 \begin{equation}
     h(t) = tA(h(t)) \quad d(t)=\frac{d_{0,0}}{1-tZ(h(t))}
 \end{equation}
-connect them with functions $d(t)$ and $h(t)$ \cite{merlini:some:alternative:characterizations:1997},
+connect them with functions $d(t)$ and $h(t)$ 
 where $d_{0,0}$ is the very first element %in the top left corner 
-of $\mathcal{R}$.
+of $\mathcal{R}$, see \cite{merlini:some:alternative:characterizations:1997}.
 
 A last fact to be aware of is a fundamental theorem that allows us to perform 
-matrix-vector product, of array $\mathcal{R}$ and an infinite column vector 
+matrix-vector product of array $\mathcal{R}$ and an infinite column vector 
 $\vect{\omega}=(\omega_{0},\omega_{1},\omega_{2},\ldots)$,
 as generating functions convolution. It states as follows:
 \begin{equation}
@@ -95,7 +94,7 @@ where $\Omega$ is a generating function such that it can be expanded
 as a series $\sum_{k\in\mathbb{N}}{\omega_{k}t^{k}}$.
 
 In the rest of the paper we use the notation $c_{n,k}\in\mathcal{C}$ to denote
-a coefficient belonging to the Catalan array at row $r$ and column $k$.
+a coefficient belonging to the Catalan array at row $n$ and column $k$.
 We can instantiate previous properties for Catalan array $\mathcal{C}$, starting with its $A$-sequence:
 \begin{displaymath}
     A_{\mathcal{C}}(t)=\frac{1}{1-t}=1+t+t^{2}+t^{3}+t^{4}+t^{5}+t^{6}+t^{7}+t^{8}+
