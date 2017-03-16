@@ -1,14 +1,10 @@
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript" async src="path-to-mathjax/MathJax.js?config=TeX-AMS_CHTML"></script>
 
-# Patterns in Riordan arrays
+Patterns in Riordan arrays
+===
 
-## Abstract
+Abstract
+---
 
 This work aims to study a subset of objects belonging to the field of analytic
 combinatorics, in particular generating functions, formal power series and
@@ -19,7 +15,7 @@ and classes of combinatorial discrete objects, such as graphs, words, lattice
 paths and trees, are presented. The concept of *Riordan array* is the core of
 the present work.  We are interested to show new characterizations to spot some
 properties of their structure. One example is the $h$-characterization
-$\mathcal{R}_{h(t)}$ of a Riordan array $\mathcal{R}$ and a second one is the
+:math:`\mathcal{R}_{h(t)}` of a Riordan array $\mathcal{R}$ and a second one is the
 generalization of the $A$-sequence $\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$ and
 $A$-matrix $\lbrace a_{ij}\rbrace_{i,j\in\mathbb{N}}$ concepts.
 
