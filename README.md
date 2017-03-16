@@ -21,7 +21,7 @@ and classes of combinatorial discrete objects, such as graphs, words, lattice
 paths and trees, are presented. The concept of *Riordan array* is the core of
 the present work.  We are interested to show new characterizations to spot some
 properties of their structure. One example is the \[h\]-characterization
-$\mathcal{R}\_{h(t)}$ of a Riordan array $\mathcal{R}$ and a second one is the
+$\\mathcal{R}\_{h(t)}$ of a Riordan array $\mathcal{R}$ and a second one is the
 generalization of the $A$-sequence $\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$ and
 $A$-matrix $\lbrace a_{ij}\rbrace_{i,j\in\mathbb{N}}$ concepts.
 
