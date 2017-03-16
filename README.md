@@ -20,8 +20,8 @@ skillful methods to handle sequences of *counting numbers*, combinatorial sums
 and classes of combinatorial discrete objects, such as graphs, words, lattice
 paths and trees, are presented. The concept of *Riordan array* is the core of
 the present work.  We are interested to show new characterizations to spot some
-properties of their structure. One example is the \[h\]-characterization
-$\\mathcal{R}\_{h(t)}$ of a Riordan array $\mathcal{R}$ and a second one is the
+properties of their structure. One example is the $h$-characterization
+$\\mathcal{R}\_{h(t)}$ of a Riordan array $\\mathcal{R}$ and a second one is the
 generalization of the $A$-sequence $\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$ and
 $A$-matrix $\lbrace a_{ij}\rbrace_{i,j\in\mathbb{N}}$ concepts.
 
@@ -42,8 +42,7 @@ arrays under the light of modular arithmetic. We have shown some congruences
 about *Pascal* array $\mathcal{P}$ and its inverse $\mathcal{P}^{-1}$. We have
 also proved a formal characterization for the *Catalan* array $\mathcal{C}$.
 These results were presented in a talk contributed at a recent conference held
-in Lecco\footnote{Second International Symposium on Riordan Arrays and Related
-Topics, RART$2015$}. All major researchers involved in Riordan group theory
+in Lecco [4]. All major researchers involved in Riordan group theory
 were present and some of them threw some important ideas about possible
 enhancement of our results.  
 
@@ -57,6 +56,7 @@ for representing such modular arrays as coloured triangles.
 [1] Flajolet and Sedgewick, *Analytic Combinatorics*, Cambridge University Press, 2009<br>
 [2] Knuth, *The Art of Computer Programming*, vol.  1-3, Addison-Wesley, 1973<br>
 [3] Graham, Knuth and Patashnik, *Concrete Mathematics*, Addison-Wesley, 1994<br>
+[4] Second International Symposium on Riordan Arrays and Related Topics, RART$2015$<br>
 
 ## RART2015 and paper submission
 
