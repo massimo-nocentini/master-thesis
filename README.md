@@ -1,10 +1,8 @@
 
 
-Patterns in Riordan arrays
-===
+# Patterns in Riordan arrays
 
-Abstract
----
+## Abstract
 
 This work aims to study a subset of objects belonging to the field of analytic
 combinatorics, in particular generating functions, formal power series and
@@ -15,7 +13,7 @@ and classes of combinatorial discrete objects, such as graphs, words, lattice
 paths and trees, are presented. The concept of *Riordan array* is the core of
 the present work.  We are interested to show new characterizations to spot some
 properties of their structure. One example is the $h$-characterization
-:math:`\mathcal{R}_{h(t)}` of a Riordan array $\mathcal{R}$ and a second one is the
+$\mathcal{R}_{h(t)}$ of a Riordan array $\mathcal{R}$ and a second one is the
 generalization of the $A$-sequence $\lbrace a_{n}\rbrace_{n\in\mathbb{N}}$ and
 $A$-matrix $\lbrace a_{ij}\rbrace_{i,j\in\mathbb{N}}$ concepts.
 
@@ -48,15 +46,21 @@ raw matrix expansion, computing inverse arrays, applying modular
 transformation, using a set of partition functions, and building LaTeX,code
 for representing such modular arrays as coloured triangles.
 
-[1] Flajolet and Sedgewick, *Analytic Combinatorics*, Cambridge University Press, 2009
-[2] Knuth, *The Art of Computer Programming*, vol.  1-3, Addison-Wesley, 1973
-[3] Graham, Knuth and Patashnik, *Concrete Mathematics*, Addison-Wesley, 1994
+[1] Flajolet and Sedgewick, *Analytic Combinatorics*, Cambridge University Press, 2009<br>
+[2] Knuth, *The Art of Computer Programming*, vol.  1-3, Addison-Wesley, 1973<br>
+[3] Graham, Knuth and Patashnik, *Concrete Mathematics*, Addison-Wesley, 1994<br>
 
-## Submitted paper `Colouring Catalan triangle`
+## RART2015 and paper submission
 
-We provide an implementation of the inductive argument given in the paper
-to build the Catalan triangle, where coefficients are taken mod 2, avoiding the brute force approach;
-for details and other *fractal objects*, have a look in [this notebook][inductive:catalan:triangle:nb].
+The content about modular transformations, applied to Pascal and Catalan arrays in 
+particular, was shown in a talk at [RART2015][rart2015]; moreover, a paper that
+collects theorems about the Catalan triangle has been submitted.
 
+Also, we provide an implementation of the inductive argument given in the paper to
+build the Catalan triangle, where coefficients are taken mod 2, avoiding the
+brute force approach; for details and other *fractal objects*, have a look in
+[this notebook][inductive:catalan:triangle:nb].
+
+[rart2015]:https://www.mate.polimi.it/RART2015/
 [inductive:catalan:triangle:nb]:http://nbviewer.jupyter.org/github/massimo-nocentini/master-thesis/blob/master/modular-article/implementation/fractals-and-inductive-catalan-triangle.ipynb
 
