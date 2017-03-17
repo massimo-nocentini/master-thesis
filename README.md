@@ -1,11 +1,19 @@
 
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
 
 # Patterns in Riordan arrays
 
 This repository collects our thesis about Riordan arrays, which is our
 work to graduate at the University of Florence, defended on October 10, 2015.
 
-Candidate: <i>Massimo Nocentini</i> (massimo.nocentini@unifi.it)
+Candidate: <i>Massimo Nocentini</i> (massimo.nocentini@unifi.it)<br>
 Supervisor: <i>Donatella Merlini</i> (donatella.merlini@unifi.it)
 
 ## Abstract
@@ -73,11 +81,3 @@ notebook][inductive:catalan:triangle:nb].
 [inductive:catalan:triangle:nb]:http://nbviewer.jupyter.org/github/massimo-nocentini/master-thesis/blob/master/modular-article/implementation/fractals-and-inductive-catalan-triangle.ipynb
 
 
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
