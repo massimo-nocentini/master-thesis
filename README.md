@@ -2,8 +2,8 @@
 
 # Patterns in Riordan arrays
 
-This repository collects our work about a thesis on Riordan arrays to 
-graduate at the University of Florence, defended on October 10, 2015.
+This repository collects our thesis about Riordan arrays, which is our
+work to graduate at the University of Florence, defended on October 10, 2015.
 
 Candidate: <i>Massimo Nocentini</i> (massimo.nocentini@unifi.it)
 Supervisor: <i>Donatella Merlini</i> (donatella.merlini@unifi.it)
@@ -72,3 +72,12 @@ notebook][inductive:catalan:triangle:nb].
 [rart2015]:https://www.mate.polimi.it/RART2015/
 [inductive:catalan:triangle:nb]:http://nbviewer.jupyter.org/github/massimo-nocentini/master-thesis/blob/master/modular-article/implementation/fractals-and-inductive-catalan-triangle.ipynb
 
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
