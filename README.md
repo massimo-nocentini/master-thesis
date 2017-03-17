@@ -16,6 +16,18 @@ work to graduate at the University of Florence, defended on October 10, 2015.
 Candidate: *Massimo Nocentini* (massimo.nocentini@unifi.it)<br>
 Supervisor: *Donatella Merlini* (donatella.merlini@unifi.it)
 
+## Files
+
+- Index ([link][index])
+- Abstract ([link][abstract])
+- Thesis ([link][thesis])
+- RART2015 talk ([link][talk])
+
+[index]:https://www.dropbox.com/s/to909eztyds9rxr/NocentiniMassimo_index.pdf?dl=0
+[abstract]:https://www.dropbox.com/s/91jcvlqct94ppxk/NocentiniMassimo_abstract.pdf?dl=0
+[thesis]:https://www.dropbox.com/s/3p1vo9v4v3qmt96/NocentiniMassimo.pdf?dl=0
+[talk]:https://www.dropbox.com/s/ma8cx6b8pjwow6l/talk-patterns-in-riordan-arrays-RART2015.pdf?dl=0
+
 ## Abstract
 
 This work aims to study a subset of objects belonging to the field of analytic
