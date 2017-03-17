@@ -1,14 +1,12 @@
 
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
 
 # Patterns in Riordan arrays
+
+This repository collects our work about a thesis on Riordan arrays to 
+graduate at the University of Florence, defended on October 10, 2015.
+
+Candidate: <i>Massimo Nocentini</i> (massimo.nocentini@unifi.it)
+Supervisor: <i>Donatella Merlini</i> (donatella.merlini@unifi.it)
 
 ## Abstract
 
@@ -56,7 +54,7 @@ for representing such modular arrays as coloured triangles.
 [1] Flajolet and Sedgewick, *Analytic Combinatorics*, Cambridge University Press, 2009<br>
 [2] Knuth, *The Art of Computer Programming*, vol.  1-3, Addison-Wesley, 1973<br>
 [3] Graham, Knuth and Patashnik, *Concrete Mathematics*, Addison-Wesley, 1994<br>
-[4] Second International Symposium on Riordan Arrays and Related Topics, RART$2015$<br>
+[4] Second International Symposium on Riordan Arrays and Related Topics, RART2015<br>
 
 ## RART2015 and paper submission
 
@@ -64,10 +62,12 @@ The content about modular transformations, applied to Pascal and Catalan arrays 
 particular, was shown in a talk at [RART2015][rart2015]; moreover, a paper that
 collects theorems about the Catalan triangle has been submitted.
 
-Also, we provide an implementation of the inductive argument given in the paper to
-build the Catalan triangle, where coefficients are taken mod 2, avoiding the
-brute force approach; for details and other *fractal objects*, have a look in
-[this notebook][inductive:catalan:triangle:nb].
+Also, we provide an implementation to do matrix expansion of Riordan matrices
+and computing inverses, symbolically; finally, the code base includes the
+inductive procedure given in the paper to build the modular Catalan triangle,
+choosing modulo 2, avoiding the brute force approach; for details and other
+*fractal objects*, have a look in [this
+notebook][inductive:catalan:triangle:nb].
 
 [rart2015]:https://www.mate.polimi.it/RART2015/
 [inductive:catalan:triangle:nb]:http://nbviewer.jupyter.org/github/massimo-nocentini/master-thesis/blob/master/modular-article/implementation/fractals-and-inductive-catalan-triangle.ipynb
