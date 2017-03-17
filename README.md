@@ -13,8 +13,8 @@ MathJax.Hub.Config({
 This repository collects our thesis about Riordan arrays, which is our
 work to graduate at the University of Florence, defended on October 10, 2015.
 
-Candidate: <i>Massimo Nocentini</i> (massimo.nocentini@unifi.it)<br>
-Supervisor: <i>Donatella Merlini</i> (donatella.merlini@unifi.it)
+Candidate: *Massimo Nocentini* (massimo.nocentini@unifi.it)<br>
+Supervisor: *Donatella Merlini* (donatella.merlini@unifi.it)
 
 ## Abstract
 
@@ -62,7 +62,7 @@ for representing such modular arrays as coloured triangles.
 [1] Flajolet and Sedgewick, *Analytic Combinatorics*, Cambridge University Press, 2009<br>
 [2] Knuth, *The Art of Computer Programming*, vol.  1-3, Addison-Wesley, 1973<br>
 [3] Graham, Knuth and Patashnik, *Concrete Mathematics*, Addison-Wesley, 1994<br>
-[4] Second International Symposium on Riordan Arrays and Related Topics, RART2015<br>
+[4] *Second International Symposium on Riordan Arrays and Related Topics*, RART2015<br>
 
 ## RART2015 and paper submission
 
