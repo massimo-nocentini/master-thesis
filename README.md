@@ -14,7 +14,7 @@ This repository collects our thesis about Riordan arrays, which is our
 work to graduate at the University of Florence, defended on October 10, 2015.
 
 Candidate: *Massimo Nocentini* (massimo.nocentini@unifi.it)<br>
-Supervisor: *Donatella Merlini* (donatella.merlini@unifi.it)
+Supervisor: prof. *Donatella Merlini* (donatella.merlini@unifi.it)
 
 ## Files
 
