@@ -4,10 +4,8 @@
 \noindent Catalan numbers were introduced with this name by
 Eugene Catalan in $1838$, although they have been used even before by Ming Antu
 in $1730$. Let $C_{n}$ be the $n$-th Catalan number, then the following
-table shows the first fifteen element of the infinite sequence 
-$\left(C_{n}\right)_{n\in\mathbb{N}}$ ($A000108$\footnote{All integer sequences
-defined in this paper are recorded in Sloane \cite{sloane:oeis}: keys of
-the form $Annnnnn$ refer to entries in that database.}):
+table shows the first fifteen element of the infinite sequence
+$\left(C_{n}\right)_{n\in\mathbb{N}}$,
 \begin{displaymath}
     \footnotesize
     \begin{array}{c|ccccccccccccccc}
@@ -15,91 +13,94 @@ the form $Annnnnn$ refer to entries in that database.}):
         \hline
         C_{n} & 1 & 1 & 2 & 5 & 14 & 42 & 132 & 429 & 1430 & 4862 & 16796 & 58786 & 208012 & 742900 & 2674440
     \end{array}
-\end{displaymath}
+\end{displaymath} 
+known as $A000108$ in the Online Encyclopedia of Integer Sequences
+\cite{sloane:oeis}; moreover, all integer sequences we refer to are identified
+by keys of the form $Annnnnn$ that refer to entries in the encyclopedia.
 
-A comprehensive manuscript, having origin in $1970$, entirely devoted to these numbers has been recently
-published by Stanley \cite{stanley:2015}, where it is possible to find their history,
-formal characterizations using generating functions and, finally, $214$ combinatorial 
-interpretations.  For the sake of clarity, we report three classes of objects counted by 
-$C_{n}$: first, binary trees with $n$ nodes; 
+
+A comprehensive manuscript having origin in $1970$, entirely devoted to these
+numbers, has been recently published by Stanley \cite{stanley:2015} where it is
+possible to find their history, formal characterizations and $214$
+combinatorial interpretations.  For the sake of clarity, we report three
+classes of objects counted by $C_{n}$: first, binary trees with $n$ nodes;
 second, admissible bracketing of a string with length $n+1$ using $n-1$ pairs
-of curly braces; at last, Dyck paths of length $2n$ using $\diagup$ and $\diagdown$ steps.
+of curly braces; third, Dyck paths of length $2n$ using raising $\diagup$ and
+falling $\diagdown$ steps.
 
-It is possible to augment $C_{n}$ with an additional dimension,
-obtaining coefficients $C_{n,k}$ defining a lower triangular infinite 
-matrix $\mathcal{C}$ ($A033184$): in \autoref{tab:catalan:array} 
-we report the upper chunk of that matrix where a coefficient at row $n$ 
-and column $k$ can be interpreted as the number
-of Dyck paths of length $2(n+1)$ with $k$ returns to the ground, start
-and end points excluded -- conventionally, indexes are $0$-based.
+It is possible to augment $C_{n}$ with an additional dimension, obtaining
+coefficients $C_{n,k}$ defining a lower triangular, infinite matrix
+$\mathcal{C}$ ($A033184$): in \autoref{tab:catalan:array} we report the upper
+chunk of that matrix where a coefficient at row $n$ and column $k$ can be
+interpreted as the number of Dyck paths of length $2(n+1)$ with $k$ returns to
+the ground, start and end points excluded -- conventionally, indexes are
+$0$-based.
 
 \input{catalan/catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-matrix.tex}
 
 In the literature, matrix $\mathcal{C}$ is known as \emph{Catalan triangle} and
-it turns out to be a Riordan array. Those arrays form a family of matrices enjoying
-nice properties and, looking at them from the abstract algebra perspective, form a group. 
-Formally, a Riordan array $\mathcal{R}$ is denoted by a pair of functions $d$ and $h$ which provides a unique 
-characterization for the generic coefficient $d_{n,k}\in\mathcal{R}$, lying at row $n$ and column $k$, 
-by extraction of the $n$-th coefficient from the following $k$-convolution:
-\begin{equation}
-    d_{n,k} = [t^{n}]d(t)h(t)^{k}
-    \label{eq:Riordan:array:coefficient}
-\end{equation}
+it turns out to be a Riordan array. Those arrays form a family of matrices
+enjoying nice properties and, looking at them from the perspective of abstract
+algebra, they are a \textit{group}. Formally, a Riordan array $\mathcal{R}$ is
+denoted by a pair of functions $d$ and $h$ which provides a unique
+characterization for the generic coefficient $d_{n,k}\in\mathcal{R}$ lying at
+row $n$ and column $k$, by means of the $n$-th coefficient extraction from
+$\displaystyle d_{n,k} = [t^{n}]d(t)h(t)^{k}$.
 Riordan arrays have been introduced by Shapiro et al. \cite{shapiro:1991} in $1991$;
 thereafter, in $1994$, Sprugnoli \cite{sprugnoli:1991} pointed out their importance
 to solve combinatorial sums.
 
-In this paper we apply a modular transformation to $\mathcal{C}$ which maps every coefficient 
-to its remainder respect the congruence relation $\equiv_{2}$: the resulting matrix is 
-denoted by $\mathcal{C}_{\equiv_{2}}$ and is graphically represented in 
+In this paper we apply a modular transformation to $\mathcal{C}$ which maps
+every coefficient to its remainder with respect to the congruence relation
+$\equiv_{2}$: the resulting matrix is denoted by $\mathcal{C}_{\equiv_{2}}$ and
+is graphically represented in
 \autoref{fig:catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}.
-This is a parallel study of the same modular transformation applied to the Pascal array $\mathcal{P}$,
-represented in \autoref{fig:pascal-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-triangle},
-where a coefficient lying at row $n$ and column $k$ counts the number of subsets
-with $k$ elements of a set with $n$ elements, in other words ${{n}\choose{k}}$.
-In both pictures, we center the root of the triangle and represent every coefficient 
-with a colored dot, using colors blue and orange 
-for \textcolor{blue}{\emph{evens}} and \textcolor{orange}{\emph{odds}} remainders, respectively. 
+This is a parallel study of the same modular transformation applied to the
+Pascal array $\mathcal{P}$, represented in
+\autoref{fig:pascal-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-triangle},
+where a coefficient lying at row $n$ and column $k$ counts the number of
+subsets with $k$ elements out of a set with $n$ elements, ${{n}\choose{k}}$ in
+symbols.  In both pictures, we center the root of the triangle and represent
+every coefficient with a colored dot, using colors blue and orange for
+\textcolor{blue}{\emph{even}} and \textcolor{orange}{\emph{odd}} remainders,
+respectively.
 
-Although array $\mathcal{P}_{\equiv_{2}}$ has been deeply studied already,
-because of both because its relation to congruences about binomial coefficients
-and its connection with the Sierpinski gasket \cite{sokolov,
-stewart:four:encounters:sierpinski}, to the best of our knowledge array
-$\mathcal{C}_{\equiv_{2}}$ seems to be fresh, in parallel of the modular
-studies of Catalan numbers already present in the literature
+Although the array $\mathcal{P}_{\equiv_{2}}$ has been deeply studied already,
+because of both its (i)~relation to congruences about binomial coefficients and
+(ii)~connection with the Sierpinski gasket \cite{sokolov,
+stewart:four:encounters:sierpinski}, to the best of our knowledge the array
+$\mathcal{C}_{\equiv_{2}}$ seems to be fresh and our approach interleaves with
+studies about modular transformations of Catalan numbers
 \cite{alter:kubota:prime:power:catalan:divisibility,
 egecioglu:parity:via:lattice:paths,
-konvalinka:divisibility:generalized:catalan:numbers}, where remainders of these
-numbers have been characterized both arithmetically and combinatorially.  The
-present study, which deepens our previous work \cite{merlini:nocentini:lecco},
-takes the long track to formally characterize $\mathcal{C}_{\equiv_{2}}$,
-getting back an efficient procedure to build it as a reward: first, using the
-Riordan array definition of $\mathcal{C}$, we find different closed form for
-the generic coefficient $c_{n,k}\in\mathcal{C}$; second, we prove congruences
-over coefficients lying in different regions of the matrix; lastly, we use such
-congruences to implement a procedure that builds $\mathcal{C}_{\equiv_{2}}$
-inductively. 
+konvalinka:divisibility:generalized:catalan:numbers}, where their remainders 
+have been characterized both arithmetically and combinatorially.  
 
-To support our work, a bunch of functions have been implemented using the Python 
-programming language, on top of the Sage framework 
-\cite{sage}: these allow us to table expansion of a Riordan array
-resorting to series expansion -- the hard way --, to generate \LaTeX\,code
-for graphical triangles representations and, finally, to build $\mathcal{C}_{\equiv_{2}}$ 
-in a cheaper way.
+The present study deepens our previous work \cite{merlini:nocentini:lecco} and
+takes the long track toward to a formal characterization of
+$\mathcal{C}_{\equiv_{2}}$; first, using the Riordan array definition of
+$\mathcal{C}$ we find different closed formulae for the coefficient
+$c_{n,k}\in\mathcal{C}$; second, we prove congruences over coefficients lying
+in different regions of the matrix; third, we use such congruences to implement
+an efficient procedure that builds $\mathcal{C}_{\equiv_{2}}$ inductively.
+To support our work, a bunch of functions have been implemented using the
+Python programming language on top of the Sage framework \cite{sage}, that
+allow us (i)~to table a Riordan array the hard way by series expansion, (ii)~to
+generate the \LaTeX\,code of graphical representations of triangles and, finally,
+(iii)~to build $\mathcal{C}_{\equiv_{2}}$ in a cheaper way.
 
 \input{catalan/catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure.tex}
 \input{pascal/pascal-standard-handle-negatives-centered-colouring-127-rows-mod2-partitioning-include-figure}
 
-This paper is structured as follows: in this section 
-Catalan numbers and the concept of Riordan arrays have been introduced, moreover we stated the modular
-transformation subject of our study; in \Cref{sec:previous:work} important
-results from existing literature about the application of modular
-arithmetic to infinite lower triangular matrices are refreshed;
-in \Cref{sec:C:precisely} Catalan array $\mathcal{C}$ is formally defined
-and some facts about it are derived; 
-in \Cref{sec:catalan:characterization} matrix $\mathcal{C}_{\equiv_{2}}$ is taken apart 
-in order to reason on it piece-wise; finally, \Cref{sec:conclusions} concludes
-with final comments and open questions.
+Our work is organized as follows: the current section introduces Catalan
+numbers and the concept of Riordan arrays together with the modular
+transformation under study; \Cref{sec:previous:work} recalls important results
+from the existing literature about the application of modular arithmetic to
+infinite, lower triangular matrices; \Cref{sec:C:precisely} formally defines
+the Catalan array $\mathcal{C}$ and presents some facts about it;
+\Cref{sec:catalan:characterization} takes the matrix $\mathcal{C}_{\equiv_{2}}$
+apart in order to reason on it piece-wise; finally, \Cref{sec:conclusions}
+concludes with final comments and leaves open questions.
 
  %In particular, we report a
 %fundamental theorem about binomial coefficients, proved by Lucas
