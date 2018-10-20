@@ -8,213 +8,138 @@ Let $\mathcal{C}_{h}$ a principal $h$-cluster of
 the Catalan array, in its traditional definition: We attempt to point out
 some properties about $\mathcal{C}_{h+1}$:
 \begin{itemize}
-    \item a more general pattern, for any $h\in\mathcal{N}$, 
-        a coefficient $d_{p^{h}-1,k}$, for $k\in\lbrace0,\ldots,p^{h}-1 \rbrace$, 
+    \item a more general pattern, for any $h\in\mathcal{N}$,
+        a coefficient $d_{p^{h}-1,k}$, for $k\in\lbrace0,\ldots,p^{h}-1 \rbrace$,
         satisfies:
         \begin{displaymath}
             d_{p^{h}-1,k} \equiv_{p} 0
         \end{displaymath}
-    \item consider the subcluster $\mathcal{C}_{h}^{(0,p^{h}-1)}$ of 
+    \item consider the subcluster $\mathcal{C}_{h}^{(0,p^{h}-1)}$ of
         $\mathcal{C}_{h}$ obtained by removing antidiagonal $0$ (namely,
         the boundary one, composed by $1$s only) and by removing row $p^{h}-1$.
-        By construction, $\mathcal{C}_{h}^{(0,p^{h}-1)}$ is a triangle too, 
+        By construction, $\mathcal{C}_{h}^{(0,p^{h}-1)}$ is a triangle too,
         with $p^{h}-2$ coefficients per side. Therefore, $\mathcal{C}_{h+1}$
         is composed on the very top, starting at the root, by a copy of $\mathcal{C}_{h}$,
         while on the bottom there are three triangles:
-        \begin{itemize}                
-            \item an equilateral triangle $T_{\equiv_{p} 0}^{(h)}$, 
+        \begin{itemize}
+            \item an equilateral triangle $T_{\equiv_{p} 0}^{(h)}$,
                 with $p^{h}-1$ coefficients on each side, such that:
                 \begin{displaymath}
                     d_{nk} \in T_{\equiv_{p} 0}^{(h)} \rightarrow d_{nk} \equiv_{p} 0
                 \end{displaymath}
-                where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$ and 
+                where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$ and
                 $k\in\lbrace 0,\ldots, n-p^{h}\rbrace$, in other words
                 $k\in\lbrace 0,\ldots, p^{h}(p-1)-2\rbrace$;
             \item a mirror copy of $\mathcal{C}_{h}^{(0,p^{h}-1)}$ respect to column orientation,
-                defining coefficients $d_{nk}$  
-                where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$ and 
+                defining coefficients $d_{nk}$
+                where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$ and
                 $k\in\lbrace 1,\ldots, p^{h}-2\rbrace$;
-            \item a segment of coefficients $d_{n, p^{h}-1} \equiv_{p} 0$ 
+            \item a segment of coefficients $d_{n, p^{h}-1} \equiv_{p} 0$
                 where $n\in\lbrace p^{h},\ldots,p^{h+1}-2\rbrace$;
             \item a copy of $\mathcal{C}_{h}^{(0,p^{h}-1)}$,
-                defining coefficients $d_{nk}$  
-                where $n\in\lbrace p^{h}+1,\ldots,p^{h+1}-2\rbrace$ and 
+                defining coefficients $d_{nk}$
+                where $n\in\lbrace p^{h}+1,\ldots,p^{h+1}-2\rbrace$ and
                 $k\in\lbrace p^{h},\ldots, n-1\rbrace$;
-        \end{itemize}                
+        \end{itemize}
 \end{itemize}
 \fi
 
 We are now in the position to formally define the Catalan
 array $\mathcal{C}$ and to introduce some mathematical objects
-that will be used later. Matrix $\mathcal{C}$ is defined 
-as a Riordan array as
+that will be used later; formally, $\mathcal{C}$ is defined as
 \begin{displaymath}
     \mathcal{C}=\left(\frac{1-\sqrt{1-4\,t}}{2\,t},
         \frac{1-\sqrt{1-4\,t}}{2}\right)
 \end{displaymath}
-and it is a \emph{renewal} array \cite{rogers:1977} also, because
+and it is a \emph{renewal} array \cite{rogers:1977} because
 $h(t)=t\,d(t)$. Application of the substitution $k=0$ in the definition of the
 coefficient $\displaystyle d_{n,k} = [t^{n}]d(t)h(t)^{k}$ entails that the
-$n$-th Catalan number $C_{n}$ satisfies the relation
+$n$-th Catalan number $C_{n}$ satisfies
 \begin{displaymath}
-    C_{n} = [t^{n}]d(t)= [t^{n}]\frac{1-\sqrt{1-4\,t}}{2\,t},
+    C_{n} = [t^{n}]d(t)= [t^{n}]\frac{1-\sqrt{1-4\,t}}{2\,t}
 \end{displaymath}
-where $[t^{n}]g(t)$ extracts the coefficient of $t^{n}$ in the series expansion
-of function $g(t)$.
+where the operator $[t^{n}]$ extracts the coefficient of $t^{n}$ in the series expansion
+of the function $g(t)$ to which it is applied.
 
-Every matrix $\mathcal{R}(d(t), h(t))$ in the Riordan group can be characterized, equivalently,
-by two sequences of coefficients: $\left(a_{n}\right)_{n\in\mathbb{N}}$  and
-$\left(z_{n}\right)_{n\in\mathbb{N}}$ called $A$-sequence and $Z$-sequence, 
-respectively. The former one can be used to define inductively every coefficient $d_{n,k}$, with $k>0$, as 
+An equivalent characterization of a each matrix $\mathcal{R}(d(t), h(t))$ in
+the Riordan group is given by two sequences of coefficients
+$\left(a_{n}\right)_{n\in\mathbb{N}}$  and
+$\left(z_{n}\right)_{n\in\mathbb{N}}$ called $A$-sequence and $Z$-sequence,
+respectively. The former one can be used to define every
+coefficient $d_{n,k}$ with $k>0$,
 \begin{equation}
     d_{n+1, k+1} = a_{0}d_{n,k} + a_{1}d_{n,k+1} + a_{2}d_{n,k+2} + \ldots + a_{j}d_{n,k+j} + \ldots %+ a_{j+1}d_{n,k+j+1} + \cdots
 \end{equation}
-where the sum is finite because exists $j\in\mathbb{N}$ such that $n=k+j$. On the other hand, the latter one
-can be used to define coefficients $d_{n,0}$ lying on the first column, formally
+where the sum is finite because exists $j\in\mathbb{N}$ such that $n=k+j$. On
+the other hand, the latter one can be used to define every coefficient
+$d_{n,0}$ lying on the first column,
 \begin{equation}
     d_{n+1, 0} = z_{0}d_{n,0} + z_{1}d_{n,1} + z_{2}d_{n,2} + \ldots + z_{n}d_{n,n} + \ldots %+ z_{n+1}d_{n,n+1} + \cdots
 \end{equation}
 where the sum is finite because $d_{n,k+j}=0$ for $j>n-k$.
 
-Moreover, let $A(t)$ and $Z(t)$ be the generating functions of the $A$-sequence and $Z$-sequence, respectively,
-then relations 
+Moreover, let $A(t)$ and $Z(t)$ be the generating functions of the $A$-sequence
+and $Z$-sequence, respectively, then relations
 \begin{equation}
-    h(t) = tA(h(t)) \quad d(t)=\frac{d_{0,0}}{1-tZ(h(t))}
+    h(t) = tA(h(t)) \quad\text{and}\quad d(t)=\frac{d_{0,0}}{1-tZ(h(t))}
 \end{equation}
-connect them with functions $d(t)$ and $h(t)$ 
-where $d_{0,0}$ is the very first element %in the top left corner 
+connect them with functions $d(t)$ and $h(t)$,
+where $d_{0,0}$ is the very first element %in the top left corner
 of $\mathcal{R}$, see \cite{merlini:some:alternative:characterizations:1997}.
 
-A last fact to be aware of is a fundamental theorem that allows us to perform 
-matrix-vector product of array $\mathcal{R}$ and an infinite column vector 
-$\vect{\omega}=(\omega_{0},\omega_{1},\omega_{2},\ldots)$,
-as generating functions convolution. It states as follows:
+A last fact to be aware of is a fundamental theorem that allows us to perform
+matrix-vector product of an array $\mathcal{R}$ and an infinite column vector
+$\vect{\omega}=(\omega_{0},\omega_{1},\omega_{2},\ldots)$
+as the convolution
 \begin{equation}
-    \mathcal{R}\cdot\vect{\omega} = d(t)\Omega(h(t))    
+    \mathcal{R}\cdot\vect{\omega} = d(t)\Omega(h(t))
 \end{equation}
-where $\Omega$ is a generating function such that it can be expanded 
-as a series $\sum_{k\in\mathbb{N}}{\omega_{k}t^{k}}$.
+where $\Omega$ is the $\vect{\omega}$'s generating function which admits the
+series expansion $\Omega(t)=\sum_{k\in\mathbb{N}}{\omega_{k}t^{k}}$.
 
 In the rest of the paper we use the notation $c_{n,k}\in\mathcal{C}$ to denote
 a coefficient belonging to the Catalan array at row $n$ and column $k$.
-We can instantiate previous properties for Catalan array $\mathcal{C}$, starting with its $A$-sequence:
+We instantiate previous properties for the Catalan array $\mathcal{C}$,
+starting with its $A$-sequence
 \begin{displaymath}
     A_{\mathcal{C}}(t)=\frac{1}{1-t}=1+t+t^{2}+t^{3}+t^{4}+t^{5}+t^{6}+t^{7}+t^{8}+
         \mathcal{O}(t^{9})
 \end{displaymath}
-and, since $\mathcal{C}$ is in the renewal subgroup, it is not difficult to see that its
-$Z$-sequence is the same as $A$-sequence. Using $Z$-sequence characterization then 
-each coefficient $C_{n}$ can be written as the combination of coefficients 
-lying on the previous row $n-1$:
-\begin{displaymath}
-    C_{n} = c_{n,0} = \sum_{k=0}^{n-1}{c_{n-1,k}}
-\end{displaymath}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iffalse
-in other words, $C_{n}$ equals the $(n-1)$-row sum of $\mathcal{C}$, 
-therefore by the fundamental theorem:
-\begin{displaymath}
-    C_{n} = [t^{n-1}]\mathcal{C}\,A_{\mathcal{C}}(t)
-          = [t^{n-1}]d(t)\,A_{\mathcal{C}}(h(t))
-          = [t^{n}]h(t)\,A_{\mathcal{C}}(h(t))
-\end{displaymath}
-yielding:
-\begin{displaymath}
-    C_{n} = [t^{n}]\frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}
-\end{displaymath}
-for $n>0$ and boundary condition $C_{0}=1$. 
-Moreover, from the above equation, it is possible to derive
-another generating function for the sequence of Catalan numbers:
-\begin{displaymath}
-    \frac{1-\sqrt{1-4 \, t}}{1+\sqrt{1-4 \, t}}=
-    \frac{\left(1-\sqrt{1-4 \, t}\right)^{2}}{4 \, t}=
-    \frac{1-2\,t-\sqrt{1-4 \, t}}{2 \, t}
-\end{displaymath}
-\fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Coefficient extraction on generating function $d(t)$ allows us to write 
-a well known closed formula for the $n$-th Catalan number:
+and, since $\mathcal{C}$ is a renewal array, it is not difficult to see that
+its $Z$-sequence is the same as the $A$-sequence. Consequently, function $Z(t)$
+defines each Catalan number $C_{n}$ as the sum $\displaystyle C_{n} = c_{n,0} =
+\sum_{k=0}^{n-1}{c_{n-1,k}} $ of coefficients lying on row $n-1$ and
+the application of $[t^{n}]$ to the generating function $d(t)$ 
+allows us to write a well known closed formula for the $n$-th Catalan number
 \begin{equation}
-    C_{n} = \frac{1}{n+1}{{2n}\choose{n}} 
-        = {{2n}\choose{n}} - {{2n}\choose{n+1}}
+    C_{n} = \frac{1}{n+1}{{2n}\choose{n}} = {{2n}\choose{n}} - {{2n}\choose{n+1}}.
     \label{eq:catalan:coeff:rewriting}
 \end{equation}
 
-On the other hand, the generic element $c_{n,k}\in\mathcal{C}$ 
-admits closed formulae too. According to
-\cite{luzon:2012631}, two of them are of
-particular interest in order to complete our proofs:
+On the other hand, an arbitrary element $c_{n,k}\in\mathcal{C}$
+admits closed formulae too and, according to \cite{luzon:2012631}
 \begin{align}
-    & c_{n,k}=\frac{k+1}{n+1}{{2n-k}\choose{n-k}}
+    & c_{n,k}=\frac{k+1}{n+1}{{2n-k}\choose{n-k}}\quad\text{and}
     \label{eq:catalan:array:first:identity}\\
     & c_{n,k}={{2n-k}\choose{n-k}} - {{2n-k}\choose{n-k-1}}
     \label{eq:catalan:array:second:identity}
 \end{align}
-
-In order to formally characterize $\mathcal{C}_{\equiv_{2}}$, 
-we write the generic element $c_{n,k}\in\mathcal{C}$ using the definition:
+are of particular interest for our work.  In order to formally characterize
+$\mathcal{C}_{\equiv_{2}}$ we use the definition to write the generic coefficient
 \begin{displaymath}
     c_{n,k} = [t^n] \frac{1-\sqrt{1-4\,t}}{2\,t}\,
         \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k}
-           = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
+           = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1}
 \end{displaymath}
-the right most term requires to extract coefficient $n+1$ from the $(k+1)$-fold
+where the right most term requires to extract coefficient $n+1$ from the $(k+1)$-fold
 convolution of Catalan numbers' generating function with itself, \emph{shifted
-by one place}. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iffalse
-Before going on, careful understanding of what coefficients are introduced is necessary. 
-The following expansion defines a sequence of coefficients 
-$\lbrace \hat{c}_{i}\rbrace_{i\in\mathbb{N}}$:
-\begin{displaymath}
-    \frac{1-\sqrt{1-4\,t}}{2} = t + t^{2} + 2 t^{3} + 5 t^{4} 
-        + 14 t^{5} + 42 t^{6} + 132 t^{7} %+ 429 t^{8} + 1430 t^{9} 
-        + \mathcal{O}\left(t^{8}\right)
-\end{displaymath}
-where $\hat{c}_{0}=0$. On the other hand the following one, defines a sequence 
-of coefficients $\lbrace C_{i}\rbrace_{i\in\mathbb{N}}$, 
-the traditional Catalan numbers:
-\begin{displaymath}
-    \frac{1-\sqrt{1-4\,t}}{2\,t} = 1 + t + 2 t^{2} + 5 t^{3} + 14 t^{4} 
-        + 42 t^{5} + 132 t^{6} %+ 429 t^{7} + 1430 t^{8} + 4862 t^{9} 
-        + \mathcal{O}\left(t^{7}\right)
-\end{displaymath}
-so $\hat{c}_{j} = C_{j-1}$ holds for any $j\in\mathbb{N}$, 
-with boundary condition $C_{-1}=0$.  Looking at the previous expression for $c_{n,k}$,
-there exists indices $i_{1}, i_{2}, \ldots, i_{k+1}$,
-where $i_{j}\in\lbrace0,\ldots,n+1\rbrace$ for each $j\in\lbrace1,\ldots,k+1\rbrace$, 
-such that:
-\fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Therefore we have:
+by one place}
 \begin{equation}
-    \footnotesize
-    c_{n,k} = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1} 
+    c_{n,k} = [t^{n+1}] \left(\frac{1-\sqrt{1-4\,t}}{2}\right)^{k+1}
             %= \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
                 %\hat{c}_{i_{1}}\,\hat{c}_{i_{2}}\,\ldots\,\hat{c}_{i_{k+1}} }
             = \sum_{i_{1}+ i_{2}+ \ldots+ i_{k+1}=n+1}{
-                C_{i_{1}-1}\,C_{i_{2}-1}\,\ldots\,C_{i_{k+1}-1} }
+                C_{i_{1}-1}\,C_{i_{2}-1}\,\ldots\,C_{i_{k+1}-1} }.
     \label{eq:convolution:expansion:for:generic:element:in:catalan:array}
 \end{equation}
-
-The last object we would like to introduce allows us 
-to talk about a subset of elements lying on column $k$ of $\mathcal{C}$, denoted by $\vect{c}_{k}$. 
-Let $S\subseteq\mathbb{N}$ and $k\in\mathbb{N}$, then a \emph{segment} $\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}$ 
-of $\vect{c}_{k}$ is defined as:
-\begin{equation}
-    \diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}
-        %= \left(\vect{c}_{k},\lbrace k+\alpha_{i}\rbrace_{i\in S}\right)
-        = \lbrace d_{k+\alpha_{i},k}\rbrace_{i\in S}
-    \label{eq:column:segment}
-\end{equation}
-where $\lbrace\alpha_{i}\rbrace_{i\in S}\subseteq\mathbb{N}$. In order to fetch the set of 
-row indices belonging to a segment we introduce the $rows$ function, defined as follow:
-\begin{displaymath}
-    rows\left(\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}\right)
-        %= rows\left(\left(\vect{c}_{k},\lbrace k+\alpha_{i}\rbrace_{i\in S}\right)\right)
-        = \lbrace k+\alpha_{i}\rbrace_{i\in S}
-    \label{eq:column:segment:rows:function}
-\end{displaymath}
-The notation for the segment just introduced refers to the position of 
-the involved elements in the graphical representation of $\mathcal{C}_{\equiv_{2}}$.
 

@@ -10,6 +10,27 @@ and, in order to fullfil it, we proceed \emph{piece-wise} breaking such
 characterization into the following sections, where an independent region of
 $\mathcal{C}_{\equiv_{2}}$ is described in each one of them.
 
+The last object we would like to introduce allows us
+to talk about a subset of elements lying on column $k$ of $\mathcal{C}$, denoted by $\vect{c}_{k}$.
+Let $S\subseteq\mathbb{N}$ and $k\in\mathbb{N}$, then a \emph{segment} $\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}$
+of $\vect{c}_{k}$ is defined as:
+\begin{equation}
+    \diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}
+        %= \left(\vect{c}_{k},\lbrace k+\alpha_{i}\rbrace_{i\in S}\right)
+        = \lbrace d_{k+\alpha_{i},k}\rbrace_{i\in S}
+    \label{eq:column:segment}
+\end{equation}
+where $\lbrace\alpha_{i}\rbrace_{i\in S}\subseteq\mathbb{N}$. In order to fetch the set of
+row indices belonging to a segment we introduce the $rows$ function, defined as follow:
+\begin{displaymath}
+    rows\left(\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}\right)
+        %= rows\left(\left(\vect{c}_{k},\lbrace k+\alpha_{i}\rbrace_{i\in S}\right)\right)
+        = \lbrace k+\alpha_{i}\rbrace_{i\in S}
+    \label{eq:column:segment:rows:function}
+\end{displaymath}
+The notation for the segment just introduced refers to the position of
+the involved elements in the graphical representation of $\mathcal{C}_{\equiv_{2}}$.
+
 
 \subsection{On the very first column of $\mathcal{C}_{\equiv_{2}}$}
 

@@ -3,22 +3,18 @@
 \section{Previous work}
 \label{sec:previous:work}
 
+First of all, we recall some modular arithmetic fundamentals. Let
+$a,b\in\mathbb{Z}$ and $n\in\mathbb{N}$, \textit{$a$ is congruent to $b$ modulo
+$n$}, written as $a \equiv_{n} b$, if $a \mod n = b \mod n$; from this, follows
+that $n \left| (a-b)\right.$ and $a - b = nk$, for some $k\in\mathbb{Z}$, are
+equivalent definitions.
 
-First of all, we recall some modular arithmetic fundamentals. Let $a,b\in\mathbb{Z}$
-and $n\in\mathbb{N}$, to say that $a$ is congruent to $b$ modulo $n$,
-written as $a \equiv_{n} b$, is the same to say:
-\begin{displaymath}
-    a\mod n = b\mod n\quad \leftrightarrow\quad n \left| (a-b)\right. \quad\leftrightarrow \quad a - b = nk
-\end{displaymath}
-for some $k\in\mathbb{Z}$.
+%\subsection{Lucas theorem exposed}
 
-\subsection{Lucas theorem exposed}
+In \cite{fine:1947}, Fine exposes the following theorem which is a fundamental
+result for our work, 
 
-In \cite{fine:1947}, Fine exposes Lucas theorem: we state it and report a proof since
-it is a fundamental result for our work. 
-
-\begin{theorem}[Lucas theorem]
-    Let $p$ be a prime and $m,n\in\mathbb{N}$. Then:
+\begin{theorem}[Lucas] Let $p$ be a prime and $m,n\in\mathbb{N}$, then
     \begin{displaymath}
         {{m}\choose{n}} \equiv_{p} 
             {{m_{0}}\choose{n_{0}}} 
@@ -28,16 +24,21 @@ it is a fundamental result for our work.
     \end{displaymath}
     representing $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$ and
     $n=\left(n_{0},n_{1},\ldots,n_{k}\right)_{p}$ in base $p$, for some $k\in\mathbb{N}$.
+    \iffalse
     So both $m_{j}$ and $n_{j}$ are in $\lbrace 0,\ldots, p-1 \rbrace$, for
     $j\in\lbrace 0,\ldots,k\rbrace$.
+    \fi
     \label{thm:lucas:theorem}
 \end{theorem}
 
+\iffalse
 \begin{proof}
-    Consider the sequence $\vect{\alpha}_{m}=\left\lbrace{{m}\choose{n}}\right\rbrace_{n\in\mathbb{N}}$ 
-    of coefficients which counts the number of subset
-    of a set composed by $m$ elements. We can use sequence $\vect{\alpha}_{m}$ to define a 
-    formal power series on the indeterminate variable $t$ and manipulate:
+    Consider the sequence
+    $\vect{\alpha}_{m}=\left({{m}\choose{n}}\right)_{n\in\mathbb{N}}$ of
+    binomial coefficients which count the number of $n$-elements subsets out of
+    a set composed by $m$ elements. We use $\vect{\alpha}_{m}$ to
+    define a formal power series on the indeterminate variable $t$ and its generating
+    function
     \begin{displaymath}
         %\begin{split}
             \sum_{n=0}^{m}{{{m}\choose{n}}\,t^{n}} %&
@@ -47,20 +48,21 @@ it is a fundamental result for our work.
                 = \prod_{r=0}^{k}{{\left(1+t\right)^{m_{r}p^{r}}}}
                 = \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
         %\end{split}
-    \end{displaymath} where $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$ represented in 
-    base $p$. The expansion of $\left(1+t\right)^{p^{r}}$ yield
+    \end{displaymath} 
+    where $m=\left(m_{0},m_{1},\ldots,m_{k}\right)_{p}$ is represented in 
+    base $p$. The expansion of $\left(1+t\right)^{p^{r}}$ yields
     \begin{displaymath}
             \left(1+t\right)^{p^{r}} = \sum_{s=0}^{p^{r}}{{{p^{r}}\choose{s}}\,t^{s}}
                 = 1+\sum_{s=1}^{p^{r}-1}{{{p^{r}}\choose{s}}\,t^{s}}+t^{p^{r}}
     \end{displaymath}
-    and the application of congruence relation modulo $p$ makes the sum vanish since ${{p^{r}}\choose{s}}=p\,u_{s}$,
-    for some $u_{s}\in\mathbb{N}$ and $s\in\lbrace 1,\ldots,p^{r}-1\rbrace$, 
-    therefore $\left(1+t\right)^{p^{r}} \equiv_{p} 1+t^{p^{r}}$. On the very right hand side of 
-    the rewriting
+    and the application of the congruence relation $\equiv_{p}$ makes the last sum
+    vanish because $\displaystyle p\left|{{p^{r}}\choose{s}}\right.$, therefore
+    $\left(1+t\right)^{p^{r}} \equiv_{p} 1+t^{p^{r}}$ holds and it allows us to rewrite
+    the products as
     \begin{displaymath}
             \prod_{r=0}^{k}{\left(\left(1+t\right)^{p^{r}}\right)^{m_{r}}}
                 \equiv_{p} \prod_{r=0}^{k}{\left(1+t^{p^{r}}\right)^{m_{r}}}
-                \equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}
+                \equiv_{p} \prod_{r=0}^{k}{\sum_{s_{r}=0}^{m_{r}}{{{m_{r}}\choose{s_{r}}}t^{s_{r}p^{r}}}}.
     \end{displaymath}
     there is a product of $k+1$ formal power series, properly shifted according to 
     $p_{0},p_{1},\ldots,p_{k}$: such product yields a new formal power series which satisfies
@@ -83,72 +85,71 @@ it is a fundamental result for our work.
     as required.
 
 \end{proof}
+\fi
 
-
-\subsection{Divisibility -- with visibility}
+%\subsection{Divisibility -- with visibility}
 
 In \cite{sved:1988}, Marta Sved gives solid bases to understand
-divisibility properties of some \emph{counting numbers}, namely, coefficients
-occurring in combinatorics, such as binomials and Stirling numbers. Many of
-such coefficients shows divisibility structures of remarkable design. 
+\textit{divisibility properties} of some \emph{counting numbers}, namely
+coefficients occurring in combinatorics such as binomials and Stirling numbers,
+that shows divisibility structures of remarkable design. 
 
 She starts working on the Pascal triangle $\mathcal{P}$, whose coefficients
-can be defined inductively using the recurrence
+are defined by the recurrence
 \begin{equation}
-    {{n}\choose{k}}={{n-1}\choose{k-1}}+{{n-1}\choose{k}}
+    {{n}\choose{k}}={{n-1}\choose{k-1}}+{{n-1}\choose{k}},
     \label{eq:binomial:recurrence}
 \end{equation}
-and studies the Pascal array where each coefficient is taken modulo $p$, 
-denoted by $\mathcal{P}_{\equiv_{p}}$, for some small prime $p$. Besides, 
-she introduces a little language, described in the next paragraph, 
-that allows her to characterize these arrays and we adopt it as well.
+and studies a new triangle $\mathcal{P}_{\equiv_{p}}$ obtained from
+$\mathcal{P}$ where each coefficient is taken modulo $p$, for some small prime
+number $p$. Besides, she introduces a little language that allows her to
+characterize these "modular" triangles and we readly adopt it as well.
 
-Let $\mathcal{M}=\lbrace m_{n,k}\rbrace_{n,k\in\mathbb{N}}$ 
-be an infinite lower triangular array, where $m_{n,k}=0$ if 
-$n<k$. Choose a prime $p$, then build a modular array
-$\mathcal{M}_{\equiv_{p}}$, defined as 
-$\lbrace m_{n,k}\mod p : m_{n,k} \in \mathcal{M}\rbrace$, containing
-the following regions:
+Let $\mathcal{M}=\left(m_{n,k}\right)_{n,k\in\mathbb{N}}$ be an infinite, lower
+triangular array so that $m_{n,k}=0$ if $n<k$. Choose a prime $p$, then the
+array $\displaystyle\mathcal{M}_{\equiv_{p}} = \left(m_{n,k}\mod p :
+m_{n,k} \in \mathcal{M}\right)_{n,k\in\mathbb{N}}$ contains the following regions
 \begin{itemize}
 
-\item a \emph{principal cell} is % a chunk of $\mathcal{M}_{\equiv_{p}}$ 
-    defined as
-    $\mathcal{M}_{\equiv_{p}}^{\bigtriangleup} = 
-        \left\lbrace m_{n,k}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p-1\rbrace\right\rbrace$;
+\item a \emph{principal cell} $\mathcal{M}_{\equiv_{p}}^{\bigtriangleup} = 
+        \left(m_{n,k}\in \mathcal{M}_{\equiv_{p}}\right)_{n,k\in\lbrace 0,\ldots,p-1\rbrace}$;
 
-\item a \emph{cell} $c_{\beta}$ is a copy of the \emph{principal cell} with each entry multiplied 
-by the same constant $\beta\in\mathbb{N}$, formally
-    $c_{\beta}=\left\lbrace \beta\,m_{n,k}\mod p:m_{n,k}\in \mathcal{M}_{\equiv_{p}}^{\bigtriangleup}\right\rbrace$;
+\item a \emph{cell} $c_{p,\beta}=\left( \beta\,m_{n,k}\mod p:m_{n,k}\in
+\mathcal{M}_{\equiv_{p}}^{\bigtriangleup}\right)_{n,k\in\mathbb{N}}$ which is a
+copy of the \emph{principal cell} with each entry multiplied by the same
+constant $\beta\in\mathbb{N}$;
 
-\item a \emph{principal cluster} of order $\alpha$ is %a chunk of $\mathcal{M}_{\equiv_{p}}$ 
-    defined as
-    $\mathcal{M}_{\equiv_{p}}^{(\alpha)} = 
-        \left\lbrace m_{n,k}\in \mathcal{M}_{\equiv_{p}}: n\in\lbrace 0,\ldots,p^{\alpha}-1\rbrace\right\rbrace$. 
-        The special case of $\alpha=1$ denotes the \emph{principal cell} and this concept of \emph{cluster}
-        is the main one used in our proofs;
+\item a \emph{principal cluster} $\mathcal{M}_{\equiv_{p}}^{(\alpha)} =
+\left(m_{n,k}\in \mathcal{M}_{\equiv_{p}}\right)_{n,k\in\lbrace
+0,\ldots,p^{\alpha}-1\rbrace}$ of order $\alpha\in\mathbb{N}$, so that for
+$\alpha=1$ it denotes the \emph{principal cell};
 
-\item a \emph{cluster} $\mathcal{C}_{\beta}^{(\alpha)}$ of order $\alpha$ is a copy of the \emph{principal cluster}
-of order $\alpha$ with each entry multiplied 
-by the same constant $\beta\in\mathbb{N}$, formally 
-    $\mathcal{C}_{\beta}^{(\alpha)}=\left\lbrace \beta\,m_{n,k}\mod p:m_{n,k}\in \mathcal{M}_{\equiv_{p}}^{(\alpha)}\right\rbrace$.
+\item a \emph{cluster} $\mathcal{C}_{p,\beta}^{(\alpha)}=\left(
+\beta\,m_{n,k}\mod p:m_{n,k}\in
+\mathcal{M}_{\equiv_{p}}^{(\alpha)}\right)_{n,k\in\mathbb{N}}$ of order
+$\alpha\in\mathbb{N}$ which is a copy of the \emph{principal cluster} of order
+$\alpha$ with each entry multiplied by the same constant $\beta\in\mathbb{N}$;
+
+\item finally, a \emph{zero-hole} of order $\alpha\in\mathbb{N}$ which is an
+\emph{upside-down} triangular array of coefficients where each one is a
+multiple of $p$, from here the name, distributed according to the scheme
+(i)~$p^{\alpha}-1$ coefficients lie on the first row, (ii)~$p^{\alpha}-2$
+coefficients lie on the second row down to (iii)~a single coefficient that lies
+on the $(p^{\alpha}-1)$-th row, eventually.  Observe that a \emph{zero-hole} of
+order $\alpha$ has $p^{\alpha}-1$ rows, one less than a \emph{principal
+cluster} of the same order.
 
 \end{itemize}
 
-Finally, a \emph{zero-hole} of order $\alpha$ is an \emph{upside-down} triangular array of
-coefficients multiples of $p$, from here the name: it consists of $p^{\alpha}-1$
-coefficients lying on the first row, $p^{\alpha}-2$ coefficients lying on the second row
-and a single coefficient on the $(p^{\alpha}-1)$-th row, eventually. 
-Observe that a \emph{zero-hole} of order $\alpha$ has $p^{\alpha}-1$ rows, one less
-than a \emph{principal cluster} of the same order.
 
 Although a formal proof can be stated by induction using
-\autoref{eq:binomial:recurrence}, Sved shows that the following fact 
-about the modular Pascal array has an easier formulation using the proposed language.
+\autoref{eq:binomial:recurrence}, Marta shows that the following  theorem  has
+an easier formulation using the proposed language.
 
-\begin{theorem}
+\begin{theorem}[Sved]
     Let $p$ be a prime and $\mathcal{P}_{\equiv_{p}}$ be the 
-    modular Pascal array. The principal cluster $\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$,
-    of order $\alpha + 1$, consists of $p$ layers of clusters of order $\alpha$, alternating
-    with zero-holes of order $\alpha$ too. The first layer containing only the principal
-    cluster of order $\alpha$.
+    modular Pascal array. The principal cluster $\mathcal{P}_{\equiv_{p}}^{(\alpha+1)}$
+    of order $\alpha + 1$ consists of $p$ layers of clusters of order $\alpha$ alternating
+    with zero-holes of order $\alpha$, while the first layer contains the principal
+    cluster of order $\alpha$ only.
 \end{theorem}
