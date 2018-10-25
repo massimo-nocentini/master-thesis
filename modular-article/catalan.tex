@@ -2,130 +2,91 @@
 \section{Catalan characterization}
 \label{sec:catalan:characterization}
 
-In this section we tackle a modular characterization, using congruence relation
-$\equiv_{2}$, for the Catalan array $\mathcal{C}$ from a formal point of view.
-We aim at a proof driven by
-\autoref{fig:catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle},
-and, in order to fullfil it, we proceed \emph{piece-wise} breaking such
-characterization into the following sections, where an independent region of
-$\mathcal{C}_{\equiv_{2}}$ is described in each one of them.
+In this section we tackle a modular characterization for the Catalan array
+$\mathcal{C}$ using the congruence relation $\equiv_{2}$ and we use 
+\autoref{fig:catalan-traditional-standard-ignore-negatives-centered-colouring-127-rows-mod2-partitioning-triangle}
+as a driver that allows us to reason \emph{piece-wise}, studying each region of
+$\mathcal{C}_{\equiv_{2}}$ independently.
 
-The last object we would like to introduce allows us
-to talk about a subset of elements lying on column $k$ of $\mathcal{C}$, denoted by $\vect{c}_{k}$.
-Let $S\subseteq\mathbb{N}$ and $k\in\mathbb{N}$, then a \emph{segment} $\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}$
-of $\vect{c}_{k}$ is defined as:
+An important object that is repeatedly used in the rest of this paper is a
+subset of elements lying on column $k$ of $\mathcal{C}$ which is denoted by
+$\vect{c}_{k}$.  Let $s,f,k\in\mathbb{N}$, then a \emph{segment}
+$\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}$ of $\vect{c}_{k}$ is defined
+as
 \begin{equation}
-    \diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}
+    \diagup_{(s,f) }^{k}
         %= \left(\vect{c}_{k},\lbrace k+\alpha_{i}\rbrace_{i\in S}\right)
-        = \lbrace d_{k+\alpha_{i},k}\rbrace_{i\in S}
+        = \left\lbrace d_{k+j,k}\in\mathcal{C}:s\leq j\leq f\right\rbrace
     \label{eq:column:segment}
 \end{equation}
-where $\lbrace\alpha_{i}\rbrace_{i\in S}\subseteq\mathbb{N}$. In order to fetch the set of
-row indices belonging to a segment we introduce the $rows$ function, defined as follow:
-\begin{displaymath}
-    rows\left(\diagup_{\lbrace\alpha_{i}\rbrace_{i\in S}}^{k}\right)
+and the set of the row indices involved in it is denoted by 
+$\displaystyle
+    rows\left(\diagup_{(s,f)}^{k}\right)
         %= rows\left(\left(\vect{c}_{k},\lbrace k+\alpha_{i}\rbrace_{i\in S}\right)\right)
-        = \lbrace k+\alpha_{i}\rbrace_{i\in S}
+        = \lbrace k+i:s\leq i\leq f \rbrace
     \label{eq:column:segment:rows:function}
-\end{displaymath}
-The notation for the segment just introduced refers to the position of
-the involved elements in the graphical representation of $\mathcal{C}_{\equiv_{2}}$.
+$.
 
 
 \subsection{On the very first column of $\mathcal{C}_{\equiv_{2}}$}
 
-In this section we want to characterize the very first column $\vect{c}_{0}$
-of $\mathcal{C}_{\equiv_{2}}$, namely the column composed of Catalan numbers only,
-formally $C_{j}=c_{j,0}\in\vect{c}_{0}$, for any $j\in\mathbb{N}$:
-for the sake of clarity, in \autoref{fig:catalan-first-column} segment
-$\diagup_{\lbrace 0,1,2,\ldots,2^{4}\rbrace}^{0}$ of $\vect{c}_{0}\subset\mathcal{C}_{\equiv_{2}}$
-is highlighted. In the proof, congruence relation $\equiv_{2}$ is applied to \autoref{eq:catalan:coeff:rewriting};
-moreover, we write $j$ in base $2$, so there exists $k\in\mathbb{N}$ such that
-$j=j_{0} + j_{1}\,2 + j_{2}\,2^{2} + \ldots + j_{k}\,2^{k}$, where
-$j_{r}\in\lbrace0,1\rbrace$, for each $r\in\lbrace0,\ldots,k\rbrace$.
+This section characterizes the very first column $\vect{c}_{0}$ of
+$\mathcal{C}_{\equiv_{2}}$ \textit{which is composed of Catalan numbers only},
+formally $C_{j}=c_{j,0}\in\vect{c}_{0}$ for all $j\in\mathbb{N}$; as an example,
+in \autoref{fig:catalan-first-column} the segment $\diagup_{(0,2^{4})}^{0}$ is
+highlighted. 
+
 
 \begin{theorem}
-    Let $j\in\mathbb{N}$, then $C_{j} \equiv_{2} 0$ unless $j=2^{\alpha}-1$ for some $\alpha\in\mathbb{N}$,
+    Let $j,\alpha\in\mathbb{N}$, then $C_{j} \equiv_{2} 0$ unless $j=2^{\alpha}-1$,
     in which case $C_{2^{\alpha}-1} \equiv_{2} 1$ holds.
 \end{theorem}
 
 \begin{proof}
-We start with the boundary case for $j=0$, then $C_{0} \equiv_{2} 1$ because for the subscript $j=0$
-there is $\alpha=0$ so that $j = 2^{\alpha}-1$. On the contrary, for $j>0$ %in order to apply Lucas theorem,
-we proceed by cases on $j$'s parity:
+The idea is to apply the congruence relation $\equiv_{2}$ to \autoref{eq:catalan:coeff:rewriting}
+and to reason on the representation of $j = (j_{0},j_{1},\ldots,j_{k})_{2}$ in base $2$.
+
+For the first value $j=0$ we have $C_{0} \equiv_{2} 1$ because $0 = 2^{\alpha}-1$ for $\alpha=0$. 
+
+On the contrary, for $j>0$ we proceed by cases on $j$'s parity:
 \begin{itemize}
-    \item let $j=2\alpha$, for some $\alpha\in\mathbb{N}$, so $j_{0}=0$,
-        which make vanish the subtrahend of \autoref{eq:catalan:coeff:rewriting}:
+    \item let $j=2k$, for some $k\in\mathbb{N}$, so $j_{0}=0$
+        makes the subtrahend of \autoref{eq:catalan:coeff:rewriting} vanish because
         \begin{displaymath}
             {{2j}\choose{j+1}}
             \equiv_{2} {{0}\choose{1}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
-                \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
+                \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0,
         \end{displaymath}
-        Also the minuend vanishes:
+        also the minuend vanishes because
         \begin{displaymath}
-            C_{j}\equiv_{2}{{2j}\choose{j}}
+            {{2j}\choose{j}}
             \equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
-                \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
+                \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0;
         \end{displaymath}
-        A boundary case pops out when $\alpha=0$ where $j$ has to be written as
-        $j=0 + 0\cdot2 + 0\cdot2^{2} + \ldots + 0\cdot2^{k}$, therefore:
-        \begin{displaymath}
-            C_{0}\equiv_{2}{{0}\choose{0}}
-            \equiv_{2} {{0}\choose{0}}{{0}\choose{0}}{{0}\choose{0}}
-                \ldots{{0}\choose{0}}{{0}\choose{0}}\equiv_{2}1
-        \end{displaymath}
-        this is indeed the only case where $C_{2\alpha} \equiv_{2}1$.
-        \iffalse
-        \begin{proof}
-            Assume not, hence there exists $\hat{\alpha}\in\mathbb{N}$, greater than $0$,
-            such that $C_{2\hat{\alpha}} \equiv_{2}1$. So for ${{0}\choose{j_{1}}}$
-            be not zero then $j_{1}=0$; in turn, this constraint requires a new one, namely
-            for ${{0}\choose{j_{2}}}$ be not zero then $j_{2}=0$;
-            in turn, this constraint requires a new one, namely
-            for ${{0}\choose{j_{3}}}$ be not zero then $j_{3}=0$;
-            in turn, this constraint requires a new one, namely\ldots
-            for ${{0}\choose{j_{k}}}$ be not zero then $j_{k}=0$.
-            Therefore $j=0$, which contradicts the hypothesis $\alpha>0$. So,
-            for even $j > 0$, coefficient $C_{j}\equiv_{2}0$, as required.
-        \end{proof}
-        \fi
 
-    \item let $j=2\alpha+1$, for some $\alpha\in\mathbb{N}$, so $j_{0}=1$,
-        which make vanish the minuend of \autoref{eq:catalan:coeff:rewriting}:
+    \item let $j=2\alpha+1$, for some $\alpha\in\mathbb{N}$, so $j_{0}=1$
+        makes the minuend of \autoref{eq:catalan:coeff:rewriting} vanish because
         \begin{displaymath}
             {{2j}\choose{j}}
             \equiv_{2} {{0}\choose{1}}{{1}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
                 \ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
-        \end{displaymath}
-        so:
-        \begin{displaymath}
+                \quad\text{hence}\quad
             C_{j}\equiv_{2}-{{2j}\choose{j+1}}.
-            %\equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
-                %\ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
         \end{displaymath}
-        Now observe that $(-1)^{-1}\mod2$, the multiplicative inverse of $-1$, equals $1$
-        since $(-1)\cdot 1 \equiv_{2}1$, therefore we can multiply both members by
-        $(-1)^{-1}\mod2$ to get:
-        \begin{displaymath}
-            C_{j}\equiv_{2}{{2j}\choose{j+1}}.
-            %\equiv_{2} {{0}\choose{0}}{{0}\choose{j_{1}}}{{j_{1}}\choose{j_{2}}}
-                %\ldots{{j_{k-1}}\choose{j_{k}}}{{j_{k}}\choose{0}}\equiv_{2}0
-        \end{displaymath}
+        The multiplicative inverse of $-1$ modulo $2$ equals $1$ because $(-1)\cdot 1 \equiv_{2}1$, 
+        formally $(-1)^{-1}~\mod~2~=~1$, therefore multiplying both members by $1$ yields
+        $\displaystyle C_{j}\equiv_{2}{{2j}\choose{j+1}}$.
 
-        Careful handling is necessary for the term $j+1$:
-        since $j$ is odd by hypothesis, increasing it could yield a chain of carries.
-        So, handling $j+1$ in a generic way, we write
-        $j$ in base $2$ in its most general form, putting evidence on coefficients:
+        Careful handling is necessary for the term $j+1$ 
+        because $j$ is odd by hypothesis and increasing it could yield a chain of carries;
+        in particular, let $\beta,\gamma\in\mathbb{N}$, such that $\beta>0$ and $\beta+\gamma=k$, in
         \begin{displaymath}
-            j=\left(\underbrace{1,1,\ldots,1}_{\beta},0,j_{\beta+1},\ldots,j_{\beta+\gamma}\right)_{2}
-        \end{displaymath}
-        where $\beta,\gamma\in\mathbb{N}$ such that $\beta>0$ and $\beta+\gamma=k$.
-        Incrementing $j$ by $1$ we get
-        \begin{displaymath}
+            j=\left(\underbrace{1,1,\ldots,1}_{\beta},0,j_{\beta+1},\ldots,j_{\beta+\gamma}\right)_{2}\,
+            \rightarrow\,
             j+1=\left(\underbrace{0,0,\ldots,0}_{\beta},1,j_{\beta+1},\ldots,j_{\beta+\gamma}%,j_{\beta+\gamma+1}
                 \right)_{2}
         \end{displaymath}
-        so the congruence relation gets the shape
+        which entails that the congruence relation
         \begin{displaymath}
             %\hspace{-2cm}
             C_{j}\equiv_{2}{{2j}\choose{j+1}}
@@ -134,27 +95,22 @@ we proceed by cases on $j$'s parity:
                     {{1}\choose{1}}{{0}\choose{j_{\beta+1}}}{{j_{\beta+1}}\choose{j_{\beta+2}}}
                     \ldots{{j_{\beta+\gamma-1}}\choose{j_{\beta+\gamma}}}{{j_{\beta+\gamma}}\choose{0}}%{\beta+\gamma+1}}
         \end{displaymath}
-        and a simplification yield
-        \begin{displaymath}
-            C_{j}\equiv_{2} {{0}\choose{j_{\beta+1}}}
+        simplifies to
+        $\displaystyle C_{j}\equiv_{2} {{0}\choose{j_{\beta+1}}}
                 {{j_{\beta+1}}\choose{j_{\beta+2}}}
-                    \ldots{{j_{\beta+\gamma-1}}\choose{j_{\beta+\gamma}}}.
-        \end{displaymath}
-        At last, $C_{j}\equiv_{2} 1$ holds if coefficients
+                    \ldots{{j_{\beta+\gamma-1}}\choose{j_{\beta+\gamma}}}$.
+        At last, $C_{j}\equiv_{2} 1$ holds if and only if coefficients
             $j_{\beta+1}, \ldots, j_{\beta+\gamma-1},j_{\beta+\gamma}$
-        are $0$ them all, which implies that
-        \begin{displaymath}
-            j=\left(\underbrace{1,1,\ldots,1}_{\beta},\underbrace{0,0,\ldots,0}_{k-\beta+1}\right)_{2},
-        \end{displaymath}
+        are $0$ them all and this implies that
+        $\displaystyle j=\left(\underbrace{1,1,\ldots,1}_{\beta},\underbrace{0,0,\ldots,0}_{k-\beta+1}\right)_{2}, $
         in other words $j = 2^{\beta+1}-1$. As boundary case, to handle $C_{1}$ correctly
-        (the above result doesn't cover it because $\beta>0$) observe that
-        \begin{displaymath}
-            C_{1}\equiv_{2} {{2}\choose{2}}\equiv_{2} {{0}\choose{0}}{{1}\choose{1}}\equiv_{2}1,
-        \end{displaymath}
+        (the argument above doesn't cover it because $\beta>0$) observe that
+        $\displaystyle C_{1}\equiv_{2} {{2}\choose{2}}\equiv_{2} {{0}\choose{0}}{{1}\choose{1}}\equiv_{2}1, $
         as required.
 \end{itemize}
 \end{proof}
 
+\iffalse
 It is interesting to observe that if we use the ``traditional'' closed formula
 for a Catalan coefficient $C_{j}$:
 \begin{displaymath}
@@ -167,6 +123,7 @@ where $j=2\alpha+1$, it would have been hard to handle, because:
 \end{displaymath}
 reduces to $0\equiv_{2}0$, giving no opportunity to derive any
 property about coefficient $C_{j}$.
+\fi
 
 \input{catalan/first-column-include-figure.tex}
 
